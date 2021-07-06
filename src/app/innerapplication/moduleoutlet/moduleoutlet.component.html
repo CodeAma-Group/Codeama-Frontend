@@ -1,4 +1,13 @@
 <div id="entire_app__outlet">
-    <app-sidebar></app-sidebar>
-    <router-outlet></router-outlet>
+    <div class="sidebar_container">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="entire_app_page_body">
+        <div class="logo_search__container">
+            <h2>Logo and search here</h2>
+        </div>
+        <div class="body_content_container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
