@@ -1,0 +1,26 @@
+ul.navbar-nav {
+    list-style: none;
+}
+
+li>a.nav-link {
+    text-decoration: none;
+}
+
+.sidebar {
+    height: 96vh;
+    border-radius: 5px;
+    font-family: "poppins";
+    background-color: #567395;
+    float: left;
+    margin: 10px!important;
+}
+
+.active {
+    background-color: #92B1D6;
+    border-radius: 4px;
+}
+
+.nav-link {
+    color: #17202A;
+    font-size: 14px;
+}
