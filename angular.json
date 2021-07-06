@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "codeAma"
+  "defaultProject": "codeAma",
+  "cli": {
+    "analytics": "3290f377-2fcf-4e55-b122-034f18d24406"
+  }
 }
