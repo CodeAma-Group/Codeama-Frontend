@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModelOutletComponent } from './model-outlet.component';
+import { ModuleoutletComponent } from './moduleoutlet.component';
 
-describe('ModelOutletComponent', () => {
-  let component: ModelOutletComponent;
-  let fixture: ComponentFixture<ModelOutletComponent>;
+describe('ModuleoutletComponent', () => {
+  let component: ModuleoutletComponent;
+  let fixture: ComponentFixture<ModuleoutletComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModelOutletComponent ]
+      declarations: [ ModuleoutletComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModelOutletComponent);
+    fixture = TestBed.createComponent(ModuleoutletComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
