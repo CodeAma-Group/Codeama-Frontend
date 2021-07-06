@@ -32,6 +32,11 @@ svg {
     height: 25px!important;
 }
 
+.profile {
+    position: relative;
+    top: 11em!important;
+}
+
 
 /* 
 .nav-item {
