@@ -11,6 +11,7 @@ import { SupportComponent } from './support/support.component'
 import { ProfileComponent } from './profile/profile.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { CoursesComponent } from './courses/courses.component';
 
 const routes: Routes = [
 
@@ -31,7 +32,17 @@ const routes: Routes = [
       },
       {
         path: 'hood',
-        component: DashboardComponent
+        component: DashboardComponent,
+        children: [
+          {
+            path:'courses',
+            component: CoursesComponent
+          },
+          {
+            path: 'questions',
+            component: QuestionsComponent
+          }
+        ]
       },
       {
         path: 'projects',
@@ -56,14 +67,6 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'questions',
-        component: QuestionsComponent
       }
     ]
   }
