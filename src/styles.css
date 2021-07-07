@@ -1,1 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+/* Application global styling variables */
+
+:root {
+    /* colors */
+    --pureWhite: #ffffff;
+  
+
+    /* fonts */
+    --poppins: 'Poppins', sans-serif;
+
+}
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--pureWhite);
+    font-family: var(--poppins);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* responsiveness */
+.col-lap-1{ width: 8.33% !important; }
+.col-lap-2{ width: 16.66% !important; }
+.col-lap-3{ width: 25% !important; }
+.col-lap-4{ width: 33.33% !important; }
+.col-lap-5{ width: 41.66% !important; }
+.col-lap-6{ width: 50% !important; }
+.col-lap-7{ width: 58.33% !important; }
+.col-lap-8{ width: 66.66% !important; }
+.col-lap-9{ width: 75% !important; }
+.col-lap-10{ width: 83.33% !important; }
+.col-lap-11{ width: 91.66% !important; }
+.col-lap-12{ width: 100% !important; }
+
+@media only screen and (max-width: 600px) 
+{
+    .col-mob-1{ width: 8.33% !important; }
+    .col-mob-2{ width: 16.66% !important; }
+    .col-mob-3{ width: 25% !important; }
+    .col-mob-4{ width: 33.33% !important; }
+    .col-mob-5{ width: 41.66% !important; }
+    .col-mob-6{ width: 50% !important; }
+    .col-mob-7{ width: 58.33% !important; }
+    .col-mob-8{ width: 66.66% !important; }
+    .col-mob-9{ width: 75% !important; }
+    .col-mob-10{ width: 83.33% !important; }
+    .col-mob-11{ width: 91.66% !important; }
+    .col-mob-12{ width: 100% !important; }
+    
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px)
+{
+    .col-tab-1{ width: 8.33% !important; }
+    .col-tab-2{ width: 16.66% !important; }
+    .col-tab-3{ width: 25% !important; }
+    .col-tab-4{ width: 33.33% !important; }
+    .col-tab-5{ width: 41.66% !important; }
+    .col-tab-6{ width: 50% !important; }
+    .col-tab-7{ width: 58.33% !important; }
+    .col-tab-8{ width: 66.66% !important; }
+    .col-tab-9{ width: 75% !important; }
+    .col-tab-10{ width: 83.33% !important; }
+    .col-tab-11{ width: 91.66% !important; }
+    .col-tab-12{ width: 100% !important; }
+
+}
