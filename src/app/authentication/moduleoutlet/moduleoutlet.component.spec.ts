@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodeAmasComponent } from './code-amas.component';
+import { ModuleoutletComponent } from './moduleoutlet.component';
 
-describe('CodeAmasComponent', () => {
-  let component: CodeAmasComponent;
-  let fixture: ComponentFixture<CodeAmasComponent>;
+describe('ModuleoutletComponent', () => {
+  let component: ModuleoutletComponent;
+  let fixture: ComponentFixture<ModuleoutletComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CodeAmasComponent ]
+      declarations: [ ModuleoutletComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CodeAmasComponent);
+    fixture = TestBed.createComponent(ModuleoutletComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
