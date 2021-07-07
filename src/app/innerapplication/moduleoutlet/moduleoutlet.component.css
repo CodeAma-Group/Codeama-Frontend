@@ -28,14 +28,23 @@
 }
 
 .logo_search__container div {
-    width: 40%;
+    width: 70%;
+    position: relative;
 }
 
-.logo_search__container input {
+.logo_search__container div svg {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    opacity: .8;
+}
+
+.logo_search__container div input {
     height: 40px;
-    padding-left: 40px;
+    padding-left: 55px;
+    color: rgb(6, 23, 44);
     outline: none;
-    background: rgba(66, 144, 237, .1);
+    background: rgba(66, 144, 237, .07);
     border: none;
     width: 100%;
     font-size: .95em;
