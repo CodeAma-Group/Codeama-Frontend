@@ -11,6 +11,7 @@ import { CodeAmasComponent } from './code-amas/code-amas.component';
 import { SupportComponent } from './support/support.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     CodeAmasComponent,
     SupportComponent,
     ProfileComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
