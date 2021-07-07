@@ -1,0 +1,144 @@
+#entire_app__welcome_page {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--pureWhite);
+}
+
+.entire_welcome__navbar {
+    width: 100%;
+    height: 10%;
+    display: flex;
+}
+
+.entire_welcome__navbar .sign_options, 
+.entire_welcome__navbar .logo {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.entire_welcome__navbar .logo img {
+    margin-left: 10%;
+}
+
+.entire_welcome__navbar .sign_options {
+    position: relative;
+}
+
+.entire_welcome__navbar .sign_options .options_container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 10%;
+}
+
+.options_container a {
+    margin-left: 3em;
+    font-size: 0.85em;
+    cursor: pointer;
+    color: var(--mainBlack);
+    transition: .5s ease;
+}
+
+.options_container a:hover {
+    color: var(--mainBlue);
+}
+
+.create_account {
+    background-color: var(--pureWhite);
+    border: 0.08em solid var(--mainBlue);
+    color: var(--mainBlue) !important;
+    padding: 0.36em 1em; 
+    border-radius: 0.25em;
+}
+
+.create_account:hover {
+    color: var(--pureWhite) !important;
+    background-color: var(--mainBlue);
+}
+
+.entire_app__welcome_body {
+    width: 100%;
+    height: 90%;
+    display: flex;
+}
+
+.entire_descript__container,
+.entire_illustration__container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.content_container {
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+
+.entire_descript__container h1{
+    color: var(--mainBlue);
+    font-family: Righteous !important;
+    margin-left: 10%;
+}
+
+.entire_descript__container p {
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 6%;
+    font-size: 0.84em;
+    color: var(--mainBlack);
+}
+
+.get_started {
+    width: 28%;
+    margin-left: 10%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--mainBlue);
+    transition: .5s ease;
+    border-radius: 0.3em;
+    padding: 1.6em 1.9em;
+    color: var(--pureWhite);
+    font-size: 0.85em;
+    cursor: pointer;
+}
+
+.entire_app_features__container {
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 0;
+}
+
+.entire_app_features__container h6 {
+    margin-left: 10%;
+    color: var(--mainBlack);
+}
+
+.entire_app_features__container .feature_content {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.entire_app_features__container .feature_content .feature_column {
+    width: 50%;
+    line-height: 0.3em;
+    height: auto;
+}
+
+.entire_app_features__container .feature_content .feature_column p {
+    opacity: 0.6;
+    font-size: 0.8em;
+}
+
+.col_p_one {
+    margin-left: 20% !important;
+}
