@@ -35,6 +35,10 @@ const routes: Routes = [
         component: DashboardComponent,
         children: [
           {
+            path: '',
+            component: CoursesComponent
+          },
+          {
             path:'courses',
             component: CoursesComponent
           },
