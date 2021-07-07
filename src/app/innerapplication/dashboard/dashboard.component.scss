@@ -129,8 +129,23 @@ $bg_color: rgba(66, 144, 237, .1);
         border-radius: 7px;
         width: 65%;
 
+        >div:first-child {
+            padding: 15px 20px 0px 40px;
+
+            a.btn {
+                font-size: .9em;
+
+                svg {
+                    margin-right: 10px;
+                }
+            }
+        } 
+
+        hr {
+            border: 1px solid #0a131d;
+            opacity: .8;
+        }
         div.nav {
-            padding: 15px 0 0px 40px;
             a {
                 margin-right: 6%;
                 color: black;
