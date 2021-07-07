@@ -10,17 +10,33 @@ li>a.nav-link {
     height: 96vh;
     border-radius: 5px;
     font-family: "poppins";
-    background-color: #567395;
+    background-color: #E9EFF7;
     float: left;
-    margin: 10px!important;
+    margin: 10px !important;
+    padding: 5px;
 }
 
 .active {
-    background-color: #92B1D6;
-    border-radius: 4px;
+    background-color: #E9EFF7;
+    border-radius: 8px;
 }
 
 .nav-link {
     color: #17202A;
-    font-size: 14px;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 0 !important;
 }
+
+svg {
+    height: 25px!important;
+}
+
+
+/* 
+.nav-item {
+    /* padding-left: 10px !important; */
+
+
+/* .nav-link-container {
+    /* height: 2em; */
