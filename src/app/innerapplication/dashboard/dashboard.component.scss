@@ -81,6 +81,7 @@ $bg_color: rgba(66, 144, 237, .1);
             h6 {
                 margin: 15px;
                 color: #212F3D;
+                font-weight: 600;
             }
 
             div {
@@ -131,8 +132,9 @@ $bg_color: rgba(66, 144, 237, .1);
         div.nav {
             padding: 15px 0 0px 40px;
             a {
-                margin-right: 30px;
+                margin-right: 6%;
                 color: black;
+                font-size: .95em;
 
                 &.active {
                     color: #4290ED;
