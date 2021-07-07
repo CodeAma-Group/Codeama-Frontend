@@ -31,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'hood',
-        component: HoodComponent
+        component: DashboardComponent
       },
       {
         path: 'projects',

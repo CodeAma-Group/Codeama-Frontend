@@ -15,7 +15,7 @@
                 <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
                 <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="#212f3d"/>
             </svg>                
-            <input type="text" name="article" class="input w-100 form-control" (input)="$event.target.value = article" placeholder="Write your article...">
+            <input type="text" name="article" class="input w-100 form-control" (input)="article = $event.target.value" placeholder="Write your article...">
         </div>
     </div>
     <div class="sideContent">
@@ -78,12 +78,15 @@
     </div>
     <div class="mainContent vh-100">
         <div class="nav">
-            <a href="/courses" class="active">Courses</a>
-            <a href="/questions">Questions</a>
-            <a href="/bugs">Bugs solved</a>
-            <a href="/codebooks">Code Books</a>
-            <a href="/youtube_channels">Youtube channels</a>
+            <a routerLink="courses" routerLinkActive="active">Courses</a>
+            <a routerLink="questions">Questions</a>
+            <a routerLink="bugs">Bugs solved</a>
+            <a routerLink="codebooks">Code Books</a>
+            <a routerLink="youtube_channels">Youtube channels</a>
         </div>
         <hr>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
