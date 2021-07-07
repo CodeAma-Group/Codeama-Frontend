@@ -1,0 +1,12 @@
+.bg-color {
+    background-color: #f4f7fb;
+}
+.cl-silver {
+    color: silver;
+}
+.skills{
+    display: inline-flex;
+}
+.skills>li{
+    padding-left: 10px;
+}

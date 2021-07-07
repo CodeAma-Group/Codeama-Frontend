@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { WelcomeComponent } from './welcome/welcome.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CodeamasComponent } from './innerapplication/codeamas/codeamas.component';
 
 const routes: Routes = [
   
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomeComponent
+  },
+  {
+    path: 'codeamas',
+    component: CodeamasComponent
   },
   {
     path: '**', //wildcard routing
