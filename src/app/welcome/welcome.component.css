@@ -37,8 +37,9 @@
 
 .options_container a {
     margin-left: 3em;
-    font-size: 0.84em;
+    font-size: 0.85em;
     cursor: pointer;
+    color: var(--mainBlack);
     transition: .5s ease;
 }
 
@@ -49,7 +50,8 @@
 .create_account {
     background-color: var(--pureWhite);
     border: 0.08em solid var(--mainBlue);
-    padding: 0.35em 1em;
+    color: var(--mainBlue) !important;
+    padding: 0.36em 1em; 
     border-radius: 0.25em;
 }
 
