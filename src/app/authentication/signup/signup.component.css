@@ -1,0 +1,123 @@
+#entire_app__signup_form {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_body_container {
+    width: 90%;
+    height: 85%;
+    border-radius: 3em;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    background-color: var(--dimerBlue);
+}
+
+.signup_form {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.change_means {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign_means_container {
+    width: 90%;
+    height: 90%;
+    border-radius: 3em;
+    background-color: var(--dimBlue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign_means_container h3 {
+    color: var(--mainWhite);
+    margin: 16% 0 6% 0;
+    font-size: 1.5em;
+}
+
+.sign_means_container>p {
+    color: var(--mainWhite);
+    font-size: 0.8em;
+    text-align: center;
+    margin: 0 13%;
+}
+
+.option_navigation {
+    width: 100%;
+    height: 35%;
+    margin-top: 12%;
+}
+
+ul {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0 !important;
+}
+
+ul li {
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row_menu {
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+
+.row_menu>p {
+    font-size: 0.77em;
+    color: var(--mainWhite);
+}
+
+.p1 {
+    position: absolute;
+    right: 5%;
+}
+
+.p2 {
+    position: absolute;
+    left: 5%;
+}
+
+a {
+    position: relative;
+    padding: 0.4em;
+}
+
+.active {
+    border: 0.4em solid var(--mainWhite);
+}
+
+a>img {
+    width: 6em;
+    height: 6em;
+    cursor: pointer;
+}
+
+.img1 {
+    position: absolute;
+    right: 10%;
+}
+
+.img2 {
+    position: absolute;
+    left: 10%;
+}
