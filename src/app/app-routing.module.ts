@@ -1,21 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AboutUsComponent} from './about-us/about-us.component';
-import {ChallengesComponent} from './challenges/challenges.component';
-import {CodeAmasComponent} from './code-amas/code-amas.component';
-import {NotificationsComponent} from './notifications/notifications.component'
-import {ProfileComponent} from './profile/profile.component'
-import {HoodComponent} from './hood/hood.component'
-import {SupportComponent} from './support/support.component';
+
+import { WelcomeComponent } from './welcome/welcome.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path:"hood", component:HoodComponent},
-  {path:"profile", component:ProfileComponent},
-  {path:"notifications", component:NotificationsComponent},
-  {path:"challenges", component:ChallengesComponent},
-  {path:"codeAmas", component:CodeAmasComponent},
-  {path:"aboutUs", component:AboutUsComponent},
-  {path:"support", component:SupportComponent}
+  
+  {
+    path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full'
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./authentication/authentication.module')
+      .then(mode => mode.AuthenticationModule)
+  },
+  {
+    path: 'app',
+    loadChildren: () => import('./innerapplication/innerapplication.module')
+      .then(mode => mode.InnerapplicationModule)
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent
+  },
+  {
+    path: '**', //wildcard routing
+    component: PageNotFoundComponent
+  } 
+
 ];
 
 @NgModule({
