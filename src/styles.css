@@ -12,8 +12,15 @@
     --mainBlue: #185BF9;
     --mainBlack: #17202A;
     --mainWhite: #ffffff;
+    --dimBlue: #66A5F0;
+    --dimerBlue: #f2f6fa;
+    --mainRed: #F51854;
+    --minorBlue: #4290ED;
+    --inputWhite: #ffffff;
 
     --modeDark: #0D0E1A;
+    --modeDimBlue: #1D2747;
+    --modeDimerBlue: #0F111E;
 
 
     /* fonts */
@@ -73,6 +80,7 @@ ul {
     .col-mob-10{ width: 83.33% !important; }
     .col-mob-11{ width: 91.66% !important; }
     .col-mob-12{ width: 100% !important; }
+    .col-mob-auto { height: 200vh !important; }
     
 }
 
