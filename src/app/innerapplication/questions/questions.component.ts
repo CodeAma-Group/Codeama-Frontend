@@ -34,7 +34,7 @@ export class QuestionsComponent implements OnInit {
           },
           {
             tech: "Angular",
-            img: "assets/test_images/js.png"
+            img: "assets/test_images/vue.png"
           },
           {
             tech: "Angular",
