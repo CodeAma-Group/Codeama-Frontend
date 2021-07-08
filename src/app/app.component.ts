@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppsettingsService } from './appsettings.service'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'codeAma';
+
+  constructor(private settings:AppsettingsService) {
+    this.settings.settings()
+  }
 }
