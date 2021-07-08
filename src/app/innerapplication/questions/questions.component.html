@@ -1,1 +1,23 @@
-<p>questions works!</p>
+<div class="questionsDetails" *ngFor="let question of questions">
+    <hr>
+    <div>
+        <div class="dev_details" class="d-flex">
+            <figure class="position-relative d-flex justify-content-center">
+                <div>
+                    <img [src]="question.devDetails.pic" alt="profile pic" class="">
+                </div>
+                <figcaption class="position-absolute">{{question.devDetails.badge}}</figcaption>
+            </figure>
+            <div>
+                <p>
+                    <strong>{{question.devDetails.names}}</strong><span>@{{question.devDetails.username}}</span>
+                </p>
+                {{question.questionDetails.date_updated}}
+            </div>
+        </div>
+        <div class="question_details">
+            <h5><strong>{{question.questionDetails.question}}</strong></h5>
+            <p>{{question.questionDetails.desc}}</p>
+        </div>
+    </div>
+</div>
