@@ -11,13 +11,15 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { SupportComponent } from './support/support.component';
 import { CodeamasComponent } from './codeamas/codeamas.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectRegistrationComponent } from './project-registration/project-registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { CoursesComponent } from './courses/courses.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule

@@ -2,57 +2,31 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    background-color: red;
 }
 
 .sidebar_container {
     width: 7.5%;
     height: 100%;
-    background-color: green;
 }
 
 .entire_app_page_body {
     width: 92.5%;
     height: 100%;
-    background-color: white;
 }
 
-.entire_app_page_body{
-    width: 100%;
-}
-
-.logo_search__container {
-    width: 69.5%;
-    padding: 20px 0 5px 15px;
-    background: white;
-}
-
-.logo_search__container div {
-    width: 70%;
-    position: relative;
-}
-
-.logo_search__container div svg {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    opacity: .8;
-}
-
-.logo_search__container div input {
-    height: 40px;
-    padding-left: 55px;
-    color: rgb(6, 23, 44);
-    outline: none;
-    background: rgba(66, 144, 237, .07);
-    border: none;
-    width: 100%;
-    font-size: .95em;
-    border-radius: 7px;
+.entire_app_page_body .logo_search__container {
+    width: 99%;
+    height: 10%;
+    background-color: dodgerblue;
+    position: fixed;
+    z-index: 1;
 }
 
 .entire_app_page_body .body_content_container {
-    width: 100%;
-    height: 90%;
-    background-color: white;
+    width: 99%;
+    height: auto;
+    background-color: #F4F7FB;
+    border-radius: 8px;
+    margin-top: 4em;
+    /* z-index: 0; */
 }

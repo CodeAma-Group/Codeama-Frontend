@@ -1,0 +1,74 @@
+.container {
+    width: 98%;
+}
+
+img {
+    width: 100%;
+    height: 270px;
+}
+
+.tech {
+    margin: 10px;
+    font-size: 12px;
+    font-weight: 450;
+    color: grey;
+}
+
+ol,
+ul {
+    padding-left: 0!important;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.groupname {
+    font-size: 15px!important;
+    color: #6D6F7A
+}
+
+.card-title {
+    color: #6D6F7A;
+    font-size: 20px;
+}
+
+.technologies-title {
+    color: #6D6F7A;
+    font-size: 16px;
+}
+
+.project-description-text {
+    font-size: 13px;
+    color: #9699A0;
+}
+
+.viewMoreBtn {
+    background-color: #1f264e!important;
+    color: white;
+}
+
+.card-group {
+    width: 31%;
+    margin-top: 5px;
+}
+
+.card {
+    background-color: #FCFDFE!important;
+}
+
+#addPro {
+    position: relative;
+    left: 4em;
+}
+
+.container-fluid>.heading {
+    position: relative;
+    top: 10px;
+}
+
+#page-title {
+    font-size: 18px;
+}
