@@ -9,6 +9,9 @@ import { CodeamasComponent } from './codeamas/codeamas.component'
 import { NotificationsComponent } from './notifications/notifications.component'
 import { SupportComponent } from './support/support.component'
 import { ProfileComponent } from './profile/profile.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { CoursesComponent } from './courses/courses.component';
 
 const routes: Routes = [
 
@@ -29,7 +32,21 @@ const routes: Routes = [
       },
       {
         path: 'hood',
-        component: HoodComponent
+        component: DashboardComponent,
+        children: [
+          {
+            path: '',
+            component: CoursesComponent
+          },
+          {
+            path:'courses',
+            component: CoursesComponent
+          },
+          {
+            path: 'questions',
+            component: QuestionsComponent
+          }
+        ]
       },
       {
         path: 'projects',
@@ -55,7 +72,6 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileComponent
       }
-
     ]
   }
 

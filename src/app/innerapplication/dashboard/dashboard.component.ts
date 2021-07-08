@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   public article: string = ""
+  public location: Location = window.location
   constructor() { }
 
   ngOnInit(): void {
