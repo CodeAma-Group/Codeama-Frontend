@@ -55,6 +55,10 @@ ul {
     margin-top: 5px;
 }
 
+.card {
+    background-color: #FCFDFE!important;
+}
+
 #addPro {
     position: relative;
     left: 4em;
