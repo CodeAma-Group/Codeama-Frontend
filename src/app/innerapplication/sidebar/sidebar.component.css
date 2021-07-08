@@ -14,11 +14,21 @@ li>a.nav-link {
     float: left;
     margin: 10px !important;
     padding: 5px;
+    position: fixed;
 }
 
 .active {
     background-color: #E9EFF7;
     border-radius: 8px;
+    fill: blue!important
+}
+
+.active>li>a {
+    color: #4286ED !important
+}
+
+.active>li>svg>path:nth-child(2) {
+    fill: #4286ED;
 }
 
 .nav-link {
@@ -36,12 +46,3 @@ svg {
     position: relative;
     top: 11em!important;
 }
-
-
-/* 
-.nav-item {
-    /* padding-left: 10px !important; */
-
-
-/* .nav-link-container {
-    /* height: 2em; */
