@@ -26,7 +26,7 @@ export class QuestionsComponent implements OnInit {
           },
           {
             tech: "Angular",
-            img: "assets/test_images/angular.png"
+            img: "assets/test_images/js.png"
           }
         ],
         comments: [
@@ -37,12 +37,12 @@ export class QuestionsComponent implements OnInit {
           },
           { 
             commentor_name: "",
-            commentor_pic: "assets/test_images/angular.png",
+            commentor_pic: "assets/test_images/js.png",
             comment: '',
           },
           { 
             commentor_name: "",
-            commentor_pic: "assets/test_images/angular.png",
+            commentor_pic: "assets/test_images/java.png",
             comment: '',
           }
         ]
