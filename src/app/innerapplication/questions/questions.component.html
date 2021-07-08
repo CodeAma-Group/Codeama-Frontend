@@ -1,51 +1,55 @@
 <div class="questionsDetails" *ngFor="let question of questions">
     <hr>
     <div>
-        <div class="dev_details" class="d-flex">
-            <figure class="position-relative d-flex justify-content-center">
+        <div>
+            <div class="dev_details" class="d-flex">
+                <figure class="position-relative d-flex justify-content-center">
+                    <div>
+                        <img [src]="question.devDetails.pic" alt="profile pic">
+                    </div>
+                    <figcaption class="position-absolute">{{question.devDetails.badge}}</figcaption>
+                </figure>
                 <div>
-                    <img [src]="question.devDetails.pic" alt="profile pic">
+                    <p>
+                        <strong>{{question.devDetails.names}}</strong><span>@{{question.devDetails.username}}</span>
+                    </p>
+                    {{question.questionDetails.date_updated}}
                 </div>
-                <figcaption class="position-absolute">{{question.devDetails.badge}}</figcaption>
-            </figure>
-            <div>
-                <p>
-                    <strong>{{question.devDetails.names}}</strong><span>@{{question.devDetails.username}}</span>
-                </p>
-                {{question.questionDetails.date_updated}}
             </div>
-        </div>
-        <div class="question_details">
-            <h5><strong>{{question.questionDetails.question}}</strong></h5>
-            <p>{{question.questionDetails.desc}}</p>
-        </div>
-        <p id="dev_username">{{question.devDetails.username}}.codeama.dev</p>
-        <div class="question_views">
-            <div>
-                <i class="fa fa-thumbs-up"></i>&nbsp;
-                <strong>{{question.questionDetails.likes}}</strong>
-            </div> 
-
-            <div>
-                <svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="15" height="15">
-                    <title>Community page-light – 11</title>
-                    <style>
-                        tspan { white-space:pre }
-                        .shp0 { fill: #212f3d } 
-                    </style>
-                    <g id="Community page-light – 11">
-                        <g id="chat-1-line">
-                            <path id="-e-Path 49" fill-rule="evenodd" class="shp0" d="M13.26 0C17.9 0 21.66 3.77 21.66 8.41C21.66 15.24 14.31 18.4 9.06 20.5L9.06 16.82C4.42 16.82 0.66 13.05 0.66 8.41C0.66 3.77 4.42 0 9.06 0L13.26 0ZM11.16 17.32C16.98 14.68 19.56 12.2 19.56 8.41C19.56 4.93 16.74 2.1 13.26 2.1L9.06 2.1C5.58 2.1 2.76 4.93 2.76 8.41C2.76 11.89 5.58 14.72 9.06 14.72L11.16 14.72L11.16 17.32Z" />
-                        </g>
-                    </g>
-                </svg>
-                <strong>{{question.questionDetails.comments.length}}</strong>
+            <div class="question_details">
+                <h5><strong>{{question.questionDetails.question}}</strong></h5>
+                <p>{{question.questionDetails.desc}}</p>
+            </div>
+            <p id="dev_username">{{question.devDetails.username}}.codeama.dev</p>
+            <div class="question_views">
                 <div>
-                    <div *ngFor="let comment of question.questionDetails.comments.slice(0,2)">
-                        <img src="{{comment.commentor_pic}}" alt="commentor profile">
+                    <i class="fa fa-thumbs-up"></i>&nbsp;
+                    <strong>{{question.questionDetails.likes}}</strong>
+                </div> 
+    
+                <div>
+                    <svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="19" height="19">
+                        <style>
+                            tspan { white-space:pre }
+                            .shp0 { fill: #212f3d } 
+                        </style>
+                        <g id="Community page-light – 11">
+                            <g id="chat-1-line">
+                                <path id="-e-Path 49" fill-rule="evenodd" class="shp0" d="M13.26 0C17.9 0 21.66 3.77 21.66 8.41C21.66 15.24 14.31 18.4 9.06 20.5L9.06 16.82C4.42 16.82 0.66 13.05 0.66 8.41C0.66 3.77 4.42 0 9.06 0L13.26 0ZM11.16 17.32C16.98 14.68 19.56 12.2 19.56 8.41C19.56 4.93 16.74 2.1 13.26 2.1L9.06 2.1C5.58 2.1 2.76 4.93 2.76 8.41C2.76 11.89 5.58 14.72 9.06 14.72L11.16 14.72L11.16 17.32Z" />
+                            </g>
+                        </g>
+                    </svg>
+                    <strong>{{question.questionDetails.comments.length}}</strong>
+                    <div>
+                        <div *ngFor="let comment of question.questionDetails.comments.slice(0,4)">
+                            <img src="{{comment.commentor_pic}}" alt="commentor profile">
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class=" d-flex justify-content-between">
+            <img *ngFor="let tagtech of question.questionDetails.tagged_tech" src="{{tagtech.img}}" alt="tagged tech" style="display: inline; width: 70px; height: auto;">
         </div>
     </div>
 </div>
