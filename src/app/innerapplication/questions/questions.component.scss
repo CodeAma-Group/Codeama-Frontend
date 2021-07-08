@@ -43,15 +43,20 @@
         }
 
         >div:nth-of-type(2){
-            width: 60%;
+            width: 55%;
 
             h5 {
-                margin: 15px 0;
+                margin: 10px 0 20px;
                 font-size: 1.1em;
             }
             p {
                 font-size: .8em;
             }
+        }
+
+        p#dev_username {
+            font-size: .8em;
+            color: rgba(0, 0, 0, 0.568);
         }
     }
 
