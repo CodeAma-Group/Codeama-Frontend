@@ -130,7 +130,7 @@
 
 .entire_app_features__container .feature_content .feature_column {
     width: 50%;
-    line-height: 0.3em;
+    line-height: 0.2em;
     height: auto;
 }
 
@@ -141,4 +141,60 @@
 
 .col_p_one {
     margin-left: 20% !important;
+}
+
+.entire_illustration__container {
+    justify-content: center;
+    position: relative;
+}
+
+.entire_illustration__container .illustration {
+    width: 65%;
+    height: 65%;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.entire_illustration__container .illustration img {
+    width: 100%;
+    height: 100%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transition: all 1s ease-in-out;
+    animation: morph_banner 5s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.entire_illustration__container .illustration_shadow{
+    position: absolute;
+    width: 68%;
+    height: 68%;
+    border-radius:   60% 30% 70% 40% / 60% 40% 30% 70%;
+    background: linear-gradient(45deg, #88D5BF 0%, #5D6BF8 100%);
+    transition: all 1s ease-in-out;
+    animation: morph 5s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+@keyframes morph
+{
+    0%{
+        border-radius: 60% 30% 70% 40% / 60% 40% 30% 70%;
+        background: linear-gradient(45deg, #88D5BF 0%, #5D6BF8 100%);
+    }50%{
+        border-radius:  50% 60% 30% 60% / 30% 60% 70% 40% ;
+        background: linear-gradient(45deg, #e27fcb 0%, #5D6BF8 100%);
+    }100%{
+        border-radius: 60% 30% 70% 40% / 60% 40% 30% 70%;
+        background: linear-gradient(45deg, #88D5BF 0%, #5D6BF8 100%);
+    }
+}
+
+@keyframes morph_banner {
+    0%{
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }50%{
+        border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%;
+    }100%{
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
 }
