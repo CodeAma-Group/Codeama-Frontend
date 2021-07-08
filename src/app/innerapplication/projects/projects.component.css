@@ -54,3 +54,17 @@ ul {
     width: 31%;
     margin-top: 5px;
 }
+
+#addPro {
+    position: relative;
+    left: 4em;
+}
+
+.container-fluid>.heading {
+    position: relative;
+    top: 10px;
+}
+
+#page-title {
+    font-size: 18px;
+}

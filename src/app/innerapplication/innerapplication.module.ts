@@ -12,10 +12,11 @@ import { SupportComponent } from './support/support.component';
 import { CodeamasComponent } from './codeamas/codeamas.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectRegistrationComponent } from './project-registration/project-registration.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, ProjectDetailsComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, ProjectDetailsComponent, ProjectRegistrationComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule

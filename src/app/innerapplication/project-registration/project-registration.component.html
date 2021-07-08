@@ -1,0 +1,111 @@
+<div class="container-fluid pb-2">
+    <style>
+        .container-fluid>.heading {
+            position: relative;
+            top: 10px;
+        }
+        
+        .other-uploads {
+            height: 4em;
+            border: 1px dashed grey;
+            position: relative;
+            background-color: #F9F9FB;
+        }
+        
+        .main-page-or-video {
+            height: 12em;
+            border: 1px dashed grey;
+            position: relative;
+            background-color: #F9F9FB;
+        }
+        
+        span {
+            font-size: 11px;
+        }
+        
+        .form-control {
+            background-color: #EBF1FA;
+            outline: none;
+            border: 2px solid#bddafd;
+            font-size: 14px;
+        }
+        
+        .fm-style {
+            height: 44px!important;
+        }
+        
+        label {
+            margin: 0.4em 0em;
+            font-weight: 500;
+        }
+        
+        .application-desription {
+            width: 97.4%;
+        }
+        
+        .title {
+            font-size: 1.1em;
+            font-weight: 540;
+        }
+    </style>
+
+    <div class="heading py-2 ms-3 ">
+        <h6 class="my-auto title">Register Your project</h6>
+    </div>
+    <div class="main_project_reg_div col-lg-12 mx-auto  d-flex">
+        <div class="uploads col-lg-4 ms-3 me-5">
+            <div class="upload-1 my-3">
+                <span>Only the main app page pic or shot 10 second long video should be in this container</span>
+                <div class="main-page-or-video text-center">
+                    <svg class="mt-5 svg" xmlns=" http://www.w3.org/2000/svg " width="103 " height="81 " viewBox="0 0 103 81 ">
+                        <rect id="Rectangle_184 " data-name="Rectangle 184 " width="103 " height="81 " fill="rgba(0,0,0,0.14) " />
+                        <path id="Path_180 " data-name="Path 180 " d="M-1792.988,6774.147h79.05v-63.607s-10.793,31.589-24.931,37.821-19.763-15.473-31.62-12.894-22.5,20.629-22.5,20.629Z " transform="translate(1803 -6698.148) " fill="rgba(255,255,255,0.61) " />
+                    </svg>
+                    <br>
+                    <span class="ms-2">Main app page photo or short demo video</span>
+                </div>
+            </div>
+            <div class="uploads-2">
+                <div class="other-uploads ">
+                    <svg id="svg" class="ms-1 mt-1" xmlns=" http://www.w3.org/2000/svg " width="64 " height="52 " viewBox="0 0 64 52 ">
+                        <rect id="Rectangle_195 " data-name="Rectangle 195 " width="64 " height="52 " fill="rgba(0,0,0,0.14) "/>
+                        <path id="Path_183 " data-name="Path 183 " d="M-1792.988,6745.147H-1753V6710.54s-5.46,17.187-12.612,20.578-10-8.418-16-7.015-11.381,11.224-11.381,11.224Z " transform="translate(1803 -6704.429) " fill="rgba(255,255,255,0.61) "/>
+                      </svg>
+                    <span class="ms-2 ">select other project pages maximum 5</span>
+                </div>
+            </div>
+        </div>
+        <div class="user-inputs col-lg-7 mx-auto ">
+            <form class=" form col-lg-12 ">
+                <div class="form-group ">
+                    <label for="project-name ">Project name</label>
+                    <input type="text " name="project-name " id="project-name " class="form-control fm-style " placeholder="Application name ">
+                </div>
+                <div class="form-group ">
+                    <label for="project-techs ">Application technologies</label>
+                    <input type="text " name="project-techs " id="project-techs " class="form-control fm-style " placeholder="Application name ">
+                </div>
+                <div class="form-group ">
+                    <label for="project-team ">Application Developers Team</label><br><span>Tag your team mate ( The team mate must
+            be have an account in codeama)</span>
+                    <input type="text " name="project-team " id="project-team " class="form-control fm-style " placeholder="Developers team ">
+                </div>
+                <div class="form-group ">
+                    <span>If your team mate is not using codeama tag his email address</span>
+                    <input type="email " name="project-teamm-no-account " id="project-teamm-no-account " class="form-control fm-style " placeholder="Application name ">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="application-desription mx-auto ">
+        <div class="form-group ">
+            <label for="app-description ">Description</label>
+            <br>
+            <span>Only 30 words</span>
+            <textarea class="form-control " name="app-description " id="app-description " maxlength="30 " rows=" 3 "></textarea>
+        </div>
+    </div>
+    <div class="post-btn text-end my-3 me-3 ">
+        <a type="submit " name=" post-pro-btn " id="post-pro-btn " class="btn px-3 py-2 btn-md btn-primary " href="# " role="button ">Post your project Now</a>
+    </div>
+</div>

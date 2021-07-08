@@ -10,6 +10,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { SupportComponent } from './support/support.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectRegistrationComponent } from './project-registration/project-registration.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: 'projects',
         component: ProjectsComponent,
+      },
+      {
+        path: 'projectRegistration',
+        component: ProjectRegistrationComponent,
       },
       {
         path: 'projectDetails/:id',
