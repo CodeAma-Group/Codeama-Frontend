@@ -20,6 +20,15 @@ li>a.nav-link {
 .active {
     background-color: #E9EFF7;
     border-radius: 8px;
+    fill: blue!important
+}
+
+.active>li>a {
+    color: #4286ED !important
+}
+
+.active>li>svg>path:nth-child(2) {
+    fill: #4286ED;
 }
 
 .nav-link {

@@ -9,7 +9,7 @@ import { CodeamasComponent } from './codeamas/codeamas.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SupportComponent } from './support/support.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 const routes: Routes = [
   {
@@ -35,14 +35,12 @@ const routes: Routes = [
         component: ProjectsComponent,
       },
       {
+        path: 'projectDetails/:id',
+        component: ProjectDetailsComponent,
+      },
+      {
         path: 'challenges',
         component: ChallengesComponent,
-        children: [
-          {
-            path: 'projectDetails',
-            component: ProjectDetailsComponent,
-          },
-        ],
       },
       {
         path: 'codeamas',

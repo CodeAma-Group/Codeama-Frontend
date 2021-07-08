@@ -11,7 +11,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { SupportComponent } from './support/support.component';
 import { CodeamasComponent } from './codeamas/codeamas.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 
 @NgModule({
