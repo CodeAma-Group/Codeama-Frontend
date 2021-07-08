@@ -11,6 +11,11 @@
     --pureWhite: #ffffff;
     --mainBlue: #185BF9;
     --mainBlack: #17202A;
+
+    --mainWhite: #ffffff;
+
+    --modeDark: #0D0E1A;
+
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
@@ -27,6 +32,7 @@ body {
     height: 100vh;
     background-color: var(--pureWhite);
     font-family: var(--poppins);
+    user-select: none;
 }
 
 a {
