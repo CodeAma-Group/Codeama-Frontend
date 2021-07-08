@@ -1,3 +1,6 @@
+a:hover{
+    text-decoration: none;
+}
 .bg-color {
     background-color: #f4f7fb;
 }
@@ -7,12 +10,18 @@
 .skills{
     display: inline-flex;
 }
+input::placeholder{
+    color: silver;
+}
 .skills>li{
     padding-left: 10px;
     color: silver;
 }
 .status {
     padding-top: 20px;
+}
+.border{
+    border-width: 5px;
 }
 .border-light-blue{
     border-color: #96c0f3;

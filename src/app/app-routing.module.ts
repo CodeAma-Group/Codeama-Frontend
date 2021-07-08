@@ -32,6 +32,9 @@ const routes: Routes = [
     component: CodeamasComponent,
     children: [  
       {
+        path: '', component: ProfileComponent
+      },
+      {
         path: 'profile', component: ProfileComponent
       },
     ]
