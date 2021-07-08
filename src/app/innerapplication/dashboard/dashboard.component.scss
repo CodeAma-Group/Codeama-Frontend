@@ -1,0 +1,143 @@
+$bg_color: rgba(66, 144, 237, .1);
+
+.dashboard {
+
+    hr {
+        color: rgba(66, 144, 237, .3);
+        border: 1px solid;
+    }
+    .postArticle {
+        background-color: $bg_color;
+        border-radius: 7px;
+        font-size: .9em;
+        float: left;
+        width: 65%;
+        padding-left: 40px !important;
+
+        .art_heading {
+            margin-bottom: 5px;
+
+            label, button {
+                font-weight: lighter;
+            }
+    
+            button {
+                background-color: rgba(66, 144, 237, .2);
+                padding: 2px 10px;
+                display: flex;
+                width: 19%;
+                min-width: 130px;
+                font-size: 1em;
+                display: flex;
+                justify-content: space-between;
+
+                svg {
+                    position: static;
+                }
+            }
+        }
+
+        >div {
+            position: relative;
+        }
+
+        svg {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        input {
+            height: 40px;
+            border: rgba(66, 144, 237, .5) 2px solid;
+            border-radius: 7px;
+            background: unset;
+            padding-left: 7%;
+            font-size: 1em;
+            outline: none;
+        }
+        input::placeholder {
+            color: black;
+            opacity: .9;
+        }
+    }
+
+    .sideContent {
+        float: right;
+        width: 33.5%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: -60px;
+
+        >div {
+            margin-bottom: 10px;
+        }
+    
+        .repeated_projects {
+            background: $bg_color;
+            border-radius: 7px;
+
+            h6 {
+                margin: 15px;
+                color: #212F3D;
+            }
+
+            div {
+                margin-left: 20px;
+                margin-top: 10px;
+                font-size: .9em;
+                margin-bottom: 20px;
+                font-size: .9em;
+
+                a.occ_proj {
+                    background: rgba(66, 144, 237, .2);
+                    border: 1px solid rgba(66, 144, 237, .5);
+
+                    &:hover {
+                        box-shadow: 0 0 4px rgba(0, 0, 0, 0.404) !important;
+                    }
+                }
+            }
+        }
+
+        .bugs_and_qtns {
+            div {
+                display: flex;
+                flex-flow: wrap row;
+                justify-content: space-evenly;
+
+            a {
+                text-align: center;
+                color: black;
+                font-size: .9em;
+
+                img {
+                    display: block;
+                }
+            }
+            }
+        }
+    }
+
+    .mainContent {
+        float: left;
+        margin-top: 10px;
+        background-color: $bg_color;
+        display: block;
+        border-radius: 7px;
+        width: 65%;
+
+        div.nav {
+            padding: 15px 0 0px 40px;
+            a {
+                margin-right: 30px;
+                color: black;
+
+                &.active {
+                    color: #4290ED;
+                }
+            }
+        }
+    }
+}
