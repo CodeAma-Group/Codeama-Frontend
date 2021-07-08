@@ -11,10 +11,11 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { SupportComponent } from './support/support.component';
 import { CodeamasComponent } from './codeamas/codeamas.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, ProjectDetailsComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule
