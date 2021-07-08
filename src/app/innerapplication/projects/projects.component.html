@@ -1,28 +1,182 @@
-<div class="container">
+<div class="container-fuid bg-dark">
     <div class="heading">
-
+        <style>
+            img {
+                width: 100%;
+                height: 270px;
+            }
+            
+            .tech {
+                margin: 10px;
+                font-size: 12px;
+                font-weight: 450;
+                color: grey;
+            }
+            
+            ol,
+            ul {
+                padding-left: 0!important;
+            }
+            
+            .profile-avatar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+            
+            .groupname {
+                font-size: 15px!important;
+                color: #6D6F7A
+            }
+            
+            .card-title {
+                color: #6D6F7A;
+                font-size: 20px;
+            }
+            
+            .technologies-title {
+                color: #6D6F7A;
+                font-size: 16px;
+            }
+            
+            .project-description-text {
+                font-size: 13px;
+                color: #9699A0;
+            }
+            
+            .viewMoreBtn {
+                background-color: #1f264e!important;
+                color: white;
+            }
+            
+            .card-group {
+                width: 31%;
+                margin-top: 5px;
+            }
+        </style>
     </div>
-    <div class="card-group">
-        <div class="card">
-            <img class="card-img-top" data-src="holder.js/100x180/" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title">card title</h4>
-                <!-- <h4 class="card-title">{{project.Title}}</h4> -->
-                <ul class="technologies">
-                    <!-- <li>{{technology.name}}</li> -->
-                </ul>
-                <div class="Group-profile">
-                    <div class="profile">
-                        <img src="" alt="">
-                        <h4 class="groupname"></h4>
+    <div class="cards-div d-flex flex-wrap col-lg-12  bg-succes ms-3">
+        <div class="card-group col-lg-3 mx-2">
+            <div class="card">
+                <img class=" card-img-top " src="../../../assets/images/image1.png " alt="Card image cap ">
+                <div class="card-body ">
+                    <h4 class="card-title ">Product Feedback App</h4>
+                    <!-- <h4 class="card-title ">{{project.Title}}</h4> -->
+                    <h6 class="technologies-title">Technologies used</h6>
+                    <ul class="technologies float-left d-flex ">
+                        <li class="tech ">vue js</li>
+                        <li class="tech ">Angular js</li>
+                        <li class="tech ">vuex</li>
+                        <li class="tech ">Html &css</li>
+                        <li class="tech ">Node js</li>
+                        <!-- <li>{{technology.name}}</li> -->
+                    </ul>
+                    <div class="Group-profile ">
+                        <div class="profile d-flex ">
+                            <img class="profile-avatar " src="../../../assets/images/favicon.png " alt="Card image cap ">
+                            <h6 class="groupname mt-3 mx-2 ">By Starnley group</h6>
+                        </div>
+                    </div>
+                    <div class="project-description ">
+                        <p class="project-description-text ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur odio reprehenderit nesciunt quibusdam. Tenetur adipisci, nulla</p>
+                        <!-- <p>{{project.Description}}</p> -->
+                    </div>
+                    <div class="link-to-pro text-center ">
+                        <a name="viewMoreBtn " class="viewMoreBtn " class=" btn " href="# " role="button ">View more</a>
                     </div>
                 </div>
-                <div class="project-description">
-                    <p>project Description</p>
-                    <!-- <p>{{project.Description}}</p> -->
+            </div>
+        </div>
+        <div class="card-group col-lg-3 mx-2">
+            <div class="card">
+                <img class=" card-img-top " src="../../../assets/images/image3.png " alt="Card image cap ">
+                <div class="card-body ">
+                    <h4 class="card-title ">Product Feedback App</h4>
+                    <!-- <h4 class="card-title ">{{project.Title}}</h4> -->
+                    <h6>Technologies used</h6>
+                    <ul class="technologies float-left d-flex ">
+                        <li class="tech ">vue js</li>
+                        <li class="tech ">Angular js</li>
+                        <li class="tech ">vuex</li>
+                        <li class="tech ">Html &css</li>
+                        <li class="tech ">Node js</li>
+                        <!-- <li>{{technology.name}}</li> -->
+                    </ul>
+                    <div class="Group-profile ">
+                        <div class="profile d-flex ">
+                            <img class="profile-avatar " src="../../../assets/images/favicon.png " alt="Card image cap ">
+                            <h6 class="groupname mt-3 mx-2 ">By Starnley group</h6>
+                        </div>
+                    </div>
+                    <div class="project-description ">
+                        <p class="project-description-text ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur odio reprehenderit nesciunt quibusdam. Tenetur adipisci, nulla</p>
+                        <!-- <p>{{project.Description}}</p> -->
+                    </div>
+                    <div class="link-to-pro text-center ">
+                        <a name="viewMoreBtn " class="viewMoreBtn " class=" btn " href="# " role="button ">View more</a>
+                    </div>
                 </div>
-                <div class="link-to-pro">
-                    <a name="" id="" class="btn btn-primary" href="#" role="button"></a>
+            </div>
+        </div>
+        <div class="card-group col-lg-3 mx-2">
+            <div class="card">
+                <img class=" card-img-top " src="../../../assets/images/image2.png " alt="Card image cap ">
+                <div class="card-body ">
+                    <h4 class="card-title ">Product Feedback App</h4>
+                    <!-- <h4 class="card-title ">{{project.Title}}</h4> -->
+                    <h6>Technologies used</h6>
+                    <ul class="technologies float-left d-flex ">
+                        <li class="tech ">vue js</li>
+                        <li class="tech ">Angular js</li>
+                        <li class="tech ">vuex</li>
+                        <li class="tech ">Html &css</li>
+                        <li class="tech ">Node js</li>
+                        <!-- <li>{{technology.name}}</li> -->
+                    </ul>
+                    <div class="Group-profile ">
+                        <div class="profile d-flex ">
+                            <img class="profile-avatar " src="../../../assets/images/favicon.png " alt="Card image cap ">
+                            <h6 class="groupname mt-3 mx-2 ">By Starnley group</h6>
+                        </div>
+                    </div>
+                    <div class="project-description ">
+                        <p class="project-description-text ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur odio reprehenderit nesciunt quibusdam. Tenetur adipisci, nulla</p>
+                        <!-- <p>{{project.Description}}</p> -->
+                    </div>
+                    <div class="link-to-pro text-center ">
+                        <a name="viewMoreBtn " class="viewMoreBtn " class=" btn " href="# " role="button ">View more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-group col-lg-3 mx-2">
+            <div class="card">
+                <img class=" card-img-top " src="../../../assets/images/image1.png " alt="Card image cap ">
+                <div class="card-body ">
+                    <h4 class="card-title ">Product Feedback App</h4>
+                    <!-- <h4 class="card-title ">{{project.Title}}</h4> -->
+                    <h6>Technologies used</h6>
+                    <ul class="technologies float-left d-flex ">
+                        <li class="tech ">vue js</li>
+                        <li class="tech ">Angular js</li>
+                        <li class="tech ">vuex</li>
+                        <li class="tech ">Html &css</li>
+                        <li class="tech ">Node js</li>
+                        <!-- <li>{{technology.name}}</li> -->
+                    </ul>
+                    <div class="Group-profile ">
+                        <div class="profile d-flex ">
+                            <img class="profile-avatar " src="../../../assets/images/favicon.png " alt="Card image cap ">
+                            <h6 class="groupname mt-3 mx-2 ">By Starnley group</h6>
+                        </div>
+                    </div>
+                    <div class="project-description ">
+                        <p class="project-description-text ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur odio reprehenderit nesciunt quibusdam. Tenetur adipisci, nulla</p>
+                        <!-- <p>{{project.Description}}</p> -->
+                    </div>
+                    <div class="link-to-pro text-center ">
+                        <a name="viewMoreBtn " class="viewMoreBtn " class=" btn " href="# " role="button ">View more</a>
+                    </div>
                 </div>
             </div>
         </div>
