@@ -11,6 +11,7 @@
     --pureWhite: #ffffff;
     --mainBlue: #185BF9;
     --mainBlack: #17202A;
+
     --mainWhite: #ffffff;
     --dimBlue: #66A5F0;
     --dimerBlue: #f2f6fa;
@@ -22,15 +23,12 @@
     --modeDimBlue: #1D2747;
     --modeDimerBlue: #0F111E;
 
-
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
-
 }
 
-* 
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: 0;
@@ -51,6 +49,7 @@ a {
 ul {
     list-style: none;
 }
+
 
 /* responsiveness */
 .col-lap-1{ width: 8.33% !important; }
@@ -98,5 +97,21 @@ ul {
     .col-tab-10{ width: 83.33% !important; }
     .col-tab-11{ width: 91.66% !important; }
     .col-tab-12{ width: 100% !important; }
+}
 
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
 }
