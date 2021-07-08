@@ -11,7 +11,7 @@ $bg_color: rgba(66, 144, 237, .1);
         border-radius: 7px;
         font-size: .9em;
         float: left;
-        width: 65%;
+        width: 70%;
         padding-left: 40px !important;
 
         .art_heading {
@@ -64,7 +64,7 @@ $bg_color: rgba(66, 144, 237, .1);
 
     .sideContent {
         float: right;
-        width: 33.5%;
+        width: 29%;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -127,13 +127,13 @@ $bg_color: rgba(66, 144, 237, .1);
         background-color: $bg_color;
         display: block;
         border-radius: 7px;
-        width: 65%;
+        width: 70%;
 
         >div:first-child {
             padding: 15px 20px 0px 40px;
 
             a.btn {
-                font-size: .9em;
+                font-size: .8em;
 
                 svg {
                     margin-right: 10px;
@@ -145,7 +145,7 @@ $bg_color: rgba(66, 144, 237, .1);
             a {
                 margin-right: 6%;
                 color: black;
-                font-size: .95em;
+                font-size: .9em;
 
                 &.active {
                     color: #4290ED;

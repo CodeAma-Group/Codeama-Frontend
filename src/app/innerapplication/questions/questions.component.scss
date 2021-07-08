@@ -30,10 +30,14 @@
                 }
             }
             >div {
-                font-size: .9em;
+                font-size: .85em;
                 
                 p {
                     margin: 0;
+
+                    strong {
+                        margin-right: 10px;
+                    }
                 }
             }
         }
@@ -46,7 +50,7 @@
                 font-size: 1.1em;
             }
             p {
-                font-size: .75em;
+                font-size: .8em;
             }
         }
     }
