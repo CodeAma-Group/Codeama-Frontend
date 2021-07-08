@@ -27,6 +27,18 @@ export class QuestionsComponent implements OnInit {
           {
             tech: "Angular",
             img: "assets/test_images/js.png"
+          },
+          {
+            tech: "Angular",
+            img: "assets/test_images/js.png"
+          },
+          {
+            tech: "Angular",
+            img: "assets/test_images/js.png"
+          },
+          {
+            tech: "Angular",
+            img: "assets/test_images/js.png"
           }
         ],
         comments: [
