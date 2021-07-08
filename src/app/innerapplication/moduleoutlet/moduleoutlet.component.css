@@ -17,8 +17,8 @@
 .entire_app_page_body .logo_search__container {
     width: 99%;
     height: 10%;
-    background-color: dodgerblue;
-    position: fixed;
+    /* background-color: dodgerblue; */
+    /* position: fixed; */
     z-index: 1;
 }
 
