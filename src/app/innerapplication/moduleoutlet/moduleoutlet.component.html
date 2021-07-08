@@ -3,8 +3,15 @@
         <app-sidebar></app-sidebar>
     </div>
     <div class="entire_app_page_body">
-        <div class="logo_search__container">
-            <h2>Logo and search here</h2>
+        <div class="logo_search__container d-flex justify-content-between">
+            <img src="assets/images/logo.png" alt="">
+            <div class="d-inline-block">
+                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 30 30" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"/>
+                </svg>
+                <input type="text" class="" placeholder="Search at codeama...">
+            </div>
         </div>
         <div class="body_content_container">
             <router-outlet></router-outlet>

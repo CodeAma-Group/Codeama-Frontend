@@ -2,29 +2,31 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    background-color: red;
 }
 
 .sidebar_container {
     width: 7.5%;
     height: 100%;
-    background-color: green;
 }
 
 .entire_app_page_body {
     width: 92.5%;
     height: 100%;
-    background-color: orangered;
 }
 
 .entire_app_page_body .logo_search__container {
-    width: 100%;
+    width: 99%;
     height: 10%;
-    background-color: dodgerblue;
+    /* background-color: dodgerblue; */
+    /* position: fixed; */
+    z-index: 1;
 }
 
 .entire_app_page_body .body_content_container {
-    width: 100%;
-    height: 90%;
-    background-color: rgb(164, 210, 255);
+    width: 99%;
+    height: auto;
+    background-color: #F4F7FB;
+    border-radius: 8px;
+    margin-top: 4em;
+    /* z-index: 0; */
 }
