@@ -48,8 +48,11 @@
                 </div>
             </div>
         </div>
-        <div class=" ">
-            <img *ngFor="let tagtech of question.questionDetails.tagged_tech" src="{{tagtech.img}}" alt="tagged tech" style="display: inline; width: 70px; height: auto; margin-right: 10px;" class="">
+        <div style="width: 40%;">
+            <h6 class=" text-center">Tagged technologies</h6>
+            <div class=" d-flex justify-content-center flex-wrap">
+                <img *ngFor="let tagtech of question.questionDetails.tagged_tech" src="{{tagtech.img}}" alt="tagged tech" style="display: inline; width: 70px; height: auto; margin-right: 10px;" class="mt-2">
+            </div>
         </div>
     </div>
 </div>
