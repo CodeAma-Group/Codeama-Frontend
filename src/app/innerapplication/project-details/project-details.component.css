@@ -1,0 +1,92 @@
+.application-features {
+    background-color: #FCFDFE;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+svg {
+    width: 20px;
+}
+
+.github-link {
+    background-color: #EAECEF;
+}
+
+.demo-link {
+    background-color: #2A64EC;
+    color: white;
+}
+
+.img>img {
+    width: 100%;
+    padding: 1px;
+}
+
+.img {
+    padding: 2px;
+    width: 19%;
+    /* background-color: antiquewhite; */
+    height: auto;
+    border-radius: 5px;
+}
+
+.other-images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project-images-and-videos {
+    width: 100%;
+}
+
+ol,
+ul {
+    padding-left: 0 !important;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.tech {
+    margin: 10px;
+    font-size: 12px;
+    font-weight: 450;
+    color: grey;
+}
+
+.image-or-video-onstage>img {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px!important;
+}
+
+.comment-input-box {
+    background-color: #EBF1FA;
+    padding-left: 2em;
+}
+
+.feedback-form {
+    position: relative;
+}
+
+#add-circle-line {
+    position: absolute;
+    top: 4em;
+    left: 6px;
+}
+
+p.comment {
+    font-size: 13px;
+}
+
+p.app-description {
+    font-size: 13px;
+}
+
+.title {
+    font-size: 1.1em;
+    font-weight: 540;
+}
