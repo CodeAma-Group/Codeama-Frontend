@@ -8,14 +8,8 @@ import { LoginfacerecoComponent } from './loginfacereco/loginfacereco.component'
 import { SignupfacerecoComponent } from './signupfacereco/signupfacereco.component'
 
 const routes: Routes = [
-
   {
     path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full'
-  },
-  {
-    path: 'auth',
     component: ModuleoutletComponent,
     children: [
 

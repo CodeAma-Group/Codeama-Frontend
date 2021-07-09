@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-questions',
-  templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.scss']
+  selector: 'app-courses',
+  templateUrl: './courses.component.html',
+  styleUrls: ['./courses.component.scss']
 })
-export class QuestionsComponent implements OnInit {
-  public questions: any[] = [
+export class CoursesComponent implements OnInit {
+  public articles: any[] = [
     {
       devDetails: {
         pic: "assets/test_images/angular.png",
@@ -14,33 +14,12 @@ export class QuestionsComponent implements OnInit {
         names: "ABIJURU Seth",
         badge: "Pro"
       },
-      questionDetails: {
-        question: "How do I add routing in Laravel 8",
+      articleDetails: {
+        article: "Tail-kit: 200+ free Tailwind components / templates",
         desc: "Hi everybody, I'm Charlie, a french JS developer I just release a free abd open source project, tail-kit. It's a kit of components and template...",
         likes: 120,
         date_updated: "Jan 22, 2022",
-        tagged_tech: [
-          {
-            tech: "Angular",
-            img: "assets/test_images/angular.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/js.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/js.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/vue.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/js.png"
-          }
-        ],
+        article_img: "assets/images/logo.png",
         comments: [
           { 
             commentor_name: "",
@@ -67,21 +46,12 @@ export class QuestionsComponent implements OnInit {
         names: "ABIJURU Seth",
         badge: "Pro"
       },
-      questionDetails: {
-        question: "How do I add routing in Laravel 8",
+      articleDetails: {
+        article: "How do I add routing in Laravel 8",
         desc: "Hi everybody, I'm Charlie, a french JS developer I just release a free abd open source project, tail-kit. It's a kit of components and template...",
         likes: 120,
         date_updated: "Jan 22, 2022",
-        tagged_tech: [
-          {
-            tech: "Angular",
-            img: "assets/test_images/angular.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/angular.png"
-          }
-        ],
+        article_img: "assets/images/logo.png",
         comments: [
           { 
             commentor_name: "",

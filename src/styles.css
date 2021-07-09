@@ -1,16 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 /* Application global styling variables */
 
 :root {
     /* colors */
     --pureWhite: #ffffff;
-  
+    --mainBlue: #185BF9;
+    --mainBlack: #17202A;
+
 
     /* fonts */
     --poppins: 'Poppins', sans-serif;
+    --right: 'Righteous', cursive;
 
 }
 

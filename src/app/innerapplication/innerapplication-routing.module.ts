@@ -11,6 +11,9 @@ import { SupportComponent } from './support/support.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectRegistrationComponent } from './project-registration/project-registration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CoursesComponent } from './courses/courses.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 const routes: Routes = [
   {
@@ -29,7 +32,22 @@ const routes: Routes = [
       },
       {
         path: 'hood',
-        component: HoodComponent,
+        // component: HoodComponent,
+        component: DashboardComponent,
+        children: [
+          {
+            path: '',
+            component: CoursesComponent
+          },
+          {
+            path:'courses',
+            component: CoursesComponent
+          },
+          {
+            path: 'questions',
+            component: QuestionsComponent
+          }
+        ]
       },
       {
         path: 'projects',
