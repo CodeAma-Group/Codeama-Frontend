@@ -23,6 +23,10 @@ const routes: Routes = [
       .then(mode => mode.InnerapplicationModule)
   },
   {
+    path: 'welcome',
+    component: WelcomeComponent
+  },
+  {
     path: 'projectDetails',
     component: ProjectDetailsComponent
   },
