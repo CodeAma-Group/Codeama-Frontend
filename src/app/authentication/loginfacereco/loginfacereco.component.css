@@ -74,8 +74,7 @@ button>svg {
 .form>p {
     font-size: 0.84em;
     position: absolute;
-    left: 42.5%;
-    bottom: 0.02em;
+    bottom: 0;
     color: var(--mainBlack);
 }
 
