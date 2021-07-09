@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { WebcamModule } from 'ngx-webcam';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component';
@@ -9,6 +10,7 @@ import { SignupfacerecoComponent } from './signupfacereco/signupfacereco.compone
 import { LoginfacerecoComponent } from './loginfacereco/loginfacereco.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { CameraComponent } from './camera/camera.component';
 
 
 @NgModule({
@@ -17,10 +19,11 @@ import { SignupComponent } from './signup/signup.component';
     LoginformComponent, 
     SignupformComponent, 
     SignupfacerecoComponent, 
-    LoginfacerecoComponent, LoginComponent, SignupComponent
+    LoginfacerecoComponent, LoginComponent, SignupComponent, CameraComponent
   ],
   imports: [
     CommonModule,
+    WebcamModule,
     AuthenticationRoutingModule
   ]
 })

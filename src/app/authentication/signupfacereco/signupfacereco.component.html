@@ -1,1 +1,80 @@
-<p>signupfacereco works!</p>
+<div id="signup_form">
+    <div class="form col-mob-11">
+        <h2>SignUp with face recognition</h2>
+       
+        <div class="recognition_container mt-5">
+            <img src="../../../assets/images/scan.png" alt="">
+            <div class="recognition_box">
+                
+                <app-camera id="cam" (getPicture)="handleImage($event)"></app-camera>
+
+                <div class="webcam-image" *ngIf="webcamImage">
+                  <img [src]="webcamImage.imageAsDataUrl" />
+                </div>
+
+                <img id="sample" class="sample" src="../../../assets/images/scansample.png" alt="">
+                <img id="frame" src="../../../assets/images/reco.png" alt="">
+            </div>
+        </div>
+
+        <form>
+
+            <div class="face_fields">
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="abiseth">
+                    <label for="floatingInput">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
+                            <g id="user-line" opacity="0.78">
+                                <path id="Path_35" data-name="Path 35" d="M0,0H26V26H0Z" fill="none"/>
+                                <path id="Path_36" data-name="Path 36" d="M4,24a8.883,8.883,0,0,1,9-8.762A8.883,8.883,0,0,1,22,24H19.75A6.663,6.663,0,0,0,13,17.429,6.663,6.663,0,0,0,6.25,24Zm9-9.857A6.661,6.661,0,0,1,6.25,7.571,6.661,6.661,0,0,1,13,1a6.661,6.661,0,0,1,6.75,6.571A6.661,6.661,0,0,1,13,14.143Zm0-2.19a4.44,4.44,0,0,0,4.5-4.381,4.5,4.5,0,0,0-9,0A4.44,4.44,0,0,0,13,11.952Z" fill="#212f3d"/>
+                            </g>
+                        </svg>                      
+                        Username
+                    </label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInputEmail" placeholder="abi@example.se">
+                    <label for="floatingInput">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
+                            <g id="mail-line" opacity="0.78">
+                                <path id="Path_37" data-name="Path 37" d="M0,0H26V26H0Z" fill="none"/>
+                                <path id="Path_38" data-name="Path 38" d="M3.1,3H22.9A1.106,1.106,0,0,1,24,4.111V21.889A1.106,1.106,0,0,1,22.9,23H3.1A1.106,1.106,0,0,1,2,21.889V4.111A1.106,1.106,0,0,1,3.1,3ZM21.8,7.709,13.079,15.6,4.2,7.684V20.778H21.8ZM4.762,5.222l8.305,7.4,8.185-7.4Z" transform="translate(0 0)" fill="#212f3d"/>
+                            </g>
+                        </svg>                      
+                        Email
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
+                        <g id="key-2-line" opacity="0.78">
+                            <path id="Path_39" data-name="Path 39" d="M0,0H26V26H0Z" fill="none"/>
+                            <path id="Path_40" data-name="Path 40" d="M11.617,12.751l8.717-8.772,1.57,1.58-1.57,1.581,2.748,2.765-1.57,1.581L18.762,8.721l-1.57,1.58,2.356,2.37-1.57,1.581-2.356-2.371-2.434,2.45a5.614,5.614,0,0,1-1.127,7.4,5.53,5.53,0,0,1-7.433-.369,5.614,5.614,0,0,1-.382-7.493,5.529,5.529,0,0,1,7.372-1.121Zm-.707,7.033A3.36,3.36,0,0,0,9.452,14.1a3.318,3.318,0,0,0-3.253.942,3.367,3.367,0,0,0,0,4.741,3.317,3.317,0,0,0,4.712,0Z" fill="#212f3d"/>
+                        </g>
+                    </svg>                      
+                    Password
+                </label>
+            </div>
+
+            <div class="form_field mt-3">
+                <button type="submit" class="btn btn-primary">
+                    SIGN UP NOW
+                    <svg id="arrow-right-line" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
+                        <path id="Path_9" data-name="Path 9" d="M0,0H26V26H0Z" fill="none"/>
+                        <path id="Path_10" data-name="Path 10" d="M17.694,11.871,11.659,5.818l1.591-1.6L22,13l-8.75,8.778-1.591-1.6,6.034-6.054H4V11.871Z" fill="#fff"/>
+                    </svg>                      
+                </button>
+            </div>
+
+        </form>
+
+        <p>Already have account in codeama? <a routerLink="../../login"><span class="span_terms">Login</span></a></p>
+
+    </div>
+</div>
