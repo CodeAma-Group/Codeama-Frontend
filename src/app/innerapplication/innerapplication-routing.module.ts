@@ -18,11 +18,6 @@ import { QuestionsComponent } from './questions/questions.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'app',
-    pathMatch: 'full',
-  },
-  {
-    path: 'app',
     component: ModuleoutletComponent,
     children: [
       {

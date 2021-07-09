@@ -26,6 +26,9 @@
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
+
+    --contBgDark: #151829;
+    --contBgLight: rgba(66, 144, 237, .1);
 }
 
 * {
@@ -43,7 +46,7 @@ body {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 ul {

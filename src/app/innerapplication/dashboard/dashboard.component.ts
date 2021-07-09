@@ -8,9 +8,77 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   public article: string = ""
   public location: Location = window.location
+  cookieVal:string = "";
   constructor() { }
 
   ngOnInit(): void {
+
+    var cookieName = "isDark";
+
+    var matchCookie = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+    if (matchCookie) {
+      this.cookieVal = matchCookie[2];
+    }
+
+    if (this.cookieVal == "") {
+      this.cookieVal = "false"
+    } else {
+
+      if (this.cookieVal == "false") {
+        let root = document.documentElement;
+        root.style.setProperty('--pureWhite', '--pureWhite')
+        root.style.setProperty('--mainBlack', '--pureWhite')   
+        root.style.setProperty('--dimBlue', '#66A5F0')
+        root.style.setProperty('--dimerBlue', '#f2f6fa')
+        root.style.setProperty('--mainBlack', '#17202A')
+        root.style.setProperty('--inputWhite', '#ffffff')     
+        root.style.setProperty('--contBgLight', 'rgba(66, 144, 237, .1)')
+      } else {
+        let root = document.documentElement;
+        root.style.setProperty('--modeDimBlue', '--dimBlue')
+        root.style.setProperty('--pureWhite', '#0D0E1A')
+        root.style.setProperty('--dimBlue', '#1D2747')
+        root.style.setProperty('--dimerBlue', '#0F111E')
+        root.style.setProperty('--mainBlack', '#ffffff')
+        root.style.setProperty('--inputWhite', '#141B30')
+        root.style.setProperty('--contBgLight', '#151829')
+      }
+
+    }
+
+  }
+
+
+  async modeChange() {
+    var cookieName = "isDark";
+    console.log("yooo")
+    var matchCookie = await document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+    if (matchCookie) {
+      this.cookieVal = matchCookie[2];
+      console.log(matchCookie[2])
+    }
+    else{
+      // document.cookie = "isDark=false; path=/; max-age=" + 365*24*60*60;
+      // this.cookieVal = "false";
+      alert("Make sure your cookies are enabled because we use cookies to keep track of your settings on the devices!")
+    }
+
+    if (this.cookieVal == "true") {
+      let root = document.documentElement;
+      root.style.setProperty('--pureWhite', '--pureWhite')
+      root.style.setProperty('--mainBlack', '--pureWhite')
+      root.style.setProperty('--contBgLight', 'rgba(66, 144, 237, .1)')
+
+      document.cookie = "isDark=false; path=/; max-age=" + 365*24*60*60;
+    } else {
+      let root = document.documentElement;
+      root.style.setProperty('--pureWhite', '#0D0E1A')
+      root.style.setProperty('--mainBlack', '#ffffff')
+      root.style.setProperty('--contBgLight', '#151829')
+
+      document.cookie = "isDark=true; path=/; max-age=" + 365*24*60*60;
+    }
+
   }
 
 }
