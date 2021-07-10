@@ -13,3 +13,32 @@
 .status {
     padding-top: 20px;
 }
+
+@media only screen and (max-width: 680px){
+    .person1 > .row {
+        width: 100%;
+        display: inline-flex;
+    }
+
+    .profile {
+        width: 25%;
+    }
+
+    .about > .row {
+        display: block;
+    }
+
+    .status {
+        width: 80%;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    .ama-askQuestion {
+        text-align: center;
+    }
+
+    .follow{
+        width: 10%;
+    }
+}

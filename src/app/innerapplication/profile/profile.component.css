@@ -33,3 +33,15 @@ input::placeholder{
 .bg-brur-blue{
     background-color: #f7f9fc;;
 }
+.question-status>div:nth-child(1):hover{
+    background-color: #f0fffa;  
+    /* border-color: springgreen; */
+    border: 2px solid springgreen;
+}
+
+.question-status>div:hover .question-status>div .fw-bold{
+    color: #2df3a9;
+    font-weight: 900;
+}
+
+/* .question-status>div:hover .question-status>div .fw-bold{ */
