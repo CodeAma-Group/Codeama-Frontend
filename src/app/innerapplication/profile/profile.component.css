@@ -44,4 +44,51 @@ input::placeholder{
     font-weight: 900;
 }
 
-/* .question-status>div:hover .question-status>div .fw-bold{ */
+@media only screen and (max-width: 680px){
+    .person1 > .row {
+        width: 100%;
+        display: inline-flex;
+    }
+
+    .profile {
+        width: 25%;
+    }
+
+    .about > .row {
+        display: block;
+    }
+
+    .status {
+        width: 80%;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    .ama-askQuestion {
+        text-align: center;
+    }
+
+    .follow{
+        width: 10%;
+    }
+
+    /* Profile */
+    form.row {
+        display: block;
+    }
+
+    form > div {
+        width: 100%;
+    }
+
+    .question-status {
+        display: block;
+        text-align: center;
+    }
+
+    .question-status > div {
+        width: 100%;
+        padding: 0px 0 10px 0;
+    }
+
+}

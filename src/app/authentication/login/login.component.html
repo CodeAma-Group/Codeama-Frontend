@@ -1,0 +1,35 @@
+<div id="entire_app__login_form">
+    <div class="form_body_container">
+        <div class="login_form">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="change_means">
+            <div class="login_means_container">
+                <h3>Login possibilities</h3>
+                <p>Hello! Welcome to CodeAma the most advisable platform to get started with coding and programming at large.</p>
+                <div class="option_navigation">
+                    <ul>
+                        <div class="row_menu">
+                            <p class="p1">Form registration signup</p>
+                            <li>
+                                <a routerLinkActive = "active" [routerLink]="['form']" class="img1">
+                                    <img src="../../../assets/images/form.png" alt="">
+                                </a>
+                            </li>
+                        </div>
+                        
+                        <div class="row_menu">
+                            <p class="p2">Face recognition signup</p>
+                            <li>
+                                <a routerLinkActive = "active" [routerLink]="['face']" class="img2">
+                                    <img src="../../../assets/images/face.png" alt="">
+                                </a>
+                            </li>
+                        </div>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
