@@ -10,6 +10,7 @@ export class ChallengesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

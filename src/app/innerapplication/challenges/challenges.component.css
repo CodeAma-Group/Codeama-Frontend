@@ -1,0 +1,22 @@
+.pr{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+.next{
+    width: 3px;
+    height: 2em;
+    background: dodgerblue;
+    align-self: center;
+}
+.symbols{
+    display: flex;
+    flex-direction: column;
+}
+.main-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+w
