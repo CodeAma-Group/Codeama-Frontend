@@ -11,7 +11,20 @@ export class ProjectRegistrationComponent implements OnInit {
   imgUrl: string ="";
   videoUrl:string="../../../assets/images/video.mp4"
   // ../../../assets/images/image1.png
-  
+  technologies=["money","money","money","money"];
+  tech:string="";
+displayTechnologies(){
+  let newTech=this.tech
+  if (newTech) {
+    this.technologies.push(newTech);
+  }
+  for (let index = 0; index < this.technologies.length; index++) {
+    console.log(this.technologies[index]);
+  }
+}
+
+
+
   fileSelected(event) {
     this.selectedFile = event.target.files[0].name;
     // console.log(new Date()+this.selectedFile);
