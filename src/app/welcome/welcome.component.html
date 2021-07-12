@@ -1,91 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="bg-color" style="width: 9%;">.col-sm-1</div>
-    <div class="bg-white" style="width: 90%; margin-left: 6px;">
-        <div class="nav row">
-            <div class="col-5">
-              <img src="../../../assets/images/logo.png" />
-            </div>
-            <div class="col-7 position-relative">
-              <label for="search" class="position-absolute mt-2 mx-3"><i style="font-size:20px; color: silver;"
-                  class="fa">&#xf002;</i></label>
-              <input id="search" placeholder="Search at codeama...." class="rounded p-2 bg-color w-100 px-5"
-                style="border: none; color: silver;" />
-            </div>
-          </div>
-    
-          <div class="mt-3 bg-color rounded">
-            <p class="fw-bold pt-2">Top Ask Me Anything members</p>
-            <hr />
-    
-            <div class="row">
-              <div class="profile position-relative col-1">
-                <img src="../../../assets/images/profile.jpg" alt="profile" class="rounded-circle w-100 mx-3">
-                <p class="bg-primary rounded position-absolute text-white px-2 " style="left: 50px;"><a href="#"
-                    class="text-white">Pro</a></p>
-              </div>
-    
-              <div class="about col">
-                <h3>Abijuru seth</h3>
-                <p class="fw-bold">abiseth.codeama.net</p>
-                <div class="row">
-                  <div class="col">
-                    <p>Best challenger on <span class="fw-bold">12 th, January, 2021</span></p>
-                  </div>
-                  <div class="col"><span class="fw-bold">Vue Set 3</span> latest article</div>
-                </div>
-              </div>
-    
-              <div class="status col-4 row">
-                <p class="col"><span class="fw-bold">45</span> of <span class="fw-bold">104</span> answered</p>
-                <p class="col"><span class="fw-bold">27, 923 + </span>followers</p>
-              </div>
-    
-              <div class="follow col-1">
-                <button class="btn-primary pt-1 px-2"> + Follow</button>
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="ama-footer col-8">
-                <ul class="skills">
-                  <li>React</li>
-                  <li>Vue router</li>
-                  <li>Node js</li>
-                  <li>Express</li>
-                  <li>Go lang</li>
-                </ul>
-              </div>
-              <div class="ama-askQuestion col">
-                <a routerLink="askQuestion">Ask question</a>
-              </div>
-            </div>
-          </div>
-    </div>
-    <!-- <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div> -->
-  </div>
-</div>
-
-</body>
-</html>
 <div id="entire_app__welcome_page">
     <div (click)="modeChange()" class="dark_mode">
         <svg id="contrast-drop-line" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 45 45">
             <path id="Path_25" data-name="Path 25" d="M0,0H45V45H0Z" fill="none"/>
             <path id="Path_26" data-name="Path 26" d="M22.5,5.833,11.775,15.567a12.885,12.885,0,0,0,0,19.467,16.279,16.279,0,0,0,21.449,0,12.885,12.885,0,0,0,0-19.467Zm0-5.561L36.289,12.787a16.567,16.567,0,0,1,0,25.029,20.93,20.93,0,0,1-27.577,0,16.567,16.567,0,0,1,0-25.029L22.5.272Zm0,34.862V15.469c5.983,0,10.833,4.4,10.833,9.832S28.483,35.134,22.5,35.134Z" transform="translate(0 0)" fill="#ffffff"/>
-        </svg>          
+        </svg>
     </div>
     <div class="entire_welcome__navbar">
         <div class="logo">
@@ -95,7 +13,7 @@
             <div class="options_container">
                 <a routerLink="../auth">Login</a>
                 <a routerLink="../auth/signup" class="create_account">Create account</a>
-            </div>   
+            </div>
         </div>
     </div>
     <div class="entire_app__welcome_body">
@@ -104,7 +22,7 @@
 
                 <h1>Welcome to your <br>code community CodeAma</h1>
                 <p>CodeAma is the best way to connect beginner coders to <br>well experience programmers all over the global.</p>
-                
+
                 <a routerLink="../auth/signup" class="get_started">
                     Get started
                     <svg id="arrow-right-line" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
@@ -112,7 +30,7 @@
                         <path id="Path_10" data-name="Path 10" d="M16.933,11.436l-5.7-5.709,1.5-1.5L21,12.5l-8.264,8.278-1.5-1.5,5.7-5.709H4V11.436Z" fill="#fff"/>
                     </svg>                  
                 </a>
-                
+
                 <div class="entire_app_features__container">
                     <h6>Platform features</h6>
                     <div class="feature_content">
@@ -130,16 +48,16 @@
                         </div>
                     </div>
                 </div>
-            
+
             </div>
         </div>
         <div class="entire_illustration__container">
-            
+
             <div class="illustration">
                 <img src="../../assets/images/banner.jpg" alt="">
             </div>
             <div class="illustration_shadow"></div>
-              
+
         </div>
     </div>
 </div>
