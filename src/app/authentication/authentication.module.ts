@@ -12,14 +12,16 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { CameraComponent } from './camera/camera.component';
 
-
 @NgModule({
   declarations: [
     ModuleoutletComponent, 
     LoginformComponent, 
     SignupformComponent, 
     SignupfacerecoComponent, 
-    LoginfacerecoComponent, LoginComponent, SignupComponent, CameraComponent
+    LoginfacerecoComponent, 
+    LoginComponent, 
+    SignupComponent, 
+    CameraComponent
   ],
   imports: [
     CommonModule,
