@@ -51,7 +51,7 @@ export class WelcomeComponent implements OnInit {
 
   async modeChange() {
     var cookieName = "isDark";
-
+    console.log("yooo")
     var matchCookie = await document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
     if (matchCookie) {
       this.cookieVal = matchCookie[2];
