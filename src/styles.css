@@ -10,11 +10,9 @@
 /* Application global styling variables */
 
 :root {
-    /* colors */
     --pureWhite: #ffffff;
     --mainBlue: #185BF9;
     --mainBlack: #17202A;
-
     --mainWhite: #ffffff;
     --dimBlue: #66A5F0;
     --dimerBlue: #f2f6fa;
