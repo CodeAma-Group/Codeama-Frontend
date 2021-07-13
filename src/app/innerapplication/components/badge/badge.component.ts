@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-badge',
@@ -12,4 +12,6 @@ export class BadgeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() background:string; 
+  @Input() outline:string;
 }
