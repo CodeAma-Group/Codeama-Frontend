@@ -2,8 +2,8 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component'
-import { SignupComponent } from './signup/signup.component'
 import { LoginComponent } from './login/login.component'
+import { SignupComponent } from './signup/signup.component'
 import { LoginformComponent } from './loginform/loginform.component'
 import { SignupformComponent } from './signupform/signupform.component'
 import { LoginfacerecoComponent } from './loginfacereco/loginfacereco.component'
@@ -24,6 +24,7 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent,
         children: [
+
           {
             path: '',
             redirectTo: 'form', 
@@ -37,12 +38,14 @@ const routes: Routes = [
             path: 'face',
             component: LoginfacerecoComponent
           }
+
         ]
       },
       {
         path: 'signup',
         component: SignupComponent,
         children: [
+
           {
             path: '',
             redirectTo: 'form', 
@@ -56,13 +59,13 @@ const routes: Routes = [
             path: 'face',
             component: SignupfacerecoComponent
           }
+
         ]
       },
 
     ]
   }
   
-
 ];
 
 @NgModule({

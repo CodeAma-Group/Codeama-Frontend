@@ -1,0 +1,140 @@
+#signup_form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 80%;
+    height: 90%;
+    position: relative;
+    /* background-color: green; */
+}
+
+.form>h2 {
+    font-weight: 700;
+    font-size: 1.8em;
+    color: var(--mainBlue);
+}
+
+span {
+    color: var(--mainRed) !important;
+}
+
+form {
+    margin-top: 12%;
+}
+
+input[type=password],
+input[type=email],
+input[type=text] {
+    height: 3.2em !important;
+    padding-left: 1.2em !important;
+    background-color: var(--inputWhite);
+}
+
+label {
+    font-size: 0.88em;
+    top: -0.08em;
+    color: var(--mainBlack);
+    opacity: 0.9;
+}
+
+label>svg {
+    margin: -0.2em 0.6em 0 0.6em;
+}
+
+.terms_input {
+    border: 0.2em solid var(--dimBlue);
+}
+
+.terms_label {
+    font-size: 0.76em;
+}
+
+.span_terms {
+    color: var(--mainBlue) !important;
+    cursor: pointer;
+}
+
+button {
+    font-size: 0.81em;
+    font-weight: 590;
+    padding: 1.1em 2.2em;
+    background-color: var(--minorBlue);
+    outline: none !important;
+}
+
+button>svg {
+    margin-left: 1em;
+}
+
+.form>p {
+    font-size: 0.84em;
+    position: absolute;
+    bottom: 0;
+    color: var(--mainBlack);
+}
+
+.face_fields {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.recognition_container {
+    width: 100%;
+    height: 50%;
+    margin-bottom: -2.5em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.recognition_container>img {
+    position: absolute;
+    width: 60%;
+    z-index: 5;
+    transition: .5s ease-in-out;
+    animation: scan 2s linear infinite;
+    animation-direction: alternate;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }50%{
+        top: 50%;
+    }100%{
+        top: 95%;
+    }
+}
+
+.recognition_box {
+    height: 100%;
+    width: 60%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.recognition_box img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.78;
+}
+
+.sample {
+    height: 110% !important;
+    bottom: 0.07em;
+    position: absolute;
+}
+
+#frame {
+    position: absolute;
+    z-index: 9;
+    top: 0;
+}

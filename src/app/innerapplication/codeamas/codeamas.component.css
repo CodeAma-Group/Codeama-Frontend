@@ -1,3 +1,21 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+p{
+    font-size: 15px;
+}
+.profile>p{
+    margin: auto;
+}
+.profile>a>p {
+    font-size: 10px;
+    margin-left: 10%;
+    width: fit-content;
+}
+
+.btn {
+    width: 110%;
+}
 .bg-color {
     background-color: #f4f7fb;
 }
@@ -9,9 +27,22 @@
 }
 .skills>li{
     padding-left: 10px;
+    font-size: 13px;
+}
+.size-12{
+    font-size: 15px;
 }
 .status {
     padding-top: 20px;
+}
+.ama-askQuestion {
+    text-align: end;
+    padding: 0 25px;
+}
+.line{
+    height: 1px;
+    background-color: silver;
+    margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 680px){
