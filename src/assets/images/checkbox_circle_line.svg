@@ -1,0 +1,15 @@
+<svg id="checkbox-circle-line" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #216bff;
+      }
+    </style>
+  </defs>
+  <path id="Path_167" data-name="Path 167" class="cls-1" d="M0,0H38V38H0Z"/>
+  <path id="Path_168" data-name="Path 168" class="cls-2" d="M19,36A17,17,0,1,1,36,19,17,17,0,0,1,19,36Zm0-3.4A13.6,13.6,0,1,0,5.4,19,13.6,13.6,0,0,0,19,32.6Zm-1.695-6.8-7.213-7.213,2.4-2.4,4.809,4.809,9.615-9.617,2.406,2.4Z"/>
+</svg>
