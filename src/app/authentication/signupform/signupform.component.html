@@ -10,7 +10,7 @@
 
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-floating mb-3">
-                <input type="email" formControlName="username" [ngClass] = "{ 'error_border' : submitted && f.username.invalid && f.username.untouched }" class="form-control" id="floatingInput" placeholder="abiseth">
+                <input type="text" formControlName="username" [ngClass] = "{ 'error_border' : submitted && f.username.errors.required && f.username.untouched || f.username.errors.required && f.username.touched }" class="form-control" id="floatingInput" placeholder="abiseth">
                 <label for="floatingInput">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="user-line" opacity="0.78">
@@ -20,11 +20,11 @@
                     </svg>                      
                     Username
                 </label>
-                <span *ngIf="f.username.invalid && f.username.touched || submitted && f.username.invalid">Username field is required.</span>
+                <span *ngIf="f.username.errors.required && f.username.touched || submitted && f.username.invalid && f.username.errors.required">Username field is required.</span>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="email" formControlName="email" [ngClass] = "{ 'error_border' : submitted && f.email.invalid && f.email.untouched }" class="form-control" id="floatingInputEmail" placeholder="abi@example.se">
+                <input type="email" formControlName="email" [ngClass] = "{ 'error_border' : submitted && f.email.invalid && f.email.untouched || f.email.errors.required && f.email.touched  }" class="form-control" id="floatingInputEmail" placeholder="abi@example.se">
                 <label for="floatingInput">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="mail-line" opacity="0.78">
@@ -34,11 +34,11 @@
                     </svg>                      
                     Email
                 </label>
-                <span *ngIf="f.email.invalid && f.email.touched || submitted && f.email.invalid">Email address field is required.</span>
+                <span *ngIf="f.email.errors.required && f.email.touched || submitted && f.email.invalid && f.email.errors.required">Email address field is required.</span>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="password" formControlName="password" [ngClass] = "{ 'error_border' : submitted && f.password.invalid && f.password.untouched }" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" formControlName="password" [ngClass] = "{ 'error_border' : submitted && f.password.invalid && f.password.untouched || f.password.errors.required && f.password.touched }" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="key-2-line" opacity="0.78">
@@ -48,11 +48,12 @@
                     </svg>                      
                     Password
                 </label>
-                <span *ngIf="f.password.invalid && f.password.touched || submitted && f.password.invalid && f.password.untouched">Password field is required.</span>
+                <span *ngIf="f.password.errors.minlength && f.password.touched">Password must be at least 6 characters</span>
+                <span *ngIf="f.password.invalid && f.password.touched && f.password.errors.required || submitted && f.password.errors.required && f.password.untouched">Password field is required.</span>
             </div>
             
             <div class="form-check">
-                <input class="form-check-input terms_input" formControlName="agree" type="checkbox" value="" id="flexCheckDefault" [ngClass] = "{ 'error_border' : submitted && f.agree.invalid && f.agree.untouched }">
+                <input class="form-check-input terms_input" formControlName="agree" type="checkbox" value="" id="flexCheckDefault" [ngClass] = "{ 'error_border' : submitted && f.agree.untouched || f.agree.errors.required && f.agree.touched }">
                 <label class="form-check-label terms_label" for="flexCheckDefault">
                     I have ready and agree to the <span class="span_terms">Terms and Privacy Policies</span>.
                 </label><br>
@@ -60,9 +61,10 @@
             </div>
 
             <div class="form_field mt-3">
-                <button type="submit" class="btn btn-primary">
+                <button [disabled]="loading && loading && !f.username.invalid && !f.email.invalid && !f.password.invalid && !f.agree.invalid" type="submit" class="btn btn-primary">
+                    <span *ngIf="loading && loading && !f.username.invalid && !f.email.invalid && !f.password.invalid && !f.agree.invalid" class="spinner-border spinner-border-sm mr-1"></span>
                     SIGN UP NOW
-                    <svg id="arrow-right-line" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
+                    <svg [ngClass] = "{ 'hidden_loader' : loading && !f.username.invalid && !f.email.invalid && !f.password.invalid && !f.agree.invalid}" id="arrow-right-line" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <path id="Path_9" data-name="Path 9" d="M0,0H26V26H0Z" fill="none"/>
                         <path id="Path_10" data-name="Path 10" d="M17.694,11.871,11.659,5.818l1.591-1.6L22,13l-8.75,8.778-1.591-1.6,6.034-6.054H4V11.871Z" fill="#fff"/>
                     </svg>                      

@@ -13,6 +13,7 @@ export class SignupformComponent implements OnInit {
 
 	registerForm: FormGroup;
 	submitted: boolean = false;
+	loading: boolean = false;
 
 	constructor(
 
@@ -23,10 +24,10 @@ export class SignupformComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.registerForm = this.formBuilder.group({
-			username: ['', [Validators.required, Validators.email]],
-			email: ['', Validators.required],
-			password: ['', [Validators.required, Validators.minLength(6)]],
-			agree: ['', Validators.required],
+			username: [ '' , [ Validators.required, Validators.email ]],
+			email: [ '' , Validators.required],
+			password: [ '' , [Validators.required, Validators.minLength(6)] ],
+			agree: [ '' , Validators.required],
 		});
 	}
 
@@ -36,6 +37,8 @@ export class SignupformComponent implements OnInit {
 
 	onSubmit() {
 		this.submitted = true;
+
+		this.loading = true;
 	}
 
 }
