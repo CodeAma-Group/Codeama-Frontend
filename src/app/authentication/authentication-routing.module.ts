@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component'
+import { LoginComponent } from './login/login.component'
+import { SignupComponent } from './signup/signup.component'
 import { LoginformComponent } from './loginform/loginform.component'
 import { SignupformComponent } from './signupform/signupform.component'
 import { LoginfacerecoComponent } from './loginfacereco/loginfacereco.component'
@@ -20,25 +22,50 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        component: LoginformComponent
+        component: LoginComponent,
+        children: [
+
+          {
+            path: '',
+            redirectTo: 'form', 
+            pathMatch: 'full'
+          },
+          {
+            path: 'form',
+            component: LoginformComponent 
+          },
+          {
+            path: 'face',
+            component: LoginfacerecoComponent
+          }
+
+        ]
       },
       {
         path: 'signup',
-        component: SignupformComponent
+        component: SignupComponent,
+        children: [
+
+          {
+            path: '',
+            redirectTo: 'form', 
+            pathMatch: 'full'
+          },
+          {
+            path: 'form',
+            component: SignupformComponent   
+          },
+          {
+            path: 'face',
+            component: SignupfacerecoComponent
+          }
+
+        ]
       },
-      {
-        path: 'Loginfacerecongtn',
-        component: LoginfacerecoComponent
-      },
-      {
-        path: 'signupfacerecongtn',
-        component: SignupfacerecoComponent
-      }
 
     ]
   }
   
-
 ];
 
 @NgModule({
