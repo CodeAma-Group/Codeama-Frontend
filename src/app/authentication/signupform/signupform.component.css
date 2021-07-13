@@ -102,3 +102,22 @@ button>svg {
     bottom: 0;
     color: var(--mainBlack);
 }
+
+/* validation  */
+
+input.ng-invalid.ng-touched, .error_border {
+    border: 0.04em solid var(--mainRed);
+}
+
+.form-floating, .form-check {
+    position: relative;
+    margin-bottom: 1.4em !important;
+}
+
+.form-floating>span, .form-check>span{
+    position: absolute;
+    font-size: 0.75em;
+    top: 100%;
+    left: 0;
+    color: var(--mainRed);
+}

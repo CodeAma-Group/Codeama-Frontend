@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WebcamModule } from 'ngx-webcam';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component';
@@ -26,7 +27,9 @@ import { CameraComponent } from './camera/camera.component';
   imports: [
     CommonModule,
     WebcamModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthenticationModule { }

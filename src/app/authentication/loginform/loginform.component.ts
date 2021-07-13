@@ -12,4 +12,10 @@ export class LoginformComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //get user login data
+  getUserData(data:any) {
+    console.warn(data);
+  }
+  
+
 }

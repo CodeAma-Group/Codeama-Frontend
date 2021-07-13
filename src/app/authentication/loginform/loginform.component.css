@@ -116,3 +116,21 @@ button>svg {
     bottom: 0;
     color: var(--mainBlack);
 }
+
+/* validation  */
+
+input.ng-invalid.ng-touched {
+    border: 0.04em solid var(--mainRed);
+}
+
+.form-floating {
+    position: relative;
+}
+
+.form-floating>span {
+    position: absolute;
+    font-size: 0.75em;
+    top: 100%;
+    left: 0;
+    color: var(--mainRed);
+}
