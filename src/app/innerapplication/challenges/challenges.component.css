@@ -1,6 +1,9 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
+.bg-whiteblue{
+    background-color: #F8F9FA;
+}
 .pr{
     display: flex;
     justify-content: space-around;
@@ -44,4 +47,25 @@
 
 .apply > button{
     font-size: 0.8em;
+}
+
+.comment{
+    display: flex;
+    background-color: #EBF1FA;
+    width: 60%;
+    justify-content: space-around;
+    border-radius: 8px;
+    height: 2.5em;
+}
+.add-icon{
+    width: 1em;
+    height: 1em;
+    align-self: center;
+}
+textarea{
+    border: none;
+    background: inherit;
+    width: 90%;
+    height: 50%;
+    align-self: center;
 }

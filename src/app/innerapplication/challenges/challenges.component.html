@@ -94,13 +94,11 @@
             </div>
         </div>
     </div>
-    <div style="height: 15%;">
-        <div>comment on the challenge</div>
-        <div class="comments"  class="d-flex border border-primary rounded align-items-center" [ngStyle]="{'background-color': prime}">    
-            <div class="d-flex w-100 pt-2 justify-content-between ml-3">
-                <img src="../../../assets/images/add-circle-line@2x.png" alt="add circle" style="width: 1.3em; height: 1.3em;">
-            <textarea name="comment" class="w-100"  style="outline: none; border: none; width: 80%; background-color: inherit; font-size: 1em;" id="comment" placeholder="comment here"></textarea>
-            </div>
+    <div class="comment-container">
+        <p>comment on the  challenge</p>
+        <div class="comment">
+            <img src="../../../assets/images/add-circle-line@2x.png" alt="add" class="add-icon">
+            <textarea name="comment" id="comment" cols="30" rows="10" placeholder="comment here...."></textarea>
         </div>
     </div>
 </div>
