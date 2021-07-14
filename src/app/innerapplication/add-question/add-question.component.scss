@@ -1,6 +1,7 @@
 $bg_color: var(--contBgLight);
 .add_question {
     color: var(--mainBlack);
+    border-radius: 7px;
     background: $bg_color;
     height: 88%;
     padding: 30px 20px;
@@ -44,13 +45,14 @@ $bg_color: var(--contBgLight);
         background: unset;
         border: 2px solid #99c2f4;
         font-weight: 500;
+        color: var(--mainBlack);
 
         &:focus {
             border-color: #558ed3;
         }
         &::placeholder {
             font-weight: normal;
-            color: rgba(0, 0, 0, 0.623);
+            // color: rgba(0, 0, 0, 0.623);
         }
     }
 
