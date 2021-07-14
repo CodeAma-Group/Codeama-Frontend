@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-question',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-question.component.scss']
 })
 export class AddQuestionComponent implements OnInit {
-
-  constructor() { }
+  question
+  constructor(private formBuilder: FormBuilder) {
+    this.question = this.formBuilder.group({
+      title: [""],
+      desc: [""],
+      qtn: ["..."]
+    })
+   }
 
   ngOnInit(): void {
   }
-
+  submitQtn(e: Event){
+    e.preventDefault();
+    console.log(this.question.value)
+  }
 }
