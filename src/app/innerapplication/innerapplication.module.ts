@@ -18,6 +18,7 @@ import { QuestionsComponent } from './questions/questions.component';
 import { CoursesComponent } from './courses/courses.component';
 import { BadgeComponent } from './components/badge/badge.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
+import { InnerapplicationService } from './innerapplication.service';
 
 
 @NgModule({
@@ -25,6 +26,6 @@ import { CreateChallengeComponent } from './create-challenge/create-challenge.co
   imports: [
     CommonModule,
     InnerapplicationRoutingModule
-  ]
+  ],
 })
 export class InnerapplicationModule { }

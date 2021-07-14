@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { InnerapplicationService } from '../innerapplication.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   public article: string = ""
   public location: Location = window.location
   cookieVal:string = "";
-  constructor() { }
+  constructor(private backendService: InnerapplicationService) { }
 
   ngOnInit(): void {
 
@@ -78,7 +79,6 @@ export class DashboardComponent implements OnInit {
 
       document.cookie = "isDark=true; path=/; max-age=" + 365*24*60*60;
     }
-
   }
 
 }
