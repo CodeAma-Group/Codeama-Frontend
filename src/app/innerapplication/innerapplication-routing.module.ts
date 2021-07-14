@@ -14,15 +14,11 @@ import { ProjectRegistrationComponent } from './project-registration/project-reg
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoursesComponent } from './courses/courses.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'app',
-    pathMatch: 'full',
-  },
-  {
-    path: 'app',
     component: ModuleoutletComponent,
     children: [
       {
@@ -46,12 +42,16 @@ const routes: Routes = [
           {
             path: 'questions',
             component: QuestionsComponent
-          }
+          },
         ]
       },
       {
         path: 'projects',
         component: ProjectsComponent,
+      },
+      {
+        path:"add-question",
+        component:AddQuestionComponent
       },
       {
         path: 'projectRegistration',
@@ -80,7 +80,7 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
-      },
+      }
     ],
   },
 ];

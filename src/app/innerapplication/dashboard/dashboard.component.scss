@@ -1,10 +1,12 @@
-$bg_color: rgba(66, 144, 237, .1);
+$bg_color: var(--contBgLight);
 
 .dashboard {
-
+    font-size: 17px;
+    color: var(--mainBlack);
     hr {
-        color: rgba(66, 144, 237, .3);
-        border: 1px solid;
+        color: var(--mainBlack) !important;
+        opacity: 0.5;
+        height: 1px;
     }
     .postArticle {
         background-color: $bg_color;
@@ -18,7 +20,7 @@ $bg_color: rgba(66, 144, 237, .1);
             margin-bottom: 5px;
 
             label, button {
-                font-weight: lighter;
+                font-weight: normal;
             }
     
             button {
@@ -57,7 +59,7 @@ $bg_color: rgba(66, 144, 237, .1);
             outline: none;
         }
         input::placeholder {
-            color: black;
+            color: var(--mainBlack);
             opacity: .9;
         }
     }
@@ -68,7 +70,6 @@ $bg_color: rgba(66, 144, 237, .1);
         display: flex;
         flex-direction: column;
         position: relative;
-        top: -60px;
 
         >div {
             margin-bottom: 10px;
@@ -80,7 +81,8 @@ $bg_color: rgba(66, 144, 237, .1);
 
             h6 {
                 margin: 15px;
-                color: #212F3D;
+                font-size: 1em;
+                color: var(--mainBlack) !important;
                 font-weight: 600;
             }
 
@@ -92,6 +94,8 @@ $bg_color: rgba(66, 144, 237, .1);
                 font-size: .9em;
 
                 a.occ_proj {
+                    font-size: 1em;
+                    text-decoration: none;
                     background: rgba(66, 144, 237, .2);
                     border: 1px solid rgba(66, 144, 237, .5);
 
@@ -110,11 +114,15 @@ $bg_color: rgba(66, 144, 237, .1);
 
             a {
                 text-align: center;
-                color: black;
-                font-size: .9em;
+                color: var(--mainBlack) !important;
+                font-size: .8em;
+                width: 20%;
+                margin: 5px;
 
                 img {
                     display: block;
+                    width: 60px;
+                    height: auto;
                 }
             }
             }
@@ -144,12 +152,12 @@ $bg_color: rgba(66, 144, 237, .1);
         div.nav {
             a {
                 margin-right: 6%;
-                color: black;
+                color: var(--mainBlack) !important;
                 font-size: .9em;
+                text-decoration: none;
 
                 &.active {
-                    color: #4290ED;
-                }
+                    color: var(--mainBlue) !important;                }
             }
         }
 
