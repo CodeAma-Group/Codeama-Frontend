@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoursesComponent } from './courses/courses.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
+import { AddArticleComponent } from './add-article/add-article.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
       {
         path:"add-question",
         component:AddQuestionComponent
+      },
+      {
+        path:"add-article",
+        component: AddArticleComponent
       },
       {
         path: 'projectRegistration',
