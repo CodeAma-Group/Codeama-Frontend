@@ -16,11 +16,12 @@ import { ProjectRegistrationComponent } from './project-registration/project-reg
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { CoursesComponent } from './courses/courses.component';
-import { EditorComponent } from './project-registration/editor/editor.component';
+import { BadgeComponent } from './components/badge/badge.component';
+import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, EditorComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule
