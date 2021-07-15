@@ -49,11 +49,9 @@ export class ModuleoutletComponent implements OnInit {
 
   async modeChange() {
     var cookieName = "isDark";
-    console.log("yooo")
     var matchCookie = await document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
     if (matchCookie) {
       this.cookieVal = matchCookie[2];
-      console.log(matchCookie[2])
     }
     else{
       // document.cookie = "isDark=false; path=/; max-age=" + 365*24*60*60;
