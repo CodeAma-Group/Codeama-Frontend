@@ -8,9 +8,12 @@
             </div>
         </div>
 
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="isThereErrors" class="alert alert-danger">{{ errors }}</div>
+
+        <form #formData="ngForm" (ngSubmit)="getUserData(formData.value)" >
+
             <div class="form-floating mb-3">
-                <input type="email" formControlName="username" [ngClass] = "{ 'error_border' : submitted && f.username.invalid && f.username.untouched }" class="form-control" id="floatingInput" placeholder="abiseth">
+                <input type="email" ngModel #username="ngModel" name="Username" required class="form-control" id="floatingInput" placeholder="abiseth">
                 <label for="floatingInput">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="user-line" opacity="0.78">
@@ -20,11 +23,11 @@
                     </svg>                      
                     Username
                 </label>
-                <span *ngIf="f.username.invalid && f.username.touched || submitted && f.username.invalid">Username field is required.</span>
+                <span class="error_input" *ngIf="username.invalid && username.touched">Username field is required.</span>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="email" formControlName="email" [ngClass] = "{ 'error_border' : submitted && f.email.invalid && f.email.untouched }" class="form-control" id="floatingInputEmail" placeholder="abi@example.se">
+                <input type="email" ngModel #email="ngModel" name="Email" required class="form-control" id="floatingInputEmail" placeholder="abi@example.se">
                 <label for="floatingInput">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="mail-line" opacity="0.78">
@@ -34,11 +37,11 @@
                     </svg>                      
                     Email
                 </label>
-                <span *ngIf="f.email.invalid && f.email.touched || submitted && f.email.invalid">Email address field is required.</span>
+                <span class="error_input" *ngIf="email.invalid && email.touched">Email field is required.</span>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="password" formControlName="password" [ngClass] = "{ 'error_border' : submitted && f.password.invalid && f.password.untouched }" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" ngModel #password="ngModel" name="Password" required class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="key-2-line" opacity="0.78">
@@ -48,21 +51,21 @@
                     </svg>                      
                     Password
                 </label>
-                <span *ngIf="f.password.invalid && f.password.touched || submitted && f.password.invalid && f.password.untouched">Password field is required.</span>
+                <span class="error_input" *ngIf="password.invalid && password.touched">Password field is required.</span>
             </div>
             
             <div class="form-check">
-                <input class="form-check-input terms_input" formControlName="agree" type="checkbox" value="" id="flexCheckDefault" [ngClass] = "{ 'error_border' : submitted && f.agree.invalid && f.agree.untouched }">
+                <input class="form-check-input terms_input" required type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label terms_label" for="flexCheckDefault">
                     I have ready and agree to the <span class="span_terms">Terms and Privacy Policies</span>.
-                </label><br>
-                <span *ngIf="f.agree.invalid && f.agree.touched || submitted && f.agree.invalid">You must agree to our terms and policies.</span>
+                </label>
             </div>
 
             <div class="form_field mt-3">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary submit">
+                    <span *ngIf="hasSubmitted" class="spinner-border spinner-border-sm mr-1"></span>
                     SIGN UP NOW
-                    <svg id="arrow-right-line" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
+                    <svg [ngClass]="{'hidden' :hasSubmitted}" id="arrow-right-line" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <path id="Path_9" data-name="Path 9" d="M0,0H26V26H0Z" fill="none"/>
                         <path id="Path_10" data-name="Path 10" d="M17.694,11.871,11.659,5.818l1.591-1.6L22,13l-8.75,8.778-1.591-1.6,6.034-6.054H4V11.871Z" fill="#fff"/>
                     </svg>                      
