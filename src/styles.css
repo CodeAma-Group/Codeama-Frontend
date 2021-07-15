@@ -1,17 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/dist/css/bootstrap.css";
+.bg-whiteblue{
+    background: #EBF1FA;
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 /* Application global styling variables */
 
 :root {
-    /* colors */
     --pureWhite: #ffffff;
     --mainBlue: #185BF9;
     --mainBlack: #17202A;
-
     --mainWhite: #ffffff;
     --dimBlue: #66A5F0;
     --dimerBlue: #f2f6fa;
@@ -26,6 +27,9 @@
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
+
+    --contBgDark: #151829;
+    --contBgLight: rgba(66, 144, 237, .1);
 }
 
 * {
@@ -43,7 +47,7 @@ body {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 ul {

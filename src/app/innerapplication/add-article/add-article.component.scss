@@ -1,0 +1,59 @@
+$bg_color: var(--contBgLight);
+.add_article {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: $bg_color;
+    height: 88%;
+    padding: 20px 20px;
+    margin: 10px;
+
+    div {
+        position: relative;
+        svg {
+            position: absolute;
+            left: 15px
+        }
+        &.qtn {
+            svg {
+                top: 73px;
+            }
+            textarea{
+                padding-left: 45px;
+            }
+        }
+        &.qtn_desc {
+            svg {
+                top: 66px;
+            }
+            input {
+                padding-left: 40px;
+            }
+        }
+    }
+
+    h5 {
+        font-size: 1.25em;
+    }
+
+    label{
+        span {
+            font-size: .8em;
+        }
+    }
+
+    input, textarea{
+        background: unset;
+        border: 2px solid #99c2f4;
+        font-weight: 500;
+        color: var(--mainBlack);
+
+        &:focus {
+            border-color: #558ed3;
+        }
+        &::placeholder {
+            font-weight: normal;
+            // color: rgba(0, 0, 0, 0.623);
+        }
+    }
+
+}
