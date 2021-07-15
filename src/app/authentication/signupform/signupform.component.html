@@ -57,8 +57,8 @@
                 <span class="error_input" *ngIf="password.invalid && password.touched || requiredPassword">Password field is required.</span>
             </div>
             
-            <div class="form-check" [ngClass]="{'terms': invalidTerms}"]>
-                <input class="form-check-input terms_input" required type="checkbox" [ngClass] = "{'redbordered': invalidTerms}" (click) = "agreedToTerms" id="flexCheckDefault">
+            <div class="form-check term_container" [ngClass]="{'terms': invalidTerms}">
+                <input (click) = "agreedToTerms()" class="form-check-input terms_input" required [checked] = "agreed" type="checkbox" [ngClass] = "{'redbordered': invalidTerms}" id="flexCheckDefault">
                 <label class="form-check-label terms_label">
                     I have ready and agree to the <span class="span_terms">Terms and Privacy Policies</span>.
                 </label><br>
