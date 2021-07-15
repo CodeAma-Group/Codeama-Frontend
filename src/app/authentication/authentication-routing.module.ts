@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component'
@@ -8,6 +8,8 @@ import { LoginformComponent } from './loginform/loginform.component'
 import { SignupformComponent } from './signupform/signupform.component'
 import { LoginfacerecoComponent } from './loginfacereco/loginfacereco.component'
 import { SignupfacerecoComponent } from './signupfacereco/signupfacereco.component'
+import { VerifyemailComponent } from './verifyemail/verifyemail.component'
+import { EmailverifiedComponent } from './emailverified/emailverified.component'
 
 const routes: Routes = [
   {
@@ -62,6 +64,14 @@ const routes: Routes = [
 
         ]
       },
+      {
+        path: 'verifyemail',
+        component: VerifyemailComponent
+      },
+      {
+        path: 'emailverified',
+        component: EmailverifiedComponent
+      }
 
     ]
   }

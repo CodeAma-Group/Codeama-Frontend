@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-// import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { AuthService } from '../_authServices/auth.service'
 
 @Component({
 	selector: 'app-signupform',
@@ -11,31 +10,39 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupformComponent implements OnInit {
 
-	registerForm: FormGroup;
 	submitted: boolean = false;
+	loading: boolean = false;
 
 	constructor(
-
-		private formBuilder: FormBuilder,
-		// private router: Router,
+		
+		private _auth: AuthService,
+		private _router: Router,
 
 	) { }
 
 	ngOnInit(): void {
-		this.registerForm = this.formBuilder.group({
-			username: ['', [Validators.required, Validators.email]],
-			email: ['', Validators.required],
-			password: ['', [Validators.required, Validators.minLength(6)]],
-			agree: ['', Validators.required],
-		});
+		
 	}
 
-	get f() { 
-		return this.registerForm.controls
-	}
+	errors: string = ''
+	isThereErrors: boolean = false
+	hasSubmitted: boolean = false
 
-	onSubmit() {
-		this.submitted = true;
+	getUserData(data: any) {
+		this.hasSubmitted = true
+
+		this._auth.registerUser(data).subscribe(
+			res => {
+				console.log(res);  
+				this._router.navigate(['/auth/verifyemail']);   
+			},
+			err => {
+				this.isThereErrors = true;
+				this.hasSubmitted = false
+				this.errors = err.error;
+			}
+		)
+		
 	}
 
 }

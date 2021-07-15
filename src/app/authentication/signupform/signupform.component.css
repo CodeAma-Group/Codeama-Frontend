@@ -49,7 +49,12 @@ span {
 }
 
 form {
-    margin-top: 12%;
+    margin-top: 5%;
+}
+
+.alert {
+    margin-top: 4%;
+    text-align: center;
 }
 
 input[type=password],
@@ -94,6 +99,7 @@ button {
 
 button>svg {
     margin-left: 1em;
+    margin-top: -4%;
 }
 
 .form>p {
@@ -103,21 +109,34 @@ button>svg {
     color: var(--mainBlack);
 }
 
+.submit {
+    position: relative;
+}
+
+.spinner-border {
+    position: absolute;
+    right: 9%;
+    top: 31%;
+    color: #ffffff !important;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 /* validation  */
 
-input.ng-invalid.ng-touched, .error_border {
-    border: 0.04em solid var(--mainRed);
+input.ng-invalid.ng-touched {
+    border: 0.04em solid var(--mainRed) !important;
 }
 
-.form-floating, .form-check {
-    position: relative;
-    margin-bottom: 1.4em !important;
-}
-
-.form-floating>span, .form-check>span{
+.error_input {
     position: absolute;
-    font-size: 0.75em;
-    top: 100%;
-    left: 0;
+    font-size: 0.78em !important;
     color: var(--mainRed);
+    margin-bottom: 0.5em;
+}
+
+.form-floating {
+    margin-bottom: 1.4em !important;
 }
