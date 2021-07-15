@@ -10,10 +10,10 @@
 
         <div *ngIf="isThereErrors" class="alert alert-danger">{{ errors }}</div>
 
-        <form #formData="ngForm" (ngSubmit)="getUserData(formData.value)" >
+        <form #formData="ngForm" (ngSubmit)="getUserData(formData.value)" [ngClass] = "{'move_from_top': !isThereErrors}" >
 
             <div class="form-floating mb-3">
-                <input type="email" ngModel #username="ngModel" name="Username" required class="form-control" id="floatingInput" placeholder="abiseth">
+                <input type="text" ngModel #username="ngModel" #idUsername name="Username" required (keyup) = "validateUsername(idUsername.value)" [ngClass] = "{'redbordered': invalidUsername || requiredUsername}" class="form-control" id="floatingInput" placeholder="abiseth">
                 <label for="floatingInput">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="user-line" opacity="0.78">
@@ -23,11 +23,12 @@
                     </svg>                      
                     Username
                 </label>
-                <span class="error_input" *ngIf="username.invalid && username.touched">Username field is required.</span>
+                <span class="error_input" *ngIf="invalidUsername">Username must be letters only.</span>
+                <span class="error_input" *ngIf="username.invalid && username.touched || requiredUsername">Username field is required.</span>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="email" ngModel #email="ngModel" name="Email" required class="form-control" id="floatingInputEmail" placeholder="abi@example.se">
+                <input type="email" [ngClass] = "{'redbordered': invalidEmail || requiredEmail}" ngModel #email="ngModel" #idEmail name="Email" (keyup) = "validateEmail(idEmail.value)" required class="form-control" id="floatingInputEmail" placeholder="abi@example.se">
                 <label for="floatingInput">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="mail-line" opacity="0.78">
@@ -37,11 +38,12 @@
                     </svg>                      
                     Email
                 </label>
-                <span class="error_input" *ngIf="email.invalid && email.touched">Email field is required.</span>
+                <span class="error_input" *ngIf="invalidEmail">Please you must use a valid email.</span>
+                <span class="error_input" *ngIf="email.invalid && email.touched || requiredEmail">Email field is required.</span>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="password" ngModel #password="ngModel" name="Password" required class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" ngModel #password="ngModel" #idPass name="Password" [ngClass] = "{'redbordered': invalidPassword || requiredPassword}" (keyup) = "validatePassword(idPass.value)" required class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
                         <g id="key-2-line" opacity="0.78">
@@ -51,14 +53,16 @@
                     </svg>                      
                     Password
                 </label>
-                <span class="error_input" *ngIf="password.invalid && password.touched">Password field is required.</span>
+                <span class="error_input" *ngIf="invalidPassword">Password must be atleast 6 charachers.</span>
+                <span class="error_input" *ngIf="password.invalid && password.touched || requiredPassword">Password field is required.</span>
             </div>
             
-            <div class="form-check">
-                <input class="form-check-input terms_input" required type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label terms_label" for="flexCheckDefault">
+            <div class="form-check" [ngClass]="{'terms': invalidTerms}"]>
+                <input class="form-check-input terms_input" required type="checkbox" [ngClass] = "{'redbordered': invalidTerms}" (click) = "agreedToTerms" id="flexCheckDefault">
+                <label class="form-check-label terms_label">
                     I have ready and agree to the <span class="span_terms">Terms and Privacy Policies</span>.
-                </label>
+                </label><br>
+                <span class="error_input" *ngIf="invalidTerms">You must agree to our terms and policies.</span>
             </div>
 
             <div class="form_field mt-3">
