@@ -74,7 +74,10 @@ export class SignupformComponent implements OnInit {
 
 	agreedToTerms() {
 		this.agreed = !this.agreed;
-		this.invalidTerms = !this.invalidTerms;
+
+		if (this.invalidTerms) {
+			this.invalidTerms = false;
+		}
 	}
 
 	getUserData(data: any) {
@@ -90,7 +93,7 @@ export class SignupformComponent implements OnInit {
 			}
 
 			if (data.Password == "") {
-				return this.requiredPassword;
+				return this.requiredPassword = true;
 			}
 
 			return;
