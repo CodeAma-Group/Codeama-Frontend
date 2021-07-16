@@ -95,7 +95,6 @@ export class LoginformComponent implements OnInit {
 
 		this._auth.loginUser(data).subscribe(
 			res => {
-				console.warn(res);
 				localStorage.setItem('codeama_auth_token', res.token);
 				this._router.navigate(['/app']);
 			},
