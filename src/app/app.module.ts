@@ -7,6 +7,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule
+    HttpClientModule,
+    MultiSelectAllModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
