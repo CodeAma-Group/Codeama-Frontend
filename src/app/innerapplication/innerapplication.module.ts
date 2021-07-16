@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AddResourceComponent } from './add-resource/add-resource.component';
     CommonModule,
     InnerapplicationRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MultiSelectAllModule
   ],
 })
 export class InnerapplicationModule { }
