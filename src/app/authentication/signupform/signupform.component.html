@@ -60,7 +60,7 @@
             <div class="form-check term_container" [ngClass]="{'terms': invalidTerms}">
                 <input (click) = "agreedToTerms()" class="form-check-input terms_input" required [checked] = "agreed" type="checkbox" [ngClass] = "{'redbordered': invalidTerms}" id="flexCheckDefault">
                 <label class="form-check-label terms_label">
-                    I have ready and agree to the <span class="span_terms">Terms and Privacy Policies</span>.
+                    I have read and agree to the <span class="span_terms">Terms and Privacy Policies</span>.
                 </label><br>
                 <span class="error_input" *ngIf="invalidTerms">You must agree to our terms and policies.</span>
             </div>
