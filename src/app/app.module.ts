@@ -22,7 +22,7 @@ import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     HttpClientModule,
     MultiSelectAllModule
   ],
