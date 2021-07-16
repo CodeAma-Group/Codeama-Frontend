@@ -21,15 +21,19 @@ import { CreateChallengeComponent } from './create-challenge/create-challenge.co
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddArticleComponent } from './add-article/add-article.component';
+import { ResourcesComponent } from './resources/resources.component';
+import { AddResourceComponent } from './add-resource/add-resource.component';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent, AddArticleComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MultiSelectAllModule
   ],
 })
 export class InnerapplicationModule { }

@@ -1,15 +1,15 @@
-.bg-color {
-    background-color: #f4f7fb;
-}
 .cl-silver {
     color: silver;
 }
-.skills{
+
+.skills {
     display: inline-flex;
 }
-.skills>li{
+
+.skills>li {
     padding-left: 10px;
 }
+
 .status {
     padding-top: 20px;
 }

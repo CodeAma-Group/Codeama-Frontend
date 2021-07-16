@@ -16,6 +16,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { AddArticleComponent } from './add-article/add-article.component';
+import { ResourcesComponent } from './resources/resources.component';
+import { AddResourceComponent } from './add-resource/add-resource.component';
 
 const routes: Routes = [
   {
@@ -37,13 +39,17 @@ const routes: Routes = [
             component: CoursesComponent
           },
           {
-            path:'courses',
+            path:'articles',
             component: CoursesComponent
           },
           {
             path: 'questions',
             component: QuestionsComponent
           },
+          {
+            path: 'resources',
+            component: ResourcesComponent
+          }
         ]
       },
       {
@@ -57,6 +63,10 @@ const routes: Routes = [
       {
         path:"add-article",
         component: AddArticleComponent
+      },
+      {
+        path: "add-resource",
+        component: AddResourceComponent
       },
       {
         path: 'projectRegistration',

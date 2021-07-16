@@ -22,10 +22,11 @@ span {
 }
 
 .form-control {
-    background-color: #EBF1FA;
+    background-color: var(--dimerBlue);
     outline: none;
-    border: 2px solid#bddafd;
+    border: 2px solid var(--dimBlue);
     font-size: 14px;
+    color: var(--mainBlack)
 }
 
 .fm-style {
@@ -44,4 +45,9 @@ label {
 .title {
     font-size: 1.1em;
     font-weight: 540;
+}
+
+label,
+span {
+    color: var(--mainBlack);
 }
