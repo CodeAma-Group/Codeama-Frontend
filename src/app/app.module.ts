@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
@@ -20,6 +21,8 @@ import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     MultiSelectAllModule
   ],
