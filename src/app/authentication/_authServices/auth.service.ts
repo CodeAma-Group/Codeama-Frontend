@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-    private _registerUrl = 'https://codeama-backend.herokuapp.com/register' ;
+    private _registerUrl = 'https://codeama-backend.herokuapp.com/register';
+    private _loginUrl = 'https://codeama-backend.herokuapp.com/login';
 
     constructor(
 
@@ -18,6 +19,10 @@ export class AuthService {
 
     registerUser(user){
         return this.http.post<any>(this._registerUrl, user)
+    }
+
+    loginUser(user) {
+        return this.http.post<any>(this._loginUrl,user)
     }
 
 
