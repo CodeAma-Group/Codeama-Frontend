@@ -4,59 +4,59 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-camera',
-  templateUrl: './camera.component.html',
-  styleUrls: ['./camera.component.css']
+	selector: 'app-camera',
+	templateUrl: './camera.component.html',
+	styleUrls: ['./camera.component.css']
 })
 export class CameraComponent implements OnInit {
 
   constructor() { }
   
-  @Output() getPicture = new EventEmitter<WebcamImage>();
-  showWebcam = true;
-  isCameraExist = true;
+	@Output() getPicture = new EventEmitter<WebcamImage>();
+	showWebcam = true;
+	isCameraExist = true;
 
-  errors: WebcamInitError[] = [];
+	errors: WebcamInitError[] = [];
 
-  // webcam snapshot trigger
-  private trigger: Subject<void> = new Subject<void>();
-  private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
+	// webcam snapshot trigger
+	private trigger: Subject<void> = new Subject<void>();
+	private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
 
-  ngOnInit(): void {
-    WebcamUtil.getAvailableVideoInputs()
-      .then((mediaDevices: MediaDeviceInfo[]) => {
-        this.isCameraExist = mediaDevices && mediaDevices.length > 0;
-      });
-  }
+	ngOnInit(): void {
+		WebcamUtil.getAvailableVideoInputs()
+		.then((mediaDevices: MediaDeviceInfo[]) => {
+			this.isCameraExist = mediaDevices && mediaDevices.length > 0;
+		});
+	}
 
-  takeSnapshot(): void {
-    this.trigger.next();
-  }
+	takeSnapshot(): void {
+		this.trigger.next();
+	}
 
-  onOffWebCame() {
-    this.showWebcam = !this.showWebcam;
-  }
+	onOffWebCame() {
+		this.showWebcam = !this.showWebcam;
+	}
 
-  handleInitError(error: WebcamInitError) {
-    this.errors.push(error);
-  }
+	handleInitError(error: WebcamInitError) {
+		this.errors.push(error);
+	}
 
-  changeWebCame(directionOrDeviceId: boolean | string) {
-    this.nextWebcam.next(directionOrDeviceId);
-  }
+	changeWebCame(directionOrDeviceId: boolean | string) {
+		this.nextWebcam.next(directionOrDeviceId);
+	}
 
-  handleImage(webcamImage: WebcamImage) {
-    this.getPicture.emit(webcamImage);
-    this.showWebcam = false;
-  }
+	handleImage(webcamImage: WebcamImage) {
+		this.getPicture.emit(webcamImage);
+		this.showWebcam = false;
+	}
 
-  get triggerObservable(): Observable<void> {
-    return this.trigger.asObservable();
-  }
+	get triggerObservable(): Observable<void> {
+		return this.trigger.asObservable();
+	}
 
-  get nextWebcamObservable(): Observable<boolean | string> {
-    return this.nextWebcam.asObservable();
-  }
+	get nextWebcamObservable(): Observable<boolean | string> {
+		return this.nextWebcam.asObservable();
+	}
 
  
 }

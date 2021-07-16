@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { Router } from '@angular/router'
+import { Router } from '@angular/router'
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +13,7 @@ export class AuthService {
     constructor(
 
         private http: HttpClient,
-        // private router: Router
+        private router: Router
 
     ) { }
 
@@ -25,5 +25,16 @@ export class AuthService {
         return this.http.post<any>(this._loginUrl,user)
     }
 
+    loggedIn(){
+        return !!localStorage.getItem('codeama_auth_token');
+    }
 
+    getToken(){
+        return localStorage.getItem('codeama_auth_token');
+    }
+
+    logout(){
+        localStorage.removeItem('codeama_auth_token');
+        this.router.navigate(['/auth']);
+    }
 }
