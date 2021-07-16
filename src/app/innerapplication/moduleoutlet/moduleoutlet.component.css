@@ -15,6 +15,12 @@
     height: 100%;
 }
 
+.entire_app_page_body .logo_search__container {
+    width: 99%;
+    height: 10%;
+    z-index: 1;
+}
+
 .entire_app_page_body .body_content_container {
     width: 99%;
     height: auto;
