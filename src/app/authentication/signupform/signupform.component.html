@@ -60,13 +60,13 @@
             <div class="form-check term_container" [ngClass]="{'terms': invalidTerms}">
                 <input (click) = "agreedToTerms()" class="form-check-input terms_input" required [checked] = "agreed" type="checkbox" [ngClass] = "{'redbordered': invalidTerms}" id="flexCheckDefault">
                 <label class="form-check-label terms_label">
-                    I have ready and agree to the <span class="span_terms">Terms and Privacy Policies</span>.
+                    I have read and agree to the <span class="span_terms">Terms and Privacy Policies</span>.
                 </label><br>
                 <span class="error_input" *ngIf="invalidTerms">You must agree to our terms and policies.</span>
             </div>
 
             <div class="form_field mt-3">
-                <button type="submit" class="btn btn-primary submit">
+                <button type="submit" [disabled] = "formData.invalid" class="btn btn-primary submit">
                     <span *ngIf="hasSubmitted" class="spinner-border spinner-border-sm mr-1"></span>
                     SIGN UP NOW
                     <svg [ngClass]="{'hidden' :hasSubmitted}" id="arrow-right-line" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">

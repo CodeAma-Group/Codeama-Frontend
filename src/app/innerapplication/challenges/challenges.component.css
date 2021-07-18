@@ -1,25 +1,30 @@
-*{
+* {
     font-family: 'Poppins', sans-serif;
 }
-.bg-whiteblue{
+
+.bg-whiteblue {
     background-color: #F8F9FA;
 }
-.pr{
+
+.pr {
     display: flex;
     justify-content: space-around;
     width: 75%;
 }
-.next{
+
+.next {
     width: 3px;
     height: 2em;
     background: dodgerblue;
     align-self: center;
 }
-.symbols{
+
+.symbols {
     display: flex;
     flex-direction: column;
 }
-.main-container{
+
+.main-container {
     display: flex;
     justify-content: space-between;
     margin-top: 2em;
@@ -29,27 +34,27 @@
     font-weight: bold;
 }
 
-.aside-content > div:not(.aside-content-first){
+.aside-content>div:not(.aside-content-first) {
     font-size: 0.8em;
     color: #1E253D;
     /* opacity: .1; */
 }
 
-.apply{
+.apply {
     margin-top: 2em;
 }
 
-.apply > p{
+.apply>p {
     font-size: 0.8em;
     color: #1E253D;
     /* opacity: .1; */
 }
 
-.apply > button{
+.apply>button {
     font-size: 0.8em;
 }
 
-.comment{
+.comment {
     display: flex;
     background-color: #EBF1FA;
     width: 60%;
@@ -57,12 +62,14 @@
     border-radius: 8px;
     height: 2.5em;
 }
-.add-icon{
+
+.add-icon {
     width: 1em;
     height: 1em;
     align-self: center;
 }
-textarea{
+
+textarea {
     border: none;
     background: inherit;
     width: 90%;
