@@ -8,9 +8,8 @@
 
 .form {
     width: 80%;
-    height: 90%;
+    height: 100%;
     position: relative;
-    /* background-color: green; */
 }
 
 .form>h2 {
@@ -21,10 +20,6 @@
 
 span {
     color: var(--mainRed) !important;
-}
-
-form {
-    margin-top: 12%;
 }
 
 input[type=password],
@@ -87,12 +82,16 @@ button>svg {
 
 .recognition_container {
     width: 100%;
-    height: 50%;
-    margin-bottom: -2.5em;
+    height: 42%;
     position: relative;
+    margin-top: 0.2em !important;
     display: flex;
     justify-content: center;
     overflow: hidden;
+}
+
+form {
+    margin-top: 0.5em;
 }
 
 .recognition_container>img {
@@ -128,6 +127,14 @@ button>svg {
     opacity: 0.78;
 }
 
+.recognition_container>h1 {
+    position: absolute;
+    font-size: 4em;
+    z-index: 9;
+    color: red;
+    top: 35%;
+}
+
 .sample {
     height: 110% !important;
     bottom: 0.07em;
@@ -138,4 +145,9 @@ button>svg {
     position: absolute;
     z-index: 9;
     top: 0;
+}
+
+.alert {
+    text-align: center;
+    font-size: 0.8em !important;
 }
