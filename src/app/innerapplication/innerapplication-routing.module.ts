@@ -18,6 +18,7 @@ import { AddQuestionComponent } from './add-question/add-question.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
+import { AnswerQuestionComponent } from './answer-question/answer-question.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
       {
         path: "add-resource",
         component: AddResourceComponent
+      },
+      {
+        path: "answer-question",
+        component:AnswerQuestionComponent
       },
       {
         path: 'projectRegistration',

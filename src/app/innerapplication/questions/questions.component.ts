@@ -15,6 +15,7 @@ export class QuestionsComponent implements OnInit {
         badge: "Pro"
       },
       questionDetails: {
+        _id: "7834793845jhhsdf89q795978",
         question: "How do I add routing in Laravel 8",
         desc: "Hi everybody, I'm Charlie, a french JS developer I just release a free abd open source project, tail-kit. It's a kit of components and template...",
         likes: 120,
@@ -68,6 +69,7 @@ export class QuestionsComponent implements OnInit {
         badge: "Pro"
       },
       questionDetails: {
+        _id: "y982hijwehr9827498124hwe",
         question: "How do I add routing in Laravel 8",
         desc: "Hi everybody, I'm Charlie, a french JS developer I just release a free abd open source project, tail-kit. It's a kit of components and template...",
         likes: 120,
@@ -106,5 +108,6 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  public answerQuestionLink:string = "app/answer-question?qtnId="
 
 }

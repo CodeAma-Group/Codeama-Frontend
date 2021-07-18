@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="question_details">
-                <h5><strong>{{question.questionDetails.question}}</strong></h5>
+                <h5><a [href]="answerQuestionLink + question.questionDetails._id" class="text-decoration-none text-dark"><strong>{{question.questionDetails.question}}</strong></a></h5>
                 <p>{{question.questionDetails.desc}}</p>
             </div>
             <p id="dev_username">{{question.devDetails.username}}.codeama.dev</p>

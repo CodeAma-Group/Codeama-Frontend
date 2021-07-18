@@ -82,4 +82,13 @@ export class ResourcesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public checkResourceType(type: string){
+    if(type == "Youtube video"){
+      return "youtube video"
+    }
+    else if(type == "CodeAma article"){
+      return "article"
+    }
+  }
+
 }
