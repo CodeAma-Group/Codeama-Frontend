@@ -1,20 +1,53 @@
 <div class="container-fluid">
+    <hr>
     <div class="user-profile d-flex">
         <div class="avatar">
             <img src="" alt="">
             <div class="badge"></div>
         </div>
         <div class="user-name-and-date">
-            <h6>ABIJURU Seth @abi_seth</h6>
+            <div class="d-flex">
+                <h6>ABIJURU Seth</h6>
+                <span>@abi_seth</span>
+            </div>
             <!-- <h6>{{user.username}}</h6> -->
-            <p>Jan 22,2021</p>
+            <p id="date">Jan 22,2021</p>
             <!-- <p>question.posting-date</p> -->
         </div>
     </div>
+
+    <style>
+        #date {
+            font-size: 12px;
+        }
+        
+        .q-heading {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .question-description>p {
+            font-size: 14px;
+        }
+        
+        .caption>p {
+            font-size: 15px;
+            color: grey;
+        }
+        
+        .heading {
+            font-size: 15px;
+        }
+        
+        .technologies>img {
+            height: 50px;
+        }
+    </style>
+
     <div class="question-info d-flex">
-        <div class="question-details">
+        <div class="question-details col-lg-7 mr-2">
             <div class="question-title">
-                <h5>How do I do routing in laravel 8</h5>
+                <h6 class="q-heading my-3">How do I do routing in laravel 8</h6>
                 <!-- <h5>{{question.title}}</h5> -->
             </div>
             <div class="question-description">
@@ -23,22 +56,30 @@
                 </p>
             </div>
         </div>
-        <div class="tagges-technologies">
-            <div class="heading">Tagged Technologies</div>
-            <div class="technologies d-flex">
-                <img src="" alt="tagged techs">
-                <img src="" alt="tagged techs">
-                <img src="" alt="tagged techs">
+        <div class="tagged-technologies col-lg-4 my-2 mx-auto">
+            <div class="heading text-center my-3">Tagged Technologies</div>
+            <div class="technologies d-flex mx-auto col-lg-11">
+                <img src="../../../../assets/images/angular.png" class="technology my-auto mx-auto" alt="tagged techs ">
+                <img src="../../../../assets/images/js.png " class="technology mx-auto" alt="tagged techs ">
+                <img src="../../../../assets/images/vue.png " class="technology mx-auto" alt="tagged techs ">
             </div>
         </div>
     </div>
-    <div class="caption">
+    <div class="caption ">
         <!-- <p>{{question.userCaption}}</p> -->
         <p>abi_seth5454.codeama.dev</p>
     </div>
-    <div class="comments-and-likes d-flex">
-        <div class="likes"></div>
-        <div class="commments"></div>
+    <div class="comments-and-likes d-flex ">
+        <div class="likes d-flex">
+            <svg id="thumb-up-fill" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                    <path id="Path_46" data-name="Path 46" d="M0,0H25V25H0Z" fill="none"/>
+                    <path id="Path_47" data-name="Path 47" d="M2.045,9.4H5.182V22H2.045A1.048,1.048,0,0,1,1,20.95v-10.5A1.048,1.048,0,0,1,2.045,9.4ZM7.579,8.037,14.27,1.314a.521.521,0,0,1,.684-.049l.892.672a1.58,1.58,0,0,1,.578,1.649L15.218,8.345h6.691A2.1,2.1,0,0,1,24,10.446v2.21a2.11,2.11,0,0,1-.157.8L20.608,21.35a1.045,1.045,0,0,1-.967.65H8.318a1.048,1.048,0,0,1-1.045-1.05V8.78a1.053,1.053,0,0,1,.306-.742Z" transform="translate(0)" fill="#4290ed"/>
+            </svg>
+            <span class="ml-5 likesNumber">
+                233
+                </span>
+        </div>
+        <div class="commments "></div>
     </div>
     <hr>
 </div>

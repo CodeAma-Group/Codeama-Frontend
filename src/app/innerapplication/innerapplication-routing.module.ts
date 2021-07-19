@@ -18,6 +18,7 @@ import { AddQuestionComponent } from './add-question/add-question.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
+import {BugsComponent} from './dashboard/bugs/bugs.component'
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
           {
             path: 'resources',
             component: ResourcesComponent
+          },
+          {
+            path: 'bugs',
+            component:BugsComponent
           }
         ]
       },
