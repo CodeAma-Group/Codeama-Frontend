@@ -7,12 +7,12 @@ li>a.nav-link {
 }
 
 .sidebar {
-    height: 96vh;
+    height: 98.6vh;
     border-radius: 5px;
     font-family: "poppins";
-    background-color: var(--dimerBlue);
+    background-color: var(--contBgLight);
     float: left;
-    margin: 10px !important;
+    margin: 5px !important;
     padding: 5px;
     position: fixed;
 }
@@ -46,6 +46,7 @@ svg {
     position: relative;
     top: 11em!important;
 }
-.side-bar-container{
+
+.side-bar-container {
     width: 20%;
 }
