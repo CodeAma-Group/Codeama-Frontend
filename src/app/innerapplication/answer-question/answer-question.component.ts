@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+const url = require("url")
 
 @Component({
   selector: 'app-answer-question',
@@ -10,7 +11,7 @@ export class AnswerQuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(new URL(location.href))
+    console.log(url)
   }
 
 }
