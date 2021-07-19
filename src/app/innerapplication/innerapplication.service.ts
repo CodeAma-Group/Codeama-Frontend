@@ -7,7 +7,7 @@ import { map, pluck } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class InnerapplicationService {
-  private base: string = "http://localhost:8000/"
+  private base: string = "http://codeama-backend.herokuapp.com/"
   constructor(private http: HttpClient) {}
 
   public getArticles(){
