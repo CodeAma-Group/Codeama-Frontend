@@ -24,10 +24,11 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import { BugsComponent } from './dashboard/bugs/bugs.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule,
