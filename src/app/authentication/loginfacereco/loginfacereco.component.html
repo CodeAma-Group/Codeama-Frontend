@@ -4,18 +4,56 @@
         <h2>Login with face recognition</h2>
        
         <div class="recognition_container mt-5">
-            <img src="../../../assets/images/scan.png" alt="">
-            <div class="recognition_box">
-                
-                <app-camera id="cam" (getPicture)="handleImage($event)"></app-camera>
 
-                <div class="webcam-image" *ngIf="webcamImage">
-                  <img [src]="webcamImage.imageAsDataUrl" />
+            <img id="scanner" src="../../../assets/images/scan.png" alt="">
+            <h1 *ngIf = "startCountDownToShot">
+                {{ secs }}
+            </h1>
+
+            <div class="recognition_box">
+                <div id="cam">
+                    <webcam 
+                        [height]="300" 
+                        [width]="350" 
+                        [trigger]="triggerObservable" 
+                        (imageCapture)="handleImage($event)"
+                        class="d-block">
+                    </webcam>
                 </div>
 
+
+                <div class="webcam-image">
+                    <div class="snapshot" *ngIf="webcamImage">
+                        <img height="300" width="350" [src]="webcamImage.imageAsDataUrl" />
+                    </div>
+                </div>
                 <img id="sample" class="sample" src="../../../assets/images/scansample.png" alt="">
                 <img id="frame" src="../../../assets/images/reco.png" alt="">
             </div>
+        </div>
+
+        <div class="procedure_container mt-3" *ngIf = "startRecognitionProcess">
+            <div *ngIf = "showProcedureNotice" class="alert alert-info">
+                Make sure you follow procedures noted here.
+            </div>
+            <div *ngIf = "alertToStartGettingSamples" class="alert alert-warning">
+                Preparing to get face samples in time specified &nbsp;&nbsp;
+                <span class="spinner-border spinner-border-sm mr-1"></span>
+            </div>
+            <div *ngIf = "stepOne" class="alert alert-success">
+                SMILE PLEASE! 
+            </div>
+            <div *ngIf = "noFaceDetectedError" class="alert alert-danger">
+                Oops! No face detected! Make sure your image is clear.  
+            </div>
+            <div *ngIf = "processingResult" class="alert alert-success">
+                Scanning for face matches! Please wait abit . . .  
+                <span class="spinner-border spinner-border-sm mr-1 text-success" ></span>
+            </div>
+             <div *ngIf = "uploadSuccess" class="alert alert-success">
+                FACE SAMPLES TAKEN SUCCESSFULLY !!
+            </div>
+            
         </div>
 
         <form>

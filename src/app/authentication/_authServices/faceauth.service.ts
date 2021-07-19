@@ -9,6 +9,7 @@ export class FaceauthService {
 
 	startProcess() {
 		document.getElementById("cam").style.display = "none"
+		document.getElementById("scanner").style.display = "none";
 
 		setInterval(() => {
 		  document.getElementById("cam").style.display = "block"

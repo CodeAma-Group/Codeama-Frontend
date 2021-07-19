@@ -82,22 +82,7 @@ export class SignupfacerecoComponent implements OnInit {
 			
 			if (this.steps == 2) {
 				this.stepOne = false;
-				console.warn("gooooooo")
-			}
-			
-			if (this.steps == 3) {
-				console.warn("this is step 4");
-			}
-			
-			if (this.steps == 4) {
-				console.warn("this is step 5");
-			}
-			
-			if (this.steps == 5) {
-				console.warn("this is step 6");
-			}
-			
-				
+			}		
 	
 		},10000)
 		
@@ -105,9 +90,8 @@ export class SignupfacerecoComponent implements OnInit {
 		setInterval(() => {
 			if (this.steps <= 9) {
 				this.steps += 1;
-				console.warn(this.steps);
 			} else {
-				return console.warn("This signup process just ended!");
+				console.log(this.faceMatchScore);
 			}
 		}, 10000)
 

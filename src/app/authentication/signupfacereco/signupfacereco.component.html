@@ -3,7 +3,7 @@
         <h2>SignUp with face recognition</h2>
        
         <div class="recognition_container mt-5">
-            
+
             <img src="../../../assets/images/scan.png" alt="">
             <h1 *ngIf = "startCountDownToShot">
                 {{ secs }}
@@ -47,6 +47,9 @@
             <div *ngIf = "processingResult" class="alert alert-success">
                 Scanning for face matches! Please wait abit . . .  
                 <span class="spinner-border spinner-border-sm mr-1 text-success" ></span>
+            </div>
+             <div *ngIf = "uploadSuccess" class="alert alert-success">
+                FACE SAMPLES TAKEN SUCCESSFULLY !!
             </div>
             
         </div>
