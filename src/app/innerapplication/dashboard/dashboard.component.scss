@@ -114,7 +114,7 @@ $bg_color: var(--contBgLight);
     .mainContent {
         float: left;
         margin-top: 10px;
-        background-color: #F4F7FB;
+        background-color: $bg_color;
         display: block;
         border-radius: 7px;
         width: 70%;
