@@ -8,7 +8,7 @@
 
 .form {
     width: 80%;
-    height: 90%;
+    height: 100%;
     position: relative;
     /* background-color: green; */
 }
@@ -21,10 +21,6 @@
 
 span {
     color: var(--mainRed) !important;
-}
-
-form {
-    margin-top: 12%;
 }
 
 input[type=password],
@@ -86,8 +82,9 @@ button>svg {
 
 .recognition_container {
     width: 100%;
-    height: 50%;
-    margin-bottom: -2.5em;
+    height: 42%;
+    margin-top: -0.2em !important;
+    margin-bottom: 2.5em;
     position: relative;
     display: flex;
     justify-content: center;
@@ -101,6 +98,13 @@ button>svg {
     transition: .5s ease-in-out;
     animation: scan 2s linear infinite;
     animation-direction: alternate;
+}
+
+.recognition_container>h1 {
+    position: absolute;
+    font-size: 4em;
+    z-index: 9;
+    top: 35%;
 }
 
 @keyframes scan {
@@ -137,4 +141,13 @@ button>svg {
     position: absolute;
     z-index: 9;
     top: 0;
+}
+
+.alert {
+    text-align: center;
+    font-size: 0.8em !important;
+}
+
+form {
+    margin-top: 0.5em;
 }
