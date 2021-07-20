@@ -37,14 +37,6 @@ export class LoginfacerecoComponent implements OnInit {
 	constructor( private _faceAuth:FaceauthService, private _router: Router ) { }
 
 	ngOnInit(): void {
-		WebcamUtil.getAvailableVideoInputs()
-		.then((mediaDevices: MediaDeviceInfo[]) => {
-			this.isCameraExist = mediaDevices && mediaDevices.length > 0;
-		});
-
-		this._faceAuth.startProcess();
-		this.startLoginProcess();
-
 		Promise.all([
 			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models'),
 			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models'),
@@ -53,30 +45,17 @@ export class LoginfacerecoComponent implements OnInit {
 		]).then(() => {
 			this.loading = false;
 		}).catch(err => console.warn(err));
+
+		WebcamUtil.getAvailableVideoInputs()
+		.then((mediaDevices: MediaDeviceInfo[]) => {
+			this.isCameraExist = mediaDevices && mediaDevices.length > 0;
+		});
+
+		this._faceAuth.startProcess();
+		this.startLoginProcess();
+
 	}
 
-	showWebcam = true;
-	isCameraExist = true;
-
-	errors: WebcamInitError[] = [];
-
-	private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
-
-	onOffWebCame() {
-		this.showWebcam = !this.showWebcam;
-	}
-
-	handleInitError(error: WebcamInitError) {
-		this.errors.push(error);
-	}
-
-	changeWebCame(directionOrDeviceId: boolean | string) {
-		this.nextWebcam.next(directionOrDeviceId);
-	}
-
-	get nextWebcamObservable(): Observable<boolean | string> {
-		return this.nextWebcam.asObservable();
-	}
 
 	async startLoginProcess() {
 	
@@ -160,6 +139,28 @@ export class LoginfacerecoComponent implements OnInit {
 	recoPhaseFailed: boolean = false;
 	notMatchingOurData: boolean = false;
 	realStage: boolean = false;
+	showWebcam = true;
+	isCameraExist = true;
+
+	errors: WebcamInitError[] = [];
+
+	private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
+
+	onOffWebCame() {
+		this.showWebcam = !this.showWebcam;
+	}
+
+	handleInitError(error: WebcamInitError) {
+		this.errors.push(error);
+	}
+
+	changeWebCame(directionOrDeviceId: boolean | string) {
+		this.nextWebcam.next(directionOrDeviceId);
+	}
+
+	get nextWebcamObservable(): Observable<boolean | string> {
+		return this.nextWebcam.asObservable();
+	}
 
 
 	async handleImage(webcamImage: WebcamImage) {
