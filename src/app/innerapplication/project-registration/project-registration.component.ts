@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {FormBuilder} from '@angular/forms'
 @Component({
   selector: 'app-project-registration',
   templateUrl: './project-registration.component.html',
@@ -7,35 +7,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectRegistrationComponent implements OnInit {
   selectedFile = null;
-  constructor() {}
   imgUrl: string ="";
   videoUrl:string="../../../assets/images/video.mp4"
   // ../../../assets/images/image1.png
-  technologies=["money","something","anything","mine"];
-  tech:string="";
-displayTechnologies(){
-  let newTech=this.tech
-  if (newTech) {
-    this.technologies.push(newTech);
-  }
-  for (let index = 0; index < this.technologies.length; index++) {
-    console.log(this.technologies[index]);
-  }
-}
-
+  question
+  constructor(private formBuilder: FormBuilder) {
+    this.question = this.formBuilder.group({
+      title: ["",[]],
+      desc: ["",[]],
+      qtn: ["...",[]],
+      tagged_tech: ["",[]]
+    })
+   }
+   public options = [
+     {label: "Java", value:"Java"},
+     {label: "Javascript", value:"Javascript"},
+     {label: "Vuex", value:"Vuex"},
+     {label: "React", value:"React"},
+     {label: "Rust", value:"Rust"},
+     {label: "C", value:"C"},
+     {label: "C++", value:"C++"},
+     {label: "C#", value:"C#"},
+     {label: "Go", value:"Go"},
+     {label: "HTML", value:"HTML"},
+     {label: "CSS", value:"CSS"},
+     {label: "SCSS", value:"SCSS"},
+     {label: "SASS", value:"SASS"},
+     {label: "Angular", value:"Angular"},
+     {label: "Python", value:"Python"},
+     {label: "Svelte", value:"Svelte"},
+     {label: "Typescript", value:"Typescript"},
+     {label: "Ruby", value:"Ruby"},
+     {label: "Haskell", value:"Haskell"},
+     {label: "NextJs", value:"NextJs"},
+     {label: "Php", value:"Php"},
+   ]
+   public fields = {text: 'label',value: 'value'}
 
 
   fileSelected(event) {
     this.selectedFile = event.target.files[0].name;
-    // console.log(new Date()+this.selectedFile);
     console.log(event.timeStamp+this.selectedFile);
 
     if (event.target.files) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
-        // this.imgUrl = event.target.result;
-        this.videoUrl = event.target.result;
+        this.imgUrl = event.target.result;
+        // this.videoUrl = event.target.result;
       };
     }
   }
