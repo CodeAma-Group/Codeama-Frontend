@@ -4,25 +4,27 @@
        
         <div class="recognition_container mt-5">
 
-            <img src="../../../assets/images/scan.png" alt="">
             <h1 *ngIf = "startCountDownToShot">
                 {{ secs }}
             </h1>
 
             <div class="recognition_box">
 
-                <webcam 
-                    id = "cam"
-                    [height]="300" 
-                    [width]="350" 
-                    [trigger]="triggerObservable" 
-                    (imageCapture)="handleImage($event)"
-                    class="d-block">
-                </webcam>
+                <div id="cam">
+                    <div *ngIf = "isCamOn">
+                        <webcam 
+                            [height]="300" 
+                            [width]="350" 
+                            [trigger]="triggerObservable" 
+                            (imageCapture)="handleImage($event)"
+                            class="d-block">
+                        </webcam>
+                    </div>
+                </div>
 
                 <div class="webcam-image">
                     <div class="snapshot" *ngIf="webcamImage">
-                        <img height="300" width="350" [src]="webcamImage.imageAsDataUrl" />
+                        <img height="350" width="600" [src]="webcamImage.imageAsDataUrl" />
                     </div>
                 </div>
                 <img id="sample" class="sample" src="../../../assets/images/scansample.png" alt="">
@@ -49,7 +51,7 @@
                 <span class="spinner-border spinner-border-sm mr-1 text-success" ></span>
             </div>
              <div *ngIf = "uploadSuccess" class="alert alert-success">
-                FACE SAMPLES TAKEN SUCCESSFULLY !!
+                Your face samples were taken successfully & ready to upload. <br> <strong>MAKE SURE THEY ARE CLEAR ENOUGH!</strong>
             </div>
             
         </div>
@@ -97,16 +99,6 @@
                     </svg>                      
                     Password
                 </label>
-            </div>
-
-            <div class="form_field mt-3">
-                <button type="submit" class="btn btn-primary">
-                    SIGN UP NOW
-                    <svg id="arrow-right-line" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 26 26">
-                        <path id="Path_9" data-name="Path 9" d="M0,0H26V26H0Z" fill="none"/>
-                        <path id="Path_10" data-name="Path 10" d="M17.694,11.871,11.659,5.818l1.591-1.6L22,13l-8.75,8.778-1.591-1.6,6.034-6.054H4V11.871Z" fill="#fff"/>
-                    </svg>                      
-                </button>
             </div>
 
         </form>
