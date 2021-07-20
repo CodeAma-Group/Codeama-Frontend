@@ -1,5 +1,8 @@
-.container {
-    width: 98%;
+.container-fluid {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: var(--contBgLight);
+    padding: 20px 20px;
 }
 
 img {
