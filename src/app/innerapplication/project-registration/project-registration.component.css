@@ -69,6 +69,7 @@ span {
 .e-dropdownbase,
 input.e-dropdownbase::placeholder {
     /* // visibility: hidden; */
+    /* width: 150%; */
     border: none;
     color: initial;
     font-size: 1.07em;
@@ -79,7 +80,7 @@ input.e-dropdownbase::placeholder {
 }
 
 .e-chips-close.e-close-hooker {
-    top: 33px;
+    top: 28px;
 }
 
 .e-multiselect.e-input-group.e-control-wrapper.e-input-focus::before,
@@ -93,13 +94,27 @@ input.e-dropdownbase::placeholder {
 }
 
 .e-multi-select-wrapper .e-chips {
-    background-color: dodgerblue;
-    height: 28px;
-    border-radius: 7px;
-    margin: 5px;
+    background-color: #727681;
+    height: 30px;
+    border-radius: 4px;
+    margin: 0 2px;
 }
 
 .e-multiselect.e-input-group .e-multi-select-wrapper {
     margin: none;
     padding: none;
+}
+
+.imagefromDb {
+    height: 18em;
+    /* border: 1px dashed grey; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F9F9FB;
+    width: 100%;
+}
+
+.upload-icon {
+    margin-top: 5.2em;
 }

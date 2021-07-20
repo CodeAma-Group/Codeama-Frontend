@@ -2,24 +2,6 @@
     <div class="heading py-2 ms-3">
         <h6 class="my-auto title">Register Your project</h6>
     </div>
-    <style>
-        .imagefromDb {
-            height: 18em;
-            /* border: 1px dashed grey; */
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #F9F9FB;
-            width: 100%;
-        }
-        
-        .upload-icon {
-            margin-top: 5.2em;
-        }
-    </style>
-
-
-
 
     <div class="main_project_reg_div col-lg-12 mx-auto d-flex">
         <div class="uploads col-lg-4 ms-3 me-5">
@@ -63,8 +45,7 @@
                 </div>
                 <div class="form-group">
                     <label for="project-techs">Application technologies</label>
-                    <input type="text" name="project-techs" id="project-techs" class="form-control fm-style" placeholder="Application name">
-                    <ejs-multiselect id="select" formControlName="tagged_tech" [maximumSelectionLength]="6" placeholder="Select not more than 6" class="form-control" [dataSource]="options" [fields]="fields"></ejs-multiselect>
+                    <ejs-multiselect id="select" formControlName="tagged_tech" [maximumSelectionLength]="8" placeholder="select not more than 8 items" class="form-control" [dataSource]="options" [fields]="fields"></ejs-multiselect>
                 </div>
                 <div class="form-group">
                     <label for="project-team">Application Developers Team</label><br><span>Tag your team mate ( The team mate must
