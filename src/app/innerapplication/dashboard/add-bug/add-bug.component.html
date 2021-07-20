@@ -1,1 +1,27 @@
-<p>add-bug works!</p>
+<div class="container-fluid">
+    <div class="heading">
+        <h6>Add bug</h6>
+    </div>
+    <div class="form">
+        <form method="post">
+            <div class="form-group">
+                <label for="bug-title">Bug title</label>
+                <input type="text" id="bug-title" class=" form-control " name=" bugTitle" placeholder="Bug title here">
+            </div>
+            <div class="form-group">
+                <label for="bug-description">Bug Description</label> <span>Write your bug in not more than 200 words</span>
+                <textarea class="form-control" name="bugDescription" id="bug-description" rows="2" maxlength="200" placeholder="Bug description here"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="bug-details">Format your bugs below and include screenshots whenever necessary</label> <span>Don't wory about number of words but try to be specific,
+                    user the tools provided aside ->
+                </span>
+                <textarea class="form-control" name="bugDescription" id="bug-description" rows="5" maxlength="200" placeholder="Bug description here"></textarea>
+
+            </div>
+            <div class="post btn">
+                <a name="post-bug-btn" id="post-bug-btn" class="btn p-3 btn-primary" href="#" role="button">Post your bugs now</a>
+            </div>
+        </form>
+    </div>
+</div>
