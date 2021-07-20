@@ -45,19 +45,16 @@ export class ProjectRegistrationComponent implements OnInit {
    public fields = {text: 'label',value: 'value'}
 
 
-
-
   fileSelected(event) {
     this.selectedFile = event.target.files[0].name;
-    // console.log(new Date()+this.selectedFile);
     console.log(event.timeStamp+this.selectedFile);
 
     if (event.target.files) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
-        // this.imgUrl = event.target.result;
-        this.videoUrl = event.target.result;
+        this.imgUrl = event.target.result;
+        // this.videoUrl = event.target.result;
       };
     }
   }
