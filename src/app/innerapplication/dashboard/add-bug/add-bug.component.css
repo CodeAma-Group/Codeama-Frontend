@@ -12,7 +12,7 @@ span {
 .form-control {
     background-color: var(--dimerBlue);
     outline: none;
-    border: 2px solid var(--dimBlue);
+    border: 0.15em solid var(--dimBlue);
     font-size: 14px;
     color: var(--mainBlack);
     border-radius: 10px!important;
