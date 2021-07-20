@@ -22,11 +22,13 @@ span {
 }
 
 .form-control {
-    background-color: var(--dimerBlue);
+    background-color: #EBF1FA;
     outline: none;
-    border: 2px solid var(--dimBlue);
+    border: .15em solid #66a5f045;
     font-size: 14px;
-    color: var(--mainBlack)
+    color: var(--mainBlack);
+    border-radius: 10px!important;
+    padding: 10px;
 }
 
 .fm-style {

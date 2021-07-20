@@ -26,7 +26,6 @@
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
-
     --contBgDark: #151829;
     --contBgLight: rgba(66, 144, 237, .1);
 }
@@ -186,6 +185,8 @@ ul {
 }
 
 textarea:hover,
+textarea:active,
+textarea:focus,
 input:hover,
 textarea:active,
 input:active,

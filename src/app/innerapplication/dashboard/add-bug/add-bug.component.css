@@ -22,7 +22,7 @@ span {
     border: .15em solid #66a5f045;
     font-size: 14px;
     color: var(--mainBlack);
-    border-radius: 10px!important;
+    border-radius: 8px!important;
     padding: 10px;
 }
 
@@ -35,4 +35,8 @@ label {
 label,
 span {
     color: var(--mainBlack);
+}
+
+.form-group.ms-2.bug-technology {
+    width: 50%;
 }
