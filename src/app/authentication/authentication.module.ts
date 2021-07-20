@@ -12,7 +12,6 @@ import { SignupfacerecoComponent } from './signupfacereco/signupfacereco.compone
 import { LoginfacerecoComponent } from './loginfacereco/loginfacereco.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { CameraComponent } from './camera/camera.component';
 import { VerifyemailComponent } from './verifyemail/verifyemail.component';
 import { EmailverifiedComponent } from './emailverified/emailverified.component';
 
@@ -29,7 +28,8 @@ import { AuthinterceptorService } from './_authServices/authinterceptor.service'
 		LoginfacerecoComponent, 
 		LoginComponent, 
 		SignupComponent, 
-		CameraComponent, VerifyemailComponent, EmailverifiedComponent
+		VerifyemailComponent, 
+		EmailverifiedComponent
 	],
 	imports: [
 		CommonModule,
