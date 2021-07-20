@@ -27,7 +27,7 @@ span {
     border: .15em solid #66a5f045;
     font-size: 14px;
     color: var(--mainBlack);
-    border-radius: 10px!important;
+    border-radius: 8px!important;
     padding: 10px;
 }
 
@@ -52,4 +52,54 @@ label {
 label,
 span {
     color: var(--mainBlack);
+}
+
+.e-multiselect .e-delim-values {
+    margin: 0 !important;
+    padding: 0;
+    border: unset !important;
+}
+
+.e-multiselect.e-input-group.e-control-wrapper {
+    margin: 0 !important;
+    padding: 0;
+    border: unset !important;
+}
+
+.e-dropdownbase,
+input.e-dropdownbase::placeholder {
+    /* // visibility: hidden; */
+    border: none;
+    color: initial;
+    font-size: 1.07em;
+    font-family: "Poppins";
+    font-weight: 400;
+    padding-top: 2px !important;
+    color: #8e8e8e;
+}
+
+.e-chips-close.e-close-hooker {
+    top: 33px;
+}
+
+.e-multiselect.e-input-group.e-control-wrapper.e-input-focus::before,
+.e-multiselect.e-input-group.e-control-wrapper.e-input-focus::after {
+    background: none;
+    display: none;
+}
+
+.e-multiselect .e-multi-select-wrapper .e-chips .e-chipcontent {
+    -webkit-text-fill-color: white;
+}
+
+.e-multi-select-wrapper .e-chips {
+    background-color: dodgerblue;
+    height: 28px;
+    border-radius: 7px;
+    margin: 5px;
+}
+
+.e-multiselect.e-input-group .e-multi-select-wrapper {
+    margin: none;
+    padding: none;
 }

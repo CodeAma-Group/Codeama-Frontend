@@ -64,6 +64,7 @@
                 <div class="form-group ">
                     <label for="project-techs ">Application technologies</label>
                     <input type="text " name="project-techs " id="project-techs " class="form-control fm-style " placeholder="Application name ">
+                    <ejs-multiselect id="select" formControlName="tagged_tech" [maximumSelectionLength]="6" placeholder="Select not more than 6" class="form-control" [dataSource]="options" [fields]="fields"></ejs-multiselect>
                 </div>
                 <div class="form-group ">
                     <label for="project-team ">Application Developers Team</label><br><span>Tag your team mate ( The team mate must
