@@ -24,6 +24,29 @@
     background-color: #F9F9FB;
 }
 
+.detectedImages {
+    position: relative;
+    top: -4.5em;
+    height: 4.9em;
+    background-color: #F9F9FB;
+}
+
+.detectedImages>img {
+    width: 19%;
+    height: 80%;
+    margin-left: 3px;
+}
+
+#post-pro-btn {
+    padding: 15px;
+    margin: 10px auto;
+    width: fit-content;
+    /* height: 40px; */
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    background-color: var(--mainBlue)!important;
+}
+
 span {
     font-size: 11px;
 }
