@@ -25,14 +25,15 @@ export class SignupfacerecoComponent implements OnInit {
 	startCountDownToShot: boolean = false;
 	getReadyToStartShot: boolean = false;
 	stepOne: boolean = false;
+	stepIntervaTimer: number = 10000;
+	startProcessInterval: any;
+	stepInterval: any;
+	secondTimerInterval: any;
+	isCamOn:boolean = true;
 
 	constructor( private _faceAuth:FaceauthService ) { }
-
+	
 	ngOnInit(): void {
-		
-		this._faceAuth.startProcess();
-		this.startSignupProcess();
-
 		Promise.all([
 			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models'),
 			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models'),
@@ -41,11 +42,15 @@ export class SignupfacerecoComponent implements OnInit {
 		]).then(() => {
 			this.loading = false;
 		}).catch(err => console.warn(err));
+		
+		this.startSignupProcess();
+		document.getElementById("sample").style.display = "none";
+
 	}
 
 	startSignupProcess() {
-	
-		setInterval(() => {
+		
+		this.startProcessInterval = setInterval(() => {
 			if (this.steps == 0) {
 				if (this.showProcedureNotice) {
 					this.showProcedureNotice = false;
@@ -63,7 +68,7 @@ export class SignupfacerecoComponent implements OnInit {
 
 				if (this.stepOne) {
 					var shotNumber = 0;
-					setInterval(() => {
+					this.secondTimerInterval = setInterval(() => {
 						if (this.secs > 0) {
 							this.secs -= 1;
 						} else {
@@ -75,7 +80,7 @@ export class SignupfacerecoComponent implements OnInit {
 							shotNumber += 1;
 							return;
 						}
-					}, 1000)
+					}, 1000	)
 				}
 
 			}
@@ -84,16 +89,17 @@ export class SignupfacerecoComponent implements OnInit {
 				this.stepOne = false;
 			}		
 	
-		},10000)
+		}, this.stepIntervaTimer)
 		
 
-		setInterval(() => {
+		this.stepInterval = setInterval(() => {
 			if (this.steps <= 9) {
 				this.steps += 1;
+				console.warn(this.steps);
 			} else {
-				console.log(this.faceMatchScore);
+				clearInterval(this.stepInterval);
 			}
-		}, 10000)
+		}, this.stepIntervaTimer)
 
 	}
 
@@ -104,24 +110,16 @@ export class SignupfacerecoComponent implements OnInit {
 	uploadSuccess = false;
 	private trigger: Subject<void> = new Subject<void>();
 	loading = true;
-	matchFound = false;
-	faceMatchScore = 0;
-	processingResult = false;
-	processingCompleted = false;
 	container: any;
-	loadedImageLabels: any;
-	noFaceDetectedError = false;
-
-	databaseUserBlobSamples: any;
+	noFaceDetectedError: boolean = false;
 
 
 	async handleImage(webcamImage: WebcamImage) {
 		this.webcamImage = webcamImage;
 		// console.warn(webcamImage.imageAsDataUrl)
 		this.images.push(webcamImage);
-		this.loadedImageLabels = await this.loadImageLabels();
-
-		this.compareTriggers();
+		this.isCamOn = false;
+		this.checkIfSamplesHaveFaces();
 	}
 
 	triggerSnapshot(): void {
@@ -132,73 +130,21 @@ export class SignupfacerecoComponent implements OnInit {
 		return this.trigger.asObservable();
 	}
 
-	loadImageLabels(): Promise<any> {
+
+	checkIfSamplesHaveFaces(): Promise<any> {
 		const labels = ['Face match detected'];
 		return Promise.all(
-			labels.map(async label => {
-				const descriptions = [];
+			labels.map(async () => {
 				const img = await faceapi.fetchImage(`${this.webcamImage.imageAsDataUrl}`);
 				const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions({ inputSize: 320 })).withFaceLandmarks().withFaceDescriptor();
 				if (detections?.descriptor) {
-					this.noFaceDetectedError = false;
-					descriptions.push(detections.descriptor);
-
+					return this.uploadSuccess = true;
 				} else {
-					this.noFaceDetectedError = true;
+					return this.noFaceDetectedError = true;
 				}
-				return new faceapi.LabeledFaceDescriptors(label, descriptions)
 			})
 		)
 	}
 
-
-	async compareTriggers() {
-		
-		async function getFileFromUrl(url, name, defaultType = 'image/jfif'){
-			const response = await fetch(url);
-			const data = await response.blob();
-			return new File([data], name, {
-				type: response.headers.get('content-type') || defaultType,
-			});
-		}
-
-		const file = await getFileFromUrl('http://localhost:4200/assets/face_detection_test/download.jfif', 'download.jfif');
-		this.databaseUserBlobSamples = file;
-		this.uploadSuccess = true;
-
-		this.start(this.databaseUserBlobSamples);
-
-	}
-	
-	async start(uploadedImage: any) {
-		this.matchFound = false;
-		this.faceMatchScore = 0;
-		this.processingResult = true;
-		this.processingCompleted = false;
-		let image;
-		let canvas;
-
-		const labeledFaceDescriptors = this.loadedImageLabels;
-		const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.5);
-
-		image = await faceapi.bufferToImage(uploadedImage);
-		canvas = faceapi.createCanvasFromMedia(image);
-		const displaySize = { width: image.width, height: image.height };
-		faceapi.matchDimensions(canvas, displaySize);
-
-		const detections = await faceapi.detectAllFaces(image, new faceapi.TinyFaceDetectorOptions({ inputSize: 320 })).withFaceLandmarks().withFaceDescriptors();
-		const resizedDetections = faceapi.resizeResults(detections, displaySize);
-		const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor));
-		results.forEach((result, i) => {
-			if (result.label === 'Face match detected') {
-				this.matchFound = true;
-				this.faceMatchScore = Math.round((1 - result.distance) * 100);
-			} else if (!this.matchFound && i === results.length - 1) {
-				this.faceMatchScore = Math.round((1 - result.distance) * 100);				
-			}
-		});
-		this.processingResult = false;
-		this.processingCompleted = true;
-	}
 
 }
