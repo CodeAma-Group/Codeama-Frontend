@@ -1,18 +1,25 @@
 .container-fluid>.heading {
-    position: relative;
-    top: 10px;
+    font-weight: 600;
+}
+
+.container-fluid {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: var(--contBgLight);
+    padding: 20px 20px;
 }
 
 span {
     font-size: 11px;
     display: block;
     margin-bottom: 5px;
+    color: rgb(179, 174, 174)!important;
 }
 
 .form-control {
-    background-color: var(--dimerBlue);
+    background-color: #EBF1FA;
     outline: none;
-    border: 0.15em solid var(--dimBlue);
+    border: .15em solid #66a5f045;
     font-size: 14px;
     color: var(--mainBlack);
     border-radius: 10px!important;
