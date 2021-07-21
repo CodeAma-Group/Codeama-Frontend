@@ -60,26 +60,22 @@ export class ProjectRegistrationComponent implements OnInit {
     }
   }
 
-  multipleProjectImages(event) {
-    this.OthernewImages = event.target.files;
-    if (this.OthernewImages) {
-      [].forEach.call(this.OthernewImages, readAndPreview);
-    }
-    function readAndPreview(file) {
-      // Make sure `file.name` matches our extensions criteria
-      if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
-        return alert(file.name + ' is not an newImage');
-      } // else...
+  urls = new Array<string>();
 
-      var reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (event: any) => {
-        this.newImageUrl=event.target.result
+  detectFiles(event) {
+    this.urls = [];
+    let files = event.target.files;
+    if (files) {
+      for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.urls.push(e.target.result);
+        }
+        reader.readAsDataURL(file);
       }
-      console.log(this.newImageUrl);
-      
     }
   }
+  
   uploadFile() {
     const fd = new FormData();
     fd.append('file', this.selectedImg, this.selectedImg.name);
