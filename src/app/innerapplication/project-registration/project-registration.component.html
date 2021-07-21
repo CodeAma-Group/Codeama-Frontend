@@ -21,6 +21,20 @@
             <source src="../../../assets/images/image1.png" type="video/mp4" >
           </video> -->
                 </div>
+                <style>
+                    .detectedImages {
+                        position: relative;
+                        top: 4em;
+                        height: 5em;
+                        background-color: aqua;
+                    }
+                    
+                    .detectedImages>img {
+                        width: 19%;
+                        height: 80%;
+                        margin-left: 10px;
+                    }
+                </style>
                 <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
             </div>
             <div class="uploads-2" (click)="OtherImages.click()">
@@ -32,9 +46,11 @@
               transform="translate(1803 -6704.429)" fill="rgba(255,255,255,0.61)" />
           </svg>
                     <span class="ms-2">select other project pages maximum 5</span>
-                    <img *ngFor="let url of urls" [src]="url" class="rounded mb-3">
+                    <div class="detectedImages">
+                        <img *ngFor="let url of urls" [src]="url" class="rounded my-auto">
+                    </div>
                 </div>
-                <input type=" file " hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm " name="file " id="OtherImagesUplopad " (change)="detectFiles($event) " multiple #OtherImages>
+                <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm " name="file " id="OtherImagesUplopad " (change)="detectFiles($event) " multiple #OtherImages>
             </div>
         </div>
         <div class="user-inputs col-lg-7 mx-auto ">
