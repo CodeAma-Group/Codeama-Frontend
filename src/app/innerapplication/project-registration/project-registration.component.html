@@ -4,7 +4,7 @@
     </div>
 
     <div class="main_project_reg_div col-lg-12 mx-auto d-flex">
-        <div class="uploads col-lg-4 ms-3 me-5">
+        <div class="uploads col-lg-5 ms-3 me-5">
             <div class="upload-1 my-3">
                 <span>Only the main app page pic or shot 10 second long video should be in this container</span>
                 <div class="main-page-or-video text-center" (click)="mainPageInput.click()">
@@ -32,7 +32,7 @@
                     .detectedImages>img {
                         width: 19%;
                         height: 80%;
-                        margin-left: 10px;
+                        margin-left: 3px;
                     }
                 </style>
                 <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
@@ -47,7 +47,7 @@
           </svg>
                     <span class="ms-2">select other project pages maximum 5</span>
                     <div class="detectedImages">
-                        <img *ngFor="let url of urls" [src]="url" class="rounded my-auto">
+                        <img *ngFor="let url of urls" [src]="url" class="rounded my-2">
                     </div>
                 </div>
                 <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm " name="file " id="OtherImagesUplopad " (change)="detectFiles($event) " multiple #OtherImages>
