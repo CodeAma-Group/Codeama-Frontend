@@ -160,3 +160,9 @@ form {
     z-index: 5;
     opacity: 1 !important;
 }
+
+.form-floating>p {
+    font-size: 0.75em;
+    color: var(--mainBlack);
+    opacity: 0.75;
+}
