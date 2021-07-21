@@ -64,7 +64,8 @@ ul {
 
 #addPro {
     position: relative;
-    left: 4em;
+    left: 6.6em;
+    font-size: 13px;
 }
 
 .container-fluid>.heading {
