@@ -51,10 +51,12 @@ export class SignupfacerecoComponent implements OnInit {
 	startSignupProcess() {
 		
 		this.startProcessInterval = setInterval(() => {
+
 			if (this.steps == 0) {
 				if (this.showProcedureNotice) {
 					this.showProcedureNotice = false;
 					this.alertToStartGettingSamples = true;
+					this.webcamImage = null;
 				}
 			}
 			
@@ -111,6 +113,7 @@ export class SignupfacerecoComponent implements OnInit {
 	private trigger: Subject<void> = new Subject<void>();
 	loading = true;
 	container: any;
+	shotTaken: boolean = false;
 	noFaceDetectedError: boolean = false;
 
 
@@ -138,12 +141,141 @@ export class SignupfacerecoComponent implements OnInit {
 				const img = await faceapi.fetchImage(`${this.webcamImage.imageAsDataUrl}`);
 				const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions({ inputSize: 320 })).withFaceLandmarks().withFaceDescriptor();
 				if (detections?.descriptor) {
-					return this.uploadSuccess = true;
+					this.stepOne = false;
+					clearInterval(this.startProcessInterval);
+					clearInterval(this.stepIntervaTimer);
+					clearInterval(this.stepInterval);
+					this.uploadSuccess = true;
+					this.shotTaken = true;
+
+					var timer = 0; 
+					var timingInterval = setInterval(() => {
+						if (timer == 1) {							
+							this.uploadSuccess = true;
+						}
+						timer = timer + 1;
+						if (timer == 2) {
+							clearInterval(timingInterval);
+							
+							if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
+								this.registerUser();
+							} else if (this.usernameFilled && this.emailFilled) {
+								this.fieldErrorMsg = "please fill out the password";
+							} else if (this.usernameFilled) {
+								this.fieldErrorMsg = "Please fill out the email and password";
+							} else if (this.usernameFilled && this.passwordFilled) {
+								this.fieldErrorMsg = "Please fill out the email field";
+							} else if (this.emailFilled && this.passwordFilled) {
+								this.fieldErrorMsg = "Please fill out the username";
+							} else if (this.emailFilled) {
+								this.fieldErrorMsg = "Please fill the password and username";
+							} else if (this.passwordFilled) {
+								this.fieldErrorMsg = "Please fill the email and username";
+							} else {
+								this.fieldErrorMsg = "All fields should be filled";
+							}
+							
+							if (!this.usernameFilled || !this.emailFilled || !this.passwordFilled) {
+								this.uploadSuccess = false;
+								this.fieldError = true;
+							}			
+							
+						}
+					}, 5000)
+
+
 				} else {
-					return this.noFaceDetectedError = true;
+					var timer = 0; 
+					var timingInterval = setInterval(() => {
+						if (timer == 1) {
+							this.stepOne = false;
+							this.noFaceDetectedError = false;
+							this.steps = 0;
+							this.showProcedureNotice = true;
+							this.alertToStartGettingSamples = false;
+							this.startCountDownToShot = false;
+							this.getReadyToStartShot = false;
+							this.isCamOn = true;
+							this.webcamImage = null;
+							clearInterval(this.startProcessInterval);
+							clearInterval(this.stepIntervaTimer);
+							clearInterval(this.stepInterval);
+			
+							this.startSignupProcess();							
+						}
+						timer = timer + 1;
+						if (timer == 2) {
+							clearInterval(timingInterval);
+						}
+					}, 10000)
+
+					this.noFaceDetectedError = true;
 				}
 			})
 		)
+	}
+
+	//user fields
+	usernameFilled: boolean = false;
+	emailFilled: boolean = false;
+	passwordFilled: boolean = false;
+	fieldError: boolean = false;
+	fieldErrorMsg: string = '';
+	preparingUpload: boolean = false;
+	regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	invalidEmail: boolean = false;
+
+	recentValidCheck() {
+		if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
+			this.fieldError = false;
+		}
+
+		if (this.usernameFilled && this.emailFilled && this.passwordFilled && this.shotTaken) {
+			this.fieldError = false;
+			this.preparingUpload = true;
+			console.log("uploading")
+			this.registerUser();
+		}
+	}
+
+	async getUsername(data: string) {
+		console.log(data);
+		this.usernameFilled = true;
+		document.getElementById("floatingInput").blur();
+
+		await this.recentValidCheck();
+	}
+
+	async getEmail(data: string) {
+		const valid = this.regularExpression.test(String(data).toLowerCase());
+		if (!valid) {
+			this.fieldErrorMsg = "Invalid email address entered!";
+			console.log("invalid");
+		} else {
+			console.log(data)
+			this.fieldErrorMsg = "All fields should be filled out";
+			this.emailFilled = true;
+			document.getElementById("floatingInputEmail").blur();
+			
+			await this.recentValidCheck();
+		}
+	}
+
+	async getPassword(data: string) {
+		if (data.length < 6) {
+			this.fieldErrorMsg = "Password should be atleast 6 characters.";
+		} else {
+			this.fieldErrorMsg = "All fields should be filled out."
+			console.log(data)
+			this.passwordFilled = true;
+			document.getElementById("floatingPassword").blur();
+			
+			await this.recentValidCheck();
+		}
+	}
+
+	registerUser() {
+		console.log("ready to submit now --- SUBNITTED DATA");		
 	}
 
 
