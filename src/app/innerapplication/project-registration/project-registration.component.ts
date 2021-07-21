@@ -6,7 +6,8 @@ import {FormBuilder} from '@angular/forms'
   styleUrls: ['./project-registration.component.css'],
 })
 export class ProjectRegistrationComponent implements OnInit {
-  selectedFile = null;
+  selectedImg = null;
+  OtherImages=[];
   imgUrl: string ="";
   videoUrl:string="../../../assets/images/video.mp4"
   // ../../../assets/images/image1.png
@@ -46,8 +47,8 @@ export class ProjectRegistrationComponent implements OnInit {
 
 
   fileSelected(event) {
-    this.selectedFile = event.target.files[0].name;
-    console.log(event.timeStamp+this.selectedFile);
+    this.selectedImg = event.target.files[0].name;
+    console.log(event.timeStamp+this.selectedImg);
 
     if (event.target.files) {
       const reader = new FileReader();
@@ -58,9 +59,14 @@ export class ProjectRegistrationComponent implements OnInit {
       };
     }
   }
+
+  multipleProjectImages(event){
+    console.log(this.OtherImages = event.target.files[0].name);
+    
+  }
   uploadFile() {
     const fd = new FormData();
-    fd.append('file', this.selectedFile, this.selectedFile.name);
+    fd.append('file', this.selectedImg, this.selectedImg.name);
   }
   
 
