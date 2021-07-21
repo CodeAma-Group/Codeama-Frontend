@@ -9,6 +9,10 @@
     padding: 20px 20px;
 }
 
+.heading-text {
+    padding-top: 21px;
+}
+
 span {
     font-size: 11px;
     display: block;
