@@ -21,20 +21,6 @@
             <source src="../../../assets/images/image1.png" type="video/mp4" >
           </video> -->
                 </div>
-                <style>
-                    .detectedImages {
-                        position: relative;
-                        top: -4.5em;
-                        height: 4.9em;
-                        background-color: #F9F9FB;
-                    }
-                    
-                    .detectedImages>img {
-                        width: 19%;
-                        height: 80%;
-                        margin-left: 3px;
-                    }
-                </style>
                 <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
             </div>
             <div class="uploads-2" (click)="OtherImages.click()">
@@ -84,6 +70,6 @@
         </div>
     </div>
     <div class="post-btn text-end my-3 me-3 ">
-        <a type="submit " name=" post-pro-btn " id="post-pro-btn " class="btn px-3 py-2 btn-md btn-primary " href="# " role="button ">Post your project Now</a>
+        <a type="submit " name=" post-pro-btn " id="post-pro-btn" class="btn" href="# " role="button ">Post your project Now</a>
     </div>
 </div>
