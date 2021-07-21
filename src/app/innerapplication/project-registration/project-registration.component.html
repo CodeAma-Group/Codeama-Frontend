@@ -24,9 +24,9 @@
                 <style>
                     .detectedImages {
                         position: relative;
-                        top: 4em;
+                        top: -4.5em;
                         height: 5em;
-                        background-color: aqua;
+                        background-color: #F9F9FB;
                     }
                     
                     .detectedImages>img {
@@ -39,15 +39,15 @@
             </div>
             <div class="uploads-2" (click)="OtherImages.click()">
                 <div class="other-uploads">
-                    <svg id="svg" class="ms-1 mt-1" xmlns=" http://www.w3.org/2000/svg" width="64" height="52" viewBox="0 0 64 52">
+                    <svg id="svg" class="ms-1 mt-1" xmlns=" http://www.w3.org/2000/svg" width="64" height="68" viewBox="0 0 64 52">
             <rect id="Rectangle_195" data-name="Rectangle 195" width="64" height="52" fill="rgba(0,0,0,0.14)" />
             <path id="Path_183" data-name="Path 183"
               d="M-1792.988,6745.147H-1753V6710.54s-5.46,17.187-12.612,20.578-10-8.418-16-7.015-11.381,11.224-11.381,11.224Z"
               transform="translate(1803 -6704.429)" fill="rgba(255,255,255,0.61)" />
           </svg>
                     <span class="ms-2">select other project pages maximum 5</span>
-                    <div class="detectedImages">
-                        <img *ngFor="let url of urls" [src]="url" class="rounded my-2">
+                    <div class="detectedImages" *ngIf="Show">
+                        <img *ngFor="let url of urls" [src]="url" class=" rounded my-2 ">
                     </div>
                 </div>
                 <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm " name="file " id="OtherImagesUplopad " (change)="detectFiles($event) " multiple #OtherImages>
