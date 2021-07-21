@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { inputs } from '@syncfusion/ej2-angular-dropdowns/src/drop-down-list/dropdownlist.component';
 
 import * as faceapi from 'face-api.js';
 import { WebcamImage } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
+import { AuthService } from '../_authServices/auth.service'
 import { FaceauthService } from '../_authServices/faceauth.service'
 
 @Component({
@@ -31,7 +33,7 @@ export class SignupfacerecoComponent implements OnInit {
 	secondTimerInterval: any;
 	isCamOn:boolean = true;
 
-	constructor( private _faceAuth:FaceauthService ) { }
+	constructor( private _faceAuth: FaceauthService, private _authService: AuthService ) { }
 	
 	ngOnInit(): void {
 		Promise.all([
@@ -119,7 +121,6 @@ export class SignupfacerecoComponent implements OnInit {
 
 	async handleImage(webcamImage: WebcamImage) {
 		this.webcamImage = webcamImage;
-		// console.warn(webcamImage.imageAsDataUrl)
 		this.images.push(webcamImage);
 		this.isCamOn = false;
 		this.checkIfSamplesHaveFaces();
@@ -132,7 +133,6 @@ export class SignupfacerecoComponent implements OnInit {
 	public get triggerObservable(): Observable<void> {
 		return this.trigger.asObservable();
 	}
-
 
 	checkIfSamplesHaveFaces(): Promise<any> {
 		const labels = ['Face match detected'];
@@ -158,7 +158,24 @@ export class SignupfacerecoComponent implements OnInit {
 							clearInterval(timingInterval);
 							
 							if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
-								this.registerUser();
+								this.uploadSuccess = false;
+								this.preparingUpload = true;
+
+								var imageBlob = this.webcamImage.imageAsDataUrl;
+								let image = new File([imageBlob], "profile.png", { type: "image/png" });
+
+								console.log(image)
+
+								let data = {
+									"faceRecognitionPicture": `${image.name}`,
+									"Username": `${this.username}`,
+									"Email": `${this.email}`,
+									"Password": `${this.password}`
+								}
+
+								console.log(data);
+
+								this.registerUser(data);
 							} else if (this.usernameFilled && this.emailFilled) {
 								this.fieldErrorMsg = "please fill out the password";
 							} else if (this.usernameFilled) {
@@ -225,6 +242,10 @@ export class SignupfacerecoComponent implements OnInit {
 	regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	invalidEmail: boolean = false;
 
+	username: string = '';
+	email: string = '';
+	password: string = '';
+
 	recentValidCheck() {
 		if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
 			this.fieldError = false;
@@ -232,14 +253,28 @@ export class SignupfacerecoComponent implements OnInit {
 
 		if (this.usernameFilled && this.emailFilled && this.passwordFilled && this.shotTaken) {
 			this.fieldError = false;
+			this.uploadSuccess = false;
 			this.preparingUpload = true;
-			console.log("uploading")
-			this.registerUser();
+
+			var imageBlob = this.webcamImage.imageAsDataUrl;
+			let image = new File([imageBlob], "profile.png", { type: "image/png" });
+			console.log(image)
+			
+			let data = {
+				"faceRecognitionPicture": `${image.name}`,
+				"Username": `${this.username}`,
+				"Email": `${this.email}`,
+				"Password": `${this.password}`
+			}
+
+			console.log(data)
+
+			this.registerUser(data);
 		}
 	}
 
 	async getUsername(data: string) {
-		console.log(data);
+		this.username = data;
 		this.usernameFilled = true;
 		document.getElementById("floatingInput").blur();
 
@@ -250,9 +285,8 @@ export class SignupfacerecoComponent implements OnInit {
 		const valid = this.regularExpression.test(String(data).toLowerCase());
 		if (!valid) {
 			this.fieldErrorMsg = "Invalid email address entered!";
-			console.log("invalid");
 		} else {
-			console.log(data)
+			this.email = data;
 			this.fieldErrorMsg = "All fields should be filled out";
 			this.emailFilled = true;
 			document.getElementById("floatingInputEmail").blur();
@@ -266,7 +300,7 @@ export class SignupfacerecoComponent implements OnInit {
 			this.fieldErrorMsg = "Password should be atleast 6 characters.";
 		} else {
 			this.fieldErrorMsg = "All fields should be filled out."
-			console.log(data)
+			this.password = data;
 			this.passwordFilled = true;
 			document.getElementById("floatingPassword").blur();
 			
@@ -274,9 +308,16 @@ export class SignupfacerecoComponent implements OnInit {
 		}
 	}
 
-	registerUser() {
-		console.log("ready to submit now --- SUBNITTED DATA");		
+	async registerUser(data: object) {
+		await this._authService.registerUser(data).subscribe(
+			res => {
+				// this._router.navigate(['/auth/verifyemail']);
+				console.warn(res);
+			},
+			err => {
+				console.log(err);
+			}
+		);
 	}
-
 
 }

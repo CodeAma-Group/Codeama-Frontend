@@ -123,6 +123,7 @@ export class SignupformComponent implements OnInit {
 
 		this._auth.registerUser(data).subscribe(
 			res => {
+				console.log(data)
 				this._router.navigate(['/auth/verifyemail']);
 			},
 			err => {
