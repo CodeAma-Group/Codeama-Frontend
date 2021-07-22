@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
-  styleUrls: ['./project-details.component.css']
+  styleUrls: ['./project-details.component.css'],
 })
 export class ProjectDetailsComponent implements OnInit {
-  constructor() { }
-projectImages=[];
-ProjectImageOnStage:string="";
+  constructor() {}
+  projectImages = [];
+  ProjectImageOnStage: string = '';
 
   ngOnInit(): void {
     this.projectImages = [
@@ -18,10 +18,9 @@ ProjectImageOnStage:string="";
       '../../../assets/images/image1.png',
       '../../../assets/images/image3.png',
     ];
-    this.ProjectImageOnStage=this.projectImages[0];
+    this.ProjectImageOnStage = this.projectImages[0];
   }
-  imageOnStage(){
-    alert("something is calling")
-     }
+  imageOnStage(data:any) {
+    this.ProjectImageOnStage=data.src;
   }
-
+}
