@@ -6,6 +6,25 @@
     <div class="main_project_reg_div col-lg-12 mx-auto d-flex">
         <div class="uploads col-lg-5 ms-3 me-5">
             <div class="upload-1 my-3">
+                <label for="">Company Logo</label>
+                <div class="main-page-or-video text-center" (click)="mainPageInput.click()">
+                    <svg class="upload-icon" xmlns=" http://www.w3.org/2000/svg" width="103" height="81" viewBox="0 0 103 81">
+            <rect id="Rectangle_184" data-name="Rectangle 184" width="103" height="81" fill="rgba(0,0,0,0.14)" />
+            <path id="Path_180" data-name="Path 180"
+              d="M-1792.988,6774.147h79.05v-63.607s-10.793,31.589-24.931,37.821-19.763-15.473-31.62-12.894-22.5,20.629-22.5,20.629Z"
+              transform="translate(1803 -6698.148)" fill="rgba(255,255,255,0.61)" />
+          </svg>
+                    <br>
+                    <span class="ms-2">Company or Group logo goes here</span>
+                    <div class="mx-auto col-lg-7 imagefromDb1Container">
+                        <img [src]="imgUrl" *ngIf="imgUrl!=''" class="imagefromDb1" alt="">
+                    </div>
+                </div>
+                <input type="file" hidden accept=".png,.mp4,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
+            </div>
+            <div class="upload-1 my-3">
+                <label for="">Project Main page</label>
+                <br>
                 <span>Only the main app page pic or shot 10 second long video should be in this container</span>
                 <div class="main-page-or-video text-center" (click)="mainPageInput.click()">
                     <svg class="upload-icon" xmlns=" http://www.w3.org/2000/svg" width="103" height="81" viewBox="0 0 103 81">
@@ -17,11 +36,8 @@
                     <br>
                     <span class="ms-2">Main app page photo or short demo video</span>
                     <img [src]="imgUrl" *ngIf="imgUrl!=''" class="imagefromDb" alt="">
-                    <!-- <video width="320" height="240" controls>
-            <source src="../../../assets/images/image1.png" type="video/mp4" >
-          </video> -->
                 </div>
-                <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
+                <input type="file" hidden accept=".png,.mp4,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
             </div>
             <div class="uploads-2" (click)="OtherImages.click()">
                 <div class="other-uploads">
@@ -33,43 +49,62 @@
           </svg>
                     <span class="ms-2">select other project pages maximum 5</span>
                     <div class="detectedImages" *ngIf="Show">
-                        <img *ngFor="let url of urls" [src]="url" class=" rounded my-2 ">
+                        <img *ngFor="let url of urls" [src]="url" class=" rounded my-2">
                     </div>
                 </div>
-                <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm " name="file " id="OtherImagesUplopad " (change)="detectFiles($event) " multiple #OtherImages>
+                <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="OtherImagesUplopad" (change)="detectFiles($event)" multiple #OtherImages>
             </div>
         </div>
-        <div class="user-inputs col-lg-6 mx-auto ">
-            <form class=" form col-lg-12 ">
-                <div class="form-group ">
-                    <label for="project-name ">Project name</label>
-                    <input type="text " name="project-name " id="project-name " class="form-control fm-style " placeholder="Application name ">
+        <div class="user-inputs col-lg-6 mx-auto">
+            <form class=" form col-lg-12" [formGroup]="newProjectForm" (ngSubmit)="collectData()">
+                <div class="form-group">
+                    <label for="project-name">Group or Company name</label>
+                    <input type="text" formControlName="projectName" name="projectName" id="project-name" class="form-control fm-style" placeholder="Application name">
                 </div>
-                <div class="form-group ">
-                    <label for="project-techs ">Application technologies</label>
-                    <ejs-multiselect id="select " formControlName="tagged_tech " [maximumSelectionLength]="8 " placeholder="select not more than 8 items " class="form-control " [dataSource]="options " [fields]="fields "></ejs-multiselect>
+                <div class="form-group">
+                    <label for="project-name">Project name</label>
+                    <input type="text" formControlName="projectName" name="projectName" id="project-name" class="form-control fm-style" placeholder="Application name">
                 </div>
-                <div class="form-group ">
-                    <label for="project-team ">Application Developers Team</label><br><span>Tag your team mate ( The team mate must
-                    be have an account in codeama)</span>
-                    <input type="text " name="project-team " id="project-team " class="form-control fm-style " placeholder="Developers team ">
+                <div class="form-group">
+                    <label for="project-techs">Project technologies</label>
+                    <ejs-multiselect id="select" formControlName="tagged_tech" [maximumSelectionLength]="8" placeholder="select not more than 8 items" class="form-control" [dataSource]="options" [fields]="fields">
+                    </ejs-multiselect>
                 </div>
-                <div class="form-group ">
-                    <span>If your team mate is not using codeama tag his email address</span>
-                    <input type="email " name="project-teamm-no-account " id="project-teamm-no-account " class="form-control fm-style " placeholder="Application name ">
+                <div class="form-group">
+                    <label for="project-techs">Project features</label>
+                    <ejs-multiselect id="select" formControlName="tagged_tech" [maximumSelectionLength]="8" placeholder="select not more than 8 items" class="form-control" [dataSource]="options" [fields]="fields">
+                    </ejs-multiselect>
+                </div>
+                <div class="demo-links d-flex">
+                    <div class="form-group">
+                        <label for="github-link">Github Link</label>
+                        <input type="text" formControlName="githubLink" name="githubLink" id="github-link" class="form-control fm-style" placeholder="Github link">
+                    </div>
+                    <div class="form-group">
+                        <label for="app-link">App Link</label>
+                        <input type="text" formControlName="appLink" name="appLink" id="app-link" class="form-control fm-style" placeholder="Github link">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="project-team">Project Developers Team</label><br><span>Tag your team mate ( The team mate must
+            be have an account in codeama)</span>
+                    <input type="text" name="project-team" id="project-team" class="form-control fm-style" placeholder="Developers team">
+                </div>
+                <div class="form-group">
+                    <span>If your team mate is not using codeama currently tag his email address</span>
+                    <input type="email" name="project-teamm-no-account" id="project-teamm-no-account" class="form-control fm-style" placeholder="Application name">
+                </div>
+
+                <div class="application-desription mx-auto">
+                    <div class="form-group">
+                        <label for="app-description">Description</label>
+                        <br>
+                        <span>Only 30 words</span>
+                        <textarea class="form-control" formControlName="app_description" name="app_description" id="app-description" rows=" 3"></textarea>
+                    </div>
+                </div>
+                <div class="post-btn text-end my-3 me-3">
+                    <button type="submit" name=" post-pro-btn" id="post-pro-btn" class="btn">Post your project Now</button>
                 </div>
             </form>
         </div>
-    </div>
-    <div class="application-desription mx-auto ">
-        <div class="form-group ">
-            <label for="app-description ">Description</label>
-            <br>
-            <span>Only 30 words</span>
-            <textarea class="form-control " name="app-description " id="app-description " maxlength="30 " rows=" 3 "></textarea>
-        </div>
-    </div>
-    <div class="post-btn text-end my-3 me-3 ">
-        <a type="submit " name=" post-pro-btn " id="post-pro-btn" class="btn" href="# " role="button ">Post your project Now</a>
-    </div>
-</div>

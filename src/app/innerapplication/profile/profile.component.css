@@ -1,35 +1,50 @@
-a:hover{
-    text-decoration: none;
+#entire_user_profile {
+    width: 100%;
+    height: auto;
+    background-color: var(--bgBlue);
+    overflow-x: hidden;
+    position: relative;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
 }
-.bg-color {
-    background-color: #f4f7fb;
+
+.user_profile_image {
+    position: absolute;
+    width: 8em;
+    height: 8em;
+    background-color: var(--pureWhite);
+    border-radius: 50%;
+    left: 3%;
+    bottom: 9%;
+    overflow: hidden;
 }
-.cl-silver {
-    color: silver;
+
+.user_profile_image>img {
+    width: 100%;
+    height: 100%;
 }
-.skills{
-    display: inline-flex;
+
+.cover_banner {
+    width: 100%;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    height: 43vh;
+    overflow: hidden;
 }
-input::placeholder{
-    color: silver;
+
+.cover_photo {
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
 }
-.skills>li{
-    padding-left: 10px;
-    color: silver;
+
+.user_main_detail_content {
+    width: 100%;
+    height: 30%;
+    background-color: red;
 }
-.status {
-    padding-top: 20px;
-}
-.border{
-    border-width: 5px;
-}
-.border-light-blue{
-    border-color: #96c0f3;
-    border-width: 2px;
-}
-.bg-light-blue{
-    background-color: #ebf1fa;
-}
-.bg-brur-blue{
-    background-color: #f7f9fc;;
+
+.user_details {
+    width: 100%;
+    height: 100vh;
 }

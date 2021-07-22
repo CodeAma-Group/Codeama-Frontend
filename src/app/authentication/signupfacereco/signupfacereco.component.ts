@@ -122,6 +122,7 @@ export class SignupfacerecoComponent implements OnInit {
 	async handleImage(webcamImage: WebcamImage) {
 		this.webcamImage = webcamImage;
 		this.images.push(webcamImage);
+		console.log(this.webcamImage);
 		this.isCamOn = false;
 		this.checkIfSamplesHaveFaces();
 	}
@@ -162,12 +163,11 @@ export class SignupfacerecoComponent implements OnInit {
 								this.preparingUpload = true;
 
 								var imageBlob = this.webcamImage.imageAsDataUrl;
-								let image = new File([imageBlob], "profile.png", { type: "image/png" });
-
-								console.log(image)
+								// let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
+								console.log(imageBlob);
 
 								let data = {
-									"faceRecognitionPicture": `${image.name}`,
+									"faceRecognitionPicture": `${imageBlob}`,
 									"Username": `${this.username}`,
 									"Email": `${this.email}`,
 									"Password": `${this.password}`
@@ -246,7 +246,7 @@ export class SignupfacerecoComponent implements OnInit {
 	email: string = '';
 	password: string = '';
 
-	recentValidCheck() {
+	async recentValidCheck() {
 		if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
 			this.fieldError = false;
 		}
@@ -257,11 +257,12 @@ export class SignupfacerecoComponent implements OnInit {
 			this.preparingUpload = true;
 
 			var imageBlob = this.webcamImage.imageAsDataUrl;
-			let image = new File([imageBlob], "profile.png", { type: "image/png" });
-			console.log(image)
+			// let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
+
+			console.log(imageBlob);
 			
 			let data = {
-				"faceRecognitionPicture": `${image.name}`,
+				"faceRecognitionPicture": `${imageBlob}`,
 				"Username": `${this.username}`,
 				"Email": `${this.email}`,
 				"Password": `${this.password}`
@@ -272,6 +273,8 @@ export class SignupfacerecoComponent implements OnInit {
 			this.registerUser(data);
 		}
 	}
+
+	imageToUpload: any;
 
 	async getUsername(data: string) {
 		this.username = data;
