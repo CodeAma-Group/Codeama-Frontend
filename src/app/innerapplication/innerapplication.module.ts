@@ -28,7 +28,48 @@ import { AnswerQuestionComponent } from './answer-question/answer-question.compo
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BugsComponent } from './dashboard/bugs/bugs.component';
 import { AddBugComponent } from './dashboard/add-bug/add-bug.component';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
+const customNotifierOptions: NotifierOptions = {
+  position: {
+		horizontal: {
+			position: 'right',
+			distance: 20,
+		},
+		vertical: {
+			position: 'bottom',
+			distance: 20,
+			gap: 10
+		}
+	},
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 
 @NgModule({
   declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent],
@@ -38,7 +79,8 @@ import { AddBugComponent } from './dashboard/add-bug/add-bug.component';
     FormsModule,
     ReactiveFormsModule,
     MultiSelectAllModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NotifierModule.withConfig(customNotifierOptions)
   ],
 })
 export class InnerapplicationModule { }
