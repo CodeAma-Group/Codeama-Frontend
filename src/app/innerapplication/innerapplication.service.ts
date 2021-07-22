@@ -69,7 +69,7 @@ export class InnerapplicationService {
             resourceDetails: {
               resource: data[i].title,
               resourceKind: data[i].resourceType,
-              resourceLink: data[i].resourceLink || location.href,
+              resourceLink: "https://" + data[i].link || location.href,
               desc: data[i].description,
               likes: data[i].likes,
               date_updated: data[i].updatedAt,
@@ -131,108 +131,8 @@ export class InnerapplicationService {
     return questions
   }
 
-  public getUser(userId: string){
-    return <Observable<any>>this.http.get(this.base+"users/"+userId)
+  public addQuestion(body: any){
+    return <Observable<any>>this.http.post(this.base + "resources", body)
   }
 
-  public questionsTest(){
-    return [
-      {
-        devDetails: {
-          pic: "assets/test_images/angular.png",
-          username: 'abi_seth',
-          names: "ABIJURU Seth",
-          badge: "Pro"
-        },
-        questionDetails: {
-          _id: "123i123i1o1",
-          question: "How do I add routing in Laravel 8",
-          desc: "This is all the question details that will just reflect a little here before seeing the entire body This is all the question details that will just reflect a little here before seeing the entire body This is all the question details that will just reflect a little here before seeing the entire body This is all the question details that will just reflect a little here before seeing the entire body.vThis is all the question details that will just reflect a little here before seeing the entire body.",
-          likes: 120,
-          date_updated: "Jan 22, 2022",
-          tagged_tech: [
-            {
-              tech: "Angular",
-              img: "assets/test_images/angular.png"
-            },
-            {
-              tech: "Angular",
-              img: "assets/test_images/js.png"
-            },
-            {
-              tech: "Angular",
-              img: "assets/test_images/js.png"
-            },
-            {
-              tech: "Angular",
-              img: "assets/test_images/vue.png"
-            },
-            {
-              tech: "Angular",
-              img: "assets/test_images/js.png"
-            }
-          ],
-          comments: [
-            { 
-              commentor_name: "",
-              commentor_pic: "assets/test_images/angular.png",
-              comment: '',
-            },
-            { 
-              commentor_name: "",
-              commentor_pic: "assets/test_images/js.png",
-              comment: '',
-            },
-            { 
-              commentor_name: "",
-              commentor_pic: "assets/test_images/java.png",
-              comment: '',
-            }
-          ]
-        }
-      },
-      {
-        devDetails: {
-          pic: "assets/test_images/angular.png",
-          username: 'abi_seth',
-          names: "ABIJURU Seth",
-          badge: "Pro"
-        },
-        questionDetails: {
-          _id:"jsdhjsdjah12334",
-          question: "How do I add routing in Laravel 8",
-          desc: "Hi everybody, I'm Charlie, a french JS developer I just release a free abd open source project, tail-kit. It's a kit of components and template...",
-          likes: 120,
-          date_updated: "Jan 22, 2022",
-          tagged_tech: [
-            {
-              tech: "Angular",
-              img: "assets/test_images/angular.png"
-            },
-            {
-              tech: "Angular",
-              img: "assets/test_images/angular.png"
-            }
-          ],
-          comments: [
-            { 
-              commentor_name: "",
-              commentor_pic: "assets/test_images/angular.png",
-              comment: '',
-            },
-            { 
-              commentor_name: "",
-              commentor_pic: "assets/test_images/angular.png",
-              comment: '',
-            },
-            { 
-              commentor_name: "",
-              commentor_pic: "assets/test_images/angular.png",
-              comment: '',
-            }
-          ]
-        }
-      }
-    ] 
-  }
 }

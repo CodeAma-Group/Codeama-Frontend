@@ -1,13 +1,19 @@
 <div class="add_resource">
     <h5 class="mb-4">Add Resource</h5>
     <form [formGroup]='resource' class="form" (ngSubmit)="submitRes($event)">
-        <div class="qtn_title">
-            <label for="qtn_title" class="form-label">Resource title</label> 
-            <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
-                <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
-                <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
-            </svg> 
-            <input type="text" name="title" formControlName="title" id="qtn_title" class="form-control" placeholder="Resource title">
+        <div class="d-flex justify-content-between">
+            <div class="qtn_title"  style="width: 48%;">
+                <label for="qtn_title" class="form-label">Resource title</label> 
+                <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
+                    <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
+                    <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
+                </svg> 
+                <input type="text" name="title" formControlName="title" id="qtn_title" class="form-control" placeholder="Resource title">
+            </div>
+            <div class="col-6">
+                <label for="qtn_file" class="form-label">Resource Picture</label> 
+                <input type="file" name="title" formControlName="resourcePicture" id="qtn_file" class="form-control" (input)="this.resource.value.resourcePicture = $event.target.files[0]">
+            </div>
         </div>
         <div class="mt-5 qtn_desc">
             <label for="qtn_desc" class="form-label">Resource description <br>             
@@ -21,10 +27,8 @@
         <div class="mt-5">
             <label for="resKind" class="form-label">Select resource kind</label>
             <select name="resourceKind" formControlName="resourceKind" id="resKind" class="form-control">
-                <option value="YouTube video" selected>YouTube video</option>
-                <option value="CodeAma article">CodeAma article</option>
-                <option value="Book">Book</option>
-                <option value="Website">Website</option>
+                <option value="YouTube video" selected>YouTube Video</option>
+                <option value="CodeAma article">Article</option>
             </select>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 30 23">
                 <g id="Polygon_3" data-name="Polygon 3" transform="translate(25 18) rotate(180)" fill="#165bfe">
