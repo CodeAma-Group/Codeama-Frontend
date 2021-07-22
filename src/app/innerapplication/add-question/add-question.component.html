@@ -32,6 +32,10 @@
             </svg> 
             <textarea type="text" name="qtn" formControlName="qtn" id="qtn" class="form-control form-text" rows="8">...</textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-3 w-25 pt-2 pb-2">Post your question now</button>
+        <button type="submit" [disabled]="!question.valid" class="btn btn-primary mt-3 w-25 pt-2 pb-2">Post your question now</button>
     </form>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
+    <p style="color: white">Posting question... </p>  
+</ngx-spinner> 
+<notifier-container></notifier-container>
