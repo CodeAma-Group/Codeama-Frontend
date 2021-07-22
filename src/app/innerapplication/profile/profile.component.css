@@ -75,7 +75,7 @@
 }
 
 .username>h2 {
-    margin-left: 40%;
+    margin-left: 38%;
     font-size: 1.2em;
     color: var(--modeDark);
     opacity: 0.7;
@@ -99,7 +99,7 @@
 }
 
 .description>p {
-    margin-left: 40%;
+    margin-left: 38%;
     font-size: 0.9em;
     opacity: 0.5;
     color: var(--mainBlack);
@@ -165,4 +165,51 @@ a>svg {
 .user_details {
     width: 100%;
     height: 100vh;
+    display: flex;
+}
+
+.all_user_details {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social_medias, .bio_location, .following_status, .skills {
+    width: 97%;
+    background-color: #FCFDFE;
+    border-radius: 0.3em;
+    margin-bottom: 0.8em;
+}
+
+.social_medias {
+    height: 25vh;
+}
+
+.bio_location {
+    height: 40vh;
+}
+
+.following_status {
+    height: 15vh;
+}
+
+.skills {
+    height: 20vh;
+}
+
+
+
+.user_activity {
+    width: 60%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.activity_container {
+    width: 97.5%;
+    background-color: #FCFDFE;
+    min-height: 80vh;
 }
