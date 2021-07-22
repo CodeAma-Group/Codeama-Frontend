@@ -19,7 +19,6 @@ export class ResourcesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   public checkResourceType(type: string){ 

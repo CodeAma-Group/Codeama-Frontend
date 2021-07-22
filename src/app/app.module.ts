@@ -14,6 +14,7 @@ import { AuthService } from './authentication/_authServices/auth.service'
 import { AuthGuard } from './authentication/common/auth.guard'
 import { AuthinterceptorService } from './authentication/_authServices/authinterceptor.service'
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     HttpClientModule,
     MultiSelectAllModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NotifierModule
   ],
   providers: [
     AuthService,

@@ -131,7 +131,7 @@ export class InnerapplicationService {
     return questions
   }
 
-  public addQuestion(body: any){
+  public addQuestion(body: FormData){
     return <Observable<any>>this.http.post(this.base + "resources", body)
   }
 
