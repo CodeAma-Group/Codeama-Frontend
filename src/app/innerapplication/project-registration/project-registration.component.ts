@@ -1,24 +1,83 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormGroup,FormControl } from '@angular/forms';
+import { ProjectService } from '../services/project.service';
 @Component({
   selector: 'app-project-registration',
   templateUrl: './project-registration.component.html',
   styleUrls: ['./project-registration.component.css'],
 })
 export class ProjectRegistrationComponent implements OnInit {
+  constructor(private project:ProjectService) {}
   selectedImg = null;
   OthernewImages = [];
   imgUrl: string = '';
   videoUrl: string = '../../../assets/newImages/video.mp4';
-  question;
-  constructor(private formBuilder: FormBuilder) {
-    this.question = this.formBuilder.group({
-      title: ['', []],
-      desc: ['', []],
-      qtn: ['...', []],
-      tagged_tech: ['', []],
-    });
+  tagged_tech:Array<any>=[];
+  
+  fileSelected(event) {
+    this.selectedImg = event.target.files[0].name;
+    console.log(this.selectedImg);
+    
+    if (event.target.files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.imgUrl = event.target.result;
+      };
+    }
   }
+
+  urls = new Array<string>();
+  thumbnails=[]
+  Show: boolean = false;
+  detectFiles(event) {
+    this.urls = [];
+    let files = event.target.files;
+    if (files.length > 5) {
+      alert('You not allowed to upload more than 5 images');
+    }
+    if (files && files.length < 6) {
+      this.Show = true;
+      for (let file of files) {
+        this.thumbnails.push(file.name)
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.urls.push(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+  uploadFile() {
+    const fd = new FormData();
+    fd.append('file', this.selectedImg, this.selectedImg.name);
+  }
+data
+ collectData(){
+  this.data={
+    title:this.newProjectForm.value.projectName,
+    description:this.newProjectForm.value.app_description,
+    technologies:this.newProjectForm.value.tagged_tech,
+    thumbnails:this.thumbnails,
+    // demo:"product_feedback_app-demo.mp4",
+    teamName:"QWERTY Group",
+    logo:"product_feedback_app-demo.mp4",
+    github:"https://apexcharts.com/vue-chart-demos/",
+    host:"https://apexcharts.com/vue-chart-demos/",
+    team:["60e5f235f804c62364ab6f73"],
+    non_member_emails:["member1@gmail.com","member2@gmail.com","member3@gmail.com"],
+    features:["feature1","feature3","feature2"]
+  }
+   this.project.saveProject(this.data).subscribe((res)=>{
+     console.log("result is here",res); 
+   })
+ }
+  newProjectForm=new FormGroup({
+    projectName:new FormControl(''),
+    tagged_tech:new FormControl(''),
+    app_description: new FormControl(''),
+  })
+  
   public options = [
     { label: 'Java', value: 'Java' },
     { label: 'Javascript', value: 'Javascript' },
@@ -43,47 +102,6 @@ export class ProjectRegistrationComponent implements OnInit {
     { label: 'Php', value: 'Php' },
   ];
   public fields = { text: 'label', value: 'value' };
-
-  fileSelected(event) {
-    this.selectedImg = event.target.files[0].name;
-    console.log(event.timeStamp + this.selectedImg);
-
-    if (event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event: any) => {
-        this.imgUrl = event.target.result;
-        // this.videoUrl = event.target.result;
-      };
-    }
-  }
-
-  urls = new Array<string>();
-  Show: boolean = false;
-  detectFiles(event) {
-    this.urls = [];
-    let files = event.target.files;
-    if (files.length > 5) {
-      alert('You not allowed to upload more than 5 images');
-    }
-    if (files && files.length < 6) {
-      this.Show = true;
-      for (let file of files) {
-        let reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-  }
-
-  uploadFile() {
-    const fd = new FormData();
-    fd.append('file', this.selectedImg, this.selectedImg.name);
-  }
-
- 
 
   cookieVal: string = '';
 
