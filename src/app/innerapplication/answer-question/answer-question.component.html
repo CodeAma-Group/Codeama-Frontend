@@ -1,0 +1,47 @@
+<div class="ansQtnDiv">
+    <h6>Answer question</h6>
+    <hr>
+    <div>
+        <div class="dev_details" class="d-flex">
+            <figure class="position-relative d-flex justify-content-center">
+                <div>
+                    <img [src]="question.devDetails.pic" alt="profile pic">
+                </div>
+            </figure>
+            <div>
+                <p>
+                    <strong>{{question.devDetails.names}}</strong><span class="rounded-pill pl-3 pr-3 bg-primary">{{question.devDetails.badge}}</span>
+                </p>
+                <span>{{question.devDetails.names}}.codeama.net</span>
+            </div>
+        </div>
+        <p>
+            <span>Asked on </span><strong>{{question.questionDetails.date_updated | date:"longDate"}}</strong>
+        </p>
+    </div>
+    <main>
+        <div class="main">
+            <h5 class="mb-3">
+                {{question.questionDetails.question}}
+            </h5>
+            <p>{{question.questionDetails.desc}}</p>
+        </div>
+        <div class="shortDet">
+            <div>
+                <span>5</span>
+                <br><span> Comments</span>
+            </div>
+            <div>
+                <span>3</span>
+                <br><span> Answers</span>
+            </div>
+            <div>
+                <span>8</span>
+                <br> <span>Viewers</span>
+            </div>
+        </div>
+    </main>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
+    <p style="color: white">Please Wait. </p>  
+</ngx-spinner> 

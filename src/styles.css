@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~angular-notifier/styles';
 @import "~bootstrap/dist/css/bootstrap.css";
 .bg-whiteblue {
     background: #EBF1FA;
@@ -7,6 +7,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 
 /* Application global styling variables */
 
@@ -26,9 +27,9 @@
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
-
     --contBgDark: #151829;
     --contBgLight: rgba(66, 144, 237, .1);
+    --questBg: #F7F9FC;
 }
 
 * {
@@ -185,7 +186,17 @@ ul {
     }
 }
 
+.container-fluid {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: var(--contBgLight);
+    padding: 0 20px!important;
+    min-height: 88vh!important;
+}
+
 textarea:hover,
+textarea:active,
+textarea:focus,
 input:hover,
 textarea:active,
 input:active,

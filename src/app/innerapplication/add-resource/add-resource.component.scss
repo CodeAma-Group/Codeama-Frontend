@@ -55,4 +55,15 @@ $bg_color: var(--contBgLight);
             // color: rgba(0, 0, 0, 0.623);
         }
     }
+
+    option {
+        color: black !important;
+        padding: 10px 5px;
+    }
+
+    select + svg {
+        position: absolute;
+        left: 96.5%;
+        top: 47px;
+    }
 }

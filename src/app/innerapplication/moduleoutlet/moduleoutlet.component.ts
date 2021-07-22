@@ -31,6 +31,7 @@ export class ModuleoutletComponent implements OnInit {
         root.style.setProperty('--mainBlack', '#17202A')
         root.style.setProperty('--inputWhite', '#ffffff')     
         root.style.setProperty('--contBgLight', 'rgba(66, 144, 237, .1)')
+        root.style.setProperty('--questBg','#F7F9FC')
       } else {
         let root = document.documentElement;
         root.style.setProperty('--modeDimBlue', '--dimBlue')
@@ -40,6 +41,7 @@ export class ModuleoutletComponent implements OnInit {
         root.style.setProperty('--mainBlack', '#ffffff')
         root.style.setProperty('--inputWhite', '#141B30')
         root.style.setProperty('--contBgLight', '#151829')
+        root.style.setProperty('--questBg',"rgba(0, 0, 0, 0.178)")
       }
 
     }
@@ -64,6 +66,7 @@ export class ModuleoutletComponent implements OnInit {
       root.style.setProperty('--pureWhite', '--pureWhite')
       root.style.setProperty('--mainBlack', '--pureWhite')
       root.style.setProperty('--contBgLight', 'rgba(66, 144, 237, .1)')
+      root.style.setProperty('--questBg','#F7F9FC')
 
       document.cookie = "isDark=false; path=/; max-age=" + 365*24*60*60;
     } else {
@@ -71,6 +74,7 @@ export class ModuleoutletComponent implements OnInit {
       root.style.setProperty('--pureWhite', '#0D0E1A')
       root.style.setProperty('--mainBlack', '#ffffff')
       root.style.setProperty('--contBgLight', '#151829')
+      root.style.setProperty('--questBg',"rgba(0, 0, 0, 0.178)")
 
       document.cookie = "isDark=true; path=/; max-age=" + 365*24*60*60;
     }
