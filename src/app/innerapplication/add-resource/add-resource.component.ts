@@ -12,7 +12,7 @@ export class AddResourceComponent implements OnInit {
     this.resource = this.formBuilder.group({
       title: ["",[]],
       desc: ["",[]],
-      resourceKind: ["...",[]],
+      resourceKind: ["Youtube video",[]],
       resourceLink: ["",[]]
     })
    }

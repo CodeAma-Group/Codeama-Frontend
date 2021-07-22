@@ -62,6 +62,10 @@ $bg_color: var(--contBgLight);
         padding-left: 15px !important;
     }
 
+    span.e-delim-view.e-delim-values {
+        -webkit-text-fill-color: var(--mainBlack);
+    }
+
     .e-multiselect .e-delim-values {
         margin: 0 !important;
         padding: 0;

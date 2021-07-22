@@ -28,6 +28,7 @@
     --right: 'Righteous', cursive;
     --contBgDark: #151829;
     --contBgLight: rgba(66, 144, 237, .1);
+    --questBg: #F7F9FC;
 }
 
 * {

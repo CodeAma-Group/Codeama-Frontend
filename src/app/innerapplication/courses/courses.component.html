@@ -4,10 +4,10 @@
         <div>
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
-                    <div>
+                    <div class=" bg-light">
                         <img [src]="article.devDetails.pic" alt="profile pic">
                     </div>
-                    <figcaption class="position-absolute">{{article.devDetails.badge}}</figcaption>
+                    <figcaption class="position-absolute rounded-pill">{{article.devDetails.badge}}</figcaption>
                 </figure>
                 <div>
                     <p>
@@ -43,15 +43,20 @@
                     </svg>
                     <strong>{{article.articleDetails.comments.length}}</strong>
                     <div>
-                        <div *ngFor="let comment of article.articleDetails.comments.slice(0,4)">
-                            <img src="{{comment.commentor_pic}}" alt="commentor profile">
-                        </div>
+                        <ng-template *ngIf="article.articleDetails.comments.length > 0">
+                            <div *ngFor="let comment of article.articleDetails.comments.slice(0,4)">
+                                <img src="{{comment.commentor_pic}}" alt="commentor profile">
+                            </div>
+                        </ng-template>
                     </div>
                 </div>
             </div>
         </div>
         <div style="width: 35%; text-align: center;">
-            <img src="{{article.articleDetails.article_img}}" alt="article view">
+            <img src="{{article.articleDetails.article_img}}" alt="article image" style="max-width: 90%; height: auto; border-radius: 5px;">
         </div>
     </div>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
+    <p style="color: white">Please Wait. </p>  
+</ngx-spinner> 

@@ -1,5 +1,6 @@
 .resourcesDetails {
     color: var(--mainBlack) !important;
+    padding-bottom: 20px;
     >div {
         align-items: center;
         >div:first-of-type {
@@ -119,8 +120,12 @@
             margin: 10px 0 20px;
             font-size: 1.1em;
         }
-        p {
+        p, a {
             font-size: .8em;
+        }
+        a {
+            padding: 5px 20px;
+            background: rgba(0, 0, 255, 0.11);
         }
         width: 75%;
         padding-right: 15px;

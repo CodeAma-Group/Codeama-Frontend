@@ -13,7 +13,7 @@ import { FaceauthService } from '../_authServices/faceauth.service'
 	styleUrls: ['./signupfacereco.component.css']
 })
 export class SignupfacerecoComponent implements OnInit {
-
+	src
 	startRecognitionProcess: boolean = true;
 	secs: number = 10;
 	steps: number = 0;
