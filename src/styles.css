@@ -25,6 +25,9 @@
     --modeDark: #0D0E1A;
     --modeDimBlue: #1D2747;
     --modeDimerBlue: #0F111E;
+    --intermediateBg: #00A79D;
+    --shareBg: #F7FAFC;
+    
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
@@ -45,6 +48,16 @@ body {
     background-color: var(--pureWhite);
     font-family: var(--poppins);
     user-select: none;
+}
+
+body::-webkit-scrollbar {
+    width: 0.6em;
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    width: 0.6em;
+    background: var(--dimBlue);
 }
 
 a {
