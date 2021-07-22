@@ -145,6 +145,18 @@ input.e-dropdownbase::placeholder {
     width: 100%;
 }
 
+.imagefromDb1 {
+    height: 13em;
+    background-color: #F9F9FB;
+    width: 100%;
+}
+
+.imagefromDb1Container {
+    position: relative;
+    top: -9em;
+    background-color: #727681;
+}
+
 .upload-icon {
     margin-top: 5.2em;
 }

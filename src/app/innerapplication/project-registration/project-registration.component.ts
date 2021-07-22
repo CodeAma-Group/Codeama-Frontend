@@ -11,12 +11,23 @@ export class ProjectRegistrationComponent implements OnInit {
   selectedImg = null;
   OthernewImages = [];
   imgUrl: string = '';
-  videoUrl: string = '../../../assets/newImages/video.mp4';
+  logoUrl:string='';
   tagged_tech:Array<any>=[];
-  
+  GroupLogo=null
+  logoImage(event) {
+    this.GroupLogo = event.target.files[0].name;  
+    console.log(this.GroupLogo);
+    if (event.target.files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.logoUrl = event.target.result;
+      };
+    }
+  }
+
   fileSelected(event) {
     this.selectedImg = event.target.files[0].name;
-    console.log(this.selectedImg);
     
     if (event.target.files) {
       const reader = new FileReader();
