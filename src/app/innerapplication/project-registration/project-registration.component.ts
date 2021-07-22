@@ -10,7 +10,6 @@ export class ProjectRegistrationComponent implements OnInit {
   OthernewImages = [];
   imgUrl: string = '';
   videoUrl: string = '../../../assets/newImages/video.mp4';
-  // ../../../assets/newImages/newImage1.png
   question;
   constructor(private formBuilder: FormBuilder) {
     this.question = this.formBuilder.group({
@@ -60,22 +59,22 @@ export class ProjectRegistrationComponent implements OnInit {
   }
 
   urls = new Array<string>();
-  Show:boolean=false;
+  Show: boolean = false;
   detectFiles(event) {
     this.urls = [];
     let files = event.target.files;
-    if (files.length>5) {
-      alert("You not allowed to upload more than 5 images")
+    if (files.length > 5) {
+      alert('You not allowed to upload more than 5 images');
     }
-    if (files && files.length<6) {      
-      this.Show=true
-        for (let file of files) {
-          let reader = new FileReader();
-          reader.onload = (e: any) => {
-            this.urls.push(e.target.result);
-          };
-          reader.readAsDataURL(file);
-        }
+    if (files && files.length < 6) {
+      this.Show = true;
+      for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.urls.push(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
     }
   }
 
@@ -84,9 +83,12 @@ export class ProjectRegistrationComponent implements OnInit {
     fd.append('file', this.selectedImg, this.selectedImg.name);
   }
 
+ 
+
   cookieVal: string = '';
 
   ngOnInit(): void {
+    
     var cookieName = 'isDark';
 
     var matchCookie = document.cookie.match(
