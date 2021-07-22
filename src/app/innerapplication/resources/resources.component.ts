@@ -26,7 +26,7 @@ export class ResourcesComponent implements OnInit {
     if(type == "Youtube video" || type=="Youtube Video"){`  `
       return "youtube video"
     }
-    else if(type == "CodeAma article"){
+    else if(type == "Article"){
       return "article"
     }
   }
