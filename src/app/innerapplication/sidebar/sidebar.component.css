@@ -10,7 +10,7 @@ li>a.nav-link {
     height: 96vh;
     border-radius: 5px;
     font-family: "poppins";
-    background-color: #E9EFF7;
+    background-color: var(--dimerBlue);
     float: left;
     margin: 10px !important;
     padding: 5px;
@@ -18,7 +18,7 @@ li>a.nav-link {
 }
 
 .active {
-    background-color: #E9EFF7;
+    background-color: var(--dimBlue);
     border-radius: 8px;
     fill: blue!important
 }
@@ -45,4 +45,7 @@ svg {
 .profile {
     position: relative;
     top: 11em!important;
+}
+.side-bar-container{
+    width: 20%;
 }

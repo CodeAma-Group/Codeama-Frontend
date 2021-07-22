@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: .5s ease-in-out;
 }
 
 .form {
@@ -49,7 +50,13 @@ span {
 }
 
 form {
-    margin-top: 12%;
+    margin-top: 5%;
+}
+
+.alert {
+    margin-top: 4%;
+    text-align: center;
+    font-size: 0.8em !important;
 }
 
 input[type=password],
@@ -94,6 +101,7 @@ button {
 
 button>svg {
     margin-left: 1em;
+    margin-top: -4%;
 }
 
 .form>p {
@@ -101,4 +109,40 @@ button>svg {
     position: absolute;
     bottom: 0;
     color: var(--mainBlack);
+}
+
+.submit {
+    position: relative;
+}
+
+.spinner-border {
+    position: absolute;
+    right: 9%;
+    top: 31%;
+    color: #ffffff !important;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* validation  */
+
+input.ng-invalid.ng-touched, .redbordered {
+    border: 0.04em solid var(--mainRed) !important;
+}
+
+.error_input {
+    position: absolute;
+    font-size: 0.78em !important;
+    color: var(--mainRed);
+    margin-bottom: 0.5em;
+}
+
+.form-floating, .terms {
+    margin-bottom: 1.4em !important;
+}
+
+.move_from_top {
+    margin-top: 3em !important;
 }

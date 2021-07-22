@@ -1,4 +1,5 @@
 .articlesDetails {
+    color: var(--mainBlack) !important;
     >div {
         display: flex;
         align-items: center;
@@ -58,7 +59,8 @@
     
             p#dev_username {
                 font-size: .8em;
-                color: rgba(0, 0, 0, 0.568);
+                color: var(--mainBlack);
+                opacity: .5;
             }
     
             >div:last-of-type {

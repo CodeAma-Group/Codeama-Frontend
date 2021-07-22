@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CodeamasComponent } from './innerapplication/codeamas/codeamas.component';
 import { ProfileComponent } from './innerapplication/profile/profile.component';
 import { ProjectDetailsComponent } from './innerapplication/project-details/project-details.component';
+import { AuthGuard } from './authentication/common/auth.guard';
 
 const routes: Routes = [
   
@@ -21,7 +22,8 @@ const routes: Routes = [
   {
     path: 'app',
     loadChildren: () => import('./innerapplication/innerapplication.module')
-      .then(mode => mode.InnerapplicationModule)
+      .then(mode => mode.InnerapplicationModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'welcome',
@@ -37,17 +39,13 @@ const routes: Routes = [
       {
         path: 'profile', component: ProfileComponent
       },
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   {
-   path: 'profile', component: ProfileComponent,
-   children: [
-     {
-      path: 'projectDetails',
-      component: ProjectDetailsComponent
-     }
-   ]
-    
+    path: 'projectDetails',
+    component: ProjectDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**', //wildcard routing

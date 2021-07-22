@@ -11,7 +11,7 @@ export class ProjectRegistrationComponent implements OnInit {
   imgUrl: string ="";
   videoUrl:string="../../../assets/images/video.mp4"
   // ../../../assets/images/image1.png
-  technologies=["money","money","money","money"];
+  technologies=["money","something","anything","mine"];
   tech:string="";
 displayTechnologies(){
   let newTech=this.tech
@@ -43,5 +43,76 @@ displayTechnologies(){
     const fd = new FormData();
     fd.append('file', this.selectedFile, this.selectedFile.name);
   }
-  ngOnInit(): void {}
+  
+
+  cookieVal:string = "";
+
+  ngOnInit(): void {
+
+    var cookieName = "isDark";
+
+    var matchCookie = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+    if (matchCookie) {
+      this.cookieVal = matchCookie[2];
+    }
+
+    if (this.cookieVal == "") {
+      this.cookieVal = "false"
+    } else {
+
+      if (this.cookieVal == "false") {
+        let root = document.documentElement;
+        root.style.setProperty('--pureWhite', '--pureWhite')
+        root.style.setProperty('--mainBlack', '--pureWhite')   
+        root.style.setProperty('--dimBlue', '#66A5F0')
+        root.style.setProperty('--dimerBlue', '#f2f6fa')
+        root.style.setProperty('--mainBlack', '#17202A')
+        root.style.setProperty('--inputWhite', '#ffffff')     
+        
+      } else {
+        let root = document.documentElement;
+        root.style.setProperty('--modeDimBlue', '--dimBlue')
+        root.style.setProperty('--pureWhite', '#0D0E1A')
+        root.style.setProperty('--dimBlue', '#1D2747')
+        root.style.setProperty('--dimerBlue', '#0F111E')
+        root.style.setProperty('--mainBlack', '#ffffff')
+        root.style.setProperty('--inputWhite', '#141B30')
+
+      }
+
+    }
+
+  }
+
+
+  async modeChange() {
+    var cookieName = "isDark";
+    console.log("yooo")
+    var matchCookie = await document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+    if (matchCookie) {
+      this.cookieVal = matchCookie[2];
+      console.log(matchCookie[2])
+    }
+    else{
+      // document.cookie = "isDark=false; path=/; max-age=" + 365*24*60*60;
+      // this.cookieVal = "false";
+      alert("Make sure your cookies are enabled because we use cookies to keep track of your settings on the devices!")
+    }
+
+    if (this.cookieVal == "true") {
+      let root = document.documentElement;
+      root.style.setProperty('--pureWhite', '--pureWhite')
+      root.style.setProperty('--mainBlack', '--pureWhite')
+
+      document.cookie = "isDark=false; path=/; max-age=" + 365*24*60*60;
+    } else {
+      let root = document.documentElement;
+      root.style.setProperty('--pureWhite', '#0D0E1A')
+      root.style.setProperty('--mainBlack', '#ffffff')
+
+      document.cookie = "isDark=true; path=/; max-age=" + 365*24*60*60;
+    }
+
+}
+
 }

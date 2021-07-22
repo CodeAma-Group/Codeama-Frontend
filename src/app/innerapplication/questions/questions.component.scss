@@ -1,4 +1,5 @@
 .questionsDetails {
+    color: var(--mainBlack) !important;
     >div {
         display: flex;
         align-items: center;
@@ -58,7 +59,8 @@
     
             p#dev_username {
                 font-size: .8em;
-                color: rgba(0, 0, 0, 0.568);
+                color: var(--mainBlack);
+                opacity: .5;
             }
     
             >div:last-of-type {
@@ -72,7 +74,7 @@
                         margin-right: 3px;
                     }
                     i.fa-thumbs-up {
-                        color: #4290ed;
+                        color: var(--dimBlue);
                     }
     
                     >div {
@@ -106,8 +108,8 @@
     }
 
     hr {
-        background-color:#0a131d;
-        opacity: .8;
+        color: var(--mainBlack) !important;
+        opacity: .4;
     }
 
 }

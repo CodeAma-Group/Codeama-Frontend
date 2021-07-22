@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InnerapplicationService } from '../innerapplication.service';
 
 @Component({
   selector: 'app-courses',
@@ -72,9 +73,12 @@ export class CoursesComponent implements OnInit {
       }
     }
   ]
-  constructor() { }
+  constructor(private backendService: InnerapplicationService) { }
 
   ngOnInit(): void {
+    this.backendService.getArticles().subscribe((data: any[]) => {
+      console.log(data)
+    })
   }
 
 }
