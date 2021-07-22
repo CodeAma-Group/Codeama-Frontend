@@ -25,6 +25,7 @@ import { ResourcesComponent } from './resources/resources.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 import { AnswerQuestionComponent } from './answer-question/answer-question.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AnswerQuestionComponent } from './answer-question/answer-question.compo
     InnerapplicationRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MultiSelectAllModule
+    MultiSelectAllModule,
+    NgxSpinnerModule
   ],
 })
 export class InnerapplicationModule { }

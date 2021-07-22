@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
 
 @Component({
@@ -9,14 +10,20 @@ import { InnerapplicationService } from '../innerapplication.service';
 export class ResourcesComponent implements OnInit {
   public resources: any[] 
 
-  constructor(private backendService: InnerapplicationService) { }
-
-  ngOnInit(): void {
-    this.backendService.getResources().subscribe(data => this.resources=data)
+  constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService) { 
+    this.spinner.show()
+    this.backendService.getResources().subscribe(data => {
+      this.resources=data
+      this.spinner.hide()
+    })
   }
 
-  public checkResourceType(type: string){
-    if(type == "Youtube video" || type=="Youtube Video"){
+  ngOnInit(): void {
+
+  }
+
+  public checkResourceType(type: string){ 
+    if(type == "Youtube video" || type=="Youtube Video"){`  `
       return "youtube video"
     }
     else if(type == "CodeAma article"){
