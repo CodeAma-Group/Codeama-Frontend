@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { inputs } from '@syncfusion/ej2-angular-dropdowns/src/drop-down-list/dropdownlist.component';
 
 import * as faceapi from 'face-api.js';
 import { WebcamImage } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
+import { AuthService } from '../_authServices/auth.service'
 import { FaceauthService } from '../_authServices/faceauth.service'
 
 @Component({
@@ -25,14 +27,15 @@ export class SignupfacerecoComponent implements OnInit {
 	startCountDownToShot: boolean = false;
 	getReadyToStartShot: boolean = false;
 	stepOne: boolean = false;
+	stepIntervaTimer: number = 10000;
+	startProcessInterval: any;
+	stepInterval: any;
+	secondTimerInterval: any;
+	isCamOn:boolean = true;
 
-	constructor( private _faceAuth:FaceauthService ) { }
-
+	constructor( private _faceAuth: FaceauthService, private _authService: AuthService ) { }
+	
 	ngOnInit(): void {
-		
-		this._faceAuth.startProcess();
-		this.startSignupProcess();
-
 		Promise.all([
 			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models'),
 			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models'),
@@ -41,15 +44,21 @@ export class SignupfacerecoComponent implements OnInit {
 		]).then(() => {
 			this.loading = false;
 		}).catch(err => console.warn(err));
+		
+		this.startSignupProcess();
+		document.getElementById("sample").style.display = "none";
+
 	}
 
 	startSignupProcess() {
-	
-		setInterval(() => {
+		
+		this.startProcessInterval = setInterval(() => {
+
 			if (this.steps == 0) {
 				if (this.showProcedureNotice) {
 					this.showProcedureNotice = false;
 					this.alertToStartGettingSamples = true;
+					this.webcamImage = null;
 				}
 			}
 			
@@ -63,7 +72,7 @@ export class SignupfacerecoComponent implements OnInit {
 
 				if (this.stepOne) {
 					var shotNumber = 0;
-					setInterval(() => {
+					this.secondTimerInterval = setInterval(() => {
 						if (this.secs > 0) {
 							this.secs -= 1;
 						} else {
@@ -75,41 +84,26 @@ export class SignupfacerecoComponent implements OnInit {
 							shotNumber += 1;
 							return;
 						}
-					}, 1000)
+					}, 1000	)
 				}
 
 			}
 			
 			if (this.steps == 2) {
 				this.stepOne = false;
-				console.warn("gooooooo")
-			}
-			
-			if (this.steps == 3) {
-				console.warn("this is step 4");
-			}
-			
-			if (this.steps == 4) {
-				console.warn("this is step 5");
-			}
-			
-			if (this.steps == 5) {
-				console.warn("this is step 6");
-			}
-			
-				
+			}		
 	
-		},10000)
+		}, this.stepIntervaTimer)
 		
 
-		setInterval(() => {
+		this.stepInterval = setInterval(() => {
 			if (this.steps <= 9) {
 				this.steps += 1;
 				console.warn(this.steps);
 			} else {
-				return console.warn("This signup process just ended!");
+				clearInterval(this.stepInterval);
 			}
-		}, 10000)
+		}, this.stepIntervaTimer)
 
 	}
 
@@ -120,24 +114,16 @@ export class SignupfacerecoComponent implements OnInit {
 	uploadSuccess = false;
 	private trigger: Subject<void> = new Subject<void>();
 	loading = true;
-	matchFound = false;
-	faceMatchScore = 0;
-	processingResult = false;
-	processingCompleted = false;
 	container: any;
-	loadedImageLabels: any;
-	noFaceDetectedError = false;
-
-	databaseUserBlobSamples: any;
+	shotTaken: boolean = false;
+	noFaceDetectedError: boolean = false;
 
 
 	async handleImage(webcamImage: WebcamImage) {
 		this.webcamImage = webcamImage;
-		// console.warn(webcamImage.imageAsDataUrl)
 		this.images.push(webcamImage);
-		this.loadedImageLabels = await this.loadImageLabels();
-
-		this.compareTriggers();
+		this.isCamOn = false;
+		this.checkIfSamplesHaveFaces();
 	}
 
 	triggerSnapshot(): void {
@@ -148,73 +134,190 @@ export class SignupfacerecoComponent implements OnInit {
 		return this.trigger.asObservable();
 	}
 
-	loadImageLabels(): Promise<any> {
+	checkIfSamplesHaveFaces(): Promise<any> {
 		const labels = ['Face match detected'];
 		return Promise.all(
-			labels.map(async label => {
-				const descriptions = [];
+			labels.map(async () => {
 				const img = await faceapi.fetchImage(`${this.webcamImage.imageAsDataUrl}`);
 				const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions({ inputSize: 320 })).withFaceLandmarks().withFaceDescriptor();
 				if (detections?.descriptor) {
-					this.noFaceDetectedError = false;
-					descriptions.push(detections.descriptor);
+					this.stepOne = false;
+					clearInterval(this.startProcessInterval);
+					clearInterval(this.stepIntervaTimer);
+					clearInterval(this.stepInterval);
+					this.uploadSuccess = true;
+					this.shotTaken = true;
+
+					var timer = 0; 
+					var timingInterval = setInterval(() => {
+						if (timer == 1) {							
+							this.uploadSuccess = true;
+						}
+						timer = timer + 1;
+						if (timer == 2) {
+							clearInterval(timingInterval);
+							
+							if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
+								this.uploadSuccess = false;
+								this.preparingUpload = true;
+
+								var imageBlob = this.webcamImage.imageAsDataUrl;
+								let image = new File([imageBlob], "profile.png", { type: "image/png" });
+
+								console.log(image)
+
+								let data = {
+									"faceRecognitionPicture": `${image.name}`,
+									"Username": `${this.username}`,
+									"Email": `${this.email}`,
+									"Password": `${this.password}`
+								}
+
+								console.log(data);
+
+								this.registerUser(data);
+							} else if (this.usernameFilled && this.emailFilled) {
+								this.fieldErrorMsg = "please fill out the password";
+							} else if (this.usernameFilled) {
+								this.fieldErrorMsg = "Please fill out the email and password";
+							} else if (this.usernameFilled && this.passwordFilled) {
+								this.fieldErrorMsg = "Please fill out the email field";
+							} else if (this.emailFilled && this.passwordFilled) {
+								this.fieldErrorMsg = "Please fill out the username";
+							} else if (this.emailFilled) {
+								this.fieldErrorMsg = "Please fill the password and username";
+							} else if (this.passwordFilled) {
+								this.fieldErrorMsg = "Please fill the email and username";
+							} else {
+								this.fieldErrorMsg = "All fields should be filled";
+							}
+							
+							if (!this.usernameFilled || !this.emailFilled || !this.passwordFilled) {
+								this.uploadSuccess = false;
+								this.fieldError = true;
+							}			
+							
+						}
+					}, 5000)
+
 
 				} else {
+					var timer = 0; 
+					var timingInterval = setInterval(() => {
+						if (timer == 1) {
+							this.stepOne = false;
+							this.noFaceDetectedError = false;
+							this.steps = 0;
+							this.showProcedureNotice = true;
+							this.alertToStartGettingSamples = false;
+							this.startCountDownToShot = false;
+							this.getReadyToStartShot = false;
+							this.isCamOn = true;
+							this.webcamImage = null;
+							clearInterval(this.startProcessInterval);
+							clearInterval(this.stepIntervaTimer);
+							clearInterval(this.stepInterval);
+			
+							this.startSignupProcess();							
+						}
+						timer = timer + 1;
+						if (timer == 2) {
+							clearInterval(timingInterval);
+						}
+					}, 10000)
+
 					this.noFaceDetectedError = true;
 				}
-				return new faceapi.LabeledFaceDescriptors(label, descriptions)
 			})
 		)
 	}
 
+	//user fields
+	usernameFilled: boolean = false;
+	emailFilled: boolean = false;
+	passwordFilled: boolean = false;
+	fieldError: boolean = false;
+	fieldErrorMsg: string = '';
+	preparingUpload: boolean = false;
+	regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	invalidEmail: boolean = false;
 
-	async compareTriggers() {
-		
-		async function getFileFromUrl(url, name, defaultType = 'image/jfif'){
-			const response = await fetch(url);
-			const data = await response.blob();
-			return new File([data], name, {
-				type: response.headers.get('content-type') || defaultType,
-			});
+	username: string = '';
+	email: string = '';
+	password: string = '';
+
+	recentValidCheck() {
+		if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
+			this.fieldError = false;
 		}
 
-		const file = await getFileFromUrl('http://localhost:4200/assets/face_detection_test/download.jfif', 'download.jfif');
-		this.databaseUserBlobSamples = file;
-		this.uploadSuccess = true;
+		if (this.usernameFilled && this.emailFilled && this.passwordFilled && this.shotTaken) {
+			this.fieldError = false;
+			this.uploadSuccess = false;
+			this.preparingUpload = true;
 
-		this.start(this.databaseUserBlobSamples);
-
-	}
-	
-	async start(uploadedImage: any) {
-		this.matchFound = false;
-		this.faceMatchScore = 0;
-		this.processingResult = true;
-		this.processingCompleted = false;
-		let image;
-		let canvas;
-
-		const labeledFaceDescriptors = this.loadedImageLabels;
-		const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.5);
-
-		image = await faceapi.bufferToImage(uploadedImage);
-		canvas = faceapi.createCanvasFromMedia(image);
-		const displaySize = { width: image.width, height: image.height };
-		faceapi.matchDimensions(canvas, displaySize);
-
-		const detections = await faceapi.detectAllFaces(image, new faceapi.TinyFaceDetectorOptions({ inputSize: 320 })).withFaceLandmarks().withFaceDescriptors();
-		const resizedDetections = faceapi.resizeResults(detections, displaySize);
-		const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor));
-		results.forEach((result, i) => {
-			if (result.label === 'Face match detected') {
-				this.matchFound = true;
-				this.faceMatchScore = Math.round((1 - result.distance) * 100);
-			} else if (!this.matchFound && i === results.length - 1) {
-				this.faceMatchScore = Math.round((1 - result.distance) * 100);				
+			var imageBlob = this.webcamImage.imageAsDataUrl;
+			let image = new File([imageBlob], "profile.png", { type: "image/png" });
+			console.log(image)
+			
+			let data = {
+				"faceRecognitionPicture": `${image.name}`,
+				"Username": `${this.username}`,
+				"Email": `${this.email}`,
+				"Password": `${this.password}`
 			}
-		});
-		this.processingResult = false;
-		this.processingCompleted = true;
+
+			console.log(data)
+
+			this.registerUser(data);
+		}
+	}
+
+	async getUsername(data: string) {
+		this.username = data;
+		this.usernameFilled = true;
+		document.getElementById("floatingInput").blur();
+
+		await this.recentValidCheck();
+	}
+
+	async getEmail(data: string) {
+		const valid = this.regularExpression.test(String(data).toLowerCase());
+		if (!valid) {
+			this.fieldErrorMsg = "Invalid email address entered!";
+		} else {
+			this.email = data;
+			this.fieldErrorMsg = "All fields should be filled out";
+			this.emailFilled = true;
+			document.getElementById("floatingInputEmail").blur();
+			
+			await this.recentValidCheck();
+		}
+	}
+
+	async getPassword(data: string) {
+		if (data.length < 6) {
+			this.fieldErrorMsg = "Password should be atleast 6 characters.";
+		} else {
+			this.fieldErrorMsg = "All fields should be filled out."
+			this.password = data;
+			this.passwordFilled = true;
+			document.getElementById("floatingPassword").blur();
+			
+			await this.recentValidCheck();
+		}
+	}
+
+	async registerUser(data: object) {
+		await this._authService.registerUser(data).subscribe(
+			res => {
+				// this._router.navigate(['/auth/verifyemail']);
+				console.warn(res);
+			},
+			err => {
+				console.log(err);
+			}
+		);
 	}
 
 }

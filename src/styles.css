@@ -26,7 +26,6 @@
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
-
     --contBgDark: #151829;
     --contBgLight: rgba(66, 144, 237, .1);
     --questBg: #F7F9FC;
@@ -186,7 +185,17 @@ ul {
     }
 }
 
+.container-fluid {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: var(--contBgLight);
+    padding: 0 20px!important;
+    min-height: 88vh!important;
+}
+
 textarea:hover,
+textarea:active,
+textarea:focus,
 input:hover,
 textarea:active,
 input:active,

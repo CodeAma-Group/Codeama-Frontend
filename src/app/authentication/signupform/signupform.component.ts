@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AuthService } from '../_authServices/auth.service'
+import { AuthService } from '../_authServices/auth.service';
 
 @Component({
 	selector: 'app-signupform',
@@ -123,6 +123,7 @@ export class SignupformComponent implements OnInit {
 
 		this._auth.registerUser(data).subscribe(
 			res => {
+				console.log(data)
 				this._router.navigate(['/auth/verifyemail']);
 			},
 			err => {
