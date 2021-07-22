@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectDetailsComponent implements OnInit {
   constructor() { }
-projectImages=[]
+projectImages=[];
+ProjectImageOnStage:string="";
+
   ngOnInit(): void {
     this.projectImages = [
       '../../../assets/images/image1.png',
@@ -16,13 +18,10 @@ projectImages=[]
       '../../../assets/images/image1.png',
       '../../../assets/images/image3.png',
     ];
+    this.ProjectImageOnStage=this.projectImages[0];
   }
-  ProjectImageOnStage=this.projectImages[1];
   imageOnStage(){
-    for (let i = 0; i < this.projectImages.length; i++) {
-      // const imageOnStage = this.projectImages[0];
-      
-    }
+    alert("something is calling")
+     }
   }
 
-}

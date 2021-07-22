@@ -8,16 +8,17 @@
             <div class="project-pages">
                 <div class="project-images-and-videos">
                     <div class="image-or-video-onstage">
-                        <img [src]="ProjectImageOnStage" alt="">
+                        <img [src]="ProjectImageOnStage" alt="img">
                     </div>
                     <div class="other-images mx-auto col-lg-11 my-1 d-flex flex-wrap">
                         <div class="img" *ngFor="let projectImage of projectImages">
-                            <img [src]="projectImage" alt="image"></div>
+                            <img [src]="projectImage" (click)="imageOnStage" alt=" image "></div>
                     </div>
                 </div>
             </div>
 
             <div class="feedbacks ">
+                <button (click)="imageOnStage">call something</button>
                 <div class="form-group feedback-form col-lg-11 mx-auto ">
                     <label for="new-feedback " class="me-2 my-3 ">Provide feedback on this application</label>
                     <svg id="add-circle-line " xmlns="http://www.w3.org/2000/svg " width="24 " height="24 " viewBox="0 0 24 24 ">
