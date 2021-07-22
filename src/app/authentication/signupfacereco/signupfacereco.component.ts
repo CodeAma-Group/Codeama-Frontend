@@ -167,7 +167,7 @@ export class SignupfacerecoComponent implements OnInit {
 								console.log(imageBlob);
 
 								let data = {
-									// "faceRecognitionPicture": `${imageBlob}`,
+									"faceRecognitionPicture": `${imageBlob}`,
 									"Username": `${this.username}`,
 									"Email": `${this.email}`,
 									"Password": `${this.password}`
@@ -262,7 +262,7 @@ export class SignupfacerecoComponent implements OnInit {
 			console.log(imageBlob);
 			
 			let data = {
-				// "faceRecognitionPicture": `${imageBlob}`,
+				"faceRecognitionPicture": `${imageBlob}`,
 				"Username": `${this.username}`,
 				"Email": `${this.email}`,
 				"Password": `${this.password}`
