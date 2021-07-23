@@ -66,23 +66,21 @@ export class ProjectRegistrationComponent implements OnInit {
     fd.append('file', this.selectedImg, this.selectedImg.name);
   }
   emailsArray=[];
+  email="something went wrong"
 emailTags(data){
   let emailPattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   if(data.match(emailPattern)){
     if (this.emailsArray.indexOf(data)==-1) {
     this.emailsArray.push(data);
-    data="" 
     }
     else{
-      alert("Each Email should be unique")
+      alert("Each member Email should be unique")
     }
   }
   else{
     alert("Please Enter a valid email address");
-    data=""
   }
 }
-
 data
  collectData(){
   this.data={
