@@ -7,7 +7,7 @@
         <div class="uploads col-lg-5 ms-3 me-5">
             <div class="upload-1 my-3">
                 <label for="">Company Logo</label>
-                <div class="main-page-or-video text-center" (click)="mainPageInput.click()">
+                <div class="main-page-or-video text-center" (click)="logoImage.click()">
                     <svg class="upload-icon" xmlns=" http://www.w3.org/2000/svg" width="103" height="81" viewBox="0 0 103 81">
             <rect id="Rectangle_184" data-name="Rectangle 184" width="103" height="81" fill="rgba(0,0,0,0.14)" />
             <path id="Path_180" data-name="Path 180"
@@ -17,10 +17,10 @@
                     <br>
                     <span class="ms-2">Company or Group logo goes here</span>
                     <div class="mx-auto col-lg-7 imagefromDb1Container">
-                        <img [src]="imgUrl" *ngIf="imgUrl!=''" class="imagefromDb1" alt="">
+                        <img [src]="logoUrl" *ngIf="logoUrl!=''" class="imagefromDb1" alt="">
                     </div>
                 </div>
-                <input type="file" hidden accept=".png,.mp4,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
+                <input type="file" hidden accept=".png,.mp4,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="logoImage($event)" #mainPageInput>
             </div>
             <div class="upload-1 my-3">
                 <label for="">Project Main page</label>
