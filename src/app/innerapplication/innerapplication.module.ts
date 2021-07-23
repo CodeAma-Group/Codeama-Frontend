@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTabsModule } from '@angular/material/tabs';
 
 import { InnerapplicationRoutingModule } from './innerapplication-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -87,7 +86,6 @@ const customNotifierOptions: NotifierOptions = {
     ReactiveFormsModule,
     MultiSelectAllModule,
     NgxSpinnerModule,
-    MatTabsModule,
     NotifierModule.withConfig(customNotifierOptions)
   ],
 })
