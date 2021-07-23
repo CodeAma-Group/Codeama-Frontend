@@ -25,6 +25,7 @@
 .support_header p {
     font-size: 0.75em;
     opacity: 0.6;
+    color: var(--mainBlack);
 }
 
 .support_content {
@@ -48,8 +49,9 @@
 
 .question_group>h3 {
     font-size: 0.9em;
-    color: var(--modeDark);
+    color: var(--mainBlack);
     font-weight: 600;
+    opacity: 0.9;
 }
 
 .question_header {
@@ -71,7 +73,7 @@
 .question_header>h5 {
     font-size: 0.87em;
     color: var(--mainBlack);
-    opacity: 0.8;
+    opacity: 0.75;
     margin-top: 0.5em;
 }
 

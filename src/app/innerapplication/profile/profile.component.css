@@ -77,7 +77,7 @@
 .username>h2 {
     margin-left: 38%;
     font-size: 1.2em;
-    color: var(--modeDark);
+    color: var(--mainBlack);
     opacity: 0.7;
     position: absolute;
     bottom: 0;
@@ -127,6 +127,7 @@
     font-weight: 500;
     opacity: 0.6;
     margin: 0 0 0 5%;
+    color: var(--mainBlack);
 }
 
 .share_container a {
@@ -136,7 +137,7 @@
     padding: 0.4em 0.8em;
     border-radius: 0.25em;
     font-size: 0.83em;
-    color: var(--inputWhite);
+    color: var(--mainWhite);
     margin-left: 1.2em;
 }
 
