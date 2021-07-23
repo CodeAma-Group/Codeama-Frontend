@@ -10,6 +10,30 @@ import { ProjectService } from '../services/project.service';
 })
 export class ProjectRegistrationComponent implements OnInit {
   constructor(private project:ProjectService) {}
+  public options = [
+    { label: 'Java', value: 'Java' },
+    { label: 'Javascript', value: 'Javascript' },
+    { label: 'Vuex', value: 'Vuex' },
+    { label: 'React', value: 'React' },
+    { label: 'Rust', value: 'Rust' },
+    { label: 'C', value: 'C' },
+    { label: 'C++', value: 'C++' },
+    { label: 'C#', value: 'C#' },
+    { label: 'Go', value: 'Go' },
+    { label: 'HTML', value: 'HTML' },
+    { label: 'CSS', value: 'CSS' },
+    { label: 'SCSS', value: 'SCSS' },
+    { label: 'SASS', value: 'SASS' },
+    { label: 'Angular', value: 'Angular' },
+    { label: 'Python', value: 'Python' },
+    { label: 'Svelte', value: 'Svelte' },
+    { label: 'Typescript', value: 'Typescript' },
+    { label: 'Ruby', value: 'Ruby' },
+    { label: 'Haskell', value: 'Haskell' },
+    { label: 'NextJs', value: 'NextJs' },
+    { label: 'Php', value: 'Php' },
+  ];
+  public fields = { text: 'label', value: 'value' };
   selectedImg = null;
   OthernewImages = [];
   imgUrl: string = '';
@@ -17,8 +41,6 @@ export class ProjectRegistrationComponent implements OnInit {
   tagged_tech:Array<any>=[];
   GroupLogo=null
   logoImage(event) {
-    this.GroupLogo = event.target.files[0].name;  
-    console.log(this.GroupLogo);
     if (event.target.files) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
@@ -52,7 +74,6 @@ export class ProjectRegistrationComponent implements OnInit {
     if (files && files.length < 6) {
       this.Show = true;
       for (let file of files) {
-        this.thumbnails.push(file.name)
         let reader = new FileReader();
         reader.onload = (e: any) => {
           this.urls.push(e.target.result);
@@ -66,12 +87,14 @@ export class ProjectRegistrationComponent implements OnInit {
     fd.append('file', this.selectedImg, this.selectedImg.name);
   }
   emailsArray=[];
-  email="something went wrong"
+  clearInputValue=""
 emailTags(data){
   let emailPattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   if(data.match(emailPattern)){
     if (this.emailsArray.indexOf(data)==-1) {
     this.emailsArray.push(data);
+    // document.getElementById("project-teamm-no-account").value="";
+    this.clearInputValue=""
     }
     else{
       alert("Each member Email should be unique")
@@ -81,21 +104,51 @@ emailTags(data){
     alert("Please Enter a valid email address");
   }
 }
+
+features=[];
+Addfeature(data){
+  if (this.features.indexOf(data)==-1) {
+  this.features.push(data);
+  }
+  else{
+    alert("Feature should not be repeated")
+  }
+}
+techs=[];
+AddTech(data){
+  if (this.techs.indexOf(data)==-1) {
+  this.techs.push(data);
+  document.getElementById("tagged-tech").innerText=""
+  }
+  else{
+    alert("Technology should not be repeated twice")
+  }
+}
+team=[];
+// email="something went wrong"
+Addmember(data){
+  if (this.team.indexOf(data)==-1) {
+  this.team.push(data);
+  }
+  else{
+    alert("Team member should not be repeated")
+  }
+}
 data
  collectData(){
   this.data={
     title:this.newProjectForm.value.projectName,
     description:this.newProjectForm.value.app_description,
     technologies:this.newProjectForm.value.tagged_tech,
-    thumbnails:this.thumbnails,
-    // demo:"product_feedback_app-demo.mp4",
-    teamName:"QWERTY Group",
-    logo:"product_feedback_app-demo.mp4",
-    github:"https://apexcharts.com/vue-chart-demos/",
-    host:"https://apexcharts.com/vue-chart-demos/",
-    team:["60e5f235f804c62364ab6f73"],
-    non_member_emails:["member1@gmail.com","member2@gmail.com","member3@gmail.com"],
-    features:["feature1","feature3","feature2"]
+    thumbnails:this.urls,
+    demo:this.imgUrl,
+    teamName:this.newProjectForm.value.teamName,
+    logo:this.logoUrl,
+    github:this.newProjectForm.value.githubLink,
+    host:this.newProjectForm.value.appLink,
+    team:this.team,
+    non_member_emails:this.emailTags,
+    features:this.features
   }
    this.project.saveProject(this.data).subscribe((res)=>{
      console.log("result is here",res); 
@@ -105,33 +158,11 @@ data
     projectName:new FormControl(''),
     tagged_tech:new FormControl(''),
     app_description: new FormControl(''),
+    teamName: new FormControl(''),
+    githubLink:new FormControl(''),
+    appLink:new FormControl(''),
   })
   
-  public options = [
-    { label: 'Java', value: 'Java' },
-    { label: 'Javascript', value: 'Javascript' },
-    { label: 'Vuex', value: 'Vuex' },
-    { label: 'React', value: 'React' },
-    { label: 'Rust', value: 'Rust' },
-    { label: 'C', value: 'C' },
-    { label: 'C++', value: 'C++' },
-    { label: 'C#', value: 'C#' },
-    { label: 'Go', value: 'Go' },
-    { label: 'HTML', value: 'HTML' },
-    { label: 'CSS', value: 'CSS' },
-    { label: 'SCSS', value: 'SCSS' },
-    { label: 'SASS', value: 'SASS' },
-    { label: 'Angular', value: 'Angular' },
-    { label: 'Python', value: 'Python' },
-    { label: 'Svelte', value: 'Svelte' },
-    { label: 'Typescript', value: 'Typescript' },
-    { label: 'Ruby', value: 'Ruby' },
-    { label: 'Haskell', value: 'Haskell' },
-    { label: 'NextJs', value: 'NextJs' },
-    { label: 'Php', value: 'Php' },
-  ];
-  public fields = { text: 'label', value: 'value' };
-
   cookieVal: string = '';
 
   ngOnInit(): void {

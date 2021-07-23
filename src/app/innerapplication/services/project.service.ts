@@ -5,7 +5,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProjectService {
   constructor(private http: HttpClient) {}
+  url="https://codeama-backend.herokuapp.com/project"
   saveProject(data) {
-    return this.http.post('https://codeama-backend.herokuapp.com/project', data);
+    return this.http.post(this.url, data);
+  }
+  getProjects(){
+ return this.http.get(this.url)
   }
 }
