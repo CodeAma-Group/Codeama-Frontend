@@ -1,3 +1,5 @@
+import { THIS_EXPR, variable } from '@angular/compiler/src/output/output_ast';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl } from '@angular/forms';
 import { ProjectService } from '../services/project.service';
@@ -63,6 +65,22 @@ export class ProjectRegistrationComponent implements OnInit {
     const fd = new FormData();
     fd.append('file', this.selectedImg, this.selectedImg.name);
   }
+  emailsArray=[];
+  email="something went wrong"
+emailTags(data){
+  let emailPattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  if(data.match(emailPattern)){
+    if (this.emailsArray.indexOf(data)==-1) {
+    this.emailsArray.push(data);
+    }
+    else{
+      alert("Each member Email should be unique")
+    }
+  }
+  else{
+    alert("Please Enter a valid email address");
+  }
+}
 data
  collectData(){
   this.data={
