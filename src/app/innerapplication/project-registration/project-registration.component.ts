@@ -10,9 +10,10 @@ export class ProjectRegistrationComponent implements OnInit {
   OthernewImages = [];
   imgUrl: string = '';
   videoUrl: string = '../../../assets/newImages/video.mp4';
+  tagged_tech:Array<any>=[];
   newProjectForm=new FormGroup({
     projectName:new FormControl(''),
-    tagged_tech: new FormControl(''),
+    tagged_tech:new FormControl(''),
     app_description: new FormControl(''),
   })
   
