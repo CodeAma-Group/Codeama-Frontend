@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators'
-import sort_object_array from 'sort-objects-array'
 
 @Injectable({
   providedIn: 'root'
