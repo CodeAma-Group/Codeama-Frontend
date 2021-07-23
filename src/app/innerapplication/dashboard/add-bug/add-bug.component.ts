@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{FormControl,FormGroup} from '@angular/forms'
+import{FormControl,FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-add-bug',
   templateUrl: './add-bug.component.html',
@@ -7,7 +7,6 @@ import{FormControl,FormGroup} from '@angular/forms'
 })
 export class AddBugComponent implements OnInit {
   constructor() { }
-
 newBugForm= new FormGroup({
 bugTitle: new FormControl(''),
 bugTechnology:new FormControl(''),

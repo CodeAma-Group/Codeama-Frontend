@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators'
+import sort_object_array from 'sort-objects-array'
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,7 @@ export class InnerapplicationService {
           }
           articlesArray.push(singleArt)
         }
+        articlesArray = articlesArray.reverse()
         return articlesArray
       })
     )
@@ -80,6 +82,7 @@ export class InnerapplicationService {
           }
           resourcesArray.push(singleArt)
         }
+        resourcesArray = resourcesArray.reverse()
         return resourcesArray
       })
     )
@@ -87,11 +90,10 @@ export class InnerapplicationService {
   }
 
   public getQuestions(){
-    let questions = <Observable<any[]>>this.http.get(this.base+"view_questions/all/desc")
+    let questions = <Observable<any[]>>this.http.get(this.base+"view_questions/all")
     .pipe(
       pluck("data"),
       map((data: any[]) => {
-        console.log(data)
         var questionsArray: any[] = [];
         for(let i=0; i<data.length; i++){
           var tagged_tech: any[] = []
@@ -113,26 +115,36 @@ export class InnerapplicationService {
             questionDetails: {
               question: data[i].question.question_title,              
               desc: data[i].question.question_description,
+              text_qtn: data[i].question.text_question,
               likes: data[i].likes,
               date_updated: data[i].date,
               question_img: this.base + data[i].question.image_question,
               tagged_tech,
               main_question: data[i].question.text_question,
               code_snippet: data[i].question.code_snippet,
-              comments: data[i].question.comments || [],
+              comments: data[i].comment,
               _id: data[i].question._id
             }
           }
           questionsArray.push(singleQue)
         }
+    
         return questionsArray
       })
     )
     return questions
   }
 
-  public addQuestion(body: FormData){
+  public addResource(body: FormData){
     return <Observable<any>>this.http.post(this.base + "resources", body)
+  }
+
+  public addQuestion(body){
+    return <Observable<string>>this.http.post(this.base + "post_question", body);
+  }  
+
+  public addArticle(body){
+    return this.http.post<Observable<any>>(this.base + "articles", body)
   }
 
 }
