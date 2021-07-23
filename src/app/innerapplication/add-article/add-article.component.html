@@ -14,7 +14,7 @@
                         <span>Article cover image</span>
                     </div>
                     <img [src]="imgUrl" *ngIf="imgUrl" class="imagefromDb1" alt="article image" style="height: auto; max-width: 90%;">
-                    <input type="file" hidden accept=".png,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="imageChange($event)" #mainPageInput>
+                    <input type="file" hidden accept=".png,.jpg,.jpeg" name="file" id="mainPageUplopad" (input)="imageChange($event)" #mainPageInput>
                 </div>
             </div>
             <div class="col-4">
@@ -51,6 +51,10 @@
             </svg> 
             <textarea type="text" name="article" formControlName="article" id="qtn" class="form-control form-text" rows="10">...</textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-3 w-25 pt-2 pb-2">Post your article now</button>
+        <button type="submit" class="btn btn-primary mt-3 w-25 pt-2 pb-2" [disabled]="!article.valid">Post your article now</button>
     </form>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
+    <p style="color: white">Posting article... </p>  
+</ngx-spinner> 
+<notifier-container></notifier-container>
