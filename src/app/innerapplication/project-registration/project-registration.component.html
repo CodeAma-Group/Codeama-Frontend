@@ -40,10 +40,10 @@
             </div>
         </div>
         <div class="user-inputs col-lg-6 mx-auto ">
-            <form class=" form col-lg-12 ">
+            <form class=" form col-lg-12" (ngSubmit)="collectData()" [formGroup]="newProjectForm">
                 <div class="form-group ">
                     <label for="project-name ">Project name</label>
-                    <input type="text " name="project-name " id="project-name " class="form-control fm-style " placeholder="Application name ">
+                    <input type="text " formControlName="projectName" name=" projectName " id="project-name " class="form-control fm-style " placeholder="Application name ">
                 </div>
                 <div class="form-group ">
                     <label for="project-techs ">Application technologies</label>
@@ -66,10 +66,10 @@
             <label for="app-description ">Description</label>
             <br>
             <span>Only 30 words</span>
-            <textarea class="form-control " name="app-description " id="app-description " maxlength="30 " rows=" 3 "></textarea>
+            <textarea class="form-control" formControlName="app_description" name="app_description " id="app-description " maxlength="30 " rows=" 3 "></textarea>
         </div>
     </div>
     <div class="post-btn text-end my-3 me-3 ">
-        <a type="submit " name=" post-pro-btn " id="post-pro-btn" class="btn" href="# " role="button ">Post your project Now</a>
+        <button type="submit " name=" post-pro-btn " id="post-pro-btn " class="btn ">Post your project Now</button>
     </div>
 </div>

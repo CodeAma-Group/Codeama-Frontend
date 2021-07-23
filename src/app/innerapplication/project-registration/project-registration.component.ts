@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormGroup,FormControl } from '@angular/forms';
 @Component({
   selector: 'app-project-registration',
   templateUrl: './project-registration.component.html',
@@ -10,15 +10,12 @@ export class ProjectRegistrationComponent implements OnInit {
   OthernewImages = [];
   imgUrl: string = '';
   videoUrl: string = '../../../assets/newImages/video.mp4';
-  question;
-  constructor(private formBuilder: FormBuilder) {
-    this.question = this.formBuilder.group({
-      title: ['', []],
-      desc: ['', []],
-      qtn: ['...', []],
-      tagged_tech: ['', []],
-    });
-  }
+  newProjectForm=new FormGroup({
+    projectName:new FormControl(''),
+    tagged_tech: new FormControl(''),
+    app_description: new FormControl(''),
+  })
+  
   public options = [
     { label: 'Java', value: 'Java' },
     { label: 'Javascript', value: 'Javascript' },
@@ -83,7 +80,9 @@ export class ProjectRegistrationComponent implements OnInit {
     fd.append('file', this.selectedImg, this.selectedImg.name);
   }
 
- 
+ collectData(){
+   console.log(this.newProjectForm.value);
+ }
 
   cookieVal: string = '';
 

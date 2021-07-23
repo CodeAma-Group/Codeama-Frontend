@@ -3,7 +3,7 @@
         <h5 class="heading-text">Add bug</h5>
     </div>
     <div class="form">
-        <form method="post" [formGroup]="newBugForm" (ngSubmit)="collectData">
+        <form method="post" [formGroup]="newBugForm" (ngSubmit)="collectData()">
             <div class="d-flex">
                 <div class="form-group col-lg-6">
                     <label for="bug-title">Bug title</label>
