@@ -141,7 +141,18 @@
         </div>
         <div class="user_activity">
             <div class="activity_container">
-                
+                <div class="menu_links">
+                    <ul>
+                        <li><a [routerLink] = "['articles']">Articles</a></li>
+                        <li><a [routerLink] = "['bugsolved']">Bugs solved</a></li>
+                        <li><a [routerLink] = "['asked']">Asked</a></li>
+                        <li><a [routerLink] = "['answered']">Answered</a></li>
+                        <li><a [routerLink] = "['resources']">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="outlet_menu_content">
+                    <router-outlet></router-outlet>
+                </div>             
             </div>
         </div>
     </div>

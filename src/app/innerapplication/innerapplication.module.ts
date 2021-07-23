@@ -30,6 +30,11 @@ import { BugsComponent } from './dashboard/bugs/bugs.component';
 import { AddBugComponent } from './dashboard/add-bug/add-bug.component';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { AskcodeamaComponent } from './askcodeama/askcodeama.component';
+import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
+import { UseransweredComponent } from './userprofile/useranswered/useranswered.component';
+import { UseraskedComponent } from './userprofile/userasked/userasked.component';
+import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
+import { UserarticlesComponent } from './userprofile/userarticles/userarticles.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -73,7 +78,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule,

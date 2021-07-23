@@ -90,6 +90,9 @@
     
     .project-teamm-no-account {
         display: inline !important;
+        border: none;
+        background-color: #EBF1FA;
+        width: 40%;
     }
     
     label,

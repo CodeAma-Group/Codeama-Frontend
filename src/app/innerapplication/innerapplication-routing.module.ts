@@ -19,9 +19,14 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { AnswerQuestionComponent } from './answer-question/answer-question.component';
-import { BugsComponent } from './dashboard/bugs/bugs.component'
-import { AddBugComponent } from './dashboard/add-bug/add-bug.component'
-import { AskcodeamaComponent } from './askcodeama/askcodeama.component'
+import { BugsComponent } from './dashboard/bugs/bugs.component';
+import { AddBugComponent } from './dashboard/add-bug/add-bug.component';
+import { AskcodeamaComponent } from './askcodeama/askcodeama.component';
+import { UseransweredComponent } from './userprofile/useranswered/useranswered.component';
+import { UserarticlesComponent } from './userprofile/userarticles/userarticles.component';
+import { UseraskedComponent } from './userprofile/userasked/userasked.component';
+import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
+import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
 
 const routes: Routes = [
   {
@@ -111,6 +116,35 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+        children: [
+          
+          {
+            path: '',
+            redirectTo: 'articles',
+            pathMatch: 'full',
+          },
+          {
+            path: 'articles',
+            component: UserarticlesComponent
+          },
+          {
+            path: 'answered',
+            component: UseransweredComponent
+          },
+          {
+            path: 'asked',
+            component: UseraskedComponent
+          },
+          {
+            path: 'bugsolved',
+            component: UserbugsolvedComponent
+          },
+          {
+            path: 'resources',
+            component: UserresourcesComponent
+          }
+
+        ]
       },
       {
         path: 'askquestion',
