@@ -18,7 +18,7 @@
 
 .support_header h2 {
     font-size: 1.2em;
-    margin-top: 0.8em;
+    margin-top: 1.3em;
     color: var(--mainBlue);
 }
 
@@ -53,6 +53,7 @@
 }
 
 .question_header {
+    z-index: 5 !important;
     height: 8.5vh;
     width: 97.5%;
     cursor: pointer;
@@ -76,12 +77,24 @@
 
 .question_body {
     height: auto;
-    padding: 1em;
     display: none;
+    padding: 1em;
     width: 97.5%;
-    transition: .5s ease-in-out;
+    transition: .4s ease;
     float: right;
-    background-color: #FCFDFE;
+    animation: move .2s linear;
+    background-color: var(--minorProfileWhite);
+    z-index: -2;
+}
+
+@keyframes move {
+    0% {
+        margin-top: -2em;
+        opacity: 0;
+    }100% {
+        margin-top: 0em;
+        opacity: 1;
+    }
 }
 
 .question_body>p {

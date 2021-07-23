@@ -18,7 +18,7 @@
     }
     
     .active {
-        background-color: var(--dimBlue);
+        background-color: var(--dimerBlue);
         border-radius: 8px;
         fill: blue!important
     }

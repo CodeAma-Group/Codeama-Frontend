@@ -27,12 +27,13 @@
     --modeDimerBlue: #0F111E;
     --intermediateBg: #00A79D;
     --shareBg: #F7FAFC;
+    --minorProfileWhite: #FCFDFE;
     
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
     --contBgDark: #151829;
-    --contBgLight: rgba(66, 144, 237, .1);
+    --contBgLight: #F4F7FB;
     --questBg: #F7F9FC;
 }
 
@@ -57,7 +58,9 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     width: 0.6em;
-    background: var(--dimBlue);
+    background: var(--mainBlack);
+    border-radius: 0.15em;
+    scroll-behavior: smooth;
 }
 
 a {
