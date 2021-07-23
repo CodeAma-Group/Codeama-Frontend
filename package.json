@@ -29,6 +29,7 @@
         "ngx-spinner": "^11.0.2",
         "ngx-webcam": "^0.3.2",
         "rxjs": "~6.6.0",
+        "sort-objects-array": "^1.7.1",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.3"
     },

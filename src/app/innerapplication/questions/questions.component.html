@@ -18,7 +18,7 @@
             </div>
             <div class="question_details">
                 <h5><a [href]="answerQuestionLink + question.questionDetails._id" class="text-decoration-none"><strong>{{question.questionDetails.question}}</strong></a></h5>
-                <p>{{question.questionDetails.desc}}</p>
+                <p>{{question.questionDetails.desc}} <br> {{question.questionDetails.text_qtn}}</p>
             </div>
             <p id="dev_username">{{question.devDetails.username}}.codeama.dev</p>
             <div class="question_views">
@@ -27,10 +27,10 @@
                 </div>
             </div>
         </div>
-        <div style="width: 40%;">
+        <div style="width: 40%; font-size: .9em;">
             <h6 class=" text-center">Tagged technologies</h6>
             <div class=" d-flex justify-content-center flex-wrap">
-                <img *ngFor="let tagtech of question.questionDetails.tagged_tech" src="{{tagtech.img}}" alt="tagged tech" style="display: inline; width: 70px; height: auto; margin-right: 10px;" class="mt-2">
+                <img *ngFor="let tagtech of question.questionDetails.tagged_tech" src="{{tagtech.img}}" alt="tagged tech" style="display: inline; width: auto; height: 40px; margin-right: 10px;" class="mt-2">
             </div>
         </div>
     </div>

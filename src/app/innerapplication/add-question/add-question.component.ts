@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { NotifierService } from 'angular-notifier';
+import jwt_decode from 'jwt-decode'
+import { NgxSpinnerService } from 'ngx-spinner';
+import { InnerapplicationService } from '../innerapplication.service';
 
 @Component({
   selector: 'app-add-question',
@@ -8,18 +12,18 @@ import { FormBuilder } from '@angular/forms';
 })
 export class AddQuestionComponent implements OnInit {
   question
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService) {
     this.question = this.formBuilder.group({
-      title: ["",[]],
-      desc: ["",[]],
-      qtn: ["...",[]],
-      tagged_tech: ["",[]]
+      title: ["",[Validators.required]],
+      desc: ["",[Validators.required]],
+      qtn: ["...",[Validators.required]],
+      tagged_tech: ["",[Validators.required]]
     })
    }
    public options = [
      {label: "Java", value:"Java"},
      {label: "Javascript", value:"Javascript"},
-     {label: "Vuex", value:"Vuex"},
+     {label: "Vue", value:"Vue"},
      {label: "React", value:"React"},
      {label: "Rust", value:"Rust"},
      {label: "C", value:"C"},
@@ -46,6 +50,32 @@ export class AddQuestionComponent implements OnInit {
   }
   submitQtn(e: Event){
     e.preventDefault();
-    console.log(this.question.value)
+    this.spinner.show()
+    var decoded: any = jwt_decode(localStorage.codeama_auth_token)
+    let newQue = {
+      userId: decoded._id,
+      questions: [{
+        question_title: this.question.value.title,
+        question_description: this.question.value.desc,
+        text_question: this.question.value.qtn,
+        tagged_technologies: this.question.value.tagged_tech.join(",")
+      }]
+    }
+    let newQueForm = {
+      question: JSON.stringify(newQue)
+    }
+    console.log(newQueForm)
+    this.backendService.addQuestion(newQueForm).subscribe(
+      (data) => {
+        console.log(data)
+        this.spinner.hide()
+        this.notifier.notify("success","Question posted successfully!" )
+    },
+    (error) => {
+      this.spinner.hide()
+      console.log(error)
+      this.notifier.notify("error","An error occured, try again!")
+    }
+    )
   }
 }

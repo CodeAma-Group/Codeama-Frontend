@@ -35,7 +35,7 @@ export class AddResourceComponent implements OnInit {
     newArt.append("description", JSON.stringify({description: this.resource.value.desc}))
     newArt.append("link", this.resource.value.resourceLink)
     newArt.append("resourcePicture", this.resource.value.resourcePicture)
-    this.backendService.addQuestion(newArt).subscribe(
+    this.backendService.addResource(newArt).subscribe(
       (data) => {
         this.spinner.hide()
         this.notifier.notify("success","Resource posted successfully!" )
