@@ -178,7 +178,7 @@ a>svg {
 
 .social_medias, .bio_location, .following_status, .skills {
     width: 97%;
-    background-color: #FCFDFE;
+    background-color: var(--minorProfileWhite);
     border-radius: 0.3em;
     margin-bottom: 0.8em;
 }
@@ -210,6 +210,6 @@ a>svg {
 
 .activity_container {
     width: 97.5%;
-    background-color: #FCFDFE;
+    background-color: var(--minorProfileWhite);
     min-height: 80vh;
 }
