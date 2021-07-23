@@ -139,7 +139,7 @@ data
   this.data={
     title:this.newProjectForm.value.projectName,
     description:this.newProjectForm.value.app_description,
-    technologies:this.newProjectForm.value.tagged_tech,
+    technologies:this.techs,
     thumbnails:this.urls,
     demo:this.imgUrl,
     teamName:this.newProjectForm.value.teamName,
@@ -156,7 +156,7 @@ data
  }
   newProjectForm=new FormGroup({
     projectName:new FormControl(''),
-    tagged_tech:new FormControl(''),
+    // tagged_tech:new FormControl(''),
     app_description: new FormControl(''),
     teamName: new FormControl(''),
     githubLink:new FormControl(''),

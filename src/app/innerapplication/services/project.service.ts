@@ -12,4 +12,7 @@ export class ProjectService {
   getProjects(){
  return this.http.get(this.url)
   }
+  getProject(id){
+    return this.http.get(`${this.url}/${id}`)
+    }
 }

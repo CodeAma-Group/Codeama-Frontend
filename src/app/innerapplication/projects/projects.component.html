@@ -13,15 +13,15 @@
     <div class="cards-div d-flex flex-wrap ms-4" *ngIf="show">
         <div class="card-group col-lg-3 mx-2" *ngFor="let project of projectsData">
             <div class="card">
-                <img class=" card-img-top" [src]="https://codeama-backend.herokuapp.com/project/project.demo" alt=" Card image cap">
+                <img class=" card-img-top" src="https://codeama-backend.herokuapp.com/{{project.demo}}" alt=" Card image cap">
                 <div class="card-body">
                     <h4 class="card-title">{{project.title}}</h4>
                     <h6 class="technologies-title">Technologies used</h6>
-                    <ul class="technologies float-left d-flex" ngFor="let tech of project.technologies">
-                        <li class="tech">{{tech}}</li>
+                    <ul class="technologies float-left d-flex">
+                        <li *ngFor="let tech of project.technologies" class="tech">{{tech}}</li>
                     </ul>
                     <div class="Group-profile">
-                        <div class="profile d-flex"><img class="profile-avatar" [src]="project.logo" alt="Card image cap">
+                        <div class="profile d-flex"><img class="profile-avatar" src="https://codeama-backend.herokuapp.com/{{project.logo}}" alt="Card image cap">
                             <h6 class="groupname mt-3 mx-2">By {{project.teamName}}</h6>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <p class="project-description-text">{{project.description}}
                         </p>
                     </div>
-                    <div class="link-to-pro text-center"><a name="viewMoreBtn" class="btn viewMoreBtn" routerLink="../projectDetails/10" role="button">View more</a></div>
+                    <div class="link-to-pro text-center"><a name="viewMoreBtn" class="btn viewMoreBtn" routerLink="../projectDetails/{{project._id}}" role="button">View more</a></div>
                 </div>
             </div>
         </div>
