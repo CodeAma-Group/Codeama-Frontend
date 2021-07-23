@@ -77,7 +77,7 @@
 .question_body {
     height: auto;
     padding: 1em;
-    /* display: none; */
+    display: none;
     width: 97.5%;
     transition: .5s ease-in-out;
     float: right;
