@@ -36,16 +36,20 @@ $bg_color: var(--contBgLight);
     }
 
     label{
+
+        font-weight: 500;
         span {
             font-size: .8em;
         }
     }
 
     input, textarea, #select{
-        background: unset;
-        border: 2px solid #99c2f4;
+        background: rgba(66, 144, 237,.05);
         font-weight: 500;
         color: var(--mainBlack);
+        font-size: .9em;
+        border: 2px solid #66a5f045;
+        border-radius: 8px!important;   
 
         &:focus {
             border-color: #558ed3;
