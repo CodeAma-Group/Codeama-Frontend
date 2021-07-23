@@ -17,6 +17,7 @@
 .status {
     padding-top: 20px;
 }
+
 .ama-askQuestion {
     text-align: end;
     padding: 0 25px;
@@ -61,4 +62,11 @@ a.text-white {
     .follow{
         width: 10%;
     }
+}
+
+.container-fluid {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: var(--contBgLight);
+    padding: 20px 20px;
 }

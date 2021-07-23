@@ -1,0 +1,124 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+p{
+    font-size: 15px;
+}
+.profile>p{
+    margin: auto;
+}
+.profile>a>p {
+    font-size: 10px;
+    margin-left: 10%;
+    width: fit-content;
+}
+
+.btn {
+    width: 110%;
+}
+.bg-color {
+    background-color: #f4f7fb;
+}
+.cl-silver {
+    color: silver;
+}
+.skills{
+    display: inline-flex;
+}
+.skills>li{
+    padding-left: 10px;
+    font-size: 13px;
+}
+.size-12{
+    font-size: 15px;
+}
+.status {
+    padding-top: 20px;
+}
+.ama-askQuestion {
+    text-align: end;
+    padding: 0 25px;
+}
+.line{
+    height: 1px;
+    background-color: silver;
+    margin-bottom: 10px;
+}
+
+
+a:hover{
+    text-decoration: none;
+}
+
+.border{
+    border-width: 5px;
+}
+.border-light-blue{
+    border-color: #96c0f3;
+    border-width: 2px;
+}
+.bg-light-blue{
+    background-color: #ebf1fa;
+}
+.bg-brur-blue{
+    background-color: #f7f9fc;;
+}
+.question-status>div:nth-child(1):hover{
+    background-color: #f0fffa;  
+    /* border-color: springgreen; */
+    border: 2px solid springgreen;
+}
+
+.question-status>div:hover .question-status>div .fw-bold{
+    color: #2df3a9;
+    font-weight: 900;
+}
+
+@media only screen and (max-width: 680px){
+    .person1 > .row {
+        width: 100%;
+        display: inline-flex;
+    }
+
+    .profile {
+        width: 25%;
+    }
+
+    .about > .row {
+        display: block;
+    }
+
+    .status {
+        width: 80%;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    .ama-askQuestion {
+        text-align: center;
+    }
+
+    .follow{
+        width: 10%;
+    }
+
+    /* Profile */
+    form.row {
+        display: block;
+    }
+
+    form > div {
+        width: 100%;
+    }
+
+    .question-status {
+        display: block;
+        text-align: center;
+    }
+
+    .question-status > div {
+        width: 100%;
+        padding: 0px 0 10px 0;
+    }
+
+}

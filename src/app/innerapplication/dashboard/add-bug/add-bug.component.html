@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="heading">
+        <h5 class="heading-text">Add bug</h5>
+    </div>
+    <div class="form">
+        <form method="post" [formGroup]="newBugForm" (ngSubmit)="collectData()">
+            <div class="d-flex">
+                <div class="form-group col-lg-6">
+                    <label for="bug-title">Bug title</label>
+                    <input type="text" id="bug-title" class=" form-control " formControlName="bugTitle" name="bugTitle" placeholder="Bug title here ">
+                </div>
+
+                <div class="form-group ms-2 bug-technology ">
+                    <label for="bug-tech ">Bug technology</label>
+                    <select class="form-control " formControlName="bugTechnology" name=" bugTechnology " id="bug-tech ">
+                        <option selected disabled>select technology</option>
+                        <option>Java</option>
+                        <option>Javascript</option>
+                        <option>Html</option>
+                        <option>Css</option>
+                        <option>SCSS</option>
+                        <option>C</option>
+                        <option>Javascript</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="bug-description ">Bug Description</label> <span>Write your bug in not more than 200 words</span>
+                <textarea class="form-control " formControlName="bugDescription" name=" bugDescription " id="bug-description " rows="2 " maxlength="200 " placeholder="Bug description here "></textarea>
+            </div>
+            <div class="form-group my-2 ">
+                <label for="bug-details ">Format your bugs below and include screenshots whenever necessary</label> <span>Don't wory about number of words but try to be specific,
+                    user the tools provided aside ->
+                </span>
+                <!-- <textarea class="form-control " formControlName="bugDetails" name="bugDetails " id="bug-description " rows="5 " maxlength="200 " placeholder="Bug description here "></textarea> -->
+                <!-- <angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor> -->
+            </div>
+            <div class="post btn ">
+                <button name="post-bug-btn" type="submit " id="post-bug-btn " class="btn btn-primary ">Post your bug now</button>
+            </div>
+        </form>
+    </div>
+</div>

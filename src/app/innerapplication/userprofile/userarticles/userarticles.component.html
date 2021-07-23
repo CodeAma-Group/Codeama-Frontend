@@ -1,0 +1,45 @@
+
+<div class="articlesDetails" *ngFor="let article of articles">
+    <div *ngIf = "article.devDetails._id == _id">
+        <div>
+            <div class="article_details">
+                <h5><strong>{{article.articleDetails.article}}</strong></h5>
+                <p>{{article.articleDetails.desc}}</p>
+            </div>
+            <p id="dev_username">{{article.devDetails.username}}.codeama.dev</p>
+            <div class="article_views">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.84" viewBox="0 0 26 23.84">
+                        <path id="Path_47" data-name="Path 47" d="M2.045,9.4H5.182V22H2.045A1.048,1.048,0,0,1,1,20.95v-10.5A1.048,1.048,0,0,1,2.045,9.4ZM7.579,8.037,14.27,1.314a.521.521,0,0,1,.684-.049l.892.672a1.58,1.58,0,0,1,.578,1.649L15.218,8.345h6.691A2.1,2.1,0,0,1,24,10.446v2.21a2.11,2.11,0,0,1-.157.8L20.608,21.35a1.045,1.045,0,0,1-.967.65H8.318a1.048,1.048,0,0,1-1.045-1.05V8.78a1.053,1.053,0,0,1,.306-.742Z" transform="translate(-1 -1.16)" fill="#4290ed"/>
+                    </svg>                    
+                    <strong>{{article.articleDetails.likes}}</strong>
+                </div> 
+    
+                <div>
+                    <svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="19" height="19">
+                        <style>
+                            tspan { white-space:pre }
+                            .shp0 { fill: #4290ed } 
+                        </style>
+                        <g id="Community page-light – 11">
+                            <g id="chat-1-line">
+                                <path id="-e-Path 49" fill-rule="evenodd" class="shp0" d="M13.26 0C17.9 0 21.66 3.77 21.66 8.41C21.66 15.24 14.31 18.4 9.06 20.5L9.06 16.82C4.42 16.82 0.66 13.05 0.66 8.41C0.66 3.77 4.42 0 9.06 0L13.26 0ZM11.16 17.32C16.98 14.68 19.56 12.2 19.56 8.41C19.56 4.93 16.74 2.1 13.26 2.1L9.06 2.1C5.58 2.1 2.76 4.93 2.76 8.41C2.76 11.89 5.58 14.72 9.06 14.72L11.16 14.72L11.16 17.32Z" />
+                            </g>
+                        </g>
+                    </svg>
+                    <strong>{{article.articleDetails.comments.length}}</strong>
+                    <div>
+                        <ng-template *ngIf="article.articleDetails.comments.length > 0">
+                            <div *ngFor="let comment of article.articleDetails.comments.slice(0,4)">
+                                <img src="{{comment.commentor_pic}}" alt="commentor profile">
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 35%; text-align: center;">
+            <img src="{{article.articleDetails.article_img}}" alt="article image" style="max-width: 90%; height: auto; border-radius: 5px;">
+        </div>
+    </div>
+</div>

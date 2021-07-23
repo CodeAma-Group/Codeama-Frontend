@@ -1,0 +1,68 @@
+<div class="ansQtnDiv">
+    <h6>Answer question</h6>
+    <hr>
+    <div>
+        <div class="dev_details" class="d-flex">
+            <figure class="position-relative d-flex justify-content-center">
+                <div>
+                    <img [src]="question.devDetails.pic" alt="profile pic">
+                </div>
+            </figure>
+            <div>
+                <p>
+                    <strong>{{question.devDetails.names}}</strong><span class="rounded-pill pl-3 pr-3 bg-primary">{{question.devDetails.badge}}</span>
+                </p>
+                <span>{{question.devDetails.names}}.codeama.net</span>
+            </div>
+        </div>
+        <p>
+            <span>Asked on </span><strong>{{question.questionDetails.date_updated | date:"longDate"}}</strong>
+        </p>
+    </div>
+    <main>
+        <div class="main">
+            <h5 class="mb-3">
+                {{question.questionDetails.question}}
+            </h5>
+            <p>
+                This is all the question details that will just reflect a little here before seeing the entire body This is all the question details that will just
+ reflect a little here before seeing the entire body This is all the question details that will just reflect a little here before seeing the
+ entire body This is all the question details that will just reflect a little here before seeing the entire body.vThis is all the
+ question details that will just reflect a little here before seeing 
+the entire body.
+                <!-- {{question.questionDetails.desc}} <br> {{question.questionDetails.text_qtn}} -->
+            </p>
+        </div>
+        <div class="shortDet">
+            <div>
+                <span>5</span>
+                <br><span> Comments</span>
+            </div>
+            <div>
+                <span>No</span>
+                <br><span> Answers</span>
+            </div>
+            <div>
+                <span>8</span>
+                <br> <span>Viewers</span>
+            </div>
+        </div>
+        <form class="answer_section d-flex justify-content-between align-items-end">
+            <div class="col-9 answer">
+                <label for="qtn_ans" class="mb-2">Answer question</label>
+                <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
+                    <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
+                    <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
+                </svg> 
+                <textarea name="answer" id="qtn_ans" rows="7" class="form-text form-control">Answer this question...</textarea>
+            </div>
+            <div class="" style="width: 23%;">
+                <p>Question actions</p>
+                <button type="submit" class="btn btn-primary col-12">Answer question</button>
+            </div>
+        </form>
+    </main>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
+    <p style="color: white">Please Wait. </p>  
+</ngx-spinner> 

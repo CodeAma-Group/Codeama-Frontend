@@ -1,191 +1,37 @@
 <div class="container-fluid">
     <div class="heading py-1 d-flex">
         <h6 class="my-auto col-lg-9" id="page-title">Projects under developmet</h6>
-        <a name="addPro" id="addPro" class="btn btn-primary my-auto mx-auto" href="#" role="button">
+        <a routerLink="../projectRegistration" name="addPro" id="addPro" class="btn btn-primary my-auto mx-auto" href="#" role="button">
             <svg class="mx-auto" id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
-                <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="#fff"/>
-              </svg> Add project</a>
+        <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none" />
+        <path id="Path_44" data-name="Path 44"
+          d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z"
+          fill="#fff" />
+      </svg> Add project</a>
     </div>
     <hr>
-    <div class="cards-div d-flex flex-wrap  ms-4">
-        <div class="card-group col-lg-3 mx-2">
-            <div class="card"><img class=" card-img-top" src="../../../assets/images/image1.png" alt="Card image cap">
+    <div class="cards-div d-flex flex-wrap ms-4" *ngIf="show">
+        <div class="card-group col-lg-3 mx-2" *ngFor="let project of projectsData">
+            <div class="card">
+
+                <img class=" card-img-top" [src]="'https://codeama-backend.herokuapp.com/project/project.demo'" alt=" Card image cap">
+
                 <div class="card-body">
-                    <h4 class="card-title">Product Feedback App</h4>
-                    <!-- <h4 class="card-title"> {
-            {
-                project.Title
-            }
-        }
-        
-        </h4>-->
+                    <h4 class="card-title">{{project.title}}</h4>
                     <h6 class="technologies-title">Technologies used</h6>
                     <ul class="technologies float-left d-flex">
-                        <li class="tech">vue js</li>
-                        <li class="tech">Angular js</li>
-                        <li class="tech">vuex</li>
-                        <li class="tech">Html &css</li>
-                        <li class="tech">Node js</li>
-                        <!-- <li> {
-            {
-                technology.name
-            }
-        }
-        
-        </li>-->
+                        <li *ngFor="let tech of project.technologies" class="tech">{{tech}}</li>
                     </ul>
                     <div class="Group-profile">
-                        <div class="profile d-flex"><img class="profile-avatar" src="../../../assets/images/favicon.png" alt="Card image cap">
-                            <h6 class="groupname mt-3 mx-2">By Starnley group</h6>
+                        <div class="profile d-flex"><img class="profile-avatar" src="https://codeama-backend.herokuapp.com/{{project.logo}}" alt="Card image cap">
+                            <h6 class="groupname mt-3 mx-2">By {{project.teamName}}</h6>
                         </div>
                     </div>
                     <div class="project-description">
-                        <p class="project-description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur odio reprehenderit nesciunt quibusdam. Tenetur adipisci, nulla
+                        <p class="project-description-text">{{project.description}}
                         </p>
-                        <!-- <p> {
-            {
-                project.Description
-            }
-        }
-        
-        </p>-->
                     </div>
-                    <div class="link-to-pro text-center"><a name="viewMoreBtn" class="btn viewMoreBtn" routerLink="projectDetails/{{id}}" role="button">View more</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="card-group col-lg-3 mx-2">
-            <div class="card"><img class=" card-img-top" src="../../../assets/images/image3.png" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Product Feedback App</h4>
-                    <!-- <h4 class="card-title"> {
-            {
-                project.Title
-            }
-        }
-        
-        </h4>-->
-                    <h6 class="technologies-title">Technologies used</h6>
-                    <ul class="technologies float-left d-flex">
-                        <li class="tech">vue js</li>
-                        <li class="tech">Angular js</li>
-                        <li class="tech">vuex</li>
-                        <li class="tech">Html &css</li>
-                        <li class="tech">Node js</li>
-                        <!-- <li> {
-            {
-                technology.name
-            }
-        }
-        
-        </li>-->
-                    </ul>
-                    <div class="Group-profile">
-                        <div class="profile d-flex"><img class="profile-avatar" src="../../../assets/images/favicon.png" alt="Card image cap">
-                            <h6 class="groupname mt-3 mx-2">By Starnley group</h6>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        <p class="project-description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur odio reprehenderit nesciunt quibusdam. Tenetur adipisci, nulla
-                        </p>
-                        <!-- <p> {
-            {
-                project.Description
-            }
-        }
-        
-        </p>-->
-                    </div>
-                    <div class="link-to-pro text-center"><a name="viewMoreBtn" class="viewMoreBtn btn" href="#" role="button">View more</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="card-group col-lg-3 mx-2">
-            <div class="card"><img class=" card-img-top" src="../../../assets/images/image2.png" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Product Feedback App</h4>
-                    <!-- <h4 class="card-title"> {{
-                project.Title}}
-        </h4>-->
-                    <h6 class="technologies-title">Technologies used</h6>
-                    <ul class="technologies float-left d-flex">
-                        <li class="tech">vue js</li>
-                        <li class="tech">Angular js</li>
-                        <li class="tech">vuex</li>
-                        <li class="tech">Html &css</li>
-                        <li class="tech">Node js</li>
-                        <!-- <li> {
-            {
-                technology.name
-            }
-        }
-        
-        </li>-->
-                    </ul>
-                    <div class="Group-profile">
-                        <div class="profile d-flex"><img class="profile-avatar" src="../../../assets/images/favicon.png" alt="Card image cap">
-                            <h6 class="groupname mt-3 mx-2">By Starnley group</h6>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        <p class="project-description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur odio reprehenderit nesciunt quibusdam. Tenetur adipisci, nulla
-                        </p>
-                        <!-- <p> {
-            {
-                project.Description
-            }
-        }
-        
-        </p>-->
-                    </div>
-                    <div class="link-to-pro text-center"><a name="viewMoreBtn" class="viewMoreBtn btn" href="#" role="button">View more</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="card-group col-lg-3 mx-2">
-            <div class="card"><img class=" card-img-top" src="../../../assets/images/image2.png" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Product Feedback App</h4>
-                    <!-- <h4 class="card-title"> {
-            {
-                project.Title
-            }
-        }
-        
-        </h4>-->
-                    <h6 class="technologies-title">Technologies used</h6>
-                    <ul class="technologies float-left d-flex">
-                        <li class="tech">vue js</li>
-                        <li class="tech">Angular js</li>
-                        <li class="tech">vuex</li>
-                        <li class="tech">Html &css</li>
-                        <li class="tech">Node js</li>
-                        <!-- <li> {
-            {
-                technology.name
-            }
-        }
-        
-        </li>-->
-                    </ul>
-                    <div class="Group-profile">
-                        <div class="profile d-flex"><img class="profile-avatar" src="../../../assets/images/favicon.png" alt="Card image cap">
-                            <h6 class="groupname mt-3 mx-2">By Starnley group</h6>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        <p class="project-description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur odio reprehenderit nesciunt quibusdam. Tenetur adipisci, nulla
-                        </p>
-                        <!-- <p> {
-            {
-                project.Description
-            }
-        }
-        
-        </p>-->
-                    </div>
-                    <div class="link-to-pro text-center"><a name="viewMoreBtn" class="viewMoreBtn" class="btn" routerLink="projectDetails" role="button">View more</a></div>
+                    <div class="link-to-pro text-center"><a name="viewMoreBtn" class="btn viewMoreBtn" routerLink="../projectDetails/{{project._id}}" role="button">View more</a></div>
                 </div>
             </div>
         </div>

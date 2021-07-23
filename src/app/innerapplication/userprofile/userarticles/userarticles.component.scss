@@ -1,0 +1,91 @@
+.articlesDetails {
+    color: var(--mainBlack) !important;
+    >div {
+        display: flex;
+        align-items: center;
+        
+            >div:nth-of-type(2){
+    
+                h5 {
+                    margin: 10px 0 20px;
+                    font-size: 0.9em !important;
+                    opacity: 0.8;
+                }
+                p {
+                    font-size: 0.78em !important;
+                    opacity: 0.67;
+                }
+            }
+    
+            p#dev_username {
+                font-size: 0.8em !important;
+                color: var(--mainBlack);
+                opacity: .5;
+            }
+    
+            >div:last-of-type {
+                font-size: .9em;
+                white-space: nowrap;
+                >div {
+                    margin-right: 7%;
+                    display: inline;
+    
+                    svg {
+                        margin-right: 3px;
+                    }
+                    i.fa-thumbs-up {
+                        color: #4290ed;
+                    }
+    
+                    >div {
+                        display: inline;
+                        position: relative;
+                        bottom: -5px;
+                        margin-left: 5px;
+                        div {
+                            height: 26px;
+                            width: 26px;
+                            display: inline-flex;
+                            justify-content: center;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            border: 1px solid white;
+                            background: rgb(143, 51, 14);
+                            position: relative;
+    
+                            &:nth-child(2){
+                                left: -12px;
+                            }
+    
+                            &:not(:nth-child(-n+2)){
+                                left: -24px;
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
+
+    hr {
+        background-color:#0a131d;
+        opacity: .2;
+    }
+
+
+    .article_details {
+        h5 {
+            font-size: 1em;
+            opacity: 0.8;
+        }
+
+        p {
+            font-size: 0.8em;
+            opacity: 0.67;
+        }
+    }
+
+
+    .article_views {
+        display: flex;
+    }

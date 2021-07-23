@@ -8,7 +8,7 @@
 
 .form {
     width: 80%;
-    height: 90%;
+    height: 100%;
     position: relative;
     /* background-color: green; */
 }
@@ -16,15 +16,12 @@
 .form>h2 {
     font-weight: 700;
     font-size: 1.8em;
+    margin-top: 1.5em;
     color: var(--mainBlue);
 }
 
 span {
     color: var(--mainRed) !important;
-}
-
-form {
-    margin-top: 12%;
 }
 
 input[type=password],
@@ -86,8 +83,9 @@ button>svg {
 
 .recognition_container {
     width: 100%;
-    height: 50%;
-    margin-bottom: -2.5em;
+    height: 42%;
+    margin-top: 2em !important;
+    margin-bottom: 2.5em;
     position: relative;
     display: flex;
     justify-content: center;
@@ -101,6 +99,41 @@ button>svg {
     transition: .5s ease-in-out;
     animation: scan 2s linear infinite;
     animation-direction: alternate;
+}
+
+.recognition_container>h1 {
+    position: absolute;
+    font-size: 4em;
+    z-index: 9;
+    top: 35%;
+    color: #fff;
+    font-weight: 700;
+    animation: diff 1s ease-in-out infinite;
+}
+
+.camera_options_rotate {
+    position: fixed;
+    top: 38%;
+    left: 12%;
+    cursor: pointer;
+    z-index: 99;
+}
+.camera_options_off {
+    position: fixed;
+    top: 38%;
+    left: 40.8%;
+    cursor: pointer;
+    z-index: 99;
+}
+
+@keyframes diff {
+    0% {
+        opacity: 0.5;
+        font-size: 0.1em;
+    } 100% {
+        font-size: 5em;
+        opacity: 1;
+    }
 }
 
 @keyframes scan {
@@ -127,6 +160,17 @@ button>svg {
     opacity: 0.78;
 }
 
+.snapshot>img {
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    opacity: 1 !important;
+}
+
+#scanner {
+    z-index: 9 !important;
+}
+
 .sample {
     height: 110% !important;
     bottom: 0.07em;
@@ -137,4 +181,19 @@ button>svg {
     position: absolute;
     z-index: 9;
     top: 0;
+}
+
+.alert {
+    text-align: center;
+    font-size: 0.8em !important;
+}
+
+form {
+    margin-top: 0.5em;
+}
+
+.form-floating>p {
+    font-size: 0.75em;
+    color: var(--mainBlack);
+    opacity: 0.75;
 }

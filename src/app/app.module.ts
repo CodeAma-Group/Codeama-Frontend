@@ -13,6 +13,8 @@ import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 import { AuthService } from './authentication/_authServices/auth.service'
 import { AuthGuard } from './authentication/common/auth.guard'
 import { AuthinterceptorService } from './authentication/_authServices/authinterceptor.service'
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AuthinterceptorService } from './authentication/_authServices/authinter
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MultiSelectAllModule
+    MultiSelectAllModule,
+    NgxSpinnerModule,
+    NotifierModule
   ],
   providers: [
     AuthService,

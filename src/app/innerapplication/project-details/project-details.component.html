@@ -1,44 +1,40 @@
-<div class="container-fluid">
-    <div class="heading pt-3  ms-3">
-        <h6 class="title my-auto">Product Feeback app</h6>
-        <!-- <h6 class="title">{{project.name}}</h6> -->
+<div class="container-fluid" *ngFor="let project of projectData">
+    <div class="heading pt-3 ms-3">
+        <h6 class="title my-auto">{{project.title}}</h6>
     </div>
     <div class="main-container d-flex">
-        <div class="division-one col-lg-6 ">
+        <div class="division-one col-lg-6">
             <div class="project-pages">
                 <div class="project-images-and-videos">
                     <div class="image-or-video-onstage">
-                        <img src="../../../assets/images/image1.png" alt="">
+                        <img [src]="ProjectImageOnStage" alt=" img ">
                     </div>
-                    <div class="other-images mx-auto col-lg-11 my-1 d-flex flex-wrap">
-                        <div class="img"><img src="../../../assets/images/image1.png" alt="image"></div>
-                        <div class="img"><img src="../../../assets/images/image2.png" alt="image"></div>
-                        <div class="img"><img src="../../../assets/images/image3.png" alt="image"></div>
-                        <div class="img"><img src="../../../assets/images/image1.png" alt="image"></div>
-                        <div class="img"><img src="../../../assets/images/image1.png" alt="image"></div>
+                    <div class="other-images mx-auto col-lg-11 my-1 d-flex flex-wrap ">
+                        <div class="img " *ngFor="let thumbnail of project.thumbnails ">
+                            <img src="https://codeama-backend.herokuapp.com/{{thumbnail}} " #image (click)="imageOnStage(image) " alt=" image "></div>
                     </div>
                 </div>
             </div>
 
-            <div class="feedbacks">
-                <div class="form-group feedback-form col-lg-11 mx-auto">
-                    <label for="new-feedback" class="me-2 my-3">Provide feedback on this application</label>
-                    <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
-                        <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="#212f3d"/>
+            <div class="feedbacks ">
+                <div class="form-group feedback-form col-lg-11 mx-auto ">
+                    <label for="new-feedback " class="me-2 my-3 ">Provide feedback on this application</label>
+                    <svg id="add-circle-line " xmlns="http://www.w3.org/2000/svg " width="24 " height="24 " viewBox="0 0 24 24 ">
+                        <path id="Path_43 " data-name="Path 43 " d="M0,0H24V24H0Z " fill="none "/>
+                        <path id="Path_44 " data-name="Path 44 " d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z " fill="#212f3d "/>
                       </svg>
-                    <textarea class="form-control comment-input-box " name="new-feedback" id="new-feedback" rows="3"></textarea>
+                    <textarea class="form-control comment-input-box " name="new-feedback " id="new-feedback " rows="3 "></textarea>
                 </div>
-                <div class="comments-list mt-4 col-lg-11 mx-auto">
+                <div class="comments-list mt-4 col-lg-11 mx-auto ">
                     <h6>Recent feedbacks</h6>
-                    <div class="commenter-profile d-flex">
-                        <img src="../../../assets/images/favicon.png" alt="">
-                        <h6 class="username my-auto ms-2">
+                    <div class="commenter-profile d-flex ">
+                        <img src="../../../assets/images/favicon.png " alt=" ">
+                        <h6 class="username my-auto ms-2 ">
                             John Doe
                         </h6>
                     </div>
-                    <div class="comment-part">
-                        <p class="comment my-2">
+                    <div class="comment-part ">
+                        <p class="comment my-2 ">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi veritatis nihil magni, adipisci non ad corrupti numquam sint vel molestiae fugit, eaque totam nisi dolor illo quos cupiditate repellendus itaque!
                         </p>
                     </div>
@@ -46,92 +42,49 @@
                 </div>
             </div>
         </div>
-        <div class="division-two col-lg-6  px-3">
-            <div class="Group-profile">
-                <div class="profile d-flex mt-3">
-                    <img class="profile-avatar" src=" ../../../assets/images/favicon.png" alt="">
-                    <h6 class="my-auto ms-3">By Starnley Group</h6>
-                    <!-- <h6>By {{project.groupname}}</h6> -->
+        <div class="division-two col-lg-6 px-3 ">
+            <div class="Group-profile ">
+                <div class="profile d-flex mt-3 ">
+                    <img class="profile-avatar " src="https://codeama-backend.herokuapp.com/{{project.logo}} " alt=" ">
+                    <h6 class="my-auto ms-3 ">By {{project.teamName}}</h6>
                 </div>
-                <h6 class="mt-2">Technologies</h6>
-                <ul class="technologies float-left d-flex">
-                    <li class="tech">vue js</li>
-                    <li class="tech">Angular js</li>
-                    <li class="tech">vuex</li>
-                    <li class="tech">Html &css</li>
-                    <li class="tech">Node js</li>
+                <h6 class="mt-2 ">Technologies</h6>
+                <ul class="technologies float-left d-flex ">
+                    <li *ngFor="let tech of project.technologies " class="tech ">{{tech}}</li>
                 </ul>
             </div>
-            <div class="application-name">
-                <h6>Product Feedback app</h6>
-                <!-- <h5>{{project.name}}</h5> -->
+            <div class="application-name ">
+                <h6>{{project.title}}</h6>
             </div>
-            <div class="project-desription">
-                <p class="app-description">This will be a perfect portfolio piece! You'll be working with JSON, managing state, and building like a real-world app. You can even create it as a full-stack project!</p>
+            <div class="project-desription ">
+                <p class="app-description ">{{project.description}}</p>
             </div>
-            <div class="application-features">
+            <div class="application-features ">
                 <h6>project Features</h6>
-                <ul class="features-list d-flex flex-wrap">
-                    <li class="feature-item col-lg-5">
-                        <svg id="checkbox-circle-line" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                        <path id="Path_171" data-name="Path 171" d="M0,0H30V30H0Z" fill="none"/>
-                        <path id="Path_172" data-name="Path 172" d="M15,28A13,13,0,1,1,28,15,13,13,0,0,1,15,28Zm0-2.6A10.4,10.4,0,1,0,4.6,15,10.4,10.4,0,0,0,15,25.4Zm-1.3-5.2L8.188,14.684l1.838-1.838L13.7,16.524,21.057,9.17l1.84,1.838Z" transform="translate(0 0)" fill="#00ffa8"/>
+                <ul class="features-list d-flex flex-wrap ">
+                    <li class="feature-item col-lg-5 " *ngFor="let feature of project.features ">
+                        <svg id="checkbox-circle-line " xmlns="http://www.w3.org/2000/svg " width="30 " height="30 " viewBox="0 0 30 30 ">
+                        <path id="Path_171 " data-name="Path 171 " d="M0,0H30V30H0Z " fill="none "/>
+                        <path id="Path_172 " data-name="Path 172 " d="M15,28A13,13,0,1,1,28,15,13,13,0,0,1,15,28Zm0-2.6A10.4,10.4,0,1,0,4.6,15,10.4,10.4,0,0,0,15,25.4Zm-1.3-5.2L8.188,14.684l1.838-1.838L13.7,16.524,21.057,9.17l1.84,1.838Z
+                            " transform="translate(0 0) " fill="#00ffa8 "/>
                     </svg>
-                        <span class="mx-2">feature 1</span>
-                    </li>
-
-                    <li class="feature-item col-lg-5">
-                        <svg id="checkbox-circle-line" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                        <path id="Path_171" data-name="Path 171" d="M0,0H30V30H0Z" fill="none"/>
-                        <path id="Path_172" data-name="Path 172" d="M15,28A13,13,0,1,1,28,15,13,13,0,0,1,15,28Zm0-2.6A10.4,10.4,0,1,0,4.6,15,10.4,10.4,0,0,0,15,25.4Zm-1.3-5.2L8.188,14.684l1.838-1.838L13.7,16.524,21.057,9.17l1.84,1.838Z" transform="translate(0 0)" fill="#00ffa8"/>
-                    </svg>
-                        <span class="mx-2">feature 1</span>
-                    </li>
-
-                    <li class="feature-item col-lg-5">
-                        <svg id="checkbox-circle-line" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                        <path id="Path_171" data-name="Path 171" d="M0,0H30V30H0Z" fill="none"/>
-                        <path id="Path_172" data-name="Path 172" d="M15,28A13,13,0,1,1,28,15,13,13,0,0,1,15,28Zm0-2.6A10.4,10.4,0,1,0,4.6,15,10.4,10.4,0,0,0,15,25.4Zm-1.3-5.2L8.188,14.684l1.838-1.838L13.7,16.524,21.057,9.17l1.84,1.838Z" transform="translate(0 0)" fill="#00ffa8"/>
-                    </svg>
-                        <span class="mx-2">feature 1</span>
-                    </li>
-
-                    <li class="feature-item col-lg-5">
-                        <svg id="checkbox-circle-line" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                        <path id="Path_171" data-name="Path 171" d="M0,0H30V30H0Z" fill="none"/>
-                        <path id="Path_172" data-name="Path 172" d="M15,28A13,13,0,1,1,28,15,13,13,0,0,1,15,28Zm0-2.6A10.4,10.4,0,1,0,4.6,15,10.4,10.4,0,0,0,15,25.4Zm-1.3-5.2L8.188,14.684l1.838-1.838L13.7,16.524,21.057,9.17l1.84,1.838Z" transform="translate(0 0)" fill="#00ffa8"/>
-                    </svg>
-                        <span class="mx-2">feature 1</span>
-                    </li>
-
-                    <li class="feature-item col-lg-5">
-                        <svg id="checkbox-circle-line" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                        <path id="Path_171" data-name="Path 171" d="M0,0H30V30H0Z" fill="none"/>
-                        <path id="Path_172" data-name="Path 172" d="M15,28A13,13,0,1,1,28,15,13,13,0,0,1,15,28Zm0-2.6A10.4,10.4,0,1,0,4.6,15,10.4,10.4,0,0,0,15,25.4Zm-1.3-5.2L8.188,14.684l1.838-1.838L13.7,16.524,21.057,9.17l1.84,1.838Z" transform="translate(0 0)" fill="#00ffa8"/>
-                    </svg>
-                        <span class="mx-2">feature 1</span>
-                    </li>
-                    <li class="feature-item col-lg-5">
-                        <svg id="checkbox-circle-line" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                        <path id="Path_171" data-name="Path 171" d="M0,0H30V30H0Z" fill="none"/>
-                        <path id="Path_172" data-name="Path 172" d="M15,28A13,13,0,1,1,28,15,13,13,0,0,1,15,28Zm0-2.6A10.4,10.4,0,1,0,4.6,15,10.4,10.4,0,0,0,15,25.4Zm-1.3-5.2L8.188,14.684l1.838-1.838L13.7,16.524,21.057,9.17l1.84,1.838Z" transform="translate(0 0)" fill="#00ffa8"/>
-                    </svg>
-                        <span class="mx-2">feature 1</span>
+                        <span class="mx-2 ">{{feature}}</span>
                     </li>
                 </ul>
             </div>
-            <div class="project-links my-5">
-                <a href="" class="btn btn-light github-link mx-3">See Github Code Repo
-                    <svg class="mx-2" id="github-line" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                    <path id="Path_169" data-name="Path 169" d="M0,0H32V32H0Z" fill="none"/>
-                    <path id="Path_170" data-name="Path 170" d="M7.278,25.237a5.841,5.841,0,0,1-1.254-1.149q-.343-.405-.679-.815A3.924,3.924,0,0,0,3.8,21.938a1.4,1.4,0,0,1-.88-1.8,1.473,1.473,0,0,1,1.866-.849,6.264,6.264,0,0,1,2.839,2.235c-.137-.165.5.6.631.759A3.376,3.376,0,0,0,8.9,22.9a2.8,2.8,0,0,0,1.677.2,6.227,6.227,0,0,1,.295-1.541c-4.328-1.022-6.777-3.716-6.777-9A7.517,7.517,0,0,1,5.638,7.917a7.069,7.069,0,0,1,.44-4.493A1.439,1.439,0,0,1,7,2.605a1.949,1.949,0,0,1,.3-.066c1.171-.173,2.824.239,4.979,1.543a17.9,17.9,0,0,1,7.832,0c2.154-1.313,3.81-1.726,4.99-1.543a2.048,2.048,0,0,1,.318.07,1.438,1.438,0,0,1,.9.816,7.061,7.061,0,0,1,.44,4.49A7.47,7.47,0,0,1,28.3,12.551c0,5.288-2.441,7.974-6.769,9a6.525,6.525,0,0,1,.277,1.942c0,1.317-.006,2.591-.018,3.866a1.4,1.4,0,0,1-.027,2.713,2.264,2.264,0,0,1-2.891-2.147l0-.628.007-.992c.007-1,.01-1.883.01-2.812a2.473,2.473,0,0,0-.62-1.914,1.4,1.4,0,0,1,.787-2.466c4.326-.469,6.324-2.086,6.324-6.559a4.736,4.736,0,0,0-1.331-3.384A1.371,1.371,0,0,1,23.775,7.7a3.741,3.741,0,0,0,.14-2.272l-.015,0a9.95,9.95,0,0,0-2.709,1.336,1.5,1.5,0,0,1-1.215.19,14.764,14.764,0,0,0-7.559,0,1.5,1.5,0,0,1-1.21-.189A10.122,10.122,0,0,0,8.484,5.434,3.7,3.7,0,0,0,8.618,7.7a1.371,1.371,0,0,1-.276,1.471,4.768,4.768,0,0,0-1.331,3.384c0,4.465,2,6.092,6.3,6.559a1.4,1.4,0,0,1,.793,2.46,2.882,2.882,0,0,0-.626,1.92v4.434a2.27,2.27,0,0,1-2.858,2.151,1.4,1.4,0,0,1-.058-2.762V25.92a5.288,5.288,0,0,1-3.287-.683Z" transform="translate(0)"/>
+            <div class="project-links my-5 ">
+                <a [href]="project.github " class="btn btn-light github-link mx-3 ">See Github Code Repo
+                    <svg class="mx-2 " id="github-line " xmlns="http://www.w3.org/2000/svg " width="32 " height="32 " viewBox="0 0 32 32 ">
+                    <path id="Path_169 " data-name="Path 169 " d="M0,0H32V32H0Z " fill="none "/>
+                    <path id="Path_170 " data-name="Path 170 " d="M7.278,25.237a5.841,5.841,0,0,1-1.254-1.149q-.343-.405-.679-.815A3.924,3.924,0,0,0,3.8,21.938a1.4,1.4,0,0,1-.88-1.8,1.473,1.473,0,0,1,1.866-.849,6.264,6.264,0,0,1,2.839,2.235c-.137-.165.5.6.631.759A3.376,3.376,0,0,0,8.9,22.9a2.8,2.8,0,0,0,1.677.2,6.227,6.227,0,0,1,.295-1.541c-4.328-1.022-6.777-3.716-6.777-9A7.517,7.517,0,0,1,5.638,7.917a7.069,7.069,0,0,1,.44-4.493A1.439,1.439,0,0,1,7,2.605a1.949,1.949,0,0,1,.3-.066c1.171-.173,2.824.239,4.979,1.543a17.9,17.9,0,0,1,7.832,0c2.154-1.313,3.81-1.726,4.99-1.543a2.048,2.048,0,0,1,.318.07,1.438,1.438,0,0,1,.9.816,7.061,7.061,0,0,1,.44,4.49A7.47,7.47,0,0,1,28.3,12.551c0,5.288-2.441,7.974-6.769,9a6.525,6.525,0,0,1,.277,1.942c0,1.317-.006,2.591-.018,3.866a1.4,1.4,0,0,1-.027,2.713,2.264,2.264,0,0,1-2.891-2.147l0-.628.007-.992c.007-1,.01-1.883.01-2.812a2.473,2.473,0,0,0-.62-1.914,1.4,1.4,0,0,1,.787-2.466c4.326-.469,6.324-2.086,6.324-6.559a4.736,4.736,0,0,0-1.331-3.384A1.371,1.371,0,0,1,23.775,7.7a3.741,3.741,0,0,0,.14-2.272l-.015,0a9.95,9.95,0,0,0-2.709,1.336,1.5,1.5,0,0,1-1.215.19,14.764,14.764,0,0,0-7.559,0,1.5,1.5,0,0,1-1.21-.189A10.122,10.122,0,0,0,8.484,5.434,3.7,3.7,0,0,0,8.618,7.7a1.371,1.371,0,0,1-.276,1.471,4.768,4.768,0,0,0-1.331,3.384c0,4.465,2,6.092,6.3,6.559a1.4,1.4,0,0,1,.793,2.46,2.882,2.882,0,0,0-.626,1.92v4.434a2.27,2.27,0,0,1-2.858,2.151,1.4,1.4,0,0,1-.058-2.762V25.92a5.288,5.288,0,0,1-3.287-.683Z
+                            " transform="translate(0) "/>
                   </svg>
                   </a>
-                <a href="" class="btn demo-link">See a live demo
-                    <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                    <g id="arrow-down-circle-line" transform="translate(0 32) rotate(-90)">
-                      <path id="Path_41" data-name="Path 41" d="M0,0H32V32H0Z" fill="none"/>
-                      <path id="Path_42" data-name="Path 42" d="M16,2A14,14,0,1,1,2,16,14.005,14.005,0,0,1,16,2Zm0,25.2A11.2,11.2,0,1,0,4.8,16,11.2,11.2,0,0,0,16,27.2ZM17.4,16h4.2L16,21.6,10.4,16h4.2V10.4h2.8Z" fill="#fff"/>
+                <a [href]="project.host " class="btn demo-link ">See a live demo
+                    <svg class="mx-2 " xmlns="http://www.w3.org/2000/svg " width="32 " height="32 " viewBox="0 0 32 32 ">
+                    <g id="arrow-down-circle-line " transform="translate(0 32) rotate(-90) ">
+                      <path id="Path_41 " data-name="Path 41 " d="M0,0H32V32H0Z " fill="none "/>
+                      <path id="Path_42 " data-name="Path 42 " d="M16,2A14,14,0,1,1,2,16,14.005,14.005,0,0,1,16,2Zm0,25.2A11.2,11.2,0,1,0,4.8,16,11.2,11.2,0,0,0,16,27.2ZM17.4,16h4.2L16,21.6,10.4,16h4.2V10.4h2.8Z " fill="#fff "/>
                     </g>
                   </svg>
                   </a>
