@@ -114,7 +114,7 @@ const routes: Routes = [
         component: SupportComponent,
       },
       {
-        path: 'profile',
+        path: 'profile/:username',
         component: ProfileComponent,
         children: [
           
