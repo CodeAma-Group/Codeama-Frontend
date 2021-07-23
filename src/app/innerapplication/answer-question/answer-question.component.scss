@@ -79,6 +79,7 @@ $bg_color: var(--contBgLight);
         position: relative;
         >div:first-of-type {
             margin-top: 10px;
+            min-height: 150px;
             h5 {
                 font-weight: 400;
                 font-size: 1.05em;
@@ -106,6 +107,11 @@ $bg_color: var(--contBgLight);
                 background-color: var(--questBg);
                 margin-bottom: 15px;
 
+                &:nth-of-type(2){
+                    background-color: rgba(255, 0, 0, 0.247);
+                    border-color: rgba(255, 0, 0, 0.356) !important;
+                    color: rgba(255, 1, 1, 0.671);
+                }
                 span:first-of-type {
                     font-weight: 500;
                 }
@@ -113,6 +119,42 @@ $bg_color: var(--contBgLight);
                 span:last-of-type {
                     opacity: .5;
                 }
+            }
+        }
+        >form {
+            font-size: .9em !important;
+
+            div {
+                position: relative;
+                svg {
+                    position: absolute;
+                    left: 15px
+                }
+                &.answer {
+                    label {
+                        font-size: .8em;
+                        font-weight: 500;
+                    }
+                    svg {
+                        top: 45px;
+                    }
+                    textarea{
+                        padding-left: 45px;
+                    }
+                }
+            }
+
+            textarea {
+                background: rgba(66, 144, 237,.05);
+                font-size: .95em;
+                padding-top: 10px;
+                border: 2px solid #66a5f045;    
+                border-radius: 8px!important;           
+            }
+
+            button {
+                font-size: .9em;
+                padding: 10px;
             }
         }
     }
