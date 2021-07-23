@@ -69,10 +69,17 @@ export class ProjectRegistrationComponent implements OnInit {
 emailTags(data){
   let emailPattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   if(data.match(emailPattern)){
-    this.emailsArray.push(data)
+    if (this.emailsArray.indexOf(data)==-1) {
+    this.emailsArray.push(data);
+    data="" 
+    }
+    else{
+      alert("Each Email should be unique")
+    }
   }
   else{
     alert("Please Enter a valid email address");
+    data=""
   }
 }
 
