@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../authentication/_authServices/auth.service'
 
 @Component({
   selector: 'app-moduleoutlet',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModuleoutletComponent implements OnInit {
   cookieVal: string = "";
-  constructor() { }
+  constructor( private authService: AuthService, private router: Router ) { }
 
   ngOnInit(): void {
 
@@ -102,5 +104,9 @@ export class ModuleoutletComponent implements OnInit {
     }
   }
 
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['auth']);
+  }
 
 }
