@@ -72,15 +72,15 @@
                 </div>
                 <div class="form-group">
                     <label for="project-techs">Project features</label>
-                    <ejs-multiselect id="select" formControlName="tagged_tech" [maximumSelectionLength]="8" placeholder="select not more than 8 items" class="form-control" [dataSource]="options" [fields]="fields">
+                    <ejs-multiselect id="select" formControlName="tagged_tech" [maximumSelectionLength]="8" placeholder="select not more than 8 items" class="form-control">
                     </ejs-multiselect>
                 </div>
-                <div class="demo-links d-flex">
-                    <div class="form-group">
+                <div class="demo-links col-lg-12 d-flex">
+                    <div class="form-group col-lg-6 me-1">
                         <label for="github-link">Github Link</label>
                         <input type="text" formControlName="githubLink" name="githubLink" id="github-link" class="form-control fm-style" placeholder="Github link">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-lg-6">
                         <label for="app-link">App Link</label>
                         <input type="text" formControlName="appLink" name="appLink" id="app-link" class="form-control fm-style" placeholder="Github link">
                     </div>
@@ -92,19 +92,24 @@
                 </div>
                 <div class="form-group">
                     <span>If your team mate is not using codeama currently tag his email address</span>
-                    <input type="email" name="project-teamm-no-account" id="project-teamm-no-account" class="form-control fm-style" placeholder="Application name">
-                </div>
-
-                <div class="application-desription mx-auto">
-                    <div class="form-group">
-                        <label for="app-description">Description</label>
-                        <br>
-                        <span>Only 30 words</span>
-                        <textarea class="form-control" formControlName="app_description" name="app_description" id="app-description" rows=" 3"></textarea>
+                    <div class="form-control">
+                        <div><span class="emailTags" *ngFor=" let email of emailsArray ">{{email}}
+                            </span>
+                        </div>
+                        <input type="email" name="project-teamm-no-account " id=" project-teamm-no-account " class="fm-style" (keyup.enter)="emailTags($event.target.value) " placeholder="Email address ">
                     </div>
                 </div>
-                <div class="post-btn text-end my-3 me-3">
-                    <button type="submit" name=" post-pro-btn" id="post-pro-btn" class="btn">Post your project Now</button>
+
+                <div class="application-desription mx-auto ">
+                    <div class="form-group ">
+                        <label for="app-description ">Description</label>
+                        <br>
+                        <span>Only 30 words</span>
+                        <textarea class="form-control " formControlName="app_description " name="app_description " id="app-description " rows=" 3 "></textarea>
+                    </div>
+                </div>
+                <div class="post-btn text-end my-3 me-3 ">
+                    <button type="submit " name=" post-pro-btn " id="post-pro-btn " class="btn ">Post your project Now</button>
                 </div>
             </form>
         </div>

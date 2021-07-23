@@ -79,6 +79,14 @@ label {
     font-weight: 540;
 }
 
+.emailTags {
+    padding: 10px;
+    margin: 16px 3px;
+    border-radius: 4px;
+    background-color: #727681;
+    color: white;
+}
+
 label,
 span {
     color: var(--mainBlack);
