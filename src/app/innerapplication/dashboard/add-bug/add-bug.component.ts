@@ -20,6 +20,5 @@ bugDescription:new FormControl(),
   }
 collectData(){
   console.log(this.newBugForm.value);
-  
 }
 }
