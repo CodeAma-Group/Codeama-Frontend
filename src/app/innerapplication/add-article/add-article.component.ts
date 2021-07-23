@@ -54,6 +54,7 @@ export class AddArticleComponent implements OnInit {
       error => {
         this.spinner.hide();
         console.log(error)
+        console.log(newArt.getAll("ownerId"))
         this.notifier.notify("error","An error occured, please try again!")
       }
     )
