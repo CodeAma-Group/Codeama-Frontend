@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-article',
@@ -8,12 +8,12 @@ import { FormBuilder } from '@angular/forms';
 })
 export class AddArticleComponent implements OnInit {
   article
+  public imgUrl;
   constructor(private formBuilder: FormBuilder) {
     this.article = this.formBuilder.group({
-      title: ["",[]],
-      desc: ["",[]],
-      article: ["...",[]],
-      articleImg: ["",[]]
+      title: ["",[Validators.required]],
+      desc: ["Description here...",[Validators.required]],
+      article: ["...",[Validators.required]],
     })
    }
 
@@ -24,7 +24,7 @@ export class AddArticleComponent implements OnInit {
     let file = e.target.files[0]
     fileReader.addEventListener('load', () => {
       console.log(fileReader.result)
-      this.article.value.articleImg = fileReader.result
+      this.imgUrl = fileReader.result
     })
     fileReader.readAsDataURL(file)
   }
