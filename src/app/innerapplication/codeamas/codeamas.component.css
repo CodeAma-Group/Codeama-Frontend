@@ -26,6 +26,13 @@
     background-color: silver;
     margin-bottom: 10px;
 }
+button.btn-primary.btn {
+    padding: 5px;
+}
+a.text-white {
+    font-size: 10px;
+    text-align: center;
+}
 
 @media only screen and (max-width: 680px){
     .person1 > .row {
