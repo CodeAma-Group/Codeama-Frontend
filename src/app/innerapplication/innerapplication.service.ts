@@ -115,6 +115,7 @@ export class InnerapplicationService {
             questionDetails: {
               question: data[i].question.question_title,              
               desc: data[i].question.question_description,
+              text_qtn: data[i].question.text_question,
               likes: data[i].likes,
               date_updated: data[i].date,
               question_img: this.base + data[i].question.image_question,
@@ -141,5 +142,9 @@ export class InnerapplicationService {
   public addQuestion(body){
     return <Observable<string>>this.http.post(this.base + "post_question", body);
   }  
+
+  public addArticle(body){
+    return this.http.post<Observable<any>>(this.base + "articles", body)
+  }
 
 }
