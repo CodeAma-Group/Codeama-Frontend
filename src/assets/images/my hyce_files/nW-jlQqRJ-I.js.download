@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["me\/zgTB"]); }
+
+__d("Dots3HorizontalFilled24.svg.react",["react"],(function(a,b,c,d,e,f,g){"use strict";var h=d("react");function a(a){return h.jsxs("svg",babelHelpers["extends"]({viewBox:"0 0 24 24",width:"1em",height:"1em"},a,{children:[a.title!=null&&h.jsx("title",{children:a.title}),a.children!=null&&h.jsx("defs",{children:a.children}),h.jsx("circle",{cx:12,cy:12,r:2.5}),h.jsx("circle",{cx:19.5,cy:12,r:2.5}),h.jsx("circle",{cx:4.5,cy:12,r:2.5})]}))}a.displayName=a.name+" [from "+f.id+"]";a._isSVG=!0;b=a;g["default"]=b}),98);
