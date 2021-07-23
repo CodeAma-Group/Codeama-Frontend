@@ -15,5 +15,8 @@ export class ProfileComponent implements OnInit {
     this._settings.settings();
   }
 
+  editBio: boolean = false;
+  editStack: boolean = false;
+
 
 }
