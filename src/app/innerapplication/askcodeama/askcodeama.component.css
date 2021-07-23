@@ -1,0 +1,35 @@
+a:hover{
+    text-decoration: none;
+}
+.bg-color {
+    background-color: #f4f7fb;
+}
+.cl-silver {
+    color: silver;
+}
+.skills{
+    display: inline-flex;
+}
+input::placeholder{
+    color: silver;
+}
+.skills>li{
+    padding-left: 10px;
+    color: silver;
+}
+.status {
+    padding-top: 20px;
+}
+.border{
+    border-width: 5px;
+}
+.border-light-blue{
+    border-color: #96c0f3;
+    border-width: 2px;
+}
+.bg-light-blue{
+    background-color: #ebf1fa;
+}
+.bg-brur-blue{
+    background-color: #f7f9fc;;
+}

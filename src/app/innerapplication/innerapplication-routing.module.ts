@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component';
-import { HoodComponent } from './hood/hood.component';
+// import { HoodComponent } from './hood/hood.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ChallengesComponent } from './challenges/challenges.component';
 import { CodeamasComponent } from './codeamas/codeamas.component';
@@ -18,8 +18,10 @@ import { AddQuestionComponent } from './add-question/add-question.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
-import {BugsComponent} from './dashboard/bugs/bugs.component'
-import {AddBugComponent} from './dashboard/add-bug/add-bug.component'
+import { AnswerQuestionComponent } from './answer-question/answer-question.component';
+import { BugsComponent } from './dashboard/bugs/bugs.component'
+import { AddBugComponent } from './dashboard/add-bug/add-bug.component'
+import { AskcodeamaComponent } from './askcodeama/askcodeama.component'
 
 const routes: Routes = [
   {
@@ -75,6 +77,10 @@ const routes: Routes = [
         component: AddResourceComponent
       },
       {
+        path: "answer-question",
+        component:AnswerQuestionComponent
+      },
+      {
         path: "add-bug",
         component: AddBugComponent
       },
@@ -105,6 +111,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'askquestion',
+        component: AskcodeamaComponent,
       }
     ],
   },
