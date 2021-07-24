@@ -24,6 +24,7 @@ export class SidebarComponent implements OnInit {
       this.userId = this.userData.data._id;
     },
     err => {
+      console.log(err)
       alert("Token expired!");
       this.authService.logout();
       this.router.navigate(['auth'])
