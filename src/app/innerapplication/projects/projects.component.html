@@ -13,7 +13,7 @@
     <div class="cards-div d-flex flex-wrap ms-4" *ngIf="show">
         <div class="card-group col-lg-3 mx-2" *ngFor="let project of projectsData">
             <div class="card">
-                <img class=" card-img-top" [src]="project.demo" alt=" Card image cap">
+                <img class=" card-img-top" [src]="https://codeama-backend.herokuapp.com/project/project.demo" alt=" Card image cap">
                 <div class="card-body">
                     <h4 class="card-title">{{project.title}}</h4>
                     <h6 class="technologies-title">Technologies used</h6>
