@@ -3,8 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
 import jwt_decode from 'jwt-decode'
-import { decode } from 'punycode';
-import { error } from 'protractor';
+import { NotifierService } from 'angular-notifier';
 const url = require("url")
 
 @Component({
@@ -17,7 +16,9 @@ export class AnswerQuestionComponent implements OnInit {
   public questions: any[] = []
   public question
   answer
-  constructor(private backendService: InnerapplicationService,private spinner:NgxSpinnerService, private formBuilder: FormBuilder) { 
+  isSubmitting: boolean = true
+  public newAnsArray: any[] = []
+  constructor(private backendService: InnerapplicationService,private spinner:NgxSpinnerService, private formBuilder: FormBuilder, private notifier: NotifierService) { 
     this.answer = this.formBuilder.group({
       answer: ["",[Validators.required]]
     })
@@ -67,10 +68,18 @@ export class AnswerQuestionComponent implements OnInit {
         }]
       })
     }
-    console.log(newComment)
     this.backendService.answerQuestion(newComment).subscribe(
-      data => console.log(data),
-      error => console.log(error)
+      data => {
+        this.newAnsArray.push({
+          Username: decoded.Username,
+          text_comment: this.answer.value.answer
+        })
+        this.notifier.notify("success","Thanks for your answer!")
+      },
+      error => {
+        console.log(error)
+        this.notifier.notify("error","An unkown error occured!")
+      }
     )
   }
 
