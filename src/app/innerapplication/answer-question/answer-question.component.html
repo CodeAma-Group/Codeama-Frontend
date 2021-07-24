@@ -52,8 +52,8 @@
                 <textarea name="answer" id="qtn_ans" formControlName="answer" rows="7" class="form-text form-control" placeholder="Answer this question..."></textarea>
             </div>
             <div class="" style="width: 23%;">
-                <p style="font-size: .9em;">Question actions</p>
-                <button type="submit" [disabled]="!answer.valid" class="btn btn-primary col-12">Answer question</button>
+                <p style="font-size: .9em;">Question actions</p> 
+                <button type="submit" [disabled]="!answer.valid || !isSubmitting" class="btn btn-primary col-12">Answer question</button>
             </div>
         </form>
     </main>
@@ -76,8 +76,26 @@
             <p>{{comment.comment[0].text_comment}}</p>
             <hr>
         </div>
+        <!-- <div *ngFor="let comment of newAnsArray">
+            <div class="dev_details" class="d-flex">
+                <figure class="position-relative d-flex justify-content-center">
+                    <div>
+                        <img [src]="'https://codeama-backend.herokuapp.com/'+getSolver(comment.solver).profilePicture" alt="">
+                    </div>
+                </figure>
+                <div>
+                    <p>
+                        <strong>{{comment.Username}}</strong>
+                    </p>
+                    <span>{{comment.Username}}.codeama.net</span>
+                </div>
+            </div>
+            <p>{{comment.text_comment}}</p>
+            <hr>
+        </div> -->
     </section>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
     <p style="color: white">Please Wait... </p>  
 </ngx-spinner> 
+<notifier-container></notifier-container>
