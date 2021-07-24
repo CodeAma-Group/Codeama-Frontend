@@ -53,7 +53,7 @@
             </div>
             <div class="" style="width: 23%;">
                 <p style="font-size: .9em;">Question actions</p> 
-                <button type="submit" [disabled]="!answer.valid || !isSubmitting" class="btn btn-primary col-12">Answer question</button>
+                <button type="submit" [disabled]="!answer.valid || isSubmitting" class="btn btn-primary col-12">Answer question</button>
             </div>
         </form>
     </main>
@@ -76,11 +76,11 @@
             <p>{{comment.comment[0].text_comment}}</p>
             <hr>
         </div>
-        <!-- <div *ngFor="let comment of newAnsArray">
+        <div *ngFor="let comment of newAnsArray">
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img [src]="'https://codeama-backend.herokuapp.com/'+getSolver(comment.solver).profilePicture" alt="">
+                        <img [src]="'https://codeama-backend.herokuapp.com/'+comment.profilePicture" alt="">
                     </div>
                 </figure>
                 <div>
@@ -92,7 +92,7 @@
             </div>
             <p>{{comment.text_comment}}</p>
             <hr>
-        </div> -->
+        </div>
     </section>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
