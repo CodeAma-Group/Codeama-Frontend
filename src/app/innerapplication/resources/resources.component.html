@@ -5,7 +5,7 @@
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img [src]="resource.devDetails.pic" alt="profile pic">
+                        <img [src]="resource.devDetails.pic" alt="">
                     </div>
                     <figcaption class="position-absolute rounded-pill">{{resource.devDetails.badge}}</figcaption>
                 </figure>
@@ -18,7 +18,7 @@
             </div>
             <div style="width: 100%">
                 <div>
-                    <img src="{{resource.resourceDetails.resource_img}}" alt="resource view" style="max-width: 90%; height: auto; border-radius: 5px;">
+                    <img src="{{resource.resourceDetails.resource_img}}" alt="" style="max-width: 90%; height: auto; border-radius: 5px;">
                 </div>
                 <div class="resource_details">
                     <h5 class="text-center"><strong>{{resource.resourceDetails.resource}}</strong></h5>
@@ -49,7 +49,7 @@
                     <strong>{{resource.resourceDetails.comments.length}}</strong>
                     <div>
                         <div *ngFor="let comment of resource.resourceDetails.comments.slice(0,4)">
-                            <img src="{{comment.commentor_pic}}" alt="commentor profile">
+                            <img src="{{comment.commentor_pic}}" alt="">
                         </div>
                     </div>
                 </div>
