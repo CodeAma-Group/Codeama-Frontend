@@ -14,21 +14,17 @@ export class ProjectDetailsComponent implements OnInit {
   projectImages = [];
   ProjectImageOnStage: string = '';
   projectData: any;
+  url="https://codeama-backend.herokuapp.com/"
   ngOnInit(): void {
     this.project.getProject(this.router.snapshot.params.id).subscribe((res) => {
       this.projectData = res;
       this.projectData = this.projectData.data;
+      for (let i = 0; i < this.projectData.length; i++) {
+        this.ProjectImageOnStage=this.url+this.projectData.data[i].demo
+      }
     });
-
-    this.projectImages = [
-      '../../../assets/images/image1.png',
-      '../../../assets/images/image2.png',
-      '../../../assets/images/image3.png',
-      '../../../assets/images/image1.png',
-      '../../../assets/images/image3.png',
-    ];
-    this.ProjectImageOnStage = this.projectImages[0];
   }
+  // this.ProjectImageOnStage = this.projectImages[0];
   imageOnStage(data: any) {
     this.ProjectImageOnStage = data.src;
   }
