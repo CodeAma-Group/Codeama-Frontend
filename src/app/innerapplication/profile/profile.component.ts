@@ -14,6 +14,11 @@ export class ProfileComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private _settings: AppsettingsService, private _userService: UserService, private router: Router) { }
   
+  editBio: boolean = false;
+  editStack: boolean = true;
+  editStackTwo: boolean = false;
+  editSkills: boolean = true;
+
   userData: any;
   Badge: string = ''
   Bio: string = ''
@@ -59,11 +64,6 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['app'])
     })
   }
-
-  editBio: boolean = false;
-  editStack: boolean = true;
-  editStackTwo: boolean = false;
-  editSkills: boolean = true;
 
   showAddBtn() {
     this.editBio = false;
