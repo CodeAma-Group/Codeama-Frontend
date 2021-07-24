@@ -16,14 +16,13 @@ export class AnswerQuestionComponent implements OnInit {
   public questions: any[] = []
   public question
   answer
-  isSubmitting: boolean = true
+  isSubmitting: boolean = false
   public newAnsArray: any[] = []
   constructor(private backendService: InnerapplicationService,private spinner:NgxSpinnerService, private formBuilder: FormBuilder, private notifier: NotifierService) { 
     this.answer = this.formBuilder.group({
       answer: ["",[Validators.required]]
     })
     this.qtnId = url.parse(location.href, true).query.qtnId
-    this.spinner.show()
     this.backendService.getQuestions().subscribe(data => {
       this.questions = data;
       this.question = this.questions.filter(qtn => qtn.questionDetails._id == this.qtnId)[0]
@@ -31,7 +30,7 @@ export class AnswerQuestionComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-
+    this.spinner.show()
   }
   checkBadge(badge: string){
     let className:string = ""
@@ -57,6 +56,7 @@ export class AnswerQuestionComponent implements OnInit {
 
   answerQue(e: Event){
     e.preventDefault();
+    this.isSubmitting = true;
     var decoded: any = jwt_decode(localStorage.codeama_auth_token)
     let newComment = {
       comments: JSON.stringify({
@@ -70,15 +70,18 @@ export class AnswerQuestionComponent implements OnInit {
     }
     this.backendService.answerQuestion(newComment).subscribe(
       data => {
+        this.notifier.notify("success","Thanks for your answer!")
         this.newAnsArray.push({
+          profilePicture:decoded.profilePicture,
           Username: decoded.Username,
           text_comment: this.answer.value.answer
         })
-        this.notifier.notify("success","Thanks for your answer!")
+        this.isSubmitting = false
       },
       error => {
         console.log(error)
         this.notifier.notify("error","An unkown error occured!")
+        this.isSubmitting = false
       }
     )
   }
