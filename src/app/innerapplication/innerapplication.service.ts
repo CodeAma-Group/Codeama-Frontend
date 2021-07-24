@@ -146,4 +146,8 @@ export class InnerapplicationService {
     return this.http.post<Observable<any>>(this.base + "articles", body)
   }
 
+  public answerQuestion(body){
+    return this.http.post<Observable<any>>(this.base + "answerPostedQuestion", body)
+  }
+
 }
