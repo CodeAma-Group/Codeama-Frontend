@@ -110,6 +110,36 @@ $bg_color: var(--contBgLight);
                 }
             }
         }
+        .prizes {
+            font-size: .9em;
+            span {
+                display: inline-block;
+                border: 1px solid;
+                padding: 2px 20px !important;
+                margin-bottom: 5px;
+
+                &.absBeg {
+                    background: rgba(190, 30, 45, .23);
+                    color: #BE1E2D;
+                    border-color: #BE1E2D;
+                }
+                &.pro {
+                    background: rgba(28, 117, 188, .23);
+                    color: #1C75BC;
+                    border-color: #1C75BC;
+                }
+                &.interm {
+                    background: rgba(0, 167, 157,.23);
+                    color: #00A79D;
+                    border-color: #00A79D;
+                }
+                &.beginner {
+                    background: rgba(247, 148, 29,.23);
+                    color: #F7941D;
+                    border-color: #F7941D;
+                }
+            }
+        }
     }
     .mainContent {
         float: left;
@@ -118,6 +148,7 @@ $bg_color: var(--contBgLight);
         display: block;
         border-radius: 7px;
         width: 70%;
+        padding-bottom: 20px;
         >div:first-child {
             padding: 15px 20px 0px 40px;
             a.btn {
