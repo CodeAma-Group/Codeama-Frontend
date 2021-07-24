@@ -30,7 +30,7 @@ export class AppsettingsService {
         root.style.setProperty('--dimerBlue', '#f2f6fa')
         root.style.setProperty('--mainBlack', '#17202A')
         root.style.setProperty('--inputWhite', '#ffffff')     
-        root.style.setProperty('--contBgLight', 'rgba(66, 144, 237, .1)')
+        root.style.setProperty('--contBgLight', '#F4F7FB')
         root.style.setProperty('--questBg','#F7F9FC')
         root.style.setProperty('--bgBlue', '#F4F7FB')
         root.style.setProperty('--minorProfileWhite', '#FCFDFE')   
