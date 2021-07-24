@@ -86,7 +86,8 @@
 }
 
 .logo {
-    width: 9em;
+    width: auto;
+    height: 2.3em;
 }
 
 .logout {

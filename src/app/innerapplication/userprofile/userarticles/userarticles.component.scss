@@ -3,6 +3,7 @@
     >div {
         display: flex;
         align-items: center;
+        margin: 1em 0;
         
             >div:nth-of-type(2){
     
@@ -32,6 +33,7 @@
     
                     svg {
                         margin-right: 3px;
+                        margin-left: 1em !important;
                     }
                     i.fa-thumbs-up {
                         color: #4290ed;
@@ -68,14 +70,14 @@
     }
 
     hr {
-        background-color:#0a131d;
-        opacity: .2;
+        background-color: var(--dimBlue);
     }
 
 
     .article_details {
         h5 {
             font-size: 1em;
+            font-weight: 400;
             opacity: 0.8;
         }
 

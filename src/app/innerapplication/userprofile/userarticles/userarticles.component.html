@@ -1,6 +1,6 @@
 
 <div class="articlesDetails" *ngFor="let article of articles">
-    <div *ngIf = "article.devDetails._id == _id">
+    <div>
         <div>
             <div class="article_details">
                 <h5><strong>{{article.articleDetails.article}}</strong></h5>
@@ -15,7 +15,7 @@
                     <strong>{{article.articleDetails.likes}}</strong>
                 </div> 
     
-                <div>
+                <div style="margin-left: 1em;">
                     <svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="19" height="19">
                         <style>
                             tspan { white-space:pre }
@@ -42,4 +42,5 @@
             <img src="{{article.articleDetails.article_img}}" alt="article image" style="max-width: 90%; height: auto; border-radius: 5px;">
         </div>
     </div>
+    <hr>
 </div>

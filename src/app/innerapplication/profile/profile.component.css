@@ -105,6 +105,10 @@
     color: var(--mainBlack);
 }
 
+.description>h6 {
+    margin-left: 38%;
+}
+
 .share_our_community {
     width: 58%;
     height: 100%;
@@ -208,6 +212,11 @@ a>svg {
     opacity: 0.5;
     margin-left: 1em;
     font-weight: 500;
+}
+
+.git>h6 , .linkedin>h6, .website>h6 {
+    margin-left: 1em;
+    margin-top: 0.2em;
 }
 
 .website {
@@ -424,4 +433,9 @@ a>svg {
 .outlet_menu_content {
     height: auto;
     width: 92%;
+}
+
+h6, .elseLoc {
+    color: var(--mainBlue) !important;
+    font-size: 0.8em !important;
 }
