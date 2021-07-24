@@ -87,12 +87,12 @@
 
 .logo {
     width: auto;
-    height: 2.1em;
+    height: 2.3em;
 }
 
 .logout {
     width: 10%;
-    height: 3.5em;
+    height: 3.2em;
     background-color: var(--mainRed);
     color: var(--mainWhite);
     border-radius: 0.5em;
