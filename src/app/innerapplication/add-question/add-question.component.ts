@@ -16,7 +16,7 @@ export class AddQuestionComponent implements OnInit {
     this.question = this.formBuilder.group({
       title: ["",[Validators.required]],
       desc: ["",[Validators.required]],
-      qtn: ["...",[Validators.required]],
+      qtn: ["",[Validators.required]],
       tagged_tech: ["",[Validators.required]]
     })
    }
