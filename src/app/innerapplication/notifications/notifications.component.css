@@ -1,5 +1,9 @@
+*{
+    color: var(--mainBlack);
+}
+
 .bg-color {
-    background-color: #f4f7fb;
+    background-color: unset;
 }
 
 .line{
