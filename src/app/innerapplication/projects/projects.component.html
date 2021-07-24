@@ -23,7 +23,7 @@
                         <li *ngFor="let tech of project.technologies" class="tech">{{tech}}</li>
                     </ul>
                     <div class="Group-profile">
-                        <div class="profile d-flex"><img class="profile-avatar" [src]="'https://codeama-backend.herokuapp.com/'+project.logo" alt="Card image cap">
+                        <div class="profile d-flex"><img class="profile-avatar" src="https://codeama-backend.herokuapp.com/{{project.logo}}" alt="Card image cap">
                             <h6 class="groupname mt-3 mx-2">By {{project.teamName}}</h6>
                         </div>
                     </div>
