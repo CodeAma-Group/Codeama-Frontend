@@ -15,10 +15,10 @@
             <div class="card">
                 <img class=" card-img-top" [src]="image" alt=" Card image cap ">
                 <div class="card-body ">
-                    <h4 class="card-title ">{{project.title}}</h4>
+                    <h4 class="card-title">{{project.title}}</h4>
                     <h6 class="technologies-title ">Technologies used</h6>
-                    <ul class="technologies float-left d-flex " ngFor="let tech of project.technologies ">
-                        <li class="tech ">{{tech}}</li>
+                    <ul class="technologies float-left d-flex">
+                        <li *ngFor="let tech of project.technologies" class="tech">{{tech}}</li>
                     </ul>
                     <div class="Group-profile ">
                         <div class="profile d-flex "><img class="profile-avatar " [src]="project.logo " alt="Card image cap ">
