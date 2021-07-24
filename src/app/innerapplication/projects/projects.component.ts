@@ -9,7 +9,7 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private projects:ProjectService) { }
   id=10;
-  url="https://codeama-backend.herokuapp.com/project"
+  url="https://codeama-backend.herokuapp.com"
   show:boolean=false
   image;
   projectsData:any
