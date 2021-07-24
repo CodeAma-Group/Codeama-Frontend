@@ -59,7 +59,7 @@ ul {
 }
 
 .card {
-    background-color: #FCFDFE!important;
+    background-color: var(--questBg)!important;
 }
 
 #addPro {
