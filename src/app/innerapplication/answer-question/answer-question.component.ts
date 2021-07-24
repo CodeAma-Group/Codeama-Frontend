@@ -32,6 +32,19 @@ export class AnswerQuestionComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  checkBadge(badge: string){
+    let className:string = ""
+    switch(badge.toLowerCase()){
+      case "absolute beginner": className = "absBeg";
+        break;
+      case "intermediate": className = "interm";
+        break;
+      case "pro": className = "pro";
+       break;
+      default: className="beginner"
+    }
+    return className
+  }
 
   public getSolver(solver: string){
     let solverObj: any = {}
