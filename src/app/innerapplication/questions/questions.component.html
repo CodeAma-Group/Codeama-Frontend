@@ -7,7 +7,7 @@
                     <div>
                         <img style="width: 100%;" [src]="question.devDetails.pic" alt="">
                     </div>
-                    <figcaption class="position-absolute rounded-pill">{{question.devDetails.badge}}</figcaption>
+                    <figcaption class="{{checkBadge(question.devDetails.badge)}} rounded-pill">{{question.devDetails.badge}}</figcaption>
                 </figure>
                 <div>
                     <p>
