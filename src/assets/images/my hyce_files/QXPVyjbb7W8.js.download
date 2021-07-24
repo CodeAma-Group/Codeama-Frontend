@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["k4GEx1g"]); }
+
+__d("CometInteractionTracingQPLConfigContext",["react"],(function(a,b,c,d,e,f,g){"use strict";var h=d("react");e=d("react");var i=e.useContext,j=e.useMemo,k=h.createContext({dialogTraceQPLEvent:30605361,popoverTraceQPLEvent:30605361});function a(){return i(k).dialogTraceQPLEvent}function b(){return i(k).popoverTraceQPLEvent}function c(a){var b=a.children,c=a.dialogTraceQPLEvent,d=a.popoverTraceQPLEvent;return h.jsx(k.Provider,{value:j(function(){return{dialogTraceQPLEvent:c,popoverTraceQPLEvent:d}},[c,d]),children:b})}c.displayName=c.name+" [from "+f.id+"]";g.useDialogTraceQPLEvent=a;g.usePopoverTraceQPLEvent=b;g.CometInteractionTracingQPLConfigContextProvider=c}),98);

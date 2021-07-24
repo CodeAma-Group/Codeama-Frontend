@@ -8,10 +8,60 @@
 
 .skills>li {
     padding-left: 10px;
+    font-size: 13px;
+}
+.size-12{
+    font-size: 15px;
 }
 
 .status {
     padding-top: 20px;
+}
+
+.ama-askQuestion {
+    text-align: end;
+    padding: 0 25px;
+}
+.line{
+    height: 1px;
+    background-color: silver;
+    margin-bottom: 10px;
+}
+button.btn-primary.btn {
+    padding: 5px;
+}
+a.text-white {
+    font-size: 10px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 680px){
+    .person1 > .row {
+        width: 100%;
+        display: inline-flex;
+    }
+
+    .profile {
+        width: 25%;
+    }
+
+    .about > .row {
+        display: block;
+    }
+
+    .status {
+        width: 80%;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    .ama-askQuestion {
+        text-align: center;
+    }
+
+    .follow{
+        width: 10%;
+    }
 }
 
 .container-fluid {

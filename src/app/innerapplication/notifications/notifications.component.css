@@ -1,0 +1,9 @@
+.bg-color {
+    background-color: #f4f7fb;
+}
+
+.line{
+    height: 1px;
+    background-color: silver;
+    margin-bottom: 10px;
+}

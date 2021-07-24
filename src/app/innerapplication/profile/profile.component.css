@@ -340,7 +340,7 @@ a>svg {
 
 .skill_content {
     height: auto;
-    width: 88%;
+    width: 90%;
     padding: 1em 0;
     display: flex;
     flex-wrap: wrap;
@@ -375,10 +375,53 @@ a>svg {
     width: 97.5%;
     background-color: var(--minorProfileWhite);
     min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .menu_links {
     width: 100%;
-    height: 7vh;
-    background-color: red;
+    height: 10vh;
+    position: relative;
+}
+
+.menu_links>ul {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom: 0.2em solid var(--bgBlue);
+}
+
+.active {
+    color: var(--mainBlue) !important;
+    border-bottom: 0.27em solid var(--mainBlue);
+}
+
+.menu_links ul li {
+    width: 18%;
+    height: 100%;
+    margin: 1em 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_links ul li a {
+    font-size: 0.87em;
+    color: var(--mainBlack);
+    opacity: 0.65;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 1.36em;
+}
+
+.outlet_menu_content {
+    height: auto;
+    width: 92%;
 }
