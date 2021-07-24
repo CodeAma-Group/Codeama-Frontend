@@ -9,11 +9,15 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private projects:ProjectService) { }
   id=10;
-  projectsData={}
+  show:boolean=false
+  projectsData:any
   ngOnInit(): void {
     this.projects.getProjects().subscribe((res)=>{
-      console.log(res);
       this.projectsData=res
+      console.log(this.projectsData.data);
+      
+      this.projectsData=this.projectsData.data;
+      this.show=true
     })
   }
 
