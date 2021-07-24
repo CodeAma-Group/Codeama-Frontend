@@ -11,12 +11,16 @@ export class ProjectsComponent implements OnInit {
   id=10;
   url="https://codeama-backend.herokuapp.com/project"
   show:boolean=false
+  image;
   projectsData:any
   ngOnInit(): void {
     this.projects.getProjects().subscribe((res)=>{
       this.projectsData=res
       console.log(this.projectsData.data);
       this.projectsData=this.projectsData.data;
+      this.image=this.url+'/'+this.projectsData[0].demo
+      console.log(this.image);
+      
       this.show=true
     })
   }
