@@ -10,11 +10,14 @@
     </div>
     <div class="entire_app_page_body">
         <div class="header-container">
-            <img src="../../../assets/images/logolight.svg" alt="logo" class="logo">
+            <img src="../../../assets/images/logo.png" alt="logo" class="logo">
             <form class="searchbox-container">
                 <img src="../../../assets/images/Group 2.png" alt="search icon">
                 <input type="text" name="search" id="search" placeholder="search at codeama">
             </form>
+            <div (click) = "logout()" class="logout">
+                logout
+            </div>
         </div>
         <router-outlet></router-outlet>
     </div>
