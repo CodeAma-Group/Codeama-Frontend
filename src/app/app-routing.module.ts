@@ -23,7 +23,6 @@ const routes: Routes = [
     path: 'app',
     loadChildren: () => import('./innerapplication/innerapplication.module')
       .then(mode => mode.InnerapplicationModule),
-    canActivate: [AuthGuard]
   },
   {
     path: 'welcome',
@@ -40,12 +39,10 @@ const routes: Routes = [
         path: 'profile', component: ProfileComponent
       },
     ],
-    canActivate: [AuthGuard]
   },
   {
     path: 'projectDetails',
     component: ProjectDetailsComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: '**', //wildcard routing
