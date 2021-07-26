@@ -28,8 +28,6 @@ import { UseraskedComponent } from './userprofile/userasked/userasked.component'
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
 
-import { AuthGuard } from '../authentication/common/auth.guard';
-
 const routes: Routes = [
   {
     path: '',
@@ -73,33 +71,27 @@ const routes: Routes = [
       },
       {
         path:"add-question",
-        component:AddQuestionComponent,
-        canActivate: [AuthGuard]
+        component:AddQuestionComponent
       },
       {
         path:"add-article",
-        component: AddArticleComponent,
-        canActivate: [AuthGuard]
+        component: AddArticleComponent
       },
       {
         path: "add-resource",
-        component: AddResourceComponent,
-        canActivate: [AuthGuard]
+        component: AddResourceComponent
       },
       {
         path: "answer-question",
-        component:AnswerQuestionComponent,
-        canActivate: [AuthGuard]
+        component:AnswerQuestionComponent
       },
       {
         path: "add-bug",
-        component: AddBugComponent,
-        canActivate: [AuthGuard]
+        component: AddBugComponent
       },
       {
         path: 'projectRegistration',
         component: ProjectRegistrationComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'projectDetails/:id',
@@ -124,7 +116,6 @@ const routes: Routes = [
       {
         path: 'profile/:username',
         component: ProfileComponent,
-        canActivate: [AuthGuard],
         children: [
           
           {
@@ -158,7 +149,6 @@ const routes: Routes = [
       {
         path: 'askquestion',
         component: AskcodeamaComponent,
-        canActivate: [AuthGuard]
       }
     ],
   },

@@ -39,7 +39,7 @@ import { NotifierModule } from 'angular-notifier';
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthinterceptorService,
-			multi:true
+			multi: true
 		}
   ],
   bootstrap: [AppComponent]
