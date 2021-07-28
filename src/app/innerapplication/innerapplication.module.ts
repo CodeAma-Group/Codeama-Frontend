@@ -28,5 +28,75 @@ import { FormsModule } from '@angular/forms';
     InnerapplicationRoutingModule,
     FormsModule
   ]
+import { AddQuestionComponent } from './add-question/add-question.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddArticleComponent } from './add-article/add-article.component';
+import { ResourcesComponent } from './resources/resources.component';
+import { AddResourceComponent } from './add-resource/add-resource.component';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import { AnswerQuestionComponent } from './answer-question/answer-question.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BugsComponent } from './dashboard/bugs/bugs.component';
+import { AddBugComponent } from './dashboard/add-bug/add-bug.component';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { AskcodeamaComponent } from './askcodeama/askcodeama.component';
+import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
+import { UseransweredComponent } from './userprofile/useranswered/useranswered.component';
+import { UseraskedComponent } from './userprofile/userasked/userasked.component';
+import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
+import { UserarticlesComponent } from './userprofile/userarticles/userarticles.component';
+
+const customNotifierOptions: NotifierOptions = {
+  position: {
+		horizontal: {
+			position: 'right',
+			distance: 20,
+		},
+		vertical: {
+			position: 'bottom',
+			distance: 20,
+			gap: 10
+		}
+	},
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
+
+@NgModule({
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent],
+  imports: [
+    CommonModule,
+    InnerapplicationRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MultiSelectAllModule,
+    NgxSpinnerModule,
+    NotifierModule.withConfig(customNotifierOptions)
+  ],
 })
 export class InnerapplicationModule { }

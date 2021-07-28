@@ -1,0 +1,13 @@
+*{
+    color: var(--mainBlack);
+}
+
+.bg-color {
+    background-color: unset;
+}
+
+.line{
+    height: 1px;
+    background-color: silver;
+    margin-bottom: 10px;
+}

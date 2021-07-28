@@ -1,0 +1,107 @@
+#entire_support_page {
+    width: 100%;
+    height: auto;
+    background-color: var(--bgBlue);
+    overflow-x: hidden;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+}
+
+.support_header {
+    height: 14vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.support_header h2 {
+    font-size: 1.2em;
+    margin-top: 1.3em;
+    color: var(--mainBlue);
+}
+
+.support_header p {
+    font-size: 0.75em;
+    opacity: 0.6;
+    color: var(--mainBlack);
+}
+
+.support_content {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.accordion {
+    z-index: 9 !important;
+}
+
+.question_group {
+    margin-top: 0.8em;
+    width: 95%;
+    padding: 0.2em 0;
+}
+
+.question_group>h3 {
+    font-size: 0.9em;
+    color: var(--mainBlack);
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.question_header {
+    z-index: 5 !important;
+    height: 8.5vh;
+    width: 97.5%;
+    cursor: pointer;
+    float: right;
+    margin: 0.3em 0 0.3em 0;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    border-radius: 0.3em;
+    background-color: var(--bgBlue);
+    -webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.12); 
+    box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.12);
+}
+
+.question_header>h5 {
+    font-size: 0.87em;
+    color: var(--mainBlack);
+    opacity: 0.75;
+    margin-top: 0.5em;
+}
+
+.question_body {
+    height: auto;
+    display: none;
+    padding: 1em;
+    width: 97.5%;
+    transition: .4s ease;
+    float: right;
+    animation: move .2s linear;
+    background-color: var(--minorProfileWhite);
+    z-index: -2;
+}
+
+@keyframes move {
+    0% {
+        margin-top: -2em;
+        opacity: 0;
+    }100% {
+        margin-top: 0em;
+        opacity: 1;
+    }
+}
+
+.question_body>p {
+    font-size: 0.85em;
+    color: var(--mainBlack);
+    opacity: 0.6;
+    line-height: 2em;
+}

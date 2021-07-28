@@ -1,0 +1,62 @@
+<div class="resourcesDetails" *ngFor="let resource of resources">
+    <hr>
+    <div>
+        <div>
+            <div class="dev_details" class="d-flex">
+                <figure class="position-relative d-flex justify-content-center">
+                    <div>
+                        <img [src]="resource.devDetails.pic" alt="">
+                    </div>
+                    <figcaption class="{{checkBadge(resource.devDetails.badge)}} rounded-pill">{{resource.devDetails.badge}}</figcaption>
+                </figure>
+                <div>
+                    <p>
+                        <strong>{{resource.devDetails.names}}</strong><span>@{{resource.devDetails.username}}</span>
+                    </p>
+                    <span style="font-size:.9em">{{resource.resourceDetails.date_updated | date:"MMM d, Y"}}</span>
+                </div>
+            </div>
+            <div style="width: 100%">
+                <div>
+                    <img src="{{resource.resourceDetails.resource_img}}" alt="" style="max-width: 90%; height: auto; border-radius: 5px;">
+                </div>
+                <div class="resource_details">
+                    <h5><strong>{{resource.resourceDetails.resource}}</strong></h5>
+                    <p>{{resource.resourceDetails.desc}}</p>
+                    <a href="{{resource.resourceDetails.resourceLink}}" class=" rounded-pill">Get link to {{checkResourceType(resource.resourceDetails.resourceKind)}}</a>
+                </div>
+            </div>
+            <div class="resource_views">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.84" viewBox="0 0 26 23.84">
+                        <path id="Path_47" data-name="Path 47" d="M2.045,9.4H5.182V22H2.045A1.048,1.048,0,0,1,1,20.95v-10.5A1.048,1.048,0,0,1,2.045,9.4ZM7.579,8.037,14.27,1.314a.521.521,0,0,1,.684-.049l.892.672a1.58,1.58,0,0,1,.578,1.649L15.218,8.345h6.691A2.1,2.1,0,0,1,24,10.446v2.21a2.11,2.11,0,0,1-.157.8L20.608,21.35a1.045,1.045,0,0,1-.967.65H8.318a1.048,1.048,0,0,1-1.045-1.05V8.78a1.053,1.053,0,0,1,.306-.742Z" transform="translate(-1 -1.16)" fill="#4290ed"/>
+                    </svg>
+                    <strong>{{resource.resourceDetails.likes}}</strong>
+                </div> 
+    
+                <div>
+                    <svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="19" height="19">
+                        <style>
+                            tspan { white-space:pre }
+                            .shp0 { fill: #4290ed } 
+                        </style>
+                        <g id="Community page-light – 11">
+                            <g id="chat-1-line">
+                                <path id="-e-Path 49" fill-rule="evenodd" class="shp0" d="M13.26 0C17.9 0 21.66 3.77 21.66 8.41C21.66 15.24 14.31 18.4 9.06 20.5L9.06 16.82C4.42 16.82 0.66 13.05 0.66 8.41C0.66 3.77 4.42 0 9.06 0L13.26 0ZM11.16 17.32C16.98 14.68 19.56 12.2 19.56 8.41C19.56 4.93 16.74 2.1 13.26 2.1L9.06 2.1C5.58 2.1 2.76 4.93 2.76 8.41C2.76 11.89 5.58 14.72 9.06 14.72L11.16 14.72L11.16 17.32Z" />
+                            </g>
+                        </g>
+                    </svg>
+                    <strong>{{resource.resourceDetails.comments.length}}</strong>
+                    <div>
+                        <div *ngFor="let comment of resource.resourceDetails.comments.slice(0,4)">
+                            <img src="{{comment.commentor_pic}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
+    <p style="color: white">Please Wait. </p>  
+</ngx-spinner> 

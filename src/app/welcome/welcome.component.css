@@ -1,16 +1,19 @@
-
 .bg-color {
     background-color: #f4f7fb;
 }
+
 .cl-silver {
     color: silver;
 }
-.skills{
+
+.skills {
     display: inline-flex;
 }
-.skills>li{
+
+.skills>li {
     padding-left: 10px;
 }
+
 #entire_app__welcome_page {
     width: 100%;
     height: 100vh;
@@ -45,7 +48,7 @@
     display: flex;
 }
 
-.entire_welcome__navbar .sign_options, 
+.entire_welcome__navbar .sign_options,
 .entire_welcome__navbar .logo {
     width: 50%;
     height: 100%;
@@ -85,7 +88,7 @@
     background-color: var(--pureWhite);
     border: 0.08em solid var(--mainBlue);
     color: var(--mainBlue) !important;
-    padding: 0.36em 1em; 
+    padding: 0.36em 1em;
     border-radius: 0.25em;
 }
 
@@ -115,7 +118,7 @@
     position: relative;
 }
 
-.entire_descript__container h1{
+.entire_descript__container h1 {
     color: var(--mainBlue);
     font-family: Righteous !important;
     margin-left: 10%;
@@ -199,7 +202,7 @@
     animation-delay: 2s;
 }
 
-.entire_illustration__container .illustration_shadow{
+.entire_illustration__container .illustration_shadow {
     position: absolute;
     width: 68%;
     height: 68%;
@@ -210,26 +213,29 @@
     animation-delay: 2s;
 }
 
-@keyframes morph
-{
-    0%{
+@keyframes morph {
+    0% {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
         background: linear-gradient(45deg, #88D5BF 0%, #5D6BF8 100%);
-    }50%{
-        border-radius:  30% 60% 70% 40% / 50% 60% 30% 60% ;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
         background: linear-gradient(45deg, #e27fcb 0%, #5D6BF8 100%);
-    }100%{
+    }
+    100% {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
         background: linear-gradient(45deg, #88D5BF 0%, #5D6BF8 100%);
     }
 }
 
 @keyframes morph_banner {
-    0%{
+    0% {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }50%{
-        border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%;
-    }100%{
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    100% {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
 }

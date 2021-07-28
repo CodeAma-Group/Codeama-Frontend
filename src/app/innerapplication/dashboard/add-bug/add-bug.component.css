@@ -1,0 +1,52 @@
+.container-fluid>.heading {
+    font-weight: 600;
+}
+
+.container-fluid {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: var(--contBgLight);
+    padding: 20px 20px;
+}
+
+.heading-text {
+    padding-top: 21px;
+}
+
+span {
+    font-size: 11px;
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(179, 174, 174)!important;
+}
+
+.form-control {
+    background-color: #EBF1FA;
+    outline: none;
+    border: .15em solid #66a5f045;
+    font-size: 14px;
+    color: var(--mainBlack);
+    border-radius: 8px!important;
+    padding: 10px;
+}
+
+label {
+    margin: 0.4em 0em;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+label,
+span {
+    color: var(--mainBlack);
+}
+
+.form-group.ms-2.bug-technology {
+    width: 50%;
+}
+
+#post-bug-btn {
+    margin: 1.5em 0!important;
+    font-size: 14px! important;
+    padding: 15px 22px!important;
+}

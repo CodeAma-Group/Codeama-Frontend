@@ -1,0 +1,154 @@
+@import "~angular-notifier/styles.css";
+.resourcesDetails {
+    color: var(--mainBlack) !important;
+    padding-bottom: 20px;
+    >div {
+        align-items: center;
+        >div:first-of-type {
+            padding: 0px 20px 0px 40px;
+            width: 100%;
+            >div:first-of-type {
+                figure {
+                    margin-right: 20px;
+    
+                    >div {
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                        }
+                    }
+                    
+                    figcaption {
+                        font-size: .6em;
+                        font-weight: 400;
+                        padding: 1px 5px;
+                        position: absolute;
+                        bottom: -18px;
+                        border: 1px solid;
+                        margin-bottom: 5px;
+                        color: white;
+        
+                        &.absBeg {
+                            background: rgb(190, 30, 46);
+                            border-color: #BE1E2D;
+                        }
+                        &.pro {
+                            background: rgb(28, 116, 188);
+                            border-color: #1C75BC;
+                        }
+                        &.interm {
+                            background: rgb(0, 167, 156);
+                            border-color: #00A79D;
+                        }
+                        &.beginner {
+                            background: rgb(247, 149, 29);
+                            border-color: #F7941D;
+                        }        
+                    }
+                }
+                >div {
+                    font-size: .85em;
+                    
+                    p {
+                        margin: 0;
+                        text-align: left;
+    
+                        strong {
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+    
+            >div:nth-of-type(2){
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                margin: 15px 0;
+                >div:first-of-type {
+                    width: 35%;
+                }
+                >div:last-of-type{
+                    width: 65%;
+                }
+            }
+    
+            p#dev_username {
+                font-size: .8em;
+                color: var(--mainBlack);
+                opacity: .5;
+            }
+    
+            >div:last-of-type {
+                font-size: .9em;
+                white-space: nowrap;
+                >div {
+                    margin-right: 7%;
+                    display: inline;
+    
+                    svg {
+                        margin-right: 3px;
+                    }
+                    i.fa-thumbs-up {
+                        color: #4290ed;
+                    }
+    
+                    >div {
+                        display: inline;
+                        position: relative;
+                        bottom: -5px;
+                        margin-left: 5px;
+                        div {
+                            height: 26px;
+                            width: 26px;
+                            display: inline-flex;
+                            justify-content: center;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            border: 1px solid white;
+                            background: rgb(143, 51, 14);
+                            position: relative;
+    
+                            &:nth-child(2){
+                                left: -12px;
+                            }
+    
+                            &:not(:nth-child(-n+2)){
+                                left: -24px;
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
+
+    hr {
+        opacity: .2;
+    }
+
+    .resource_details {
+        h5 {
+            margin: 10px 0 20px;
+            font-size: 1.1em;
+        }
+        p, a {
+            font-size: .8em;
+        }
+        a {
+            padding: 5px 20px;
+            background: rgba(0, 0, 255, 0.11);
+        }
+        width: 75%;
+        padding-right: 15px;
+    }
+
+}

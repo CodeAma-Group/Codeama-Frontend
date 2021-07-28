@@ -1,90 +1,156 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="mt-2 bg-color rounded py-1 px-3">
-            <p class="fw-bold px-4 pt-3">Top Ask Me Anything members</p>
-            <div class="person1">
-                <hr />
-                <div class="row">
-                    <div class="profile position-relative col-1 p-2">
-                        <a routerLink="profile">
-                            <img src="../../../assets/images/profile.jpg" alt="profile" class="rounded-circle w-100 mx-3">
-                            <p class="bg-primary rounded position-absolute text-white px-2 " style="left: 50px;"><a href="#" class="text-white">Pro</a></p>
+<div id="entire_user_profile">
+    <div class="cover_banner">
+        <div class="user_profile_image">
+            <img [src]="'https://codeama-backend.herokuapp.com/'+profilePicture" alt="avatar">
+        </div>
+        <div class="cover_photo">
+            <img src="../../../assets/images/defaultcoverimg.png" alt="coverimage">
+        </div>
+        <div class="user_main_detail_content">
+            <div class="user_content_details">
+                <div class="username">
+                    <h2>{{Username}}</h2>
+                    <div class="badge">
+                        {{Badge}}
+                    </div>
+                </div>
+                <div class="description">
+                    <p *ngIf = "description != ''">{{description}}</p>
+                    <h6 *ngIf = "description == ''">Add description</h6>
+                </div>
+            </div>
+            <div class="share_our_community">
+                <div class="share_container">
+                    <p>Don't keep it yourself, Help us grow</p>
+                    <a target="_blank" href="https://twitter.com/intent/tweet?source=tweetbutton&text=Codeama&url=https://codeama.netlify.app+Launched today." class="tweet" >
+                        <svg id="twitter-fill" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28 28">
+                            <path id="Path_176" data-name="Path 176" d="M0,0H28V28H0Z" fill="none"/>
+                            <path id="Path_177" data-name="Path 177" d="M26.162,6.131a9.746,9.746,0,0,1-2.873.817,5.179,5.179,0,0,0,2.2-2.872,9.78,9.78,0,0,1-3.177,1.26A4.872,4.872,0,0,0,16.3,4.3a5.263,5.263,0,0,0-2.509,5.767A14.038,14.038,0,0,1,3.476,4.645,5.324,5.324,0,0,0,2.8,7.256a5.245,5.245,0,0,0,2.225,4.321,4.848,4.848,0,0,1-2.266-.649v.065a5.151,5.151,0,0,0,4.012,5.091,4.859,4.859,0,0,1-2.26.09,5.033,5.033,0,0,0,4.674,3.606,9.781,9.781,0,0,1-7.406,2.15,13.78,13.78,0,0,0,7.668,2.334c9.2,0,14.235-7.911,14.235-14.772,0-.223-.006-.449-.016-.67a10.384,10.384,0,0,0,2.5-2.688Z" transform="translate(0 0)" fill="#fff"/>
+                        </svg>                              
+                        Tweet us
+                    </a>                        
+                    <div data-href="https://codeama.netlify.app" >
+                        <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcodeama.netlify.app%2F&amp;src=sdkpreparse" >
+                            <svg id="facebook-circle-fill" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28 28">
+                                <path id="Path_174" data-name="Path 174" d="M0,0H28V28H0Z" fill="none"/>
+                                <path id="Path_175" data-name="Path 175" d="M14,2a12.014,12.014,0,0,0-1.874,23.879v-8.4H9.078V14.012h3.048V11.366c0-3.01,1.79-4.673,4.532-4.673a18.453,18.453,0,0,1,2.686.234V9.882H17.832a1.735,1.735,0,0,0-1.956,1.876v2.253H19.2l-.532,3.472h-2.8v8.4A12.014,12.014,0,0,0,14,2Z" fill="#fff"/>
+                            </svg>  
+                            Post us on facebook
                         </a>
                     </div>
-
-                    <div class="about col mx-4">
-                        <h3>Abijuru seth</h3>
-                        <p class="fw-bold">abiseth.codeama.net</p>
-                        <div class="row">
-                            <div class="col">
-                                <p> <span class="cl-silver"> Best challenger on </span><span class="fw-bold">12th, January,
-                      2021</span></p>
-                            </div>
-                            <div class="col"><span class="fw-bold">Vue Set 3</span> <span class="cl-silver"> latest article</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="status col-4 row">
-                        <p class="col"><span class="fw-bold">45</span> <span class="cl-silver"> of </span> <span class="fw-bold">104</span> <span class="cl-silver"> answered </span></p>
-                        <p class="col"><span class="fw-bold">27, 923 + </span> <span class="cl-silver"> followers </span></p>
-                    </div>
-
-                    <div class="follow col-1 p-2 ms-3 justify-content-center p-3">
-                        <button class="btn-primary btn"> + Follow</button>
-                    </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="ama-footer col-10">
-                        <ul class="skills">
-                            <li>React</li>
-                            <li>Vue router</li>
-                            <li>Node js</li>
-                            <li>Express</li>
-                            <li>Go lang</li>
-                        </ul>
-                    </div>
-                    <div class="ama-askQuestion col">
-                        <a class="fw-bold text-right" routerLink="askQuestion">Ask question</a>
-                    </div>
-                </div>
-                <hr />
-            </div>
-            <div class="askToAma">
-                <p class="fw-bold">Asking a question to <span>Abijuru Seth</span></p>
-                <form action="POST" class="row p-3">
-                    <textarea name="askQuestion" id="ask" cols="120" rows="7" placeholder="Ask question here..." class="border border-primary rounded p-3 bg-light-blue col"></textarea>
-                    <div class="col-3 px-4">
-                        <p class="fw-bold">Question actions</p>
-                        <div class="action mx-auto">
-                            <p><button class="btn btn-primary">Ask question now</button></p>
-                            <p><button class="btn btn-dark">Schedule asking time</button></p>
-                        </div>
-                    </div>
-                </form>
-                <p>Recent asked question to Abijuru Seth</p>
-            </div>
-            <div class="row question-status mx-auto bg-brur-blue py-5">
-                <div class="col-1 p-2 border text-center"><a class="text-dark" href="#"><span class="fw-bold"> 5</span> <br>
-              Views</a></div>
-                <div class="col-1 p-2 border text-center"><a class="text-dark" href="#"><span class="fw-bold">Yes</span><br>
-              Answered </a></div>
-                <div class="col-1 p-2 ms-3 border text-center"><a class="text-dark" href="#"><span class="fw-bold">5</span>
-              <br> Comments</a></div>
-                <div class="col-6 px-4">
-                    <p>React app what is the best way to add large text books</p>
-                    <ul class="skills">
-                        <li>React</li>
-                        <li>Vue router</li>
-                        <li>Node js</li>
-                        <li>Express</li>
-                        <li>Go lang</li>
-                    </ul>
-                </div>
-                <div class="col-2"><a routerLink="seeQuestion">See question</a></div>
             </div>
         </div>
+    </div>
+    <div class="user_details">
+        <div class="all_user_details">
+            <div class="social_medias">
+                <div class="connection_header">
+                    <h4>My Codeama connections:</h4>
+                </div>
+                <div class="git">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                        <path fill="#505151" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+                    </svg> 
+                    <a *ngIf="connections.github != ''" target="_blank" [href]="connections.github">{{connections.github}}</a>                    
+                    <h6 *ngIf="connections.github == ''">Add github link</h6>
+                </div>
+                <div class="linkedin">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                        <path fill="#505151" d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h14V5H5zm2.5 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-1 1h2v7.5h-2V10zm5.5.43c.584-.565 1.266-.93 2-.93 2.071 0 3.5 1.679 3.5 3.75v4.25h-2v-4.25a1.75 1.75 0 0 0-3.5 0v4.25h-2V10h2v.43z"/>
+                    </svg>     
+                    <a *ngIf="connections.twitter != ''" target="_blank" [href]="connections.twitter">{{connections.twitter}}</a> 
+                    <h6 *ngIf="connections.twitter == ''">Add linkedin link</h6>                   
+                </div>
+                <div class="website">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                        <path fill="#505151" d="M13.06 8.11l1.415 1.415a7 7 0 0 1 0 9.9l-.354.353a7 7 0 0 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415 1.415-1.414zm6.718 6.011l-1.414-1.414a5 5 0 1 0-7.071-7.071l-.354.354a5 5 0 0 0 0 7.07l1.415 1.415-1.415 1.414-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 0 1 9.9 9.9z"/>
+                    </svg>
+                    <a *ngIf="connections.facebook != ''" target="_blank" [href]="connections.facebook">{{connections.facebook}}</a>
+                    <h6 *ngIf="connections.facebook == ''">Add portfolio</h6>                    
+                </div>
+            </div>
+            <div class="bio_location">
+                <div class="add_container">
+                    <input *ngIf = "editBio" (keyup.enter) = "showAddBtn()" type="text" name="bio" id="bio" placeholder="write your bio . . .">
+                    <p *ngIf = "editStack" (click) = "showInput()">
+                        <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28">
+                            <path id="Path_43" data-name="Path 43" d="M0,0H28V28H0Z" fill="none"/>
+                            <path id="Path_44" data-name="Path 44" d="M12.8,12.8V8h2.4v4.8H20v2.4H15.2V20H12.8V15.2H8V12.8ZM14,26A12,12,0,1,1,26,14,12,12,0,0,1,14,26Zm0-2.4A9.6,9.6,0,1,0,4.4,14,9.6,9.6,0,0,0,14,23.6Z" fill="#212f3d"/>
+                        </svg>
+                        add bio  
+                    </p>
+                </div>
+                <p>You can make everyone understand show you are a few word. Bio can be edited anytime.</p>
+                <div class="location_details">
+                    <p>Location: <span *ngIf="Location != ''">{{Location}}</span> <span class="elseLoc" *ngIf="Location == ''">Add location</span></p>
+                    <p>Joined on: <span>{{ CreatedAt | date:'EEEE, MMMM dd, y, hh:mm:ss a'}}</span></p>
+                </div>
 
-
+                <div class="current_bio">
+                    <div class="bio">
+                        <h3>{{Bio}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="following_status">
+                <div class="following_content">
+                    <div class="content">
+                        <h3>Followers</h3>
+                        <h1>0</h1>
+                    </div>
+                    <div class="content">
+                        <h3>Following</h3>
+                        <h1>0</h1>
+                    </div>
+                    <div class="content">
+                        <h3>Badges earned</h3>
+                        <h1>1</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="skills">
+                <div class="connection_header">
+                    <h4>My tech stack</h4>
+                </div>
+                <div class="add_stack">
+                    <input *ngIf="editStackTwo" (keyup.enter) ="showStackTwo()" type="text" name="skill" id="skill" placeholder="write you skill . . .">
+                    <p *ngIf="editSkills" (click) ="showEditSkill()">
+                        <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28">
+                            <path id="Path_43" data-name="Path 43" d="M0,0H28V28H0Z" fill="none"/>
+                            <path id="Path_44" data-name="Path 44" d="M12.8,12.8V8h2.4v4.8H20v2.4H15.2V20H12.8V15.2H8V12.8ZM14,26A12,12,0,1,1,26,14,12,12,0,0,1,14,26Zm0-2.4A9.6,9.6,0,1,0,4.4,14,9.6,9.6,0,0,0,14,23.6Z" fill="#212f3d"/>
+                        </svg>
+                        add your skills . . .
+                    </p>
+                </div>
+                <div class="skill_content">
+                    <div  *ngFor = "let skill of Skills; let i = index" class="skill">
+                        {{skill}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user_activity">
+            <div class="activity_container">
+                <div class="menu_links">
+                    <ul>
+                        <li><a routerLinkActive = "active" [routerLink] = "['articles']">Articles</a></li>
+                        <li><a routerLinkActive = "active" [routerLink] = "['bugsolved']">Bugs solved</a></li>
+                        <li><a routerLinkActive = "active" [routerLink] = "['asked']">Asked</a></li>
+                        <li><a routerLinkActive = "active" [routerLink] = "['answered']">Answered</a></li>
+                        <li><a routerLinkActive = "active" [routerLink] = "['resources']">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="outlet_menu_content">
+                    <router-outlet></router-outlet>
+                </div>             
+            </div>
+        </div>
     </div>
 </div>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="4JrmzgkT"></script>
+

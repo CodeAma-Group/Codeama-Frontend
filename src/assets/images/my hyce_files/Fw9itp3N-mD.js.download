@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["Y0HyBqx"]); }
+
+__d("processNewMediaAttachments",["cometIsMimeTypeForMedia","cometUniqueID"],(function(a,b,c,d,e,f,g){"use strict";function a(a){return((a=a)!=null?a:[]).map(function(a){return a==null?null:h(a)}).filter(Boolean)}function h(a){var b=c("cometUniqueID")();a.uploadID=b;var e=URL.createObjectURL(a);if(d("cometIsMimeTypeForMedia").isMimeTypeForPhoto(a.type))return{data:{id:b},file:a,fileObjectURL:e,fileType:"PHOTO",state:"NEW"};else if(d("cometIsMimeTypeForMedia").isMimeTypeForVideo(a.type))return{data:{id:b},file:a,fileObjectURL:e,fileType:"VIDEO",state:"NEW"};else return{data:{id:b},file:a,fileObjectURL:e,fileType:"UNKNOWN",state:"NEW"}}g.processNewMediaAttachments=a;g.getNewMediaAttachment=h}),98);

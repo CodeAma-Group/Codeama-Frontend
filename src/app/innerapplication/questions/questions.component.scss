@@ -1,4 +1,5 @@
 .questionsDetails {
+    color: var(--mainBlack) !important;
     >div {
         display: flex;
         align-items: center;
@@ -10,26 +11,45 @@
                     margin-right: 20px;
     
                     >div {
-                        border-radius: 50%;
-                        background-color: green;
                         width: 40px;
                         height: 40px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        overflow: hidden;
+
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                        }
                     }
                     
                     figcaption {
-                        font-size: .65em;
-                        color: white;
-                        font-weight: 500;
-                        background-color: rgb(6, 14, 61);
+                        font-size: .6em;
+                        font-weight: 400;
                         padding: 1px 5px;
-                        border-radius: 40%;
                         position: absolute;
-                        bottom: -10px;
-                        border: 1px solid white;
+                        bottom: -18px;
+                        border: 1px solid;
+                        margin-bottom: 5px;
+                        color: white;
+        
+                        &.absBeg {
+                            background: rgb(190, 30, 46);
+                            border-color: #BE1E2D;
+                        }
+                        &.pro {
+                            background: rgb(28, 116, 188);
+                            border-color: #1C75BC;
+                        }
+                        &.interm {
+                            background: rgb(0, 167, 156);
+                            border-color: #00A79D;
+                        }
+                        &.beginner {
+                            background: rgb(247, 149, 29);
+                            border-color: #F7941D;
+                        }        
                     }
                 }
                 >div {
@@ -50,6 +70,10 @@
                 h5 {
                     margin: 10px 0 20px;
                     font-size: 1.1em;
+
+                    a {
+                        color: var(--mainBlack);
+                    }
                 }
                 p {
                     font-size: .8em;
@@ -58,7 +82,8 @@
     
             p#dev_username {
                 font-size: .8em;
-                color: rgba(0, 0, 0, 0.568);
+                color: var(--mainBlack);
+                opacity: .5;
             }
     
             >div:last-of-type {
@@ -72,7 +97,7 @@
                         margin-right: 3px;
                     }
                     i.fa-thumbs-up {
-                        color: #4290ed;
+                        color: var(--dimBlue);
                     }
     
                     >div {
@@ -106,8 +131,7 @@
     }
 
     hr {
-        background-color:#0a131d;
-        opacity: .8;
+        opacity: .2;
     }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { InnerapplicationService } from '../innerapplication.service';
 
 @Component({
   selector: 'app-questions',
@@ -6,105 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./questions.component.scss']
 })
 export class QuestionsComponent implements OnInit {
-  public questions: any[] = [
-    {
-      devDetails: {
-        pic: "assets/test_images/angular.png",
-        username: 'abi_seth',
-        names: "ABIJURU Seth",
-        badge: "Pro"
-      },
-      questionDetails: {
-        question: "How do I add routing in Laravel 8",
-        desc: "Hi everybody, I'm Charlie, a french JS developer I just release a free abd open source project, tail-kit. It's a kit of components and template...",
-        likes: 120,
-        date_updated: "Jan 22, 2022",
-        tagged_tech: [
-          {
-            tech: "Angular",
-            img: "assets/test_images/angular.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/js.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/js.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/vue.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/js.png"
-          }
-        ],
-        comments: [
-          { 
-            commentor_name: "",
-            commentor_pic: "assets/test_images/angular.png",
-            comment: '',
-          },
-          { 
-            commentor_name: "",
-            commentor_pic: "assets/test_images/js.png",
-            comment: '',
-          },
-          { 
-            commentor_name: "",
-            commentor_pic: "assets/test_images/java.png",
-            comment: '',
-          }
-        ]
-      }
-    },
-    {
-      devDetails: {
-        pic: "assets/test_images/angular.png",
-        username: 'abi_seth',
-        names: "ABIJURU Seth",
-        badge: "Pro"
-      },
-      questionDetails: {
-        question: "How do I add routing in Laravel 8",
-        desc: "Hi everybody, I'm Charlie, a french JS developer I just release a free abd open source project, tail-kit. It's a kit of components and template...",
-        likes: 120,
-        date_updated: "Jan 22, 2022",
-        tagged_tech: [
-          {
-            tech: "Angular",
-            img: "assets/test_images/angular.png"
-          },
-          {
-            tech: "Angular",
-            img: "assets/test_images/angular.png"
-          }
-        ],
-        comments: [
-          { 
-            commentor_name: "",
-            commentor_pic: "assets/test_images/angular.png",
-            comment: '',
-          },
-          { 
-            commentor_name: "",
-            commentor_pic: "assets/test_images/angular.png",
-            comment: '',
-          },
-          { 
-            commentor_name: "",
-            commentor_pic: "assets/test_images/angular.png",
-            comment: '',
-          }
-        ]
-      }
-    }
-  ]
-  constructor() { }
+  public questions;
+  constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.spinner.show()
+    this.backendService.getQuestions().subscribe(data => {
+      this.questions = data;
+      this.spinner.hide()
+      
+    })
   }
-
+  public answerQuestionLink:string = "app/answer-question?qtnId="
+  checkBadge(badge: string){
+    let className:string = ""
+    switch(badge.toLowerCase()){
+      case "absolute beginner": className = "absBeg";
+        break;
+      case "intermediate": className = "interm";
+        break;
+      case "pro": className = "pro";
+       break;
+      default: className="beginner"
+    }
+    return className
+  }
 }

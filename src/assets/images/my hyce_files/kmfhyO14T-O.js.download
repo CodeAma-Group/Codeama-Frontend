@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["ZHbFZtY"]); }
+
+__d("cometUFIComposerReputationSystemPlugin",["CometRelay","cometUFIComposerReputationSystemPlugin_plugin.graphql","cometUFIComposerReputationSystemPlugin_pluginData.graphql","cr:10898"],(function(a,b,c,d,e,f,g){"use strict";var h,i;h!==void 0?h:h=b("cometUFIComposerReputationSystemPlugin_plugin.graphql");function a(a){a=a.fragmentKey;a=a;a=d("CometRelay").readInlineData(i!==void 0?i:i=b("cometUFIComposerReputationSystemPlugin_pluginData.graphql"),a);a=a.is_inline_vote_enabled===!0;return b("cr:10898")({isInlineVoteEnabled:a})}g["default"]=a}),98);

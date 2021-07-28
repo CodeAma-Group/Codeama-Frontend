@@ -1,0 +1,77 @@
+$bg_color: var(--contBgLight);
+.add_resource {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: $bg_color;
+    height: 88%;
+    padding: 20px 20px;
+    margin: 10px;
+
+    div {
+        position: relative;
+        svg {
+            position: absolute;
+            left: 15px
+        }
+        &.resLink {
+            svg {
+                top: 42px;
+            }
+            input{
+                padding-left: 45px;
+            }
+        }
+        &.qtn_desc, &.qtn_title {
+            svg {
+                top: 42px;
+            }
+            input {
+                padding-left: 40px;
+            }
+        }
+    }
+
+    h5 {
+        font-size: 1.25em;
+    }
+
+    label{
+        font-weight: 500;
+        font-size: .8em;
+        span {
+            font-size: .7em;
+        }
+    }
+    input {
+        height: 45px;
+    }
+
+    input, select, .form-controller{
+        background: rgba(66, 144, 237,.05);
+        font-weight: 500;
+        color: var(--mainBlack);
+        font-size: .9em;
+        border: 2px solid #66a5f045;
+        padding: 10px;
+        border-radius: 8px!important;   
+    
+        &:focus {
+            border-color: #558ed3;
+        }
+        &::placeholder {
+            font-weight: normal;
+            // color: rgba(0, 0, 0, 0.623);
+        }
+    }
+
+    option {
+        color: black !important;
+        padding: 10px 5px;
+    }
+
+    select + svg {
+        position: absolute;
+        left: 96.5%;
+        top: 47px;
+    }
+}
