@@ -2,20 +2,26 @@
     <div *ngIf="editingAccountSettings" class="edit_profile_details">
         <div class="edit_details_content">
             <h3>Account settings</h3>
-                <form #formData = "ngForm" (ngSubmit) = "getUserData(formData.value)" [ngClass] = "{'move_from_top': !isThereErrors}">
-                    <p>Change passwords</p>
-                    <div class="form_group">
-                        <label for="current_password">Current password</label>
-                        <input type="password" name="Password" id="current_password">
-                    </div>
-                    <div class="form_group">
-                        <label for="new_password">New password</label>
-                        <input type="password" name="Password" id="new_password">
-                    </div>
-                    <div class="form_group">
-                        <button type="submit" id="submit">Save changes</button>
-                    </div>
-                </form>
+            <form #formData = "ngForm" (ngSubmit) = "getUserData(formData.value)" [ngClass] = "{'move_from_top': !isThereErrors}">
+                <p>Change usernames</p>
+                <div class="form_group">
+                    <label for="usernames">Usernames</label>
+                    <input type="text" name="Username" id="usernames">
+                </div>
+                <p>Change passwords</p>
+                <div class="form_group">
+                    <label for="current_password">Current password</label>
+                    <input type="password" name="Password" id="current_password">
+                </div>
+                <div class="form_group">
+                    <label for="new_password">New password</label>
+                    <input type="password" name="Password" id="new_password">
+                </div>
+                <div class="form_group">
+                    <button>Cancel changes</button>
+                    <button type="submit" id="submit">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="cover_banner">
