@@ -65,6 +65,12 @@ export class AddBugComponent implements OnInit {
     lint: true
   };
 ngOnInit(){}
+mirrors:any=[
+  {"mirror":1}
+]
+newMirror(){
+  this.mirrors.push({"mirror":1})
+}
 submit(form) {
   let 
   bugTitle=form.bugTitle,
