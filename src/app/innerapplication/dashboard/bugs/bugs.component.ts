@@ -13,6 +13,8 @@ export class BugsComponent implements OnInit {
     this.bug.getBugs().subscribe((result)=>{
       this.bugs=result;
       this.bugs=this.bugs.data
+      console.log(this.bugs);
+      
     })
   }
 }
