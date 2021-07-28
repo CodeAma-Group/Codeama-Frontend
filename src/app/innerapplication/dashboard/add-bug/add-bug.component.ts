@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { BugService } from '../../services/bug.service';
-
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 @Component({
   selector: 'app-add-bug',
   templateUrl: './add-bug.component.html',
@@ -10,52 +9,67 @@ import { BugService } from '../../services/bug.service';
 
 export class AddBugComponent implements OnInit {
   constructor(private bugs: BugService) {}
-  newBugForm = new FormGroup({
-    bugTitle: new FormControl(''),
-    bugTechnology: new FormControl(''),
-    bugDetails: new FormControl(''),
-    bugDescription: new FormControl(),
-  });
+  htmlContent = '';
 
- codeMirrorOptions: any = {
-    theme: 'cobalt',
-    mode: 'application/ld+json',
-    lineNumbers: true,
-    lineWrapping: true,
-    // foldGutter: true,
-    // gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],
-    // // autoCloseBrackets: true,
-    // // automatically:true,
-    // matchBrackets: true,
-    // lint: true
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Poppins',
+    defaultFontSize: '2',
+    fonts: [
+      {class: 'arial', name: 'Arial'},
+      {class: 'Roboto', name: 'Roboto'},
+      {class: 'Poppins', name: 'Poppins'},
+      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+    ],
+    toolbarHiddenButtons: [
+      ['customClasses',],
+      ['strikeThrough']
+    ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
   };
 
-
-  obj;
-
-  ngOnInit(){
-    this.obj= JSON.stringify({
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "type": "object",
-      "title": "Object",
-      "additionalProperties": false,
-      "properties": {
-        "string": {
-          "type": "string",
-          "title": "String"
-        }
-      }
-    }, null, ' ');
-  }
-  setEditorContent(event) {
-    // console.log(event, typeof event);
-    console.log(this.obj);
-  }
-
-  collectData() {
-    console.log(this.newBugForm.value);
-    this.bugs.postBug(this.newBugForm.value).subscribe((res)=>{
-      console.log("data",res);
-    })
+ codeMirrorOptions: any = {
+    theme: 'default',
+    mode: 'application/ld+json',
+    lineNumbers: true,
+    // readOnly:true,
+    autocorrect:true,
+    smartIndent:true,
+    lineWrapping: true,
+    readonly:true,
+    foldGutter: true,
+    gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],
+    autoCloseBrackets: true,
+    automatically:true,
+    matchBrackets: true,
+    lint: true
+  };
+ngOnInit(){}
+submit(form) {
+  let 
+  bugTitle=form.bugTitle,
+  bugDescription=form.bugDescription,
+  bugCodes=form.codemirror
+      console.log(bugCodes);
   }
 }

@@ -3,49 +3,42 @@
         <h5 class="heading-text">Add bug</h5>
     </div>
     <div class="form">
-        <form method="post" [formGroup]="newBugForm" (ngSubmit)="collectData()">
+        <form method="post" #newBugForm="ngForm" (ngSubmit)="submit(newBugForm.value)">
             <div class="d-flex">
                 <div class="form-group col-lg-6">
                     <label for="bug-title">Bug title</label>
-                    <input type="text" id="bug-title" class=" form-control" formControlName="bugTitle" name="bugTitle" placeholder="Bug title here">
+                    <input type="text" id="bugTitle" ngModel class=" form-control" name="bugTitle" #bugTitle="ngModel" placeholder=" Bug title here">
                 </div>
 
                 <div class="form-group ms-2 bug-technology">
                     <label for="bug-tech">Bug technology</label>
-                    <select class="form-control" formControlName="bugTechnology" name=" bugTechnology" id="bug-tech">
-                        <option selected disabled>select technology</option>
-                        <option>Java</option>
-                        <option>Javascript</option>
-                        <option>Html</option>
-                        <option>Css</option>
-                        <option>SCSS</option>
-                        <option>C</option>
-                        <option>Javascript</option>
-                      </select>
+                    <select class="form-control" ngModel #bugTechnology="ngModel" name="bugTechnology" id="bug-tech">
+            <option selected disabled>select technology</option>
+            <option>Java</option>
+            <option>Javascript</option>
+            <option>Html</option>
+            <option>Css</option>
+            <option>SCSS</option>
+            <option>C</option>
+            <option>Javascript</option>
+          </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="bug-description">Bug Description</label> <span>Write your bug in not more than 200 words</span>
-                <textarea class="form-control" formControlName="bugDescription" name=" bugDescription" id="bug-description" rows="2" maxlength="200" placeholder="Bug description here"></textarea>
+                <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
             </div>
-
-
             <div class="form-group">
                 <label for="bug-codes">Add codes you've tried if any</label>
-                <textarea class="form-control" formControlName="bugCodes" name="bugDescription" id="bug-description" rows="2" maxlength="200" placeholder="Bug codes here"></textarea>
+                <ngx-codemirror class="col-lg-10 bg-primary" #codemirror="ngModel" [options]="codeMirrorOptions" ngModel name="codemirror">
+                </ngx-codemirror>
             </div>
-
-            <div class="form-group">
-                <label for="bug-image">Add any image you thing might help</label>
-                <textarea class="form-control" formControlName="bugImage" name="bugImage" id="bug-image" rows="2" maxlength="200" placeholder="Bug codes here"></textarea>
+            <div class=" newCode btn">
+                <button name="new-code-section" id="post-bug-btn" (click)="newMirror" class=" btn btn-primary ">Want to add new code section</button>
             </div>
-
-
             <div class="post btn ">
                 <button name="post-bug-btn " type="submit " id="post-bug-btn " class="btn btn-primary ">Post your bug now</button>
             </div>
         </form>
     </div>
 </div>
-<ngx-codemirror class="col-lg-10 bg-primary" #codemirror [options]="codeMirrorOptions" [(ngModel)]="obj">
-</ngx-codemirror>

@@ -44,10 +44,6 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 			multi: true
 		}
   ],
-  bootstrap: [AppComponent],
-  schemas:[
-    NO_ERRORS_SCHEMA,
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

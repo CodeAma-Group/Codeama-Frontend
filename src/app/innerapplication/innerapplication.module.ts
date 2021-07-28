@@ -36,6 +36,7 @@ import { UseraskedComponent } from './userprofile/userasked/userasked.component'
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserarticlesComponent } from './userprofile/userarticles/userarticles.component';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -85,6 +86,7 @@ const customNotifierOptions: NotifierOptions = {
     FormsModule,
     ReactiveFormsModule,
     CodemirrorModule,
+    AngularEditorModule,
     MultiSelectAllModule,
     NgxSpinnerModule,
     NotifierModule.withConfig(customNotifierOptions)

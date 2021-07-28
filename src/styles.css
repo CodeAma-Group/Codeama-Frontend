@@ -16,6 +16,24 @@
 
 /* Application global styling variables */
 
+.angular-editor-toolbar {
+    background-color: #66a5f045 !important;
+    border-radius: 4px !important;
+}
+
+.angular-editor-textarea {
+    min-height: 5rem;
+    padding: .5rem .8rem 1rem;
+    background-color: #ebf1fa !important;
+    outline: none !important;
+    border: .15em solid #66a5f045 !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: none !important;
+    position: relative;
+    border-radius: 5px;
+}
+
 :root {
     --pureWhite: #ffffff;
     --bgBlue: #F4F7FB;
@@ -211,8 +229,8 @@ ul {
     color: var(--mainBlack);
     border-radius: 7px;
     background: var(--contBgLight);
-    padding: 0 20px!important;
-    min-height: 88vh!important;
+    padding: 0 20px !important;
+    min-height: 88vh !important;
 }
 
 textarea:hover,
