@@ -9,7 +9,7 @@ import { AuthService } from '../../authentication/_authServices/auth.service'
   styleUrls: ['./moduleoutlet.component.css']
 })
 export class ModuleoutletComponent implements OnInit {
-  constructor(private http:GlobalSearchService) { 
+  constructor(private http:GlobalSearchService,  private authService: AuthService, private router: Router) { 
   }
   
   display = 'none'
@@ -18,7 +18,6 @@ export class ModuleoutletComponent implements OnInit {
     this.searchText = ev;
     this.display = 'block'
   cookieVal: string = "";
-  constructor( private authService: AuthService, private router: Router ) { }
 
   ngOnInit(): void {
 
