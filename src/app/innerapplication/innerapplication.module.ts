@@ -18,6 +18,16 @@ import { QuestionsComponent } from './questions/questions.component';
 import { CoursesComponent } from './courses/courses.component';
 import { BadgeComponent } from './components/badge/badge.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
+import { FilterpipePipe } from '../pipes/filterpipe.pipe';
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, FilterpipePipe],
+  imports: [
+    CommonModule,
+    InnerapplicationRoutingModule,
+    FormsModule
+  ]
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddArticleComponent } from './add-article/add-article.component';

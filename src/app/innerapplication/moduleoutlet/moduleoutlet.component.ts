@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalSearchService } from '../../services/global-search.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../authentication/_authServices/auth.service'
 
@@ -8,6 +9,14 @@ import { AuthService } from '../../authentication/_authServices/auth.service'
   styleUrls: ['./moduleoutlet.component.css']
 })
 export class ModuleoutletComponent implements OnInit {
+  constructor(private http:GlobalSearchService) { 
+  }
+  
+  display = 'none'
+  searchText = '';
+  changeSearchText(ev){
+    this.searchText = ev;
+    this.display = 'block'
   cookieVal: string = "";
   constructor( private authService: AuthService, private router: Router ) { }
 
@@ -109,4 +118,19 @@ export class ModuleoutletComponent implements OnInit {
     this.router.navigate(['auth']);
   }
 
+  inputBlur(ev){
+    this.display = 'none'
+  }
+  characters = [
+    'ant-MAN',
+    'AQUAman',
+    'asterix',
+    'the atom',
+    'the avengers',
+    'bat girl',
+    'bat man',
+    'bat woman'
+  ]
+  ngOnInit(): void {  
+  } 
 }

@@ -1,1 +1,111 @@
-<p>create-challenge works!</p>
+<div class="bg-whiteblue d-flex flex-column p-4 rounded h-100">
+    <p>post a challenge</p>
+    <form action="#">
+        <div class="d-flex justify-content-between">
+            <div class="first-side w-50">
+                <div class="image-placeholder"></div>
+                <div>
+                    <label for="challengeTitle">challenge title</label>
+                    <input type="text" name="title" id="challengeTitle">
+                </div>
+                <div>
+                    <label for="challengeDescription">challenge description</label>
+                    <input type="text" name="description" id="challengeDescription">
+                </div>
+            </div>
+            <div class="second-side w-50">
+                <h6>choose prizes for the challenge</h6>
+                <p>click to select a prize and set its grades</p>
+                <div class="d-flex justify-content-between">
+                    <app-badge [outline] = "primary" [background] = "prime"></app-badge>
+                    <app-badge [outline] = "warning" [background] = "warn"></app-badge>
+                    <app-badge [outline] = "danger" [background] = "dan"></app-badge>
+                    <app-badge [outline] = "success" [background] = "succ"></app-badge>
+                </div>
+                <div class="choose-timestamp d-flex">
+                    <div class="first-column">
+                        <p class="">choose challenge timestamp actions</p>
+                        <p>you should only choose important ones</p>
+                    </div>
+                    <select name="" id="">
+                        <option value="">choose number of timestamps</option>  
+                    </select>
+                </div>
+                <div class="main-container">
+                    <div class="first-side w-50">
+                        <div class="pr">
+                            <div class="symbols">
+                                <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width:2em">
+                                <div class="next"></div>
+                      
+                            </div>
+                           
+                            <div class="aside-content">
+                                <div class="aside-content-first">post challenge</div>
+                                <div>12th febuary 2021</div>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <div class="symbols">
+                                <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width:2em">
+                                <div class="next"></div>
+                            </div>
+                           
+                            <div class="aside-content">
+                                <div class="aside-content-first">post challenge</div>
+                                <div>12th febuary 2021</div>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <div class="symbols">
+                                <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width:2em">
+                            </div>
+                           
+                            <div class="aside-content">
+                                <div class="aside-content-first">post challenge</div>
+                                <div>12th febuary 2021</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="second-side w-50">
+                        <div class="pr">
+                            <div class="symbols">
+                                <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width:2em">
+                                <div class="next"></div>
+                            </div>
+                           
+                            <div class="aside-content">
+                                <div class="aside-content-first">post challenge</div>
+                                <div>12th febuary 2021</div>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <div class="symbols">
+                                <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width:2em">
+                                <div class="next"></div>
+                            </div>
+                           
+                            <div class="aside-content">
+                                <div class="aside-content-first">post challenge</div>
+                                <div>12th febuary 2021</div>
+                            </div>
+                        </div>
+                        <div class="pr">
+                            <div class="symbols">
+                                <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width:2em">
+                            </div>
+                           
+                            <div class="aside-content">
+                                <div class="aside-content-first">post challenge</div>
+                                <div>12th febuary 2021</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="post challenge now" class='btn btn-primary'>
+    </form>
+</div>
+
+
