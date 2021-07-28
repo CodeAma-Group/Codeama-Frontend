@@ -36,6 +36,7 @@
     text-align: center;
     color: var(--mainBlack);
     margin-top: 0.7em;
+    margin-bottom: 0.7em;
 }
 
 .edit_details_content>form {
@@ -43,7 +44,41 @@
     bottom: 5%;
     height: 85%;
     width: 90%;
-    background-color: red;
+}
+
+.edit_details_content>form>p {
+    font-size: 0.88em;
+    color: var(--mainBlack);
+    opacity: 0.8;
+    margin-top: 0.6em;
+    margin-bottom: 0.5em;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_group>input {
+    margin-bottom: 0.8em;
+    padding: 0.6em 0.5em;
+    border: 0.1em solid var(--dimBlue);
+    border-radius: 0.3em;
+}
+
+.form_group>label {
+    font-size: 0.85em;
+    opacity: 0.45;
+    color: var(--mainBlack);
+}
+
+.submit_buttons {
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+
+.submit_buttons>button {
+    width: 45%;
 }
 
 #entire_user_profile::-webkit-scrollbar {
