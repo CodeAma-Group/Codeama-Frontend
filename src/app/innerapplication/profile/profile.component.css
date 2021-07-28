@@ -22,7 +22,7 @@
 
 .edit_details_content {
     width: 40%;
-    height: 75%;
+    height: 90%;
     background-color: #ffffff;
     border-radius: 0.5em;
     display: flex;
@@ -35,14 +35,13 @@
     font-size: 1.05em;
     text-align: center;
     color: var(--mainBlack);
-    margin-top: 0.7em;
-    margin-bottom: 0.7em;
+    margin-top: 1em !important;
+    margin-bottom: 0.1em !important;
 }
 
 .edit_details_content>form {
-    position: absolute;
-    bottom: 5%;
-    height: 85%;
+    margin-top: 1.5em;
+    height: auto;
     width: 90%;
 }
 
@@ -72,13 +71,36 @@
     color: var(--mainBlack);
 }
 
+.alert {
+    text-align: center !important;
+    width: 100%;
+    font-size: 0.85em !important;
+}
+
+.form_group>button {
+    padding: 0.9em 0 !important;
+    border: none;
+    font-size: 0.9em;
+    border-radius: 0.4em;
+}
+
 .submit_buttons {
+    margin: 2em 0;
+    font-size: 0.9em;
     flex-direction: row !important;
     justify-content: space-between;
 }
 
+button[type= submit] {
+    background-color: var(--mainBlue) !important;
+    color: var(--mainWhite) !important;
+}
+
 .submit_buttons>button {
-    width: 45%;
+    width: 48%;
+    padding: 1.2em 0 !important;
+    border: none;
+    border-radius: 0.4em;
 }
 
 #entire_user_profile::-webkit-scrollbar {

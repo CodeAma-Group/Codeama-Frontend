@@ -3,6 +3,9 @@
         <div class="edit_details_content">
             <h3>Account settings</h3>
             <form #formData = "ngForm" (ngSubmit) = "getUserData(formData.value)" [ngClass] = "{'move_from_top': !isThereErrors}">
+                <div class="alert alert-success text-success">
+                    Just change the account details that you want to edit.
+                </div>
                 <p>Change usernames</p>
                 <div class="form_group">
                     <label for="usernames">Usernames</label>
@@ -22,7 +25,7 @@
                     <button>Face recognition authentication</button>
                 </div>
                 <div class="form_group submit_buttons">
-                    <button>Cancel changes</button>
+                    <button (click)="accountSettings()">Cancel changes</button>
                     <button type="submit" id="submit">Save changes</button>
                 </div>
             </form>
