@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
   Username: string = ''
   connections: any
   description: string = ''
+  coverPicture: string = ''
   faceRecognitionPicture: string = ''
   profilePicture: string = ''
   __v: number;
@@ -56,6 +57,7 @@ export class ProfileComponent implements OnInit {
       this.Skills = this.userData.data.Skills;
       this.Followers = this.userData.data.Followers;
       this.Following = this.userData.data.Following;
+      this.coverPicture = this.userData.data.coverPicture;
       this.faceRecognitionPicture = this.userData.data.faceRecognitionPicture;
       this.profilePicture = this.userData.data.profilePicture
     },
@@ -89,5 +91,45 @@ export class ProfileComponent implements OnInit {
   accountSettings() {
     this.editingAccountSettings = !this.editingAccountSettings;
   }
+
+  imageUrl: any;
+
+  updateProfle(file) {
+    if(file.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file.target.files[0]);
+      reader.onload = async (file) => {
+        this.imageUrl = await file.target.result;
+
+        var data = {
+          "userId": `${this._id}`,
+          "Badge": `${this.Badge}`,
+          "Bio": `${this.Bio}`,
+          "Location": `${this.Location}`,
+          "description": `${this.description}`,
+          "connections": `${this.connections}`,
+          "Skills": `${this.Skills}`,
+          "coverPicture": `${this.imageUrl}`,
+          "profilePicture": `${this.imageUrl}`
+        }
+
+        this.updateProfileToDb(data);
+      }
+    }
+  }
+
+  updateProfileToDb(data) {
+    console.log(data)
+    this._userService.updateProfile(data).subscribe(
+			res => {
+				console.log(res);
+        
+			},
+			err => {
+        console.log(err)
+			}
+  )}
+
+
 
 }
