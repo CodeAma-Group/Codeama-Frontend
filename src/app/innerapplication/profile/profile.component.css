@@ -20,6 +20,47 @@
     position: relative;
 }
 
+#profilepic, #coverpic {
+    position: absolute;
+    top: 77%;
+    left: 10%;
+    overflow: hidden !important;
+    background-color: var(--mainWhite);
+    z-index: 99;
+    border-radius: 50%;
+    width: 2.2em;
+    height: 2.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#profilepic>input, #coverpic>input {
+    opacity: 0;
+    z-index: 9;
+}
+
+#profilepic>svg, #coverpic>svg {
+    position: absolute;
+    z-index: 5;
+}
+
+.cover_banner>button {
+    position: absolute;
+    top: 53%;
+    right: 8%;
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 0.4em;
+    font-size: 0.85em;
+}
+
+#coverpic {
+    top: 53%;
+    left: unset !important;
+    right: 3% !important;
+}
+
 .user_profile_image {
     position: absolute;
     width: 8em;
