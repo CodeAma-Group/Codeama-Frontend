@@ -32,7 +32,7 @@
 }
 .searchbox-container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: #F8F9FA;
     width: 40%;
     border-radius: 8px;
@@ -42,15 +42,15 @@
     width: 1.5em;
     height: 1.5em;
 }
-.searchbox-container > input{
+#search{
     height: 50%;
-    width: 90%;
+    width: 100%;
     font-family: 'Poppins', sans-serif;
     border: none;
     background-color: inherit;
 }
 
-.searchbox-container > input:focus{
+#search:focus{
     border: none;
     outline: none;
 }

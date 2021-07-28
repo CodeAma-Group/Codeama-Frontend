@@ -14,6 +14,7 @@ import { ProjectRegistrationComponent } from './project-registration/project-reg
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoursesComponent } from './courses/courses.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { CreateChallengeComponent } from './create-challenge/create-challenge.component'
 
 const routes: Routes = [
   {
@@ -63,7 +64,11 @@ const routes: Routes = [
       },
       {
         path: 'challenges',
-        component: ChallengesComponent,
+        component: ChallengesComponent
+      },
+      {
+        path: 'challenges/apply',
+        component: CreateChallengeComponent
       },
       {
         path: 'codeamas',
