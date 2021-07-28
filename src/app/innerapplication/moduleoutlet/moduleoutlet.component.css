@@ -60,7 +60,7 @@
 
 .searchbox-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: #F8F9FA;
     width: 40%;
     border-radius: 8px;
@@ -74,12 +74,11 @@
 
 .searchbox-container>input {
     height: 50%;
-    width: 90%;
+    width: 100%;
     font-family: 'Poppins', sans-serif;
     border: none;
     background-color: inherit;
 }
-
 .searchbox-container>input:focus {
     border: none;
     outline: none;
