@@ -100,6 +100,11 @@ export class ProfileComponent implements OnInit {
       reader.readAsDataURL(file.target.files[0]);
       reader.onload = async (file) => {
         this.imageUrl = await file.target.result;
+        this.connections = {
+          "github": "github.com/abi-seth",
+          "twitter": "twitter.com/abiseth",
+          "facebook": "facebook.com/abijuruseth"
+        }
 
         var data = {
           "userId": `${this._id}`,
