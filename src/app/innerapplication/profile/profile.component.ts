@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   editStack: boolean = true;
   editStackTwo: boolean = false;
   editSkills: boolean = true;
+  editingAccountSettings: boolean = false;
 
   userData: any;
   Badge: string = ''
@@ -83,6 +84,10 @@ export class ProfileComponent implements OnInit {
   showEditSkill() {
     this.editSkills = false;
     this.editStackTwo = true;
+  }
+
+  accountSettings() {
+    this.editingAccountSettings = !this.editingAccountSettings;
   }
 
 }
