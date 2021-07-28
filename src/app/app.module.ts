@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { AuthGuard } from './authentication/common/auth.guard'
 import { AuthinterceptorService } from './authentication/_authServices/authinterceptor.service'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NotifierModule } from 'angular-notifier';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NotifierModule } from 'angular-notifier';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CodemirrorModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -37,11 +39,15 @@ import { NotifierModule } from 'angular-notifier';
     AuthService,
 		AuthGuard,
 		{
-			provide: HTTP_INTERCEPTORS,
+      provide: HTTP_INTERCEPTORS,
 			useClass: AuthinterceptorService,
 			multi: true
 		}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[
+    NO_ERRORS_SCHEMA,
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

@@ -40,9 +40,12 @@
                 <textarea class="form-control" formControlName="bugImage" name="bugImage" id="bug-image" rows="2" maxlength="200" placeholder="Bug codes here"></textarea>
             </div>
 
-            <div class="post btn">
-                <button name="post-bug-btn" type="submit" id="post-bug-btn" class="btn btn-primary">Post your bug now</button>
+
+            <div class="post btn ">
+                <button name="post-bug-btn " type="submit " id="post-bug-btn " class="btn btn-primary ">Post your bug now</button>
             </div>
         </form>
     </div>
 </div>
+<ngx-codemirror class="col-lg-10 bg-primary" #codemirror [options]="codeMirrorOptions" [(ngModel)]="obj">
+</ngx-codemirror>
