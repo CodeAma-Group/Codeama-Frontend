@@ -1,25 +1,81 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { BugService } from '../../services/bug.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 @Component({
   selector: 'app-add-bug',
   templateUrl: './add-bug.component.html',
   styleUrls: ['./add-bug.component.css'],
 })
+
 export class AddBugComponent implements OnInit {
   constructor(private bugs: BugService) {}
-  newBugForm = new FormGroup({
-    bugTitle: new FormControl(''),
-    bugTechnology: new FormControl(''),
-    bugDetails: new FormControl(''),
-    bugDescription: new FormControl(),
-  });
+  htmlContent = '';
 
-  ngOnInit(): void {}
-  collectData() {
-    console.log(this.newBugForm.value);
-    this.bugs.postBug(this.newBugForm.value).subscribe((res)=>{
-      console.log("data",res);
-    })
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Poppins',
+    defaultFontSize: '2',
+    fonts: [
+      {class: 'arial', name: 'Arial'},
+      {class: 'Roboto', name: 'Roboto'},
+      {class: 'Poppins', name: 'Poppins'},
+      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+    ],
+    toolbarHiddenButtons: [
+      ['customClasses',],
+      ['strikeThrough']
+    ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
+  };
+
+ codeMirrorOptions: any = {
+    theme: 'default',
+    mode: 'application/ld+json',
+    lineNumbers: true,
+    // readOnly:true,
+    autocorrect:true,
+    smartIndent:true,
+    lineWrapping: true,
+    readonly:true,
+    foldGutter: true,
+    gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],
+    autoCloseBrackets: true,
+    automatically:true,
+    matchBrackets: true,
+    lint: true
+  };
+ngOnInit(){}
+mirrors:any=[
+  {"mirror":1}
+]
+newMirror(){
+  this.mirrors.push({"mirror":1})
+}
+submit(form) {
+  let 
+  bugTitle=form.bugTitle,
+  bugDescription=form.bugDescription,
+  bugCodes=form.codemirror
+      console.log(bugCodes);
   }
 }

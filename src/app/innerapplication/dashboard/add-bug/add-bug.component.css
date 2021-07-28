@@ -9,6 +9,18 @@
     padding: 20px 20px;
 }
 
+.angular-editor-textarea {
+    min-height: 5rem;
+    padding: .5rem .8rem 1rem;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: none !important;
+    position: relative;
+    border-radius: 10px;
+}
+
 .heading-text {
     padding-top: 21px;
 }
