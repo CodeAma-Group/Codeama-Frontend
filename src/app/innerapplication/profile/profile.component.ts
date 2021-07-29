@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   editingAccountSettings: boolean = false;
 
   userData: any;
-  Badge: string = ''
+  Badge: any
   Bio: string = ''
   CreatedAt: string = ''
   Email: string = ''
@@ -53,7 +53,9 @@ export class ProfileComponent implements OnInit {
       this.Location = this.userData.data.Location;
       this.Username = this.userData.data.Username;
       this.description = this.userData.data.description;
-      this.connections = this.userData.data.connections;
+      this.connections =  { "github": `${this.userData.data.connections.github}`,
+                            "twitter": `${this.userData.data.connections.twitter}`,
+                            "facebook": `${this.userData.data.connections.facebook}` }
       this.Skills = this.userData.data.Skills;
       this.Followers = this.userData.data.Followers;
       this.Following = this.userData.data.Following;
@@ -100,15 +102,10 @@ export class ProfileComponent implements OnInit {
       reader.readAsDataURL(file.target.files[0]);
       reader.onload = async (file) => {
         this.imageUrl = await file.target.result;
-        this.connections = {
-          "github": "github.com/abi-seth",
-          "twitter": "twitter.com/abiseth",
-          "facebook": "facebook.com/abijuru.seth"
-        }
 
         var data = {
           "userId": `${this._id}`,
-          "Badge": `${this.Badge}`,
+          "Badge": this.Badge,
           "Bio": `${this.Bio}`,
           "Location": `${this.Location}`,
           "description": `${this.description}`,
