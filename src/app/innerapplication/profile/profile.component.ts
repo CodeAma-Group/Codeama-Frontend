@@ -103,7 +103,7 @@ export class ProfileComponent implements OnInit {
         this.connections = {
           "github": "github.com/abi-seth",
           "twitter": "twitter.com/abiseth",
-          "facebook": "facebook.com/abijuruseth"
+          "facebook": "facebook.com/abijuru.seth"
         }
 
         var data = {
@@ -127,7 +127,7 @@ export class ProfileComponent implements OnInit {
     console.log(data)
     this._userService.updateProfile(data).subscribe(
 			res => {
-				console.log(res);
+				console.warn(res);
         
 			},
 			err => {
