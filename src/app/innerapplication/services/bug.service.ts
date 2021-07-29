@@ -16,6 +16,6 @@ postUrl="https://codeama-backend.herokuapp.com/post_bug";
     return this.http.get(`${this.getByIdUrl}/${id}`)
   }
   postBug(data){
-    return this.http.get(this.postUrl,data)
+    return this.http.post(this.postUrl,data)
   }
 }
