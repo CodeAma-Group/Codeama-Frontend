@@ -15,12 +15,20 @@ export class SidebarComponent implements OnInit {
 
   userId: string = ''
   userData: any;
+  profileRoute: boolean = true
 
   ngOnInit(): void {
     
     var token = this.authService.getToken()
-    this.userData = jwt_decode(token);
-    this.userId = this.userData._id;
+
+    if (token != null) {
+      this.userData = jwt_decode(token);
+      this.userId = this.userData._id;
+    }
+
+    if (this.userId == '') {
+      this.profileRoute = false
+    }
 
     var cookieName = "isDark";
 

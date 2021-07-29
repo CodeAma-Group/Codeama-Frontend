@@ -112,7 +112,7 @@ export class ProfileComponent implements OnInit {
           "Bio": `${this.Bio}`,
           "Location": `${this.Location}`,
           "description": `${this.description}`,
-          "connections": `${this.connections}`,
+          "connections": this.connections,
           "Skills": `${this.Skills}`,
           "coverPicture": `${this.imageUrl}`,
           "profilePicture": `${this.imageUrl}`
