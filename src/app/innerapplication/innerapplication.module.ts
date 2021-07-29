@@ -37,6 +37,11 @@ import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolve
 import { UserarticlesComponent } from './userprofile/userarticles/userarticles.component';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { AuthService } from '../authentication/_authServices/auth.service'
+import { AuthGuard } from '../authentication/common/auth.guard'
+import { AuthinterceptorService } from '../authentication/_authServices/authinterceptor.service'
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -90,6 +95,15 @@ const customNotifierOptions: NotifierOptions = {
     MultiSelectAllModule,
     NgxSpinnerModule,
     NotifierModule.withConfig(customNotifierOptions)
+  ],
+  providers: [
+    AuthService,
+		AuthGuard,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthinterceptorService,
+			multi: true
+		}
   ],
 })
 export class InnerapplicationModule { }
