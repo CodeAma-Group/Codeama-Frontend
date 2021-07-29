@@ -65,9 +65,10 @@ export class AddBugComponent implements OnInit {
     matchBrackets: true,
     lint: true,
   };
+  token:any;
   ngOnInit() {
-    var token=jwtDecode(localStorage.getItem('codeama_auth_token'))
-    console.log(token)
+     this.token=jwtDecode(localStorage.getItem('codeama_auth_token'));
+    console.log(this.token._id)
   }
   data;
   submit(form) {
