@@ -18,7 +18,7 @@ export class UserService {
 	}
 
 	getUserDetails(){
-        return this.http.get(`https://codeama-backend.herokuapp.com/users/${this.token}/decode`)
+        return this.http.get(`https://codeama-backend.herokuapp.com/users/token/decode`)
     }
 
 	updateProfile(data) {

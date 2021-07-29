@@ -52,7 +52,7 @@ export class InnerapplicationService {
     let resources = <Observable<any[]>>this.http.get(this.base+"resources", {
       params: {
         limit: "100000"
-      }
+      },
     })
     .pipe(
       pluck("data", "docs"),
