@@ -17,6 +17,10 @@ export class AuthinterceptorService implements HttpInterceptor{
 		let authService = this.injector.get(AuthService);
 		let tokenizedReq = req.clone({
 			setHeaders: {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': 'Content-Type',
+				'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
 				Authorization: 'Bearer '+authService.getToken()
 			}
 		})

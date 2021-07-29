@@ -7,6 +7,103 @@
     border-top-right-radius: 0.5em;
 }
 
+.edit_profile_details {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: rgba(47, 43, 43, 0.424);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit_details_content {
+    width: 40%;
+    height: 90%;
+    background-color: #ffffff;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.edit_details_content>h3 {
+    font-size: 1.05em;
+    text-align: center;
+    color: var(--mainBlack);
+    margin-top: 1em !important;
+    margin-bottom: 0.1em !important;
+}
+
+.edit_details_content>form {
+    margin-top: 1.5em;
+    height: auto;
+    width: 90%;
+}
+
+.edit_details_content>form>p {
+    font-size: 0.88em;
+    color: var(--mainBlack);
+    opacity: 0.8;
+    margin-top: 0.6em;
+    margin-bottom: 0.5em;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_group>input {
+    margin-bottom: 0.8em;
+    padding: 0.6em 0.5em;
+    border: 0.1em solid var(--dimBlue);
+    border-radius: 0.3em;
+    font-size: 0.88em;
+}
+
+.form_group>label {
+    font-size: 0.85em;
+    opacity: 0.45;
+    color: var(--mainBlack);
+}
+
+.alert {
+    text-align: center !important;
+    width: 100%;
+    font-size: 0.85em !important;
+}
+
+.form_group>button {
+    padding: 0.9em 0 !important;
+    border: none;
+    font-size: 0.9em;
+    border-radius: 0.4em;
+}
+
+.submit_buttons {
+    margin: 2em 0;
+    font-size: 0.9em;
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+
+button[type= submit] {
+    background-color: var(--mainBlue) !important;
+    color: var(--mainWhite) !important;
+}
+
+.submit_buttons>button {
+    width: 48%;
+    padding: 1.2em 0 !important;
+    border: none;
+    border-radius: 0.4em;
+}
+
 #entire_user_profile::-webkit-scrollbar {
     display: none !important;
 }
@@ -18,6 +115,47 @@
     height: 43vh;
     overflow: hidden;
     position: relative;
+}
+
+#profilepic, #coverpic {
+    position: absolute;
+    top: 77%;
+    left: 10%;
+    overflow: hidden !important;
+    background-color: var(--mainWhite);
+    z-index: 99;
+    border-radius: 50%;
+    width: 2.2em;
+    height: 2.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#profilepic>input, #coverpic>input {
+    opacity: 0;
+    z-index: 9;
+}
+
+#profilepic>svg, #coverpic>svg {
+    position: absolute;
+    z-index: 5;
+}
+
+.cover_banner>button {
+    position: absolute;
+    top: 53%;
+    right: 8%;
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 0.4em;
+    font-size: 0.85em;
+}
+
+#coverpic {
+    top: 53%;
+    left: unset !important;
+    right: 3% !important;
 }
 
 .user_profile_image {

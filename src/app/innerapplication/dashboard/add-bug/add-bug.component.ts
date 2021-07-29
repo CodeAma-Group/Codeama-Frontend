@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { BugService } from '../../services/bug.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+import jwtDecode from 'jwt-decode';
 @Component({
   selector: 'app-add-bug',
   templateUrl: './add-bug.component.html',
@@ -8,18 +9,90 @@ import { BugService } from '../../services/bug.service';
 })
 export class AddBugComponent implements OnInit {
   constructor(private bugs: BugService) {}
-  newBugForm = new FormGroup({
-    bugTitle: new FormControl(''),
-    bugTechnology: new FormControl(''),
-    bugDetails: new FormControl(''),
-    bugDescription: new FormControl(),
-  });
+  htmlContent = '';
 
-  ngOnInit(): void {}
-  collectData() {
-    console.log(this.newBugForm.value);
-    this.bugs.postBug(this.newBugForm.value).subscribe((res)=>{
-      console.log("data",res);
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Poppins',
+    defaultFontSize: '2',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'Roboto', name: 'Roboto' },
+      { class: 'Poppins', name: 'Poppins' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' },
+    ],
+    toolbarHiddenButtons: [['customClasses'], ['strikeThrough']],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText',
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+  };
+
+  codeMirrorOptions: any = {
+    theme: 'cobalt',
+    mode: 'application/ld+json',
+    lineNumbers: true,
+    // readOnly:true,
+    autocorrect: true,
+    smartIndent: true,
+    lineWrapping: true,
+    readonly: true,
+    foldGutter: true,
+    gutters: [
+      'CodeMirror-linenumbers',
+      'CodeMirror-foldgutter',
+      'CodeMirror-lint-markers',
+    ],
+    autoCloseBrackets: true,
+    automatically: true,
+    matchBrackets: true,
+    lint: true,
+  };
+ 
+ token:any=jwtDecode(localStorage.getItem('codeama_auth_token'));
+ userId=this.token._id;
+  ngOnInit() {
+    this.bugs.githubUsers().subscribe((res)=>{
+      console.log(res);
+      
     })
+  }
+  data;
+  submit(form) {
+    let bugTitle = form.bugTitle,
+      bugDescription = this.htmlContent,
+      bugCodes = form.codemirror;
+    console.log(bugCodes);
+    this.data = {
+      userId: this.userId,
+      bugs: [
+        {
+          bugTitle: bugTitle,
+          bugDescription: bugDescription,
+          code_snippet: bugCodes,
+          date: new Date().toDateString(),
+        },
+      ],
+    };
+    this.bugs.postBug(this.data).subscribe((res) => {
+      alert(res);
+    });
   }
 }

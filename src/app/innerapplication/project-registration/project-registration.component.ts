@@ -136,6 +136,7 @@ Addmember(data){
 }
 data
  collectData(){
+   console.log(this.newProjectForm.value.logo);
   this.data={
     title:this.newProjectForm.value.projectName,
     description:this.newProjectForm.value.app_description,
@@ -161,6 +162,7 @@ data
     teamName: new FormControl(''),
     githubLink:new FormControl(''),
     appLink:new FormControl(''),
+    logo:new FormControl('')
   })
   
   cookieVal: string = '';

@@ -6,6 +6,7 @@
 @import '~@syncfusion/ej2-popups/styles/material.css';
 @import '~@syncfusion/ej2-lists/styles/material.css';
 @import '~@syncfusion/ej2-angular-dropdowns/styles/material.css';
+
 @import '~angular-notifier/styles';
 @import "~bootstrap/dist/css/bootstrap.css";
 .bg-whiteblue {
@@ -14,9 +15,31 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/idea.css';
+@import '~codemirror/theme/cobalt.css';
+@import '~codemirror/addon/fold/foldgutter.css';
+@import '~codemirror/addon/lint/lint.css';
 
 /* Application global styling variables */
+
+.angular-editor-toolbar {
+    background-color: #66a5f045 !important;
+    border-radius: 4px !important;
+}
+
+.angular-editor-textarea {
+    min-height: 5rem;
+    padding: .5rem .8rem 1rem;
+    background-color: #ebf1fa !important;
+    outline: none !important;
+    border: .15em solid #66a5f045 !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: none !important;
+    position: relative;
+    border-radius: 5px;
+}
 
 :root {
     --pureWhite: #ffffff;
@@ -35,7 +58,6 @@
     --intermediateBg: #00A79D;
     --shareBg: #F7FAFC;
     --minorProfileWhite: #FCFDFE;
-    
     /* fonts */
     --poppins: 'Poppins', sans-serif;
     --right: 'Righteous', cursive;
@@ -214,8 +236,8 @@ ul {
     color: var(--mainBlack);
     border-radius: 7px;
     background: var(--contBgLight);
-    padding: 0 20px!important;
-    min-height: 88vh!important;
+    padding: 0 20px !important;
+    min-height: 88vh !important;
 }
 
 textarea:hover,
@@ -247,5 +269,13 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 } */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

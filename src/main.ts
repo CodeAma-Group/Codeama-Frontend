@@ -7,6 +7,14 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
 }
-
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/addon/fold/foldgutter';
+import 'codemirror/addon/fold/brace-fold';
+import 'codemirror/lib/codemirror';
+import 'codemirror/addon/edit/closebrackets';
+import 'codemirror/addon/edit/matchbrackets';
+import 'codemirror/addon/lint/lint';
+import 'codemirror/addon/lint/json-lint';
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
