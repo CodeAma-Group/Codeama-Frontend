@@ -15,10 +15,6 @@ import { SignupComponent } from './signup/signup.component';
 import { VerifyemailComponent } from './verifyemail/verifyemail.component';
 import { EmailverifiedComponent } from './emailverified/emailverified.component';
 
-import { AuthService } from './_authServices/auth.service'
-import { AuthGuard } from './common/auth.guard'
-import { AuthinterceptorService } from './_authServices/authinterceptor.service'
-
 @NgModule({
 	declarations: [
 		ModuleoutletComponent, 
@@ -38,14 +34,6 @@ import { AuthinterceptorService } from './_authServices/authinterceptor.service'
 		FormsModule,
 		HttpClientModule
 	],
-	providers: [
-		AuthService,
-		AuthGuard,
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: AuthinterceptorService,
-			multi:true
-		}
-	]
+	
 })
 export class AuthenticationModule { }

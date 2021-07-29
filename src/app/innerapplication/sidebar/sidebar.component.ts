@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../authentication/_authServices/auth.service'
-import { UserService } from '../services/user.service'
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +9,7 @@ import { UserService } from '../services/user.service'
 })
 export class SidebarComponent implements OnInit {
 
-  constructor( private userService: UserService, private router: Router, private authService: AuthService ) { }
+  constructor( private authService: AuthService ) { }
 
   cookieVal:string = "";
 
@@ -18,17 +17,10 @@ export class SidebarComponent implements OnInit {
   userData: any;
 
   ngOnInit(): void {
-
-    this.userService.getUserDetails().subscribe((res) => {
-      this.userData = res;
-      this.userId = this.userData.data._id;
-    },
-    err => {
-      console.log(err)
-      alert("Token expired!");
-      this.authService.logout();
-      this.router.navigate(['auth'])
-    })
+    
+    var token = this.authService.getToken()
+    this.userData = jwt_decode(token);
+    this.userId = this.userData._id;
 
     var cookieName = "isDark";
 
