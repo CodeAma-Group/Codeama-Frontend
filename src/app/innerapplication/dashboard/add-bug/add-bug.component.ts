@@ -64,7 +64,9 @@ export class AddBugComponent implements OnInit {
     matchBrackets: true,
     lint: true,
   };
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(localStorage.getItem('codeama_auth_token'))
+  }
   data;
   submit(form) {
     let bugTitle = form.bugTitle,
