@@ -13,7 +13,16 @@
             <img src="../../../assets/images/logo.png" alt="logo" class="logo">
             <form class="searchbox-container">
                 <img src="../../../assets/images/Group 2.png" alt="search icon">
-                <input type="text" name="search" id="search" placeholder="search at codeama">
+                <div class="position-relative w-75">
+                    <input type="search" [ngModel]="searchText" (ngModelChange)="changeSearchText($event)" id="search" placeholder="search at codeama" (blur)="inputBlur($event)">
+                    
+                    <ul class="list-group list-group-flush position-absolute d-{{display}} w-100">
+                        <!-- resuts of ngfor is passed to filter pipe with argument search text -->
+                        <li class="list-group-item" *ngFor="let c of characters | filterpipe:searchText">
+                            {{c}} 
+                        </li>
+                    </ul>
+                </div>
             </form>
             <div (click) = "logout()" class="logout">
                 Logout
