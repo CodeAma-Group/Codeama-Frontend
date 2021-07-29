@@ -35,7 +35,8 @@ import { UseransweredComponent } from './userprofile/useranswered/useranswered.c
 import { UseraskedComponent } from './userprofile/userasked/userasked.component';
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserarticlesComponent } from './userprofile/userarticles/userarticles.component';
-
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AuthService } from '../authentication/_authServices/auth.service'
 import { AuthGuard } from '../authentication/common/auth.guard'
 import { AuthinterceptorService } from '../authentication/_authServices/authinterceptor.service'
@@ -89,6 +90,8 @@ const customNotifierOptions: NotifierOptions = {
     InnerapplicationRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    CodemirrorModule,
+    AngularEditorModule,
     MultiSelectAllModule,
     NgxSpinnerModule,
     NotifierModule.withConfig(customNotifierOptions)

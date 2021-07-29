@@ -12,7 +12,9 @@ export class BugsComponent implements OnInit {
   ngOnInit(): void {
     this.bug.getBugs().subscribe((result)=>{
       this.bugs=result;
-      this.bugs=this.bugs.data
+      this.bugs=this.bugs.data      
+      console.log(this.bugs);
+      
     })
   }
 }
