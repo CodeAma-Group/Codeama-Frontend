@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BugService } from '../../services/bug.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import jwtDecode from 'jwt-decode';
 @Component({
   selector: 'app-add-bug',
   templateUrl: './add-bug.component.html',
@@ -65,7 +66,8 @@ export class AddBugComponent implements OnInit {
     lint: true,
   };
   ngOnInit() {
-    console.log(localStorage.getItem('codeama_auth_token'))
+    var token=jwtDecode(localStorage.getItem('codeama_auth_token'))
+    console.log(token)
   }
   data;
   submit(form) {
