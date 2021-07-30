@@ -86,8 +86,13 @@ export class AddBugComponent implements OnInit {
         },
       ],
     };
+    
     this.bugs.postBug(this.data).subscribe((res) => {
-      alert(res);
+      try {
+      
+      } catch (error) {
+        
+      }  
     });
   }
 }
