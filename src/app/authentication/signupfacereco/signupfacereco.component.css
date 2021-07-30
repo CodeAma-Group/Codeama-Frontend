@@ -106,6 +106,17 @@ form {
     animation-direction: alternate;
 }
 
+
+.recognition_container>h1 {
+    position: absolute;
+    font-size: 4em;
+    z-index: 9;
+    top: 35%;
+    color: #fff;
+    font-weight: 700;
+    animation: diff 1s ease-in-out infinite;
+}
+
 @keyframes scan {
     0% {
         top: 0;
@@ -113,6 +124,31 @@ form {
         top: 50%;
     }100%{
         top: 95%;
+    }
+}
+
+.camera_options_rotate {
+    position: fixed;
+    top: 32%;
+    left: 12%;
+    cursor: pointer;
+    z-index: 99;
+}
+.camera_options_off {
+    position: fixed;
+    top: 32%;
+    left: 40.8%;
+    cursor: pointer;
+    z-index: 99;
+}
+
+@keyframes diff {
+    0% {
+        opacity: 0.5;
+        font-size: 0.1em;
+    } 100% {
+        font-size: 5em;
+        opacity: 1;
     }
 }
 

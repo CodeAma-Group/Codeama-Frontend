@@ -177,6 +177,13 @@ button>svg {
     position: absolute;
 }
 
+.recognition_container>h1 {
+    position: absolute;
+    font-size: 4em;
+    z-index: 9;
+    top: 35%;
+}
+
 #frame {
     position: absolute;
     z-index: 9;
