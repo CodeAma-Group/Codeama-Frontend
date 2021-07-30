@@ -7,18 +7,18 @@
         </div>
         <div class=" ms-3 mt-2 user-name-and-date">
             <div class="d-flex">
-                <p class="my-auto">{{bug.userInfo.Username}}
-                </p>
+                <a [href]="'https://codeama.netlify.app/app/profile/'+bug.userInfo._id" class=" my-auto ">{{bug.userInfo.Username}}
+                </a>
             </div>
-            <p id="posting-date">{{bug.date}}</p>
+            <p id="posting-date ">{{bug.date}}</p>
         </div>
     </div>
     <div class="question-info d-flex">
-        <div class="question-details col-lg-7 mr-2">
-            <div class="question-title">
-                <h6 class="q-heading my-3">{{bug.bug.bug_title}}</h6>
+        <div class="question-details col-lg-7 mr-2 ">
+            <div class="question-title ">
+                <h6 class="q-heading my-3 ">{{bug.bug.bug_title}}</h6>
             </div>
-            <div class="question-description">
+            <div class="question-description ">
                 <p>{{bug.bug.bug_description}}....
                 </p>
             </div>
