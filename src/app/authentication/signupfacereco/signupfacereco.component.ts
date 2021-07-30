@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { inputs } from '@syncfusion/ej2-angular-dropdowns/src/drop-down-list/dropdownlist.component';
 
 import * as faceapi from 'face-api.js';
@@ -33,9 +34,11 @@ export class SignupfacerecoComponent implements OnInit {
 	secondTimerInterval: any;
 	isCamOn:boolean = true;
 
-	constructor( private _faceAuth: FaceauthService, private _authService: AuthService ) { }
+	constructor( private _router: Router,private _faceAuth: FaceauthService, private _authService: AuthService ) { }
 	
 	ngOnInit(): void {
+
+
 		Promise.all([
 			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models'),
 			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models'),
@@ -99,7 +102,6 @@ export class SignupfacerecoComponent implements OnInit {
 		this.stepInterval = setInterval(() => {
 			if (this.steps <= 9) {
 				this.steps += 1;
-				console.warn(this.steps);
 			} else {
 				clearInterval(this.stepInterval);
 			}
@@ -159,25 +161,23 @@ export class SignupfacerecoComponent implements OnInit {
 							clearInterval(timingInterval);
 							
 							if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
+								if (this.servererr) {
+									this.servererr = false;
+								}
 								this.uploadSuccess = false;
 								this.preparingUpload = true;
 
 								var imageBlob = this.webcamImage.imageAsDataUrl;
-								let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
-								let imageToUpload = imageBlob
+								let image = new File([imageBlob], "profile.jpg", { type: "image/jpeg" });
+								let imageToUpload = image
 
-								console.warn(imageToUpload)
-			
-								let data = {
-									"faceRecognitionPicture": imageToUpload,
-									"Username": `${this.username}`,
-									"Email": `${this.email}`,
-									"Password": `${this.password}`
-								}
+								let userData: FormData = new FormData();
+								userData.append("faceRecognitionPicture", imageToUpload);
+								userData.append("Username", this.username);							
+								userData.append("Email", this.email);							
+								userData.append("Password", this.password);							
 
-								console.log(data);
-
-								this.registerUser(data);
+								this.registerUser(userData);
 							} else if (this.usernameFilled && this.emailFilled) {
 								this.fieldErrorMsg = "please fill out the password";
 							} else if (this.usernameFilled) {
@@ -255,25 +255,23 @@ export class SignupfacerecoComponent implements OnInit {
 
 		if (this.usernameFilled && this.emailFilled && this.passwordFilled && this.shotTaken) {
 			this.fieldError = false;
+			if (this.servererr) {
+				this.servererr = false;
+			}
 			this.uploadSuccess = false;
 			this.preparingUpload = true;
 
 			var imageBlob = this.webcamImage.imageAsDataUrl;
 			let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
-			let imageToUpload = imageBlob
+			let imageToUpload = image
 
-			console.warn(imageToUpload)
+			let userData: FormData = new FormData();
+			userData.append("faceRecognitionPicture", imageToUpload);
+			userData.append("Username", this.username);							
+			userData.append("Email", this.email);							
+			userData.append("Password", this.password);							
 
-			let data = {
-				"faceRecognitionPicture": imageToUpload,
-				"Username": `${this.username}`,
-				"Email": `${this.email}`,
-				"Password": `${this.password}`
-			}
-
-			console.log(data)
-
-			this.registerUser(data);
+			this.registerUser(userData);
 		}
 	}
 
@@ -314,14 +312,20 @@ export class SignupfacerecoComponent implements OnInit {
 		}
 	}
 
+	servererr: boolean = false;
+	serverError: string = '';
+
 	async registerUser(data: object) {
 		await this._authService.registerUser(data).subscribe(
 			res => {
-				// this._router.navigate(['/auth/verifyemail']);
+				this._router.navigate(['/auth/verifyemail']);
 				console.warn(res);
 			},
 			err => {
-				console.log(err);
+				this.preparingUpload = false;
+				this.servererr = true;
+
+				this.serverError = err.error;
 			}
 		);
 	}
