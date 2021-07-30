@@ -38,11 +38,12 @@ export class LoginfacerecoComponent implements OnInit {
 
 	ngOnInit(): void {
 		Promise.all([
-			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models'),
-			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models'),
-			faceapi.nets.faceRecognitionNet.loadFromUri('/assets/models'),
-			faceapi.nets.faceExpressionNet.loadFromUri('/assets/models')
+			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/weights'),
+			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/weights'),
+			faceapi.nets.faceExpressionNet.loadFromUri('/assets/weights'),
+			faceapi.nets.ssdMobilenetv1.loadFromUri('/assets/weights')
 		]).then(() => {
+			faceapi.nets.faceRecognitionNet.loadFromUri('/assets/weights'),
 			this.loading = false;
 		}).catch(err => console.warn(err));
 
