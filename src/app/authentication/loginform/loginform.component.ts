@@ -61,7 +61,7 @@ export class LoginformComponent implements OnInit {
 	}
 
 	getUserData(data: any) {
-
+	
 		if (data.Email == "" || data.Password == "") {
 
 			if (data.Email == "") {

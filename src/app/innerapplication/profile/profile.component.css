@@ -359,6 +359,7 @@ a>svg {
 .git>h6 , .linkedin>h6, .website>h6 {
     margin-left: 1em;
     margin-top: 0.2em;
+    cursor: pointer;
 }
 
 .website {
