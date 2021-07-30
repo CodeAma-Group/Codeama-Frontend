@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
       this.connections =  { "github": `${this.userData.data.connections.github}`,
                             "twitter": `${this.userData.data.connections.twitter}`,
                             "facebook": `${this.userData.data.connections.facebook}` }
-      this.Skills = this.userData.data.Skills;
+      this.Skills = [...this.userData.data.Skills];
       this.Followers = this.userData.data.Followers;
       this.Following = this.userData.data.Following;
       this.coverPicture = this.userData.data.coverPicture;
@@ -105,12 +105,12 @@ export class ProfileComponent implements OnInit {
 
         var data = {
           "userId": `${this._id}`,
-          "Badge": this.Badge,
+          "Badge": `${this.Badge}`,
           "Bio": `${this.Bio}`,
           "Location": `${this.Location}`,
           "description": `${this.description}`,
           "connections": this.connections,
-          "Skills": `${this.Skills}`,
+          "Skills": "react,angular,vue",
           "coverPicture": `${this.imageUrl}`,
           "profilePicture": `${this.imageUrl}`
         }
