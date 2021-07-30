@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { inputs } from '@syncfusion/ej2-angular-dropdowns/src/drop-down-list/dropdownlist.component';
 
 import * as faceapi from 'face-api.js';
-import { WebcamImage } from 'ngx-webcam';
+import {  WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
 import { AuthService } from '../_authServices/auth.service'
 import { FaceauthService } from '../_authServices/faceauth.service'
@@ -48,6 +47,11 @@ export class SignupfacerecoComponent implements OnInit {
 			this.loading = false;
 		}).catch(err => console.warn(err));
 		
+		WebcamUtil.getAvailableVideoInputs()
+		.then((mediaDevices: MediaDeviceInfo[]) => {
+			this.isCameraExist = mediaDevices && mediaDevices.length > 0;
+		});
+
 		this.startSignupProcess();
 		document.getElementById("sample").style.display = "none";
 
@@ -119,6 +123,28 @@ export class SignupfacerecoComponent implements OnInit {
 	container: any;
 	shotTaken: boolean = false;
 	noFaceDetectedError: boolean = false;
+	showWebcam = true;
+	isCameraExist = true;
+
+	errors: WebcamInitError[] = [];
+
+	private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
+
+	onOffWebCame() {
+		this.showWebcam = !this.showWebcam;
+	}
+
+	handleInitError(error: WebcamInitError) {
+		this.errors.push(error);
+	}
+
+	changeWebCame(directionOrDeviceId: boolean | string) {
+		this.nextWebcam.next(directionOrDeviceId);
+	}
+
+	get nextWebcamObservable(): Observable<boolean | string> {
+		return this.nextWebcam.asObservable();
+	}
 
 
 	async handleImage(webcamImage: WebcamImage) {
