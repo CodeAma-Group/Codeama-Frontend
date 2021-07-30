@@ -65,22 +65,17 @@ export class AddBugComponent implements OnInit {
     matchBrackets: true,
     lint: true,
   };
- 
- token:any=jwtDecode(localStorage.getItem('codeama_auth_token'));
- userId=this.token._id;
+
+  token: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
+  userId = this.token._id;
   ngOnInit() {
-    this.bugs.githubUsers().subscribe((res)=>{
-      console.log(res);
-      
-    })
   }
   data;
   submit(form) {
     let bugTitle = form.bugTitle,
       bugDescription = this.htmlContent,
       bugCodes = form.codemirror;
-    console.log(bugCodes);
-    this.data = {
+      this.data = {
       userId: this.userId,
       bugs: [
         {
