@@ -27,6 +27,7 @@ import { UserarticlesComponent } from './userprofile/userarticles/userarticles.c
 import { UseraskedComponent } from './userprofile/userasked/userasked.component';
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
+import { AuthGuard } from '../authentication/common/auth.guard';
 
 const routes: Routes = [
   {
@@ -87,7 +88,8 @@ const routes: Routes = [
       },
       {
         path: "add-bug",
-        component: AddBugComponent
+        component: AddBugComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'projectRegistration',
