@@ -8,6 +8,7 @@ export class BugService {
 getUrl="https://codeama-backend.herokuapp.com/all_bugs";
 getByIdUrl="https://codeama-backend.herokuapp.com/solved_bugs/JJ"
 postUrl="https://codeama-backend.herokuapp.com/post_bug";
+github="https://api.github.com/users/octocat/followersr"
   constructor(private http:HttpClient) { }
   getBugs(){
     return this.http.get(this.getUrl)
@@ -17,5 +18,8 @@ postUrl="https://codeama-backend.herokuapp.com/post_bug";
   }
   postBug(data){
     return this.http.post(this.postUrl,data)
+  }
+  githubUsers(){
+    return this.http.get(this.github)
   }
 }

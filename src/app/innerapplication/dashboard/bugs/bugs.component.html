@@ -2,14 +2,13 @@
     <hr>
     <div class="user-profile d-flex">
         <div class="avatar">
-            <img class="profile-avatar" src=" ../../../../../../assets/images/face.png" alt="profile">
+            <img class="profile-avatar" [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.profilePicture" alt="profile">
             <div class="badge"></div>
         </div>
         <div class=" ms-3 mt-2 user-name-and-date">
             <div class="d-flex">
-                <p class="my-auto">ABIJURU Seth
+                <p class="my-auto">{{bug.userInfo.Username}}
                 </p>
-                <p class="ms-3 my-auto user-username">@abi_seth</p>
             </div>
             <p id="posting-date">{{bug.date}}</p>
         </div>
@@ -20,7 +19,6 @@
                 <h6 class="q-heading my-3">{{bug.bug.bug_title}}</h6>
             </div>
             <div class="question-description">
-                <!-- <p>{{question.text}}</p> -->
                 <p>{{bug.bug.bug_description}}....
                 </p>
             </div>

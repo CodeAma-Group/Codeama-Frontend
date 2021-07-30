@@ -69,6 +69,10 @@ export class AddBugComponent implements OnInit {
  token:any=jwtDecode(localStorage.getItem('codeama_auth_token'));
  userId=this.token._id;
   ngOnInit() {
+    this.bugs.githubUsers().subscribe((res)=>{
+      console.log(res);
+      
+    })
   }
   data;
   submit(form) {
