@@ -164,7 +164,7 @@ export class SignupfacerecoComponent implements OnInit {
 
 								var imageBlob = this.webcamImage.imageAsDataUrl;
 								let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
-								let imageToUpload = image
+								let imageToUpload = imageBlob
 
 								console.warn(imageToUpload)
 			
@@ -260,7 +260,7 @@ export class SignupfacerecoComponent implements OnInit {
 
 			var imageBlob = this.webcamImage.imageAsDataUrl;
 			let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
-			let imageToUpload = image
+			let imageToUpload = imageBlob
 
 			console.warn(imageToUpload)
 
