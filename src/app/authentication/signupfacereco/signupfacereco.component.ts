@@ -163,11 +163,13 @@ export class SignupfacerecoComponent implements OnInit {
 								this.preparingUpload = true;
 
 								var imageBlob = this.webcamImage.imageAsDataUrl;
-								// let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
-								console.log(imageBlob);
+								let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
+								let imageToUpload = image
 
+								console.warn(imageToUpload)
+			
 								let data = {
-									"faceRecognitionPicture": `${imageBlob}`,
+									"faceRecognitionPicture": imageToUpload,
 									"Username": `${this.username}`,
 									"Email": `${this.email}`,
 									"Password": `${this.password}`
@@ -257,12 +259,13 @@ export class SignupfacerecoComponent implements OnInit {
 			this.preparingUpload = true;
 
 			var imageBlob = this.webcamImage.imageAsDataUrl;
-			// let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
+			let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
+			let imageToUpload = image
 
-			console.log(imageBlob);
-			
+			console.warn(imageToUpload)
+
 			let data = {
-				"faceRecognitionPicture": `${imageBlob}`,
+				"faceRecognitionPicture": imageToUpload,
 				"Username": `${this.username}`,
 				"Email": `${this.email}`,
 				"Password": `${this.password}`
