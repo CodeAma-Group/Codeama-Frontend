@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WebcamModule } from 'ngx-webcam';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component';
@@ -33,7 +33,6 @@ import { EmailverifiedComponent } from './emailverified/emailverified.component'
 		AuthenticationRoutingModule,
 		FormsModule,
 		HttpClientModule
-	],
-	
+	],	
 })
 export class AuthenticationModule { }
