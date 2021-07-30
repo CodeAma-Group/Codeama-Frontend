@@ -151,7 +151,6 @@ export class SignupfacerecoComponent implements OnInit {
 	async handleImage(webcamImage: WebcamImage) {
 		this.webcamImage = webcamImage;
 		this.images.push(webcamImage);
-		console.log(this.webcamImage);
 		this.isCamOn = false;
 		this.checkIfSamplesHaveFaces();
 	}
@@ -346,7 +345,6 @@ export class SignupfacerecoComponent implements OnInit {
 		await this._authService.registerUser(data).subscribe(
 			res => {
 				this._router.navigate(['/auth/verifyemail']);
-				console.warn(res);
 			},
 			err => {
 				this.preparingUpload = false;
