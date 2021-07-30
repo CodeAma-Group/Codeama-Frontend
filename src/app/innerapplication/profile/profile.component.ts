@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   editStackTwo: boolean = false;
   editSkills: boolean = true;
   editingAccountSettings: boolean = false;
+  editingMinorAccountSettings: boolean = false;
 
   userData: any;
   Badge: any
@@ -92,6 +93,10 @@ export class ProfileComponent implements OnInit {
 
   accountSettings() {
     this.editingAccountSettings = !this.editingAccountSettings;
+  }
+
+  accountMinorSettings() {
+    this.editingMinorAccountSettings = !this.editingMinorAccountSettings;
   }
 
   imageUrl: any;
