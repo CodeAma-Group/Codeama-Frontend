@@ -28,6 +28,7 @@ import { UseraskedComponent } from './userprofile/userasked/userasked.component'
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
 import { AuthGuard } from '../authentication/common/auth.guard';
+import {AmaQuestionComponent} from './ama-question/ama-question.component'
 
 const routes: Routes = [
   {
@@ -105,7 +106,7 @@ const routes: Routes = [
       },
       {
         path: 'codeamas',
-        component: CodeamasComponent,
+        component: CodeamasComponent
       },
       {
         path: 'notifications',
@@ -151,8 +152,14 @@ const routes: Routes = [
       {
         path: 'askquestion',
         component: AskcodeamaComponent,
-      }
-    ],
+      },
+
+      {
+        path:'amaquestions',
+        component: AmaQuestionComponent
+         
+     }
+    ]
   },
 ];
 
