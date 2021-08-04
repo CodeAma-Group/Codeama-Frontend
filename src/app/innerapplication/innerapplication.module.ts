@@ -38,6 +38,10 @@ import { UserarticlesComponent } from './userprofile/userarticles/userarticles.c
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
+import { AmaQuestionComponent } from './ama-question/ama-question.component';
+import { QuestionComponent } from './ama-question/question/question.component';
+import { InfoBoxComponent } from './ama-question/question/info-box/info-box.component';
+
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -80,7 +84,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent, BugDetailsComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent, AmaQuestionComponent,BugDetailsComponent, QuestionComponent, InfoBoxComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule,

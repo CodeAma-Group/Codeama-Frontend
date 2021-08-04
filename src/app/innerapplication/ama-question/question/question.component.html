@@ -1,0 +1,50 @@
+<div class="question">
+  <div class="qst_content">
+  <div class="one">
+  <div class="user_info">
+    <div class="user_details">
+    <div class="img">
+        <img src={{question.profile}} alt="profile" width="50" height="50">
+    </div>
+    <div class="user_data">
+      <h5 class="user_name">{{question.username}}</h5>
+      <p>{{question.userEmail}}</p>
+    </div>
+  </div>
+    <div [ngClass]="[question.badge, 'badge']">
+      <p>{{question.badge}}</p>
+    </div>  
+  </div>
+
+  <p class="asked_date"><span class="dim">Asked on</span> {{question.asked_date}}</p>
+  </div>
+
+    
+
+  <div class="two">
+    <p class="qst_title">{{question.question_title}}</p>
+    <p class="dim qst_description">{{question.question_description}}</p>
+  </div>
+
+  <div class="three">
+    <div class="detail_box box-1">
+        <p>{{question.question_viewers}}</p>
+        <p class="dim">viewers</p>
+    </div>
+    <div [className]="question.answered ? 'detail_box answered': 'detail_box not_answered'">
+      <p>No</p>
+      <p>Answered</p>
+  </div>
+  <div class="detail_box box-3">
+    <p>{{question.question_comment_count}}</p>
+    <p class="dim">comments</p>
+  </div>
+  </div>
+
+  <div class="four">
+    <button class="btn btn-primary" [disabled]="question.answered">Answer</button>
+    <a href="" class="view">View in details</a>
+  </div>
+</div>
+<hr class="underline">
+</div>
