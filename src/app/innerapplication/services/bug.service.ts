@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import * as CodeMirror from 'codemirror';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,12 +17,14 @@ export class BugService {
   getBug(id) {
     return this.http.get(`${this.getByIdUrl}/${id}`);
   }
-  postBug(data) {
+  
+  public  postBug(data) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.auth_token}`,
     });
-    return this.http.post(this.postUrl, data, { headers: headers });
+    return <Observable<any>>this.http.post<any>(this.postUrl, { headers: headers },data );
   }
+
 }
 
