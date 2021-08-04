@@ -28,6 +28,7 @@ import { UseraskedComponent } from './userprofile/userasked/userasked.component'
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
 import { AuthGuard } from '../authentication/common/auth.guard';
+import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,11 @@ const routes: Routes = [
       {
         path: "add-bug",
         component: AddBugComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "bug-details",
+        component: BugDetailsComponent,
         canActivate: [AuthGuard]
       },
       {
