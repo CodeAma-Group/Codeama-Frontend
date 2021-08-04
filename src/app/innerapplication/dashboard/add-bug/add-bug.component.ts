@@ -77,11 +77,11 @@ export class AddBugComponent implements OnInit {
       bugCodes = form.codemirror;
       this.data = {
       userId: this.userId,
-      bugs: [
+      bug: [
         {
-          bugTitle: bugTitle,
-          bugDescription: bugDescription,
-          code_snippet: bugCodes,
+          bug_title: bugTitle,
+          bug_description: bugDescription,
+          code_snippet: [{bugCodes}],
           date: new Date().toDateString(),
         },
       ],
@@ -89,9 +89,9 @@ export class AddBugComponent implements OnInit {
     
     this.bugs.postBug(this.data).subscribe((res) => {
       try {
-      
+      alert("posted successfuly")
       } catch (error) {
-        
+        alert("an error occured")
       }  
     });
   }
