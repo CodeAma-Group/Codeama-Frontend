@@ -1,5 +1,22 @@
+<style>
+    .profile-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+    
+    .user-username {
+        font-size: 12px;
+        color: gray;
+    }
+    
+    .q-heading {
+        font-size: 18px;
+        font-weight: 700;
+    }
+</style>
 <div class="container-fluid">
-    <div class="left-right-components mt-3 d-flex">
+    <div class="left-right-components pt-4 ps-3 d-flex">
         <div class="left-side-component col-lg-9">
             <div class="upper-component d-flex">
                 <div class="user-profile">
@@ -19,42 +36,56 @@
                     </div>
                 </div>
                 <div class="asking-time">
-                    <p>Question asked on</p><strong>25 <sup>th</sup>, June, 2021</strong>
+                    <span class="me-2">Question asked on</span><strong>25 <sup>th</sup>, June, 2021</strong>
                 </div>
-                <div class="questioner">
+                <div class="questioner ms-4">
                     <strong>Seth</strong>
                     <span>is still waiting your help !</span>
                 </div>
             </div>
             <div class="question-deatails">
                 <div class="question-title">
-                    <h6 id="question-title">
+                    <h6 id="question-title" class="q-heading my-4">
                         cloning laravel project from github
                     </h6>
                 </div>
                 <div class="question-description">
-                    <p id="question-description">I'm new to GitHub and I found this site very useful for a lot of us. I came upon storing my Laravel project here in GitHub, but there's a problem every time I will clone it to be able to go to production, when I'm about to clone it
-                        at first, it always shows this error.</p>
+                    <!-- <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor> -->
                 </div>
-                <div class="question-codes">
-                    write a custom command to clone and composer update simultaneously. I think. – Vishal Sharma Jul 27 '16 at 1:55 3 You can commit the vendor directory but that would defeat the purpose of composer. Using composer install should be a standard after cloning
-                    a PHP project. – Devon Jul 27 '16 at 2:06 1 Not composer update but composer install. As Vishal Sh hinted, you will have to write a shell script that can actually clone and run composer install sequentially. A simple and well protected
-                    bash script will do the trick. – Chibueze Opata Jul 27 '16 at 21:18 how's that? i'll write a shell script and i'll place it inside my project directory???? then it will fires automatically whenever i clone my project? – SMPLYJR Oct
-                    7 '16 at 0:39
-                </div>
+                <ngx-codemirror class="col-lg-10 bg-primary" #codemirror="ngModel" [options]="codeMirrorOptions" ngModel name="codemirror">
+                </ngx-codemirror>
             </div>
         </div>
-        <div class="right-side-component col-lg-3 bg-dark">
+        <style>
+            .comments {
+                border: 1px solid grey;
+            }
+            
+            .status {
+                border: 1px solid grey;
+            }
+            
+            .viewers {
+                border: 1px solid grey;
+            }
+            
+            .qn-status {
+                margin-top: 5px;
+                width: 30%;
+                border-radius: 5px;
+            }
+        </style>
+        <div class="right-side-component col-lg-3">
             <p class="text-center">Question status to date</p>
-            <div class="comments qn-status">
+            <div class="comments qn-status ml-auto py-3">
                 <h6 class="text-center">5</h6>
                 <p class="text-center">comments</p>
             </div>
-            <div class="status qn-status">
+            <div class="status qn-status ml-auto">
                 <h6 class="text-center">Not</h6>
                 <p class="text-center">Answered</p>
             </div>
-            <div class="viewers qn-status">
+            <div class="viewers qn-status ml-auto">
                 <h6 class="text-center">5</h6>
                 <p class="text-center">Viewes</p>
             </div>
