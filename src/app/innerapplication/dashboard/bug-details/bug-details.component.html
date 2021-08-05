@@ -94,6 +94,11 @@
             .fw-bold {
                 font-weight: 400;
             }
+            
+            .comment-content>p {
+                font-weight: 400;
+                font-size: 14px;
+            }
         </style>
         <div class="right-side-component col-lg-3 my-auto">
             <p class="text-end ">Question status to date</p>
@@ -124,9 +129,12 @@
 
         </div>
     </div>
-    <div class="comments-section">
-
+    <div class="comments-section ms-3">
         <div class="recent-commenters">
+            <div class="comments-heading my-3">
+                <p>
+                    <strong class="fw-bold">4</strong> Answers given to this question</p>
+            </div>
             <div class="commenter">
                 <div class="user-profile">
                     <div class="user-profile d-flex">
@@ -145,11 +153,11 @@
                     </div>
                 </div>
                 <div class="comment">
-                    <div class="comment-content">
+                    <div class="comment-content my-3">
                         <p>so that every time I clone it, I will go to production without encountering this error? Thanks, by the way, I'm using tortoisegit to clone, pull and push.</p>
                     </div>
-                    <div class="like-reply">
-                        <div class="like-svg">
+                    <div class="like-reply d-flex">
+                        <div class="like-svg me-2">
                             <svg id="thumb-up-fill" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <path id="Path_46" data-name="Path 46" d="M0,0H25V25H0Z" fill="none" />
                 <path id="Path_47" data-name="Path 47"
@@ -157,7 +165,7 @@
                   transform="translate(0)" fill="#4290ed" />
               </svg>
                         </div>
-                        <div class="dislike-svg">
+                        <div class="dislike-svg me-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <g id="thumb-up-fill" transform="translate(25 25) rotate(180)">
                   <path id="Path_46" data-name="Path 46" d="M0,0H25V25H0Z" fill="none" />
