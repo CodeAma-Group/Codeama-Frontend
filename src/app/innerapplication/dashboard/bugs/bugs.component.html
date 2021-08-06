@@ -19,8 +19,8 @@
                 <h6 class="q-heading my-3 ">{{bug.bug.bug_title}}</h6>
             </div>
             <div class="question-description ">
-                <p>{{bug.bug.bug_description}}....
-                </p>
+                <!-- div.bug-description -->
+                <div class="bug-description" [(ngModel)]="{{bug.bug.description}}"></div>
             </div>
         </div>
         <div class="tagged-technologies col-lg-4 my-2 mx-auto ">
@@ -45,7 +45,7 @@
           transform="translate(0) " fill="#4290ed " />
       </svg>
             <p class="likesNumber ">
-                233
+                0
             </p>
         </div>
         <div class="commments ms-5 col-lg-3 d-flex ">

@@ -17,14 +17,8 @@ export class BugService {
   getBug(id) {
     return this.http.get(`${this.getByIdUrl}/${id}`);
   }
-  
-  public  postBug(data) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.auth_token}`,
-    });
-    return <Observable<any>>this.http.post<any>(this.postUrl, { headers: headers },data );
+
+  public postBug(data) {
+    return <Observable<any>>this.http.post(this.postUrl, { bug: data });
   }
-
 }
-
