@@ -20,7 +20,7 @@
             </div>
             <div class="question-description ">
                 <!-- div.bug-description -->
-                <div class="bug-description" [(ngModel)]="{{bug.bug.description}}"></div>
+                <div [innerHTML]="bug.bug.bug_description"></div>
             </div>
         </div>
         <div class="tagged-technologies col-lg-4 my-2 mx-auto ">
