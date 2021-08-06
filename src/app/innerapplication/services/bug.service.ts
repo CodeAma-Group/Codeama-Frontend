@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class BugService {
   getUrl = 'https://codeama-backend.herokuapp.com/all_bugs';
-  getByIdUrl = 'https://codeama-backend.herokuapp.com/solved_bugs/JJ';
+  getByIdUrl = 'https://codeama-backend.herokuapp.com/solved_bugs/gf';
   postUrl = 'https://codeama-backend.herokuapp.com/post_bug';
   constructor(private http: HttpClient) {}
   auth_token = localStorage.getItem('codeama_auth_token');
