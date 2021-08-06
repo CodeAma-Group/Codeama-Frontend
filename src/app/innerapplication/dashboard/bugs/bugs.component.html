@@ -18,9 +18,9 @@
             <div class="question-title ">
                 <h6 class="q-heading my-3 ">{{bug.bug.bug_title}}</h6>
             </div>
-            <div class="question-description ">
-                <!-- div.bug-description -->
-                <div [innerHTML]="bug.bug.bug_description"></div>
+            <div class="question-description">
+                <div [innerHTML]="bug.bug.bug_description.substring(0,200)" class="description d-inline"></div>
+                <span class="ms-1 d-inline">.......</span>
             </div>
         </div>
         <div class="tagged-technologies col-lg-4 my-2 mx-auto ">
