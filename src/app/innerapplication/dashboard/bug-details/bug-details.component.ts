@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-
+import { BugService } from '../../services/bug.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-bug-details',
   templateUrl: './bug-details.component.html',
   styleUrls: ['./bug-details.component.css'],
 })
 export class BugDetailsComponent implements OnInit {
-  constructor() {}
+  constructor(private bug: BugService, private router: ActivatedRoute) {}
   htmlContent = '';
 
   config: AngularEditorConfig = {
@@ -48,7 +49,7 @@ export class BugDetailsComponent implements OnInit {
     theme: 'default',
     mode: 'application/ld+json',
     lineNumbers: true,
-    readOnly:true,
+    readOnly: true,
     autocorrect: true,
     smartIndent: true,
     lineWrapping: true,
@@ -65,5 +66,12 @@ export class BugDetailsComponent implements OnInit {
     lint: true,
   };
 
-  ngOnInit(): void {}
+  bugs: any;
+  ngOnInit(): void {
+    this.bug.getBug(this.router.snapshot.params.id).subscribe((res) => {
+      this.bugs = res;
+      this.bugs = this.bugs.data;
+      console.log(this.bugs);
+    });
+  }
 }
