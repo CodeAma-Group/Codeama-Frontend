@@ -35,8 +35,43 @@ a.text-white {
     text-align: center;
 }
 
+a {
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+}
+
+p.beginner {
+    background-color: #929226;
+}
+
+p.intermediate {
+    background-color: #00A79D;
+    margin-left: -5px;
+}
+
+p.pro {
+    background-color: #4275ED;
+    margin-left: 18px;
+}
+
+p.admin {
+    background-color: #2BB673;
+    margin-left: 10px;
+}
+
+.ama-askQuestion > a {
+    color: #425FED;
+}
+
+.profile > a > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
 @media only screen and (max-width: 680px){
-    .person1 > .row {
+    .person > .row {
         width: 100%;
         display: inline-flex;
     }
