@@ -13,6 +13,14 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  checkAnswered() {
+    if(this.question.answered) {
+      return 'Yes'
+    }else {
+      return 'No'
+    }
+  }
+
   
 
 }

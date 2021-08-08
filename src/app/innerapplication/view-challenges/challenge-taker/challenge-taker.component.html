@@ -1,0 +1,48 @@
+<div class="challenge_taker">
+    <div class="challenge_taker_content">
+    <div class="one">
+    <div class="user_info">
+      <div [ngClass]="['user_details', userDetailClass()]">
+        <div class="img_details">
+      <div class="img">
+          <img src={{challenge_taker.profile}} alt="profile" width="50" height="50">
+      </div>
+      <div class="level">
+      <div [ngClass]="[challenge_taker.badge, 'badge']">
+        <p>{{challenge_taker.badge}}</p>
+      </div>
+    </div>  
+    </div>
+        <div class="user_data">
+          <h5 class="user_name">{{challenge_taker.username}}</h5>
+          <p>{{challenge_taker.userEmail}}</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+
+
+   <div class="two">
+   <p class="asked_date"><span class="dim">Joined challenge on</span> {{challenge_taker.join_date}}</p>
+    </div>
+
+    <div class="five">
+  <p class="asked_date">{{challenge_taker.challenges_taken_count}} <span class="dim">challenges completed</span></p>
+    </div>
+  
+    <div class="three">
+      <div [className]="challenge_taker.submitted ? 'detail_box submitted': 'detail_box not_submitted'">
+        <p>{{checkSubmitted()}}</p>
+        <p>Submitted</p>
+    </div>
+    </div>
+  
+    <div class="four">
+      <button class="btn btn-primary">Run code</button>
+    </div>
+  </div>
+  <hr class="underline">
+  </div>
+  
