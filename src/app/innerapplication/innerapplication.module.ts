@@ -41,7 +41,7 @@ import { BugDetailsComponent } from './dashboard/bug-details/bug-details.compone
 import { AmaQuestionComponent } from './ama-question/ama-question.component';
 import { QuestionComponent } from './ama-question/question/question.component';
 import { InfoBoxComponent } from './ama-question/question/info-box/info-box.component';
-import { ViewChallengesComponent } from './view-challenges/view-challenges.component';
+import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
 import { ChallengeTakerComponent } from './view-challenges/challenge-taker/challenge-taker.component';
 
 const customNotifierOptions: NotifierOptions = {
@@ -86,7 +86,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent, AmaQuestionComponent,BugDetailsComponent, QuestionComponent, InfoBoxComponent, ViewChallengesComponent, ChallengeTakerComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent, AmaQuestionComponent,BugDetailsComponent, QuestionComponent, InfoBoxComponent, ViewChallengeTakersComponent, ChallengeTakerComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule,

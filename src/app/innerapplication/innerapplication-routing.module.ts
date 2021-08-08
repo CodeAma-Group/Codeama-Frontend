@@ -30,7 +30,7 @@ import { UserresourcesComponent } from './userprofile/userresources/userresource
 import { AuthGuard } from '../authentication/common/auth.guard';
 import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
 import {AmaQuestionComponent} from './ama-question/ama-question.component'
-import { ViewChallengesComponent } from './view-challenges/view-challenges.component';
+import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
 
 const routes: Routes = [
   {
@@ -170,8 +170,8 @@ const routes: Routes = [
      },
 
      {
-      path:'viewchallenges',
-      component: ViewChallengesComponent 
+      path:'viewchallengetakers',
+      component: ViewChallengeTakersComponent 
     }
 
     ]

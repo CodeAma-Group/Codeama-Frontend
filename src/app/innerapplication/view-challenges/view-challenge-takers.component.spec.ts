@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewChallengesComponent } from './view-challenges.component';
+import { ViewChallengesComponent } from './view-challenge-takers.component';
 
 describe('ViewChallengesComponent', () => {
   let component: ViewChallengesComponent;

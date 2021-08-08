@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-view-challenges',
-  templateUrl: './view-challenges.component.html',
-  styleUrls: ['./view-challenges.component.css']
+  selector: 'app-view-challenge-takers',
+  templateUrl: './view-challenge-takers.component.html',
+  styleUrls: ['./view-challenge-takers.component.css']
 })
-export class ViewChallengesComponent implements OnInit {
+export class ViewChallengeTakersComponent implements OnInit {
   user_detail_class = 'beginner_details'
   challenge_takers = []
   constructor() { }
