@@ -30,6 +30,7 @@ import { UserresourcesComponent } from './userprofile/userresources/userresource
 import { AuthGuard } from '../authentication/common/auth.guard';
 import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
 import {AmaQuestionComponent} from './ama-question/ama-question.component'
+import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
 
 const routes: Routes = [
   {
@@ -109,6 +110,7 @@ const routes: Routes = [
       {
         path: 'challenges',
         component: ChallengesComponent,
+  
       },
       {
         path: 'codeamas',
@@ -123,6 +125,7 @@ const routes: Routes = [
         component: SupportComponent,
       },
       {
+        
         path: 'profile/:username',
         component: ProfileComponent,
         children: [
@@ -164,7 +167,13 @@ const routes: Routes = [
         path:'amaquestions',
         component: AmaQuestionComponent
          
-     }
+     },
+
+     {
+      path:'viewchallengetakers',
+      component: ViewChallengeTakersComponent 
+    }
+
     ]
   },
 ];
