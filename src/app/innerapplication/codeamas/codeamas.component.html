@@ -2,7 +2,7 @@
   <div class="row">
     <div class="bg-color rounded p-2">
 
-      <p class="fw-bold">Top Ask Me Anything members</p>
+      <p class="tx-top pt-1">Top Ask Me Anything members</p>
       <hr />
 
       <div *ngFor="let code of codeamaData">
@@ -18,7 +18,7 @@
 
             <div class="about col-6">
               <h5>{{code.codeama.Username}}</h5>
-              <span>abiseth.codeama.net</span>
+              <span>{{code.codeama.Username}}.codeama.net</span>
               <div class="row pt-2">
                 <div class="col">
                   <p> <span class="cl-silver">Best challenger on </span><span class="fw">12 th, January, 2021</span>
@@ -33,17 +33,11 @@
             <div class="status col-4 row">
               <p class="col"><span>45</span><span class="cl-silver"> of </span><span>104</span><span class="cl-silver">
                   answered</span></p>
-              <p class="col"><span>27, 923 + </span><span class="cl-silver">followers</span></p>
+              <p class="col"><span>{{code.codeama.Followers.length}} + </span><span class="cl-silver">followers</span></p>
             </div>
 
             <div class="follow col-1 justify-content-center p-2">
-                <form (ngSubmit)="onsubmit()">
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="{{code.codeama._id}}" name="followerId" hidden>
-                    </div>
-                    <button class="btn-primary btn" type="submit"> + Follow</button>
-                </form>
-              
+              <button class="btn-primary btn" type="submit" click="onFollow(follower)" value="{{code._id}}"> + Follow</button>  
             </div>
           </div>
           <div class="row mt-2">

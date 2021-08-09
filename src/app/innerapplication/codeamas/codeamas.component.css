@@ -41,8 +41,12 @@ a {
     padding: 5px;
 }
 
+.tx-top {
+    color: #151829;
+}
+
 p.beginner {
-    background-color: #929226;
+    background-color: #f7951d;
 }
 
 p.intermediate {

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeamaService } from '../services/codeama.service';
-import { FollowService } from '../services/follow.service';
-import { compare } from 'fast-json-patch';
 
 @Component({
   selector: 'app-codeamas',
@@ -24,26 +22,27 @@ export class CodeamasComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     this.codeama.getcodeamas().subscribe((res)=>{
       this.codeamaData=res
       this.codeamaData=this.codeamaData.data
-      this.user = this.codeamaData[0].codeama
-      console.log(this.user)
+      this.user = this.codeamaData.codeama
       this.show=true
-  
 
+      this.follower = this.codeamaData._id;
     })
+
+    this.codeama.patch(this.follower).subscribe((res) => {
+      console.log("Esther ");
+      console.log(this.follower)
+      console.log(res);
+    })
+
   }
 
   selectfollower(data){
     this.follower = Object.assign({}, data);
     this.originalUser = data;
   }
-
-  onsubmit(){
-    const patch = compare(this.originalUser, this.follower);
-    console.log("patc" + patch);
-  }
     
-
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
 import { Operation } from 'fast-json-patch';
 // import { followerId } from './follow';
@@ -19,5 +19,12 @@ export class FollowService {
   patchUser(userId: number, operations: Operation){
     const url = this.baseUrl + userId;
     return this.http.patch(url, operations);
+  }
+
+  onFollow(follower){
+    this.http.patch(this.baseUrl, JSON.stringify({ isRead: true}))
+      .subscribe(response => {
+        console.log(response)
+      })
   }
 }

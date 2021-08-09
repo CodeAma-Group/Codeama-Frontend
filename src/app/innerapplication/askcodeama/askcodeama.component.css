@@ -74,6 +74,35 @@ a:hover{
     font-weight: 900;
 }
 
+p.beginner {
+    background-color: #f7951d;
+}
+
+p.intermediate {
+    background-color: #00A79D;
+    margin-left: -5px;
+}
+
+p.pro {
+    background-color: #4275ED;
+    margin-left: 18px;
+}
+
+p.admin {
+    background-color: #2BB673;
+    margin-left: 10px;
+}
+
+.ama-askQuestion > a {
+    color: #425FED;
+}
+
+.profile > a > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
 @media only screen and (max-width: 680px){
     .person1 > .row {
         width: 100%;
