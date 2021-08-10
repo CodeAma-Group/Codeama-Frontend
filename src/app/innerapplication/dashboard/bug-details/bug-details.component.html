@@ -5,7 +5,7 @@
                 <div class="user-profile">
                     <div class="user-profile d-flex">
                         <div class="avatar">
-                            <img class="profile-avatar" src="'https://codeama-backend.herokuapp.com/'+bug.userInfo.ProfilePicture" alt="profile">
+                            <img class="profile-avatar" [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.ProfilePicture" alt="profile">
                             <div class="badge"></div>
                         </div>
                         <div class=" ms-3 mt-2 user-name-and-date">
@@ -68,7 +68,7 @@
     <div class="comments-section ms-3 ">
         <div class="recent-commenters ">
             <div class="comments-heading my-3 ">
-                <p><strong class="answers-number">bug.comments.length</strong>Answers given to this question</p>
+                <p><strong class="answers-number">{{bug.comments.length}}</strong>Answers given to this question</p>
             </div>
             <div class="commenter ">
                 <div class="user-profile ">
