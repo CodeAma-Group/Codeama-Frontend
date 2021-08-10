@@ -27,7 +27,26 @@ export class AddBugComponent implements OnInit {
       { class: 'Poppins', name: 'Poppins' },
       { class: 'comic-sans-ms', name: 'Comic Sans MS' },
     ],
-    toolbarHiddenButtons: [['customClasses'], ['strikeThrough']],
+    toolbarHiddenButtons: [
+      [
+        'italic',
+        'strikeThrough',
+        'justifyFull',
+        'indent',
+        'outdent',
+        'heading',
+        'fontName'
+      ],
+      [
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode'
+      ]
+    ],
     customClasses: [
       {
         name: 'quote',
@@ -44,6 +63,7 @@ export class AddBugComponent implements OnInit {
       },
     ],
   };
+
 
   codeMirrorOptions: any = {
     theme: 'cobalt',
@@ -70,26 +90,67 @@ export class AddBugComponent implements OnInit {
   userId = this.token._id;
   ngOnInit() {
   }
+  technologies= [
+    {
+      name: 'vue',
+      img: '../../../../assets/test_images/vue.png'
+    },
+    {
+      name: 'angular',
+      img: '../../../../assets/test_images/angular.png'
+    },
+    {
+      name: 'c',
+      img: '../../../../assets/test_images/c.png'
+    },
+    {
+      name: 'java',
+      img: '../../../../assets/test_images/java.png'
+    },
+    {
+      name: 'react',
+      img: '../../../../assets/test_images/react.png'
+    },
+    {
+      name: 'js',
+      img: '../../../../assets/test_images/js.png'
+    },
+    {
+      name: 'python',
+      img: '../../../../assets/test_images/python.png'
+    },
+    {
+      name: 'swift',
+      img: '../../../../assets/test_images/swift.png'
+    }
+  ];
+  testArray=["java","js","angular","node"]
   data;
   submit(form) {
     let bugTitle = form.bugTitle,
       bugDescription = this.htmlContent,
       bugCodes = form.codemirror;
       this.data = {
-      userId: this.userId,
-      bug: [
-        {
-          bug_title: bugTitle,
-          bug_description: bugDescription,
-          code_snippet: [{bugCodes}],
-          date: new Date().toDateString(),
-        },
-      ],
-    };
+        userId: this.userId,
+        bugs: [
+          {
+            bug_title: bugTitle,
+            bug_description: bugDescription,
+            code_snippet: [
+                        {
+                       code_block: bugCodes
+             }
+          ],
+           tagged_technologies: "vue"
+          }
+        ]
+      };
     
     this.bugs.postBug(this.data).subscribe((res) => {
       try {
       alert("posted successfuly")
+      console.log(res);
+      
       } catch (error) {
         alert("an error occured")
       }  

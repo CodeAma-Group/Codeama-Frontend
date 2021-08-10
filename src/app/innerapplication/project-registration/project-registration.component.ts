@@ -109,6 +109,7 @@ export class ProjectRegistrationComponent implements OnInit {
   Addfeature(data) {
     if (this.features.indexOf(data) == -1) {
       this.features.push(data);
+      document.getElementById("proFeatures").innerText=""
     } else {
       alert('Feature should not be repeated');
     }
@@ -140,45 +141,40 @@ export class ProjectRegistrationComponent implements OnInit {
     // var team: any = this.team;
     // var thumbnails: any = this.thumbnails;
     // var technologies: Array<any> = this.techs;
-    // let ProjectData: FormData = new FormData();
-    // ProjectData.append('title', this.newProjectForm.value.projectName);
-    // ProjectData.append(
-    //   'description',
-    //   this.newProjectForm.value.app_description
-    // );
-    // ProjectData.append('technologies', JSON.stringify(this.techs));
-    // ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
+    let ProjectData: FormData = new FormData();
+    ProjectData.append('title', this.newProjectForm.value.projectName);
+    ProjectData.append(
+      'description',
+      this.newProjectForm.value.app_description
+    );
+    ProjectData.append('technologies', JSON.stringify(this.techs));
+    ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
+    ProjectData.append('teamName', this.newProjectForm.value.teamName);
+    ProjectData.append('logo', this.logoUrl);
+    ProjectData.append('host', this.newProjectForm.value.appLink);
+    ProjectData.append('github', this.newProjectForm.value.githubLink);
+    ProjectData.append('team', JSON.stringify(this.team));
+    ProjectData.append('non_memeber_emails', JSON.stringify(this.emailTags));
+    ProjectData.append('features', JSON.stringify(this.features));
     
-    // ProjectData.append('teamName', this.newProjectForm.value.teamName);
-    // ProjectData.append('logo', this.logoUrl);
-    // ProjectData.append('host', this.newProjectForm.value.appLink);
-    // ProjectData.append('github', this.newProjectForm.value.githubLink);
-    // ProjectData.append('team', JSON.stringify(this.team));
-    // ProjectData.append('non_memeber_emails', JSON.stringify(this.emailTags));
-    // ProjectData.append('features', JSON.stringify(this.features));
-    
-    // let ProjectData: FormData = new FormData();
-    // ProjectData.append('demo', this.imgUrl);
-    this.data = {
-      title: this.newProjectForm.value.projectName,
-      description: this.newProjectForm.value.app_description,
-      technologies: this.techs,
-      thumbnails: this.urls,
-      demo: this.imgUrl,
-      teamName: this.newProjectForm.value.teamName,
-      logo: this.logoUrl,
-      github: this.newProjectForm.value.githubLink,
-      host: this.newProjectForm.value.appLink,
-      team: this.team,
-      non_member_emails: this.emailTags,
-      features: this.features,
-    };
+    // this.data = {
+    //   title: this.newProjectForm.value.projectName,
+    //   description: this.newProjectForm.value.app_description,
+    //   technologies: this.techs,
+    //   thumbnails: this.urls,
+    //   demo: this.imgUrl,
+    //   teamName: this.newProjectForm.value.teamName,
+    //   logo: this.logoUrl,
+    //   github: this.newProjectForm.value.githubLink,
+    //   host: this.newProjectForm.value.appLink,
+    //   team: this.team,
+    //   non_member_emails: this.emailTags,
+    //   features: this.features,
+    // };
 
-    this.project.saveProject(this.data).subscribe((res) => {
+    this.project.saveProject(ProjectData).subscribe((res) => {
       alert(res);
-      console.log("result is here",res);
-      
-
+      console.log("result is here",res);      
     });
   }
   newProjectForm = new FormGroup({
