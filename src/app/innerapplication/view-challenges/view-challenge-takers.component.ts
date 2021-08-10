@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChallengeTakersService } from '../services/challenge-takers.service';
+import { Challenge, Data } from './challenge';
 
 @Component({
   selector: 'app-view-challenge-takers',
@@ -6,55 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-challenge-takers.component.css']
 })
 export class ViewChallengeTakersComponent implements OnInit {
-  user_detail_class = 'beginner_details'
   challenge_takers = []
-  constructor() { }
+  constructor(private challengeTakersService: ChallengeTakersService) { }
 
   ngOnInit(): void {
-     this.challenge_takers = [
-       {
-         profile: "../../.././../assets/images/profile.jpg",
-         badge: "pro",
-         username : "Gasaro Leila",
-         userEmail : "abiseth.codeama.net",
-         join_date: "12th,January,2021",
-         challenges_taken_count: 2,
-         submitted:true
-       },
-
-       {
-        profile: "../../.././../assets/images/profile.jpg",
-        badge: "intermediate",
-        username : "Gasaro Leila",
-        userEmail : "abiseth.codeama.net",
-        join_date: "12th,January,2021",
-        challenges_taken_count: 2,
-        submitted:false
-      },
-
-      {
-        profile: "../../.././../assets/images/profile.jpg",
-        badge: "beginner",
-        username : "Gasaro Leila",
-        userEmail : "abiseth.codeama.net",
-        join_date: "12th,January,2021",
-        challenges_taken_count: 2,
-        submitted:false
-      },
-
-      {
-        profile: "../../.././../assets/images/profile.jpg",
-        badge: "absbeginner",
-        username : "Gasaro Leila",
-        userEmail : "abiseth.codeama.net",
-        join_date: "12th,January,2021",
-        challenges_taken_count: 2,
-        submitted:false
-      }
-     ]
-  }
-
-
-  
-
+    
+   this.challengeTakersService.getChallenge("611267551a1c981ab0766662")
+     .subscribe((data:Data)=> {
+        this.challenge_takers = data.data.participants
+        console.log(this.challenge_takers)
+     })
+}
 }

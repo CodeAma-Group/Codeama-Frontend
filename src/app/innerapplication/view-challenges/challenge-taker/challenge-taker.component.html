@@ -5,17 +5,17 @@
       <div [ngClass]="['user_details', userDetailClass()]">
         <div class="img_details">
       <div class="img">
-          <img src={{challenge_taker.profile}} alt="profile" width="50" height="50">
+          <img [src]="'https://codeama-backend.herokuapp.com/'+challenge_taker.userId.profilePicture" alt="profile" width="50" height="50">
       </div>
       <div class="level">
-      <div [ngClass]="[challenge_taker.badge, 'badge']">
-        <p>{{challenge_taker.badge}}</p>
+      <div [ngClass]="[challenge_taker.userId.Badge, 'badge']">
+        <p>{{challenge_taker.userId.Badge}}</p>
       </div>
     </div>  
     </div>
         <div class="user_data">
-          <h5 class="user_name">{{challenge_taker.username}}</h5>
-          <p>{{challenge_taker.userEmail}}</p>
+          <h5 class="user_name">{{challenge_taker.userId.Username}}</h5>
+          <p>{{challenge_taker.userId.Email}}</p>
         </div>
       </div>
     </div>
@@ -25,15 +25,15 @@
 
 
    <div class="two">
-   <p class="asked_date"><span class="dim">Joined challenge on</span> {{challenge_taker.join_date}}</p>
+   <p class="asked_date"><span class="dim">Joined challenge on</span> {{challenge_taker.joinedDate | date: 'longDate'}}</p>
     </div>
 
     <div class="five">
-  <p class="asked_date">{{challenge_taker.challenges_taken_count}} <span class="dim">challenges completed</span></p>
+  <p class="asked_date">{{challenge_taker.userId.challengesCompleted}} <span class="dim">challenges completed</span></p>
     </div>
   
     <div class="three">
-      <div [className]="challenge_taker.submitted ? 'detail_box submitted': 'detail_box not_submitted'">
+      <div [className]="challenge_taker.submitted === 'true' ? 'detail_box submitted': 'detail_box not_submitted'">
         <p>{{checkSubmitted()}}</p>
         <p>Submitted</p>
     </div>
