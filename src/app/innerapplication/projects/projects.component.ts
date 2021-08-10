@@ -21,8 +21,8 @@ export class ProjectsComponent implements OnInit {
       this.projectsData=this.projectsData.data;
       this.image=this.url+'/'+this.projectsData[0].demo      
       this.show=true
+      this.spinner.hide()
     })
-    this.spinner.hide()
   }
 
 }

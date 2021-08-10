@@ -1,7 +1,7 @@
-<div class="container-fluid">
-    <div class="heading py-1 d-flex">
+<div class="project-container">
+    <div class="heading px-3 pt-3 d-flex">
         <h6 class="my-auto col-lg-9" id="page-title">Projects under developmet</h6>
-        <a routerLink="../projectRegistration" name="addPro" id="addPro" class="btn btn-primary my-auto mx-auto" href="#" role="button">
+        <a routerLink="../projectRegistration" name="addPro" id="addPro" class="btn pt-1 btn-primary my-auto mx-auto" href="#" role="button">
             <svg class="mx-auto" id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none" />
         <path id="Path_44" data-name="Path 44"
@@ -13,9 +13,9 @@
     <div class="cards-div d-flex flex-wrap ms-4" *ngIf="show">
         <div class="card-group col-lg-3 mx-2 my-2" *ngFor="let project of projectsData">
             <div class="card">
-
-                <img class=" card-img-top" [src]="'https://codeama-backend.herokuapp.com/'+project.demo" alt=" Card image cap">
-
+                <div class="demo-img">
+                    <img class="card-img-top" [src]="'https://codeama-backend.herokuapp.com/'+project.demo" alt=" Card image cap">
+                </div>
                 <div class="card-body">
                     <h4 class="card-title">{{project.title}}</h4>
                     <h6 class="technologies-title">Technologies used</h6>
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
-        <p style="color: white">Please Wait. </p>
-    </ngx-spinner>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>
