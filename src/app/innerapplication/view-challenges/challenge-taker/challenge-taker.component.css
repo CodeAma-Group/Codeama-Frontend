@@ -129,11 +129,12 @@ p {
 .two,.five {
     margin-top: 1.4em;
     margin-right: 1em;
+    margin-left: 2em;
     height: 20%;
 }
 
 .two {
-    width: 30%;
+    width: 25%;
 }
 
 .five {

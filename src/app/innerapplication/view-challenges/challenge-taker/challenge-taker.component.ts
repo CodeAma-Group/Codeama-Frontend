@@ -11,6 +11,7 @@ export class ChallengeTakerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.challenge_taker)
   }
 
   userDetailClass() {
@@ -31,12 +32,13 @@ export class ChallengeTakerComponent implements OnInit {
            default:
              this.user_detail_class = 'intermediate_details'
        }
-
+    
     return this.user_detail_class
  }
 
  checkSubmitted() {
-   if(this.challenge_taker.submitted) {
+   console.log(typeof(this.challenge_taker.submitted))
+   if(this.challenge_taker.submitted === 'true') {
      return 'Yes'
    }else {
      return 'No'
