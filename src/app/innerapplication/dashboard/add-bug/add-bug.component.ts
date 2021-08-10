@@ -90,28 +90,46 @@ export class AddBugComponent implements OnInit {
   userId = this.token._id;
   ngOnInit() {
   }
+  technologies= [
+    {
+      name: 'vue',
+      img: '../../../../assets/test_images/vue.png'
+    },
+    {
+      name: 'angular',
+      img: '../../../../assets/test_images/angular.png'
+    },
+    {
+      name: 'c',
+      img: '../../../../assets/test_images/c.png'
+    },
+    {
+      name: 'java',
+      img: '../../../../assets/test_images/java.png'
+    },
+    {
+      name: 'react',
+      img: '../../../../assets/test_images/react.png'
+    },
+    {
+      name: 'js',
+      img: '../../../../assets/test_images/js.png'
+    },
+    {
+      name: 'python',
+      img: '../../../../assets/test_images/python.png'
+    },
+    {
+      name: 'swift',
+      img: '../../../../assets/test_images/swift.png'
+    }
+  ];
+  testArray=["java","js","angular","node"]
   data;
   submit(form) {
     let bugTitle = form.bugTitle,
       bugDescription = this.htmlContent,
       bugCodes = form.codemirror;
-
-      // this.data={
-      //   userId: "610123aad3e253002243db71",
-      //   bugs: [
-      //     {
-      //       bug_title: "Ibibazo biragwira pe! nge ubu numiwe nimumfashe wllh",
-      //       bug_description: "let username = e.target.username.value setUsername(username) biri serie mn naraburje code zambanye inyatsi",
-      //       code_snippet: [
-      //                   {
-      //                  code_block: "let username = e.target.username.value setUsername(username)"
-      //        }
-      //     ],
-      //      tagged_technologies: "React"
-      //     }
-      //   ]
-      // }
-
       this.data = {
         userId: this.userId,
         bugs: [
