@@ -4,10 +4,12 @@
             <div class="upper-component d-flex">
                 <div class="user-profile">
                     <div class="user-profile d-flex">
-                        <div class="avatar">
-                            <img class="profile-avatar" [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.ProfilePicture" alt="profile">
-                            <div class="badge"></div>
-                        </div>
+                        <figure class="position-relative d-flex justify-content-center">
+                            <div>
+                                <img [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.profilePicture" alt="">
+                            </div>
+                            <figcaption class="{{checkBadge(bug.userInfo.Badge)}} rounded-pill">{{bug.userInfo.Badge}}</figcaption>
+                        </figure>
                         <div class=" ms-3 mt-2 user-name-and-date">
                             <div class="d-flex">
                                 <a>{{bug.userInfo.Username}}</a>
@@ -68,7 +70,7 @@
     <div class="comments-section ms-3 ">
         <div class="recent-commenters ">
             <div class="comments-heading my-3 ">
-                <p><strong class="answers-number">{{bug.comments.length}}</strong>Answers given to this question</p>
+                <p><strong class="answers-number me-2">{{bug.comments.length}}</strong>Answers given to this question</p>
             </div>
             <div class="commenter ">
                 <div class="user-profile ">
