@@ -27,7 +27,26 @@ export class BugDetailsComponent implements OnInit {
       { class: 'Poppins', name: 'Poppins' },
       { class: 'comic-sans-ms', name: 'Comic Sans MS' },
     ],
-    toolbarHiddenButtons: [['customClasses'], ['strikeThrough']],
+    toolbarHiddenButtons: [
+      [
+        'italic',
+        'strikeThrough',
+        'justifyFull',
+        'indent',
+        'outdent',
+        'heading',
+        'fontName'
+      ],
+      [
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode'
+      ]
+    ],
     customClasses: [
       {
         name: 'quote',
@@ -46,7 +65,7 @@ export class BugDetailsComponent implements OnInit {
   };
 
   codeMirrorOptions: any = {
-    theme: 'cobalt',
+    theme: 'default',
     mode: 'application/ld+json',
     lineNumbers: false,
     readOnly: true,
