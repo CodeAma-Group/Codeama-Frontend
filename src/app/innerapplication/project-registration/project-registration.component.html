@@ -14,7 +14,7 @@
               d="M-1792.988,6774.147h79.05v-63.607s-10.793,31.589-24.931,37.821-19.763-15.473-31.62-12.894-22.5,20.629-22.5,20.629Z"
               transform="translate(1803 -6698.148)" fill="rgba(255,255,255,0.61)" />
           </svg>
-                    <br>
+                    <br>fea
                     <span class="ms-2">Company or Group logo goes here</span>
                     <div class="mx-auto col-lg-7 imagefromDb1Container">
                         <img [src]="logoUrl" *ngIf="logoUrl!=''" class="imagefromDb1" alt="">
@@ -85,53 +85,53 @@
                             4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
                             </span>
                         </div>
-                        <input type="email" name="email" class="fm-style project-teamm-no-account" (keyup.enter)="Addfeature($event.target.value)" placeholder="project feature">
+                        <input type="email" id="proFeatures" name=" email " class="fm-style project-teamm-no-account " (keyup.enter)="Addfeature($event.target.value)" placeholder="project feature ">
                     </div>
                 </div>
-                <div class="demo-links col-lg-12 d-flex">
-                    <div class="form-group col-lg-6 me-1">
-                        <label for="github-link">Github Link</label>
-                        <input type="text" formControlName="githubLink" name="githubLink" id="github-link" class="form-control fm-style" placeholder="Github link">
+                <div class="demo-links col-lg-12 d-flex ">
+                    <div class="form-group col-lg-6 me-1 ">
+                        <label for="github-link ">Github Link</label>
+                        <input type="text " formControlName="githubLink " name="githubLink " id="github-link " class="form-control fm-style " placeholder="Github link ">
                     </div>
-                    <div class="form-group col-lg-6">
-                        <label for="app-link">App Link</label>
-                        <input type="text" formControlName="appLink" name="appLink" id="app-link" class="form-control fm-style" placeholder="Github link">
+                    <div class="form-group col-lg-6 ">
+                        <label for="app-link ">App Link</label>
+                        <input type="text " formControlName="appLink " name="appLink " id="app-link " class="form-control fm-style " placeholder="Github link ">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="project-team">Project Developers Team</label><br><span>Tag your team mate ( The team mate must
+                <div class="form-group ">
+                    <label for="project-team ">Project Developers Team</label><br><span>Tag your team mate ( The team mate must
             be have an account in codeama)</span>
-                    <div class="form-control d-flex">
-                        <div class=""><span class="emailTags bg-dark" *ngFor=" let teamMate of team">{{teamMate}}
-                    <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477
-                            10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
+                    <div class="form-control d-flex ">
+                        <div class=" "><span class="emailTags bg-dark " *ngFor=" let teamMate of team ">{{teamMate}}
+                    <!-- <svg class="ms-2 " (click)="deleteEmail() " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24 " width="24 " height="24 "><path fill="none " d="M0 0h24v24H0z "/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477
+                            10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z " fill="rgba(255,255,255,1) "/></svg> -->
                     </span>
                         </div>
-                        <input type="email" name="email" class="fm-style project-teamm-no-account" (keyup.enter)="Addmember($event.target.value)" placeholder="Add team member Email">
+                        <input type="email " name="email " class="fm-style project-teamm-no-account " (keyup.enter)="Addmember($event.target.value) " placeholder="Add team member Email ">
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group ">
                     <span>If your team mate is not using codeama currently tag his email address</span>
-                    <div class="form-control d-flex">
-                        <div class=""><span class="emailTags bg-dark" *ngFor=" let email of emailsArray">{{email}}
-                            <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
-                            4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
+                    <div class="form-control d-flex ">
+                        <div class=" "><span class="emailTags bg-dark " *ngFor=" let email of emailsArray ">{{email}}
+                            <!-- <svg class="ms-2 " (click)="deleteEmail() " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24 " width="24 " height="24 "><path fill="none " d="M0 0h24v24H0z "/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
+                            4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z " fill="rgba(255,255,255,1) "/></svg> -->
                             </span>
                         </div>
-                        <input type="email" #emailInput name="emailInput" class="fm-style project-teamm-no-account" [value]="clearInputValue" (keyup.enter)="emailTags($event.target.value)" placeholder="Add Email">
+                        <input type="email " #emailInput name="emailInput " class="fm-style project-teamm-no-account " [value]="clearInputValue " (keyup.enter)="emailTags($event.target.value) " placeholder="Add Email ">
                     </div>
                 </div>
 
-                <div class="application-desription mx-auto">
-                    <div class="form-group">
-                        <label for="app-description">Description</label>
+                <div class="application-desription mx-auto ">
+                    <div class="form-group ">
+                        <label for="app-description ">Description</label>
                         <br>
                         <span>Only 30 words</span>
-                        <textarea class="form-control" formControlName="app_description" name="app_description" id="app-description" rows=" 3"></textarea>
+                        <textarea class="form-control " formControlName="app_description " name="app_description " id="app-description " rows=" 3 "></textarea>
                     </div>
                 </div>
-                <div class="post-btn text-end my-3 me-3">
-                    <button type="submit" name=" post-pro-btn" id="post-pro-btn" class="btn">Post your project Now</button>
+                <div class="post-btn text-end my-3 me-3 ">
+                    <button type="submit " name=" post-pro-btn " id="post-pro-btn " class="btn ">Post your project Now</button>
                 </div>
             </form>
         </div>

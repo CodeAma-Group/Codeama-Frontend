@@ -17,7 +17,7 @@
         <div class="question-info d-flex">
             <div class="question-details col-lg-7 mr-2 ">
                 <div class="question-title ">
-                    <a class="q-heading my-3 " routerLink="../../bug-details/{{bug.bug._id}}">{{bug.bug.bug_title}}</a>
+                    <a class="q-heading my-3 " routerLink="../../bug-details/{{bug.bug._id}}/{{bug.userInfo._id}}">{{bug.bug.bug_title}}</a>
                 </div>
                 <div class="question-description">
                     <div [innerHTML]="bug.bug.bug_description.substring(0,200)" class="description d-inline"></div>

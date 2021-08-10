@@ -46,9 +46,9 @@ export class BugDetailsComponent implements OnInit {
   };
 
   codeMirrorOptions: any = {
-    theme: 'default',
+    theme: 'cobalt',
     mode: 'application/ld+json',
-    lineNumbers: true,
+    lineNumbers: false,
     readOnly: true,
     autocorrect: true,
     smartIndent: true,
@@ -68,10 +68,20 @@ export class BugDetailsComponent implements OnInit {
 
   bugs: any;
   ngOnInit(): void {
-    this.bug.getBug(this.router.snapshot.params.id).subscribe((res) => {
-      this.bugs = res;
-      this.bugs = this.bugs.data;
-      console.log(this.bugs);
-    });
+    console.log(
+      this.router.snapshot.params.id,
+      this.router.snapshot.params.posterId
+    );
+
+    this.bug
+      .getBug(
+        this.router.snapshot.params.id,
+        this.router.snapshot.params.posterId
+      )
+      .subscribe((res) => {
+        this.bugs = res;
+        this.bugs = this.bugs.data;
+        console.log(this.bugs[0].bug);
+      });
   }
 }
