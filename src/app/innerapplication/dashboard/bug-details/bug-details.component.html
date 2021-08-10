@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <div class="left-right-components mt-3 d-flex">
+<div class="container-fluid" *ngFor="let bug of bugs">
+    <div class="left-right-components pt-4 ps-3 d-flex">
         <div class="left-side-component col-lg-9">
             <div class="upper-component d-flex">
                 <div class="user-profile">
@@ -18,120 +18,94 @@
                         </div>
                     </div>
                 </div>
-                <div class="asking-time">
-                    <p>Question asked on</p><strong>25 <sup>th</sup>, June, 2021</strong>
+                <div class="asking-time mt-1 ms-5">
+                    <span class="me-2">Question asked on</span><strong>25 <sup>th</sup>, June, 2021</strong>
                 </div>
-                <div class="questioner">
-                    <strong>Seth</strong>
+                <div class="questioner ms-4 mt-1">
+                    <strong class="me-1">Seth</strong>
                     <span>is still waiting your help !</span>
                 </div>
             </div>
             <div class="question-deatails">
                 <div class="question-title">
-                    <h6 id="question-title">
-                        cloning laravel project from github
-                    </h6>
+                    <p id="question-title" class="my-4">
+                        {{bug.bug_title}}
+                    </p>
                 </div>
                 <div class="question-description">
-                    <p id="question-description">I'm new to GitHub and I found this site very useful for a lot of us. I came upon storing my Laravel project here in GitHub, but there's a problem every time I will clone it to be able to go to production, when I'm about to clone it
-                        at first, it always shows this error.</p>
-                </div>
-                <div class="question-codes">
-                    write a custom command to clone and composer update simultaneously. I think. – Vishal Sharma Jul 27 '16 at 1:55 3 You can commit the vendor directory but that would defeat the purpose of composer. Using composer install should be a standard after cloning
-                    a PHP project. – Devon Jul 27 '16 at 2:06 1 Not composer update but composer install. As Vishal Sh hinted, you will have to write a shell script that can actually clone and run composer install sequentially. A simple and well protected
-                    bash script will do the trick. – Chibueze Opata Jul 27 '16 at 21:18 how's that? i'll write a shell script and i'll place it inside my project directory???? then it will fires automatically whenever i clone my project? – SMPLYJR Oct
-                    7 '16 at 0:39
-                </div>
-            </div>
-        </div>
-        <div class="right-side-component col-lg-3 bg-dark">
-            <p class="text-center">Question status to date</p>
-            <div class="comments qn-status">
-                <h6 class="text-center">5</h6>
-                <p class="text-center">comments</p>
-            </div>
-            <div class="status qn-status">
-                <h6 class="text-center">Not</h6>
-                <p class="text-center">Answered</p>
-            </div>
-            <div class="viewers qn-status">
-                <h6 class="text-center">5</h6>
-                <p class="text-center">Viewes</p>
-            </div>
-        </div>
-    </div>
-    <div class="likes d-flex">
-        <div class="like-svg">
-            <svg id="thumb-up-fill" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-        <path id="Path_46" data-name="Path 46" d="M0,0H25V25H0Z" fill="none" />
-        <path id="Path_47" data-name="Path 47"
-          d="M2.045,9.4H5.182V22H2.045A1.048,1.048,0,0,1,1,20.95v-10.5A1.048,1.048,0,0,1,2.045,9.4ZM7.579,8.037,14.27,1.314a.521.521,0,0,1,.684-.049l.892.672a1.58,1.58,0,0,1,.578,1.649L15.218,8.345h6.691A2.1,2.1,0,0,1,24,10.446v2.21a2.11,2.11,0,0,1-.157.8L20.608,21.35a1.045,1.045,0,0,1-.967.65H8.318a1.048,1.048,0,0,1-1.045-1.05V8.78a1.053,1.053,0,0,1,.306-.742Z"
-          transform="translate(0)" fill="#4290ed" />
-      </svg>
-        </div>
-        <div class="some-likers">
+                    <div [innerHTML]="bug.bug.bug_description.substring(0,200)" class="description d-inline"></div>
 
+                </div>
+                <ngx-codemirror class="col-lg-10 bg-primary" [options]="codeMirrorOptions" ngModel="{{bug.bug.code_snippet[0].code_block}}" name=" codemirror ">
+                </ngx-codemirror>
+            </div>
+        </div>
+        <div class="right-side-component col-lg-3 my-auto ">
+            <p class="text-end ">Question status to date</p>
+            <div class="comments qn-status ms-auto ">
+                <h6 class="text-center fw-bold my-auto ">5</h6>
+                <p class="text-center my-auto ">comments</p>
+            </div>
+            <div class="status qn-status ms-auto ">
+                <h6 class="text-center fw-bold my-auto ">Not</h6>
+                <p class="text-center my-auto ">Answered</p>
+            </div>
+            <div class="viewers qn-status ms-auto ">
+                <h6 class="text-center fw-bold my-auto ">5</h6>
+                <p class="text-center my-auto ">Viewes</p>
+            </div>
         </div>
     </div>
-    <div class="comments-section">
-        <form action="#" class="form" method=" post ">
-            <div class="form-group">
-                <label for="">Provide your answer</label>
-                <textarea class="form-control" name="" id="" rows="3"></textarea>
+    <div class="likes d-flex my-3 ms-3 ">
+        <div class="like-svg "><svg id="thumb-up-fill " xmlns="http://www.w3.org/2000/svg " width="25 " height="25 " viewBox="0 0 25 25 ">
+        <path id="Path_46 " data-name="Path 46 " d="M0,0H25V25H0Z " fill="none " />
+        <path id="Path_47 " data-name="Path 47 "
+          d="M2.045,9.4H5.182V22H2.045A1.048,1.048,0,0,1,1,20.95v-10.5A1.048,1.048,0,0,1,2.045,9.4ZM7.579,8.037,14.27,1.314a.521.521,0,0,1,.684-.049l.892.672a1.58,1.58,0,0,1,.578,1.649L15.218,8.345h6.691A2.1,2.1,0,0,1,24,10.446v2.21a2.11,2.11,0,0,1-.157.8L20.608,21.35a1.045,1.045,0,0,1-.967.65H8.318a1.048,1.048,0,0,1-1.045-1.05V8.78a1.053,1.053,0,0,1,.306-.742Z "
+          transform="translate(0) " fill="#4290ed " /></svg></div>
+        <div class="some-likers "></div>
+    </div>
+    <div class="comments-section ms-3 ">
+        <div class="recent-commenters ">
+            <div class="comments-heading my-3 ">
+                <p><strong class="answers-number ">4</strong>Answers given to this question</p>
             </div>
-            <button name="answe-btn" type="submit" id="answer btn" class="btn btn-primary " role="button ">Answer
-        this</button>
-        </form>
-        <div class="recent-commenters">
-            <div class="commenter">
-                <div class="user-profile">
-                    <div class="user-profile d-flex">
-                        <div class="avatar">
-                            <img class="profile-avatar" src="'../../../../../../assets/images/face.png" alt="profile">
+            <div class="commenter ">
+                <div class="user-profile ">
+                    <div class="user-profile d-flex ">
+                        <div class="avatar "><img class="profile-avatar " src=" '../../../../../../assets/images/face.png" alt="profile">
                             <div class="badge"></div>
                         </div>
                         <div class=" ms-3 mt-2 user-name-and-date">
-                            <div class="d-flex">
-                                <a>Gasaro Leila</a>
-                            </div>
-                            <div class="caption">
-                                gasaro.codeama.net
-                            </div>
+                            <div class="d-flex"><a>Gasaro Leila</a></div>
+                            <div class="caption">gasaro.codeama.net </div>
                         </div>
                     </div>
                 </div>
                 <div class="comment">
-                    <div class="comment-content">
-                        <p>so that every time I clone it, I will go to production without encountering this error? Thanks, by the way, I'm using tortoisegit to clone, pull and push.</p>
+                    <div class="comment-content my-3">
+                        <p>So that every time I clone it, I will go to production without encountering this error? Thanks, by the way, I'm using tortoisegit to clone, pull and push.</p>
                     </div>
-                    <div class="like-reply">
-                        <div class="like-svg">
-                            <svg id="thumb-up-fill" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                    <div class="like-reply d-flex">
+                        <div class="like-svg me-3"><svg id="thumb-up-fill" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <path id="Path_46" data-name="Path 46" d="M0,0H25V25H0Z" fill="none" />
                 <path id="Path_47" data-name="Path 47"
                   d="M2.045,9.4H5.182V22H2.045A1.048,1.048,0,0,1,1,20.95v-10.5A1.048,1.048,0,0,1,2.045,9.4ZM7.579,8.037,14.27,1.314a.521.521,0,0,1,.684-.049l.892.672a1.58,1.58,0,0,1,.578,1.649L15.218,8.345h6.691A2.1,2.1,0,0,1,24,10.446v2.21a2.11,2.11,0,0,1-.157.8L20.608,21.35a1.045,1.045,0,0,1-.967.65H8.318a1.048,1.048,0,0,1-1.045-1.05V8.78a1.053,1.053,0,0,1,.306-.742Z"
-                  transform="translate(0)" fill="#4290ed" />
-              </svg>
-                        </div>
-                        <div class="dislike-svg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  transform="translate(0)" fill="#4290ed" /></svg></div>
+                        <div class="dislike-svg me-3"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <g id="thumb-up-fill" transform="translate(25 25) rotate(180)">
                   <path id="Path_46" data-name="Path 46" d="M0,0H25V25H0Z" fill="none" />
                   <path id="Path_47" data-name="Path 47"
                     d="M2.045,9.4H5.182V22H2.045A1.048,1.048,0,0,1,1,20.95v-10.5A1.048,1.048,0,0,1,2.045,9.4ZM7.579,8.037,14.27,1.314a.521.521,0,0,1,.684-.049l.892.672a1.58,1.58,0,0,1,.578,1.649L15.218,8.345h6.691A2.1,2.1,0,0,1,24,10.446v2.21a2.11,2.11,0,0,1-.157.8L20.608,21.35a1.045,1.045,0,0,1-.967.65H8.318a1.048,1.048,0,0,1-1.045-1.05V8.78a1.053,1.053,0,0,1,.306-.742Z"
                     transform="translate(0)" fill="#4290ed" />
                 </g>
-              </svg>
-
-                        </div>
+              </svg></div>
                         <div class="reply">
                             <p>Reply</p>
                         </div>
                     </div>
                     <div class="reply-text-area">
                         <div class="form-group">
-                            <div class="user-profile-avatar"></div>
-                            <textarea class="form-control" name="reply" id="reply" rows="3" placeholder="write your reply and press Enter"></textarea>
+                            <div class="user-profile-avatar"></div><textarea class="form-control" name="reply" id="reply" rows="3" placeholder="write your reply and press Enter"></textarea>
                         </div>
                     </div>
                     <div class="replies">
@@ -142,5 +116,10 @@
                 </div>
             </div>
         </div>
+        <form action="#" class="form" method=" post ">
+            <div class="form-group"><label for="">Provide your answer</label>
+                <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
+            </div><button name="answe-btn" type="submit" id="answer btn" class="btn btn-primary ms-auto answer-btn" role="button ">Answer this</button>
+        </form>
     </div>
 </div>

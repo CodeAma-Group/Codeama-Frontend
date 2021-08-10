@@ -14,7 +14,6 @@ export class BugsComponent implements OnInit {
       this.bugs=result;
       this.bugs=this.bugs.data      
       console.log(this.bugs);
-      
     })
   }
 }

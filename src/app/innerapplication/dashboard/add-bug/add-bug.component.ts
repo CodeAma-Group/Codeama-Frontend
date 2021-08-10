@@ -75,21 +75,44 @@ export class AddBugComponent implements OnInit {
     let bugTitle = form.bugTitle,
       bugDescription = this.htmlContent,
       bugCodes = form.codemirror;
+
+      // this.data={
+      //   userId: "610123aad3e253002243db71",
+      //   bugs: [
+      //     {
+      //       bug_title: "Ibibazo biragwira pe! nge ubu numiwe nimumfashe wllh",
+      //       bug_description: "let username = e.target.username.value setUsername(username) biri serie mn naraburje code zambanye inyatsi",
+      //       code_snippet: [
+      //                   {
+      //                  code_block: "let username = e.target.username.value setUsername(username)"
+      //        }
+      //     ],
+      //      tagged_technologies: "React"
+      //     }
+      //   ]
+      // }
+
       this.data = {
-      userId: this.userId,
-      bug: [
-        {
-          bug_title: bugTitle,
-          bug_description: bugDescription,
-          code_snippet: [{bugCodes}],
-          date: new Date().toDateString(),
-        },
-      ],
-    };
+        userId: this.userId,
+        bugs: [
+          {
+            bug_title: bugTitle,
+            bug_description: bugDescription,
+            code_snippet: [
+                        {
+                       code_block: bugCodes
+             }
+          ],
+           tagged_technologies: "vue"
+          }
+        ]
+      };
     
     this.bugs.postBug(this.data).subscribe((res) => {
       try {
       alert("posted successfuly")
+      console.log(res);
+      
       } catch (error) {
         alert("an error occured")
       }  

@@ -28,13 +28,14 @@
     font-size: 12px;
 }
 
+.description {
+    font-size: 14px!important;
+}
+
 .q-heading {
     font-size: 18px;
     font-weight: 700;
-}
-
-.question-description>p {
-    font-size: 14px;
+    color: rgb(14, 15, 34);
 }
 
 .caption>p {

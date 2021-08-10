@@ -95,7 +95,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: "bug-details",
+        path: "bug-details/:id/:posterId",
         component: BugDetailsComponent,
         canActivate: [AuthGuard]
       },
