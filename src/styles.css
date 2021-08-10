@@ -20,17 +20,17 @@
     background-color: #66a5f045 !important;
     border-radius: 4px !important;
     width: fit-content!important;
-    height: 9vh!important;
+    height: 7vh!important;
     margin-left: auto!important;
 }
 
 .angular-editor-toolbar .angular-editor-toolbar-set .angular-editor-button {
     background-color: #fff;
-    margin: 7px auto!important;
+    /* margin: 7px auto!important; */
     border: 1px solid #ddd;
     padding: .4rem;
     min-width: 3rem;
-    min-height: 3em!important;
+    min-height: 2.8em!important;
     float: left;
 }
 
