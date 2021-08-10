@@ -5,15 +5,15 @@
                 <div class="user-profile">
                     <div class="user-profile d-flex">
                         <div class="avatar">
-                            <img class="profile-avatar" src="'../../../../../../assets/images/face.png" alt="profile">
+                            <img class="profile-avatar" src="'https://codeama-backend.herokuapp.com/'+bug.userInfo.ProfilePicture" alt="profile">
                             <div class="badge"></div>
                         </div>
                         <div class=" ms-3 mt-2 user-name-and-date">
                             <div class="d-flex">
-                                <a>Gasaro Leila</a>
+                                <a>{{bug.userInfo.username}}</a>
                             </div>
                             <div class="caption">
-                                gasaro.codeama.net
+                                {{bug.userInfo.username.trim().toLowecase()}}.codeama.net
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
             <div class="question-deatails">
                 <div class="question-title">
                     <p id="question-title" class="my-4">
-                        {{bug.bug_title}}
+                        {{bug.bug.bug_title}}
                     </p>
                 </div>
                 <div class="question-description">
@@ -40,7 +40,7 @@
                 </ngx-codemirror>
             </div>
         </div>
-        <div class="right-side-component col-lg-3 my-auto ">
+        <div class="right-side-component col-lg-3">
             <p class="text-end ">Question status to date</p>
             <div class="comments qn-status ms-auto ">
                 <h6 class="text-center fw-bold my-auto ">5</h6>

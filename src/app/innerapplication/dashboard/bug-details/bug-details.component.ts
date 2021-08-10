@@ -100,7 +100,7 @@ export class BugDetailsComponent implements OnInit {
       .subscribe((res) => {
         this.bugs = res;
         this.bugs = this.bugs.data;
-        console.log(this.bugs[0].bug);
+        console.log(this.bugs[0]);
       });
   }
 }
