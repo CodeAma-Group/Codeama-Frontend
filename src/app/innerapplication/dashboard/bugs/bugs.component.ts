@@ -16,4 +16,17 @@ export class BugsComponent implements OnInit {
       console.log(this.bugs);
     })
   }
+  checkBadge(badge: string){
+    let className:string = ""
+    switch(badge.toLowerCase()){
+      case "absolute beginner": className = "absBeg";
+        break;
+      case "intermediate": className = "interm";
+        break;
+      case "pro": className = "pro";
+       break;
+      default: className="beginner"
+    }
+    return className
+  }
 }

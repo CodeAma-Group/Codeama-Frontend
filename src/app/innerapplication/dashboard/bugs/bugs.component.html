@@ -2,22 +2,25 @@
     <hr>
     <div *ngFor="let bug of bugs">
         <div class="user-profile d-flex">
-            <div class="avatar">
-                <img class="profile-avatar" [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.profilePicture" alt="profile">
-                <div class="badge"></div>
-            </div>
+            <figure class="position-relative d-flex justify-content-center">
+                <div>
+                    <img [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.profilePicture" alt="">
+                </div>
+                <figcaption class="{{checkBadge(bug.userInfo.Badge)}} rounded-pill">{{bug.userInfo.Badge}}</figcaption>
+            </figure>
             <div class=" ms-3 mt-2 user-name-and-date">
                 <div class="d-flex">
-                    <a [href]="'https://codeama.netlify.app/app/profile/'+bug.userInfo._id" class="my-auto ">{{bug.userInfo.Username}}
+                    <a [href]="'https://codeama.netlify.app/app/profile/'+bug.userInfo._id" class="my-auto username ">{{bug.userInfo.Username}}
                 </a>
+                    <span class="ms-2 u-caption">@{{bug.userInfo.Username.trim()}}</span>
                 </div>
-                <p id="posting-date">{{bug.date}}</p>
+                <p id="posting-date">{{bug.date| date:"longDate"}}</p>
             </div>
         </div>
-        <div class="question-info d-flex">
+        <div class="question-info d-flex mt-2">
             <div class="question-details col-lg-7 mr-2 ">
                 <div class="question-title ">
-                    <a class="q-heading my-3 " routerLink="../../bug-details/{{bug.bug._id}}/{{bug.userInfo._id}}">{{bug.bug.bug_title}}</a>
+                    <a class="q-heading my-3 bug-title" routerLink="../../bug-details/{{bug.bug._id}}/{{bug.userInfo._id}}">{{bug.bug.bug_title}}</a>
                 </div>
                 <div class="question-description">
                     <div [innerHTML]="bug.bug.bug_description.substring(0,200)" class="description d-inline"></div>
@@ -33,9 +36,8 @@
                 </div>
             </div>
         </div>
-        <div class="caption ">
-            <!-- <p>{{question.userCaption}}</p> -->
-            <p>abi_seth5454.codeama.dev</p>
+        <div class="caption">
+            <p>{{bug.userInfo.Username}}.codeama.dev</p>
         </div>
         <div class="comments-and-likes pt-2 d-flex ">
             <div class="likes d-flex ">
