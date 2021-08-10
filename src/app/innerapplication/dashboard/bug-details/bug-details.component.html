@@ -10,10 +10,10 @@
                         </div>
                         <div class=" ms-3 mt-2 user-name-and-date">
                             <div class="d-flex">
-                                <a>{{bug.userInfo.username}}</a>
+                                <a>{{bug.userInfo.Username}}</a>
                             </div>
                             <div class="caption">
-                                {{bug.userInfo.username.trim().toLowecase()}}.codeama.net
+                                {{bug.userInfo.Username}}.codeama.net
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                     <span class="me-2">Question asked on</span><strong>25 <sup>th</sup>, June, 2021</strong>
                 </div>
                 <div class="questioner ms-4 mt-1">
-                    <strong class="me-1">Seth</strong>
+                    <strong class="me-1">{{bug.userInfo.Username}}</strong>
                     <span>is still waiting your help !</span>
                 </div>
             </div>
@@ -42,12 +42,12 @@
         </div>
         <div class="right-side-component col-lg-3">
             <p class="text-end ">Question status to date</p>
-            <div class="comments qn-status ms-auto ">
-                <h6 class="text-center fw-bold my-auto ">5</h6>
+            <div class="comments qn-status ms-auto">
+                <h6 class="text-center fw-bold my-auto">{{bug.comments.length}}</h6>
                 <p class="text-center my-auto ">comments</p>
             </div>
             <div class="status qn-status ms-auto ">
-                <h6 class="text-center fw-bold my-auto ">Not</h6>
+                <h6 class="text-center fw-bold my-auto" *ngIf="bug.comments.length==0">Not</h6>
                 <p class="text-center my-auto ">Answered</p>
             </div>
             <div class="viewers qn-status ms-auto ">
@@ -68,7 +68,7 @@
     <div class="comments-section ms-3 ">
         <div class="recent-commenters ">
             <div class="comments-heading my-3 ">
-                <p><strong class="answers-number ">4</strong>Answers given to this question</p>
+                <p><strong class="answers-number">bug.comments.length</strong>Answers given to this question</p>
             </div>
             <div class="commenter ">
                 <div class="user-profile ">
