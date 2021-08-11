@@ -108,19 +108,21 @@ export class ProfileComponent implements OnInit {
       reader.onload = async (file) => {
         this.imageUrl = await file.target.result;
 
-        var data = {
-          "userId": `${this._id}`,
-          "Badge": `${this.Badge}`,
-          "Bio": `${this.Bio}`,
-          "Location": `${this.Location}`,
-          "description": `${this.description}`,
-          "connections": this.connections,
-          "Skills": "react,angular,vue",
-          "coverPicture": `${this.imageUrl}`,
-          "profilePicture": `${this.imageUrl}`
-        }
+        var userData:any = new FormData();
+        
+        userData.append("userId", `${this._id}`)
+        userData.append("Badge", `${this.Badge}`)
+        userData.append("Bio", `${this.Bio}`)
+        userData.append("Location", `${this.Location}`)
+        userData.append("description", `${this.description}`)
+        userData.append("connections", this.connections)
+        userData.append("Skills", "react,angular,vue")
+        // userData.append("coverPicture", `${this.imageUrl}`)
+        // userData.append("profilePicture", `${this.imageUrl}`)
+        
+        
 
-        this.updateProfileToDb(data);
+        this.updateProfileToDb(userData);
       }
     }
   }

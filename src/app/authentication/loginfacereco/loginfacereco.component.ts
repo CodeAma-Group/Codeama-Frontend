@@ -297,8 +297,15 @@ export class LoginfacerecoComponent implements OnInit {
 						this.faceMatchScore = Math.round((1 - result.distance) * 100);
 
 						if (this.imageIterationCount <= this.faceRecoImageCount) {
-							this.imageIterationCount = this.imageIterationCount + 1;
-							this.compareImageAlogrithm();
+							
+							if (this.faceMatchScore >= 70) {
+								return this.compareFacesResults(this.faceMatchScore); 
+							} else {
+								this.imageIterationCount = this.imageIterationCount + 1;
+								return this.compareImageAlogrithm();
+							}
+
+
 						} else {
 							return this.compareFacesResults(this.faceMatchScore); 
 						}
@@ -307,8 +314,14 @@ export class LoginfacerecoComponent implements OnInit {
 					} else if (!this.matchFound && i === results.length - 1) {
 						this.faceMatchScore = Math.round((1 - result.distance) * 100);
 						if (this.imageIterationCount <= this.faceRecoImageCount) {
-							this.imageIterationCount = this.imageIterationCount + 1;
-							this.compareImageAlogrithm();
+							
+							if (this.faceMatchScore >= 70) {
+								return this.compareFacesResults(this.faceMatchScore); 
+							} else {
+								this.imageIterationCount = this.imageIterationCount + 1;
+								return this.compareImageAlogrithm();
+							}
+
 						} else {
 							return this.compareFacesResults(this.faceMatchScore); 
 						}
