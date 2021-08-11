@@ -7,10 +7,11 @@
             <div class="project-pages">
                 <div class="project-images-and-videos">
                     <div class="image-or-video-onstage">
-                        <img [src]="ProjectImageOnStage" alt=" img ">
+                        <img [src]="ProjectImageOnStage">
                     </div>
                     <div class="other-images mx-auto col-lg-11 my-1 d-flex flex-wrap ">
                         <div class="img " *ngFor="let thumbnail of project.thumbnails ">
+                            <img [src]="ProjectImageOnStage">
                             <img src="https://codeama-backend.herokuapp.com/{{thumbnail}} " #image (click)="imageOnStage(image) " alt=" image "></div>
                     </div>
                 </div>
@@ -90,8 +91,9 @@
                   </a>
             </div>
         </div>
-        <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
-            <p style="color: white">Please Wait. </p>
-        </ngx-spinner>
+
     </div>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>

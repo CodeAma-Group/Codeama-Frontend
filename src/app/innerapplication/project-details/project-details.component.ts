@@ -25,8 +25,8 @@ export class ProjectDetailsComponent implements OnInit {
       for (let i = 0; i < this.projectData.length; i++) {
         this.ProjectImageOnStage=this.url+this.projectData[i].demo
       }
+      this.spinner.hide()
     });
-    this.spinner.hide()
   }
   // this.ProjectImageOnStage = this.projectImages[0];
   imageOnStage(data: any) {
