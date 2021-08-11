@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../services/project.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
@@ -9,21 +10,23 @@ import { ProjectService } from '../services/project.service';
 export class ProjectDetailsComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
-    private project: ProjectService
+    private project: ProjectService,
+    private spinner:NgxSpinnerService
   ) {}
   projectImages = [];
   ProjectImageOnStage: string = '';
   projectData: any;
   url="https://codeama-backend.herokuapp.com/"
   ngOnInit(): void {
+    this.spinner.show()
     this.project.getProject(this.router.snapshot.params.id).subscribe((res) => {
       this.projectData = res;
       this.projectData = this.projectData.data;
       for (let i = 0; i < this.projectData.length; i++) {
         this.ProjectImageOnStage=this.url+this.projectData[i].demo
-        console.log(this.ProjectImageOnStage)
       }
     });
+    this.spinner.hide()
   }
   // this.ProjectImageOnStage = this.projectImages[0];
   imageOnStage(data: any) {
