@@ -75,19 +75,23 @@ const routes: Routes = [
       },
       {
         path:"add-question",
-        component:AddQuestionComponent
+        component:AddQuestionComponent,
+        canActivate: [AuthGuard]
       },
       {
         path:"add-article",
-        component: AddArticleComponent
+        component: AddArticleComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: "add-resource",
-        component: AddResourceComponent
+        component: AddResourceComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: "answer-question",
-        component:AnswerQuestionComponent
+        component:AnswerQuestionComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: "add-bug",
@@ -97,11 +101,11 @@ const routes: Routes = [
       {
         path: "bug-details/:id/:posterId",
         component: BugDetailsComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'projectRegistration',
         component: ProjectRegistrationComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'projectDetails/:id',
@@ -161,6 +165,7 @@ const routes: Routes = [
       {
         path: 'askquestion',
         component: AskcodeamaComponent,
+        canActivate: [AuthGuard]
       },
 
       {

@@ -23,7 +23,6 @@ const routes: Routes = [
     path: 'app',
     loadChildren: () => import('./innerapplication/innerapplication.module')
       .then(mode => mode.InnerapplicationModule),
-    canActivate: [AuthGuard]
   },
   {
     path: 'welcome',
