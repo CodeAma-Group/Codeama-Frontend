@@ -1,42 +1,42 @@
-<div class="container px-5" *ngFor="let bug of bugs">
-    <hr>
-    <div class="user-profile d-flex">
-        <div class="avatar">
-            <img class="profile-avatar" [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.profilePicture" alt="profile">
-            <div class="badge"></div>
-        </div>
+<hr>
+<div *ngFor="let bug of bugs">
+    <div class="user-profile d-flex px-5">
+        <figure class="position-relative d-flex justify-content-center">
+            <div>
+                <img [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.profilePicture" alt="">
+            </div>
+            <figcaption class="{{checkBadge(bug.userInfo.Badge)}} rounded-pill">{{bug.userInfo.Badge}}</figcaption>
+        </figure>
         <div class=" ms-3 mt-2 user-name-and-date">
             <div class="d-flex">
-                <a [href]="'https://codeama.netlify.app/app/profile/'+bug.userInfo._id" class="my-auto ">{{bug.userInfo.Username}}
+                <a [href]="'https://codeama.netlify.app/app/profile/'+bug.userInfo._id" class="my-auto username ">{{bug.userInfo.Username}}
                 </a>
+                <span class="ms-2 u-caption">@{{bug.userInfo.Username.trim()}}</span>
             </div>
-            <p id="posting-date">{{bug.date}}</p>
+            <p id="posting-date">{{bug.date| date:"longDate"}}</p>
         </div>
     </div>
-    <div class="question-info d-flex">
+    <div class="question-info d-flex mt-2 px-5">
         <div class="question-details col-lg-7 mr-2 ">
             <div class="question-title ">
-                <h6 class="q-heading my-3 ">{{bug.bug.bug_title}}</h6>
+                <a class="q-heading my-3 bug-title" routerLink="../../bug-details/{{bug.bug._id}}/{{bug.userInfo._id}}">{{bug.bug.bug_title}}</a>
             </div>
-            <div class="question-description ">
-                <p>{{bug.bug.bug_description}}....
-                </p>
+            <div class="question-description">
+                <div [innerHTML]="bug.bug.bug_description.substring(0,200)" class="description d-inline"></div>
+                <span class="ms-1 d-inline">.......</span>
             </div>
         </div>
         <div class="tagged-technologies col-lg-4 my-2 mx-auto ">
             <div class="heading text-center my-3 ">Tagged Technologies</div>
             <div class="technologies d-flex mx-auto col-lg-11 ">
-                <img src="../../../../assets/test_images/angular.png " class="technology my-auto mx-auto " alt="tagged techs ">
-                <img src="../../../../assets/test_images/vue.png " class="technology mx-auto " alt="tagged techs ">
-                <img src="../../../../assets/test_images/java.png " class="technology mx-auto " alt="tagged techs ">
+                <img [src]="checkTechImage(bug.bug.tagged_technologies)" class="technology my-auto mx-auto">
             </div>
         </div>
     </div>
-    <div class="caption ">
-        <!-- <p>{{question.userCaption}}</p> -->
-        <p>abi_seth5454.codeama.dev</p>
+    <div class="caption px-5">
+        <p>{{bug.userInfo.Username}}.codeama.dev</p>
     </div>
-    <div class="comments-and-likes pt-2 d-flex ">
+    <div class="comments-and-likes pt-2 d-flex px-5">
         <div class="likes d-flex ">
             <svg id="thumb-up-fill " xmlns="http://www.w3.org/2000/svg " width="25 " height="25 " viewBox="0 0 25 25 ">
         <path id="Path_46 " data-name="Path 46 " d="M0,0H25V25H0Z " fill="none " />
@@ -45,7 +45,7 @@
           transform="translate(0) " fill="#4290ed " />
       </svg>
             <p class="likesNumber ">
-                233
+                0
             </p>
         </div>
         <div class="commments ms-5 col-lg-3 d-flex ">
@@ -62,3 +62,6 @@
     </div>
     <hr>
 </div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>

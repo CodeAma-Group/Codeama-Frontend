@@ -28,6 +28,9 @@ import { UseraskedComponent } from './userprofile/userasked/userasked.component'
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
 import { AuthGuard } from '../authentication/common/auth.guard';
+import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
+import {AmaQuestionComponent} from './ama-question/ama-question.component'
+import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
 
 const routes: Routes = [
   {
@@ -92,6 +95,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: "bug-details/:id/:posterId",
+        component: BugDetailsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'projectRegistration',
         component: ProjectRegistrationComponent,
       },
@@ -102,10 +110,11 @@ const routes: Routes = [
       {
         path: 'challenges',
         component: ChallengesComponent,
+  
       },
       {
         path: 'codeamas',
-        component: CodeamasComponent,
+        component: CodeamasComponent
       },
       {
         path: 'notifications',
@@ -116,6 +125,7 @@ const routes: Routes = [
         component: SupportComponent,
       },
       {
+        
         path: 'profile/:username',
         component: ProfileComponent,
         children: [
@@ -151,8 +161,20 @@ const routes: Routes = [
       {
         path: 'askquestion',
         component: AskcodeamaComponent,
-      }
-    ],
+      },
+
+      {
+        path:'amaquestions',
+        component: AmaQuestionComponent
+         
+     },
+
+     {
+      path:'viewchallengetakers',
+      component: ViewChallengeTakersComponent 
+    }
+
+    ]
   },
 ];
 

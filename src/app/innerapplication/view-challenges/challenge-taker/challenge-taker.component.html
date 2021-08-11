@@ -1,0 +1,48 @@
+<div class="challenge_taker">
+    <div class="challenge_taker_content">
+    <div class="one">
+    <div class="user_info">
+      <div [ngClass]="['user_details', userDetailClass()]">
+        <div class="img_details">
+      <div class="img">
+          <img [src]="'https://codeama-backend.herokuapp.com/'+challenge_taker.userId.profilePicture" alt="profile" width="50" height="50">
+      </div>
+      <div class="level">
+      <div [ngClass]="[challenge_taker.userId.Badge, 'badge']">
+        <p>{{challenge_taker.userId.Badge}}</p>
+      </div>
+    </div>  
+    </div>
+        <div class="user_data">
+          <h5 class="user_name">{{challenge_taker.userId.Username}}</h5>
+          <p>{{challenge_taker.userId.Email}}</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+
+
+   <div class="two">
+   <p class="asked_date"><span class="dim">Joined challenge on</span> {{challenge_taker.joinedDate | date: 'longDate'}}</p>
+    </div>
+
+    <div class="five">
+  <p class="asked_date">{{challenge_taker.userId.challengesCompleted}} <span class="dim">challenges completed</span></p>
+    </div>
+  
+    <div class="three">
+      <div [className]="challenge_taker.submitted === 'true' ? 'detail_box submitted': 'detail_box not_submitted'">
+        <p>{{checkSubmitted()}}</p>
+        <p>Submitted</p>
+    </div>
+    </div>
+  
+    <div class="four">
+      <button class="btn btn-primary">Run code</button>
+    </div>
+  </div>
+  <hr class="underline">
+  </div>
+  
