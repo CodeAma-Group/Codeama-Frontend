@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { BugService } from '../../services/bug.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-bug-details',
@@ -8,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./bug-details.component.css'],
 })
 export class BugDetailsComponent implements OnInit {
-  constructor(private bug: BugService, private router: ActivatedRoute) {}
+  constructor(private bug: BugService, private router: ActivatedRoute,private spinner:NgxSpinnerService) {}
   htmlContent = '';
 
   config: AngularEditorConfig = {
@@ -87,11 +88,7 @@ export class BugDetailsComponent implements OnInit {
 
   bugs: any;
   ngOnInit(): void {
-    console.log(
-      this.router.snapshot.params.id,
-      this.router.snapshot.params.posterId
-    );
-
+    this.spinner.show()
     this.bug
       .getBug(
         this.router.snapshot.params.id,
@@ -100,7 +97,7 @@ export class BugDetailsComponent implements OnInit {
       .subscribe((res) => {
         this.bugs = res;
         this.bugs = this.bugs.data;
-        console.log(this.bugs[0]);
+        this.spinner.hide()
       });
   }
   checkBadge(badge: string){
