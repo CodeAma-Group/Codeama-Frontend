@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../authentication/_authServices/auth.service'
 import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +10,7 @@ import jwt_decode from 'jwt-decode';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor( private authService: AuthService ) { }
+  constructor( private authService: AuthService, private router: Router ) { }
 
   cookieVal:string = "";
 
@@ -94,5 +95,15 @@ export class SidebarComponent implements OnInit {
       document.cookie = "isDark=true; path=/; max-age=" + 365*24*60*60;
     }
 
-}
+  }
+
+  getProfile() {
+    var status = this.authService.loggedIn()
+    if (status) {
+      this.router.navigate(['app/profile', this.userId]);
+    } else {
+      this.router.navigate(['/auth']);
+    }
+  }
+
 }

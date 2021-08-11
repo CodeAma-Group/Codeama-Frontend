@@ -11,7 +11,13 @@ export class ModuleoutletComponent implements OnInit {
   cookieVal: string = "";
   constructor( private authService: AuthService, private router: Router ) { }
 
+  loggedIn: boolean = false;
+
   ngOnInit(): void {
+    var status = this.authService.loggedIn()
+    if (status) {
+      this.loggedIn = true;
+    }
 
     var cookieName = "isDark";
 
@@ -106,7 +112,11 @@ export class ModuleoutletComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['auth']);
+    this.router.navigate(['/auth']);
   }
 
+  login() {
+    this.router.navigate(['/auth'])
+  }
+ 
 }
