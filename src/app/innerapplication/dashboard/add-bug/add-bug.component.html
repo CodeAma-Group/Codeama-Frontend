@@ -13,8 +13,8 @@
                 <div class="form-group ms-2 bug-technology">
                     <label for="bug-tech">Bug technology</label>
                     <select class="form-control" ngModel #bugTechnology="ngModel" name="bugTechnology" id="bug-tech">
-            <option selected disabled>select technology</option>
-            <option *ngFor="let tech of technologies">{{tech.name}}</option>
+            <option selected disabled value="">select technology</option>
+            <option *ngFor="let tech of technologies" [value]="tech.name">{{tech.name}}</option>
           </select>
                 </div>
             </div>
