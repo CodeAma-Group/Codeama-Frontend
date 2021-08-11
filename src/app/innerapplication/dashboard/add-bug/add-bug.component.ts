@@ -35,7 +35,7 @@ export class AddBugComponent implements OnInit {
         'indent',
         'outdent',
         'heading',
-        'fontName'
+        'fontName',
       ],
       [
         'fontSize',
@@ -44,8 +44,8 @@ export class AddBugComponent implements OnInit {
         'customClasses',
         'insertHorizontalRule',
         'removeFormat',
-        'toggleEditorMode'
-      ]
+        'toggleEditorMode',
+      ],
     ],
     customClasses: [
       {
@@ -63,7 +63,6 @@ export class AddBugComponent implements OnInit {
       },
     ],
   };
-
 
   codeMirrorOptions: any = {
     theme: 'cobalt',
@@ -88,72 +87,70 @@ export class AddBugComponent implements OnInit {
 
   token: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
   userId = this.token._id;
-  ngOnInit() {
-  }
-  technologies= [
+  ngOnInit() {}
+  technologies = [
     {
       name: 'vue',
-      img: '../../../../assets/test_images/vue.png'
+      img: '../../../../assets/test_images/vue.png',
     },
     {
       name: 'angular',
-      img: '../../../../assets/test_images/angular.png'
+      img: '../../../../assets/test_images/angular.png',
     },
     {
       name: 'c',
-      img: '../../../../assets/test_images/c.png'
+      img: '../../../../assets/test_images/c.png',
     },
     {
       name: 'java',
-      img: '../../../../assets/test_images/java.png'
+      img: '../../../../assets/test_images/java.png',
     },
     {
       name: 'react',
-      img: '../../../../assets/test_images/react.png'
+      img: '../../../../assets/test_images/react.png',
     },
     {
       name: 'js',
-      img: '../../../../assets/test_images/js.png'
+      img: '../../../../assets/test_images/js.png',
     },
     {
       name: 'python',
-      img: '../../../../assets/test_images/python.png'
+      img: '../../../../assets/test_images/python.png',
     },
     {
       name: 'swift',
-      img: '../../../../assets/test_images/swift.png'
-    }
+      img: '../../../../assets/test_images/swift.png',
+    },
   ];
-  testArray=["java","js","angular","node"]
   data;
   submit(form) {
     let bugTitle = form.bugTitle,
       bugDescription = this.htmlContent,
-      bugCodes = form.codemirror;
-      this.data = {
-        userId: this.userId,
-        bugs: [
-          {
-            bug_title: bugTitle,
-            bug_description: bugDescription,
-            code_snippet: [
-                        {
-                       code_block: bugCodes
-             }
+      bugCodes = form.codemirror,
+      tagged_tech = form.bugTechnology;
+    this.data = {
+      userId: this.userId,
+      bugs: [
+        {
+          bug_title: bugTitle,
+          bug_description: bugDescription,
+          code_snippet: [
+            {
+              code_block: bugCodes,
+            },
           ],
-           tagged_technologies: "vue"
-          }
-        ]
-      };
-    
+          tagged_technologies: tagged_tech,
+        },
+      ],
+    };
+
     this.bugs.postBug(this.data).subscribe((res) => {
       try {
-      alert("posted successfuly")
-      console.log(res);
-      
+        alert('posted successfuly');
+        console.log(res);
       } catch (error) {
-        alert("an error occured")
-      }  
+        alert('an error occured');
+      }
     });
   }
 }
