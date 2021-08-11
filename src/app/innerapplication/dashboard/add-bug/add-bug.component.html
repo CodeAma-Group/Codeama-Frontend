@@ -14,13 +14,7 @@
                     <label for="bug-tech">Bug technology</label>
                     <select class="form-control" ngModel #bugTechnology="ngModel" name="bugTechnology" id="bug-tech">
             <option selected disabled>select technology</option>
-            <option>Java</option>
-            <option>Javascript</option>
-            <option>Html</option>
-            <option>Css</option>
-            <option>SCSS</option>
-            <option>C</option>
-            <option>Javascript</option>
+            <option *ngFor="let tech of technologies">{{tech.name}}</option>
           </select>
                 </div>
             </div>
