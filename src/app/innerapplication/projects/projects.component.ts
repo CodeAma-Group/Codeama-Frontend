@@ -13,6 +13,7 @@ export class ProjectsComponent implements OnInit {
   show:boolean=false
   image;
   projectsData:any
+  
   ngOnInit(): void {
     this.projects.getProjects().subscribe((res)=>{
       this.projectsData=res

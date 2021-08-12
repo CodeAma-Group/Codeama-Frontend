@@ -16,7 +16,10 @@ export class NotificationsComponent implements OnInit {
   image;
   notificationData:any
 
+  codeamaData:any
+
   ngOnInit(): void {
+
     this.notifications.getNotifications().subscribe((res)=>{
       this.notificationData=res;
       this.notificationData=this.notificationData.data;
@@ -24,6 +27,7 @@ export class NotificationsComponent implements OnInit {
       this.show=true;
       this.notnull = true;
     })
+
   }
 
 }
