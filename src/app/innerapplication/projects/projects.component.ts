@@ -14,6 +14,7 @@ export class ProjectsComponent implements OnInit {
   show:boolean=false
   image;
   projectsData:any
+  
   ngOnInit(): void {
     this.spinner.show()
     this.projects.getProjects().subscribe((res)=>{

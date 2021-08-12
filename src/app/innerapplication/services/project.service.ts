@@ -15,9 +15,9 @@ export class ProjectService {
     return this.http.post(this.url, data);
   }
   getProjects(){
- return this.http.get(this.url)
+    return this.http.get(this.url)
   }
   getProject(id){
     return this.http.get(`${this.url}/${id}`)
-    }
+  }
 }

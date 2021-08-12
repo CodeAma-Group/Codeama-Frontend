@@ -39,6 +39,25 @@ a.text-white {
     font-size: 10px;
     text-align: center;
 }
+a {
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.tx-top {
+    color: #151829;
+}
+
+.ama-askQuestion > a {
+    color: #425FED;
+}
+
+.profile > a > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
 
 figure {
     margin-right: 20px;

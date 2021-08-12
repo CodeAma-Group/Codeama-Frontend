@@ -1,68 +1,46 @@
 <div class="container-fluid round">
-  <div class="bg-color container-fluid ">
-    <div class="row pt-1">
+  <div class="bg-color">
+
+    <div class="header row">
       <div class="col-10">
-        <p>Notifications</p>
+        <div class="notification">Notifications</div>
       </div>
       <div class="col">
-          <i style="font-size:24px; color: white;" class="fa">&#xf055;</i>
-          <a href="#">Mark all as read</a>
+        <i style="font-size:24px; color: white;" class="fa">&#xf055;</i><a href="#">Mark all as read</a>
       </div>
-      <div class="line"></div>
+    </div>
+    <div class="line"></div>
+
+    <div *ngIf="notnull">
+      <div ngFor="let noti of notificationData">
+        <div class="noti row">
+          <div class="col-1 profile">
+            <img src="../../../assets/images/sara.png" alt="prof">
+          </div>
+
+          <div class="col">
+            <div class="tx-title">{{noti.title}}</div>
+            <div class="tx-12">{{noti.description}}</div>
+            <p class="tx-to">{{noti.to}}</p>
+          </div>
+          <div class="line"></div>
+        </div>
+      </div>
     </div>
 
-    <div class="noti row">
-        <div class="col-1 p-3">
-            <img class="rounded-circle w-100" src="../../../assets/images/colors.jpg" alt="prof">
+    <div *ngIf="!notnull">
+      <div class="noti row">
+        <div class="col-1 profile">
+          <img src="../../../assets/images/sara.png" alt="prof">
         </div>
 
         <div class="col">
-            <h5>This summer's challange post already</h5>
-            <p>Dont't miss Abiseth this challenge trophy meant be your check the link below to join and do the challange for this upcoming summer</p>
-            <p>abi_seth85270.codeama.dev</p>
+          <div class="tx-title">Codeama welcomes you to coding world!</div>
+          <div class="tx-12">Codeama is there to help all developer to get used to coding world. You can see the others project and also post your to bloom storm your project and get it known to other codeamas and every users.</div>
+          <p class="tx-to">{{codeamaData.Username}}.codeama.dev</p>
         </div>
-        <hr>
+        <div class="line"></div>
+      </div>
     </div>
-
-    <div class="noti row">
-        <div class="col-1 p-3">
-            <img class="rounded-circle w-100" src="../../../assets/images/colors.jpg" alt="prof">
-        </div>
-
-        <div class="col">
-            <h5>Last summer challange results are out</h5>
-            <p>Hi everybody the holiday summer challange is up you can take part...</p>
-            <p>abi_seth85270.codeama.dev</p>
-        </div>
-        <hr>
-    </div>
-
-    <div class="noti row">
-        <div class="col-1 p-3">
-            <img class="rounded-circle w-100" src="../../../assets/images/colors.jpg" alt="prof">
-        </div>
-
-        <div class="col">
-            <h5>Rutayisire asked a question in the ama's group</h5>
-            <p>You got to go and answer the question asked to you be Rutayisire in the ama code group 2 hours ago</p>
-            <p>abi_seth85270.codeama.dev</p>
-        </div>
-        <hr>
-    </div>
-
-    <div class="noti row">
-        <div class="col-1 p-3">
-            <img class="rounded-circle w-100" src="../../../assets/images/colors.jpg" alt="prof">
-        </div>
-
-        <div class="col">
-            <h5>Congz you have been approved in the ama group</h5>
-            <p>You are now a code ama and any one can ask you a special question. Be ready anytime.</p>
-            <p>abi_seth85270.codeama.dev</p>
-        </div>
-        <hr>
-    </div>
-
-
   </div>
 </div>
