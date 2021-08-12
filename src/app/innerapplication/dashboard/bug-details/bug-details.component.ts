@@ -105,7 +105,7 @@ export class BugDetailsComponent implements OnInit {
         this.bugs = this.bugs.data;
         this.spinner.hide();
         this.bugId = this.bugs[0].bug._id;
-        console.log(this.bugId);
+        console.log(this.bugs);
         
       });
   }
