@@ -3,13 +3,18 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { BugService } from '../../services/bug.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute } from '@angular/router';
+import  jwtDecode  from 'jwt-decode';
 @Component({
   selector: 'app-bug-details',
   templateUrl: './bug-details.component.html',
   styleUrls: ['./bug-details.component.css'],
 })
 export class BugDetailsComponent implements OnInit {
-  constructor(private bug: BugService, private router: ActivatedRoute,private spinner:NgxSpinnerService) {}
+  constructor(
+    private bug: BugService,
+    private router: ActivatedRoute,
+    private spinner: NgxSpinnerService
+  ) {}
   htmlContent = '';
 
   config: AngularEditorConfig = {
@@ -36,7 +41,7 @@ export class BugDetailsComponent implements OnInit {
         'indent',
         'outdent',
         'heading',
-        'fontName'
+        'fontName',
       ],
       [
         'fontSize',
@@ -44,9 +49,9 @@ export class BugDetailsComponent implements OnInit {
         'backgroundColor',
         'customClasses',
         'insertHorizontalRule',
-        'removeFormat',
-        'toggleEditorMode'
-      ]
+        'removecommentContentat',
+        'toggleEditorMode',
+      ],
     ],
     customClasses: [
       {
@@ -86,9 +91,10 @@ export class BugDetailsComponent implements OnInit {
     lint: true,
   };
 
+  bugId: string;
   bugs: any;
   ngOnInit(): void {
-    this.spinner.show()
+    this.spinner.show();
     this.bug
       .getBug(
         this.router.snapshot.params.id,
@@ -97,20 +103,51 @@ export class BugDetailsComponent implements OnInit {
       .subscribe((res) => {
         this.bugs = res;
         this.bugs = this.bugs.data;
-        this.spinner.hide()
+        this.spinner.hide();
+        this.bugId = this.bugs[0].bug._id;
+        console.log(this.bugId);
+        
       });
   }
-  checkBadge(badge: string){
-    let className:string = ""
-    switch(badge.toLowerCase()){
-      case "absolute beginner": className = "absBeg";
+  checkBadge(badge: string) {
+    let className: string = '';
+    switch (badge.toLowerCase()) {
+      case 'absolute beginner':
+        className = 'absBeg';
         break;
-      case "intermediate": className = "interm";
+      case 'intermediate':
+        className = 'interm';
         break;
-      case "pro": className = "pro";
-       break;
-      default: className="beginner"
+      case 'pro':
+        className = 'pro';
+        break;
+      default:
+        className = 'beginner';
     }
-    return className
+    return className;
+  }
+  token: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
+  userId = this.token._id;
+  comment;
+  postComment() {
+    this.comment = {
+      bugId: this.bugId,
+      userId: this.userId,
+      solver: this.userId,
+      comment: [
+        {
+          text_comment: this.htmlContent,
+          code_snippet_comment: [{ code_block: 'string' }],
+        },
+      ],
+    };
+    this.bugs.postComment(this.comment).subscribe((res) => {
+      try {
+        alert('posted successfuly');
+        console.log(res);
+      } catch (error) {
+        alert('an error occured');
+      }
+    });
   }
 }
