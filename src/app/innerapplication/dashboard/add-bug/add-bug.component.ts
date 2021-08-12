@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BugService } from '../../services/bug.service';
+import { NotifierService } from 'angular-notifier';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import jwtDecode from 'jwt-decode';
 @Component({
@@ -8,7 +9,7 @@ import jwtDecode from 'jwt-decode';
   styleUrls: ['./add-bug.component.css'],
 })
 export class AddBugComponent implements OnInit {
-  constructor(private bugs: BugService) {}
+  constructor(private bugs: BugService, private notifier:NotifierService) {}
   htmlContent = '';
 
   config: AngularEditorConfig = {
@@ -122,6 +123,7 @@ export class AddBugComponent implements OnInit {
       img: '../../../../assets/test_images/swift.png',
     },
   ];
+
   data;
   submit(form) {
     let bugTitle = form.bugTitle,
@@ -146,8 +148,9 @@ export class AddBugComponent implements OnInit {
 
     this.bugs.postBug(this.data).subscribe((res) => {
       try {
-        alert('posted successfuly');
-        console.log(res);
+        this.notifier.notify("success","Bug posted successfully !")
+        this.htmlContent="",
+        form=""
       } catch (error) {
         alert('an error occured');
       }

@@ -4,13 +4,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ProjectService } from '../services/project.service';
+import { NotifierService } from 'angular-notifier';
 @Component({
   selector: 'app-project-registration',
   templateUrl: './project-registration.component.html',
   styleUrls: ['./project-registration.component.css'],
 })
 export class ProjectRegistrationComponent implements OnInit {
-  constructor(private project: ProjectService) {}
+  constructor(private project: ProjectService, private notifier:NotifierService) {}
   public options = [
     { label: 'Java', value: 'Java' },
     { label: 'Javascript', value: 'Javascript' },
@@ -173,6 +174,7 @@ export class ProjectRegistrationComponent implements OnInit {
     // };
 
     this.project.saveProject(ProjectData).subscribe((res) => {
+      // this.notifier.notify("success","New Project posted successfully!")
       alert(res);
       console.log("result is here",res);      
     });
