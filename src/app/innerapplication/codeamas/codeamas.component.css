@@ -10,7 +10,8 @@
     padding-left: 10px;
     font-size: 13px;
 }
-.size-12{
+
+.size-12 {
     font-size: 15px;
 }
 
@@ -22,51 +23,103 @@
     text-align: end;
     padding: 0 25px;
 }
-.line{
+
+.line {
     height: 1px;
     background-color: silver;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    margin: 0!important;
 }
+
 button.btn-primary.btn {
     padding: 5px;
 }
+
 a.text-white {
     font-size: 10px;
     text-align: center;
 }
 
-@media only screen and (max-width: 680px){
-    .person1 > .row {
+figure {
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+figure>figcaption {
+    font-size: .6em;
+    font-weight: 400;
+    padding: 1px 5px;
+    position: absolute;
+    bottom: -18px;
+    border: 1px solid;
+    margin-bottom: 5px;
+    color: white;
+}
+
+figure>div {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+figure>div>img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+
+.absBeg {
+    background: rgb(190, 30, 46);
+    border-color: #BE1E2D;
+}
+
+.pro {
+    background: rgb(28, 116, 188);
+    border-color: #1C75BC;
+}
+
+.interm {
+    background: rgb(0, 167, 156);
+    border-color: #00A79D;
+}
+
+.beginner {
+    background: rgb(247, 149, 29);
+    border-color: #F7941D;
+}
+
+#page-title {
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 680px) {
+    .person1>.row {
         width: 100%;
         display: inline-flex;
     }
-
     .profile {
         width: 25%;
     }
-
-    .about > .row {
+    .about>.row {
         display: block;
     }
-
     .status {
         width: 80%;
         text-align: center;
         margin-left: 10px;
     }
-
     .ama-askQuestion {
         text-align: center;
     }
-
-    .follow{
+    .follow {
         width: 10%;
     }
 }
 
-.container-fluid {
+.page-container {
     color: var(--mainBlack);
     border-radius: 7px;
     background: var(--contBgLight);
-    padding: 20px 20px;
 }
