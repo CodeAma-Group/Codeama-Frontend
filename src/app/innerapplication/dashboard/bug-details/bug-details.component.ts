@@ -5,7 +5,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { NotifierService } from 'angular-notifier';
-import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-bug-details',
   templateUrl: './bug-details.component.html',
@@ -148,6 +147,7 @@ export class BugDetailsComponent implements OnInit {
     this.bug.postComment(this.comment).subscribe((res) => {
       try {
         this.notifier.notify("success","Comment posted successfully")
+        this.htmlContent=""
         console.log(res);
       } catch (error) {
         alert('an error occured');
