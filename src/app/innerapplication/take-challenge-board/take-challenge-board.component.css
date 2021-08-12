@@ -42,7 +42,8 @@ figure>div>img {
     border-radius: 50%;
 }
 
-.codesandboxEditor {
+.codesandboxEditor,
+.sandbox-iframe-input {
     width: 95%;
 }
 
@@ -64,4 +65,18 @@ figure>div>img {
 .beginner {
     background: rgb(247, 149, 29);
     border-color: #F7941D;
+}
+
+#cs-iframe {
+    font-size: 13px!important;
+}
+
+input,
+textarea {
+    background: rgba(66, 144, 237, .05);
+    font-weight: 500;
+    color: var(--mainBlack);
+    font-size: .9em;
+    border: 2px solid #66a5f045;
+    border-radius: 8px!important;
 }
