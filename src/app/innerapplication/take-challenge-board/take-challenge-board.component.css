@@ -42,6 +42,10 @@ figure>div>img {
     border-radius: 50%;
 }
 
+.codesandboxEditor {
+    width: 95%;
+}
+
 .absBeg {
     background: rgb(190, 30, 46);
     border-color: #BE1E2D;
