@@ -3,7 +3,9 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { BugService } from '../../services/bug.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute } from '@angular/router';
-import  jwtDecode  from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
+import { NotifierService } from 'angular-notifier';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-bug-details',
   templateUrl: './bug-details.component.html',
@@ -13,7 +15,8 @@ export class BugDetailsComponent implements OnInit {
   constructor(
     private bug: BugService,
     private router: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private notifier: NotifierService
   ) {}
   htmlContent = '';
 
@@ -106,7 +109,6 @@ export class BugDetailsComponent implements OnInit {
         this.spinner.hide();
         this.bugId = this.bugs[0].bug._id;
         console.log(this.bugs);
-        
       });
   }
   checkBadge(badge: string) {
@@ -130,8 +132,8 @@ export class BugDetailsComponent implements OnInit {
   userId = this.token._id;
   comment;
   saveComment() {
-    console.warn("reaching in function");
-    
+    console.warn('reaching in function');
+
     this.comment = {
       bugId: this.bugId,
       userId: this.userId,
@@ -145,7 +147,7 @@ export class BugDetailsComponent implements OnInit {
     };
     this.bug.postComment(this.comment).subscribe((res) => {
       try {
-        alert('posted successfuly');
+        this.notifier.notify("success","Comment posted successfully")
         console.log(res);
       } catch (error) {
         alert('an error occured');

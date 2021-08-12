@@ -85,8 +85,8 @@
                     </div>
                 </div>
                 <div class="comment">
-                    <div class="comment-content my-3" *ngFor="subComment in comment.comment">
-                        <div [innerHTML]="subComment" class="description d-inline"></div>
+                    <div class="comment-content my-3" *ngFor="let subComment of comment.comment">
+                        <div [innerHTML]="subComment.text_comment" class="description d-inline"></div>
                     </div>
                     <div class="like-reply d-flex">
                         <div class="like-svg me-3"><svg id="thumb-up-fill" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
@@ -126,3 +126,4 @@
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
     <p style="color: white ">Please Wait. </p>
 </ngx-spinner>
+<notifier-container></notifier-container>
