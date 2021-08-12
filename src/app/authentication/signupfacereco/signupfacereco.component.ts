@@ -288,8 +288,8 @@ export class SignupfacerecoComponent implements OnInit {
 			this.preparingUpload = true;
 
 			var imageBlob = this.webcamImage.imageAsDataUrl;
-			let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
-			let imageToUpload = image
+			let image = new File([imageBlob], "profile.jpeg", {type: "image/jpeg"});
+			let imageToUpload = image;
 
 			let userData: FormData = new FormData();
 			userData.append("faceRecognitionPicture", imageToUpload);
@@ -351,6 +351,7 @@ export class SignupfacerecoComponent implements OnInit {
 				this.servererr = true;
 
 				this.serverError = err.error;
+				console.log(err)
 			}
 		);
 	}

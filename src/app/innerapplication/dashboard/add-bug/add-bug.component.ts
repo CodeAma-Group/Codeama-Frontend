@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BugService } from '../../services/bug.service';
+import { NotifierService } from 'angular-notifier';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import jwtDecode from 'jwt-decode';
 @Component({
@@ -8,7 +9,7 @@ import jwtDecode from 'jwt-decode';
   styleUrls: ['./add-bug.component.css'],
 })
 export class AddBugComponent implements OnInit {
-  constructor(private bugs: BugService) {}
+  constructor(private bugs: BugService, private notifier:NotifierService) {}
   htmlContent = '';
 
   config: AngularEditorConfig = {
@@ -27,7 +28,26 @@ export class AddBugComponent implements OnInit {
       { class: 'Poppins', name: 'Poppins' },
       { class: 'comic-sans-ms', name: 'Comic Sans MS' },
     ],
-    toolbarHiddenButtons: [['customClasses'], ['strikeThrough']],
+    toolbarHiddenButtons: [
+      [
+        'italic',
+        'strikeThrough',
+        'justifyFull',
+        'indent',
+        'outdent',
+        'heading',
+        'fontName',
+      ],
+      [
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode',
+      ],
+    ],
     customClasses: [
       {
         name: 'quote',
@@ -68,31 +88,72 @@ export class AddBugComponent implements OnInit {
 
   token: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
   userId = this.token._id;
-  ngOnInit() {
-  }
+  ngOnInit() {}
+  technologies = [
+    {
+      name: 'vue',
+      img: '../../../../assets/test_images/vue.png',
+    },
+    {
+      name: 'angular',
+      img: '../../../../assets/test_images/angular.png',
+    },
+    {
+      name: 'c',
+      img: '../../../../assets/test_images/c.png',
+    },
+    {
+      name: 'java',
+      img: '../../../../assets/test_images/java.png',
+    },
+    {
+      name: 'react',
+      img: '../../../../assets/test_images/react.png',
+    },
+    {
+      name: 'js',
+      img: '../../../../assets/test_images/js.png',
+    },
+    {
+      name: 'python',
+      img: '../../../../assets/test_images/python.png',
+    },
+    {
+      name: 'swift',
+      img: '../../../../assets/test_images/swift.png',
+    },
+  ];
+
   data;
   submit(form) {
     let bugTitle = form.bugTitle,
       bugDescription = this.htmlContent,
-      bugCodes = form.codemirror;
-      this.data = {
+      bugCodes = form.codemirror,
+      tagged_tech = form.bugTechnology;
+    this.data = {
       userId: this.userId,
       bugs: [
         {
-          bugTitle: bugTitle,
-          bugDescription: bugDescription,
-          code_snippet: bugCodes,
-          date: new Date().toDateString(),
+          bug_title: bugTitle,
+          bug_description: bugDescription,
+          code_snippet: [
+            {
+              code_block: bugCodes,
+            },
+          ],
+          tagged_technologies: tagged_tech,
         },
       ],
     };
-    
+
     this.bugs.postBug(this.data).subscribe((res) => {
       try {
-      
+        this.notifier.notify("success","Bug posted successfully !")
+        this.htmlContent="",
+        form=""
       } catch (error) {
-        
-      }  
+        alert('an error occured');
+      }
     });
   }
 }

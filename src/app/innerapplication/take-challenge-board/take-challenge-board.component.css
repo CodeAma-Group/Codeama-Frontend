@@ -1,0 +1,82 @@
+.project-container {
+    color: var(--mainBlack);
+    border-radius: 7px;
+    background: var(--contBgLight);
+}
+
+.container-fluid>.heading {
+    position: relative;
+    top: 10px;
+}
+
+#page-title {
+    font-size: 18px;
+}
+
+figure {
+    margin-right: 20px;
+}
+
+figure>figcaption {
+    font-size: .6em;
+    font-weight: 400;
+    padding: 1px 5px;
+    position: absolute;
+    bottom: -23px;
+    border: 1px solid;
+    margin-bottom: 5px;
+    color: white;
+}
+
+figure>div {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+figure>div>img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+
+.codesandboxEditor,
+.sandbox-iframe-input {
+    width: 95%;
+}
+
+.absBeg {
+    background: rgb(190, 30, 46);
+    border-color: #BE1E2D;
+}
+
+.pro {
+    background: rgb(28, 116, 188);
+    border-color: #1C75BC;
+}
+
+.interm {
+    background: rgb(0, 167, 156);
+    border-color: #00A79D;
+}
+
+.beginner {
+    background: rgb(247, 149, 29);
+    border-color: #F7941D;
+}
+
+#cs-iframe {
+    font-size: 13px!important;
+}
+
+input,
+textarea {
+    background: rgba(66, 144, 237, .05);
+    font-weight: 500;
+    color: var(--mainBlack);
+    font-size: .9em;
+    border: 2px solid #66a5f045;
+    border-radius: 8px!important;
+}
