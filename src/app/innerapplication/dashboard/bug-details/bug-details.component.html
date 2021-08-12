@@ -113,9 +113,10 @@
             <div class="form-group "><label for=" ">Provide your answer</label>
                 <angular-editor [(ngModel)]="htmlContent" [config]="config "></angular-editor>
             </div>
-            <button name="answe-btn" (click)="postComment()" type="submit" id="answer btn" class="btn btn-primary ms-auto answer-btn " role="button ">Answer this</button>
+            <button name="answe-btn" (click)="saveComment()" id="answer btn" class="btn btn-primary ms-auto answer-btn" role="button">Answer this</button>
         </form>
     </div>
+    <!-- <button (click)="postComment()">test</button> -->
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
     <p style="color: white ">Please Wait. </p>

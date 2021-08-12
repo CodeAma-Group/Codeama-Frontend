@@ -129,7 +129,9 @@ export class BugDetailsComponent implements OnInit {
   token: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
   userId = this.token._id;
   comment;
-  postComment() {
+  saveComment() {
+    console.warn("reaching in function");
+    
     this.comment = {
       bugId: this.bugId,
       userId: this.userId,
@@ -141,7 +143,7 @@ export class BugDetailsComponent implements OnInit {
         },
       ],
     };
-    this.bugs.postComment(this.comment).subscribe((res) => {
+    this.bug.postComment(this.comment).subscribe((res) => {
       try {
         alert('posted successfuly');
         console.log(res);
