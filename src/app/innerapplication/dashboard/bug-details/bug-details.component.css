@@ -124,7 +124,7 @@
         
         .like-svg,
         .dislike-svg {
-            background-color: #e3edf5;
+            background-color: var(--dimerBlue);
             border-radius: 25%;
             padding: 8px;
             cursor: pointer;
