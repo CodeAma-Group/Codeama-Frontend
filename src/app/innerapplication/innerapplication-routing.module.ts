@@ -31,6 +31,9 @@ import { AuthGuard } from '../authentication/common/auth.guard';
 import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
 import {AmaQuestionComponent} from './ama-question/ama-question.component'
 import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
+import { RunTaskTakersCodesComponent } from './run-task-takers-codes/run-task-takers-codes.component';
+import { TakeChallengeBoardComponent } from './take-challenge-board/take-challenge-board.component';
+
 
 const routes: Routes = [
   {
@@ -177,6 +180,14 @@ const routes: Routes = [
      {
       path:'viewchallengetakers',
       component: ViewChallengeTakersComponent 
+    },
+    {
+      path:'challer-taker-codes',
+      component: RunTaskTakersCodesComponent
+    },
+    {
+      path:'challenge-taker-board',
+      component: TakeChallengeBoardComponent
     }
 
     ]
