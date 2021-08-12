@@ -123,6 +123,7 @@ export class AddBugComponent implements OnInit {
       img: '../../../../assets/test_images/swift.png',
     },
   ];
+
   data;
   submit(form) {
     let bugTitle = form.bugTitle,
@@ -148,6 +149,8 @@ export class AddBugComponent implements OnInit {
     this.bugs.postBug(this.data).subscribe((res) => {
       try {
         this.notifier.notify("success","Bug posted successfully !")
+        this.htmlContent="",
+        form=""
       } catch (error) {
         alert('an error occured');
       }
