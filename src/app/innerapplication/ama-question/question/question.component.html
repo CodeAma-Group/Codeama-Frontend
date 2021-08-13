@@ -2,24 +2,26 @@
   <div class="qst_content">
   <div class="one">
   <div class="user_info">
-    <div class="user_details">
-    <div class="img">
-        <img src={{question.profile}} alt="profile" width="50" height="50">
-    </div>
+    <div [ngClass]="['user_details', userDetailClass()]">
+      <div class="img_details">
+        <div class="img">
+          <img src={{question.profile}} alt="profile" width="50" height="50">
+        </div>
+        <div class="level">
+        <div [ngClass]="[question.badge, 'badge']">
+          <p>{{question.badge}}</p>
+        </div>
+      </div>  
+      </div>
     <div class="user_data">
       <h5 class="user_name">{{question.username}}</h5>
       <p>{{question.userEmail}}</p>
     </div>
   </div>
-    <div [ngClass]="[question.badge, 'badge']">
-      <p>{{question.badge}}</p>
-    </div>  
-  </div>
-
+  </div> 
   <p class="asked_date"><span class="dim">Asked on</span> {{question.asked_date}}</p>
   </div>
 
-    
 
   <div class="two">
     <p class="qst_title">{{question.question_title}}</p>

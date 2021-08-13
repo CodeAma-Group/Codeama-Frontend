@@ -104,6 +104,10 @@ p {
    font-weight: normal!important;
 }
 
+.badge p {
+    font-size: 0.75em;
+}
+
 
 .level .absbeginner {
     background-color: #e1c3cd;
