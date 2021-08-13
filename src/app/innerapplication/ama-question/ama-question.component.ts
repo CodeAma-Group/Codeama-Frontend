@@ -40,7 +40,7 @@ export class AmaQuestionComponent implements OnInit {
  
           {
             profile: "../../.././../assets/images/profile.jpg",
-            badge: "intermediate",
+            badge: "beginner",
             username : "Gasaro Leila",
             userEmail : "abiseth.codeama.net",
             asked_date :"12th,January,2021",
@@ -53,7 +53,7 @@ export class AmaQuestionComponent implements OnInit {
 
               {
                 profile: "../../.././../assets/images/profile.jpg",
-                badge: "intermediate",
+                badge: "absbeginner",
                 username : "Gasaro Leila",
                 userEmail : "abiseth.codeama.net",
                 asked_date :"12th,January,2021",
