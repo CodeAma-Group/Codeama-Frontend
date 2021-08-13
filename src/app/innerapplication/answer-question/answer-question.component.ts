@@ -27,10 +27,10 @@ export class AnswerQuestionComponent implements OnInit {
     this.qtnId = url.parse(location.href, true).query.qtnId
     this.spinner.show()
   
-    this.backendService.getOneQuestions(this.qtnId).subscribe(data => {
-      this.question = data.data[0];
-      this.spinner.hide()
-    })
+    // this.backendService.getOneQuestions(this.qtnId).subscribe(data => {
+    //   this.question = data.data[0];
+    //   this.spinner.hide()
+    // })
   }
 
   htmlContent:any = '';
@@ -178,13 +178,13 @@ export class AnswerQuestionComponent implements OnInit {
       this.spinner.show()
       this.backendService.answerQuestion(newComment).subscribe(
       (datas:any) =>{
-        this.backendService.getOneQuestions(this.qtnId).subscribe(data => {
-          this.question = data.data[0];
-          this.spinner.hide()
-          this.htmlContent = "";
-          e = "";
-          this.notifier.notify("success",datas.message)
-        })
+        // this.backendService.getOneQuestions(this.qtnId).subscribe(data => {
+        //   this.question = data.data[0];
+        //   this.spinner.hide()
+        //   this.htmlContent = "";
+        //   e = "";
+        //   this.notifier.notify("success",datas.message)
+        // })
       },
       (error) => console.log(error)
     );
