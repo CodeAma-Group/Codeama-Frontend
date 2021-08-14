@@ -14,7 +14,7 @@ export class QuestionComponent implements OnInit {
   }
 
   userDetailClass() {
-    switch(this.question.badge) {
+    switch(this.question.userId.Badge) {
        case 'pro':
          this.user_detail_class = 'pro_details'
          break
