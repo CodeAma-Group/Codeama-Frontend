@@ -14,9 +14,8 @@ export class ViewChallengeTakersComponent implements OnInit {
   ngOnInit(): void {
     
    this.challengeTakersService.getChallenge("611267551a1c981ab0766662")
-     .subscribe((data:Data)=> {
-        this.challenge_takers = data.data.participants
-        console.log(this.challenge_takers)
+     .subscribe((res:Data)=> {
+        this.challenge_takers = res.data.participants
      })
 }
 }
