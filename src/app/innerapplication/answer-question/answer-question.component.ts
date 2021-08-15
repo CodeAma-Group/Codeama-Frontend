@@ -119,7 +119,7 @@ export class AnswerQuestionComponent implements OnInit {
         userId: this.question.devDetails._id,
         solver: decoded._id,
         comment: [{
-          text_comment: this.answer.value.answer
+          text_comment: this.htmlContent
         }]
       })
     }

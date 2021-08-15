@@ -1,7 +1,22 @@
 <div class="project-container">
     <div class="heading px-3 pt-3 d-flex">
         <h6 class="my-auto col-lg-9" id="page-title">CodeAma Challenge taker board</h6>
+        <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button>
 
+        <ng-template #mymodal let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                This is example from ItSolutionStuff.com
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+            </div>
+        </ng-template>
         <div class="user-profile ml-auto">
             <div class="user-profile d-flex">
                 <figure class="position-relative d-flex justify-content-center">
@@ -32,6 +47,6 @@
         <iframe src="https://codesandbox.io/embed/eloquent-drake-7c90x?fontsize=12&hidenavigation=1&theme=light&view=preview" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="eloquent-drake-7c90x" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
             sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
     </div>
-    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
-        <p style="color: white ">Please Wait. </p>
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
+        <p style="color: white">Please Wait. </p>
     </ngx-spinner>
