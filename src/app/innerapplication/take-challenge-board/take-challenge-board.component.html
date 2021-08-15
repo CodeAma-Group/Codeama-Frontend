@@ -5,16 +5,16 @@
             <div class="user-profile d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img src="../../../assets/test_images/angular.png" alt="">
+                        <img [src]="'https://codeama-backend.herokuapp.com/'+userData.profilePicture" alt="">
                     </div>
-                    <figcaption class="interm rounded-pill">Intermediate</figcaption>
+                    <figcaption class="{{checkBadge(userData.Badge)}} rounded-pill">{{userData.Badge}}</figcaption>
                 </figure>
                 <div class=" ms-3 mt-2 user-name-and-date">
                     <div class="d-flex">
-                        <a>this is username</a>
+                        <a>{{userData.username}}</a>
                     </div>
                     <div class="caption">
-                        turinumugisha.codeama.net
+                        {{userData.username}}.codeama.net
                     </div>
                 </div>
             </div>
