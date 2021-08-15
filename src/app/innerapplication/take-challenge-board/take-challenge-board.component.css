@@ -88,3 +88,8 @@ textarea {
 .username {
     color: white!important;
 }
+
+.challengeInfo {
+    font-size: .8em!important;
+    height: fit-content !important;
+}

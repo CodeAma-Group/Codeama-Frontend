@@ -1,9 +1,10 @@
 <div class="project-container">
-    <div class="heading px-3 pt-3 d-flex">
-        <h6 class="my-auto col-lg-9" id="page-title">CodeAma Challenge taker board</h6>
-        <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button>
-
-        <ng-template #mymodal let-modal>
+    <div class="heading px-3 pt-2 d-flex">
+        <div class="col-lg-3 d-flex flex-wrap">
+            <h6 class="mb-1" id="page-title">CodeAma Challenge taker board</h6>
+            <button class="btn challengeInfo btn-outline-primary" (click)="open(mymodal)">Challenge guidelines</button>
+        </div>
+        <ng-template #mymodal let-modal class="col-lg-8">
             <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
                 <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -11,13 +12,13 @@
             </button>
             </div>
             <div class="modal-body">
-                This is example from ItSolutionStuff.com
+                This is place is reserved for challenge guidelines
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
             </div>
         </ng-template>
-        <div class="user-profile ml-auto">
+        <div class="user-profile mt-1 ms-auto">
             <div class="user-profile d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
