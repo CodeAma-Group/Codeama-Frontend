@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-take-challenge-board',
@@ -7,12 +8,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./take-challenge-board.component.css'],
 })
 export class TakeChallengeBoardComponent implements OnInit {
-  constructor(private user: UserService, private router: ActivatedRoute) {}
+  constructor(
+    private user: UserService,
+    private router: ActivatedRoute,
+    private spinner: NgxSpinnerService
+  ) {}
   userData: any = [];
   ngOnInit(): void {
+    this.spinner.show();
     this.user.getUserById(this.router.snapshot.params.id).subscribe((res) => {
-      console.log(res);
       this.userData = res;
+      this.userData = this.userData.data;
+      this.spinner.hide();
     });
   }
   checkBadge(badge: string) {
