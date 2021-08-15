@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
-import jwt_decode from 'jwt-decode'
+import jwt_decode from 'jwt-decode';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { NotifierService } from 'angular-notifier';
 const url = require("url")
 
@@ -12,6 +13,60 @@ const url = require("url")
   styleUrls: ['./answer-question.component.scss']
 })
 export class AnswerQuestionComponent implements OnInit {
+  htmlContent = '';
+
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Poppins',
+    defaultFontSize: '2',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'Roboto', name: 'Roboto' },
+      { class: 'Poppins', name: 'Poppins' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' },
+    ],
+    toolbarHiddenButtons: [
+      [
+        'italic',
+        'strikeThrough',
+        'justifyFull',
+        'indent',
+        'outdent',
+        'heading',
+        'fontName',
+      ],
+      [
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'insertHorizontalRule',
+        'removecommentContentat',
+        'toggleEditorMode',
+      ],
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText',
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+  };
   public qtnId
   public questions: any[] = []
   public question
