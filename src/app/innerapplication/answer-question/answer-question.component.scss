@@ -2,57 +2,46 @@ $bg_color: var(--contBgLight);
 .ansQtnDiv {
     background-color: $bg_color;
     color: var(--mainBlack);
-    margin: 10px;
     border-radius: 7px;
     padding: 10px 0;
-
     >* {
         padding-left: 15px;
         padding-right: 15px;
     }
-
-    > h6:first-of-type {
+    >h6:first-of-type {
         font-size: 0.85em;
         margin-top: 10px;
     }
-
     hr {
         opacity: .05;
     }
-
-    >div:first-of-type{
+    >div:first-of-type {
         display: flex;
         justify-content: space-between;
-        & > div {
+        &>div {
             figure {
                 margin-right: 10px;
-
                 >div {
                     width: 40px;
                     height: 40px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-
                     img {
                         width: 40px;
                         height: 40px;
                         border-radius: 50%;
                     }
                 }
-                
             }
             >div {
                 font-size: .9em;
-                
                 p {
                     margin: 0;
-
                     strong {
                         margin-right: 40px;
                         font-weight: 500;
                     }
-
                     span {
                         font-size: .65em;
                         font-weight: 400;
@@ -60,7 +49,6 @@ $bg_color: var(--contBgLight);
                         color: white;
                         display: inline-block !important;
                         padding: 2px 20px !important;
-        
                         &.absBeg {
                             background: rgb(190, 30, 46);
                             border-color: #BE1E2D;
@@ -76,10 +64,9 @@ $bg_color: var(--contBgLight);
                         &.beginner {
                             background: rgb(247, 149, 29);
                             border-color: #F7941D;
-                        }        
+                        }
                     }
                 }
-
                 >span {
                     font-size: .8em;
                 }
@@ -87,7 +74,6 @@ $bg_color: var(--contBgLight);
         }
         >p {
             font-size: .7em;
-
             span {
                 opacity: .4;
             }
@@ -96,7 +82,6 @@ $bg_color: var(--contBgLight);
             }
         }
     }
-
     main {
         position: relative;
         >div:first-of-type {
@@ -113,12 +98,11 @@ $bg_color: var(--contBgLight);
                 width: 80%;
             }
         }
-        >div:nth-of-type(2){
+        >div:nth-of-type(2) {
             position: absolute;
             right: 15px;
             top: -40px;
             font-size: .75em;
-
             div {
                 width: 85px;
                 border-radius: 5px;
@@ -128,8 +112,7 @@ $bg_color: var(--contBgLight);
                 padding: 10px 0;
                 background-color: var(--questBg);
                 margin-bottom: 15px;
-
-                &:nth-of-type(2){
+                &:nth-of-type(2) {
                     background-color: rgba(255, 0, 0, 0.247);
                     border-color: rgba(255, 0, 0, 0.356) !important;
                     color: rgba(255, 1, 1, 0.671);
@@ -137,7 +120,6 @@ $bg_color: var(--contBgLight);
                 span:first-of-type {
                     font-weight: 500;
                 }
-
                 span:last-of-type {
                     opacity: .5;
                 }
@@ -145,7 +127,6 @@ $bg_color: var(--contBgLight);
         }
         >form {
             font-size: .9em !important;
-
             div {
                 position: relative;
                 svg {
@@ -160,37 +141,33 @@ $bg_color: var(--contBgLight);
                     svg {
                         top: 45px;
                     }
-                    textarea{
+                    textarea {
                         padding-left: 45px;
                     }
                 }
             }
-
             textarea {
-                background: rgba(66, 144, 237,.05);
+                background: rgba(66, 144, 237, .05);
                 font-size: .95em;
                 padding-top: 10px;
-                border: 2px solid #66a5f045;    
-                border-radius: 8px!important;  
-                color: var(--mainBlack);         
+                border: 2px solid #66a5f045;
+                border-radius: 8px!important;
+                color: var(--mainBlack);
             }
-
             button {
                 font-size: .9em;
                 padding: 10px;
             }
         }
     }
-
     section {
         font-size: .85em;
         padding: 0;
-
         >* {
             padding-left: 15px;
             padding-right: 15px;
         }
-        >p span{
+        >p span {
             font-size: .9em;
             opacity: .5;
         }
@@ -199,57 +176,47 @@ $bg_color: var(--contBgLight);
             padding-bottom: 0;
             margin: 0;
             background-color: var(--questBg);
-
-                div {
-                    figure {
-                        margin-right: 10px;
-        
-                        >div {
+            div {
+                figure {
+                    margin-right: 10px;
+                    >div {
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        img {
                             width: 40px;
                             height: 40px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-        
-                            img {
-                                width: 40px;
-                                height: 40px;
-                                border-radius: 50%;
-                            }
-                        }
-                        
-                    }
-                    >div {
-                        font-size: 1em;
-                        
-                        p {
-                            margin: 0;
-        
-                            strong {
-                                margin-right: 40px;
-                                font-weight: 500;
-                            }
-        
-                            span {
-                                color: white;
-                                display: inline-block;
-                                padding: 1px 10px;
-                                font-size: 0.7em;
-                            }
-                        }
-        
-                        >span {
-                            font-size: .8em;
+                            border-radius: 50%;
                         }
                     }
                 }
-
+                >div {
+                    font-size: 1em;
+                    p {
+                        margin: 0;
+                        strong {
+                            margin-right: 40px;
+                            font-weight: 500;
+                        }
+                        span {
+                            color: white;
+                            display: inline-block;
+                            padding: 1px 10px;
+                            font-size: 0.7em;
+                        }
+                    }
+                    >span {
+                        font-size: .8em;
+                    }
+                }
+            }
             >p {
                 padding-left: 55px;
                 font-size: 1em;
                 margin: 0;
             }
-
             hr {
                 margin-bottom: 0;
             }

@@ -181,7 +181,7 @@ const routes: Routes = [
       component: ViewChallengeTakersComponent 
     },
     {
-      path:'challenge-taker-board',
+      path:'challenge-taker-board/:id',
       component: TakeChallengeBoardComponent
     }
     ]

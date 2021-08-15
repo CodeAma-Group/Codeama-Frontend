@@ -44,7 +44,7 @@ import { InfoBoxComponent } from './ama-question/question/info-box/info-box.comp
 import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
 import { ChallengeTakerComponent } from './view-challenges/challenge-taker/challenge-taker.component';
 import { TakeChallengeBoardComponent } from './take-challenge-board/take-challenge-board.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -97,6 +97,7 @@ const customNotifierOptions: NotifierOptions = {
     AngularEditorModule,
     MultiSelectAllModule,
     NgxSpinnerModule,
+    NgbModule,
     NotifierModule.withConfig(customNotifierOptions)
   ],
 })

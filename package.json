@@ -23,6 +23,7 @@
     "@angular/router": "~11.1.1",
     "@ctrl/ngx-codemirror": "^5.0.0",
     "@kolkov/angular-editor": "^1.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@syncfusion/ej2-angular-dropdowns": "^19.2.49",
     "angular-notifier": "^9.1.0",
     "bootstrap": "^5.0.0-beta3",
