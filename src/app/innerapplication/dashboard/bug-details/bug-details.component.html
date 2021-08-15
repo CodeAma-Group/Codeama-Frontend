@@ -77,13 +77,20 @@
             </div>
             <div class="commenter" *ngFor="let comment of bug.comments">
                 <div class="user-profile ">
-                    <div class="user-profile d-flex ">
-                        <div class="avatar "><img class="profile-avatar " [src]="'https://codeama-backend.herokuapp.com/'+comment.solverInfo.profilePicture" alt="profile">
-                            <div class="badge"></div>
-                        </div>
+                    <div class="user-profile d-flex">
+                        <figure class="position-relative d-flex justify-content-center">
+                            <div>
+                                <img [src]="'https://codeama-backend.herokuapp.com/'+comment.solverInfo.profilePicture" alt="">
+                            </div>
+                            <figcaption class="{{checkBadge(comment.solverInfo.Badge)}} rounded-pill">{{comment.solverInfo.Badge}}</figcaption>
+                        </figure>
                         <div class=" ms-3 mt-2 user-name-and-date">
-                            <div class="d-flex"><a>{{comment.solverInfo.Username}}</a></div>
-                            <div class="caption">{{comment.solverInfo.username}}.codeama.net </div>
+                            <div class="d-flex">
+                                <a>{{comment.solverInfo.Username}}</a>
+                            </div>
+                            <div class="caption">
+                                {{comment.solverInfo.Username}}.codeama.net
+                            </div>
                         </div>
                     </div>
                 </div>
