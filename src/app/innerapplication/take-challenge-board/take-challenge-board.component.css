@@ -93,3 +93,17 @@ textarea {
     font-size: .8em!important;
     height: fit-content !important;
 }
+
+.rule {
+    font-size: 13px !important;
+    margin-top: 4px!important;
+}
+
+.rules-title {
+    font-size: 15px!important;
+    font-weight: bold;
+}
+
+#ok-button {
+    width: 100px!important;
+}
