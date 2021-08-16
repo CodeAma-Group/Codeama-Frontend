@@ -47,6 +47,11 @@
     border-radius: 5px;
 }
 
+.modal.show .modal-dialog {
+    max-width: 65em !important;
+    transform: none;
+}
+
 :root {
     --pureWhite: #ffffff;
     --bgBlue: #F4F7FB;

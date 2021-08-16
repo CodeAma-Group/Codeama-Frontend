@@ -4,37 +4,36 @@
             <h6 class="mb-1" id="page-title">CodeAma Challenge taker board</h6>
             <button class="btn challengeInfo btn-outline-primary" (click)="open(mymodal)">Challenge guidelines</button>
         </div>
-        <ng-template #mymodal let-modal class="col-lg-8">
+        <ng-template #mymodal let-modal>
             <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">CodeAma challenges guidelines</h4>
-                </button>
+                <h5 class="modal-title" id="modal-basic-title">CodeAma challenges guidelines</h5>
             </div>
-            <div class="modal-body">
-                <h6>To start the challenge you must have the following:</h6>
+            <div class="modal-body mx-5">
+                <h6 class="rules-title">To start the challenge you must have the following:</h6>
                 <ol>
-                    <li>You must have a working account in codesandbox</li>
+                    <li class="rule">You must have a working account in codesandbox</li>
                 </ol>
-                <h6>The guidelines are here:</h6>
+                <h6 class="rules-title">The guidelines are here:</h6>
                 <ol>
-                    <li>Click on Edit sandbox button in the sandbox ui provided</li>
-                    <li>The link will direct you into codesandbox </li>
-                    <li>After that, in codesandbox at the upper right hand side click Fork to make this project yours</li>
-                    <li>After forking the project click share button to share it to us</li>
-                    <li>Choose embed</li>
-                    <li>Copy the embed code provided in the appearing modal at the left hand side</li>
-                    <li>Paste that embed codes in the input box provided to your on this page</li>
-                    <li>Click on submit button to submit your project embed to us</li>
+                    <li class="rule">Click on Edit sandbox button in the sandbox ui provided</li>
+                    <li class="rule">The link will direct you into codesandbox </li>
+                    <li class="rule">After that, in codesandbox at the upper right hand side click Fork to make this project yours</li>
+                    <li class="rule">After forking the project click share button to share it to us</li>
+                    <li class="rule">Choose embed</li>
+                    <li class="rule">Copy the embed code provided in the appearing modal at the left hand side</li>
+                    <li class="rule">Paste that embed codes in the input box provided to your on this page</li>
+                    <li class="rule">Click on submit button to submit your project embed to us</li>
                 </ol>
-                <h6>Where to code from</h6>
+                <h6 class="rules-title">Where to code from</h6>
                 <ol>
-                    <li>You must write all your codes in the sandbox you've forked at codesandbox site</li>
-                    <li>To see your saved changes on our site, refresh this page</li>
-                    <li>Keep in mind that the changes you will make in your codes at our page will not be saved (everyting should be done in codesandbox)</li>
+                    <li class="rule">You must write all your codes in the sandbox you've forked at codesandbox site</li>
+                    <li class="rule">To see your saved changes on our site, refresh this page</li>
+                    <li class="rule">Keep in mind that the changes you will make in your codes at our page will not be saved (everyting should be done in codesandbox)</li>
                 </ol>
                 <p class="text-center">We wish you good luck while you develop your programming skills through our coding challenges</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                <button type="button" class="btn btn-outline-primary" id="ok-button" (click)="modal.close('Save click')">Ok</button>
             </div>
         </ng-template>
         <div class="user-profile mt-1 ms-auto">
