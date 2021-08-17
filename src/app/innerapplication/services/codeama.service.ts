@@ -32,8 +32,8 @@ export class CodeamaService {
 
   baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;
 
-  patch(followerId:string ){
-    return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/follow/${followerId}`, followerId);
-  }
+  // patch(followerId:string ){
+  //   return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/follow/${followerId}`, followerId);
+  // }
 
 }
