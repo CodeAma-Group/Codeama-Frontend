@@ -1,78 +1,78 @@
 * {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .bg-whiteblue {
-    background-color: #F8F9FA;
+  background-color: #f8f9fa;
 }
 
 .pr {
-    display: flex;
-    justify-content: space-around;
-    width: 75%;
+  display: flex;
+  justify-content: space-around;
+  width: 75%;
 }
 
 .next {
-    width: 3px;
-    height: 2em;
-    background: dodgerblue;
-    align-self: center;
+  width: 3px;
+  height: 2em;
+  background: dodgerblue;
+  align-self: center;
 }
 
 .symbols {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
 }
 
 .aside-content-first {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-.aside-content>div:not(.aside-content-first) {
-    font-size: 0.8em;
-    color: #1E253D;
-    /* opacity: .1; */
+.aside-content > div:not(.aside-content-first) {
+  font-size: 0.8em;
+  color: #1e253d;
+  /* opacity: .1; */
 }
 
 .apply {
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
-.apply>p {
-    font-size: 0.8em;
-    color: #1E253D;
-    /* opacity: .1; */
+.apply > p {
+  font-size: 0.8em;
+  color: #1e253d;
+  /* opacity: .1; */
 }
 
-.apply>button {
-    font-size: 0.8em;
+.apply > button {
+  font-size: 0.8em;
 }
 
 .comment {
-    display: flex;
-    background-color: #EBF1FA;
-    width: 60%;
-    justify-content: space-around;
-    border-radius: 8px;
-    height: 2.5em;
+  display: flex;
+  background-color: #ebf1fa;
+  width: 60%;
+  justify-content: space-around;
+  border-radius: 8px;
+  height: 2.5em;
 }
 
 .add-icon {
-    width: 1em;
-    height: 1em;
-    align-self: center;
+  width: 1em;
+  height: 1em;
+  align-self: center;
 }
 
 textarea {
-    border: none;
-    background: inherit;
-    width: 90%;
-    height: 50%;
-    align-self: center;
+  border: none;
+  background: inherit;
+  width: 90%;
+  height: 50%;
+  align-self: center;
 }

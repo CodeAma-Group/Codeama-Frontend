@@ -13,7 +13,7 @@ export class ViewChallengeTakersComponent implements OnInit {
 
   ngOnInit(): void {
     
-   this.challengeTakersService.getChallenge("611267551a1c981ab0766662")
+   this.challengeTakersService.getChallenge("613f227d482ca6364cc35760")
      .subscribe((res:Data)=> {
         this.challenge_takers = res.data.participants
      })

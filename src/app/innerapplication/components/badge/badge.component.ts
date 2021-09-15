@@ -12,6 +12,9 @@ export class BadgeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() prize
+  @Input() prizeIndex
   @Input() background:string; 
   @Input() outline:string;
+
 }

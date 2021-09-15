@@ -22,7 +22,9 @@ export interface Data {
   description: string,
   prizes:[],
   comments:[],
-  participants:[]
+  participants:[],
+  createdAt: string,
+  updatedAt: string
     },
     message: String
 }
