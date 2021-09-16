@@ -13,8 +13,6 @@ export class BadgeComponent implements OnInit {
   }
 
   @Input() prize
-  @Input() prizeIndex
-  @Input() background:string; 
-  @Input() outline:string;
+  @Input() prizeIndex:number
 
 }

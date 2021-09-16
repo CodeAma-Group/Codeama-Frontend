@@ -18,7 +18,7 @@
         <div class="right" style="width: 48%">
             <h4 class="mt-4">challenge tips</h4>
             <div class="d-flex justify-space-evenly w-full">
-                <app-badge *ngFor="let prize of challenge.prizes" [prize]="prize" [indexPrize]="i"></app-badge>
+                <app-badge *ngFor="let prize of challenge.prizes; let i= index" [prize]="prize" [prizeIndex]="i"></app-badge>
                 <!-- <app-badge [outline]="warning" [background]="warn"></app-badge>
                 <app-badge [outline]="danger" [background]="dan"></app-badge>
                 <app-badge [outline]="success" [background]="succ"></app-badge> -->
@@ -32,8 +32,8 @@
                         </div>
 
                         <div class="aside-content">
-                            <div class="aside-content-first">post challenge</div>
-                            <div>12th febuary 2021</div>
+                            <div class="aside-content-first">Start Date</div>
+                            <div>{{challenge.createdAt | date: 'longDate'}}</div>
                         </div>
                     </div>
                     <div class="pr">
@@ -43,18 +43,8 @@
                         </div>
 
                         <div class="aside-content">
-                            <div class="aside-content-first">post challenge</div>
-                            <div>12th febuary 2021</div>
-                        </div>
-                    </div>
-                    <div class="pr">
-                        <div class="symbols">
-                            <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
-                        </div>
-
-                        <div class="aside-content">
-                            <div class="aside-content-first">post challenge</div>
-                            <div>12th febuary 2021</div>
+                            <div class="aside-content-first">Application End Date</div>
+                            <div>{{challenge.applicationEndDate | date: 'longDate'}}</div>
                         </div>
                     </div>
                 </div>
@@ -66,8 +56,8 @@
                         </div>
 
                         <div class="aside-content">
-                            <div class="aside-content-first">post challenge</div>
-                            <div>12th febuary 2021</div>
+                            <div class="aside-content-first">Submission End Date</div>
+                            <div>{{challenge.endDate | date: 'longDate'}}</div>
                         </div>
                     </div>
                     <div class="pr">
@@ -77,18 +67,8 @@
                         </div>
 
                         <div class="aside-content">
-                            <div class="aside-content-first">post challenge</div>
-                            <div>12th febuary 2021</div>
-                        </div>
-                    </div>
-                    <div class="pr">
-                        <div class="symbols">
-                            <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
-                        </div>
-
-                        <div class="aside-content">
-                            <div class="aside-content-first">post challenge</div>
-                            <div>12th febuary 2021</div>
+                            <div class="aside-content-first">Announce Winners Date</div>
+                            <div>{{challenge.announceWinnersDate | date: 'longDate'}}</div>
                         </div>
                     </div>
                 </div>
