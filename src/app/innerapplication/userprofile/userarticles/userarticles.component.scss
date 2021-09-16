@@ -1,6 +1,7 @@
 .articlesDetails {
     color: var(--mainBlack) !important;
-    border: 1px solid var(--mainBlack);
+    border-bottom: 0.1em solid var(--dimerBlue);
+
     >div {
         display: flex;
         align-items: center;

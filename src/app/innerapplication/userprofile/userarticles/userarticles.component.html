@@ -1,5 +1,5 @@
 
-<div class="articlesDetails" *ngFor="let article of articles">
+<div class="articlesDetails" *ngFor="let article of articles" [hidden]="article.devDetails._id != _id">
     <div *ngIf="article.devDetails._id == _id">
         <div>
             <div class="article_details">
