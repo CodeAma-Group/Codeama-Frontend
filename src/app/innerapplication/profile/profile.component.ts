@@ -3,7 +3,8 @@ import { UserService } from '../services/user.service'
 import { Router, ActivatedRoute} from '@angular/router';
 import { AppsettingsService } from '../../appsettings.service'
 import { AuthService } from '../../authentication/_authServices/auth.service'
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-profile',
@@ -11,8 +12,8 @@ import { AuthService } from '../../authentication/_authServices/auth.service'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private _settings: AppsettingsService, private _userService: UserService, private router: Router) { }
+    
+    constructor(private spinner:NgxSpinnerService, private notifier: NotifierService, private activatedRoute: ActivatedRoute, private authService: AuthService, private _settings: AppsettingsService, private _userService: UserService, private router: Router) { }
   
   editBio: boolean = false;
   editStack: boolean = true;
@@ -40,6 +41,7 @@ export class ProfileComponent implements OnInit {
   _id: string = ''
 
   ngOnInit(): void {
+    this.spinner.show()
 
     this._id = this.activatedRoute.snapshot.params.username;
    
@@ -63,6 +65,8 @@ export class ProfileComponent implements OnInit {
       this.coverPicture = this.userData.data.coverPicture;
       this.faceRecognitionPicture = this.userData.data.faceRecognitionPicture;
       this.profilePicture = this.userData.data.profilePicture
+      this.spinner.hide()
+
     },
     err => {
       alert("We had trouble loading profile data.");
@@ -112,17 +116,15 @@ export class ProfileComponent implements OnInit {
 
         var userData:any = new FormData();
         
-        userData.append("userId", `${this._id}`)
-        userData.append("Badge", `${this.Badge}`)
-        userData.append("Bio", `${this.Bio}`)
-        userData.append("Location", `${this.Location}`)
-        userData.append("description", `${this.description}`)
-        userData.append("connections", this.connections)
-        userData.append("Skills", "react,angular,vue")
+        // userData.append("userId", `${this._id}`)
+        // userData.append("Badge", `${this.Badge}`)
+        // userData.append("Bio", `${this.Bio}`)
+        // userData.append("Location", `${this.Location}`)
+        // userData.append("description", `${this.description}`)
+        // userData.append("connections", this.connections)
+        // userData.append("Skills", "react,angular,vue")
         // userData.append("coverPicture", file.target.files[0])
         userData.append("profilePicture", newProfile)
-        
-        
 
         this.updateProfileToDb(userData);
       }
@@ -140,15 +142,15 @@ export class ProfileComponent implements OnInit {
 
         var userData:any = new FormData();
         
-        userData.append("userId", `${this._id}`)
-        userData.append("Badge", `${this.Badge}`)
-        userData.append("Bio", `${this.Bio}`)
-        userData.append("Location", `${this.Location}`)
-        userData.append("description", `${this.description}`)
-        userData.append("connections", this.connections)
-        userData.append("Skills", "react,angular,vue")
-        // userData.append("coverPicture", file.target.files[0])
-        userData.append("profilePicture", newProfile)
+        // userData.append("userId", `${this._id}`)
+        // userData.append("Badge", `${this.Badge}`)
+        // userData.append("Bio", `${this.Bio}`)
+        // userData.append("Location", `${this.Location}`)
+        // userData.append("description", `${this.description}`)
+        // userData.append("connections", this.connections)
+        // userData.append("Skills", "react,angular,vue")
+        userData.append("coverPicture", newProfile)
+        // userData.append("profilePicture", newProfile)
         
         
 
@@ -161,14 +163,23 @@ export class ProfileComponent implements OnInit {
     console.log(data)
     this._userService.updateProfile(data).subscribe(
 			res => {
-				console.warn(res);
-        
-			},
+        this.notifier.notify("success","Profile picture updated successfully!")        
+      },
 			err => {
-        console.log(err)
-			}
+        this.notifier.notify("error","Profile failed to update. Try again!")        
+      }
   )}
 
+  getUsernameToChangeTo(value: string) {
+    console.warn(value)
+  }
 
+  getCurrentPassword(value: string) {
+    console.log(value)
+  }
+
+  getNewPassword(value: string) {
+    console.log(value)
+  }
 
 }
