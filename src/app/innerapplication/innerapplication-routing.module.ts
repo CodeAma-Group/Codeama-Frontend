@@ -139,27 +139,27 @@ const routes: Routes = [
           
           {
             path: '',
-            redirectTo: 'articles/:username',
+            redirectTo: 'articles',
             pathMatch: 'full',
           },
           {
-            path: 'articles/:username',
+            path: 'articles',
             component: UserarticlesComponent
           },
           {
-            path: 'answered/:username',
+            path: 'answered',
             component: UseransweredComponent
           },
           {
-            path: 'asked/:username',
+            path: 'asked',
             component: UseraskedComponent
           },
           {
-            path: 'bugsolved/:username',
+            path: 'bugsolved',
             component: UserbugsolvedComponent
           },
           {
-            path: 'resources/:username',
+            path: 'resources',
             component: UserresourcesComponent
           }
 

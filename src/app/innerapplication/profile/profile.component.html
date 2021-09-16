@@ -9,16 +9,16 @@
                 <p>Change usernames</p>
                 <div class="form_group">
                     <label for="usernames">Usernames</label>
-                    <input type="text" name="Username" id="usernames" :value="{{Username}}">
+                    <input type="text" name="Username" id="usernames" #name (input)="getUsernameToChangeTo(name.value)" :value="{{Username}}">
                 </div>
                 <p>Change passwords</p>
                 <div class="form_group">
                     <label for="current_password">Current password</label>
-                    <input type="password" name="Password" id="current_password" placeholder="Enter current password">
+                    <input type="password" name="Password" #curr_pass (input)="getCurrentPassword(curr_pass.value)" id="current_password" placeholder="Enter current password">
                 </div>
                 <div class="form_group">
                     <label for="new_password">New password</label>
-                    <input type="password" name="Password" id="new_password" placeholder="Enter new password">
+                    <input type="password" name="Password" #new_pass (input)="getNewPassword(new_pass.value)" id="new_password" placeholder="Enter new password">
                 </div>
                 <p>Enable face recognition</p>
                 <div class="form_group edit_buttons">
@@ -27,11 +27,19 @@
                 </div>
                 <div class="form_group submit_buttons">
                     <button (click)="accountSettings()">Cancel changes</button>
-                    <button type="submit" id="submit">Save changes</button>
+                    <button (click)="updateProfileFields()" type="submit" id="submit">
+                        <span *ngIf="!hasSubmitted">Save changes</span> 
+                        <span *ngIf="hasSubmitted" class="spinner-border spinner-border-sm mr-1"></span>
+                    </button>
                 </div>
             </form>
         </div>
     </div>
+
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
+        <p style="color: white ">Please Wait. </p>
+    </ngx-spinner>
+    <notifier-container></notifier-container>
 
     <div *ngIf="editingMinorAccountSettings" class="edit_profile_details">
         <div class="edit_details_content">
@@ -42,23 +50,23 @@
                 </div>
                 <div class="form_group">
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description" :value="{{description}}" placeholder="Enter description">
+                    <input type="text" name="description" #description id="description" :value="{{description}}" placeholder="Enter description">
                 </div>
                 <div class="form_group">
                     <label for="Bio">Bio settings</label>
-                    <input type="text" name="Bio" id="bio" :value="{{Bio}}" placeholder="Enter bio">
+                    <input type="text" name="Bio" id="bio" #bio :value="{{Bio}}" placeholder="Enter bio">
                 </div>
                 <div class="form_group">
                     <label for="github">Github link</label>
-                    <input type="text" name="github" id="github" :value="{{connections.github}}" placeholder="Enter github link">
+                    <input type="text" name="github" id="github" #gitub :value="{{connections.github}}" placeholder="Enter github link">
                 </div>
                 <div class="form_group">
                     <label for="twitter">Linkedin link</label>
-                    <input type="text" name="twitter" id="twitter" :value="{{connections.twitter}}" placeholder="Enter linkedIn link">
+                    <input type="text" name="twitter" id="twitter" #twitter :value="{{connections.twitter}}" placeholder="Enter linkedIn link">
                 </div>
                 <div class="form_group">
                     <label for="facebook">Github link</label>
-                    <input type="text" name="facebook" id="facebook" :value="{{connections.facebook}}" placeholder="Enter portfolio link">
+                    <input type="text" name="facebook" id="facebook" #facebook :value="{{connections.facebook}}" placeholder="Enter portfolio link">
                 </div>
     
                 <div class="form_group submit_buttons">
@@ -72,11 +80,11 @@
     
     <div class="cover_banner">
         <div id="profilepic">
-            <input class="profilepic" name="profilePicture" type="file" accept="image/*" (change) = "updateProfle($event)">
+            <input class="profilepic" name="profilePicture" type="file" accept="image/*" (input)="updateProfle($event)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M20 3c.552 0 1 .448 1 1v1.757l-2 2V5H5v8.1l4-4 4.328 4.329-1.415 1.413L9 11.93l-4 3.999V19h10.533l.708.001 1.329-1.33L18.9 19h.1v-2.758l2-2V20c0 .552-.448 1-1 1H4c-.55 0-1-.45-1-1V4c0-.552.448-1 1-1h16zm1.778 4.808l1.414 1.414L15.414 17l-1.416-.002.002-1.412 7.778-7.778zM15.5 7c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5S14 9.328 14 8.5 14.672 7 15.5 7z"/></svg>
         </div>
         <div id="coverpic">
-            <input class="coverpic" name="coverPicture" type="file">
+            <input class="coverpic" name="coverPicture" type="file" accept="image/*" (input)="updateCoverPic($event)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M20 3c.552 0 1 .448 1 1v1.757l-2 2V5H5v8.1l4-4 4.328 4.329-1.415 1.413L9 11.93l-4 3.999V19h10.533l.708.001 1.329-1.33L18.9 19h.1v-2.758l2-2V20c0 .552-.448 1-1 1H4c-.55 0-1-.45-1-1V4c0-.552.448-1 1-1h16zm1.778 4.808l1.414 1.414L15.414 17l-1.416-.002.002-1.412 7.778-7.778zM15.5 7c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5S14 9.328 14 8.5 14.672 7 15.5 7z"/></svg>
         </div>
         <button (click)="accountSettings()">Edit account settings</button>
@@ -217,11 +225,11 @@
             <div class="activity_container">
                 <div class="menu_links">
                     <ul>
-                        <li><a routerLinkActive = "active" [routerLink]="['articles', _id]">Articles</a></li>
-                        <li><a routerLinkActive = "active" [routerLink]="['bugsolved', _id]">Bugs solved</a></li>
-                        <li><a routerLinkActive = "active" [routerLink]="['asked', _id]">Asked</a></li>
-                        <li><a routerLinkActive = "active" [routerLink]="['answered', _id]">Answered</a></li>
-                        <li><a routerLinkActive = "active" [routerLink]="['resources', _id]">Resources</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['articles']">Articles</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['bugsolved']">Bugs solved</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['asked']">Asked</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['answered']">Answered</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['resources']">Resources</a></li>
                     </ul>
                 </div>
                 <div class="outlet_menu_content">
@@ -230,7 +238,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="4JrmzgkT"></script>
-
