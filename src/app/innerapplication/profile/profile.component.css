@@ -189,11 +189,11 @@ button[type= submit] {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding-top: 0.4em;
 }
 
 .cover_photo>img {
-    width: 99%;
+    width: 99% !important;
+    max-width: 99% !important;
     height: auto;
     margin-top: 0.2em;
     border-top-left-radius: 0.3em;

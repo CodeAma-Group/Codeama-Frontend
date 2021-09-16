@@ -151,28 +151,39 @@ export class ProfileComponent implements OnInit {
         // userData.append("Skills", "react,angular,vue")
         userData.append("coverPicture", newProfile)
         // userData.append("profilePicture", newProfile)
-        
-        
+        this.error_msg = 'Profile failed to update. Try again!'
+        this.success_msg = 'Profile picture updated successfully!' 
 
         this.updateProfileToDb(userData);
       }
     }
   }
 
+  error_msg: string = '';
+  success_msg: string = '';
+
   updateProfileToDb(data) {
-    console.log(data)
     this._userService.updateProfile(data).subscribe(
 			res => {
-        this.notifier.notify("success","Profile picture updated successfully!")        
+        this.notifier.notify("success", this.success_msg) 
+        this.hasSubmitted = false;       
+        this.editingAccountSettings = false;
       },
 			err => {
-        this.notifier.notify("error","Profile failed to update. Try again!")        
+        console.error(err)
+        this.hasSubmitted = false;       
+        this.notifier.notify("error", this.error_msg);        
       }
   )}
 
-  getUsernameToChangeTo(value: string) {
-    console.warn(value)
-  }
+  // newusername: string = '';
+  newpassword: string = '';
+  oldpassword: string = '';
+  hasSubmitted: boolean = false;
+
+  // getUsernameToChangeTo(value: string) {
+  //   this.newusername = value;
+  // }
 
   getCurrentPassword(value: string) {
     console.log(value)
@@ -180,6 +191,20 @@ export class ProfileComponent implements OnInit {
 
   getNewPassword(value: string) {
     console.log(value)
+  }
+
+  updateProfileFields() {
+    this.hasSubmitted = true;
+    // if (this.newusername != '') {
+      
+    //   var userData:any = new FormData();
+        
+    //   userData.append("Username", this.newusername);
+    //   this.error_msg = 'Username failed to update. Try again!'
+    //   this.success_msg = 'Username updated successfully!' 
+    //   this.updateProfileToDb(userData);
+    // }
+
   }
 
 }
