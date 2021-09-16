@@ -4,6 +4,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { AppsettingsService } from '../../../appsettings.service'
 import { AuthService } from '../../../authentication/_authServices/auth.service'
 import { InnerapplicationService } from '../../innerapplication.service';
+import jwt_decode from 'jwt-decode'
 
 @Component({
   selector: 'app-userarticles',
@@ -19,8 +20,13 @@ export class UserarticlesComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this._id = this.activatedRoute.snapshot.paramMap.get('username');
-    console.error(this._id)
+    let token:any = localStorage.getItem('codeama_auth_token');
+		let user:any = jwt_decode(token);
+
+		this._id = user._id;
+
+    // this._id = this.activatedRoute.snapshot.paramMap.get('user');
+    // console.error(this._id)
    
     this._settings.settings();
 
