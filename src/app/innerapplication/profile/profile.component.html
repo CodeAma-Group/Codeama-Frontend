@@ -7,7 +7,7 @@
                     Just change the account details that you want to edit.
                 </div>
                 <p>Change usernames</p>
-                <div class="form_group">change
+                <div class="form_group">
                     <label for="usernames">Usernames</label>
                     <input type="text" name="Username" id="usernames" #name (input)="getUsernameToChangeTo(name.value)" :value="{{Username}}">
                 </div>
@@ -27,12 +27,15 @@
                 </div>
                 <div class="form_group submit_buttons">
                     <button (click)="accountSettings()">Cancel changes</button>
-                    <button type="submit" id="submit">Save changes</button>
+                    <button (click)="updateProfileFields()" type="submit" id="submit">
+                        <span *ngIf="!hasSubmitted">Save changes</span> 
+                        <span *ngIf="hasSubmitted" class="spinner-border spinner-border-sm mr-1"></span>
+                    </button>
                 </div>
             </form>
         </div>
     </div>
-    
+
     <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
         <p style="color: white ">Please Wait. </p>
     </ngx-spinner>
@@ -47,23 +50,23 @@
                 </div>
                 <div class="form_group">
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description" :value="{{description}}" placeholder="Enter description">
+                    <input type="text" name="description" #description id="description" :value="{{description}}" placeholder="Enter description">
                 </div>
                 <div class="form_group">
                     <label for="Bio">Bio settings</label>
-                    <input type="text" name="Bio" id="bio" :value="{{Bio}}" placeholder="Enter bio">
+                    <input type="text" name="Bio" id="bio" #bio :value="{{Bio}}" placeholder="Enter bio">
                 </div>
                 <div class="form_group">
                     <label for="github">Github link</label>
-                    <input type="text" name="github" id="github" :value="{{connections.github}}" placeholder="Enter github link">
+                    <input type="text" name="github" id="github" #gitub :value="{{connections.github}}" placeholder="Enter github link">
                 </div>
                 <div class="form_group">
                     <label for="twitter">Linkedin link</label>
-                    <input type="text" name="twitter" id="twitter" :value="{{connections.twitter}}" placeholder="Enter linkedIn link">
+                    <input type="text" name="twitter" id="twitter" #twitter :value="{{connections.twitter}}" placeholder="Enter linkedIn link">
                 </div>
                 <div class="form_group">
                     <label for="facebook">Github link</label>
-                    <input type="text" name="facebook" id="facebook" :value="{{connections.facebook}}" placeholder="Enter portfolio link">
+                    <input type="text" name="facebook" id="facebook" #facebook :value="{{connections.facebook}}" placeholder="Enter portfolio link">
                 </div>
     
                 <div class="form_group submit_buttons">
