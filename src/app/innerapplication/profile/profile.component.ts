@@ -102,11 +102,13 @@ export class ProfileComponent implements OnInit {
   imageUrl: any;
 
   updateProfle(file) {
+    let newProfile: any = file.target.files[0]
     if(file.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(file.target.files[0]);
       reader.onload = async (file) => {
         this.imageUrl = await file.target.result;
+        this.profilePicture = this.imageUrl;
 
         var userData:any = new FormData();
         
@@ -117,8 +119,36 @@ export class ProfileComponent implements OnInit {
         userData.append("description", `${this.description}`)
         userData.append("connections", this.connections)
         userData.append("Skills", "react,angular,vue")
-        // userData.append("coverPicture", `${this.imageUrl}`)
-        // userData.append("profilePicture", `${this.imageUrl}`)
+        // userData.append("coverPicture", file.target.files[0])
+        userData.append("profilePicture", newProfile)
+        
+        
+
+        this.updateProfileToDb(userData);
+      }
+    }
+  }
+
+  updateCoverPic(file) {
+    let newProfile: any = file.target.files[0]
+    if(file.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file.target.files[0]);
+      reader.onload = async (file) => {
+        this.imageUrl = await file.target.result;
+        this.coverPicture = this.imageUrl;
+
+        var userData:any = new FormData();
+        
+        userData.append("userId", `${this._id}`)
+        userData.append("Badge", `${this.Badge}`)
+        userData.append("Bio", `${this.Bio}`)
+        userData.append("Location", `${this.Location}`)
+        userData.append("description", `${this.description}`)
+        userData.append("connections", this.connections)
+        userData.append("Skills", "react,angular,vue")
+        // userData.append("coverPicture", file.target.files[0])
+        userData.append("profilePicture", newProfile)
         
         
 
