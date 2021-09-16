@@ -1,6 +1,6 @@
 
-<div class="articlesDetails" *ngFor="let article of articles">
-    <div>
+<div class="articlesDetails" *ngFor="let article of articles" [hidden]="article.devDetails._id != _id">
+    <div *ngIf="article.devDetails._id == _id">
         <div>
             <div class="article_details">
                 <h5><strong>{{article.articleDetails.article}}</strong></h5>
@@ -39,8 +39,7 @@
             </div>
         </div>
         <div style="width: 35%; text-align: center;">
-            <img src="{{article.articleDetails.pic}}" alt="article image" style="max-width: 90%; height: auto; border-radius: 5px;">
+            <img src="{{article.articleDetails.article_img}}" alt="article image" style="max-width: 90%; height: auto; border-radius: 5px;">
         </div>
     </div>
-    <hr>
 </div>
