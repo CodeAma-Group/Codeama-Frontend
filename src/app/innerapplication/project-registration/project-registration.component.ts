@@ -78,7 +78,7 @@ export class ProjectRegistrationComponent implements OnInit {
       for (let file of files) {
         let reader = new FileReader();
         reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
+          this.thumbnails.push(e.target.result);
         };
         reader.readAsDataURL(file);
       }
@@ -142,7 +142,7 @@ export class ProjectRegistrationComponent implements OnInit {
     // var team: any = this.team;
     // var thumbnails: any = this.thumbnails;
     // var technologies: Array<any> = this.techs;
-    let ProjectData: FormData = new FormData();
+    const ProjectData: any = new FormData();
     ProjectData.append('title', this.newProjectForm.value.projectName);
     ProjectData.append(
       'description',
@@ -174,7 +174,7 @@ export class ProjectRegistrationComponent implements OnInit {
     // };
 
     this.project.saveProject(ProjectData).subscribe((res) => {
-      // this.notifier.notify("success","New Project posted successfully!")
+      this.notifier.notify("success","New Project posted successfully!")
       alert(res);
       console.log("result is here",res);      
     });

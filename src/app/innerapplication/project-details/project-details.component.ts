@@ -16,14 +16,14 @@ export class ProjectDetailsComponent implements OnInit {
   projectImages = [];
   ProjectImageOnStage: string = '';
   projectData: any;
-  url="https://codeama-backend.herokuapp.com/"
+
   ngOnInit(): void {
     this.spinner.show()
     this.project.getProject(this.router.snapshot.params.id).subscribe((res) => {
       this.projectData = res;
       this.projectData = this.projectData.data;
       for (let i = 0; i < this.projectData.length; i++) {
-        this.ProjectImageOnStage=this.url+this.projectData[i].demo
+        this.ProjectImageOnStage=this.projectData[i].demo
       }
       this.spinner.hide()
     });

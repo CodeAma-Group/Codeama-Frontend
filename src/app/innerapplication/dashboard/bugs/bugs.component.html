@@ -13,7 +13,7 @@
                 </a>
                 <span class="ms-2 u-caption">@{{bug.userInfo.Username.trim()}}</span>
             </div>
-            <p id="posting-date">{{bug.date| date:"longDate"}}</p>
+            <p id="posting-date">{{bug.bug.date| date:"longDate"}}</p>
         </div>
     </div>
     <div class="question-info d-flex mt-2 px-5">
@@ -56,7 +56,7 @@
           transform="translate(0) " fill="#212f3d " />
       </svg>
             <p class="commentsNumber ">
-                {{bug.comments.length}}
+                {{bug.bug.comments.length}}
             </p>
         </div>
     </div>
