@@ -7,18 +7,18 @@
                     Just change the account details that you want to edit.
                 </div>
                 <p>Change usernames</p>
-                <div class="form_group">
+                <div class="form_group">change
                     <label for="usernames">Usernames</label>
-                    <input type="text" name="Username" id="usernames" :value="{{Username}}">
+                    <input type="text" name="Username" id="usernames" #name (input)="getUsernameToChangeTo(name.value)" :value="{{Username}}">
                 </div>
                 <p>Change passwords</p>
                 <div class="form_group">
                     <label for="current_password">Current password</label>
-                    <input type="password" name="Password" id="current_password" placeholder="Enter current password">
+                    <input type="password" name="Password" #curr_pass (input)="getCurrentPassword(curr_pass.value)" id="current_password" placeholder="Enter current password">
                 </div>
                 <div class="form_group">
                     <label for="new_password">New password</label>
-                    <input type="password" name="Password" id="new_password" placeholder="Enter new password">
+                    <input type="password" name="Password" #new_pass (input)="getNewPassword(new_pass.value)" id="new_password" placeholder="Enter new password">
                 </div>
                 <p>Enable face recognition</p>
                 <div class="form_group edit_buttons">
@@ -32,6 +32,11 @@
             </form>
         </div>
     </div>
+    
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
+        <p style="color: white ">Please Wait. </p>
+    </ngx-spinner>
+    <notifier-container></notifier-container>
 
     <div *ngIf="editingMinorAccountSettings" class="edit_profile_details">
         <div class="edit_details_content">
@@ -230,7 +235,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="4JrmzgkT"></script>
-
