@@ -217,11 +217,11 @@
             <div class="activity_container">
                 <div class="menu_links">
                     <ul>
-                        <li><a routerLinkActive = "active" [routerLink] = "['articles']">Articles</a></li>
-                        <li><a routerLinkActive = "active" [routerLink] = "['bugsolved']">Bugs solved</a></li>
-                        <li><a routerLinkActive = "active" [routerLink] = "['asked']">Asked</a></li>
-                        <li><a routerLinkActive = "active" [routerLink] = "['answered']">Answered</a></li>
-                        <li><a routerLinkActive = "active" [routerLink] = "['resources']">Resources</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['articles', _id]">Articles</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['bugsolved', _id]">Bugs solved</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['asked', _id]">Asked</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['answered', _id]">Answered</a></li>
+                        <li><a routerLinkActive = "active" [routerLink]="['resources', _id]">Resources</a></li>
                     </ul>
                 </div>
                 <div class="outlet_menu_content">

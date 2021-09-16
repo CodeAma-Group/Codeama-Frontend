@@ -19,7 +19,8 @@ export class UserarticlesComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this._id = this.activatedRoute.snapshot.params.username;
+    this._id = this.activatedRoute.snapshot.paramMap.get('username');
+    console.error(this._id)
    
     this._settings.settings();
 

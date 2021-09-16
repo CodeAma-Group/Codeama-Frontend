@@ -23,7 +23,7 @@ export class InnerapplicationService {
         for(let i=0; i<data.length; i++){
           var singleArt: any = {
             devDetails: {
-              pic: this.base + data[i].ownerId?.profilePicture,
+              pic: data[i].ownerId?.profilePicture,
               username: data[i].ownerId?.Username,
               names: data[i].ownerId?.Username,
               badge: data[i].ownerId?.Badge,
@@ -34,7 +34,7 @@ export class InnerapplicationService {
               desc: data[i].description,
               likes: data[i].likes,
               date_updated: data[i].updatedAt,
-              article_img: this.base + data[i].thumbnailUrl,
+              article_img: data[i].thumbnailUrl,
               comments: data[i].comments,
               _id: data[i]._id
             }
@@ -61,7 +61,7 @@ export class InnerapplicationService {
         for(let i=0; i<data.length; i++){
           var singleArt: any = {
             devDetails: {
-              pic: this.base + data[i].ownerId?.profilePicture,
+              pic: data[i].ownerId?.profilePicture,
               username: data[i].ownerId?.Username,
               names: data[i].ownerId?.Username,
               badge: data[i].ownerId?.Badge,
@@ -74,7 +74,7 @@ export class InnerapplicationService {
               desc: data[i].description,
               likes: data[i].likes,
               date_updated: data[i].updatedAt,
-              resource_img: this.base + data[i].thumbnailUrl,
+              resource_img: data[i].thumbnailUrl,
               comments: data[i].comments,
               _id: data[i]._id
             }
@@ -105,7 +105,7 @@ export class InnerapplicationService {
           }
           var singleQue: any = {
             devDetails: {
-              pic: this.base + data[i].userInfo.profilePicture,
+              pic: data[i].userInfo.profilePicture,
               username: data[i].userInfo.Username || "Code AMA",
               names: data[i].userInfo.Username || "Codeama",
               badge: data[i].userInfo.Badge  || "codeama",
@@ -117,7 +117,7 @@ export class InnerapplicationService {
               text_qtn: data[i].question.text_question,
               likes: data[i].likes,
               date_updated: data[i].date,
-              question_img: this.base + data[i].question.image_question,
+              question_img: data[i].question.image_question,
               tagged_tech,
               main_question: data[i].question.text_question,
               code_snippet: data[i].question.code_snippet,

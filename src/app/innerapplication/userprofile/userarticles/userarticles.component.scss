@@ -1,5 +1,6 @@
 .articlesDetails {
     color: var(--mainBlack) !important;
+    border: 1px solid var(--mainBlack);
     >div {
         display: flex;
         align-items: center;
@@ -68,11 +69,6 @@
             }
         }
     }
-
-    hr {
-        background-color: var(--dimBlue);
-    }
-
 
     .article_details {
         h5 {
