@@ -99,7 +99,7 @@ const routes: Routes = [
       },
       {
         path: "view-article/:articleId",
-        component: ViewArticleComponent,
+        component:ViewArticleComponent,
         canActivate: [AuthGuard]
       },
       {
