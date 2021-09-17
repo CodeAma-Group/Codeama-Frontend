@@ -1,7 +1,7 @@
 .add_challenge {
   background: #ebf4fd;
   border-radius: 7px;
-  height: 98%;
+  height: 108%;
   padding: 20px 20px;
   margin: 10px;
 
@@ -13,20 +13,28 @@
     height: 100%;
 
     .main-content {
-      height:84%;
+      height:88%;
       display: flex;
       justify-content: space-between;
     }
 
     .section-1,
     .section-2 {
-      width: 50%;
       height: 100%;
+    }
+
+    .section-1 {
+      width: 48%;
+      padding-right: 1em;
+    }
+
+    .section-2 {
+       width: 50%;
     }
 
     .img_input_container {
       width: 100%;
-      height: 40%;
+      height: 50%;
       border: 1px dashed lightgray;
       background: #f7f9fc;
       border-radius: 5px;
@@ -86,8 +94,6 @@
     }
 
     .section-2 {
-      padding-left: 3em;
-
       &>div {
         margin-bottom: 30px;
       }
@@ -137,6 +143,10 @@
       .dates {
         display: flex;
 
+        >div {
+          width: 50%;
+        }
+
         >div:first-of-type {
           margin-right: 3em;
         }
@@ -164,7 +174,7 @@
       input {
       border: none;
       background: none;
-      border-bottom: 3px dashed lightgray;
+      padding-top: 0;
       width: 200px;
       }
     }
