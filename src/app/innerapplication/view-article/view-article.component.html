@@ -1,0 +1,94 @@
+<div id="articleDiv" class="articleDiv">
+    <h6>Comment article</h6>
+    <hr>
+
+    <div class="px-3">
+        <div class="dev_details" class="d-flex">
+            <figure class="position-relative d-flex justify-content-center">
+                <div>
+                    <img [src]="articleInfo.ownerId.profilePicture" alt="">
+                </div>
+            </figure>
+            <div>
+                <p>
+                    <strong>{{articleInfo.ownerId.Username}}</strong><span class="rounded-pill d-inline-block pl-3 pr-3 {{checkBadge(articleInfo.ownerId.Badge)}}">{{articleInfo.ownerId.Badge}}</span>
+                </p>
+                <span>{{articleInfo.ownerId.Username}}.codeama.net</span>
+            </div> 
+        </div>
+        <p>
+            <span>Posted on </span><strong>{{articleInfo.updatedAt | date:"longDate"}}</strong>
+        </p>
+    </div>
+
+    <main class="px-3">
+        <div class="main">
+            <h5 class="mb-3">
+                {{articleInfo.title}}
+            </h5>
+            <p>
+                {{articleInfo.description}}
+            </p>
+
+            <div class="image-">
+                <img [src]="articleInfo.thumbnailUrl" alt="">
+            </div>
+
+        </div>
+        <div class="shortDet">
+            <div>
+                <span>{{articleComments.length}}</span>
+                <br><span> Comments</span>
+            </div>
+            <!-- <div>
+                <span>No</span>
+                <br><span> comments</span>
+            </div>
+            <div>
+                <span>8</span>
+                <br> <span>Viewers</span>
+            </div> -->
+        </div>
+        <form  #commentForm = "ngForm" class="comment_section justify-content-between align-items-end mt-2" (ngSubmit) = "addComment(commentForm.value)">
+            <div class="comment">
+                <label for="qtn_ans" class="mb-2">Add comment on this article</label>
+                <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
+                    <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
+                    <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
+                </svg>
+            <textarea type="text" name="comment" [ngModel]="comment" id="qtn" class="form-control form-text" rows="3">...</textarea>
+            </div>
+            <div class="ms-auto mt-2" style="width: 23%;">
+                <button type="submit" class="btn btn-primary col-12"> 
+                    <span *ngIf="hasSubmitted" class="spinner-border spinner-border-sm mr-1"></span>
+                    Add comment</button>
+            </div>
+        </form>
+    </main>
+
+    <section class="comments_section mt-5">
+        <p>Comments section &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>{{articleComments.length}} comments</span></p>
+        <div *ngFor="let comment of articleComments">
+            <div class="dev_details" class="d-flex">
+                <figure class="position-relative d-flex justify-content-center">
+                    <div>
+                        <img [src]="comment.comment.creatorInfo[0].profilePicture" alt="">
+                    </div>
+                </figure>
+                <div>
+                    <p>
+                        <strong>{{comment.comment.creatorInfo[0].Username}}</strong>
+                    </p>
+                    <span>{{comment.comment.creatorInfo[0].Username}}.codeama.net</span>
+                </div>
+            </div>
+            <p [innerHTML]="comment.comment.content"></p>
+            <hr>
+        </div>
+    </section>
+
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
+    <p style="color: white">Please Wait... </p>  
+</ngx-spinner> 
