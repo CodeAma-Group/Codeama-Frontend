@@ -14,7 +14,7 @@
             <span>choose a challenge sample</span>
         </div>
         <img [src]="imgUrl" *ngIf="imgUrl" class="imagefromDb1" alt="challenge image" style="height: auto; max-width: 90%;">
-        <input type="file" hidden accept=".png,.jpg,.jpeg" name="file" id="mainPageUpload" #mainPageInput>
+        <input type="file" hidden accept=".png,.jpg,.jpeg" name="file" id="mainPageUpload" (input)="imageChange($event)" #mainPageInput>
     </div>
 
     <div class="col-12 qtn_title mb-3">
@@ -41,7 +41,7 @@
           <p>click to select only 4 prizes and set its grades</p>
         </div>
 
-        <div class="prizes">
+        <div class="prizes" formArrayName="prizes">
             <app-add-badge *ngFor="let status of statuses; let i=index" [prizeIndex]="i" [status]="status"></app-add-badge>
         </div>
       </div>
@@ -62,7 +62,7 @@
 
                 <div class="aside-content">
                     <div class="aside-content-first">Start Date</div>
-                    <input type="date" name="start_date" id="start_date">
+                    <input type="date" name="start_date" id="start_date" value="{{setDate() | date:'yyyy-MM-dd'}}" disabled="true">
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
 
                 <div class="aside-content">
                     <div class="aside-content-first">Application End Date</div>
-                    <hr/>
+                    <input type="date" name="application_end_date" id="appli_end_date" formControlName="applicationEndDate">
                 </div>
             </div>
             </div>
@@ -88,7 +88,7 @@
 
                     <div class="aside-content">
                         <div class="aside-content-first">Submission End Date</div>
-                        <hr/>
+                       <input type="date" name="submission_end_date" id="sub_end_date" formControlName="endDate">
                     </div>
                 </div>
                 <div class="pr">
@@ -99,7 +99,7 @@
 
                     <div class="aside-content">
                         <div class="aside-content-first">Announce Winners Date</div>
-                        <hr/>
+                       <input type="date" name="announce_winners_date" id="announce_winn_date" formControlName="announceWinnersDate">
                     </div>
                 </div>
             </div>
