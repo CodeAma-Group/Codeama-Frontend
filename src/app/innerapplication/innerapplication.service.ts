@@ -150,4 +150,16 @@ public answerQuestion(body){
     return this.http.post<Observable<any>>(this.base + "answerPostedQuestion", {comments: body})
   }
 
+  public viewArticle(article){
+    return this.http.get<Observable<any>>(this.base + "articles/"+article)
+  }
+
+  public commentArticle(body){
+    return this.http.post<Observable<any>>(this.base + "comment", body)
+  }
+
+  public viewArticleComments(id){
+    return this.http.get<Observable<any>>(this.base + "comment/"+id)
+  }
+
 }
