@@ -8,6 +8,11 @@ img {
     overflow-y: hidden;
 }
 
+.demo-img>img {
+    width: 100%;
+    height: auto;
+}
+
 .project-container {
     color: var(--mainBlack);
     border-radius: 7px;

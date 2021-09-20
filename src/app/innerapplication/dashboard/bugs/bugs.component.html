@@ -3,13 +3,13 @@
     <div class="user-profile d-flex px-5">
         <figure class="position-relative d-flex justify-content-center">
             <div>
-                <img [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.profilePicture" alt="">
+                <img [src]="bug.userInfo.profilePicture">
             </div>
             <figcaption class="{{checkBadge(bug.userInfo.Badge)}} rounded-pill">{{bug.userInfo.Badge}}</figcaption>
         </figure>
         <div class=" ms-3 mt-2 user-name-and-date">
             <div class="d-flex">
-                <a [href]="'https://codeama.netlify.app/app/profile/'+bug.userInfo._id" class="my-auto username ">{{bug.userInfo.Username}}
+                <a [href]="'https://codeama.netlify.app/app/profile/ '+bug.userInfo._id" class="my-auto username ">{{bug.userInfo.Username}}
                 </a>
                 <span class="ms-2 u-caption">@{{bug.userInfo.Username.trim()}}</span>
             </div>
@@ -56,7 +56,7 @@
           transform="translate(0) " fill="#212f3d " />
       </svg>
             <p class="commentsNumber ">
-                {{bug.bug.comments.length}}
+                {{bug.comments.length}}
             </p>
         </div>
     </div>
