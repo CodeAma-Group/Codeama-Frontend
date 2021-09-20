@@ -6,7 +6,7 @@
                     <div class="user-profile d-flex">
                         <figure class="position-relative d-flex justify-content-center">
                             <div>
-                                <img [src]="'https://codeama-backend.herokuapp.com/'+bug.userInfo.profilePicture" alt="">
+                                <img [src]="bug.userInfo.profilePicture">
                             </div>
                             <figcaption class="{{checkBadge(bug.userInfo.Badge)}} rounded-pill">{{bug.userInfo.Badge}}</figcaption>
                         </figure>
@@ -15,7 +15,7 @@
                                 <a>{{bug.userInfo.Username}}</a>
                             </div>
                             <div class="caption">
-                                {{bug.userInfo.Username}}.codeama.net {{bug.bug.tagged_technologies}}
+                                {{bug.userInfo.Username}}.codeama.net
                             </div>
                         </div>
                     </div>
