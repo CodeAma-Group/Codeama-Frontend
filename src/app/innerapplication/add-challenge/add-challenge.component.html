@@ -36,6 +36,12 @@
         <textarea type="text" id="desc" class="form-control form-text" formControlName="description" rows="4"></textarea>
         <small *ngIf="challenge.get('description').invalid && showErrors" class="text-danger">challenge description is required</small> 
     </div>
+
+    <div class="col-12 mb-3">
+        <label for="code_sand_box_link" class="form-label m-0 p-0">Code SandBox Link</label> 
+        <input type="text" name="codeSandBoxLink" formControlName="codeSandBoxLink" id="code_sand_box_link" class="form-control" placeholder="Code SandBox Link">
+        <small *ngIf="challenge.get('codeSandBoxLink').invalid && showErrors" class="text-danger">code sandBox link is required</small> 
+     </div>
   </div>  
 
   <div class="section-2">

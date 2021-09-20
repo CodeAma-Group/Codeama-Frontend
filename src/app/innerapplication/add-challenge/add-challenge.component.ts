@@ -46,7 +46,8 @@ export class AddChallengeComponent implements OnInit {
       prizes: this.formBuilder.array([]),
       applicationEndDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      announceWinnersDate: ['', Validators.required]
+      announceWinnersDate: ['', Validators.required],
+      codeSandBoxLink: ['', Validators.required]
     })    
    }
 
@@ -109,7 +110,8 @@ export class AddChallengeComponent implements OnInit {
     newChallenge.append('applicationEndDate', this.challenge.value.applicationEndDate)
     newChallenge.append('endDate', this.challenge.value.endDate)
     newChallenge.append('announceWinnersDate', this.challenge.value.announceWinnersDate)
-
+    newChallenge.append('codeSandBoxLink', this.challenge.value.codeSandBoxLink)
+    
     for(var pair of newChallenge.entries()) {
       console.log(pair[0]+ ', '+ typeof(pair[1]));
    }
