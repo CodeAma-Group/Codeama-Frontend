@@ -11,7 +11,10 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./project-registration.component.css'],
 })
 export class ProjectRegistrationComponent implements OnInit {
-  constructor(private project: ProjectService, private notifier:NotifierService) {}
+  constructor(
+    private project: ProjectService,
+    private notifier: NotifierService
+  ) {}
   public options = [
     { label: 'Java', value: 'Java' },
     { label: 'Javascript', value: 'Javascript' },
@@ -110,7 +113,7 @@ export class ProjectRegistrationComponent implements OnInit {
   Addfeature(data) {
     if (this.features.indexOf(data) == -1) {
       this.features.push(data);
-      document.getElementById("proFeatures").innerText=""
+      document.getElementById('proFeatures').innerText = '';
     } else {
       alert('Feature should not be repeated');
     }
@@ -143,21 +146,65 @@ export class ProjectRegistrationComponent implements OnInit {
     // var thumbnails: any = this.thumbnails;
     // var technologies: Array<any> = this.techs;
     const ProjectData: any = new FormData();
-    ProjectData.append('title', this.newProjectForm.value.projectName);
-    ProjectData.append(
-      'description',
-      this.newProjectForm.value.app_description
-    );
-    ProjectData.append('technologies', JSON.stringify(this.techs));
-    ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
-    ProjectData.append('teamName', this.newProjectForm.value.teamName);
-    ProjectData.append('logo', this.logoUrl);
-    ProjectData.append('host', this.newProjectForm.value.appLink);
-    ProjectData.append('github', this.newProjectForm.value.githubLink);
-    ProjectData.append('team', JSON.stringify(this.team));
-    ProjectData.append('non_memeber_emails', JSON.stringify(this.emailTags));
-    ProjectData.append('features', JSON.stringify(this.features));
-    
+
+    if (
+      this.newProjectForm.value.projectName != null ||
+      this.newProjectForm.value.projectName != undefined
+    ) {
+      ProjectData.append('title', this.newProjectForm.value.projectName);
+    }
+    if (
+      this.newProjectForm.value.app_description != null ||
+      this.newProjectForm.value.app_description != undefined
+    ) {
+      ProjectData.append(
+        'description',
+        this.newProjectForm.value.app_description
+      );
+    }
+    if (this.techs != null || this.techs != undefined) {
+      ProjectData.append('technologies', JSON.stringify(this.techs));
+    }
+    if (this.thumbnails != undefined || this.thumbnails != null) {
+      ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
+    }
+    if (
+      this.newProjectForm.value.teamName != null ||
+      this.newProjectForm.value.teamName != undefined
+    ) {
+      ProjectData.append('teamName', this.newProjectForm.value.teamName);
+    }
+    if (this.logoUrl != undefined || this.logoUrl != null) {
+      ProjectData.append('logo', this.logoUrl);
+    }
+    if (
+      this.newProjectForm.value.appLink != null ||
+      this.newProjectForm.value.appLink != undefined
+    ) {
+      ProjectData.append('host', this.newProjectForm.value.appLink);
+    }
+    if (
+      this.newProjectForm.value.githubLink != null ||
+      this.newProjectForm.value.githubLink != undefined
+    ) {
+      ProjectData.append('github', this.newProjectForm.value.githubLink);
+    }
+    if (this.team.length != 0 || this.team != undefined || this.team != null) {
+      ProjectData.append('team', JSON.stringify(this.team));
+    }
+    if (
+      this.emailTags.length != 0 ||
+      this.emailTags != null ||
+      this.emailTags != undefined
+    ) {
+      ProjectData.append('non_member_emails', JSON.stringify(this.emailsArray));
+    }
+    if (this.features != null || this.features != undefined) {
+      ProjectData.append('features', JSON.stringify(this.features));
+    }
+    if (this.imgUrl != null || this.imgUrl != undefined) {
+      ProjectData.append('demo', JSON.stringify(this.imgUrl));
+    }
     // this.data = {
     //   title: this.newProjectForm.value.projectName,
     //   description: this.newProjectForm.value.app_description,
@@ -172,11 +219,12 @@ export class ProjectRegistrationComponent implements OnInit {
     //   non_member_emails: this.emailTags,
     //   features: this.features,
     // };
+// console.log(this.imgUrl);
 
     this.project.saveProject(ProjectData).subscribe((res) => {
-      this.notifier.notify("success","New Project posted successfully!")
+      this.notifier.notify('success', 'New Project posted successfully!');
       alert(res);
-      console.log("result is here",res);      
+      console.log('result is here', res);
     });
   }
   newProjectForm = new FormGroup({
