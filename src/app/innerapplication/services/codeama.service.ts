@@ -12,15 +12,16 @@ export class CodeamaService {
 
   auth_token = localStorage.getItem('codeama_auth_token');
   userData:any = jwt_decode(this.auth_token)
+  
   userId:number= this.userData._id
-
-  // savecodeama(data) {
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${this.auth_token}`,
-  //   });
-  //   return this.http.post(this.url, data,{ headers: headers });
-  // }
+  headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${this.auth_token}`,
+  });
+  
+  savecodeama(data) {
+    return this.http.post(this.url, data,{ headers: this.headers });
+  }
 
   getcodeamas(){
     return this.http.get(this.url)
@@ -32,8 +33,9 @@ export class CodeamaService {
 
   baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;
 
-  patch(followerId:string ){
-    return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/follow/${followerId}`, followerId);
+  updateFollower(followerId:string ){
+    console.log(this.userId);
+    return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/follow/${followerId}`, {headers: this.headers});
   }
 
 }

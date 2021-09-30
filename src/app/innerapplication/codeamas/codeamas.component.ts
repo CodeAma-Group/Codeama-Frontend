@@ -9,7 +9,6 @@ import { CodeamaService } from '../services/codeama.service';
 export class CodeamasComponent implements OnInit {
 
   constructor(private codeama:CodeamaService) { }
-  // id=10;
   url="https://codeama-backend.herokuapp.com"
   show:boolean=false
   user;
@@ -19,30 +18,30 @@ export class CodeamasComponent implements OnInit {
 
   originalUser
   follower
-
+  followButton = `follow`;
 
   ngOnInit(): void {
-    
     this.codeama.getcodeamas().subscribe((res)=>{
+      console.log(res);
+      
       this.codeamaData=res
       this.codeamaData=this.codeamaData.data
       this.user = this.codeamaData.codeama
+      console.log(this.codeamaData);
+      
       this.show=true
-
-      this.follower = this.codeamaData._id;
     })
-
-    this.codeama.patch(this.follower).subscribe((res) => {
-      console.log("Esther ");
-      console.log(this.follower)
-      console.log(res);
-    })
-
   }
 
+  addFollower(id){
+    this.follower = id
+    this.codeama.updateFollower(this.follower).subscribe((res) => {
+      console.log('following worked');
+      this.followButton = `unfollow`
+    })
+  }
   selectfollower(data){
     this.follower = Object.assign({}, data);
     this.originalUser = data;
   }
-    
 }
