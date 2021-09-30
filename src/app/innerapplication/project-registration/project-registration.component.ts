@@ -30,6 +30,8 @@ export class ProjectRegistrationComponent implements OnInit {
       appLink: ['', [Validators.required]],
       demo: ['', [Validators.required]],
       logo: ['', [Validators.required]],
+      features:this.formBuilder.array([]),
+      technologies:this.formBuilder.array([])
     });
   }
   public options = [
@@ -124,11 +126,11 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('Please Enter a valid email address');
     }
   }
-
-  features = [];
+  featuresArray:any
   Addfeature(data) {
-    if (this.features.indexOf(data) == -1) {
-      this.features.push(data);
+    if (this.newProject.get("features").indexOf(data) == -1) {
+      this.newProject.get("features").push(data);
+      this.featuresArray.push(data)
       document.getElementById('proFeatures').innerText = '';
     } else {
       alert('Feature should not be repeated');
@@ -136,7 +138,8 @@ export class ProjectRegistrationComponent implements OnInit {
   }
   techs = [];
   AddTech(data) {
-    if (this.techs.indexOf(data) == -1) {
+    if (this.newProject.get("technologies") == -1) {
+      this.newProject.get("technologies").push(data)
       this.techs.push(data);
       document.getElementById('tagged-tech').innerText = '';
     } else {
@@ -170,8 +173,8 @@ export class ProjectRegistrationComponent implements OnInit {
         this.newProject.value.app_description
       );
     }
-    if (this.techs != null || this.techs != undefined) {
-      ProjectData.append('technologies', JSON.stringify(this.techs));
+    if (this.newProject.get("technologies") != null || this.newProject.get("technologies") != undefined) {
+      ProjectData.append('technologies', JSON.stringify(this.newProject.get("technologies")));
     }
     if (this.thumbnails != undefined || this.thumbnails != null) {
       ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
@@ -207,32 +210,15 @@ export class ProjectRegistrationComponent implements OnInit {
     ) {
       ProjectData.append('non_member_emails', JSON.stringify(this.emailsArray));
     }
-    if (this.features != null || this.features != undefined) {
-      ProjectData.append('features', JSON.stringify(this.features));
+    if (this.newProject.get("features") != null || this.newProject.get("features") != undefined) {
+      ProjectData.append('features', JSON.stringify(this.newProject.get("features")));
     }
     if (this.imgUrl != null || this.imgUrl != undefined) {
       ProjectData.append('demo', this.newProject.value.demo);
     }
-    // this.data = {
-    //   title: this.newProject.value.projectName,
-    //   description: this.newProject.value.app_description,
-    //   technologies: this.techs,
-    //   thumbnails: this.urls,
-    //   demo: this.imgUrl,
-    //   teamName: this.newProject.value.teamName,
-    //   logo: this.logoUrl,
-    //   github: this.newProject.value.githubLink,
-    //   host: this.newProject.value.appLink,
-    //   team: this.team,
-    //   non_member_emails: this.emailTags,
-    //   features: this.features,
-    // };
-    // console.log(this.imgUrl);
-
     this.project.saveProject(ProjectData).subscribe((res) => {
       this.notifier.notify('success', 'New Project posted successfully!');
       alert(res);
-      console.log('result is here', res);
     });
   }
   cookieVal: string = '';
