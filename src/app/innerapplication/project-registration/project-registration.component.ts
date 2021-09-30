@@ -1,7 +1,12 @@
 import { THIS_EXPR, variable } from '@angular/compiler/src/output/output_ast';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ProjectService } from '../services/project.service';
 import { NotifierService } from 'angular-notifier';
@@ -11,10 +16,22 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./project-registration.component.css'],
 })
 export class ProjectRegistrationComponent implements OnInit {
+  newProject;
   constructor(
     private project: ProjectService,
-    private notifier: NotifierService
-  ) {}
+    private notifier: NotifierService,
+    private formBuilder: FormBuilder
+  ) {
+    this.newProject = this.formBuilder.group({
+      projectName: ['', [Validators.required]],
+      app_description: ['', [Validators.required]],
+      teamName: ['', [Validators.required]],
+      githubLink: ['', [Validators.required]],
+      appLink: ['', [Validators.required]],
+      demo: ['', [Validators.required]],
+      logo: ['', [Validators.required]],
+    });
+  }
   public options = [
     { label: 'Java', value: 'Java' },
     { label: 'Javascript', value: 'Javascript' },
@@ -41,30 +58,29 @@ export class ProjectRegistrationComponent implements OnInit {
   public fields = { text: 'label', value: 'value' };
   selectedImg = null;
   OthernewImages = [];
-  imgUrl: string = '';
-  logoUrl: string = '';
+  public imgUrl;
+  public logoUrl;
   tagged_tech: Array<any> = [];
   GroupLogo = null;
+
   logoImage(event) {
-    if (event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event: any) => {
-        this.logoUrl = event.target.result;
-      };
-    }
+    const reader = new FileReader();
+    let file = event.target.files[0];
+    this.newProject.get('logo').setValue(file);
+    reader.addEventListener('load', () => {
+      this.logoUrl = reader.result;
+    });
+    reader.readAsDataURL(event.target.files[0]);
   }
 
   fileSelected(event) {
-    this.selectedImg = event.target.files[0].name;
-
-    if (event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event: any) => {
-        this.imgUrl = event.target.result;
-      };
-    }
+    const reader = new FileReader();
+    let file = event.target.files[0];
+    this.newProject.get('demo').setValue(file);
+    reader.addEventListener('load', () => {
+      this.imgUrl = reader.result;
+    });
+    reader.readAsDataURL(event.target.files[0]);
   }
 
   urls = new Array<string>();
@@ -138,28 +154,20 @@ export class ProjectRegistrationComponent implements OnInit {
   }
   data;
   collectData() {
-    //  console.log(this.newProjectForm.value.logo);
-    // var features: any = this.features;
-    // var emails: any = this.emailTags;
-    // var team: any = this.team;
-    // var team: any = this.team;
-    // var thumbnails: any = this.thumbnails;
-    // var technologies: Array<any> = this.techs;
     const ProjectData: any = new FormData();
-
     if (
-      this.newProjectForm.value.projectName != null ||
-      this.newProjectForm.value.projectName != undefined
+      this.newProject.value.projectName != null ||
+      this.newProject.value.projectName != undefined
     ) {
-      ProjectData.append('title', this.newProjectForm.value.projectName);
+      ProjectData.append('title', this.newProject.value.projectName);
     }
     if (
-      this.newProjectForm.value.app_description != null ||
-      this.newProjectForm.value.app_description != undefined
+      this.newProject.value.app_description != null ||
+      this.newProject.value.app_description != undefined
     ) {
       ProjectData.append(
         'description',
-        this.newProjectForm.value.app_description
+        this.newProject.value.app_description
       );
     }
     if (this.techs != null || this.techs != undefined) {
@@ -169,25 +177,25 @@ export class ProjectRegistrationComponent implements OnInit {
       ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
     }
     if (
-      this.newProjectForm.value.teamName != null ||
-      this.newProjectForm.value.teamName != undefined
+      this.newProject.value.teamName != null ||
+      this.newProject.value.teamName != undefined
     ) {
-      ProjectData.append('teamName', this.newProjectForm.value.teamName);
+      ProjectData.append('teamName', this.newProject.value.teamName);
     }
     if (this.logoUrl != undefined || this.logoUrl != null) {
-      ProjectData.append('logo', this.logoUrl);
+      ProjectData.append('logo', this.newProject.value.logo);
     }
     if (
-      this.newProjectForm.value.appLink != null ||
-      this.newProjectForm.value.appLink != undefined
+      this.newProject.value.appLink != null ||
+      this.newProject.value.appLink != undefined
     ) {
-      ProjectData.append('host', this.newProjectForm.value.appLink);
+      ProjectData.append('host', this.newProject.value.appLink);
     }
     if (
-      this.newProjectForm.value.githubLink != null ||
-      this.newProjectForm.value.githubLink != undefined
+      this.newProject.value.githubLink != null ||
+      this.newProject.value.githubLink != undefined
     ) {
-      ProjectData.append('github', this.newProjectForm.value.githubLink);
+      ProjectData.append('github', this.newProject.value.githubLink);
     }
     if (this.team.length != 0 || this.team != undefined || this.team != null) {
       ProjectData.append('team', JSON.stringify(this.team));
@@ -203,23 +211,23 @@ export class ProjectRegistrationComponent implements OnInit {
       ProjectData.append('features', JSON.stringify(this.features));
     }
     if (this.imgUrl != null || this.imgUrl != undefined) {
-      ProjectData.append('demo', JSON.stringify(this.imgUrl));
+      ProjectData.append('demo', this.newProject.value.demo);
     }
     // this.data = {
-    //   title: this.newProjectForm.value.projectName,
-    //   description: this.newProjectForm.value.app_description,
+    //   title: this.newProject.value.projectName,
+    //   description: this.newProject.value.app_description,
     //   technologies: this.techs,
     //   thumbnails: this.urls,
     //   demo: this.imgUrl,
-    //   teamName: this.newProjectForm.value.teamName,
+    //   teamName: this.newProject.value.teamName,
     //   logo: this.logoUrl,
-    //   github: this.newProjectForm.value.githubLink,
-    //   host: this.newProjectForm.value.appLink,
+    //   github: this.newProject.value.githubLink,
+    //   host: this.newProject.value.appLink,
     //   team: this.team,
     //   non_member_emails: this.emailTags,
     //   features: this.features,
     // };
-// console.log(this.imgUrl);
+    // console.log(this.imgUrl);
 
     this.project.saveProject(ProjectData).subscribe((res) => {
       this.notifier.notify('success', 'New Project posted successfully!');
@@ -227,16 +235,6 @@ export class ProjectRegistrationComponent implements OnInit {
       console.log('result is here', res);
     });
   }
-  newProjectForm = new FormGroup({
-    projectName: new FormControl(''),
-    // tagged_tech:new FormControl(''),
-    app_description: new FormControl(''),
-    teamName: new FormControl(''),
-    githubLink: new FormControl(''),
-    appLink: new FormControl(''),
-    logo: new FormControl(''),
-  });
-
   cookieVal: string = '';
 
   ngOnInit(): void {
