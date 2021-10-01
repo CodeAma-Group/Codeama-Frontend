@@ -20,10 +20,13 @@ img {
 }
 
 .tech {
-    margin: 10px;
+    margin: 8px 10px;
     font-size: 12px;
     font-weight: 450;
     color: grey;
+    border-radius: 40px;
+    padding: 8px;
+    background-color: var(--contBgLight);
 }
 
 ol,

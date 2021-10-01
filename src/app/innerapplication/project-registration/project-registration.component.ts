@@ -31,7 +31,8 @@ export class ProjectRegistrationComponent implements OnInit {
       demo: ['', [Validators.required]],
       logo: ['', [Validators.required]],
       features:this.formBuilder.array([]),
-      technologies:this.formBuilder.array([])
+      technologies:this.formBuilder.array([]),
+      thumbnails:this.formBuilder.array([])
     });
   }
   public options = [
@@ -99,7 +100,8 @@ export class ProjectRegistrationComponent implements OnInit {
       for (let file of files) {
         let reader = new FileReader();
         reader.onload = (e: any) => {
-          this.thumbnails.push(e.target.result);
+          this.newProject.get("thumbnails").push(e.target.result);
+          this.thumbnails.push(e.target.result)
         };
         reader.readAsDataURL(file);
       }
@@ -176,8 +178,8 @@ export class ProjectRegistrationComponent implements OnInit {
     if (this.newProject.get("technologies") != null || this.newProject.get("technologies") != undefined) {
       ProjectData.append('technologies', JSON.stringify(this.newProject.get("technologies")));
     }
-    if (this.thumbnails != undefined || this.thumbnails != null) {
-      ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
+    if (this.newProject.get("thumbnails") != undefined || this.newProject.get("thumbnails") != null) {
+      ProjectData.append('thumbnails', JSON.stringify(this.newProject.get("thumbnails")));
     }
     if (
       this.newProject.value.teamName != null ||
