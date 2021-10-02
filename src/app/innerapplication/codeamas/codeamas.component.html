@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
   <div class="row">
     <div class="bg-color rounded p-2">
@@ -12,8 +11,7 @@
           <div class="row">
             <div class="profile position-relative col-1 px-3">
               <a routerLink="profile">
-                <img [src]="'https://codeama-backend.herokuapp.com/'+ code.codeama.profilePicture" alt="profile">
-                <!-- <img src="../../../assets/images/sara.png" alt="profile"> -->
+                <img [src]="code.codeama.profilePicture" alt="profile">
                 <p class="rounded position-absolute text-white px-2 {{code.codeama.Badge}}"><a href="#" class="text-white">{{code.codeama.Badge}}</a></p>
               </a>
             </div>
@@ -23,7 +21,7 @@
               <span>{{code.codeama.Username}}.codeama.net</span>
               <div class="row pt-2">
                 <div class="col">
-                  <p> <span class="cl-silver">Best challenger on </span><span class="fw">12 th, January, 2021</span>
+                  <p> <span class="cl-silver">Best challenger on </span><span class="fw">12th, January, 2021</span>
                   </p>
                 </div>
                 <div class="col-5">
@@ -36,10 +34,12 @@
                   answered</span></p>
               <p class="col"><span>{{code.codeama.Followers.length}} + </span><span class="cl-silver">followers</span></p>
             </div>
-
             <div class="follow col-1 justify-content-center p-2">
-              <button class="btn-primary btn" type="submit" click="onFollow(follower)" value="{{code._id}}"> + Follow</button>  
+              <button *ngIf="!code.codeama.Following.includes(userId); else unFollow" class="btn-primary btn" type="button" (click)="addFollower(code.codeama._id)"> + Follow</button>  
             </div>
+            <ng-template #unFollow> 
+                <button class="btn-primary btn" type="button" (click)="removeFollower(code.codeama._id)"> + unfollow</button>
+            </ng-template>
           </div>
           <div class="row mt-2">
             <div class="ama-footer col-10">
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="follow col-1 justify-content-center p-2 ">
-                    <button class="btn-primary btn "> + Follow</button>
+                    <button class="btn-primary btn"> + Follow</button>
                 </div>
             <div class="row mt-2 ">
                 <div class="ama-footer col-10 ">
