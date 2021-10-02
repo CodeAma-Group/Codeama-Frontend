@@ -38,4 +38,8 @@ export class CodeamaService {
     return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/follow/${followerId}`, {headers: this.headers});
   }
 
+  updateUnfollower(unfollowerId: string){
+    return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/unfollow/${unfollowerId}`, {headers: this.headers});
+  }
 }
+  
