@@ -23,7 +23,6 @@ export class CodeamasComponent implements OnInit {
   auth_token = localStorage.getItem('codeama_auth_token');
   ngOnInit(): void {
     this.codeama.getcodeamas().subscribe((res)=>{
-      console.log(res);
       
       this.codeamaData=res
       this.codeamaData=this.codeamaData.data 
