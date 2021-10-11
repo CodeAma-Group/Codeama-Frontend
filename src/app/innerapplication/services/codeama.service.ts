@@ -9,7 +9,7 @@ export class CodeamaService {
 
   constructor(private http: HttpClient) {}
   url="https://codeama-backend.herokuapp.com/codeama"
-
+  data:any;
   auth_token = localStorage.getItem('codeama_auth_token');
   userData:any = jwt_decode(this.auth_token)
   
@@ -28,7 +28,16 @@ export class CodeamaService {
   }
 
   getcodeama(id){
-    return this.http.get(`${this.url}/${id}`)
+    this.http.get(this.url).subscribe(res => {
+      this.data = res
+      this.data = this.data.data 
+      for (let i = 0; i < this.data.length; i++) {
+        if(this.data[i]._id = id){
+          this.data = this.data[i]
+          return this.data
+        }
+      }
+    })
   }
 
   baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;
