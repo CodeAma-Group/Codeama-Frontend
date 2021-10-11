@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeamaService } from '../services/codeama.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-askcodeama',
@@ -11,43 +12,50 @@ export class AskcodeamaComponent implements OnInit {
   constructor(private codeama:CodeamaService) { }
   // id=10;
   url="https://codeama-backend.herokuapp.com"
-  show:boolean=false
+  show:boolean=false  
   user;
   badge;
-  case;
-  codeamaData:any
-
-  originalUser
-  follower
+  codeamaData:any 
+  follower;
+  unfollower;
 
   size:number;
-
-
-  id:number;
+  response:any;
 
   ngOnInit(): void {
-    this.codeama.getcodeamas().subscribe((res)=>{
-      this.codeamaData=res
-      this.codeamaData=this.codeamaData.data
-      this.user = this.codeamaData.codeama
-      this.size = this.codeamaData.codeama.follower.length
-      this.show=true
+    this.codeama.getcodeamas().subscribe(res => {
+      this.response = res
+      this.response = this.response.data
 
-      console.log("array");
-      console.log(this.size);
+      for (let i = 0; i < this.response.length; i++) {
+          if (this.response[i]._id == history.state.data) {
+            this.user= this.response[i]
+            console.log(this.user)
+          }        
+      }
     })
+  }
+  auth_token = localStorage.getItem('codeama_auth_token');
+  userData:any = jwt_decode(this.auth_token)
+  userId:number= this.userData._id
 
-    this.codeama.getcodeama(this.id).subscribe((res)=>{
-      this.codeamaData=res
-      this.codeamaData=this.codeamaData.data
-      this.user = this.codeamaData.codeama
-      this.size = this.codeamaData.codeama.follower.length
-      this.show=true
-
-      console.log("array");
-      console.log(this.size);
+  addFollower(id){
+    this.follower = id
+    this.codeama.updateFollower(this.follower).subscribe((res) => {
+      this.codeama.getcodeamas().subscribe((res)=>{
+        this.codeamaData=res
+        this.codeamaData=this.codeamaData.data 
+      })
     })
-
   }
 
+  removeFollower(id){
+    this.unfollower = id
+    this.codeama.updateUnfollower(this.unfollower).subscribe((res) => {
+        this.codeama.getcodeamas().subscribe((res)=>{
+        this.codeamaData=res
+        this.codeamaData=this.codeamaData.data 
+      })
+    })
+  }
 }
