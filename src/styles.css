@@ -120,6 +120,9 @@ ul {
     list-style: none;
 }
 
+.hidden {
+    visibility: hidden;
+}
 
 /* responsiveness */
 
