@@ -126,7 +126,6 @@ export class AddQuestionComponent implements OnInit {
    public fields = {text: 'label',value: 'value'}
 
   ngOnInit(): void {
-
   }
   submitQtn(e: Event){
     e.preventDefault();
