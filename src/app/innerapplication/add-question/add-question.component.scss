@@ -3,7 +3,7 @@ $bg_color: var(--contBgLight);
     color: var(--mainBlack);
     border-radius: 7px;
     background: $bg_color;
-    height: 88%;
+    height: 115%;
     padding: 20px 20px;
     margin: 10px;
 
@@ -41,6 +41,11 @@ $bg_color: var(--contBgLight);
         span {
             font-size: .8em;
         }
+    }
+
+    .angular-editor-wrapper{
+        width: 100%;
+        display: block;
     }
 
     input, textarea, #select{
@@ -111,4 +116,9 @@ $bg_color: var(--contBgLight);
         margin: none;
         padding: none;
     }
+}
+
+.angular-editor-wrapper{
+    width: 100% !important;
+    display: block !important;
 }
