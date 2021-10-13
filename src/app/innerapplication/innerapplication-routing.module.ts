@@ -32,6 +32,8 @@ import { BugDetailsComponent } from './dashboard/bug-details/bug-details.compone
 import {AmaQuestionComponent} from './ama-question/ama-question.component'
 import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
 import { TakeChallengeBoardComponent } from './take-challenge-board/take-challenge-board.component';
+import { AddChallengeComponent } from './add-challenge/add-challenge.component';
+import { ViewArticleComponent } from './view-article/view-article.component';
 
 
 const routes: Routes = [
@@ -93,6 +95,11 @@ const routes: Routes = [
       {
         path: "answer-question",
         component:AnswerQuestionComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "view-article/:articleId",
+        component:ViewArticleComponent,
         canActivate: [AuthGuard]
       },
       {
@@ -175,6 +182,7 @@ const routes: Routes = [
         component: AmaQuestionComponent
          
      },
+     
 
      {
       path:'viewchallengetakers',
@@ -183,6 +191,11 @@ const routes: Routes = [
     {
       path:'challenge-taker-board/:id',
       component: TakeChallengeBoardComponent
+    },
+
+    {
+      path:'add-challenge',
+      component: AddChallengeComponent
     }
     ]
   },

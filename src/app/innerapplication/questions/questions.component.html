@@ -18,7 +18,7 @@
             </div>
             <div class="question_details">
                 <h5><a [href]="answerQuestionLink + question.questionDetails._id" class="text-decoration-none"><strong>{{question.questionDetails.question}}</strong></a></h5>
-                <p>{{question.questionDetails.desc}} <br> {{question.questionDetails.text_qtn}}</p>
+                <div [innerHTML]="question.questionDetails.desc"></div>
             </div>
             <p id="dev_username">{{question.devDetails.username}}.codeama.dev</p>
             <div class="question_views">

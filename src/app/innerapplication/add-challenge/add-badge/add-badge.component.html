@@ -1,0 +1,4 @@
+<div class="prize prize-{{prizeIndex}} rounded">
+  <input type="number" id="marks" min="{{setDate() | date:'yyyy-MM-dd'}}" #marks (keyup.enter)="addMarks(marks.value)">
+  <p class="prize_status">{{status}} Badge</p>
+</div>
