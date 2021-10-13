@@ -88,6 +88,34 @@ export class ProfileComponent implements OnInit {
   showStackTwo() {
     this.editStackTwo = false;
     this.editSkills = true;
+
+    if (this.skillVal != '') {
+      this.Skills.push(this.skillVal);
+
+      
+      var userData:any = new FormData();
+      this.description = " ";
+      this.Bio = " ";
+      this.Location = " ";
+        
+      // userData.append("userId", `${this._id}`)
+      userData.append("Badge", `${this.Badge}`)
+      userData.append("Bio", `${this.Bio}`)
+      userData.append("Location", `${this.Location}`)
+      userData.append("description", `${this.description}`)
+      userData.append("Skills", `${this.Skills}`)
+
+      this.error_msg = 'Profile failed to update. Try again!'
+      this.success_msg = 'Profile picture updated successfully!'
+      console.warn(this.Skills)
+
+      this.updateProfileToDb(userData);
+    }
+  }
+
+  skillVal: string = '';
+  getSkill(value: string) {
+    this.skillVal = value;
   }
 
   showEditSkill() {
@@ -114,7 +142,7 @@ export class ProfileComponent implements OnInit {
         this.imageUrl = await file.target.result;
         this.profilePicture = this.imageUrl;
 
-        var userData:any = new FormData();
+        let userData:any = new FormData();
         
         // userData.append("userId", `${this._id}`)
         // userData.append("Badge", `${this.Badge}`)
@@ -165,6 +193,7 @@ export class ProfileComponent implements OnInit {
   updateProfileToDb(data) {
     this._userService.updateProfile(data).subscribe(
 			res => {
+        console.log(res)
         this.notifier.notify("success", this.success_msg) 
         this.hasSubmitted = false;       
         this.editingAccountSettings = false;

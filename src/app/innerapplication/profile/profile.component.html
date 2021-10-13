@@ -205,7 +205,7 @@
                     <h4>My tech stack</h4>
                 </div>
                 <div class="add_stack">
-                    <input *ngIf="editStackTwo" (keyup.enter) ="showStackTwo()" type="text" name="skill" id="skill" placeholder="write you skill . . .">
+                    <input *ngIf="editStackTwo" #skill (input)="getSkill(skill.value)" (keyup.enter) ="showStackTwo()" type="text" name="skill" id="skill" placeholder="write you skill . . .">
                     <p *ngIf="editSkills" (click) ="showEditSkill()">
                         <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28">
                             <path id="Path_43" data-name="Path 43" d="M0,0H28V28H0Z" fill="none"/>
