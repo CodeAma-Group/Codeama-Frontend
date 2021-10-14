@@ -50,5 +50,9 @@ export class CodeamaService {
   updateUnfollower(unfollowerId: string){
     return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/unfollow/${unfollowerId}`, {headers: this.headers});
   }
+
+  askama(question){
+    return this.http.post(`https://codeama-backend.herokuapp.com/ask_question`, {question : question } , { headers: this.headers })
+  }
 }
   
