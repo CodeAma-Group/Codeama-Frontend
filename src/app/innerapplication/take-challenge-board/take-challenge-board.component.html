@@ -1,0 +1,71 @@
+<div class="project-container">
+    <div class="heading px-3 pt-2 d-flex">
+        <div class="col-lg-3 d-flex flex-wrap">
+            <h6 class="mb-1" id="page-title">CodeAma Challenge taker board</h6>
+            <button class="btn challengeInfo btn-outline-primary" (click)="open(mymodal)">Challenge guidelines</button>
+        </div>
+        <ng-template #mymodal let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-basic-title">CodeAma challenges guidelines</h5>
+            </div>
+            <div class="modal-body mx-3">
+                <h6 class="rules-title">To start the challenge you must have the following:</h6>
+                <ol>
+                    <li class="rule">You must have a working account in codesandbox</li>
+                </ol>
+                <h6 class="rules-title">The guidelines are here:</h6>
+                <ol>
+                    <li class="rule">Click on Edit sandbox button in the sandbox ui provided</li>
+                    <li class="rule">The link will direct you into codesandbox </li>
+                    <li class="rule">After that, in codesandbox at the upper right hand side click Fork to make this project yours</li>
+                    <li class="rule">After forking the project click share button to share it to us</li>
+                    <li class="rule">Choose embed</li>
+                    <li class="rule">Copy the embed code provided in the appearing modal at the left hand side</li>
+                    <li class="rule">Paste that embed codes in the input box provided to your on this page</li>
+                    <li class="rule">Click on submit button to submit your project embed to us</li>
+                </ol>
+                <h6 class="rules-title">Where to code from</h6>
+                <ol>
+                    <li class="rule">You must write all your codes in the sandbox you've forked at codesandbox site</li>
+                    <li class="rule">To see your saved changes on our site, refresh this page</li>
+                    <li class="rule">Keep in mind that the changes you will make in your codes at our page will not be saved (everyting should be done in codesandbox)</li>
+                </ol>
+                <p class="text-center">We wish you good luck while you develop your programming skills through our coding challenges</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" id="ok-button" (click)="modal.close('Save click')">Ok</button>
+            </div>
+        </ng-template>
+        <div class="user-profile mt-1 ms-auto">
+            <div class="user-profile d-flex">
+                <figure class="position-relative d-flex justify-content-center">
+                    <div>
+                        <img [src]="'https://codeama-backend.herokuapp.com/'+userData.profilePicture" alt="">
+                    </div>
+                    <figcaption class="{{checkBadge(userData.Badge)}} rounded-pill">{{userData.Badge}}</figcaption>
+                </figure>
+                <div class="user-name-and-date">
+                    <div class="d-flex">
+                        <a class="username">{{userData.Username}}</a>
+                    </div>
+                    <div class="caption">
+                        {{userData.Username}}.codeama.net
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="sandbox-iframe-input mx-auto my-3">
+        <div class="form-group">
+            <label for="cs-iframe">Input your codesandbox iframe here</label>
+            <textarea class="form-control" name="csIframe" id="cs-iframe" rows="3" placeholder="Enter your codesandbox iframe here"></textarea>
+        </div>
+    </div>
+    <div class="codesandboxEditor mx-auto">
+        <iframe src="https://codesandbox.io/embed/eloquent-drake-7c90x?fontsize=12&hidenavigation=1&theme=light&view=preview" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="eloquent-drake-7c90x" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+    </div>
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
+        <p style="color: white">Please Wait. </p>
+    </ngx-spinner>

@@ -2,6 +2,14 @@
     <div class="form col-mob-11">
         <h2>SignUp with face recognition</h2>
     
+        <div class="camera_options_rotate">
+            <svg (click)="changeWebCame(true)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><title>Rotate camera</title><path fill="none" d="M0 0h24v24H0z"/><path d="M9.828 5l-2 2H4v12h16V7h-3.828l-2-2H9.828zM9 3h6l2 2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4l2-2zm.64 4.53a5.5 5.5 0 0 1 6.187 8.92L13.75 12.6h1.749l.001-.1a3.5 3.5 0 0 0-4.928-3.196L9.64 7.53zm4.677 9.96a5.5 5.5 0 0 1-6.18-8.905L10.25 12.5H8.5a3.5 3.5 0 0 0 4.886 3.215l.931 1.774z"/></svg>
+        </div> 
+        
+        <div class="camera_options_off">
+            <svg (click)="onOffWebCame()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><title>Turn off camera</title><path fill="none" d="M0 0h24v24H0z"/><path d="M19.586 21H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h.586L1.393 2.808l1.415-1.415 19.799 19.8-1.415 1.414L19.586 21zm-14-14H4v12h13.586l-2.18-2.18A5.5 5.5 0 0 1 7.68 9.094L5.586 7zm3.524 3.525a3.5 3.5 0 0 0 4.865 4.865L9.11 10.525zM22 17.785l-2-2V7h-3.828l-2-2H9.828l-.307.307-1.414-1.414L9 3h6l2 2h4a1 1 0 0 1 1 1v11.786zM11.263 7.05a5.5 5.5 0 0 1 6.188 6.188l-2.338-2.338a3.515 3.515 0 0 0-1.512-1.512l-2.338-2.338z"/></svg>
+        </div>
+       
         <div class="recognition_container mt-5">
 
             <h1 *ngIf = "startCountDownToShot">
@@ -13,8 +21,8 @@
                 <div id="cam">
                     <div *ngIf = "isCamOn">
                         <webcam 
+                            [width]="328" 
                             [height]="300" 
-                            [width]="350" 
                             [trigger]="triggerObservable" 
                             (imageCapture)="handleImage($event)"
                             class="d-block">
@@ -24,7 +32,7 @@
 
                 <div class="webcam-image">
                     <div class="snapshot" *ngIf="webcamImage">
-                        <img height="600" width="600" [src]="webcamImage.imageAsDataUrl" />
+                        <img height="328" width="300" [src]="webcamImage.imageAsDataUrl"/>
                     </div>
                 </div>
                 <img id="sample" class="sample" src="../../../assets/images/scansample.png" alt="">
@@ -55,6 +63,9 @@
             </div>
             <div *ngIf = "fieldError" class="alert alert-danger text-danger">
                 {{ fieldErrorMsg }}
+            </div>
+            <div *ngIf = "servererr" class="alert alert-danger text-danger">
+                {{ serverError }}
             </div>
             <div *ngIf = "preparingUpload" class="alert alert-success text-success">
                 All procedures complete! Preparing to upload data . . .  

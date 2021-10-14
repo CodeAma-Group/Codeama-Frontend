@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { inputs } from '@syncfusion/ej2-angular-dropdowns/src/drop-down-list/dropdownlist.component';
+import { Router } from '@angular/router';
 
 import * as faceapi from 'face-api.js';
-import { WebcamImage } from 'ngx-webcam';
+import {  WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
 import { AuthService } from '../_authServices/auth.service'
 import { FaceauthService } from '../_authServices/faceauth.service'
@@ -33,18 +33,26 @@ export class SignupfacerecoComponent implements OnInit {
 	secondTimerInterval: any;
 	isCamOn:boolean = true;
 
-	constructor( private _faceAuth: FaceauthService, private _authService: AuthService ) { }
+	constructor( private _router: Router,private _faceAuth: FaceauthService, private _authService: AuthService ) { }
 	
 	ngOnInit(): void {
+
+
 		Promise.all([
-			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models'),
-			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models'),
-			faceapi.nets.faceRecognitionNet.loadFromUri('/assets/models'),
-			faceapi.nets.faceExpressionNet.loadFromUri('/assets/models')
+			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/weights'),
+			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/weights'),
+			faceapi.nets.ssdMobilenetv1.loadFromUri('/assets/weights'),
+			faceapi.nets.faceExpressionNet.loadFromUri('/assets/weights')
 		]).then(() => {
+			faceapi.nets.faceRecognitionNet.loadFromUri('/assets/weights'),
 			this.loading = false;
 		}).catch(err => console.warn(err));
 		
+		WebcamUtil.getAvailableVideoInputs()
+		.then((mediaDevices: MediaDeviceInfo[]) => {
+			this.isCameraExist = mediaDevices && mediaDevices.length > 0;
+		});
+
 		this.startSignupProcess();
 		document.getElementById("sample").style.display = "none";
 
@@ -99,7 +107,6 @@ export class SignupfacerecoComponent implements OnInit {
 		this.stepInterval = setInterval(() => {
 			if (this.steps <= 9) {
 				this.steps += 1;
-				console.warn(this.steps);
 			} else {
 				clearInterval(this.stepInterval);
 			}
@@ -117,12 +124,33 @@ export class SignupfacerecoComponent implements OnInit {
 	container: any;
 	shotTaken: boolean = false;
 	noFaceDetectedError: boolean = false;
+	showWebcam = true;
+	isCameraExist = true;
+
+	errors: WebcamInitError[] = [];
+
+	private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
+
+	onOffWebCame() {
+		this.showWebcam = !this.showWebcam;
+	}
+
+	handleInitError(error: WebcamInitError) {
+		this.errors.push(error);
+	}
+
+	changeWebCame(directionOrDeviceId: boolean | string) {
+		this.nextWebcam.next(directionOrDeviceId);
+	}
+
+	get nextWebcamObservable(): Observable<boolean | string> {
+		return this.nextWebcam.asObservable();
+	}
 
 
 	async handleImage(webcamImage: WebcamImage) {
 		this.webcamImage = webcamImage;
 		this.images.push(webcamImage);
-		console.log(this.webcamImage);
 		this.isCamOn = false;
 		this.checkIfSamplesHaveFaces();
 	}
@@ -159,23 +187,23 @@ export class SignupfacerecoComponent implements OnInit {
 							clearInterval(timingInterval);
 							
 							if (this.usernameFilled && this.emailFilled && this.passwordFilled) {
+								if (this.servererr) {
+									this.servererr = false;
+								}
 								this.uploadSuccess = false;
 								this.preparingUpload = true;
 
 								var imageBlob = this.webcamImage.imageAsDataUrl;
-								// let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
-								console.log(imageBlob);
+								let image = new File([imageBlob], "profile.jpg", { type: "image/jpeg" });
+								let imageToUpload = image
 
-								let data = {
-									"faceRecognitionPicture": `${imageBlob}`,
-									"Username": `${this.username}`,
-									"Email": `${this.email}`,
-									"Password": `${this.password}`
-								}
+								let userData: FormData = new FormData();
+								userData.append("faceRecognitionPicture", imageToUpload);
+								userData.append("Username", this.username);							
+								userData.append("Email", this.email);							
+								userData.append("Password", this.password);							
 
-								console.log(data);
-
-								this.registerUser(data);
+								this.registerUser(userData);
 							} else if (this.usernameFilled && this.emailFilled) {
 								this.fieldErrorMsg = "please fill out the password";
 							} else if (this.usernameFilled) {
@@ -253,24 +281,23 @@ export class SignupfacerecoComponent implements OnInit {
 
 		if (this.usernameFilled && this.emailFilled && this.passwordFilled && this.shotTaken) {
 			this.fieldError = false;
+			if (this.servererr) {
+				this.servererr = false;
+			}
 			this.uploadSuccess = false;
 			this.preparingUpload = true;
 
 			var imageBlob = this.webcamImage.imageAsDataUrl;
-			// let image = new File([imageBlob], "profile.jpeg", { type: "image/jpeg" });
+			let image = new File([imageBlob], "profile.jpeg", {type: "image/jpeg"});
+			let imageToUpload = image;
 
-			console.log(imageBlob);
-			
-			let data = {
-				"faceRecognitionPicture": `${imageBlob}`,
-				"Username": `${this.username}`,
-				"Email": `${this.email}`,
-				"Password": `${this.password}`
-			}
+			let userData: FormData = new FormData();
+			userData.append("faceRecognitionPicture", imageToUpload);
+			userData.append("Username", this.username);							
+			userData.append("Email", this.email);							
+			userData.append("Password", this.password);							
 
-			console.log(data)
-
-			this.registerUser(data);
+			this.registerUser(userData);
 		}
 	}
 
@@ -311,14 +338,20 @@ export class SignupfacerecoComponent implements OnInit {
 		}
 	}
 
+	servererr: boolean = false;
+	serverError: string = '';
+
 	async registerUser(data: object) {
 		await this._authService.registerUser(data).subscribe(
 			res => {
-				// this._router.navigate(['/auth/verifyemail']);
-				console.warn(res);
+				this._router.navigate(['/auth/verifyemail']);
 			},
 			err => {
-				console.log(err);
+				this.preparingUpload = false;
+				this.servererr = true;
+
+				this.serverError = err.error;
+				console.log(err)
 			}
 		);
 	}

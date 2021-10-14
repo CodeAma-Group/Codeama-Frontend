@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChallengeService } from '../services/challenge.service';
+import { Data } from '../view-challenges/challenge';
 
 @Component({
   selector: 'app-challenges',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./challenges.component.css']
 })
 export class ChallengesComponent implements OnInit {
-
-  constructor() { }
+  challenge: any= []
+  constructor(private challengeService: ChallengeService) { }
   primary = 'primary';
   success = 'success';
   danger = 'danger'
@@ -18,7 +20,14 @@ export class ChallengesComponent implements OnInit {
   dan = '#F5E4ED'
   warn = ' #F5F6E7'
   ngOnInit(): void {
-    
+    this.challengeService.getChallenge('613f227d482ca6364cc35760')
+      .subscribe((res:Data)=> {
+         this.challenge = res.data
+      }) 
+  }
+
+  getParticipantCount() {
+    return this.challenge.participants.length
   }
 
 }

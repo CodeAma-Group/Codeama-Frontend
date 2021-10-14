@@ -27,6 +27,14 @@ import { UserarticlesComponent } from './userprofile/userarticles/userarticles.c
 import { UseraskedComponent } from './userprofile/userasked/userasked.component';
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserresourcesComponent } from './userprofile/userresources/userresources.component';
+import { AuthGuard } from '../authentication/common/auth.guard';
+import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
+import {AmaQuestionComponent} from './ama-question/ama-question.component'
+import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
+import { TakeChallengeBoardComponent } from './take-challenge-board/take-challenge-board.component';
+import { AddChallengeComponent } from './add-challenge/add-challenge.component';
+import { ViewArticleComponent } from './view-article/view-article.component';
+
 
 const routes: Routes = [
   {
@@ -71,27 +79,42 @@ const routes: Routes = [
       },
       {
         path:"add-question",
-        component:AddQuestionComponent
+        component:AddQuestionComponent,
+        canActivate: [AuthGuard]
       },
       {
         path:"add-article",
-        component: AddArticleComponent
+        component: AddArticleComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: "add-resource",
-        component: AddResourceComponent
+        component: AddResourceComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: "answer-question",
-        component:AnswerQuestionComponent
+        component:AnswerQuestionComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "view-article/:articleId",
+        component:ViewArticleComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: "add-bug",
-        component: AddBugComponent
+        component: AddBugComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "bug-details/:id/:posterId",
+        component: BugDetailsComponent,
       },
       {
         path: 'projectRegistration',
         component: ProjectRegistrationComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'projectDetails/:id',
@@ -100,10 +123,11 @@ const routes: Routes = [
       {
         path: 'challenges',
         component: ChallengesComponent,
+  
       },
       {
         path: 'codeamas',
-        component: CodeamasComponent,
+        component: CodeamasComponent
       },
       {
         path: 'notifications',
@@ -114,6 +138,7 @@ const routes: Routes = [
         component: SupportComponent,
       },
       {
+        
         path: 'profile/:username',
         component: ProfileComponent,
         children: [
@@ -149,8 +174,30 @@ const routes: Routes = [
       {
         path: 'askquestion',
         component: AskcodeamaComponent,
-      }
-    ],
+        canActivate: [AuthGuard]
+      },
+
+      {
+        path:'amaquestions',
+        component: AmaQuestionComponent
+         
+     },
+     
+
+     {
+      path:'viewchallengetakers',
+      component: ViewChallengeTakersComponent 
+    },
+    {
+      path:'challenge-taker-board/:id',
+      component: TakeChallengeBoardComponent
+    },
+
+    {
+      path:'add-challenge',
+      component: AddChallengeComponent
+    }
+    ]
   },
 ];
 

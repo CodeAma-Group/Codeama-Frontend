@@ -61,7 +61,7 @@ export class LoginformComponent implements OnInit {
 	}
 
 	getUserData(data: any) {
-
+	
 		if (data.Email == "" || data.Password == "") {
 
 			if (data.Email == "") {
@@ -95,7 +95,8 @@ export class LoginformComponent implements OnInit {
 
 		this._auth.loginUser(data).subscribe(
 			res => {
-				localStorage.setItem('codeama_auth_token', res.token);
+				let token = res.token.split(' ')[1];
+				localStorage.setItem('codeama_auth_token', token);
 				this._router.navigate(['/app']);
 			},
 			err => {

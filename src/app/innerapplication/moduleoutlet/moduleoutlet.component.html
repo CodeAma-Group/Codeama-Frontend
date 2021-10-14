@@ -15,8 +15,11 @@
                 <img src="../../../assets/images/Group 2.png" alt="search icon">
                 <input type="text" name="search" id="search" placeholder="search at codeama">
             </form>
-            <div (click) = "logout()" class="logout">
+            <div *ngIf="loggedIn" (click) = "logout()" class="logout">
                 Logout
+            </div>
+            <div *ngIf="!loggedIn" (click) = "login()" class="logout login">
+                Login
             </div>
         </div>
         <router-outlet></router-outlet>

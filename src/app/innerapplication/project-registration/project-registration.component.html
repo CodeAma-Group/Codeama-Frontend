@@ -14,7 +14,7 @@
               d="M-1792.988,6774.147h79.05v-63.607s-10.793,31.589-24.931,37.821-19.763-15.473-31.62-12.894-22.5,20.629-22.5,20.629Z"
               transform="translate(1803 -6698.148)" fill="rgba(255,255,255,0.61)" />
           </svg>
-                    <br>
+                    <br>fea
                     <span class="ms-2">Company or Group logo goes here</span>
                     <div class="mx-auto col-lg-7 imagefromDb1Container">
                         <img [src]="logoUrl" *ngIf="logoUrl!=''" class="imagefromDb1" alt="">
@@ -49,7 +49,7 @@
           </svg>
                     <span class="ms-2">select other project pages maximum 5</span>
                     <div class="detectedImages" *ngIf="Show">
-                        <img *ngFor="let url of urls" [src]="url" class=" rounded my-2">
+                        <img *ngFor="let thumbnail of thumbnails" [src]="thumbnail" class="rounded my-2">
                     </div>
                 </div>
                 <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="OtherImagesUplopad" (change)="detectFiles($event)" multiple #OtherImages>
@@ -85,7 +85,7 @@
                             4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
                             </span>
                         </div>
-                        <input type="email" name="email" class="fm-style project-teamm-no-account" (keyup.enter)="Addfeature($event.target.value)" placeholder="project feature">
+                        <input type="email" id="proFeatures" name=" email" class="fm-style project-teamm-no-account" (keyup.enter)="Addfeature($event.target.value)" placeholder="project feature">
                     </div>
                 </div>
                 <div class="demo-links col-lg-12 d-flex">
@@ -135,3 +135,4 @@
                 </div>
             </form>
         </div>
+        <notifier-container></notifier-container>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../authentication/_authServices/auth.service'
-import { UserService } from '../services/user.service'
+import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,25 +10,26 @@ import { UserService } from '../services/user.service'
 })
 export class SidebarComponent implements OnInit {
 
-  constructor( private userService: UserService, private router: Router, private authService: AuthService ) { }
+  constructor( private authService: AuthService, private router: Router ) { }
 
   cookieVal:string = "";
 
   userId: string = ''
   userData: any;
+  profileRoute: boolean = true
 
   ngOnInit(): void {
+    
+    var token = this.authService.getToken()
 
-    this.userService.getUserDetails().subscribe((res) => {
-      this.userData = res;
-      this.userId = this.userData.data._id;
-    },
-    err => {
-      console.log(err)
-      alert("Token expired!");
-      this.authService.logout();
-      this.router.navigate(['auth'])
-    })
+    if (token != null) {
+      this.userData = jwt_decode(token);
+      this.userId = this.userData._id;
+    }
+
+    if (this.userId == '') {
+      this.profileRoute = false
+    }
 
     var cookieName = "isDark";
 
@@ -94,5 +95,15 @@ export class SidebarComponent implements OnInit {
       document.cookie = "isDark=true; path=/; max-age=" + 365*24*60*60;
     }
 
-}
+  }
+
+  getProfile() {
+    var status = this.authService.loggedIn()
+    if (status) {
+      this.router.navigate(['app/profile', this.userId]);
+    } else {
+      this.router.navigate(['/auth']);
+    }
+  }
+
 }

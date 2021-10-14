@@ -12,6 +12,14 @@
     background: #F4F7FB;
 }
 
+@import '~@syncfusion/ej2-base/styles/material.css';
+@import '~@syncfusion/ej2-buttons/styles/material.css';
+@import '~@syncfusion/ej2-dropdowns/styles/material.css';
+@import '~@syncfusion/ej2-inputs/styles/material.css';
+@import '~@syncfusion/ej2-popups/styles/material.css';
+@import '~@syncfusion/ej2-lists/styles/material.css';
+@import '~@syncfusion/ej2-angular-dropdowns/styles/material.css';
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import '~codemirror/lib/codemirror.css';
@@ -20,11 +28,25 @@
 @import '~codemirror/addon/fold/foldgutter.css';
 @import '~codemirror/addon/lint/lint.css';
 
+
 /* Application global styling variables */
 
 .angular-editor-toolbar {
     background-color: #66a5f045 !important;
     border-radius: 4px !important;
+    width: fit-content!important;
+    height: 7vh!important;
+    margin-left: auto!important;
+}
+
+.angular-editor-toolbar .angular-editor-toolbar-set .angular-editor-button {
+    background-color: #fff;
+    /* margin: 7px auto!important; */
+    border: 1px solid #ddd;
+    padding: .4rem;
+    min-width: 3rem;
+    min-height: 2.8em!important;
+    float: left;
 }
 
 .angular-editor-textarea {
@@ -38,6 +60,11 @@
     outline: none !important;
     position: relative;
     border-radius: 5px;
+}
+
+.modal.show .modal-dialog {
+    max-width: 65em !important;
+    transform: none;
 }
 
 :root {
@@ -276,5 +303,13 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Poppins', Roboto, "Helvetica Neue", sans-serif;
+}
+
+.CodeMirror {
+    font-family: monospace;
+    height: auto !important;
+    color: #000;
+    direction: ltr;
+    border-radius: 5px!important;
 }

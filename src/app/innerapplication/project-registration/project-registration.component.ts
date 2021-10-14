@@ -1,15 +1,20 @@
 import { THIS_EXPR, variable } from '@angular/compiler/src/output/output_ast';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { ProjectService } from '../services/project.service';
+import { NotifierService } from 'angular-notifier';
 @Component({
   selector: 'app-project-registration',
   templateUrl: './project-registration.component.html',
   styleUrls: ['./project-registration.component.css'],
 })
 export class ProjectRegistrationComponent implements OnInit {
-  constructor(private project:ProjectService) {}
+  constructor(
+    private project: ProjectService,
+    private notifier: NotifierService
+  ) {}
   public options = [
     { label: 'Java', value: 'Java' },
     { label: 'Javascript', value: 'Javascript' },
@@ -37,9 +42,9 @@ export class ProjectRegistrationComponent implements OnInit {
   selectedImg = null;
   OthernewImages = [];
   imgUrl: string = '';
-  logoUrl:string='';
-  tagged_tech:Array<any>=[];
-  GroupLogo=null
+  logoUrl: string = '';
+  tagged_tech: Array<any> = [];
+  GroupLogo = null;
   logoImage(event) {
     if (event.target.files) {
       const reader = new FileReader();
@@ -52,7 +57,7 @@ export class ProjectRegistrationComponent implements OnInit {
 
   fileSelected(event) {
     this.selectedImg = event.target.files[0].name;
-    
+
     if (event.target.files) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
@@ -63,7 +68,7 @@ export class ProjectRegistrationComponent implements OnInit {
   }
 
   urls = new Array<string>();
-  thumbnails=[]
+  thumbnails = [];
   Show: boolean = false;
   detectFiles(event) {
     this.urls = [];
@@ -76,7 +81,7 @@ export class ProjectRegistrationComponent implements OnInit {
       for (let file of files) {
         let reader = new FileReader();
         reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
+          this.thumbnails.push(e.target.result);
         };
         reader.readAsDataURL(file);
       }
@@ -86,89 +91,155 @@ export class ProjectRegistrationComponent implements OnInit {
     const fd = new FormData();
     fd.append('file', this.selectedImg, this.selectedImg.name);
   }
-  emailsArray=[];
-  clearInputValue=""
-emailTags(data){
-  let emailPattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-  if(data.match(emailPattern)){
-    if (this.emailsArray.indexOf(data)==-1) {
-    this.emailsArray.push(data);
-    // document.getElementById("project-teamm-no-account").value="";
-    this.clearInputValue=""
-    }
-    else{
-      alert("Each member Email should be unique")
+  emailsArray = [];
+  clearInputValue = '';
+  emailTags(data) {
+    let emailPattern =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (data.match(emailPattern)) {
+      if (this.emailsArray.indexOf(data) == -1) {
+        this.emailsArray.push(data);
+        // document.getElementById("project-teamm-no-account").value="";
+        this.clearInputValue = '';
+      } else {
+        alert('Each member Email should be unique');
+      }
+    } else {
+      alert('Please Enter a valid email address');
     }
   }
-  else{
-    alert("Please Enter a valid email address");
-  }
-}
 
-features=[];
-Addfeature(data){
-  if (this.features.indexOf(data)==-1) {
-  this.features.push(data);
+  features = [];
+  Addfeature(data) {
+    if (this.features.indexOf(data) == -1) {
+      this.features.push(data);
+      document.getElementById('proFeatures').innerText = '';
+    } else {
+      alert('Feature should not be repeated');
+    }
   }
-  else{
-    alert("Feature should not be repeated")
+  techs = [];
+  AddTech(data) {
+    if (this.techs.indexOf(data) == -1) {
+      this.techs.push(data);
+      document.getElementById('tagged-tech').innerText = '';
+    } else {
+      alert('Technology should not be repeated twice');
+    }
   }
-}
-techs=[];
-AddTech(data){
-  if (this.techs.indexOf(data)==-1) {
-  this.techs.push(data);
-  document.getElementById("tagged-tech").innerText=""
+  team = [];
+  // email="something went wrong"
+  Addmember(data) {
+    if (this.team.indexOf(data) == -1) {
+      this.team.push(data);
+    } else {
+      alert('Team member should not be repeated');
+    }
   }
-  else{
-    alert("Technology should not be repeated twice")
+  data;
+  collectData() {
+    //  console.log(this.newProjectForm.value.logo);
+    // var features: any = this.features;
+    // var emails: any = this.emailTags;
+    // var team: any = this.team;
+    // var team: any = this.team;
+    // var thumbnails: any = this.thumbnails;
+    // var technologies: Array<any> = this.techs;
+    const ProjectData: any = new FormData();
+
+    if (
+      this.newProjectForm.value.projectName != null ||
+      this.newProjectForm.value.projectName != undefined
+    ) {
+      ProjectData.append('title', this.newProjectForm.value.projectName);
+    }
+    if (
+      this.newProjectForm.value.app_description != null ||
+      this.newProjectForm.value.app_description != undefined
+    ) {
+      ProjectData.append(
+        'description',
+        this.newProjectForm.value.app_description
+      );
+    }
+    if (this.techs != null || this.techs != undefined) {
+      ProjectData.append('technologies', JSON.stringify(this.techs));
+    }
+    if (this.thumbnails != undefined || this.thumbnails != null) {
+      ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
+    }
+    if (
+      this.newProjectForm.value.teamName != null ||
+      this.newProjectForm.value.teamName != undefined
+    ) {
+      ProjectData.append('teamName', this.newProjectForm.value.teamName);
+    }
+    if (this.logoUrl != undefined || this.logoUrl != null) {
+      ProjectData.append('logo', this.logoUrl);
+    }
+    if (
+      this.newProjectForm.value.appLink != null ||
+      this.newProjectForm.value.appLink != undefined
+    ) {
+      ProjectData.append('host', this.newProjectForm.value.appLink);
+    }
+    if (
+      this.newProjectForm.value.githubLink != null ||
+      this.newProjectForm.value.githubLink != undefined
+    ) {
+      ProjectData.append('github', this.newProjectForm.value.githubLink);
+    }
+    if (this.team.length != 0 || this.team != undefined || this.team != null) {
+      ProjectData.append('team', JSON.stringify(this.team));
+    }
+    if (
+      this.emailTags.length != 0 ||
+      this.emailTags != null ||
+      this.emailTags != undefined
+    ) {
+      ProjectData.append('non_member_emails', JSON.stringify(this.emailsArray));
+    }
+    if (this.features != null || this.features != undefined) {
+      ProjectData.append('features', JSON.stringify(this.features));
+    }
+    if (this.imgUrl != null || this.imgUrl != undefined) {
+      ProjectData.append('demo', JSON.stringify(this.imgUrl));
+    }
+    // this.data = {
+    //   title: this.newProjectForm.value.projectName,
+    //   description: this.newProjectForm.value.app_description,
+    //   technologies: this.techs,
+    //   thumbnails: this.urls,
+    //   demo: this.imgUrl,
+    //   teamName: this.newProjectForm.value.teamName,
+    //   logo: this.logoUrl,
+    //   github: this.newProjectForm.value.githubLink,
+    //   host: this.newProjectForm.value.appLink,
+    //   team: this.team,
+    //   non_member_emails: this.emailTags,
+    //   features: this.features,
+    // };
+// console.log(this.imgUrl);
+
+    this.project.saveProject(ProjectData).subscribe((res) => {
+      this.notifier.notify('success', 'New Project posted successfully!');
+      alert(res);
+      console.log('result is here', res);
+    });
   }
-}
-team=[];
-// email="something went wrong"
-Addmember(data){
-  if (this.team.indexOf(data)==-1) {
-  this.team.push(data);
-  }
-  else{
-    alert("Team member should not be repeated")
-  }
-}
-data
- collectData(){
-   console.log(this.newProjectForm.value.logo);
-  this.data={
-    title:this.newProjectForm.value.projectName,
-    description:this.newProjectForm.value.app_description,
-    technologies:this.techs,
-    thumbnails:this.urls,
-    demo:this.imgUrl,
-    teamName:this.newProjectForm.value.teamName,
-    logo:this.logoUrl,
-    github:this.newProjectForm.value.githubLink,
-    host:this.newProjectForm.value.appLink,
-    team:this.team,
-    non_member_emails:this.emailTags,
-    features:this.features
-  }
-   this.project.saveProject(this.data).subscribe((res)=>{
-     console.log("result is here",res); 
-   })
- }
-  newProjectForm=new FormGroup({
-    projectName:new FormControl(''),
+  newProjectForm = new FormGroup({
+    projectName: new FormControl(''),
     // tagged_tech:new FormControl(''),
     app_description: new FormControl(''),
     teamName: new FormControl(''),
-    githubLink:new FormControl(''),
-    appLink:new FormControl(''),
-    logo:new FormControl('')
-  })
-  
+    githubLink: new FormControl(''),
+    appLink: new FormControl(''),
+    logo: new FormControl(''),
+  });
+
   cookieVal: string = '';
 
   ngOnInit(): void {
-    
     var cookieName = 'isDark';
 
     var matchCookie = document.cookie.match(

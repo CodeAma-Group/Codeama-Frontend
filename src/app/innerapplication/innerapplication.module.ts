@@ -37,11 +37,17 @@ import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolve
 import { UserarticlesComponent } from './userprofile/userarticles/userarticles.component';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { AuthService } from '../authentication/_authServices/auth.service'
-import { AuthGuard } from '../authentication/common/auth.guard'
-import { AuthinterceptorService } from '../authentication/_authServices/authinterceptor.service'
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
+import { AmaQuestionComponent } from './ama-question/ama-question.component';
+import { QuestionComponent } from './ama-question/question/question.component';
+import { InfoBoxComponent } from './ama-question/question/info-box/info-box.component';
+import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-takers.component';
+import { ChallengeTakerComponent } from './view-challenges/challenge-taker/challenge-taker.component';
+import { TakeChallengeBoardComponent } from './take-challenge-board/take-challenge-board.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AddChallengeComponent } from './add-challenge/add-challenge.component';
+import { AddBadgeComponent } from './add-challenge/add-badge/add-badge.component';
+import { ViewArticleComponent } from './view-article/view-article.component';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -84,7 +90,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent, AmaQuestionComponent,BugDetailsComponent, QuestionComponent, InfoBoxComponent, ViewChallengeTakersComponent, ChallengeTakerComponent, TakeChallengeBoardComponent, AddChallengeComponent, AddBadgeComponent, ViewArticleComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule,
@@ -94,16 +100,8 @@ const customNotifierOptions: NotifierOptions = {
     AngularEditorModule,
     MultiSelectAllModule,
     NgxSpinnerModule,
+    NgbModule,
     NotifierModule.withConfig(customNotifierOptions)
-  ],
-  providers: [
-    AuthService,
-		AuthGuard,
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: AuthinterceptorService,
-			multi: true
-		}
   ],
 })
 export class InnerapplicationModule { }

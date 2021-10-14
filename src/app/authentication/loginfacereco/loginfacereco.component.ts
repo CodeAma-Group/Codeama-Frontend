@@ -38,11 +38,12 @@ export class LoginfacerecoComponent implements OnInit {
 
 	ngOnInit(): void {
 		Promise.all([
-			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models'),
-			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models'),
-			faceapi.nets.faceRecognitionNet.loadFromUri('/assets/models'),
-			faceapi.nets.faceExpressionNet.loadFromUri('/assets/models')
+			faceapi.nets.tinyFaceDetector.loadFromUri('/assets/weights'),
+			faceapi.nets.faceLandmark68Net.loadFromUri('/assets/weights'),
+			faceapi.nets.faceExpressionNet.loadFromUri('/assets/weights'),
+			faceapi.nets.ssdMobilenetv1.loadFromUri('/assets/weights')
 		]).then(() => {
+			faceapi.nets.faceRecognitionNet.loadFromUri('/assets/weights'),
 			this.loading = false;
 		}).catch(err => console.warn(err));
 
@@ -142,6 +143,10 @@ export class LoginfacerecoComponent implements OnInit {
 	showWebcam = true;
 	isCameraExist = true;
 
+	faceRecoImages: any;
+	faceRecoImageCount: number = 0;
+	imageIterationCount: number = 0;
+
 	errors: WebcamInitError[] = [];
 
 	private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
@@ -211,7 +216,7 @@ export class LoginfacerecoComponent implements OnInit {
 				} else {
 					return this.noFaceDetectedError = true;
 				}
-				return new faceapi.LabeledFaceDescriptors(label, descriptions)
+				return new faceapi.LabeledFaceDescriptors(label, descriptions);
 			})
 		)
 	}
@@ -219,6 +224,24 @@ export class LoginfacerecoComponent implements OnInit {
 
 	async compareTriggers() {
 		
+		await this._faceAuth.getFaceImages().subscribe(
+			res => {
+				const faceReco:any = res;
+				this.faceRecoImages = faceReco.data;
+				this.faceRecoImages.forEach( face => {
+					this.faceRecoImageCount++;				
+				});
+	
+			},
+			err => {
+				alert(err);
+				this._router.navigate(['auth']);
+			}
+		);
+
+	}
+
+	async compareImageAlogrithm() {
 		async function getFileFromUrl(url, name, defaultType = 'image/jfif'){
 			const response = await fetch(url);
 			const data = await response.blob();
@@ -227,11 +250,12 @@ export class LoginfacerecoComponent implements OnInit {
 			});
 		}
 
-		const file = await getFileFromUrl('http://localhost:4200/assets/face_detection_test/download.jfif', 'download.jfif');
+		let face = this.faceRecoImages[this.imageIterationCount];
+
+		const file = getFileFromUrl(`https://codeama-backend.herokuapp.com/${face.faceRecognitionPicture}`, 'face.jpeg');
 		this.databaseUserBlobSamples = file;
 
 		this.start(this.databaseUserBlobSamples);
-
 	}
 	
 	async start(uploadedImage: any) {
@@ -271,12 +295,36 @@ export class LoginfacerecoComponent implements OnInit {
 					if (result.label === 'Face match detected') {
 						this.matchFound = true;
 						this.faceMatchScore = Math.round((1 - result.distance) * 100);
+
+						if (this.imageIterationCount <= this.faceRecoImageCount) {
+							
+							if (this.faceMatchScore >= 70) {
+								return this.compareFacesResults(this.faceMatchScore); 
+							} else {
+								this.imageIterationCount = this.imageIterationCount + 1;
+								return this.compareImageAlogrithm();
+							}
+
+
+						} else {
+							return this.compareFacesResults(this.faceMatchScore); 
+						}
 						
-						return this.compareFaces(this.faceMatchScore); 
 						
 					} else if (!this.matchFound && i === results.length - 1) {
 						this.faceMatchScore = Math.round((1 - result.distance) * 100);
-						return this.compareFaces(this.faceMatchScore);
+						if (this.imageIterationCount <= this.faceRecoImageCount) {
+							
+							if (this.faceMatchScore >= 70) {
+								return this.compareFacesResults(this.faceMatchScore); 
+							} else {
+								this.imageIterationCount = this.imageIterationCount + 1;
+								return this.compareImageAlogrithm();
+							}
+
+						} else {
+							return this.compareFacesResults(this.faceMatchScore); 
+						}
 					}
 				});
 				this.processingResult = false;
@@ -319,11 +367,11 @@ export class LoginfacerecoComponent implements OnInit {
 		
 	}
 
-	compareFaces(matchscore) {
+	compareFacesResults(matchscore) {
 		this.passwordSet = true;
-		if (matchscore > 65) {
+		if (matchscore > 70) {
 			this._router.navigate(['/welcome']);
-		} else if (matchscore < 65) {
+		} else if (matchscore < 70) {
 			this.notMatchingOurData = true;
 
 			var beginLoginProcess = 0;
