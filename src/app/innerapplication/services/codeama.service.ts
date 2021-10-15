@@ -19,25 +19,12 @@ export class CodeamaService {
     'Authorization': `Bearer ${this.auth_token}`,
   });
   
-  savecodeama(data) {
-    return this.http.post(this.url, data,{ headers: this.headers });
+  savecodeama(data:FormData) {
+    return this.http.post(`https://codeama-backend.herokuapp.com/codeama`,  data , { headers: this.headers });
   }
 
   getcodeamas(){
     return this.http.get(this.url)
-  }
-
-  getcodeama(id){
-    this.http.get(this.url).subscribe(res => {
-      this.data = res
-      this.data = this.data.data 
-      for (let i = 0; i < this.data.length; i++) {
-        if(this.data[i]._id = id){
-          this.data = this.data[i]
-          return this.data
-        }
-      }
-    })
   }
 
   baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;

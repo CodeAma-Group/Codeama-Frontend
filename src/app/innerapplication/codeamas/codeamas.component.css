@@ -104,17 +104,17 @@ figure>div>img {
 
 p.beginner {
     background-color: #f7951d;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 p.intermediate {
     background-color: #00A79D;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 p.pro {
     background-color: #4275ED;
-    margin-left: 34px;
+    margin-left: 24px;
 }
 
 p.admin {

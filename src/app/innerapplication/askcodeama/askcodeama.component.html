@@ -64,7 +64,7 @@
         <p>Asking a question to <span>{{user.codeama.Username}}</span></p>
         <form #f="ngForm" (ngSubmit)="askama(f)" class="row px-2 pt-1 cotainer-fluid">
           <div class= "col-8">
-            <div *ngIf="result" class="alert alert-success w-50 text-center" role="alert">
+            <div *ngIf="result" class="alert alert-success w-50 text-center fs-4" role="alert">
               {{result.message}}
             </div>
 
