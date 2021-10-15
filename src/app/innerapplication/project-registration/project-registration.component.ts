@@ -100,8 +100,8 @@ export class ProjectRegistrationComponent implements OnInit {
       for (let file of files) {
         let reader = new FileReader();
         reader.onload = (e: any) => {
-          this.newProject.get("thumbnails").push(e.target.result);
           this.thumbnails.push(e.target.result)
+          this.newProject.get("thumbnails").push(e.target.result);
         };
         reader.readAsDataURL(file);
       }
@@ -128,11 +128,11 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('Please Enter a valid email address');
     }
   }
-  featuresArray:any
+  featuresArray=[]
   Addfeature(data) {
-    if (this.newProject.get("features").indexOf(data) == -1) {
-      this.newProject.get("features").push(data);
+    if (this.featuresArray.indexOf(data) == -1) {
       this.featuresArray.push(data)
+      this.newProject.get("features").push(data);
       document.getElementById('proFeatures').innerText = '';
     } else {
       alert('Feature should not be repeated');
@@ -140,9 +140,9 @@ export class ProjectRegistrationComponent implements OnInit {
   }
   techs = [];
   AddTech(data) {
-    if (this.newProject.get("technologies") == -1) {
-      this.newProject.get("technologies").push(data)
+    if (this.techs.indexOf(data) == -1) {
       this.techs.push(data);
+      this.newProject.get("technologies").push(data)
       document.getElementById('tagged-tech').innerText = '';
     } else {
       alert('Technology should not be repeated twice');
@@ -157,7 +157,6 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('Team member should not be repeated');
     }
   }
-  data;
   collectData() {
     const ProjectData: any = new FormData();
     if (
@@ -215,7 +214,7 @@ export class ProjectRegistrationComponent implements OnInit {
     if (this.newProject.get("features") != null || this.newProject.get("features") != undefined) {
       ProjectData.append('features', JSON.stringify(this.newProject.get("features")));
     }
-    if (this.imgUrl != null || this.imgUrl != undefined) {
+    if (this.newProject.value.demo != null || this.newProject.value.demo!= undefined) {
       ProjectData.append('demo', this.newProject.value.demo);
     }
     this.project.saveProject(ProjectData).subscribe((res) => {
