@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeamaService } from '../services/codeama.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-codeamas',
@@ -9,40 +10,46 @@ import { CodeamaService } from '../services/codeama.service';
 export class CodeamasComponent implements OnInit {
 
   constructor(private codeama:CodeamaService) { }
-  // id=10;
   url="https://codeama-backend.herokuapp.com"
   show:boolean=false
-  user;
   badge;
   case;
   codeamaData:any
-
-  originalUser
+  unfollower;
   follower
+  followButton = `follow`;
+  unFollowButton = `unfollow`
 
-
+  auth_token = localStorage.getItem('codeama_auth_token');
   ngOnInit(): void {
-    
     this.codeama.getcodeamas().subscribe((res)=>{
+      
       this.codeamaData=res
-      this.codeamaData=this.codeamaData.data
-      this.user = this.codeamaData.codeama
+      this.codeamaData=this.codeamaData.data 
+      
       this.show=true
-
-      this.follower = this.codeamaData._id;
     })
+  }
+  userData:any = jwt_decode(this.auth_token)
+  userId:number= this.userData._id
 
-    this.codeama.patch(this.follower).subscribe((res) => {
-      console.log("Esther ");
-      console.log(this.follower)
-      console.log(res);
+  addFollower(id){
+    this.follower = id
+    this.codeama.updateFollower(this.follower).subscribe((res) => {
+      this.codeama.getcodeamas().subscribe((res)=>{
+        this.codeamaData=res
+        this.codeamaData=this.codeamaData.data 
+      })
     })
-
   }
 
-  selectfollower(data){
-    this.follower = Object.assign({}, data);
-    this.originalUser = data;
+  removeFollower(id){
+    this.unfollower = id
+    this.codeama.updateUnfollower(this.unfollower).subscribe((res) => {
+        this.codeama.getcodeamas().subscribe((res)=>{
+        this.codeamaData=res
+        this.codeamaData=this.codeamaData.data 
+      })
+    })
   }
-    
 }

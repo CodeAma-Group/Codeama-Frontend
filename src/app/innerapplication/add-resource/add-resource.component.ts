@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import jwt_decode from 'jwt-decode'
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -12,7 +13,7 @@ import { InnerapplicationService } from '../innerapplication.service';
 })
 export class AddResourceComponent implements OnInit {
   public resource;
-  constructor(private formBuilder: FormBuilder,private notifier: NotifierService,private backendService: InnerapplicationService,private spinner: NgxSpinnerService) {
+  constructor(private formBuilder: FormBuilder,private notifier: NotifierService,private backendService: InnerapplicationService,private spinner: NgxSpinnerService, private router: Router) {
     this.resource = this.formBuilder.group({
       title: ["",[Validators.required]],
       desc: ["",[Validators.required]],
@@ -39,6 +40,7 @@ export class AddResourceComponent implements OnInit {
       (data) => {
         this.spinner.hide()
         this.notifier.notify("success","Resource posted successfully!" )
+        setTimeout(() => this.router.navigate(['app/hood/resources']), 1000)
     },
     (error) => {
       this.notifier.notify("error","An error occured, try again!")

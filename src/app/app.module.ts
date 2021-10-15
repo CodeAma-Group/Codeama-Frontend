@@ -8,7 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import { MultiSelectAllModule, MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NotifierModule } from 'angular-notifier';
@@ -33,7 +33,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MultiSelectAllModule,
+    MultiSelectAllModule, MultiSelectModule,
     NgxSpinnerModule,
     NotifierModule
   ],
