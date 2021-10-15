@@ -1,45 +1,117 @@
-<div class="container-fluid round">
-  <div class="bg-color">
-
-    <div class="header row">
-      <div class="col-10">
-        <div class="notification">Notifications</div>
+<div class="dashboard">
+  <div class="color">
+    <div class="sideContent">
+      <div class="repeated_projects">
+        <h6>Repeated Projects</h6>
+        <hr>
+        <div>
+          <p>More than 100 projects daily are found duplicate and being worked on by many programmers
+          </p>
+          <a href="" class="link-primary">Check my project now &rarr;</a>
+          <br>
+          <br>
+          <a class="btn text-primary occ_proj">Occupied projects</a>
+        </div>
       </div>
-      <div class="col">
-        <i style="font-size:24px; color: white;" class="fa">&#xf055;</i><a href="#">Mark all as read</a>
+      <div class="bugs_and_qtns repeated_projects">
+        <h6>Bugs & questions solved</h6>
+        <hr>
+        <div>
+          <a href="">
+            <img src="assets/test_images/js.png" alt="js">
+            <span>Javascript</span>
+          </a>
+          <a href="">
+            <img src="assets/test_images/java.png" alt="java">
+            <span>Java</span>
+          </a>
+          <a href="">
+            <img src="assets/test_images/python.png" alt="python">
+            <span>Python</span>
+          </a>
+          <a href="">
+            <img src="assets/test_images/c.png" alt="C++">
+            <span>C++</span>
+          </a>
+          <a href="">
+            <img src="assets/test_images/react.png" alt="react">
+            <span>React JS</span>
+          </a>
+          <a href="">
+            <img src="assets/test_images/swift.png" alt="swift">
+            <span>Swift</span>
+          </a>
+          <a href="">
+            <img src="assets/test_images/angular.png" alt="angular">
+            <span>Angular</span>
+          </a>
+          <a href="">
+            <img src="assets/test_images/vue.png" alt="vue">
+            <span>Vue JS</span>
+          </a>
+        </div>
+      </div>
+      <div class="prizes repeated_projects">
+        <h6>Prizes</h6>
+        <hr>
+        <div class="d-flex justify-content-evenly flex-wrap">
+          <p class="col-5"><span class=" pro">Code Pro</span><br>Pro <br> badge</p>
+          <br>
+          <p class="col-6"><span class=" interm">Intermediate</span><br>Intermediate <br> badge</p>
+          <br>
+          <p class="col-5"><span class=" beginner">Beginner</span><br>Beginner <br> badge</p>
+          <br>
+          <p class="col-6"><span class=" absBeg">Abs Beginner</span><br>Absolute <br> beginner</p>
+          <br>
+        </div>
       </div>
     </div>
-    <div class="line"></div>
+    <div class="mainContent">
+      <div class="header row pt-0">
+        <div class="col-9">
+          <div class="repeated_projects notification">
+            <h6>Notifications</h6>
+          </div>
+        </div>
+        <div class="col notification ml">
+          <a href="mark">Mark all as read</a>
+        </div>
+      </div>
+      <div class="line"></div>
 
-    <div *ngIf="notnull">
-      <div ngFor="let noti of notificationData">
+      <div *ngIf="notnull">
+        <div ngFor="let noti of notificationData">
+          <div class="noti row">
+            <div class="col-1 profile">
+              <img src="../../../assets/images/sara.png" alt="prof">
+            </div>
+
+            <div class="col">
+              <div class="tx-title">{{noti.title}}</div>
+              <div class="tx-12">{{noti.description}}</div>
+              <p class="tx-to">{{noti.to}}</p>
+            </div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!notnull">
         <div class="noti row">
           <div class="col-1 profile">
             <img src="../../../assets/images/sara.png" alt="prof">
           </div>
 
-          <div class="col">
-            <div class="tx-title">{{noti.title}}</div>
-            <div class="tx-12">{{noti.description}}</div>
-            <p class="tx-to">{{noti.to}}</p>
+          <div class="col-10">
+            <div class="tx-title">Codeama welcomes you to coding world!</div>
+            <div class="tx-12">Codeama is there to help all developer to get used to coding world. You can see the
+              others
+              project and also post your to bloom storm your project and get it known to other codeamas and every users.
+            </div>
+            <p class="tx-to">{{codeamaData.Username}}.codeama.dev</p>
           </div>
           <div class="line"></div>
         </div>
-      </div>
-    </div>
-
-    <div *ngIf="!notnull">
-      <div class="noti row">
-        <div class="col-1 profile">
-          <img src="../../../assets/images/sara.png" alt="prof">
-        </div>
-
-        <div class="col">
-          <div class="tx-title">Codeama welcomes you to coding world!</div>
-          <div class="tx-12">Codeama is there to help all developer to get used to coding world. You can see the others project and also post your to bloom storm your project and get it known to other codeamas and every users.</div>
-          <p class="tx-to">{{codeamaData.Username}}.codeama.dev</p>
-        </div>
-        <div class="line"></div>
       </div>
     </div>
   </div>

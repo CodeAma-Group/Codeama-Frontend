@@ -15,31 +15,38 @@ export class CodeamasComponent implements OnInit {
   badge;
   case;
   codeamaData: any
+  amaInfo: any
   unfollower;
   follower
   followButton = `follow`;
   unFollowButton = `unfollow`
   user: string = '';
-  coder:boolean
+  found: boolean;
   auth_token = localStorage.getItem('codeama_auth_token');
+  amaId:string
+
+  userData: any = jwt_decode(this.auth_token)
+  userId: number = this.userData._id
+
   ngOnInit(): void {
 
     this.codeama.getcodeamas().subscribe((res) => {
       this.codeamaData = res
       this.codeamaData = this.codeamaData.data
-      for (var _i = 0; _i < this.codeamaData.length; _i++) {
-         
-        if(this.codeamaData[_i]._id == this.userId){
-          this.coder = true
+      this.show = true
+      
+      this.found = false;
+      for (var i = 0; i < this.codeamaData.length; i++) {
+        // console.log(this.codeamaData[i].codeama._id);
+        if (this.codeamaData[i].codeama._id == this.userId) {
+          this.found = true;
+          this.amaId = this.codeamaData[i]._id;
         }
       }
-      this.show = true
-      console.log(this.codeamaData);
+      console.log(this.userId);
+      console.log(this.found);
     })
   }
-  userData: any = jwt_decode(this.auth_token)
-  userId: number = this.userData._id
-
 
   addFollower(id) {
     this.follower = id
@@ -63,24 +70,31 @@ export class CodeamasComponent implements OnInit {
 
 
   joinama() {
-
-
     this.user = this.userData._id
-    console.log(this.user);
-
+    console.log(this.found)
     let ggg: FormData = new FormData()
-
+    // console.log(this.user);
     ggg.append("codeama", this.user);
-
     this.codeama.savecodeama(ggg).subscribe((res) => {
       console.log(res);
     })
-    console.log(ggg);
 
   }
 
 
   quitama() {
+    
+    this.codeama.getamabyId(this.amaId).subscribe((res) => {
+      this.amaInfo = res
+      this.amaInfo = this.amaInfo.data
 
+      console.log(this.amaInfo);
+      this.amaId = this.amaInfo._id
+      console.log(this.amaId);
+      
+      this.codeama.removeama(this.amaId).subscribe((res) => {
+        console.log(res)
+      })
+    })
   }
 }

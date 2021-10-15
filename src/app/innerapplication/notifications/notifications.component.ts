@@ -4,10 +4,12 @@ import { NotificationService } from '../services/notification.service';
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  styleUrls: ['./notifications.component.css', '../dashboard/dashboard.component.scss']
 })
 export class NotificationsComponent implements OnInit {
-
+  public article: string = ""
+  public location: Location = window.location
+  cookieVal:string = "";
   constructor(private notifications:NotificationService) { }
   id=10;
   notnull:boolean = false;

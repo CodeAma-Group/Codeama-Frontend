@@ -6,6 +6,10 @@
     display: inline-flex;
 }
 
+.col.px-2.join button {
+    font-size: 13px;
+}
+
 .skills>li {
     padding-left: 10px;
     font-size: 13px;
@@ -30,6 +34,7 @@
 
 .join {
     margin-left: 5%;
+    margin-bottom: 8px;
 }
 
 .line {
@@ -47,6 +52,7 @@ a.text-white {
     font-size: 10px;
     text-align: center;
 }
+
 a {
     color: white;
     font-size: 12px;
@@ -57,11 +63,11 @@ a {
     color: #151829;
 }
 
-.ama-askQuestion > a {
+.ama-askQuestion>a {
     color: #425FED;
 }
 
-.profile > a > img {
+.profile>a>img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
