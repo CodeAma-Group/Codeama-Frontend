@@ -94,13 +94,16 @@ p.pro {
 
 p.admin {
     background-color: #2BB673;
-    margin-left: 25px;
+    margin-left: 13px;
 }
 
 .border-blue {
-    border-color: #2680eb;
-    opacity: .3;
+    border-color: #2680eb4f;
     border-width: 2px;
+}
+
+textarea::placeholder {
+    color: silver;
 }
 
 textarea {
@@ -108,6 +111,7 @@ textarea {
     border-radius: 7px;
     background-color: #eaf1fa;
     color: black;
+    width: 100%;
 }
 
 textarea::placeholder{

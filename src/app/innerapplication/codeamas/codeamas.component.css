@@ -11,6 +11,10 @@
     font-size: 13px;
 }
 
+.mb-2 {
+    margin-bottom: 10px;
+}
+
 .size-12 {
     font-size: 15px;
 }
@@ -22,6 +26,10 @@
 .ama-askQuestion {
     text-align: end;
     padding: 0 25px;
+}
+
+.join {
+    margin-left: 5%;
 }
 
 .line {
@@ -94,19 +102,24 @@ figure>div>img {
     border-color: #BE1E2D;
 }
 
-.pro {
-    background: rgb(28, 116, 188);
-    border-color: #1C75BC;
+p.beginner {
+    background-color: #f7951d;
+    margin-left: 10px;
 }
 
-.interm {
-    background: rgb(0, 167, 156);
-    border-color: #00A79D;
+p.intermediate {
+    background-color: #00A79D;
+    margin-left: 0px;
 }
 
-.beginner {
-    background: rgb(247, 149, 29);
-    border-color: #F7941D;
+p.pro {
+    background-color: #4275ED;
+    margin-left: 24px;
+}
+
+p.admin {
+    background-color: #2BB673;
+    margin-left: 13px;
 }
 
 #page-title {
