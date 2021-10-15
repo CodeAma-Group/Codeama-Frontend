@@ -38,6 +38,8 @@ export class TakeChallengeBoardComponent implements OnInit {
     this.user.getUserById(this.router.snapshot.params.id).subscribe((res) => {
       this.userData = res;
       this.userData = this.userData.data;
+      console.log(this.userData);
+      
       this.spinner.hide();
     });
   }
