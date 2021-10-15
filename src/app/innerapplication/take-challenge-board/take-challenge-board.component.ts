@@ -54,7 +54,7 @@ export class TakeChallengeBoardComponent implements OnInit {
         this.codeSandBoxLink = this.challenge.data.codeSandBoxLink;
       });
     this.spinner.hide();
-  }
+  }override
   // submitLink(){
   //   this.bugs.postBug(this.userCodeSandBoxLink).subscribe((res) => {
   //     try {
