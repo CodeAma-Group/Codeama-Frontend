@@ -24,9 +24,9 @@
         <div class="mt-3 qtn">
             <label for="qtn" class="form-label">Write you question below you can also include screenshots & images
                 <br>             
-                <span>less than 200 words only required</span>
+                <span>less than 200 words and more than 5 characters only required</span>
             </label>
-            <angular-editor [(ngModel)]="htmlContent" [config]="config" class="t_editor"></angular-editor>
+            <angular-editor [(ngModel)]="htmlContent" [config]="config" class="t_editor" style="background-color: red;"></angular-editor>
           </div>
         <button type="submit" [disabled]="!question.valid" class="btn btn-primary mt-3 w-25 pt-2 pb-2">Post your question now</button>
     </form>

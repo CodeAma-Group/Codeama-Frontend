@@ -8,9 +8,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class AddBadgeComponent implements OnInit {
 
   marksInput: any = document.getElementById('marks')
-  @Input() prizeIndex:Number
+  @Input() prizeIndex:any
   @Input() status:string
+  @Input() prizes: {}
   @Output() marks = new EventEmitter<Number>()
+
 
   addMarks(value: Number) {
     if(value === null || value === undefined) {

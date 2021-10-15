@@ -17,6 +17,10 @@
         background-color: #F9F9FB;
     }
     
+    .technologies {
+        background-color: #bbbbbbd2 !important;
+    }
+    
     .main-page-or-video {
         height: 18em;
         border: 1px dashed grey;

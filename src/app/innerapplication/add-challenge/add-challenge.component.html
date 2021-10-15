@@ -1,125 +1,126 @@
 <div class='add_challenge'>
-  <h6 class='text-bold'>Post a challenge</h6>
-  <form [formGroup]='challenge' class="form" (ngSubmit)="submitChallenge($event)">
-  <div class="main-content">
-  <div class='section-1'>
-    <div class="challenge_img">
-    <div class="img_input_container" (click)="mainPageInput.click()">
-        <div class="input" *ngIf="!imgUrl">
-            <svg id="svg" class="ms-1 mt-1" xmlns=" http://www.w3.org/2000/svg" width="64" height="68" viewBox="0 0 64 52">
-                <rect id="Rectangle_195" data-name="Rectangle 195" width="64" height="52" fill="var(--mainBlack)" style="opacity: .2;"/>
-                <path id="Path_183" data-name="Path 183"
-                  d="M-1792.988,6745.147H-1753V6710.54s-5.46,17.187-12.612,20.578-10-8.418-16-7.015-11.381,11.224-11.381,11.224Z"
-                  transform="translate(1803 -6704.429)" fill="rgba(255,255,255,0.61)" />
-            </svg>
-            <span>choose a challenge sample</span>
-        </div>
-        <img [src]="imgUrl" *ngIf="imgUrl" class="imagefromDb1" alt="challenge image" style="height: auto; max-width: 90%;">
-        <input type="file" hidden accept=".png,.jpg,.jpeg" name="file" id="mainPageUpload" (input)="imageChange($event)" #mainPageInput>
-    </div>
-    <small *ngIf="challenge.get('challengeImg').invalid && showErrors" class="text-danger">Please Choose an image</small>
-   </div>
-    <div class="col-12 mb-3">
-       <label for="challenge_title" class="form-label m-0 p-0">Challenge title</label> 
-       <input type="text" name="title" formControlName="title" id="challenge_title" class="form-control" placeholder="Challenge title">
-       <small *ngIf="challenge.get('title').invalid && showErrors" class="text-danger">challenge title is required</small> 
-    </div>
-
-    <div class="challenge_desc">
-        <label for="qtn_desc" class="form-label mb-1">Challenge description <br>             
-            <span>less than 200 words only required</span>
-        </label>
-        <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
-            <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
-            <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
-        </svg>  
-        <textarea type="text" id="desc" class="form-control form-text" formControlName="description" rows="4"></textarea>
-        <small *ngIf="challenge.get('description').invalid && showErrors" class="text-danger">challenge description is required</small> 
-    </div>
-
-    <div class="col-12 mb-3">
-        <label for="code_sand_box_link" class="form-label m-0 p-0">Code SandBox Link</label> 
-        <input type="text" name="codeSandBoxLink" formControlName="codeSandBoxLink" id="code_sand_box_link" class="form-control" placeholder="Code SandBox Link">
-        <small *ngIf="challenge.get('codeSandBoxLink').invalid && showErrors" class="text-danger">code sandBox link is required</small> 
+    <h6 class='text-bold'>Post a challenge</h6>
+    <form [formGroup]='challenge' class="form" (ngSubmit)="submitChallenge($event)">
+    <div class="main-content">
+    <div class='section-1'>
+      <div class="challenge_img">
+      <div class="img_input_container" (click)="mainPageInput.click()">
+          <div class="input" *ngIf="!imgUrl">
+              <svg id="svg" class="ms-1 mt-1" xmlns=" http://www.w3.org/2000/svg" width="64" height="68" viewBox="0 0 64 52">
+                  <rect id="Rectangle_195" data-name="Rectangle 195" width="64" height="52" fill="var(--mainBlack)" style="opacity: .2;"/>
+                  <path id="Path_183" data-name="Path 183"
+                    d="M-1792.988,6745.147H-1753V6710.54s-5.46,17.187-12.612,20.578-10-8.418-16-7.015-11.381,11.224-11.381,11.224Z"
+                    transform="translate(1803 -6704.429)" fill="rgba(255,255,255,0.61)" />
+              </svg>
+              <span>choose a challenge sample</span>
+          </div>
+          <img [src]="imgUrl" *ngIf="imgUrl" class="imagefromDb1" alt="challenge image" style="max-height: 90%; max-width: 90%;">
+          <input type="file" hidden accept=".png,.jpg,.jpeg" name="file" id="mainPageUpload" (input)="imageChange($event)" #mainPageInput>
+      </div>
+      <small *ngIf="challenge.get('challengeImg').invalid && showErrors" class="text-danger">Please Choose an image</small>
      </div>
-  </div>  
-
-  <div class="section-2">
-      <div class="first-section">
-        <div class='section-heading'>
-         <p>Choose prizes for the challenge</p>
-          <p>click to select only 4 prizes and set its grades(please press Enter after entering each grade)</p>
-        </div>
-
-        <div class="prizes" formArrayName="prizes">
-            <app-add-badge *ngFor="let status of statuses; let i=index" [prizeIndex]="i" [status]="status" (marks)="addMarks($event)"></app-add-badge>
-            <small *ngIf="showPrizeError && showErrors" class="text-danger">please enter all 4 prizes(remember to press Enter after entering each grade)</small> 
-        </div>
+      <div class="col-12 mb-3">
+         <label for="challenge_title" class="form-label m-0 p-0">Challenge title</label> 
+         <input type="text" name="title" formControlName="title" id="challenge_title" class="form-control" placeholder="Challenge title">
+         <small *ngIf="challenge.get('title').invalid && showErrors" class="text-danger">challenge title is required</small> 
       </div>
-
-      <div class="second-section">
-        <div class='section-heading'>
-         <p>Fill in challenge timestamps dates</p>
-          <p>please follow this example(Ex: 12/10/2021)</p>
-        </div>
-
-        <div class="dates">
-            <div>
-            <div class="pr">
-                <div class="symbols">
-                    <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
-                    <div class="next"></div>
-                </div>
-
-                <div class="aside-content">
-                    <div class="aside-content-first">Start Date</div>
-                    <input type="date" name="start_date" id="start_date" value="{{setDate() | date:'yyyy-MM-dd'}}" disabled="true">
-                </div>
-            </div>
-
-            <div class="pr">
-                <div class="symbols">
-                    <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
-                    <div class="next"></div>
-                </div>
-
-                <div class="aside-content">
-                    <div class="aside-content-first">Application End Date</div>
-                    <input type="date" name="application_end_date" id="appli_end_date" formControlName="applicationEndDate">
-                </div>
-            </div>
-            </div>
-
-            <div>
-                <div class="pr">
-                    <div class="symbols">
-                        <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
-                        <div class="next"></div>
-                    </div>
-
-                    <div class="aside-content">
-                        <div class="aside-content-first">Submission End Date</div>
-                       <input type="date" name="submission_end_date" id="sub_end_date" formControlName="endDate">
-                    </div>
-                </div>
-                <div class="pr">
-                    <div class="symbols">
-                        <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
-                        <div class="next"></div>
-                    </div>
-
-                    <div class="aside-content">
-                        <div class="aside-content-first">Announce Winners Date</div>
-                       <input type="date" name="announce_winners_date" id="announce_winn_date" formControlName="announceWinnersDate">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <small *ngIf="(challenge.get('applicationEndDate').invalid || challenge.get('endDate').invalid || challenge.get('announceWinnersDate').invalid)  && showErrors" class="text-danger">please choose all 3 dates</small> 
+  
+      <div class="challenge_desc">
+          <label for="qtn_desc" class="form-label mb-1">Challenge description <br>             
+              <span>less than 200 words only required</span>
+          </label>
+          <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
+              <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
+              <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
+          </svg>  
+          <textarea type="text" id="desc" class="form-control form-text" formControlName="description" rows="4"></textarea>
+          <small *ngIf="challenge.get('description').invalid && showErrors" class="text-danger">challenge description is required</small> 
       </div>
-      
+  
+      <div class="col-12 mb-3">
+          <label for="code_sand_box_link" class="form-label m-0 p-0">Code SandBox Link</label> 
+          <input type="text" name="codeSandBoxLink" formControlName="codeSandBoxLink" id="code_sand_box_link" class="form-control" placeholder="Code SandBox Link">
+          <small *ngIf="challenge.get('codeSandBoxLink').invalid && showErrors" class="text-danger">code sandBox link is required</small> 
+       </div>
+    </div>  
+  
+    <div class="section-2">
+        <div class="first-section">
+          <div class='section-heading'>
+           <p>Choose prizes for the challenge</p>
+            <p>click to select only 4 prizes and set its grades(please press Enter after entering each grade)</p>
+          </div>
+  
+          <div class="prizes" formArrayName="prizes">
+              <app-add-badge *ngFor="let status of statuses; let i=index" [prizeIndex]="i" [status]="status" (marks)="addMarks($event)"></app-add-badge>
+              <small *ngIf="showPrizeError && showErrors" class="text-danger">please enter all 4 prizes(remember to press Enter after entering each grade)</small> 
+          </div>
+        </div>
+  
+        <div class="second-section">
+          <div class='section-heading'>
+           <p>Fill in challenge timestamps dates</p>
+            <p>please follow this example(Ex: 12/10/2021)</p>
+          </div>
+  
+          <div class="dates">
+              <div>
+              <div class="pr">
+                  <div class="symbols">
+                      <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
+                      <div class="next"></div>
+                  </div>
+  
+                  <div class="aside-content">
+                      <div class="aside-content-first">Start Date</div>
+                      <input type="date" name="start_date" id="start_date" value="{{setDate() | date:'yyyy-MM-dd'}}" disabled="true">
+                  </div>
+              </div>
+  
+              <div class="pr">
+                  <div class="symbols">
+                      <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
+                      <div class="next"></div>
+                  </div>
+  
+                  <div class="aside-content">
+                      <div class="aside-content-first">Application End Date</div>
+                      <input type="date" name="application_end_date" id="appli_end_date" formControlName="applicationEndDate">
+                  </div>
+              </div>
+              </div>
+  
+              <div>
+                  <div class="pr">
+                      <div class="symbols">
+                          <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
+                          <div class="next"></div>
+                      </div>
+  
+                      <div class="aside-content">
+                          <div class="aside-content-first">Submission End Date</div>
+                         <input type="date" name="submission_end_date" id="sub_end_date" formControlName="endDate">
+                      </div>
+                  </div>
+                  <div class="pr">
+                      <div class="symbols">
+                          <img src="../../assets/images/checkbox_circle_line.svg" alt="checkbox" style="width: 2em" />
+                          <div class="next"></div>
+                      </div>
+  
+                      <div class="aside-content">
+                          <div class="aside-content-first">Announce Winners Date</div>
+                         <input type="date" name="announce_winners_date" id="announce_winn_date" formControlName="announceWinnersDate">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <small *ngIf="(challenge.get('applicationEndDate').invalid || challenge.get('endDate').invalid || challenge.get('announceWinnersDate').invalid)  && showErrors" class="text-danger">please choose all 3 dates</small> 
+        </div>
+        
+    </div>
   </div>
-</div>
-  <button type="submit" class="btn btn-primary w-25 pt-3 pb-3">Post challenge now</button>
-</form>
-</div>
+    <button type="submit" class="btn btn-primary w-25 pt-3 pb-3">Post challenge now</button>
+  </form>
+  </div>
+  

@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import jwt_decode from 'jwt-decode'
 import { AddChallengeService } from '../services/add-challenge.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { ChallengeService } from '../services/challenge.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Data } from '../view-challenges/challenge';
 
 
 @Component({
@@ -11,6 +16,8 @@ import { AddChallengeService } from '../services/add-challenge.service';
 })
 export class AddChallengeComponent implements OnInit {
   challenge;
+  challengeData;
+  challengeId
   marks: any = []
   prizeArray: any = [
     {
@@ -38,7 +45,7 @@ export class AddChallengeComponent implements OnInit {
   count: number = 0
   public imgUrl
   statuses = ['Pro','Intermediate','Beginner', 'No']
-  constructor(private formBuilder: FormBuilder, private addChallengeService: AddChallengeService) {
+  constructor(private formBuilder: FormBuilder, private challengeService: ChallengeService, private router:ActivatedRoute, private Router:Router) {
     this.challenge = this.formBuilder.group({
       title: ['', [Validators.required]],
       description: ['',[Validators.required]],
@@ -52,6 +59,7 @@ export class AddChallengeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  
   }
 
   public imageChange(e: any){
@@ -87,8 +95,8 @@ export class AddChallengeComponent implements OnInit {
 
   submitChallenge(e: Event) {
     // e.preventDefault()
-   console.log(this.challenge)
-   console.log(this.count)
+  //  console.log(this.challenge)
+  //  console.log(this.count)
     
     this.showErrors = true
     if(this.marks.length !== 4 && this.count !== 3) {
@@ -101,7 +109,6 @@ export class AddChallengeComponent implements OnInit {
     if(this.challenge.status === 'VALID') {
     let newChallenge: FormData = new FormData()
 
-    console.log(typeof(this.makePrizeArray()))
     console.log(JSON.stringify(this.makePrizeArray()))
     newChallenge.append('title', this.challenge.value.title)
     newChallenge.append('description', this.challenge.value.description)
@@ -116,18 +123,26 @@ export class AddChallengeComponent implements OnInit {
       console.log(pair[0]+ ', '+ typeof(pair[1]));
    }
 
-  // console.log(newChallenge.entries())
-
-   this.addChallengeService.postChallenge(newChallenge)
+   this.challengeService.postChallenge(newChallenge)
       .subscribe(data=> {
-        console.log('submitted')
+        this.Router.navigate([`app/challenges/613f227d482ca6364cc35760`])
       },error=> {
         console.log(error)
       })
-    
+  
+  // if(this.challengeData._id) {
+  //   this.challengeService.updateChallenge(newChallenge, this.challengeId)
+  //   .subscribe(res=> {
+  //     console.log(res)
+  //   },error=> {
+  //     console.log(error)
+  //   })
+  // }
   }
 
   }
+
+   
 
 
 

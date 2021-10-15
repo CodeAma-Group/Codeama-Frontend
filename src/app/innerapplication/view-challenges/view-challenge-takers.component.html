@@ -1,8 +1,11 @@
 <div class="main">
     <div class="heading">
-        <p>Boom Up Challenge Takers</p>
+        <p class="title">Boom Up Challenge Takers</p>
     </div>
      <div class="all_challenge_takers">
          <app-challenge-taker *ngFor="let challenge_taker of challenge_takers" [challenge_taker]= "challenge_taker"></app-challenge-taker>
      </div>
   </div>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
+    <p style="color: white ">Please Wait. </p>
+</ngx-spinner>

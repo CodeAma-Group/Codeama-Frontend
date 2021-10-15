@@ -1,0 +1,214 @@
+.add_challenge {
+    background: #ebf4fd;
+    border-radius: 7px;
+    height: 134%;
+    padding: 20px 20px;
+    margin: 10px;
+  
+    p {
+      margin-bottom: 0;
+    }
+  
+    form {
+      height: 100%;
+  
+      .main-content {
+        height:83%;
+        display: flex;
+        justify-content: space-between;
+      }
+  
+      .section-1,
+      .section-2 {
+        height: 100%;
+      }
+  
+      .section-1 {
+        width: 48%;
+        padding-right: 1em;
+      }
+  
+      .section-2 {
+         width: 50%;
+      }
+  
+      .challenge_img {
+        width: 100%;
+        height: 44%;
+        margin-bottom: 2rem;
+      }
+  
+      .challenge_desc {
+        margin-bottom: 1em;
+      }
+  
+      .img_input_container {
+        width: 100%;
+        height: 100%;
+        border: 1px dashed lightgray;
+        background: #f7f9fc;
+        border-radius: 5px;
+        display: grid;
+        place-items: center;
+      }
+  
+      .img_input_container > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+  
+      .img_input_container > div svg {
+        position: static;
+      }
+  
+      label {
+        font-weight: 500;
+        span {
+          font-size: 0.7em;
+        }
+      }
+      input {
+        height: 45px;
+      }
+  
+      .challenge_desc {
+        svg {
+          top: 62px;
+        }
+        textarea {
+          padding-left: 40px;
+        }
+      }
+  
+      input,
+      textarea,
+      .form-controller {
+        background: rgba(66, 144, 237, 0.05);
+        font-weight: 500;
+        color: #17202a;
+        font-size: 0.9em;
+        border: 2px solid #66a5f045;
+        padding: 10px;
+        border-radius: 8px !important;
+  
+        &:focus {
+          border-color: #558ed3;
+        }
+        &::placeholder {
+          font-weight: normal;
+          // color: rgba(0, 0, 0, 0.623);
+        }
+      }
+  
+      .section-2 {
+        &>div {
+          margin-bottom: 30px;
+        }
+      }
+  
+      .section-heading {
+        margin-bottom: 20px;
+        > p:first-of-type,
+        > p:last-of-type {
+          font-weight: 500;
+        }
+  
+        p {
+          padding-bottom: 0;
+          margin-bottom: 0;
+        }
+  
+        > p:last-of-type {
+          font-size: 0.7em;
+        }
+      }
+  
+      .prizes {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        flex-wrap: wrap;
+  
+        
+      }
+  
+      div {
+        position: relative;
+        svg {
+            position: absolute;
+            left: 15px
+        }
+    }
+  
+    #mainPageUpload {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  
+      .second-section {
+        .dates {
+          display: flex;
+  
+          >div {
+            width: 50%;
+          }
+  
+          >div:first-of-type {
+            margin-right: 3em;
+          }
+        }
+      }
+  
+      .pr {
+        display: flex;
+        width: 85%;
+      
+      .next {
+        width: 3px;
+        height: 2em;
+        background: dodgerblue;
+        align-self: center;
+      }
+      
+      .symbols {
+        display: flex;
+        flex-direction: column;
+        margin-right: 1em;
+      }
+  
+      .aside-content {
+        input {
+        border: none;
+        background: none;
+        padding-top: 0;
+        width: 200px;
+        }
+      }
+  
+      .aside-content-first {
+        font-weight: bold;
+      }
+      
+      .aside-content > div:not(.aside-content-first) {
+        font-size: 0.8em;
+        color: #1e253d;
+        /* opacity: .1; */
+      }
+    }
+  
+    .btn {
+      margin-top: 3.5em;
+    }
+    }
+
+    .spinner-border {
+      margin-top: 6px;
+      margin-left: 7px;
+      color: #ffffff !important;
+  }
+
+  }
+  

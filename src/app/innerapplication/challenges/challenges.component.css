@@ -6,6 +6,10 @@
   background-color: #f8f9fa;
 }
 
+.title {
+  margin-top: 15px;
+}
+
 .pr {
   display: flex;
   width: 85%;

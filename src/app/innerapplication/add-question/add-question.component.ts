@@ -19,7 +19,6 @@ export class AddQuestionComponent implements OnInit {
     this.question = this.formBuilder.group({
       title: ["",[Validators.required]],
       desc: ["",[Validators.required]],
-      qtn: ["...",[Validators.required]],
       tagged_tech: ["",[Validators.required]]
     })
    }
@@ -112,7 +111,6 @@ export class AddQuestionComponent implements OnInit {
      {label: "Go", value:"Go"},
      {label: "HTML", value:"HTML"},
      {label: "CSS", value:"CSS"},
-     {label: "SCSS", value:"SCSS"},
      {label: "SASS", value:"SASS"},
      {label: "Angular", value:"Angular"},
      {label: "Python", value:"Python"},
@@ -126,7 +124,6 @@ export class AddQuestionComponent implements OnInit {
    public fields = {text: 'label',value: 'value'}
 
   ngOnInit(): void {
-
   }
   submitQtn(e: Event){
     e.preventDefault();
