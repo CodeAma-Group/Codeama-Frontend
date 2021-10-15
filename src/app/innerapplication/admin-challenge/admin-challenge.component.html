@@ -1,7 +1,7 @@
 <div class="container-fluid d-flex flex-column p-4 rounded h-100">
     <div class="upper d-flex justify-content-between" style="height: 85%">
         <div class="left" style="width: 45%">
-            <h2 class="title">Challenge your skill</h2>
+            <h2>challenge your skill</h2>
             <div class="d-flex justify-content-between w-100 mt-2">
                 <span><span class="text-muted" style="font-size: 0.9em">challenge set on </span><span class="fw-bolder">
                         {{challenge.createdAt | date: 'longDate'}}</span></span>
@@ -9,7 +9,7 @@
                         the
                         challenge</span></span>
             </div>
-            <img [src]="challenge.picture.file" alt="challenge" class="w-100 mt-2" />
+            <img src="../../assets/images/challenge.PNG" alt="challenge" class="w-100 mt-2" />
             <p class="text-muted mt-2" style="font-size: 1em">
                {{challenge.description}}
             </p>
@@ -75,7 +75,7 @@
             </div>
             <div class="apply">
                 <p>application to the challenge</p>
-                <button [routerLink]="['/app/challenge-taker-board', challenge._id]" class="btn btn-primary btn-lg">Take challenge now</button>
+                <button [routerLink]="['/add-challenge',challenge._id]" class="btn btn-primary btn-lg">Edit Challenge</button>
             </div>
         </div>
     </div>
@@ -87,6 +87,3 @@
         </div>
     </div>
 </div>
-<ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
-    <p style="color: white ">Please Wait. </p>
-</ngx-spinner>

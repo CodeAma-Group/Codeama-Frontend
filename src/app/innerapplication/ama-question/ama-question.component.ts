@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AmaQuestionService} from '../services/ama-question.service'
 import { QuestionData } from './question';
+import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-ama-question',
@@ -10,11 +13,13 @@ import { QuestionData } from './question';
 export class AmaQuestionComponent implements OnInit {
 
   questions:any = []
-  constructor(private amaQuestionService: AmaQuestionService) { }
+  constructor(private amaQuestionService: AmaQuestionService,private router: ActivatedRoute, private spinner: NgxSpinnerService) { }
   ngOnInit(): void {
-    this.amaQuestionService.getAmaQuestions("60fd1b3cfc5f8200221cdd0c")
+    this.spinner.show()
+    this.amaQuestionService.getAmaQuestions(this.router.snapshot.params.id)
         .subscribe((res:QuestionData)=> {
            this.questions = res.data
+           this.spinner.hide()
         })
   }
 

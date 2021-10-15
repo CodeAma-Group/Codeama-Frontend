@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ChallengeService } from '../services/challenge.service';
 import { Data } from '../view-challenges/challenge';
 
@@ -9,7 +11,7 @@ import { Data } from '../view-challenges/challenge';
 })
 export class ChallengesComponent implements OnInit {
   challenge: any= []
-  constructor(private challengeService: ChallengeService) { }
+  constructor(private challengeService: ChallengeService, private router:ActivatedRoute, private spinner: NgxSpinnerService, private _router: Router) { }
   primary = 'primary';
   success = 'success';
   danger = 'danger'
@@ -20,14 +22,20 @@ export class ChallengesComponent implements OnInit {
   dan = '#F5E4ED'
   warn = ' #F5F6E7'
   ngOnInit(): void {
-    this.challengeService.getChallenge('613f227d482ca6364cc35760')
+    this.spinner.show()
+    this.challengeService.getChallenge(this.router.snapshot.params.challengeId)
       .subscribe((res:Data)=> {
          this.challenge = res.data
+         this.spinner.hide()
       }) 
+  }
+
+  showSpinner() {
+    this.spinner.show()
   }
 
   getParticipantCount() {
     return this.challenge.participants.length
   }
-
+  
 }

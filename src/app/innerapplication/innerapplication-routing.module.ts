@@ -34,6 +34,8 @@ import { ViewChallengeTakersComponent } from './view-challenges/view-challenge-t
 import { TakeChallengeBoardComponent } from './take-challenge-board/take-challenge-board.component';
 import { AddChallengeComponent } from './add-challenge/add-challenge.component';
 import { ViewArticleComponent } from './view-article/view-article.component';
+import { AdminChallengeComponent } from './admin-challenge/admin-challenge.component';
+import { EditChallengeComponent } from './edit-challenge/edit-challenge.component';
 
 
 const routes: Routes = [
@@ -122,12 +124,20 @@ const routes: Routes = [
       },
       {
         path: 'challenges/6166b4f11fa9420023cd9fb3',
-        component: ChallengesComponent,
-  
-      },
+        component: ChallengesComponent
+       },
+          
+        {
+            path:'challenges/613f227d482ca6364cc35760/viewchallengetakers',
+            component: ViewChallengeTakersComponent
+        },
       {
         path: 'codeamas',
-        component: CodeamasComponent
+        component: CodeamasComponent,
+      },
+      {
+        path: 'amas/:id/questions',
+        component: AmaQuestionComponent
       },
       {
         path: 'notifications',
@@ -176,27 +186,28 @@ const routes: Routes = [
         component: AskcodeamaComponent,
         canActivate: [AuthGuard]
       },
+     
+      {
+        path: 'challenge-taker-board/:id',
+        component: TakeChallengeBoardComponent,
+        canActivate: [AuthGuard]
+
+      },
 
       {
-        path:'amaquestions',
-        component: AmaQuestionComponent
-         
-     },
-     
+        path:'add-challenge',
+        component: AddChallengeComponent
+      },
 
-     {
-      path:'viewchallengetakers',
-      component: ViewChallengeTakersComponent 
-    },
-    {
-      path:'challenge-taker-board/:id',
-      component: TakeChallengeBoardComponent
-    },
+      {
+        path:'add-challenge/:challengeId',
+        component: EditChallengeComponent
+      },
 
-    {
-      path:'add-challenge',
-      component: AddChallengeComponent
-    }
+      {
+        path:'admin-challenge',
+        component: AdminChallengeComponent
+      }
     ]
   },
 ];
