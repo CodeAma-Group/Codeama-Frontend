@@ -11,4 +11,8 @@ export class AddChallengeService {
   postChallenge(data) {
     return this.httpClient.post(this.url,data)
   }
+
+  updateChallenge(data) {
+    return this.httpClient.put(this.url, data)
+  }
 }

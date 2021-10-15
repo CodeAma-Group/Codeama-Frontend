@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-add-badge',
-  templateUrl: './add-badge.component.html',
-  styleUrls: ['./add-badge.component.scss']
+  selector: 'app-edit-badge',
+  templateUrl: './app-edit-badge.component.html',
+  styleUrls: ['./app-edit-badge.component.scss']
 })
-export class AddBadgeComponent implements OnInit {
+export class AppEditBadgeComponent implements OnInit {
 
   marksInput: any = document.getElementById('marks')
   @Input() prizeIndex:any
@@ -30,5 +30,4 @@ export class AddBadgeComponent implements OnInit {
   setDate() {
     return new Date(Date.now())
   }
-
 }

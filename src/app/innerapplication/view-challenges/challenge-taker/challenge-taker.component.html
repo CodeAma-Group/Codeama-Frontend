@@ -5,7 +5,7 @@
                 <div [ngClass]="['user_details', userDetailClass()]">
                     <div class="img_details">
                         <div class="img">
-                            <img [src]="'https://codeama-backend.herokuapp.com/'+challenge_taker.userId.profilePicture" alt="profile" width="50" height="50">
+                            <img [src]="challenge_taker.userId.profilePicture" alt="profile" width="50" height="50">
                         </div>
                         <div class="level">
                             <div [ngClass]="[challenge_taker.userId.Badge, 'badge']">
