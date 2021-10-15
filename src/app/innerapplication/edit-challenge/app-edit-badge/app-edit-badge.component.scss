@@ -1,0 +1,53 @@
+.prize {
+    width: 8em;
+    margin-bottom: 1em;
+    margin-right: 20px;
+
+
+    input {
+      border: none;
+      background: none;
+      border-bottom: 3px dashed #151829;
+      width: 25%;
+      margin-left: 10px;
+      margin-top: 3px;
+      margin-bottom: 6px;
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+     -webkit-appearance: none; 
+    margin: 0; 
+   }
+
+    p {
+      padding-left: 10px;
+    }
+
+    .prize_status {
+      color: #afafb1;
+      font-size: 0.7em;
+      padding-bottom: 4px;
+    }
+  }
+  
+  .prize-1 {
+    border: 1px solid #0d6efd;
+    background-color: #e1ebfb;
+  }
+  
+  .prize-2 {
+    border: 1px solid #ffc107;
+    background-color: #f5f6e7;
+  }
+  
+  .prize-3 {
+    border: 1px solid #dc3545;
+    background-color: #f5e4ed;
+  }
+  
+  .prize-0 {
+    border: 1px solid #198754;
+    background-color: #e1ebfb;
+  }
+  

@@ -7,10 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
   user_detail_class = 'beginner_details'
-  @Input() question
   constructor() { }
+  @Input() question
 
   ngOnInit(): void {
+    
   }
 
   userDetailClass() {
@@ -27,10 +28,15 @@ export class QuestionComponent implements OnInit {
           this.user_detail_class = 'beginner_details'
          break
 
+         case 'admin':
+          this.user_detail_class = 'admin_details'
+         break
 
         default:
           this.user_detail_class = 'intermediate_details'
     }
+
+    console.log(this.question)
  
  return this.user_detail_class
 }
