@@ -22,7 +22,8 @@ export class UserService {
     }
 
 	updateProfile(data) {
-		return this.http.put(`https://codeama-backend.herokuapp.com/users/${this.userId}/update`, data)
+		// return this.http.put(`https://codeama-backend.herokuapp.com/users/${this.userId}/update`, data)
+		return this.http.put(`https://codeama-backend.herokuapp.com/user/profile/update`, data)
 	}
 	getUserById(id){
 		return this.http.get(`https://codeama-backend.herokuapp.com/users/${id}`)

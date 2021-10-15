@@ -125,6 +125,10 @@ p {
    background-color: #4275ed;
 }
 
+.admin {
+    background-color: #673ab7;
+}
+
 .badge p {
     margin-bottom: 0!important;
 }

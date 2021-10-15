@@ -4,6 +4,7 @@
     
     li>a.nav-link {
         text-decoration: none;
+        font-family: var(--poppins), 'Roboto', 'Arial' !important;
     }
     
     .sidebar {

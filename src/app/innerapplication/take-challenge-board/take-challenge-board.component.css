@@ -17,6 +17,17 @@ figure {
     margin-right: 20px;
 }
 
+.submit-embed {
+    background-color: rgb(28, 116, 188);
+    color: white;
+    padding: 10px!important;
+    margin: 5px;
+}
+
+.submit-embed:hover {
+    background-color: rgb(24, 126, 209);
+}
+
 figure>figcaption {
     font-size: .6em;
     font-weight: 400;
