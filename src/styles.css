@@ -102,8 +102,9 @@ body {
     width: 100%;
     height: 100vh;
     background-color: var(--pureWhite);
-    font-family: var(--poppins) !important;
+    font-family: var(--poppins), "Roboto", 'Arial' !important;
     user-select: none;
+    margin: 0;
 }
 
 body::-webkit-scrollbar {
@@ -264,6 +265,7 @@ ul {
     background: var(--contBgLight);
     padding: 0 20px !important;
     min-height: 88vh !important;
+    /* font-family: var(--poppins), Roboto, "Helvetica Neue", sans-serif; */
 }
 
 textarea:hover,
@@ -295,16 +297,6 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 } */
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: 'Poppins', Roboto, "Helvetica Neue", sans-serif;
-}
 
 .CodeMirror {
     font-family: monospace;
