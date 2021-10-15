@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NotifierService } from 'angular-notifier';
 import { ActivatedRoute } from '@angular/router';
 import { ChallengeService } from '../services/challenge.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -15,7 +16,8 @@ export class TakeChallengeBoardComponent implements OnInit {
     private router: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private modalService: NgbModal,
-    private challengeService: ChallengeService
+    private challengeService: ChallengeService,
+    private notifier:NotifierService
   ) {}
   closeResult: string;
   open(content) {
@@ -42,6 +44,7 @@ export class TakeChallengeBoardComponent implements OnInit {
   userData: any = [];
   challenge: any = [];
   codeSandBoxLink: string;
+  userCodeSandBoxLink:string="";
   ngOnInit(): void {
     this.spinner.show();
     this.challengeService
@@ -50,12 +53,17 @@ export class TakeChallengeBoardComponent implements OnInit {
         this.challenge = res;
         this.codeSandBoxLink = this.challenge.data.codeSandBoxLink;
       });
-    this.user.getUserById(this.router.snapshot.params.id).subscribe((res) => {
-      this.userData = res;
-      this.userData = this.userData.data;
-      this.spinner.hide();
-    });
+    this.spinner.hide();
   }
+  // submitLink(){
+  //   this.bugs.postBug(this.userCodeSandBoxLink).subscribe((res) => {
+  //     try {
+  //       this.notifier.notify("success","Bug posted successfully !")
+  //     } catch (error) {
+  //       this.notifier.notify("error","An error occured while submitting, Try again")
+  //     }
+  //   });
+  // }
   checkBadge(badge: string) {
     let className: string = '';
     switch (badge.toLowerCase()) {

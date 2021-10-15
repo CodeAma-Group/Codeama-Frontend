@@ -121,7 +121,7 @@ const routes: Routes = [
         component: ProjectDetailsComponent,
       },
       {
-        path: 'challenges',
+        path: 'challenges/6166b4f11fa9420023cd9fb3',
         component: ChallengesComponent,
   
       },
