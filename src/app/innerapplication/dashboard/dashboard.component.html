@@ -2,20 +2,15 @@
     <div class="postArticle p-3">
         <div class="art_heading d-flex justify-content-between">
             <label for="article">Post an article</label>
-            <button class="text-primary btn">
-                <span>Tag article</span>
-                <svg id="arrow-down-circle-line" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                    <path id="Path_41" data-name="Path 41" d="M0,0H22V22H0Z" fill="none"/>
-                    <path id="Path_42" data-name="Path 42" d="M11,2a9,9,0,1,1-9,9A9,9,0,0,1,11,2Zm0,16.2A7.2,7.2,0,1,0,3.8,11,7.2,7.2,0,0,0,11,18.2Zm.9-7.2h2.7L11,14.6,7.4,11h2.7V7.4h1.8Z" fill="#4290ed"/>
-                </svg>                  
-            </button>
         </div>
         <div>
             <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
                 <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
                 <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
             </svg>
-            <input type="text" name="article" class="input w-100 form-control" (input)="article = $event.target.value" placeholder="Write your article...">
+            <a [routerLink]="'../add-article'">
+                <input type="text" name="article" class="input w-100 form-control" (input)="article = $event.target.value" placeholder="Write your article...">
+            </a>
         </div>
     </div>
     <div class="sideContent">
@@ -36,7 +31,7 @@
             <hr>
             <div>
                 <a href="">
-                    <img src="assets/test_images/js.png" alt="js">
+                    <img src="assets/test_images/javascript.png" alt="js">
                     <span>Javascript</span>
                 </a>
                 <a href="">
@@ -48,7 +43,7 @@
                     <span>Python</span>
                 </a>
                 <a href="">
-                    <img src="assets/test_images/c.png" alt="C++">
+                    <img src="assets/test_images/c++.png" alt="C++">
                     <span>C++</span>
                 </a>
                 <a href="">

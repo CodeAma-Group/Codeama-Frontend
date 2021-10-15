@@ -4,6 +4,9 @@ import { NotifierService } from 'angular-notifier';
 import jwt_decode from 'jwt-decode'
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-question',
@@ -12,14 +15,90 @@ import { InnerapplicationService } from '../innerapplication.service';
 })
 export class AddQuestionComponent implements OnInit {
   question
-  constructor(private formBuilder: FormBuilder, private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService) {
+  constructor(private formBuilder: FormBuilder, private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService, private router: Router) {
     this.question = this.formBuilder.group({
       title: ["",[Validators.required]],
       desc: ["",[Validators.required]],
-      qtn: ["...",[Validators.required]],
       tagged_tech: ["",[Validators.required]]
     })
    }
+   htmlContent;
+   
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Poppins',
+    defaultFontSize: '2',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'Roboto', name: 'Roboto' },
+      { class: 'Poppins', name: 'Poppins' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' },
+    ],
+    toolbarHiddenButtons: [
+      [
+        'italic',
+        'strikeThrough',
+        'justifyFull',
+        'indent',
+        'outdent',
+        'heading',
+        'fontName',
+      ],
+      [
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode',
+      ],
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText',
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+  };
+
+  codeMirrorOptions: any = {
+    theme: 'cobalt',
+    mode: 'application/ld+json',
+    lineNumbers: true,
+    // readOnly:true,
+    autocorrect: true,
+    smartIndent: true,
+    lineWrapping: true,
+    readonly: true,
+    foldGutter: true,
+    gutters: [
+      'CodeMirror-linenumbers',
+      'CodeMirror-foldgutter',
+      'CodeMirror-lint-markers',
+    ],
+    autoCloseBrackets: true,
+    automatically: true,
+    matchBrackets: true,
+    lint: true,
+  };
+
+   
    public options = [
      {label: "Java", value:"Java"},
      {label: "Javascript", value:"Javascript"},
@@ -32,7 +111,6 @@ export class AddQuestionComponent implements OnInit {
      {label: "Go", value:"Go"},
      {label: "HTML", value:"HTML"},
      {label: "CSS", value:"CSS"},
-     {label: "SCSS", value:"SCSS"},
      {label: "SASS", value:"SASS"},
      {label: "Angular", value:"Angular"},
      {label: "Python", value:"Python"},
@@ -46,7 +124,6 @@ export class AddQuestionComponent implements OnInit {
    public fields = {text: 'label',value: 'value'}
 
   ngOnInit(): void {
-
   }
   submitQtn(e: Event){
     e.preventDefault();
@@ -57,7 +134,7 @@ export class AddQuestionComponent implements OnInit {
       questions: [{
         question_title: this.question.value.title,
         question_description: this.question.value.desc,
-        text_question: this.question.value.qtn,
+        text_question: this.htmlContent,
         tagged_technologies: this.question.value.tagged_tech.join(",")
       }]
     }
@@ -70,6 +147,8 @@ export class AddQuestionComponent implements OnInit {
         console.log(data)
         this.spinner.hide()
         this.notifier.notify("success","Question posted successfully!" )
+        this.htmlContent = ""
+        setTimeout(() => this.router.navigate(['app/hood/questions']), 1000)
     },
     (error) => {
       this.spinner.hide()

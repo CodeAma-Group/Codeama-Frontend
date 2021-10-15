@@ -3,7 +3,7 @@ $bg_color: var(--contBgLight);
     color: var(--mainBlack);
     border-radius: 7px;
     background: $bg_color;
-    height: 88%;
+    height: 100%;
     padding: 20px 20px;
     margin: 10px;
 
@@ -43,7 +43,12 @@ $bg_color: var(--contBgLight);
         }
     }
 
-    input, textarea, #select{
+    .angular-editor-wrapper{
+        width: 100%;
+        display: block;
+    }
+
+    input, #select{
         background: rgba(66, 144, 237,.05);
         font-weight: 500;
         color: var(--mainBlack);
@@ -111,4 +116,21 @@ $bg_color: var(--contBgLight);
         margin: none;
         padding: none;
     }
+}
+
+.angular-editor-wrapper{
+    width: 100% !important;
+    display: block !important;
+    background-color: $bg_color;
+}
+
+.angular-editor-textarea {
+    min-height: 5rem;
+    padding: .5rem .8rem 1rem;
+    border: 1px solid #ddd;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: none !important;
+    position: relative;
+    border-radius: 10px;
 }

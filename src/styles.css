@@ -1,10 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~@syncfusion/ej2-base/styles/material.css';
+@import '~@syncfusion/ej2-buttons/styles/material.css';
+@import '~@syncfusion/ej2-dropdowns/styles/material.css';
+@import '~@syncfusion/ej2-inputs/styles/material.css';
+@import '~@syncfusion/ej2-popups/styles/material.css';
+@import '~@syncfusion/ej2-lists/styles/material.css';
+@import '~@syncfusion/ej2-angular-dropdowns/styles/material.css';
 @import '~angular-notifier/styles';
 @import "~bootstrap/dist/css/bootstrap.css";
 .bg-whiteblue {
     background: #F4F7FB;
 }
+
+@import '~@syncfusion/ej2-base/styles/material.css';
+@import '~@syncfusion/ej2-buttons/styles/material.css';
+@import '~@syncfusion/ej2-dropdowns/styles/material.css';
+@import '~@syncfusion/ej2-inputs/styles/material.css';
+@import '~@syncfusion/ej2-popups/styles/material.css';
+@import '~@syncfusion/ej2-lists/styles/material.css';
+@import '~@syncfusion/ej2-angular-dropdowns/styles/material.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
@@ -13,6 +27,7 @@
 @import '~codemirror/theme/cobalt.css';
 @import '~codemirror/addon/fold/foldgutter.css';
 @import '~codemirror/addon/lint/lint.css';
+
 
 /* Application global styling variables */
 
@@ -87,8 +102,9 @@ body {
     width: 100%;
     height: 100vh;
     background-color: var(--pureWhite);
-    font-family: var(--poppins) !important;
+    font-family: var(--poppins), "Roboto", 'Arial' !important;
     user-select: none;
+    margin: 0;
 }
 
 body::-webkit-scrollbar {
@@ -249,6 +265,7 @@ ul {
     background: var(--contBgLight);
     padding: 0 20px !important;
     min-height: 88vh !important;
+    /* font-family: var(--poppins), Roboto, "Helvetica Neue", sans-serif; */
 }
 
 textarea:hover,
@@ -280,16 +297,6 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 } */
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: 'Poppins', Roboto, "Helvetica Neue", sans-serif;
-}
 
 .CodeMirror {
     font-family: monospace;
