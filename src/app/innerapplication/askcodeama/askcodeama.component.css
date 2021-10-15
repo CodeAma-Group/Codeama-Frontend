@@ -14,7 +14,9 @@ p{
     font-size: 10px;
     width: fit-content;
 }
-
+.rounded {
+    border-radius: 10px;
+}
 .btn {
     width: 110%;
 }
