@@ -1,5 +1,9 @@
-<!-- <p style="text-align: center; margin-top: 3.5em; opacity: 0.6; font-size: 0.8;">Oops! You haven't solved any bug yet!</p> -->
-<div *ngFor="let bug of bugs" [hidden]="bug.userInfo._id != _id">
+<p *ngIf="noBugsStatus" style="text-align: center; margin-top: 3.5em; opacity: 0.6; font-size: 0.8;">Oops! You haven't solved any bug yet!</p>
+<p *ngIf="loadingData" style="text-align: center; margin: auto; margin-top: 3.5em; opacity: 0.6; font-size: 0.8; display: flex; align-items: center;">
+    <span style="margin-right: 0.8em;" class="spinner-border spinner-border-sm mr-1"></span>
+   Loading . . .
+</p>
+<div *ngFor="let bug of bugs">
     <div class="question-info d-flex mt-2 px-5">
         <div class="question-details col-lg-7 mr-2 ">
             <div class="question-title ">
