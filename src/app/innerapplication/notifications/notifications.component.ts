@@ -24,10 +24,12 @@ export class NotificationsComponent implements OnInit {
 
     this.notifications.getNotifications().subscribe((res)=>{
       this.notificationData=res;
+      this.notnull = true;
       this.notificationData=this.notificationData.data;
+      console.log(this.notificationData);
       this.image=this.url+'/'+this.notificationData[0].demo;
       this.show=true;
-      this.notnull = true;
+      
     })
 
   }

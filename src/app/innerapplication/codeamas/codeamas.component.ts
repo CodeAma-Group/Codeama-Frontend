@@ -24,7 +24,7 @@ export class CodeamasComponent implements OnInit {
   found: boolean;
   auth_token = localStorage.getItem('codeama_auth_token');
   amaId:string
-
+  skills:any[]
   userData: any = jwt_decode(this.auth_token)
   userId: number = this.userData._id
 
@@ -34,15 +34,23 @@ export class CodeamasComponent implements OnInit {
       this.codeamaData = res
       this.codeamaData = this.codeamaData.data
       this.show = true
-      
       this.found = false;
+
+          
       for (var i = 0; i < this.codeamaData.length; i++) {
-        // console.log(this.codeamaData[i].codeama._id);
         if (this.codeamaData[i].codeama._id == this.userId) {
           this.found = true;
           this.amaId = this.codeamaData[i]._id;
         }
       }
+   
+      this.codeama.getamabyId(this.amaId).subscribe((res) => {
+        this.amaInfo = res
+        this.amaInfo = this.amaInfo.data
+        this.skills = this.amaInfo.codeama.Skills
+        console.log(this.skills);
+      })
+        
       console.log(this.userId);
       console.log(this.found);
     })
@@ -73,8 +81,9 @@ export class CodeamasComponent implements OnInit {
     this.user = this.userData._id
     console.log(this.found)
     let ggg: FormData = new FormData()
-    // console.log(this.user);
     ggg.append("codeama", this.user);
+    console.log(ggg.getAll("codeama"))
+    
     this.codeama.savecodeama(ggg).subscribe((res) => {
       console.log(res);
     })
@@ -91,10 +100,12 @@ export class CodeamasComponent implements OnInit {
       console.log(this.amaInfo);
       this.amaId = this.amaInfo._id
       console.log(this.amaId);
+
+      const formData = {
+        codeaa: this.amaId 
+      }
       
-      this.codeama.removeama(this.amaId).subscribe((res) => {
-        console.log(res)
-      })
+      
     })
   }
 }
