@@ -249,7 +249,7 @@ export class ProfileComponent implements OnInit {
     var connections: any = { 
       "github": `${data.github}`, 
       "twitter": `${data.twitter}`, 
-      "portfolio ": `${data.facebook}` 
+      "portfolio": `${data.facebook}` 
     }
       
     // userData.append("userId", `${this._id}`)
