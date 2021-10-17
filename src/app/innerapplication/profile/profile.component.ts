@@ -255,7 +255,7 @@ export class ProfileComponent implements OnInit {
     // userData.append("userId", `${this._id}`)
     userData.append("Location", `${data.Location}`)
     userData.append("Bio", `${data.Bio}`)
-    // userData.append("connections", connections)
+    userData.append("connections", connections)
     userData.append("description", `${data.description}`)
 
     this.error_msg = 'Profile failed to update. Try again!'
