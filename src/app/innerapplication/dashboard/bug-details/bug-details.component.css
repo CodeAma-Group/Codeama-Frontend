@@ -135,3 +135,51 @@
             font-size: 14px!important;
             font-weight: 600;
         }
+
+        textarea {
+            background: rgba(102, 131, 167, 0.05);
+            font-size: .95em;
+            padding-top: 10px;
+            border: 2px solid #66a5f045;
+            border-radius: 8px!important;
+            /* color: var(--mainBlack); */
+        }
+
+        .addBtn{
+            cursor: pointer;
+            font-size: 16px !important;
+            color: dodgerblue;
+        }
+
+        .addBtn:hover{
+            color: blue !important;
+        }
+
+        strong {
+            margin-right: 140px;
+            font-weight: 500;
+        }
+        .sp {
+            position: relative;
+            top: -20px;
+        }
+
+        .comm{
+            position: relative;
+            margin-left: 61px;
+            top: -10px;
+        }
+
+        section{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .tit{
+           margin-left: -10px;
+        }
+
+        .answers-t{
+            color: gray;
+            font-size: 18px;
+        }
