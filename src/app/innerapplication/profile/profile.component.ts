@@ -193,16 +193,16 @@ export class ProfileComponent implements OnInit {
   updateProfileToDb(data) {
     this._userService.updateProfile(data).subscribe(
 			res => {
-        console.log(res)
         this.editingMinorAccountSettings = false;
         this.editingAccountSettings = false;
         this.notifier.notify("success", this.success_msg) 
         this.hasSubmitted = false;       
         this.editingAccountSettings = false;
-        this.router.navigate(['/app/profile/', this._id])
+        // this.router.navigate(['/app/profile/', this._id])
+
+        location.reload();
       },
 			err => {
-        console.error(err)
         this.hasSubmitted = false; 
         this.hasSubmittedMinorChanges = false;      
         this.notifier.notify("error", this.error_msg);        
