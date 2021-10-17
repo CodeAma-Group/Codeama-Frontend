@@ -123,19 +123,14 @@ const routes: Routes = [
         component: ProjectDetailsComponent,
       },
       {
-        path: 'challenges/:challengeId',
-        children: [
-          {
-            path: '',
-            component: ChallengesComponent
-          },
+        path: 'challenges/6166b4f11fa9420023cd9fb3',
+        component: ChallengesComponent
+       },
           
-          {
-            path:'viewchallengetakers',
+        {
+            path:'challenges/613f227d482ca6364cc35760/viewchallengetakers',
             component: ViewChallengeTakersComponent
-          }
-        ]
-      },
+        },
       {
         path: 'codeamas',
         component: CodeamasComponent,

@@ -9,46 +9,91 @@ import jwt_decode from 'jwt-decode';
 })
 export class CodeamasComponent implements OnInit {
 
-  constructor(private codeama:CodeamaService) { }
-  url="https://codeama-backend.herokuapp.com"
-  show:boolean=false
+  constructor(private codeama: CodeamaService) { }
+  url = "https://codeama-backend.herokuapp.com"
+  show: boolean = false
   badge;
   case;
-  codeamaData:any
+  codeamaData: any
+  amaInfo: any
   unfollower;
   follower
   followButton = `follow`;
   unFollowButton = `unfollow`
-
+  user: string = '';
+  found: boolean;
   auth_token = localStorage.getItem('codeama_auth_token');
+  amaId:string
+
+  userData: any = jwt_decode(this.auth_token)
+  userId: number = this.userData._id
+
   ngOnInit(): void {
-    this.codeama.getcodeamas().subscribe((res)=>{
+
+    this.codeama.getcodeamas().subscribe((res) => {
+      this.codeamaData = res
+      this.codeamaData = this.codeamaData.data
+      this.show = true
       
-      this.codeamaData=res
-      this.codeamaData=this.codeamaData.data 
-      
-      this.show=true
+      this.found = false;
+      for (var i = 0; i < this.codeamaData.length; i++) {
+        // console.log(this.codeamaData[i].codeama._id);
+        if (this.codeamaData[i].codeama._id == this.userId) {
+          this.found = true;
+          this.amaId = this.codeamaData[i]._id;
+        }
+      }
+      console.log(this.userId);
+      console.log(this.found);
     })
   }
-  userData:any = jwt_decode(this.auth_token)
-  userId:number= this.userData._id
 
-  addFollower(id){
+  addFollower(id) {
     this.follower = id
     this.codeama.updateFollower(this.follower).subscribe((res) => {
-      this.codeama.getcodeamas().subscribe((res)=>{
-        this.codeamaData=res
-        this.codeamaData=this.codeamaData.data 
+      this.codeama.getcodeamas().subscribe((res) => {
+        this.codeamaData = res
+        this.codeamaData = this.codeamaData.data
       })
     })
   }
 
-  removeFollower(id){
+  removeFollower(id) {
     this.unfollower = id
     this.codeama.updateUnfollower(this.unfollower).subscribe((res) => {
-        this.codeama.getcodeamas().subscribe((res)=>{
-        this.codeamaData=res
-        this.codeamaData=this.codeamaData.data 
+      this.codeama.getcodeamas().subscribe((res) => {
+        this.codeamaData = res
+        this.codeamaData = this.codeamaData.data
+      })
+    })
+  }
+
+
+  joinama() {
+    this.user = this.userData._id
+    console.log(this.found)
+    let ggg: FormData = new FormData()
+    // console.log(this.user);
+    ggg.append("codeama", this.user);
+    this.codeama.savecodeama(ggg).subscribe((res) => {
+      console.log(res);
+    })
+
+  }
+
+
+  quitama() {
+    
+    this.codeama.getamabyId(this.amaId).subscribe((res) => {
+      this.amaInfo = res
+      this.amaInfo = this.amaInfo.data
+
+      console.log(this.amaInfo);
+      this.amaId = this.amaInfo._id
+      console.log(this.amaId);
+      
+      this.codeama.removeama(this.amaId).subscribe((res) => {
+        console.log(res)
       })
     })
   }

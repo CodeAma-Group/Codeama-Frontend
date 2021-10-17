@@ -13,7 +13,7 @@ import { BugService } from '../../services/bug.service';
 })
 export class UserbugsolvedComponent implements OnInit {
 
-  constructor(private bug: BugService) {}
+  constructor(private bug: BugService, private __UserService: UserService) {}
   technologies = [
     {
       name: 'vue',
@@ -58,10 +58,17 @@ export class UserbugsolvedComponent implements OnInit {
     return this.techImage;
   }
   bugs: any;
+  loadingData: boolean = true;
+  noBugsStatus: boolean = false;
   ngOnInit(): void {
-    this.bug.getBugs().subscribe((result) => {
+    this.__UserService.getBugsSolvedBySingleUser().subscribe((result) => {
       this.bugs = result;
       this.bugs = this.bugs.data;
+      if (this.bugs.length == 0) {
+        this.noBugsStatus = true;
+      }
+      this.loadingData = false;
+
     });
   }
   checkBadge(badge: string) {

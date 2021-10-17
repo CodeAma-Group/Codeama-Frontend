@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,37 +19,35 @@ export class CodeamaService {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${this.auth_token}`,
   });
-  
-  savecodeama(data) {
-    return this.http.post(this.url, data,{ headers: this.headers });
-  }
 
+  getamabyId(amaId){
+    return this.http.get(`https://codeama-backend.herokuapp.com/codeama/${amaId}`);
+  }
   getcodeamas(){
     return this.http.get(this.url)
-  }
-
-  getcodeama(id){
-    this.http.get(this.url).subscribe(res => {
-      this.data = res
-      this.data = this.data.data 
-      for (let i = 0; i < this.data.length; i++) {
-        if(this.data[i]._id = id){
-          this.data = this.data[i]
-          return this.data
-        }
-      }
-    })
   }
 
   baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;
 
   updateFollower(followerId:string ){
-    console.log(this.userId);
     return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/follow/${followerId}`, {headers: this.headers});
   }
 
   updateUnfollower(unfollowerId: string){
     return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/unfollow/${unfollowerId}`, {headers: this.headers});
   }
+
+  askama(question){
+    return this.http.post(`https://codeama-backend.herokuapp.com/ask_question`, {question : question } , { headers: this.headers })
+  } 
+
+  savecodeama(data:FormData) {
+    return this.http.post(`https://codeama-backend.herokuapp.com/codeama`,  data , { headers: this.headers });
+  }
+
+  removeama(amaId: string){
+    return this.http.patch(`https://codeama-backend.herokuapp.com/codeama/${amaId}`, {headers: this.headers});
+  }
+
 }
   

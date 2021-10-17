@@ -94,12 +94,12 @@ export class ProfileComponent implements OnInit {
 
       
       var userData:any = new FormData();
-      this.description = " ";
-      this.Bio = " ";
-      this.Location = " ";
-        
-      // userData.append("userId", `${this._id}`)
-      userData.append("Badge", `${this.Badge}`)
+      // this.description = " ";
+      // this.Bio = " ";
+      // this.Location = " ";
+      // let token: any = localStorage.getItem('codeama_auth_token')
+      // userData.append("Authorization", `${token}`)
+      // userData.append("Badge", `${this.Badge}`)
       userData.append("Bio", `${this.Bio}`)
       userData.append("Location", `${this.Location}`)
       userData.append("description", `${this.description}`)
@@ -107,8 +107,7 @@ export class ProfileComponent implements OnInit {
 
       this.error_msg = 'Profile failed to update. Try again!'
       this.success_msg = 'Profile picture updated successfully!'
-      console.warn(this.Skills)
-
+   
       this.updateProfileToDb(userData);
     }
   }
@@ -236,4 +235,25 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  hasSubmittedMinorChanges: boolean = false;
+  getUserMinorData(data: any) {
+    this.hasSubmittedMinorChanges = true;
+   
+    let userData:any = new FormData();
+    // this.description = " ";
+    // this.Bio = " ";
+    // this.Location = " ";
+      
+    // userData.append("userId", `${this._id}`)
+    userData.append("Badge", `${this.Badge}`)
+    userData.append("Bio", `${this.Bio}`)
+    userData.append("Location", `${this.Location}`)
+    userData.append("description", `${this.description}`)
+    userData.append("Skills", `${this.Skills}`)
+
+    this.error_msg = 'Profile failed to update. Try again!'
+    this.success_msg = 'Profile picture updated successfully!'
+ 
+    this.updateProfileToDb(userData);
+  }
 }

@@ -1,4 +1,4 @@
-*{
+* {
     color: var(--mainBlack);
 }
 
@@ -6,28 +6,48 @@
     background-color: unset;
 }
 
+div {
+    overflow: hidden;
+}
+
 .noti {
     padding-bottom: 5px;
+}
+
+.profile {
+    width: 11%;
 }
 
 .header {
     padding: 10px 0;
 }
 
-.notification {
-    color: #212f3d;
-    font-size: 16px;
-    font-weight: 500;
-    padding-top: 10px;
+.ml {
+    margin-left: 5em;
 }
 
-.line{
+.notification {
+    color: #212f3d;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.col.notification.ml a {
+    color: #185bf9;
+}
+
+svg#add-circle-line {
+    margin-top: -5px;
+}
+
+.line {
     height: 1px;
     background-color: silver;
     margin-bottom: 5px;
 }
 
-.tx-12{
+.tx-12 {
     font-size: 14px;
     padding-bottom: 15px;
     color: #212F3D;
@@ -46,7 +66,7 @@
     font-size: 13px;
 }
 
-.profile > img{
+.profile>img {
     width: 90px;
     padding: 0 12px;
     height: 65px;
