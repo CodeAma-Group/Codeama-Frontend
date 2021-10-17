@@ -151,6 +151,8 @@ export class ProfileComponent implements OnInit {
         // userData.append("Skills", "react,angular,vue")
         // userData.append("coverPicture", file.target.files[0])
         userData.append("profilePicture", newProfile)
+        this.error_msg = 'Profile failed to update. Try again!'
+        this.success_msg = 'Profile picture updated successfully!' 
 
         this.updateProfileToDb(userData);
       }
