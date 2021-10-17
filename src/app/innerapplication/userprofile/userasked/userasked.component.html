@@ -37,14 +37,14 @@ _id: "616b25ffa2e441002319ebf4" -->
                     <p>
                         <strong>{{Username}}</strong><span>@{{Username}}</span>
                     </p>
-                    {{date | date:"longDate"}}
+                    {{question.questions[0].date | date:"longDate"}}
                 </div>
             </div>
             <div class="question_details">
-                <h5><a [href]="answerQuestionLink + question.questions._id" class="text-decoration-none"><strong>{{question.question_title}}</strong></a></h5>
+                <h5><a [href]="answerQuestionLink + question.questions[0].question_title" class="text-decoration-none"><strong>{{question.questions[0].question_title}}</strong></a></h5>
                 <div [innerHTML]="question.questions[0].question_description" id="div_desc"></div>
             </div>
-            <p id="dev_username">{{question.Username}}.codeama.dev</p>
+            <p id="dev_username">{{Username}}.codeama.dev</p>
             <div class="question_views">
                 <div>
                     <strong>{{question.comments.length}}</strong> Answers
@@ -54,7 +54,7 @@ _id: "616b25ffa2e441002319ebf4" -->
         <div style="width: 40%; font-size: .9em;">
             <h6 class=" text-center">Tagged technologies</h6>
             <div class=" d-flex justify-content-center flex-wrap">
-                <img *ngFor="let tagtech of question.tagged_technologies" src="{{tagtech.img}}" alt="" style="display: inline; width: auto; height: 40px; margin-right: 10px;" class="mt-2">
+                <img *ngFor="let tagtech of question.questions[0].tagged_technologies" [src]="'assets/test_images/'+tagtech+'.png'" alt="" style="display: inline; width: auto; height: 40px; margin-right: 10px;" class="mt-2">
             </div>
         </div>
     </div>
