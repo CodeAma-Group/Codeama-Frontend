@@ -25,23 +25,17 @@ export class AskcodeamaComponent implements OnInit {
   response: any;
 
   ngOnInit(): void {
-    // this.codeama.getcodeamas().subscribe(res => {
-    //   this.response = res
-    //   this.response = this.response.data
-    //   for (let i = 0; i < this.response.length; i++) {
-    //     if (this.response[i]._id == history.state.data) {
-    //       this.user = this.response[i]
-    //       console.log(this.user)
-    //     }
-    //   }
-    // })
-this.codeama.getamabyId(history.state.data).subscribe((res) => {
-  this.codeamaData = res;
-  this.codeamaData = this.codeamaData.data
-  console.log(res);
-  
-})
+    this.codeama.getcodeamas().subscribe(res => {
+      this.response = res
+      this.response = this.response.data
 
+      for (let i = 0; i < this.response.length; i++) {
+        if (this.response[i]._id == history.state.data) {
+          this.user = this.response[i]
+          console.log(this.user)
+        }
+      }
+    })
   }
   auth_token = localStorage.getItem('codeama_auth_token');
   userData: any = jwt_decode(this.auth_token)
@@ -50,6 +44,7 @@ this.codeama.getamabyId(history.state.data).subscribe((res) => {
   result
 
   askama(f: NgForm) {
+
     this.codeama.askama({
       userId: f.form.value.userId,
       questions: [{
