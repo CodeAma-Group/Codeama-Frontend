@@ -15,7 +15,7 @@ export class CodeamasComponent implements OnInit {
   badge;
   case;
   codeamaData: any
-
+  follow;
   amaInfo: any
   amaId
   found: boolean;
@@ -48,11 +48,13 @@ export class CodeamasComponent implements OnInit {
   }
 
   addFollower(id) {
+    this.follow=false
     this.follower = id
     this.codeama.updateFollower(this.follower).subscribe((res) => {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
+        this.follow=true
       })
     })
   }
