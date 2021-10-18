@@ -9,18 +9,13 @@
                 <button *ngIf="!found" (click)="joinama()" class="btn pt-1 btn-primary my-auto mx-auto" href="#" role="button">
                      Join Amas 
                     </button>
-
-                <button *ngIf="found" (click)="quitama(amaId)" class="btn pt-1 btn-primary my-auto mx-auto" href="#" role="button">
-                       Remove
-                      </button>
-
-                <!-- <button *ngIf="code.codeama.Following.includes(userId); else Follow" class="btn-primary btn" type="button" (click)="removeFollower(code.codeama._id)"> Unfollow</button> -->
             </div>
-
-            <hr />
 
             <div *ngFor="let code of codeamaData">
                 <div class="person">
+                    <div>
+                        <div class="line"></div>
+                    </div>
                     <div class="row">
                         <div class="profile position-relative col-1 px-3">
                             <a routerLink="profile">
@@ -40,7 +35,7 @@
                                 </div>
                                 <div class="col-5">
                                     <p><span>Vue Set 3</span><span class="cl-silver"> latest article</span></p>
-                                </div>+
+                                </div>
                             </div>
                         </div>
                         <div class="status col-4 row">
@@ -50,7 +45,8 @@
                             </p>
                         </div>
                         <div class="follow col-1 justify-content-center p-2">
-                            <button *ngIf="code.codeama._id == userId; else checkFollow" class="btn-primary btn" type="button" disabled>+ follow</button>
+                            <p *ngIf="code.codeama._id == userId; else checkFollow"></p>
+                            <!-- <button class="btn-primary btn" type="button" disabled>+ follow</button> -->
                         </div>
                         <ng-template #checkFollow>
                             <button *ngIf="code.codeama.Following.includes(userId); else Follow" class="btn-primary btn" type="button" (click)="removeFollower(code.codeama._id)"> Unfollow</button>
@@ -59,19 +55,16 @@
                             <button class="btn-primary btn" type="button" (click)="addFollower(code.codeama._id)"> follow</button>
                         </ng-template>
                     </div>
-                    <div class="row mt-2 mb-2">
+                    <div class="row">
                         <div class="ama-footer col-10">
                             <ul class="skills cl-silver">
-                                <li *ngFor="let skill of code.codeama.skills; let i = index" [attr.data-index]="i">{{skill}}</li>
+                                <li *ngFor="let skill of code.codeama.Skills">{{skill}}</li>
                             </ul>
                         </div>
-                        <div class="ama-askQuestion col-2">
-                            <a class="fw-bold text-right size-12" routerLink="../askquestion" [state]="{data: code._id}">Ask
+                        <div class=" ama-askQuestion col-2 ">
+                            <a *ngIf="code.codeama._id != userId;" class="fw-bold text-right size-12 " routerLink="../askquestion" [state]="{data: code._id} ">Ask
                 question</a>
                         </div>
-                    </div>
-                    <div>
-                        <div class="line"></div>
                     </div>
                 </div>
             </div>
