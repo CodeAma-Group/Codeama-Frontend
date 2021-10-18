@@ -10,7 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class CodeamasComponent implements OnInit {
 
-  constructor(private codeama: CodeamaService,private spinner:NgxSpinnerService) { }
+  constructor(private codeama: CodeamaService, private spinner: NgxSpinnerService) { }
   url = "https://codeama-backend.herokuapp.com"
   badge;
   case;
@@ -36,6 +36,7 @@ export class CodeamasComponent implements OnInit {
       this.codeamaData = res
       this.codeamaData = this.codeamaData.data
       this.found = false;
+      this.spinner.hide()
 
       for (var i = 0; i < this.codeamaData.length; i++) {
         if (this.codeamaData[i].codeama._id == this.userId) {
@@ -43,8 +44,6 @@ export class CodeamasComponent implements OnInit {
           this.amaId = this.codeamaData[i]._id;
         }
       }
-
-    this.spinner.hide()
     })
   }
 
@@ -82,21 +81,17 @@ export class CodeamasComponent implements OnInit {
         this.codeamaData = this.codeamaData.data
       })
     })
-    this.found= true
+    this.found = true
   }
 
 
   quitama() {
-      console.log(this.amaId);
-      console.log(this.data);
-
-      this.codeama.removeama(this.amaId).subscribe((res) => {
-        console.log(res);
-        this.codeama.getcodeamas().subscribe((res) => {
-          this.codeamaData = res
-          this.codeamaData = this.codeamaData.data
-        })
+    this.codeama.removeama(this.amaId).subscribe((res) => {
+      this.codeama.getcodeamas().subscribe((res) => {
+        this.codeamaData = res
+        this.codeamaData = this.codeamaData.data
       })
+    })
   }
 
 }
