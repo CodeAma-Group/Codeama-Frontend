@@ -3,7 +3,7 @@
         <div class="mt-2 rounded py-1 px-3">
             <p class="tx-top pt-1">Top Ask Me Anything members</p>
             <hr>
-            <div class="person" *ngFor="let user of codeamaData">
+            <div class="person">
                 <div class="row">
                     <div class="profile position-relative col-1 px-3">
                         <a routerLink="profile">
@@ -45,7 +45,11 @@
                 <div class="row mt-2">
                     <div class="ama-footer col-10">
                         <ul class="skills cl-silver">
-                            <li *ngFor="let skill of user.codeama.Skills">{{skill}}</li>
+                            <li>React</li>
+                            <li>Vue router</li>
+                            <li>Node js</li>
+                            <li>Express</li>
+                            <li>Go lang</li>
                         </ul>
                     </div>
                 </div>
