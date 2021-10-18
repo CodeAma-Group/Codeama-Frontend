@@ -21,6 +21,22 @@
         background-color: #bbbbbbd2 !important;
     }
     
+    .inputTags {
+        padding: 5px;
+        display: inline-flex;
+        margin: 5px;
+        font-size: 12px;
+        font-weight: 450;
+        color: grey;
+        border-radius: 4px;
+        background-color: var(--contBgLight);
+    }
+    
+    .tag {
+        margin-right: 3px!important;
+        margin: auto 0;
+    }
+    
     .main-page-or-video {
         height: 18em;
         border: 1px dashed grey;
@@ -81,15 +97,6 @@
     .title {
         font-size: 1.1em;
         font-weight: 540;
-    }
-    
-    .emailTags {
-        padding: 10px;
-        display: inline-flex;
-        margin: 6px 3px;
-        border-radius: 4px;
-        background-color: #727681;
-        color: white;
     }
     
     .project-teamm-no-account {

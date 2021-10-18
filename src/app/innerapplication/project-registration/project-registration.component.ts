@@ -119,7 +119,8 @@ export class ProjectRegistrationComponent implements OnInit {
     if (data.match(emailPattern)) {
       if (this.emailsArray.indexOf(data) == -1) {
         this.emailsArray.push(data);
-        // document.getElementById("project-teamm-no-account").value="";
+        let emailfield: any = document.getElementById("project-teamm-no-account");
+        emailfield.value="";
         this.clearInputValue = '';
       } else {
         alert('Each member Email should be unique');
@@ -137,6 +138,14 @@ export class ProjectRegistrationComponent implements OnInit {
     } else {
       alert('Feature should not be repeated');
     }
+  }
+  deleteFeature(data){
+    for( var i = 0; i < this.featuresArray.length; i++){ 
+      if ( this.featuresArray[i] === data) { 
+        this.featuresArray.splice(i, 1); 
+      }
+  
+  }
   }
   techs = [];
   AddTech(data) {
