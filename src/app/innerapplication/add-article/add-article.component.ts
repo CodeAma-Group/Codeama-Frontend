@@ -4,6 +4,7 @@ import { NotifierService } from 'angular-notifier';
 import jwt_decode from 'jwt-decode'
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 
 @Component({
@@ -14,6 +15,62 @@ import { InnerapplicationService } from '../innerapplication.service';
 export class AddArticleComponent implements OnInit {
   article
   public imgUrl;
+  htmlContent = '';
+
+
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Poppins',
+    defaultFontSize: '2',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'Roboto', name: 'Roboto' },
+      { class: 'Poppins', name: 'Poppins' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' },
+    ],
+    toolbarHiddenButtons: [
+      [
+        'italic',
+        'strikeThrough',
+        'justifyFull',
+        'indent',
+        'outdent',
+        'heading',
+        'fontName',
+      ],
+      [
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'insertHorizontalRule',
+        'removecommentContentat',
+        'toggleEditorMode',
+      ],
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText',
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+  };
+
   constructor(private formBuilder: FormBuilder, private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService) {
     this.article = this.formBuilder.group({
       title: ["",[Validators.required]],
@@ -25,6 +82,10 @@ export class AddArticleComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.spinner.show()
+    setTimeout(() => {
+       this.spinner.hide()
+    },3000);
   }
   public imageChange(e: any){
     let fileReader = new FileReader();
