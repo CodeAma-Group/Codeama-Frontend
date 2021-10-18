@@ -26,11 +26,30 @@ div {
     margin-left: 5em;
 }
 
+button.mark {
+    border: none;
+    background-color: #ebf4fd;
+    padding: 0;
+    color: #185bf9;
+    font-size: 12px;
+}
+
 .notification {
     color: #212f3d;
     font-size: 14px;
     padding-top: 10px;
     padding-bottom: 5px;
+}
+
+.noti.false {
+    background-color: #c9e0fa;
+}
+
+.justify-content {
+    justify-content: space-between!important;
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
 }
 
 .col.notification.ml a {
@@ -48,14 +67,14 @@ svg#add-circle-line {
 }
 
 .tx-12 {
-    font-size: 14px;
+    font-size: 12px;
     padding-bottom: 15px;
     color: #212F3D;
     letter-spacing: 0.4px;
 }
 
 .tx-title {
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 600;
     color: #212F3D;
     padding-bottom: 15px;

@@ -18,7 +18,7 @@
                 <hr>
                 <div>
                     <a href="">
-                        <img src="assets/test_images/js.png" alt="js">
+                        <img src="assets/test_images/javascript.png" alt="js">
                         <span>Javascript</span>
                     </a>
                     <a href="">
@@ -74,35 +74,37 @@
                     </div>
                 </div>
                 <div class="col notification ml">
-                    <a href="mark">Mark all as read</a>
+                    <button class="mark" (click)="markAll()">Mark all as read</button>
                 </div>
             </div>
-            <!-- <div class="line"></div> -->
 
-            <div *ngIf="notnull">
-                <div *ngFor="let noti of notificationData">
-                    <div class="noti row">
-                        <div class="line"></div>
-                        <div class="col-1 profile">
-                            <img src="../../../assets/images/sara.png" alt="prof">
-                        </div>
+            <div *ngFor="let noti of notificationData">
+                <div class="noti row {{noti.isRead}}">
+                    <div class="line"></div>
+                    <div class="col-1 profile" [ngSwitch]="noti.Type">
+                        <img *ngSwitchCase="'join-ama'" src="../../../assets/images/join.png" alt="prof">
+                        <img *ngSwitchCase="'update-profile'" src="../../../assets/images/update-profile.png" alt="prof">
+                        <img *ngSwitchCase="'comment-article'" src="../../../assets/images/coment.png" alt="prof ">
+                    </div>
 
-                        <div class="col">
-                            <div class="tx-title">{{noti.Title}}</div>
-                            <div class="tx-12">{{noti.Description}}</div>
-                            <p *ngIf="noti.Link" class="tx-to">
-                                <a href="{{noti.Link}}" class="blue">Read more</a>
-                            </p>
-                        </div>
+                    <div class="col">
+                        <div class="tx-title ">{{noti.Title}}</div>
+                        <div class="tx-12 ">{{noti.Description}}</div>
+                        <p *ngIf="noti.Link " class="tx-to ">
+                            <a href="{{noti.Link}} " class="blue ">Read more</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="none">
+                <div class="noti row justify-content">
+                    <div class="line"></div>
+                    <div> <img class="w-25 noti" src="../../../assets/images/search.png">
+                        <p> You don't have any notification yet!</p>
                     </div>
                 </div>
             </div>
 
-            <div *ngIf="!notnull ">
-                <div class="noti row ">
-                    You don't any notification yet
-                </div>
-            </div>
         </div>
     </div>
 </div>
