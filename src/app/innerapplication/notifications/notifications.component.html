@@ -96,14 +96,14 @@
                     </div>
                     <div class="row col options">
                         <div class="col-5">
-                            <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Mark as read">
+                            <button (click)="read(noti._id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Mark as read">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 45 35">
                                     <path id="Icon_material-email" data-name="Icon material-email" d="M43.5,6H7.5a4.432,4.432,0,0,0-4.477,4.375L3,36.625A4.452,4.452,0,0,0,7.5,41h36A4.452,4.452,0,0,0,48,36.625V10.375A4.452,4.452,0,0,0,43.5,6Zm0,8.75-18,10.937L7.5,14.75V10.375l18,10.937,18-10.937Z" transform="translate(-3 -6)"/>
                                 </svg>
                             </button>
                         </div>
                         <div class="col-5">
-                            <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete">
+                            <button (click)="delet(noti._id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 21 27">
                                     <path id="Icon_material-delete" data-name="Icon material-delete" d="M9,28.5a3.009,3.009,0,0,0,3,3H24a3.009,3.009,0,0,0,3-3v-18H9ZM28.5,6H23.25l-1.5-1.5h-7.5L12.75,6H7.5V9h21Z" transform="translate(-7.5 -4.5)"/>
                                 </svg>
