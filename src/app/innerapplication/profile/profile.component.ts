@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
       this.description = this.userData.data.description;
       this.connections =  { "github": `${this.userData.data.connections.github}`,
                             "twitter": `${this.userData.data.connections.twitter}`,
-                            "portfolio": `${this.userData.data.connections.facebook}` }
+                            "portfolio": `${this.userData.data.connections.portfolio}` }
       this.Skills = [...this.userData.data.Skills];
       this.Followers = this.userData.data.Followers;
       this.Following = this.userData.data.Following;
