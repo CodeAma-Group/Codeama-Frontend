@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeamaService } from '../services/codeama.service';
 import jwt_decode from 'jwt-decode';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-codeamas',
@@ -9,44 +10,51 @@ import jwt_decode from 'jwt-decode';
 })
 export class CodeamasComponent implements OnInit {
 
-  constructor(private codeama: CodeamaService) { }
+  constructor(private codeama: CodeamaService, private spinner: NgxSpinnerService) { }
   url = "https://codeama-backend.herokuapp.com"
-  show: boolean = false
   badge;
   case;
   codeamaData: any
+  follow;
+  amaInfo: any
+  amaId
+  found: boolean;
+  data: any
+
   unfollower;
   follower
   followButton = `follow`;
   unFollowButton = `unfollow`
   user: string = '';
-  coder:boolean
   auth_token = localStorage.getItem('codeama_auth_token');
-  ngOnInit(): void {
-
-    this.codeama.getcodeamas().subscribe((res) => {
-      this.codeamaData = res
-      this.codeamaData = this.codeamaData.data
-      for (var _i = 0; _i < this.codeamaData.length; _i++) {
-         
-        if(this.codeamaData[_i]._id == this.userId){
-          this.coder = true
-        }
-      }
-      this.show = true
-      console.log(this.codeamaData);
-    })
-  }
   userData: any = jwt_decode(this.auth_token)
   userId: number = this.userData._id
 
+  ngOnInit(): void {
+    this.spinner.show()
+    this.codeama.getcodeamas().subscribe((res) => {
+      this.codeamaData = res
+      this.codeamaData = this.codeamaData.data
+      this.found = false;
+      this.spinner.hide()
+
+      for (var i = 0; i < this.codeamaData.length; i++) {
+        if (this.codeamaData[i].codeama._id == this.userId) {
+          this.found = true;
+          this.amaId = this.codeamaData[i]._id;
+        }
+      }
+    })
+  }
 
   addFollower(id) {
+    this.follow=false
     this.follower = id
     this.codeama.updateFollower(this.follower).subscribe((res) => {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
+        this.follow=true
       })
     })
   }
@@ -63,24 +71,29 @@ export class CodeamasComponent implements OnInit {
 
 
   joinama() {
-
-
     this.user = this.userData._id
-    console.log(this.user);
-
-    let ggg: FormData = new FormData()
-
-    ggg.append("codeama", this.user);
-
-    this.codeama.savecodeama(ggg).subscribe((res) => {
-      console.log(res);
+    const formData = {
+      codeama: this.user
+    }
+    this.data = Object.create(formData)
+    this.data.codeama = this.user
+    this.codeama.savecodeama(this.data).subscribe((res) => {
+      this.codeama.getcodeamas().subscribe((res) => {
+        this.codeamaData = res
+        this.codeamaData = this.codeamaData.data
+      })
     })
-    console.log(ggg);
-
+    this.found = true
   }
 
 
   quitama() {
-
+    this.codeama.removeama(this.amaId).subscribe((res) => {
+      this.codeama.getcodeamas().subscribe((res) => {
+        this.codeamaData = res
+        this.codeamaData = this.codeamaData.data
+      })
+    })
   }
+
 }

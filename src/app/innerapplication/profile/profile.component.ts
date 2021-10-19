@@ -94,12 +94,12 @@ export class ProfileComponent implements OnInit {
 
       
       var userData:any = new FormData();
-      this.description = " ";
-      this.Bio = " ";
-      this.Location = " ";
-      let token: any = localStorage.getItem('codeama_auth_token')
-      userData.append("Authorization", `${token}`)
-      userData.append("Badge", `${this.Badge}`)
+      // this.description = " ";
+      // this.Bio = " ";
+      // this.Location = " ";
+      // let token: any = localStorage.getItem('codeama_auth_token')
+      // userData.append("Authorization", `${token}`)
+      // userData.append("Badge", `${this.Badge}`)
       userData.append("Bio", `${this.Bio}`)
       userData.append("Location", `${this.Location}`)
       userData.append("description", `${this.description}`)
@@ -148,10 +148,11 @@ export class ProfileComponent implements OnInit {
         // userData.append("Bio", `${this.Bio}`)
         // userData.append("Location", `${this.Location}`)
         // userData.append("description", `${this.description}`)
-        // userData.append("connections", this.connections)
         // userData.append("Skills", "react,angular,vue")
         // userData.append("coverPicture", file.target.files[0])
         userData.append("profilePicture", newProfile)
+        this.error_msg = 'Profile failed to update. Try again!'
+        this.success_msg = 'Profile picture updated successfully!' 
 
         this.updateProfileToDb(userData);
       }
@@ -193,13 +194,17 @@ export class ProfileComponent implements OnInit {
     this._userService.updateProfile(data).subscribe(
 			res => {
         console.log(res)
+        this.editingMinorAccountSettings = false;
+        this.editingAccountSettings = false;
         this.notifier.notify("success", this.success_msg) 
         this.hasSubmitted = false;       
         this.editingAccountSettings = false;
+        this.router.navigate(['/app/profile/', this._id])
       },
 			err => {
         console.error(err)
-        this.hasSubmitted = false;       
+        this.hasSubmitted = false; 
+        this.hasSubmittedMinorChanges = false;      
         this.notifier.notify("error", this.error_msg);        
       }
   )}
@@ -243,13 +248,17 @@ export class ProfileComponent implements OnInit {
     // this.description = " ";
     // this.Bio = " ";
     // this.Location = " ";
+    var connections: any = { 
+      "github": `${data.github}`, 
+      "twitter": `${data.twitter}`, 
+      "portfolio": `${data.facebook}` 
+    }
       
     // userData.append("userId", `${this._id}`)
-    userData.append("Badge", `${this.Badge}`)
-    userData.append("Bio", `${this.Bio}`)
-    userData.append("Location", `${this.Location}`)
-    userData.append("description", `${this.description}`)
-    userData.append("Skills", `${this.Skills}`)
+    userData.append("Location", `${data.Location}`)
+    userData.append("Bio", `${data.Bio}`)
+    userData.append("connections", JSON.stringify(connections))
+    userData.append("description", `${data.description}`)
 
     this.error_msg = 'Profile failed to update. Try again!'
     this.success_msg = 'Profile picture updated successfully!'

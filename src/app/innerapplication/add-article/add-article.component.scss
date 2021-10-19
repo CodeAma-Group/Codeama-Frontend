@@ -3,7 +3,7 @@ $bg_color: var(--contBgLight);
     color: var(--mainBlack);
     border-radius: 7px;
     background: $bg_color;
-    height: 88%;
+    height: auto;
     padding: 20px 20px;
     margin: 10px;
 
@@ -42,7 +42,10 @@ $bg_color: var(--contBgLight);
                 width: 45%;
             }
         }
-
+     .article-label {
+         margin-bottom: 0!important;
+         margin-top: 1em;
+     }
     }
 
     div {

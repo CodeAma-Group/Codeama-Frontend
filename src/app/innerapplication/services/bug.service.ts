@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BugService {
+  private base: string = "https://codeama-backend.herokuapp.com/"
   getUrl = 'https://codeama-backend.herokuapp.com/all_bugs';
   getByIdUrl = 'https://codeama-backend.herokuapp.com/viewBug';
   postUrl = 'https://codeama-backend.herokuapp.com/post_bug';
@@ -25,5 +26,13 @@ export class BugService {
   }
   public postComment(data) {
     return <Observable<any>>this.http.post(this.postCommentUrl, { comments: data })
+  }
+
+  public commentBug(body){
+    return this.http.post<Observable<any>>(this.base + "comment", body)
+  }
+
+  public viewBugComments(id){
+    return this.http.get<Observable<any>>(this.base + "comment/"+id)
   }
 }
