@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeamaService } from '../services/codeama.service';
 import jwt_decode from 'jwt-decode';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-codeamas',
@@ -9,51 +10,51 @@ import jwt_decode from 'jwt-decode';
 })
 export class CodeamasComponent implements OnInit {
 
-  constructor(private codeama: CodeamaService) { }
+  constructor(private codeama: CodeamaService, private spinner: NgxSpinnerService) { }
   url = "https://codeama-backend.herokuapp.com"
-  show: boolean = false
   badge;
   case;
   codeamaData: any
+  follow;
   amaInfo: any
+  amaId
+  found: boolean;
+  data: any
+
   unfollower;
   follower
   followButton = `follow`;
   unFollowButton = `unfollow`
   user: string = '';
-  found: boolean;
   auth_token = localStorage.getItem('codeama_auth_token');
-  amaId:string
-
   userData: any = jwt_decode(this.auth_token)
   userId: number = this.userData._id
 
   ngOnInit(): void {
-
+    this.spinner.show()
     this.codeama.getcodeamas().subscribe((res) => {
       this.codeamaData = res
       this.codeamaData = this.codeamaData.data
-      this.show = true
-      
       this.found = false;
+      this.spinner.hide()
+
       for (var i = 0; i < this.codeamaData.length; i++) {
-        // console.log(this.codeamaData[i].codeama._id);
         if (this.codeamaData[i].codeama._id == this.userId) {
           this.found = true;
           this.amaId = this.codeamaData[i]._id;
         }
       }
-      console.log(this.userId);
-      console.log(this.found);
     })
   }
 
   addFollower(id) {
+    this.follow=false
     this.follower = id
     this.codeama.updateFollower(this.follower).subscribe((res) => {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
+        this.follow=true
       })
     })
   }
@@ -71,30 +72,28 @@ export class CodeamasComponent implements OnInit {
 
   joinama() {
     this.user = this.userData._id
-    console.log(this.found)
-    let ggg: FormData = new FormData()
-    // console.log(this.user);
-    ggg.append("codeama", this.user);
-    this.codeama.savecodeama(ggg).subscribe((res) => {
-      console.log(res);
+    const formData = {
+      codeama: this.user
+    }
+    this.data = Object.create(formData)
+    this.data.codeama = this.user
+    this.codeama.savecodeama(this.data).subscribe((res) => {
+      this.codeama.getcodeamas().subscribe((res) => {
+        this.codeamaData = res
+        this.codeamaData = this.codeamaData.data
+      })
     })
-
+    this.found = true
   }
 
 
   quitama() {
-    
-    this.codeama.getamabyId(this.amaId).subscribe((res) => {
-      this.amaInfo = res
-      this.amaInfo = this.amaInfo.data
-
-      console.log(this.amaInfo);
-      this.amaId = this.amaInfo._id
-      console.log(this.amaId);
-      
-      this.codeama.removeama(this.amaId).subscribe((res) => {
-        console.log(res)
+    this.codeama.removeama(this.amaId).subscribe((res) => {
+      this.codeama.getcodeamas().subscribe((res) => {
+        this.codeamaData = res
+        this.codeamaData = this.codeamaData.data
       })
     })
   }
+
 }

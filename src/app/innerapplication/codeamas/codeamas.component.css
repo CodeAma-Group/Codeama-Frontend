@@ -37,15 +37,19 @@
     margin-bottom: 8px;
 }
 
+.person {
+    font-size: 15px;
+}
+
 .line {
-    height: 1px;
-    background-color: silver;
+    height: 0.8px;
+    background-color: #c0c0c052;
     margin-bottom: 10px;
-    margin: 0!important;
 }
 
 button.btn-primary.btn {
     padding: 5px;
+    font-size: 14px;
 }
 
 a.text-white {
@@ -65,6 +69,7 @@ a {
 
 .ama-askQuestion>a {
     color: #425FED;
+    font-size: 14px;
 }
 
 .profile>a>img {
