@@ -29,4 +29,16 @@ export class UserService {
 		return this.http.get(`https://codeama-backend.herokuapp.com/users/${id}`)
 	}
 
+	getUserArticles() {
+		return this.http.get(`https://codeama-backend.herokuapp.com/user/articles`)
+	}
+
+	getBugsSolvedBySingleUser() {
+		return this.http.get(`https://codeama-backend.herokuapp.com/solved_bugs/${this.userId}`)
+	}
+
+	getAskedQuestionsBySingleUser() {
+		return this.http.get(`https://codeama-backend.herokuapp.com/user/questions`)
+	}
+
 }

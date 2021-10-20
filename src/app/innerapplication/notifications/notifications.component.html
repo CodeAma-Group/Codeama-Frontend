@@ -1,46 +1,131 @@
-<div class="container-fluid round">
-  <div class="bg-color">
-
-    <div class="header row">
-      <div class="col-10">
-        <div class="notification">Notifications</div>
-      </div>
-      <div class="col">
-        <i style="font-size:24px; color: white;" class="fa">&#xf055;</i><a href="#">Mark all as read</a>
-      </div>
-    </div>
-    <div class="line"></div>
-
-    <div *ngIf="notnull">
-      <div ngFor="let noti of notificationData">
-        <div class="noti row">
-          <div class="col-1 profile">
-            <img src="../../../assets/images/sara.png" alt="prof">
-          </div>
-
-          <div class="col">
-            <div class="tx-title">{{noti.title}}</div>
-            <div class="tx-12">{{noti.description}}</div>
-            <p class="tx-to">{{noti.to}}</p>
-          </div>
-          <div class="line"></div>
+<div class="dashboard">
+    <div class="color">
+        <div class="sideContent">
+            <div class="repeated_projects">
+                <h6>Repeated Projects</h6>
+                <hr>
+                <div>
+                    <p>More than 100 projects daily are found duplicate and being worked on by many programmers
+                    </p>
+                    <a href="" class="link-primary">Check my project now &rarr;</a>
+                    <br>
+                    <br>
+                    <a class="btn text-primary occ_proj">Occupied projects</a>
+                </div>
+            </div>
+            <div class="bugs_and_qtns repeated_projects">
+                <h6>Bugs & questions solved</h6>
+                <hr>
+                <div>
+                    <a href="">
+                        <img src="assets/test_images/javascript.png" alt="js">
+                        <span>Javascript</span>
+                    </a>
+                    <a href="">
+                        <img src="assets/test_images/java.png" alt="java">
+                        <span>Java</span>
+                    </a>
+                    <a href="">
+                        <img src="assets/test_images/python.png" alt="python">
+                        <span>Python</span>
+                    </a>
+                    <a href="">
+                        <img src="assets/test_images/c.png" alt="C++">
+                        <span>C++</span>
+                    </a>
+                    <a href="">
+                        <img src="assets/test_images/react.png" alt="react">
+                        <span>React JS</span>
+                    </a>
+                    <a href="">
+                        <img src="assets/test_images/swift.png" alt="swift">
+                        <span>Swift</span>
+                    </a>
+                    <a href="">
+                        <img src="assets/test_images/angular.png" alt="angular">
+                        <span>Angular</span>
+                    </a>
+                    <a href="">
+                        <img src="assets/test_images/vue.png" alt="vue">
+                        <span>Vue JS</span>
+                    </a>
+                </div>
+            </div>
+            <div class="prizes repeated_projects">
+                <h6>Prizes</h6>
+                <hr>
+                <div class="d-flex justify-content-evenly flex-wrap">
+                    <p class="col-5"><span class=" pro">Code Pro</span><br>Pro <br> badge</p>
+                    <br>
+                    <p class="col-6"><span class=" interm">Intermediate</span><br>Intermediate <br> badge</p>
+                    <br>
+                    <p class="col-5"><span class=" beginner">Beginner</span><br>Beginner <br> badge</p>
+                    <br>
+                    <p class="col-6"><span class=" absBeg">Abs Beginner</span><br>Absolute <br> beginner</p>
+                    <br>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+        <div class="mainContent">
+            <div class="header row pt-0">
+                <div class="col-9">
+                    <div class="repeated_projects notification">
+                        <h6>Notifications</h6>
+                    </div>
+                </div>
+                <div class="col notification ml">
+                    <button class="mark" (click)="markAll()">Mark all as read</button>
+                </div>
+            </div>
+            <div class="overflow-hidden">
+                <div *ngIf="notificationData == 'notifications not found'">
+                    <div class="noti row justify-content ">
+                        <div class="line "></div>
+                        <div> <img class="w-25 noti " src="../../../assets/images/search.png ">
+                            <p> You don't have any notification yet!</p>
+                        </div>
+                    </div>
+                </div>
 
-    <div *ngIf="!notnull">
-      <div class="noti row">
-        <div class="col-1 profile">
-          <img src="../../../assets/images/sara.png" alt="prof">
+                <div *ngFor=" let noti of notificationData ">
+                    <div class="noti hovered row {{noti.isRead}} ">
+                        <div class="line "></div>
+                        <div class="col-1 profile " [ngSwitch]="noti.Type ">
+                            <img *ngSwitchCase=" 'join-ama' " src="../../../assets/images/join.png " alt="prof ">
+                            <img *ngSwitchCase=" 'update-profile' " src="../../../assets/images/update-profile.png " alt="prof ">
+                            <img *ngSwitchCase=" 'comment-article' " src="../../../assets/images/coment.png " alt="prof ">
+                        </div>
+
+                        <div class="col-9 ">
+                            <div class="tx-title ">{{noti.Title}}</div>
+                            <div class="tx-12 ">{{noti.Description}}</div>
+                            <p *ngIf="noti.Link " class="tx-to ">
+                                <a href="{{noti.Link}} " class="blue ">Read more</a>
+                            </p>
+                        </div>
+                        <div class="row col options ">
+                            <div class="col-5 ">
+                                <button (click)="read(noti._id) " data-bs-toggle="tooltip " data-bs-placement="bottom " title="Mark as read ">
+                        <svg xmlns="http://www.w3.org/2000/svg " width="25 " height="15 " viewBox="0 0 45 35 ">
+                                <path id="Icon_material-email " data-name="Icon material-email " d="M43.5,6H7.5a4.432,4.432,0,0,0-4.477,4.375L3,36.625A4.452,4.452,0,0,0,7.5,41h36A4.452,4.452,0,0,0,48,36.625V10.375A4.452,4.452,0,0,0,43.5,6Zm0,8.75-18,10.937L7.5,14.75V10.375l18,10.937,18-10.937Z
+            " transform="translate(-3 -6) "/>
+                            </svg>
+                        </button>
+                            </div>
+                            <div class="col-5 ">
+                                <button (click)="delet(noti._id) " data-bs-toggle="tooltip " data-bs-placement="bottom " title="Delete ">
+                            <svg xmlns="http://www.w3.org/2000/svg " width="15 " height="20 " viewBox="0 0 21 27 ">
+                                <path id="Icon_material-delete " data-name="Icon material-delete " d="M9,28.5a3.009,3.009,0,0,0,3,3H24a3.009,3.009,0,0,0,3-3v-18H9ZM28.5,6H23.25l-1.5-1.5h-7.5L12.75,6H7.5V9h21Z " transform="translate(-7.5 -4.5) "/>
+                            </svg>
+                        </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col">
-          <div class="tx-title">Codeama welcomes you to coding world!</div>
-          <div class="tx-12">Codeama is there to help all developer to get used to coding world. You can see the others project and also post your to bloom storm your project and get it known to other codeamas and every users.</div>
-          <p class="tx-to">{{codeamaData.Username}}.codeama.dev</p>
-        </div>
-        <div class="line"></div>
-      </div>
     </div>
-  </div>
-</div>
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
+        <p style="color: white ">Please Wait. </p>
+    </ngx-spinner>

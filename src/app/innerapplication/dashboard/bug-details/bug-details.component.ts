@@ -95,6 +95,50 @@ export class BugDetailsComponent implements OnInit {
 
   bugId: string;
   bugs: any;
+
+  hasSubmitted:boolean=false;
+  comments:any;
+  bugComments:any;
+  clickComment:boolean = false;
+
+  addComm(){
+    this.clickComment = true;
+  }
+
+  addComment(comment:any){
+ 
+    if(comment.comments.trim().length > 0){
+      
+      this.hasSubmitted = true;
+
+        let decoded: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
+     
+        let data = {
+          content: comment.comments,
+          postId: this.bugId,
+          commentType: "Bug",
+          createdBy: decoded._id
+        }
+       
+        if(this.bugId){
+          this.bug.commentBug(data).subscribe((res) => {
+           this.hasSubmitted = false;
+            console.log(res);
+            this.comments = "";
+            this.viewBugComments(this.bugId);
+            this.clickComment = false;
+          })
+        }
+     }
+  }
+
+  viewBugComments(id){
+    this.bug.viewBugComments(id).subscribe((res:any)=>{
+      console.log(res.data)
+      this.bugComments = res.data;
+    })
+  }
+
   ngOnInit(): void {
     this.spinner.show();
     this.bug
@@ -107,6 +151,7 @@ export class BugDetailsComponent implements OnInit {
         this.bugs = this.bugs.data;
         this.spinner.hide();
         this.bugId = this.bugs[0].bug._id;
+        this.viewBugComments(this.bugs[0].bug._id);
         console.log(this.bugs);
       });
   }

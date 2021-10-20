@@ -14,8 +14,14 @@ export class UseraskedComponent implements OnInit {
 
 	constructor(private backendService: InnerapplicationService, private activatedRoute: ActivatedRoute, private authService: AuthService, private _settings: AppsettingsService, private _userService: UserService, private router: Router) { }
 
-	articles: any;
+	questions: any;
 	_id: string;
+
+	noQuestionStatus: boolean = false;
+	loadingData: boolean = true;
+	Username: string = '';
+	devbadge: string = '';
+	devpic: string = '';
   
 	ngOnInit(): void {
 		let token:any = localStorage.getItem('codeama_auth_token');
@@ -27,10 +33,38 @@ export class UseraskedComponent implements OnInit {
     // console.error(this._id)
 		
 		this._settings.settings();
-	
-		this.backendService.getArticles().subscribe((data: any[]) => {
-			this.articles = data
+		this._settings.settings();
+		this._userService.getUserEntireProfileData(this._id).subscribe((res: any) => {
+		  this.Username = res.data.Username;
+		  this.devbadge = res.data.Badge;
+		  this.devpic = res.data.profilePicture;
 		})
+	
+		this._userService.getAskedQuestionsBySingleUser().subscribe((res: any) => {
+			this.questions = res.data
+			console.log(this.questions)
+
+			this.loadingData = false;
+
+			if (this.questions.length == 0) {
+				this.noQuestionStatus = true;
+			}
+		})
+	}
+
+	public answerQuestionLink:string = "app/answer-question?qtnId="
+	checkBadge(badge: string){
+	  let className:string = ""
+	  switch(badge.toLowerCase()){
+		case "absolute beginner": className = "absBeg";
+		  break;
+		case "intermediate": className = "interm";
+		  break;
+		case "pro": className = "pro";
+		 break;
+		default: className="beginner"
+	  }
+	  return className
 	}
 
 }
