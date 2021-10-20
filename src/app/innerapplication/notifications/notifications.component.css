@@ -6,7 +6,7 @@
     background-color: unset;
 }
 
-div {
+.overflow-hidden {
     overflow: hidden;
 }
 
@@ -15,7 +15,7 @@ div {
     margin: 0px 0px 2px 0px;
 }
 
-.noti:hover {
+.hovered:hover {
     padding-bottom: 5px;
     margin: 0px 0px 2px 0px;
     box-shadow: 0 2px 5px 1px #0000001c;
@@ -83,7 +83,7 @@ svg#add-circle-line {
 
 .line {
     height: 0.8px;
-    background-color: #c0c0c052;
+    background-color: #c0c0c028;
     margin-bottom: 10px;
 }
 
