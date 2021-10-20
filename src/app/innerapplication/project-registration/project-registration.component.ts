@@ -1,8 +1,6 @@
-import { THIS_EXPR, variable } from '@angular/compiler/src/output/output_ast';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ProjectService } from '../services/project.service';
 import { NotifierService } from 'angular-notifier';
 @Component({
@@ -11,10 +9,26 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./project-registration.component.css'],
 })
 export class ProjectRegistrationComponent implements OnInit {
+  newProject;
   constructor(
     private project: ProjectService,
-    private notifier: NotifierService
-  ) {}
+    private notifier: NotifierService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
+    this.newProject = this.formBuilder.group({
+      projectName: ['', [Validators.required]],
+      app_description: ['', [Validators.required]],
+      teamName: ['', [Validators.required]],
+      githubLink: ['', [Validators.required]],
+      appLink: ['', [Validators.required]],
+      demo: ['', [Validators.required]],
+      logo: ['', [Validators.required]],
+      features: this.formBuilder.array([]),
+      technologies: this.formBuilder.array([]),
+      thumbnails: this.formBuilder.array([]),
+    });
+  }
   public options = [
     { label: 'Java', value: 'Java' },
     { label: 'Javascript', value: 'Javascript' },
@@ -41,30 +55,29 @@ export class ProjectRegistrationComponent implements OnInit {
   public fields = { text: 'label', value: 'value' };
   selectedImg = null;
   OthernewImages = [];
-  imgUrl: string = '';
-  logoUrl: string = '';
+  public imgUrl;
+  public logoUrl;
   tagged_tech: Array<any> = [];
   GroupLogo = null;
-  logoImage(event) {
-    if (event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event: any) => {
-        this.logoUrl = event.target.result;
-      };
-    }
+  isLoading: boolean = false;
+  public logoImage(event: any) {
+    const reader = new FileReader();
+    let file = event.target.files[0];
+    this.newProject.get('logo').setValue(file);
+    reader.addEventListener('load', () => {
+      this.logoUrl = reader.result;
+    });
+    reader.readAsDataURL(event.target.files[0]);
   }
 
-  fileSelected(event) {
-    this.selectedImg = event.target.files[0].name;
-
-    if (event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event: any) => {
-        this.imgUrl = event.target.result;
-      };
-    }
+  public fileSelected(event: any) {
+    const reader = new FileReader();
+    let file = event.target.files[0];
+    this.newProject.get('demo').setValue(file);
+    reader.addEventListener('load', () => {
+      this.imgUrl = reader.result;
+    });
+    reader.readAsDataURL(event.target.files[0]);
   }
 
   urls = new Array<string>();
@@ -80,6 +93,7 @@ export class ProjectRegistrationComponent implements OnInit {
       this.Show = true;
       for (let file of files) {
         let reader = new FileReader();
+        this.newProject.get("thumbnails").push(file)
         reader.onload = (e: any) => {
           this.thumbnails.push(e.target.result);
         };
@@ -108,11 +122,10 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('Please Enter a valid email address');
     }
   }
-
-  features = [];
+  featuresArray = [];
   Addfeature(data) {
-    if (this.features.indexOf(data) == -1) {
-      this.features.push(data);
+    if (this.featuresArray.indexOf(data) == -1) {
+      this.featuresArray.push(data);
       document.getElementById('proFeatures').innerText = '';
     } else {
       alert('Feature should not be repeated');
@@ -136,107 +149,84 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('Team member should not be repeated');
     }
   }
-  data;
   collectData() {
-    //  console.log(this.newProjectForm.value.logo);
-    // var features: any = this.features;
-    // var emails: any = this.emailTags;
-    // var team: any = this.team;
-    // var team: any = this.team;
-    // var thumbnails: any = this.thumbnails;
-    // var technologies: Array<any> = this.techs;
+    this.isLoading = true;
     const ProjectData: any = new FormData();
-
     if (
-      this.newProjectForm.value.projectName != null ||
-      this.newProjectForm.value.projectName != undefined
+      this.newProject.value.projectName != null ||
+      this.newProject.value.projectName != undefined
     ) {
-      ProjectData.append('title', this.newProjectForm.value.projectName);
+      ProjectData.append('title', this.newProject.value.projectName);
     }
     if (
-      this.newProjectForm.value.app_description != null ||
-      this.newProjectForm.value.app_description != undefined
+      this.newProject.value.app_description != null ||
+      this.newProject.value.app_description != undefined
     ) {
-      ProjectData.append(
-        'description',
-        this.newProjectForm.value.app_description
-      );
+      ProjectData.append('description', this.newProject.value.app_description);
     }
     if (this.techs != null || this.techs != undefined) {
-      ProjectData.append('technologies', JSON.stringify(this.techs));
+      ProjectData.append('technologies', `${this.techs}`);
     }
-    if (this.thumbnails != undefined || this.thumbnails != null) {
-      ProjectData.append('thumbnails', JSON.stringify(this.thumbnails));
-    }
-    if (
-      this.newProjectForm.value.teamName != null ||
-      this.newProjectForm.value.teamName != undefined
-    ) {
-      ProjectData.append('teamName', this.newProjectForm.value.teamName);
-    }
-    if (this.logoUrl != undefined || this.logoUrl != null) {
-      ProjectData.append('logo', this.logoUrl);
+    if (this.newProject.get("thumbnails") != undefined || this.newProject.get("thumbnails") != null) {
+      ProjectData.append('thumbnails', `${this.newProject.get("thumbnails")}`);
     }
     if (
-      this.newProjectForm.value.appLink != null ||
-      this.newProjectForm.value.appLink != undefined
+      this.newProject.value.teamName != null ||
+      this.newProject.value.teamName != undefined
     ) {
-      ProjectData.append('host', this.newProjectForm.value.appLink);
+      ProjectData.append('teamName', this.newProject.value.teamName);
     }
     if (
-      this.newProjectForm.value.githubLink != null ||
-      this.newProjectForm.value.githubLink != undefined
+      this.newProject.value.logo != undefined ||
+      this.newProject.value.logo != null
     ) {
-      ProjectData.append('github', this.newProjectForm.value.githubLink);
+      ProjectData.append('logo', this.newProject.value.logo);
+    }
+    if (
+      this.newProject.value.appLink != null ||
+      this.newProject.value.appLink != undefined
+    ) {
+      ProjectData.append('host', this.newProject.value.appLink);
+    }
+    if (
+      this.newProject.value.githubLink != null ||
+      this.newProject.value.githubLink != undefined
+    ) {
+      ProjectData.append('github', this.newProject.value.githubLink);
     }
     if (this.team.length != 0 || this.team != undefined || this.team != null) {
-      ProjectData.append('team', JSON.stringify(this.team));
+      ProjectData.append('team', `${this.team}`);
     }
     if (
       this.emailTags.length != 0 ||
       this.emailTags != null ||
       this.emailTags != undefined
     ) {
-      ProjectData.append('non_member_emails', JSON.stringify(this.emailsArray));
+      ProjectData.append('non_member_emails', `${this.emailsArray}`);
     }
-    if (this.features != null || this.features != undefined) {
-      ProjectData.append('features', JSON.stringify(this.features));
+    if (this.featuresArray != null || this.featuresArray != undefined) {
+      ProjectData.append('features', `${this.featuresArray}`);
     }
-    if (this.imgUrl != null || this.imgUrl != undefined) {
-      ProjectData.append('demo', JSON.stringify(this.imgUrl));
+    if (
+      this.newProject.value.demo != null ||
+      this.newProject.value.demo != undefined
+    ) {
+      ProjectData.append('demo', this.newProject.value.demo);
     }
-    // this.data = {
-    //   title: this.newProjectForm.value.projectName,
-    //   description: this.newProjectForm.value.app_description,
-    //   technologies: this.techs,
-    //   thumbnails: this.urls,
-    //   demo: this.imgUrl,
-    //   teamName: this.newProjectForm.value.teamName,
-    //   logo: this.logoUrl,
-    //   github: this.newProjectForm.value.githubLink,
-    //   host: this.newProjectForm.value.appLink,
-    //   team: this.team,
-    //   non_member_emails: this.emailTags,
-    //   features: this.features,
-    // };
-// console.log(this.imgUrl);
-
-    this.project.saveProject(ProjectData).subscribe((res) => {
-      this.notifier.notify('success', 'New Project posted successfully!');
-      alert(res);
-      console.log('result is here', res);
+    this.project.saveProject(ProjectData).subscribe((res: any) => {
+      if (res.data.status == 201) {
+        this.isLoading = false;
+        this.notifier.notify('success', 'New Project posted successfully!');
+        return this.router.navigate(['/projects']);
+      } else {
+        console.warn(res.data);
+        return this.notifier.notify(
+          'error',
+          'An error occured while trying to register project'
+        );
+      }
     });
   }
-  newProjectForm = new FormGroup({
-    projectName: new FormControl(''),
-    // tagged_tech:new FormControl(''),
-    app_description: new FormControl(''),
-    teamName: new FormControl(''),
-    githubLink: new FormControl(''),
-    appLink: new FormControl(''),
-    logo: new FormControl(''),
-  });
-
   cookieVal: string = '';
 
   ngOnInit(): void {

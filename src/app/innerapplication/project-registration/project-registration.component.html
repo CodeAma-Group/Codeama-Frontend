@@ -1,62 +1,65 @@
 <div class="container-fluid pb-2">
-    <div class="heading py-2 ms-3">
-        <h6 class="my-auto title">Register Your project</h6>
-    </div>
-
-    <div class="main_project_reg_div col-lg-12 mx-auto d-flex">
-        <div class="uploads col-lg-5 ms-3 me-5">
-            <div class="upload-1 my-3">
-                <label for="">Company Logo</label>
-                <div class="main-page-or-video text-center" (click)="logoImageRef.click()">
-                    <svg class="upload-icon" xmlns=" http://www.w3.org/2000/svg" width="103" height="81" viewBox="0 0 103 81">
-            <rect id="Rectangle_184" data-name="Rectangle 184" width="103" height="81" fill="rgba(0,0,0,0.14)" />
-            <path id="Path_180" data-name="Path 180"
-              d="M-1792.988,6774.147h79.05v-63.607s-10.793,31.589-24.931,37.821-19.763-15.473-31.62-12.894-22.5,20.629-22.5,20.629Z"
-              transform="translate(1803 -6698.148)" fill="rgba(255,255,255,0.61)" />
-          </svg>
-                    <br>fea
-                    <span class="ms-2">Company or Group logo goes here</span>
-                    <div class="mx-auto col-lg-7 imagefromDb1Container">
-                        <img [src]="logoUrl" *ngIf="logoUrl!=''" class="imagefromDb1" alt="">
-                    </div>
-                </div>
-                <input type="file" hidden accept=".png,.mp4,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="logoImage($event)" #logoImageRef>
-            </div>
-            <div class="upload-1 my-3">
-                <label for="">Project Main page</label>
-                <br>
-                <span>Only the main app page pic or shot 10 second long video should be in this container</span>
-                <div class="main-page-or-video text-center" (click)="mainPageInput.click()">
-                    <svg class="upload-icon" xmlns=" http://www.w3.org/2000/svg" width="103" height="81" viewBox="0 0 103 81">
-            <rect id="Rectangle_184" data-name="Rectangle 184" width="103" height="81" fill="rgba(0,0,0,0.14)" />
-            <path id="Path_180" data-name="Path 180"
-              d="M-1792.988,6774.147h79.05v-63.607s-10.793,31.589-24.931,37.821-19.763-15.473-31.62-12.894-22.5,20.629-22.5,20.629Z"
-              transform="translate(1803 -6698.148)" fill="rgba(255,255,255,0.61)" />
-          </svg>
-                    <br>
-                    <span class="ms-2">Main app page photo or short demo video</span>
-                    <img [src]="imgUrl" *ngIf="imgUrl!=''" class="imagefromDb" alt="">
-                </div>
-                <input type="file" hidden accept=".png,.mp4,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
-            </div>
-            <div class="uploads-2" (click)="OtherImages.click()">
-                <div class="other-uploads">
-                    <svg id="svg" class="ms-1 mt-1" xmlns=" http://www.w3.org/2000/svg" width="64" height="68" viewBox="0 0 64 52">
-            <rect id="Rectangle_195" data-name="Rectangle 195" width="64" height="52" fill="rgba(0,0,0,0.14)" />
-            <path id="Path_183" data-name="Path 183"
-              d="M-1792.988,6745.147H-1753V6710.54s-5.46,17.187-12.612,20.578-10-8.418-16-7.015-11.381,11.224-11.381,11.224Z"
-              transform="translate(1803 -6704.429)" fill="rgba(255,255,255,0.61)" />
-          </svg>
-                    <span class="ms-2">select other project pages maximum 5</span>
-                    <div class="detectedImages" *ngIf="Show">
-                        <img *ngFor="let thumbnail of thumbnails" [src]="thumbnail" class="rounded my-2">
-                    </div>
-                </div>
-                <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="OtherImagesUplopad" (change)="detectFiles($event)" multiple #OtherImages>
-            </div>
+    <form class=" form" [formGroup]="newProject" (ngSubmit)="collectData()">
+        <div class="heading py-2 ms-3">
+            <h6 class="my-auto title">Register Your project</h6>
         </div>
-        <div class="user-inputs col-lg-6 mx-auto">
-            <form class=" form col-lg-12" [formGroup]="newProjectForm" (ngSubmit)="collectData()">
+
+        <div class="main_project_reg_div col-lg-12 mx-auto d-flex">
+            <div class="uploads col-lg-5 ms-3 me-5">
+                <div class="upload-1 my-3">
+                    <label for="">Company Logo</label>
+                    <div class="main-page-or-video text-center" (click)="logoImageRef.click()">
+                        <svg class="upload-icon" xmlns=" http://www.w3.org/2000/svg" width="103" height="81" viewBox="0 0 103 81">
+                            <rect id="Rectangle_184" data-name="Rectangle 184" width="103" height="81"
+                                fill="rgba(0,0,0,0.14)" />
+                            <path id="Path_180" data-name="Path 180"
+                                d="M-1792.988,6774.147h79.05v-63.607s-10.793,31.589-24.931,37.821-19.763-15.473-31.62-12.894-22.5,20.629-22.5,20.629Z"
+                                transform="translate(1803 -6698.148)" fill="rgba(255,255,255,0.61)" />
+                        </svg>
+                        <br>
+                        <span class="ms-2">Company or Group logo goes here</span>
+                        <div class="mx-auto col-lg-7 imagefromDb1Container">
+                            <img [src]="logoUrl" *ngIf="logoUrl" class="imagefromDb1" alt="">
+                        </div>
+                    </div>
+                    <input type="file" hidden accept=".png,.mp4,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="logoImage($event)" #logoImageRef>
+                </div>
+                <div class="upload-1 my-3">
+                    <label for="">Project Main page</label>
+                    <br>
+                    <span>Only the main app page pic or shot 10 second long video should be in this container</span>
+                    <div class="main-page-or-video text-center" (click)="mainPageInput.click()">
+                        <svg class="upload-icon" xmlns=" http://www.w3.org/2000/svg" width="103" height="81" viewBox="0 0 103 81">
+                            <rect id="Rectangle_184" data-name="Rectangle 184" width="103" height="81"
+                                fill="rgba(0,0,0,0.14)" />
+                            <path id="Path_180" data-name="Path 180"
+                                d="M-1792.988,6774.147h79.05v-63.607s-10.793,31.589-24.931,37.821-19.763-15.473-31.62-12.894-22.5,20.629-22.5,20.629Z"
+                                transform="translate(1803 -6698.148)" fill="rgba(255,255,255,0.61)" />
+                        </svg>
+                        <br>
+                        <span class="ms-2">Main app page photo or short demo video</span>
+                        <img [src]="imgUrl" *ngIf="imgUrl" class="imagefromDb" alt="">
+                    </div>
+                    <input type="file" hidden accept=".png,.mp4,.jpg,.jpeg" name="file" id="mainPageUplopad" (change)="fileSelected($event)" #mainPageInput>
+                </div>
+                <div class="uploads-2" (click)="OtherImages.click()">
+                    <div class="other-uploads">
+                        <svg id="svg" class="ms-1 mt-1" xmlns=" http://www.w3.org/2000/svg" width="64" height="68" viewBox="0 0 64 52">
+                            <rect id="Rectangle_195" data-name="Rectangle 195" width="64" height="52"
+                                fill="rgba(0,0,0,0.14)" />
+                            <path id="Path_183" data-name="Path 183"
+                                d="M-1792.988,6745.147H-1753V6710.54s-5.46,17.187-12.612,20.578-10-8.418-16-7.015-11.381,11.224-11.381,11.224Z"
+                                transform="translate(1803 -6704.429)" fill="rgba(255,255,255,0.61)" />
+                        </svg>
+                        <span class="ms-2">select other project pages maximum 5</span>
+                        <div class="detectedImages" *ngIf="Show">
+                            <img *ngFor="let thumbnail of thumbnails" [src]="thumbnail" class="rounded my-2">
+                        </div>
+                    </div>
+                    <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="OtherImagesUplopad" (change)="detectFiles($event)" multiple #OtherImages>
+                </div>
+            </div>
+            <div class="user-inputs col-lg-6 mx-auto">
                 <div class="form-group">
                     <label for="project-name">Group or Company name</label>
                     <input type="text" formControlName="teamName" name="projectName" id="project-name" class="form-control fm-style" placeholder="Application name">
@@ -71,8 +74,8 @@
 
                     <div class="form-control d-flex">
                         <div class=""><span class="emailTags bg-dark" *ngFor="let tech of techs">{{tech}}
-                    <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
-                    </span>
+                                <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
+                            </span>
                         </div>
                         <input type="text" name="projectTech" formControlName="tagged_tech" class="fm-style project-teamm-no-account" id="tagged-techs" (keyup.enter)=" AddTech($event.target.value)" placeholder="Add technology">
                     </div>
@@ -80,8 +83,8 @@
                 <div class="form-group">
                     <label for="project-techs">Project features</label>
                     <div class="form-control d-flex">
-                        <div class=""><span class="emailTags bg-dark" *ngFor=" let feature of features">{{feature}}
-                            <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
+                        <div class=""><span class="emailTags bg-dark" *ngFor="let feature of featuresArray">{{feature}}
+                                <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
                             4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
                             </span>
                         </div>
@@ -99,13 +102,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="project-team">Project Developers Team</label><br><span>Tag your team mate ( The team mate must
-            be have an account in codeama)</span>
+                    <label for="project-team">Project Developers Team</label><br><span>Tag your team mate ( The team
+                        mate must
+                        be have an account in codeama)</span>
                     <div class="form-control d-flex">
                         <div class=""><span class="emailTags bg-dark" *ngFor=" let teamMate of team">{{teamMate}}
-                    <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477
+                                <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477
                             10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
-                    </span>
+                            </span>
                         </div>
                         <input type="email" name="email" class="fm-style project-teamm-no-account" (keyup.enter)="Addmember($event.target.value)" placeholder="Add team member Email">
                     </div>
@@ -114,7 +118,7 @@
                     <span>If your team mate is not using codeama currently tag his email address</span>
                     <div class="form-control d-flex">
                         <div class=""><span class="emailTags bg-dark" *ngFor=" let email of emailsArray">{{email}}
-                            <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
+                                <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
                             4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
                             </span>
                         </div>
@@ -131,8 +135,14 @@
                     </div>
                 </div>
                 <div class="post-btn text-end my-3 me-3">
-                    <button type="submit" name=" post-pro-btn" id="post-pro-btn" class="btn">Post your project Now</button>
+                    <button type="submit" name=" post-pro-btn" id="post-pro-btn" class="btn">Post your project
+                        Now
+                        <div *ngIf="isLoading" class="spinner-grow text-white" role="status">
+                          </div>
+                    </button>
                 </div>
-            </form>
+            </div>
         </div>
-        <notifier-container></notifier-container>
+    </form>
+</div>
+<notifier-container></notifier-container>
