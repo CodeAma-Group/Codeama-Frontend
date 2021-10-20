@@ -1,81 +1,99 @@
-*{
+* {
     font-family: "Poppins", sans-serif;
 }
+
 .tx-top {
     color: #151829;
 }
-p{
+
+p {
     font-size: 15px;
 }
-.profile>p{
+
+.profile>p {
     margin: auto;
 }
+
 .profile>a>p {
     font-size: 10px;
     width: fit-content;
 }
+
 .rounded {
     border-radius: 10px;
 }
+
 .btn {
     width: 110%;
 }
+
 .bg-color {
     background-color: #f4f7fb;
 }
+
 .cl-silver {
     color: silver;
 }
-.skills{
+
+.skills {
     display: inline-flex;
 }
-.skills>li{
+
+.skills>li {
     padding-left: 10px;
     font-size: 13px;
 }
-.size-12{
+
+.size-12 {
     font-size: 15px;
 }
+
 .status {
     padding-top: 20px;
 }
+
 .ama-askQuestion {
     text-align: end;
     padding: 0 25px;
 }
-.line{
-    height: 1px;
-    background-color: silver;
+
+.line {
+    height: 0.8px;
+    background-color: #c0c0c028;
     margin-bottom: 10px;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
 }
 
-.bg-light-blue{
+.bg-light-blue {
     background-color: #ebf1fa;
 }
-.bg-brur-blue{
-    background-color: #f7f9fc;;
+
+.bg-brur-blue {
+    background-color: #f7f9fc;
+    ;
 }
 
-.question-status > div a {
+.question-status>div a {
     font-size: 14px;
     color: rgb(80, 77, 77);
 }
 
-.question-status>div:nth-child(1):hover, .question-status>div:nth-child(2):hover, .question-status>div:nth-child(3):hover{
-    background-color: #f0fffa;  
+.question-status>div:nth-child(1):hover,
+.question-status>div:nth-child(2):hover,
+.question-status>div:nth-child(3):hover {
+    background-color: #f0fffa;
     border: 2px solid springgreen;
 }
 
-.question-status>div:hover .question-status>div .fw-bold{
+.question-status>div:hover .question-status>div .fw-bold {
     color: #2df3a9;
     font-weight: 900;
 }
 
-.question-status > div:hover a span {
+.question-status>div:hover a span {
     color: #1fce8eb0;
 }
 
@@ -116,7 +134,7 @@ textarea {
     width: 100%;
 }
 
-textarea::placeholder{
+textarea::placeholder {
     color: silver;
 }
 
@@ -124,61 +142,51 @@ textarea::placeholder{
     padding: 13px;
 }
 
-.ama-askQuestion > a {
+.ama-askQuestion>a {
     color: #425FED;
 }
 
-.profile > a > img {
+.profile>a>img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
 
-@media only screen and (max-width: 680px){
-    .person1 > .row {
+@media only screen and (max-width: 680px) {
+    .person1>.row {
         width: 100%;
         display: inline-flex;
     }
-
     .profile {
         width: 25%;
     }
-
-    .about > .row {
+    .about>.row {
         display: block;
     }
-
     .status {
         width: 80%;
         text-align: center;
         margin-left: 10px;
     }
-
     .ama-askQuestion {
         text-align: center;
     }
-
-    .follow{
+    .follow {
         width: 10%;
     }
-
     /* Profile */
     form.row {
         display: block;
     }
-
-    form > div {
+    form>div {
         width: 100%;
     }
-
     .question-status {
         display: block;
         text-align: center;
     }
-
-    .question-status > div {
+    .question-status>div {
         width: 100%;
         padding: 0px 0 10px 0;
     }
-
 }

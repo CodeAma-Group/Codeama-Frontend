@@ -23,8 +23,8 @@ export class CodeamasComponent implements OnInit {
 
   unfollower;
   follower
-  followButton = `follow`;
-  unFollowButton = `unfollow`
+  followButton = `Follow`;
+  unFollowButton = `Unfollow`
   user: string = '';
   auth_token = localStorage.getItem('codeama_auth_token');
   userData: any = jwt_decode(this.auth_token)
