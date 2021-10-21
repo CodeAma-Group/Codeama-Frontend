@@ -1,15 +1,9 @@
-import { THIS_EXPR, variable } from '@angular/compiler/src/output/output_ast';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  Validators,
-} from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ProjectService } from '../services/project.service';
 import { NotifierService } from 'angular-notifier';
+import { delay } from 'rxjs/operators';
 @Component({
   selector: 'app-project-registration',
   templateUrl: './project-registration.component.html',
@@ -20,7 +14,8 @@ export class ProjectRegistrationComponent implements OnInit {
   constructor(
     private project: ProjectService,
     private notifier: NotifierService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.newProject = this.formBuilder.group({
       projectName: ['', [Validators.required]],
@@ -30,9 +25,9 @@ export class ProjectRegistrationComponent implements OnInit {
       appLink: ['', [Validators.required]],
       demo: ['', [Validators.required]],
       logo: ['', [Validators.required]],
-      features:this.formBuilder.array([]),
-      technologies:this.formBuilder.array([]),
-      thumbnails:this.formBuilder.array([])
+      features: this.formBuilder.array([]),
+      technologies: this.formBuilder.array([]),
+      thumbnails: this.formBuilder.array([]),
     });
   }
   public options = [
@@ -65,8 +60,8 @@ export class ProjectRegistrationComponent implements OnInit {
   public logoUrl;
   tagged_tech: Array<any> = [];
   GroupLogo = null;
-
-  logoImage(event) {
+  public isLoading: boolean = false;
+  public logoImage(event: any) {
     const reader = new FileReader();
     let file = event.target.files[0];
     this.newProject.get('logo').setValue(file);
@@ -76,7 +71,7 @@ export class ProjectRegistrationComponent implements OnInit {
     reader.readAsDataURL(event.target.files[0]);
   }
 
-  fileSelected(event) {
+  public fileSelected(event: any) {
     const reader = new FileReader();
     let file = event.target.files[0];
     this.newProject.get('demo').setValue(file);
@@ -99,9 +94,9 @@ export class ProjectRegistrationComponent implements OnInit {
       this.Show = true;
       for (let file of files) {
         let reader = new FileReader();
+        this.newProject.get("thumbnails").push(file)
         reader.onload = (e: any) => {
-          this.thumbnails.push(e.target.result)
-          this.newProject.get("thumbnails").push(e.target.result);
+          this.thumbnails.push(e.target.result);
         };
         reader.readAsDataURL(file);
       }
@@ -128,11 +123,10 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('Please Enter a valid email address');
     }
   }
-  featuresArray=[]
+  featuresArray = [];
   Addfeature(data) {
     if (this.featuresArray.indexOf(data) == -1) {
-      this.featuresArray.push(data)
-      this.newProject.get("features").push(data);
+      this.featuresArray.push(data);
       document.getElementById('proFeatures').innerText = '';
     } else {
       alert('Feature should not be repeated');
@@ -142,7 +136,6 @@ export class ProjectRegistrationComponent implements OnInit {
   AddTech(data) {
     if (this.techs.indexOf(data) == -1) {
       this.techs.push(data);
-      this.newProject.get("technologies").push(data)
       document.getElementById('tagged-tech').innerText = '';
     } else {
       alert('Technology should not be repeated twice');
@@ -158,6 +151,7 @@ export class ProjectRegistrationComponent implements OnInit {
     }
   }
   collectData() {
+    this.isLoading = true;
     const ProjectData: any = new FormData();
     if (
       this.newProject.value.projectName != null ||
@@ -169,16 +163,13 @@ export class ProjectRegistrationComponent implements OnInit {
       this.newProject.value.app_description != null ||
       this.newProject.value.app_description != undefined
     ) {
-      ProjectData.append(
-        'description',
-        this.newProject.value.app_description
-      );
+      ProjectData.append('description', this.newProject.value.app_description);
     }
-    if (this.newProject.get("technologies") != null || this.newProject.get("technologies") != undefined) {
-      ProjectData.append('technologies', JSON.stringify(this.newProject.get("technologies")));
+    if (this.techs != null || this.techs != undefined) {
+      ProjectData.append('technologies', `${this.techs}`);
     }
     if (this.newProject.get("thumbnails") != undefined || this.newProject.get("thumbnails") != null) {
-      ProjectData.append('thumbnails', JSON.stringify(this.newProject.get("thumbnails")));
+      ProjectData.append('thumbnails', `${this.newProject.get("thumbnails")}`);
     }
     if (
       this.newProject.value.teamName != null ||
@@ -186,7 +177,10 @@ export class ProjectRegistrationComponent implements OnInit {
     ) {
       ProjectData.append('teamName', this.newProject.value.teamName);
     }
-    if (this.logoUrl != undefined || this.logoUrl != null) {
+    if (
+      this.newProject.value.logo != undefined ||
+      this.newProject.value.logo != null
+    ) {
       ProjectData.append('logo', this.newProject.value.logo);
     }
     if (
@@ -202,24 +196,37 @@ export class ProjectRegistrationComponent implements OnInit {
       ProjectData.append('github', this.newProject.value.githubLink);
     }
     if (this.team.length != 0 || this.team != undefined || this.team != null) {
-      ProjectData.append('team', JSON.stringify(this.team));
+      ProjectData.append('team', `${this.team}`);
     }
     if (
       this.emailTags.length != 0 ||
       this.emailTags != null ||
       this.emailTags != undefined
     ) {
-      ProjectData.append('non_member_emails', JSON.stringify(this.emailsArray));
+      ProjectData.append('non_member_emails', `${this.emailsArray}`);
     }
-    if (this.newProject.get("features") != null || this.newProject.get("features") != undefined) {
-      ProjectData.append('features', JSON.stringify(this.newProject.get("features")));
+    if (this.featuresArray != null || this.featuresArray != undefined) {
+      ProjectData.append('features', `${this.featuresArray}`);
     }
-    if (this.newProject.value.demo != null || this.newProject.value.demo!= undefined) {
+    if (
+      this.newProject.value.demo != null ||
+      this.newProject.value.demo != undefined
+    ) {
       ProjectData.append('demo', this.newProject.value.demo);
     }
-    this.project.saveProject(ProjectData).subscribe((res) => {
-      this.notifier.notify('success', 'New Project posted successfully!');
-      alert(res);
+    this.project.saveProject(ProjectData).subscribe((res: any) => {
+      if (res.message=="Project created successfully") {
+        this.isLoading = false;
+        this.notifier.notify('success', 'New Project posted successfully!');
+        delay(1000)
+        this.router.navigate(['/app/projects']);
+      } else {
+        this.isLoading=false
+        return this.notifier.notify(
+          'error',
+          'An error occured while trying to register project'
+        );
+      }
     });
   }
   cookieVal: string = '';
