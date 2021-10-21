@@ -5,6 +5,7 @@ import { NotifierService } from 'angular-notifier';
 import { ActivatedRoute } from '@angular/router';
 import { ChallengeService } from '../services/challenge.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 @Component({
   selector: 'app-take-challenge-board',
   templateUrl: './take-challenge-board.component.html',
@@ -17,7 +18,8 @@ export class TakeChallengeBoardComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private modalService: NgbModal,
     private challengeService: ChallengeService,
-    private notifier:NotifierService
+    private notifier:NotifierService,
+    private sanitizer: DomSanitizer
   ) {}
   closeResult: string;
   open(content) {
@@ -43,7 +45,7 @@ export class TakeChallengeBoardComponent implements OnInit {
   }
   userData: any = [];
   challenge: any = [];
-  codeSandBoxLink: string;
+  codeSandBoxLink: SafeResourceUrl="";
   userCodeSandBoxLink:string="";
   ngOnInit(): void {
     this.spinner.show();
@@ -51,7 +53,9 @@ export class TakeChallengeBoardComponent implements OnInit {
       .getChallenge(this.router.snapshot.params.id)
       .subscribe((res) => {
         this.challenge = res;
-        this.codeSandBoxLink = this.challenge.data.codeSandBoxLink;
+        this.codeSandBoxLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.challenge.data.codeSandBoxLink);
+        console.log(this.codeSandBoxLink);
+        
       });
     this.spinner.hide();
   }
@@ -80,5 +84,9 @@ export class TakeChallengeBoardComponent implements OnInit {
         className = 'beginner';
     }
     return className;
+  }
+
+  getcodeSandBoxLink() {
+    return this.codeSandBoxLink
   }
 }

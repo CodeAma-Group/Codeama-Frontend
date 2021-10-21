@@ -20,8 +20,6 @@ export class ProjectsComponent implements OnInit {
     this.projects.getProjects().subscribe((res)=>{
       this.projectsData=res
       this.projectsData=this.projectsData.data;
-      console.log(this.projectsData);
-      
       this.image=this.url+'/'+this.projectsData[0].demo      
       this.show=true
       this.spinner.hide()

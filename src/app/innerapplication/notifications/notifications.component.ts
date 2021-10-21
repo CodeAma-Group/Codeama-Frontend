@@ -35,8 +35,6 @@ export class NotificationsComponent implements OnInit {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
-        console.log(res);
-        
       })
     })
   }
@@ -46,8 +44,7 @@ export class NotificationsComponent implements OnInit {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
-      })  
-      console.log(res)      
+      })     
     })
     
   }
@@ -59,7 +56,6 @@ export class NotificationsComponent implements OnInit {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
       })
-      console.log(res);
     })
   }
 }
