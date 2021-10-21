@@ -39,7 +39,8 @@
                             </div>
                         </div>
                         <div class="status col-3 row">
-                            <p class="col-7"><span>45</span><span class="cl-silver"> of </span><span>104</span><span class="cl-silver">
+                            <p class="col-7"><span>45</span><span class="cl-silver"> of </span>
+                                <span *ngFor="let nbr of questions"><span *ngIf="nbr.userId == code.codeama._id">{{nbr.question}}</span></span><span class="cl-silver">
                   answered</span></p>
                             <p class="col"><span>{{code.codeama.Following.length}} + </span><span class="cl-silver">followers</span>
                             </p>

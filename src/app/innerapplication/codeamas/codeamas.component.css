@@ -47,6 +47,11 @@
     margin-bottom: 10px;
 }
 
+.h5,
+h5 {
+    font-size: 1.2rem;
+}
+
 button.btn-primary.btn {
     padding: 5px;
     font-size: 14px;
