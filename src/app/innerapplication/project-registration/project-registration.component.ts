@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProjectService } from '../services/project.service';
 import { NotifierService } from 'angular-notifier';
+import { delay } from 'rxjs/operators';
 @Component({
   selector: 'app-project-registration',
   templateUrl: './project-registration.component.html',
@@ -59,7 +60,7 @@ export class ProjectRegistrationComponent implements OnInit {
   public logoUrl;
   tagged_tech: Array<any> = [];
   GroupLogo = null;
-  isLoading: boolean = false;
+  public isLoading: boolean = false;
   public logoImage(event: any) {
     const reader = new FileReader();
     let file = event.target.files[0];
@@ -214,12 +215,13 @@ export class ProjectRegistrationComponent implements OnInit {
       ProjectData.append('demo', this.newProject.value.demo);
     }
     this.project.saveProject(ProjectData).subscribe((res: any) => {
-      if (res.data.status == 201) {
+      if (res.message=="Project created successfully") {
         this.isLoading = false;
         this.notifier.notify('success', 'New Project posted successfully!');
-        return this.router.navigate(['/projects']);
+        delay(1000)
+        this.router.navigate(['/app/projects']);
       } else {
-        console.warn(res.data);
+        this.isLoading=false
         return this.notifier.notify(
           'error',
           'An error occured while trying to register project'
