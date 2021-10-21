@@ -12,8 +12,16 @@
         <div class="header-container">
             <img src="../../../assets/images/logo.png" alt="logo" class="logo">
             <form class="searchbox-container">
-                <img src="../../../assets/images/Group 2.png" alt="search icon">
-                <input type="text" name="search" id="search" placeholder="search at codeama">
+                <div class="searchbox">
+                    <img src="../../../assets/images/Group 2.png" alt="search icon">
+                    <input type="text" #search  (keyup)="filterSearch(search.value)" (blur)="stopSearch()" placeholder="search at codeama">
+                </div>
+                <div class="result" *ngIf="showSearch">
+                    <a *ngFor = "let i of searchWords" class="showSearch" routerLink="{{i.route}}">
+                        <h4>{{i.name}}</h4>
+                        <p>{{i.description}}</p>
+                    </a>
+                </div>              
             </form>
             <div *ngIf="loggedIn" (click) = "logout()" class="logout">
                 Logout
