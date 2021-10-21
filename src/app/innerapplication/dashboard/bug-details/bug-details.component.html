@@ -70,6 +70,50 @@
         </div>
         <div class="some-likers"></div>
     </div>
+
+    <!-- comments section -->
+
+    <section class="comments_section mt-5">
+        <p class="tit">Comments &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>{{bugComments.length}} comments</span></p>
+        <div *ngFor="let comment of bugComments">
+            <div class="dev_details" class="d-flex">
+                <figure class="position-relative d-flex justify-content-center">
+                    <div>
+                        <img [src]="comment.comment.creatorInfo[0].profilePicture" alt="">
+                    </div>
+                </figure>
+                <div>
+                    <p>
+                        <strong>{{comment.comment.creatorInfo[0].Username}}</strong>
+                    </p>
+                    <span class="sp">{{comment.comment.creatorInfo[0].Username}}.codeama.net</span>
+                </div>
+            </div>
+            <p [innerHTML]="comment.comment.content" class="comm"></p>
+            <hr>
+        </div>
+    </section>
+
+    <div class="mb-3"  *ngIf="!clickComment">
+        <span class="fw-bod addBtn" (click)="addComm()">Add comment</span><br>
+    </div>
+
+    <form  #commentForm = "ngForm" *ngIf="clickComment" class="comment_section justify-content-between align-items-end mt-2" (ngSubmit) = "addComment(commentForm.value)">
+        <div class="comment">
+            <label for="qtn_ans" class="mb-2">Add comment on this bug</label>
+        <textarea type="text" name="comments" [ngModel]="comments" id="qtn" class="form-control form-text" rows="3">...</textarea>
+        </div>
+        <div class="ms-auto mt-2" style="width: 23%;">
+            <button type="submit" class="btn btn-primary col-12"> 
+                <span *ngIf="hasSubmitted" class="spinner-border text-white spinner-border-sm mr-1"></span>
+                Add comment</button>
+        </div>
+    </form><br>
+
+    <!-- answers section  -->
+
+    <h4 class="answers-t">Answers</h4>
+
     <div class="comments-section ms-3 ">
         <div class="recent-commenters ">
             <div class="comments-heading my-3 ">
@@ -80,7 +124,7 @@
                     <div class="user-profile d-flex">
                         <figure class="position-relative d-flex justify-content-center">
                             <div>
-                                <img [src]="'https://codeama-backend.herokuapp.com/'+comment.solverInfo.profilePicture" alt="">
+                                <img [src]="comment.solverInfo.profilePicture" alt="">
                             </div>
                             <figcaption class="{{checkBadge(comment.solverInfo.Badge)}} rounded-pill">{{comment.solverInfo.Badge}}</figcaption>
                         </figure>
@@ -123,12 +167,13 @@
             </div>
         </div>
         <!-- #newCommentForm="ngForm" (ngSubmit)="submit(newCommentForm.value)" -->
-        <form method="post" class="form my-4">
+        <form method="post" class="form my-4 mb-3">
             <div class="form-group "><label for=" ">Provide your answer</label>
                 <angular-editor [(ngModel)]="htmlContent" [config]="config "></angular-editor>
             </div>
             <button name="answe-btn" (click)="saveComment()" id="answer btn" class="btn btn-primary ms-auto answer-btn" role="button">Answer this</button>
         </form>
+
     </div>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">

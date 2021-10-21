@@ -18,6 +18,11 @@ export class UserarticlesComponent implements OnInit {
   articles: any;
   _id: string;
 
+  loadingData: boolean = true;
+  noArticlesStatus: boolean = false;
+
+  Username: string = ''
+
   ngOnInit(): void {
     
     let token:any = localStorage.getItem('codeama_auth_token');
@@ -29,10 +34,22 @@ export class UserarticlesComponent implements OnInit {
     // console.error(this._id)
    
     this._settings.settings();
-
-    this.backendService.getArticles().subscribe((data: any[]) => {
-      this.articles = data
+    this._userService.getUserEntireProfileData(this._id).subscribe((res: any) => {
+      this.Username = res.data.Username;
     })
+
+    this._userService.getUserArticles().subscribe((res: any) => {
+      this.articles = res.data
+      console.log(this.articles)
+      this.loadingData = false;
+      if (this.articles.length == 0) {
+        this.noArticlesStatus = true;
+      }
+    })
+  }
+
+  seeArticle(value: any) {
+    this.router.navigate(['/app/view-article/', value])
   }
 
 }

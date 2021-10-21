@@ -59,15 +59,15 @@ export class TakeChallengeBoardComponent implements OnInit {
       });
     this.spinner.hide();
   }
-  // submitLink(){
-  //   this.bugs.postBug(this.userCodeSandBoxLink).subscribe((res) => {
-  //     try {
-  //       this.notifier.notify("success","Bug posted successfully !")
-  //     } catch (error) {
-  //       this.notifier.notify("error","An error occured while submitting, Try again")
-  //     }
-  //   });
-  // }
+  submitLink(){
+    // this.bugs.postBug(this.userCodeSandBoxLink).subscribe((res) => {
+    //   try {
+    //     this.notifier.notify("success","Bug posted successfully !")
+    //   } catch (error) {
+    //     this.notifier.notify("error","An error occured while submitting, Try again")
+    //   }
+    // });
+  }
   checkBadge(badge: string) {
     let className: string = '';
     switch (badge.toLowerCase()) {
