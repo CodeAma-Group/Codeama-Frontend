@@ -18,7 +18,7 @@
             </div>
             <div class="article_details">
                 <h5><a class="text-dark" routerLink="/app/view-article/{{ article.articleDetails._id }}"><strong>{{article.articleDetails.article}}</strong></a></h5>
-                <p>{{article.articleDetails.desc}}</p>
+                <p [innerHTML]="article.articleDetails.desc" id="articleDescription"></p>
             </div>
             <p id="dev_username">{{article.devDetails.username}}.codeama.dev</p>
             <div class="article_views">
