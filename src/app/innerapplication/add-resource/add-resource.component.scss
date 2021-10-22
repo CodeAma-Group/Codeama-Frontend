@@ -3,7 +3,7 @@ $bg_color: var(--contBgLight);
     color: var(--mainBlack);
     border-radius: 7px;
     background: $bg_color;
-    height: 88%;
+    height: 105%;
     padding: 20px 20px;
     margin: 10px;
 
@@ -46,7 +46,7 @@ $bg_color: var(--contBgLight);
         height: 45px;
     }
 
-    input, select, .form-controller{
+    input, select, .form-controller, textarea{
         background: rgba(66, 144, 237,.05);
         font-weight: 500;
         color: var(--mainBlack);
@@ -62,6 +62,10 @@ $bg_color: var(--contBgLight);
             font-weight: normal;
             // color: rgba(0, 0, 0, 0.623);
         }
+    }
+
+    textarea {
+        padding-left: 40px;
     }
 
     option {
