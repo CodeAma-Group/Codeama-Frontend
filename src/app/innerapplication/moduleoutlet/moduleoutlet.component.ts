@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../authentication/_authServices/auth.service'
+import {filterWords, sampleData} from "./Search"
 
 @Component({
   selector: 'app-moduleoutlet',
@@ -9,9 +10,12 @@ import { AuthService } from '../../authentication/_authServices/auth.service'
 })
 export class ModuleoutletComponent implements OnInit {
   cookieVal: string = "";
-  constructor( private authService: AuthService, private router: Router ) { }
+  constructor(private authService: AuthService, private router: Router ) { }
 
   loggedIn: boolean = false;
+  searchWords;
+  suggestedWords: sampleData[] = [];
+  showSearch = false;
 
   ngOnInit(): void {
     var status = this.authService.loggedIn()
@@ -55,7 +59,6 @@ export class ModuleoutletComponent implements OnInit {
         root.style.setProperty('--bgBlue', '#151829')
         root.style.setProperty('--minorProfileWhite', '#0F111E')
       }
-
     }
 
   }
@@ -118,5 +121,17 @@ export class ModuleoutletComponent implements OnInit {
   login() {
     this.router.navigate(['/auth'])
   }
- 
+
+  filterSearch(value){
+     let searchedModule = new RegExp(value, 'i')
+     this.searchWords = filterWords.filter(el => 
+      el.name.match(searchedModule) || 
+      el.description.match(searchedModule) 
+     ) 
+      this.showSearch = true;
+  }
+  stopSearch(){
+    console.log(`reached here`);
+    this.showSearch = false;
+  }
 }

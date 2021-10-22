@@ -24,4 +24,13 @@ export class NotificationService {
 	markAllAsRead(){
 		return this.http.put(`https://codeama-backend.herokuapp.com/notifications/readAll`, {headers: this.headers})
 	}
+
+
+	markAsRead(notiId){
+		return this.http.put(`https://codeama-backend.herokuapp.com/notifications/${notiId}/read`, {headers: this.headers})
+	}
+
+	deleteNoti(notiId){
+		return this.http.delete(`https://codeama-backend.herokuapp.com/notifications/${notiId}/delete`, {headers: this.headers})
+	}
 }

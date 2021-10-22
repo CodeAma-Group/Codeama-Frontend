@@ -38,13 +38,18 @@
 }
 
 .person {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .line {
     height: 0.8px;
-    background-color: #c0c0c052;
+    background-color: #c0c0c028;
     margin-bottom: 10px;
+}
+
+.h5,
+h5 {
+    font-size: 1.2rem;
 }
 
 button.btn-primary.btn {
