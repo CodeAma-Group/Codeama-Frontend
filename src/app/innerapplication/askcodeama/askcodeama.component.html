@@ -60,7 +60,7 @@
                         <div *ngIf="result" class="alert alert-success w-50 text-center fs-6 h-5" role="alert">
                             {{result.message}}</div>
 
-                        <input ngModel name="userId" #userId="ngModel" type="text" [(ngModel)]="user.codeama._id" hidden required>
+                        <input ngModel name="userId" #userId="ngModel" type="text" [(ngModel)]="user.codeama._id" required>
                         <textarea ngModel name="questions" #questions="ngModel" id="ask" cols="120" rows="7" placeholder="Ask question here..." class="border-blue p-3 col " required></textarea>
 
                     </div>
