@@ -46,6 +46,8 @@ export class AskcodeamaComponent implements OnInit {
 
       let k ;
       for (k=0; k<this.user.codeama.Following.length; k++){
+        console.log(this.user.codeama.Following[k]);
+        
         if(this.user.codeama.Following[k] == this.userId){
           this.following = true;
         }
@@ -66,10 +68,13 @@ export class AskcodeamaComponent implements OnInit {
 
   askama(f: NgForm) {
 
+    let asked_by = this.userId;
+    console.log(asked_by);
+    
     this.codeama.askama({
       userId: f.form.value.userId,
       questions: [{
-        asked_by: this.userId,
+        asked_by: asked_by,
         text_question: f.form.value.questions
       }]
     }).subscribe((res) => {
