@@ -7,6 +7,7 @@
             padding: 0px 20px 0px 40px;
             width: 65%;
             >div:first-of-type {
+                width: 100%;
                 figure {
                     margin-right: 20px;
     
@@ -55,10 +56,10 @@
                 }
                 >div {
                     font-size: .85em;
-                    
+                    width: 100%;
                     p {
                         margin: 0;
-    
+                        width: 100%
                         strong {
                             margin-right: 10px;
                         }
@@ -136,4 +137,13 @@
         opacity: .2;
     }
 
+}
+
+p#articleDescription{
+
+    img {
+        max-width: 40%;
+        border-radius: 10px;
+        display: block;
+    }
 }
