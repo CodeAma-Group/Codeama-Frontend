@@ -63,6 +63,7 @@ span {
     color: var(--mainBlack);
     border-radius: 8px!important;
     padding: 10px;
+    width: 100%;
 }
 
 .fm-style {
@@ -81,15 +82,6 @@ label {
 .title {
     font-size: 1.1em;
     font-weight: 540;
-}
-
-.emailTags {
-    padding: 10px;
-    display: inline-flex;
-    margin: 6px 3px;
-    border-radius: 4px;
-    background-color: #727681;
-    color: white;
 }
 
 .project-teamm-no-account {
@@ -186,4 +178,29 @@ input.e-dropdownbase::placeholder {
     width: 20px !important;
     height: 20px !important;
     margin: 0 4px;
+}
+
+.inputTags {
+    background: var(--contBgLight);
+    padding: 10px;
+    display: inline-flex;
+    margin: 6px 3px;
+    border-radius: 4px;
+    color: white;
+    /* width: 80%; */
+    height: auto;
+    width: fit-content;
+}
+
+.inputTags span {
+    margin: auto 5px!important;
+}
+
+.inputTags svg:hover {
+    cursor: pointer;
+}
+
+.tagsHolder {
+    height: auto;
+    flex-wrap: wrap;
 }

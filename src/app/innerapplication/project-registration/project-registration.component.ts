@@ -127,7 +127,9 @@ export class ProjectRegistrationComponent implements OnInit {
   Addfeature(data) {
     if (this.featuresArray.indexOf(data) == -1) {
       this.featuresArray.push(data);
-      document.getElementById('proFeatures').innerText = '';
+      // document.getElementById('proFeatures').innerText = '';
+      console.log(this.featuresArray);
+      
     } else {
       alert('Feature should not be repeated');
     }
@@ -140,6 +142,9 @@ export class ProjectRegistrationComponent implements OnInit {
     } else {
       alert('Technology should not be repeated twice');
     }
+  }
+  deleteTech(index){
+    this.techs.splice(index,1)
   }
   team = [];
   // email="something went wrong"

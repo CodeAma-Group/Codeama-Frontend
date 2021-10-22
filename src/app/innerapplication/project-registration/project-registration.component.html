@@ -72,21 +72,20 @@
                     <label for="tagged-techs">Project technologies</label>
                     <!-- <ejs-multiselect id="select" formControlName="tagged_tech" [maximumSelectionLength]="6" placeholder="Select not more than 6" class="form-control" [dataSource]="options" [fields]="fields"></ejs-multiselect> -->
 
-                    <div class="form-control d-flex">
-                        <div class=""><span class="emailTags bg-dark" *ngFor="let tech of techs">{{tech}}
-                                <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
-                            </span>
+                    <div class="form-control tagsHolder d-flex">
+
+                        <div class="inputTags" *ngFor="let tech of techs;let indexOfelement=index;"><span>{{tech}}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" (click)="deleteTech(indexOfelement)" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(161,177,177,1)"/></svg>
                         </div>
                         <input type="text" name="projectTech" formControlName="tagged_tech" class="fm-style project-teamm-no-account" id="tagged-techs" (keyup.enter)=" AddTech($event.target.value)" placeholder="Add technology">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="project-techs">Project features</label>
-                    <div class="form-control d-flex">
-                        <div class=""><span class="emailTags bg-dark" *ngFor="let feature of featuresArray">{{feature}}
-                                <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
-                            4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
-                            </span>
+                    <div class="form-control tagsHolder d-flex">
+                        <div class="inputTags" *ngFor="let feature of featuresArray">
+                            <span>{{feature}}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(161,177,177,1)"/></svg>
                         </div>
                         <input type="email" id="proFeatures" name=" email" class="fm-style project-teamm-no-account" (keyup.enter)="Addfeature($event.target.value)" placeholder="project feature">
                     </div>
@@ -105,22 +104,19 @@
                     <label for="project-team">Project Developers Team</label><br><span>Tag your team mate ( The team
                         mate must
                         be have an account in codeama)</span>
-                    <div class="form-control d-flex">
-                        <div class=""><span class="emailTags bg-dark" *ngFor=" let teamMate of team">{{teamMate}}
-                                <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477
-                            10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
-                            </span>
+                    <div class="form-control tagsHolder d-flex">
+                        <div class="inputTags" *ngFor=" let teamMate of team"><span>{{teamMate}}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(161,177,177,1)"/></svg>
                         </div>
                         <input type="email" name="email" class="fm-style project-teamm-no-account" (keyup.enter)="Addmember($event.target.value)" placeholder="Add team member Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <span>If your team mate is not using codeama currently tag his email address</span>
-                    <div class="form-control d-flex">
-                        <div class=""><span class="emailTags bg-dark" *ngFor=" let email of emailsArray">{{email}}
-                                <!-- <svg class="ms-2" (click)="deleteEmail()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
-                            4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(255,255,255,1)"/></svg> -->
-                            </span>
+                    <div class="form-control tagsHolder d-flex">
+                        <div class="inputTags" *ngFor="let email of emailsArray"><span>{{email}}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" fill="rgba(161,177,177,1)"/></svg>
+
                         </div>
                         <input type="email" #emailInput name="emailInput" class="fm-style project-teamm-no-account" [value]="clearInputValue" (keyup.enter)="emailTags($event.target.value)" placeholder="Add Email">
                     </div>
@@ -131,7 +127,7 @@
                         <label for="app-description">Description</label>
                         <br>
                         <span>Only 30 words</span>
-                        <textarea class="form-control" formControlName="app_description" name="app_description" id="app-description" rows=" 3"></textarea>
+                        <textarea class="form-control" formControlName="app_description" placeholder="Describe your project in short" name="app_description" id="app-description" rows=" 3"></textarea>
                     </div>
                 </div>
                 <div class="post-btn text-end my-3 me-3">
