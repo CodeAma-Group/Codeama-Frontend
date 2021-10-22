@@ -18,12 +18,15 @@
             </div>
             <div class="question_details">
                 <h5><a [href]="answerQuestionLink + question.questionDetails._id" class="text-decoration-none"><strong>{{question.questionDetails.question}}</strong></a></h5>
-                <div [innerHTML]="question.questionDetails.text_question" id="div_desc"></div>
+                <p id="div_desc" >{{question.questionDetails.desc}}</p>
+                <div [innerHTML]="question.questionDetails.text_qtn" id="div_desc" ></div>
             </div>
             <p id="dev_username">{{question.devDetails.username}}.codeama.dev</p>
             <div class="question_views">
                 <div>
-                    <strong>{{question.questionDetails.comments.length}}</strong> Answers
+                    <a [href]="answerQuestionLink + question.questionDetails._id" style="color: inherit;">
+                        <strong>{{question.questionDetails.comments.length}}</strong> Answers
+                    </a>
                 </div>
             </div>
         </div>

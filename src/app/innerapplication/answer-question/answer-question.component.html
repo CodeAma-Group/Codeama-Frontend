@@ -25,8 +25,9 @@
                 {{question.questionDetails.question}}
             </h5>
             <p>
-                {{question.questionDetails.desc}} <br> {{question.questionDetails.text_qtn}}
+                {{question.questionDetails.desc}} <br>
             </p>
+            <p [innerHTML]="question.questionDetails.text_qtn"></p>
         </div>
         <div class="shortDet">
             <div>
@@ -49,7 +50,7 @@
                     <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
                     <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
                 </svg>
-                <angular-editor [(ngModel)]="htmlContent" [config]="config "></angular-editor>
+                <angular-editor [(ngModel)]="htmlContent" formControlName="answer" [config]="config "></angular-editor>
             </div>
             <div class="ms-auto" style="width: 23%;">
                 <button type="submit" [disabled]="!answer.valid || isSubmitting" class="btn btn-primary col-12">Answer question</button>
@@ -90,7 +91,7 @@
                     <span>{{comment.Username}}.codeama.net</span>
                 </div>
             </div>
-            <p>{{comment.text_comment}}</p>
+            <p [innerHTML]="comment.text_comment"></p>
             <hr>
         </div>
         <div *ngFor="let comment of newAnsArray">

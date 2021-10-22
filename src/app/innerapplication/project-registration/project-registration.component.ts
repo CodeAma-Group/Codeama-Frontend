@@ -94,7 +94,7 @@ export class ProjectRegistrationComponent implements OnInit {
       this.Show = true;
       for (let file of files) {
         let reader = new FileReader();
-        this.newProject.get("thumbnails").push(file)
+        this.newProject.get('thumbnails').push(file);
         reader.onload = (e: any) => {
           this.thumbnails.push(e.target.result);
         };
@@ -123,14 +123,20 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('Please Enter a valid email address');
     }
   }
+  deleteNonMember(index) {
+    this.emailsArray.splice(index, 1);
+  }
   featuresArray = [];
   Addfeature(data) {
     if (this.featuresArray.indexOf(data) == -1) {
       this.featuresArray.push(data);
-      document.getElementById('proFeatures').innerText = '';
+      // document.getElementById('proFeatures').innerText = '';
     } else {
       alert('Feature should not be repeated');
     }
+  }
+  deleteFeature(index) {
+    this.featuresArray.splice(index, 1);
   }
   techs = [];
   AddTech(data) {
@@ -141,6 +147,9 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('Technology should not be repeated twice');
     }
   }
+  deleteTech(index) {
+    this.techs.splice(index, 1);
+  }
   team = [];
   // email="something went wrong"
   Addmember(data) {
@@ -149,6 +158,9 @@ export class ProjectRegistrationComponent implements OnInit {
     } else {
       alert('Team member should not be repeated');
     }
+  }
+  deleteTeamMate(index) {
+    this.team.splice(index, 1);
   }
   collectData() {
     this.isLoading = true;
@@ -168,8 +180,11 @@ export class ProjectRegistrationComponent implements OnInit {
     if (this.techs != null || this.techs != undefined) {
       ProjectData.append('technologies', `${this.techs}`);
     }
-    if (this.newProject.get("thumbnails") != undefined || this.newProject.get("thumbnails") != null) {
-      ProjectData.append('thumbnails', `${this.newProject.get("thumbnails")}`);
+    if (
+      this.newProject.get('thumbnails') != undefined ||
+      this.newProject.get('thumbnails') != null
+    ) {
+      ProjectData.append('thumbnails', `${this.newProject.get('thumbnails')}`);
     }
     if (
       this.newProject.value.teamName != null ||
@@ -215,13 +230,13 @@ export class ProjectRegistrationComponent implements OnInit {
       ProjectData.append('demo', this.newProject.value.demo);
     }
     this.project.saveProject(ProjectData).subscribe((res: any) => {
-      if (res.message=="Project created successfully") {
+      if (res.message == 'Project created successfully') {
         this.isLoading = false;
         this.notifier.notify('success', 'New Project posted successfully!');
-        delay(1000)
+        delay(1000);
         this.router.navigate(['/app/projects']);
       } else {
-        this.isLoading=false
+        this.isLoading = false;
         return this.notifier.notify(
           'error',
           'An error occured while trying to register project'

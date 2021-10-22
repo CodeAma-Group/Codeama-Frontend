@@ -136,6 +136,12 @@
 
 }
 
-div#div_desc {
+#div_desc {
     font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+p#div_desc {
+    margin-top: -5px;
 }
