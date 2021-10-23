@@ -53,7 +53,7 @@
                         </svg>
                         <span class="ms-2">select other project pages maximum 5</span>
                         <div class="detectedImages" *ngIf="Show">
-                            <img *ngFor="let thumbnail of thumbnails" [src]="thumbnail" class="rounded my-2">
+                            <img *ngFor="let url of urls" [src]="url" class="rounded my-2">
                         </div>
                     </div>
                     <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="OtherImagesUplopad" (change)="detectFiles($event)" multiple #OtherImages>
