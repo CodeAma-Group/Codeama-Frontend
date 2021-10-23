@@ -1,52 +1,52 @@
 <div class="question">
-  <div class="qst_content">
-  <div class="one">
-  <div class="user_info">
-    <div [ngClass]="['user_details', userDetailClass()]">
-      <div class="img_details">
-        <div class="img">
-          <img [src]="question.askedBy.profilePicture" alt="profile" width="50" height="50">
+    <div class="qst_content">
+        <div class="one">
+            <div class="user_info">
+                <div [ngClass]="['user_details', userDetailClass()]">
+                    <div class="img_details">
+                        <div class="img">
+                            <img [src]="question.askedBy.profilePicture" alt="profile" width="50" height="50">
+                        </div>
+                        <div class="level">
+                            <div [ngClass]="[question.askedBy.Badge, 'badge']">
+                                <p>{{question.askedBy.Badge}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user_data">
+                        <h5 class="user_name">{{question.askedBy.Username}}</h5>
+                        <p>{{question.askedBy.Email}}</p>
+                    </div>
+                </div>
+            </div>
+            <p class="asked_date"><span class="dim">Asked on</span> {{question.createdAt | date: 'longDate'}}</p>
         </div>
-        <div class="level">
-        <div [ngClass]="[question.askedBy.Badge, 'badge']">
-          <p>{{question.askedBy.Badge}}</p>
+
+
+        <div class="two">
+            <p class="qst_title">{{question.title}}</p>
+            <p class="dim qst_description">{{question.description}}</p>
         </div>
-      </div>  
-      </div>
-    <div class="user_data">
-      <h5 class="user_name">{{question.askedBy.Username}}</h5>
-      <p>{{question.askedBy.Email}}</p>
+
+        <div class="three">
+            <div class="detail_box box-1">
+                <p>{{question.views}}</p>
+                <p class="dim">viewers</p>
+            </div>
+            <div [className]="question.answered ? 'detail_box box-2 answered': 'detail_box box-2 not_answered'">
+                <p>{{checkAnswered()}}</p>
+                <p>Answered</p>
+            </div>
+            <div class="detail_box box-3">
+                <p>{{question.commentCount}}</p>
+                <p class="dim">comments</p>
+            </div>
+        </div>
+
+        <div class="four">
+            <button class="btn btn-primary" [routerLink]="['/questions',question._id]" [disabled]="question.answered">Answer</button>
+            <a [routerLink]="['/questions',question._id]" class="view">View in details</a>
+        </div>
     </div>
-  </div>
-  </div> 
-  <p class="asked_date"><span class="dim">Asked on</span> {{question.createdAt | date: 'longDate'}}</p>
-  </div>
-
-
-  <div class="two">
-    <p class="qst_title">{{question.title}}</p>
-    <p class="dim qst_description">{{question.description}}</p>
-  </div>
-
-  <div class="three">
-    <div class="detail_box box-1">
-        <p>{{question.views}}</p>
-        <p class="dim">viewers</p>
-    </div>
-    <div [className]="question.answered ? 'detail_box box-2 answered': 'detail_box box-2 not_answered'">
-      <p>{{checkAnswered()}}</p>
-      <p>Answered</p>
-  </div>
-  <div class="detail_box box-3">
-    <p>{{question.commentCount}}</p>
-    <p class="dim">comments</p>
-  </div>
-  </div>
-
-  <div class="four">
-    <button class="btn btn-primary" [routerLink]= "['/questions',question._id]" [disabled]="question.answered">Answer</button>
-    <a [routerLink]="['/questions',question._id]" class="view">View in details</a>
-  </div>
-</div>
-<hr class="underline">
+    <hr class="underline">
 </div>

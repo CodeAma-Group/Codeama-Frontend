@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CodeamaService } from '../services/codeama.service';
 import jwt_decode from 'jwt-decode';
 import { NgForm } from '@angular/forms';
-
+import { AmaQuestionService } from '../services/ama-question.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-askcodeama',
@@ -11,9 +12,8 @@ import { NgForm } from '@angular/forms';
 })
 export class AskcodeamaComponent implements OnInit {
 
-  constructor(private codeama: CodeamaService) { }
-  // id=10;
-  url = "https://codeama-backend.herokuapp.com"
+  constructor(private codeama: CodeamaService, private amaQuestion: AmaQuestionService, private spinner: NgxSpinnerService) { }
+
   show: boolean = false
   user;
   badge;
@@ -23,40 +23,64 @@ export class AskcodeamaComponent implements OnInit {
   questions: any = [];
   size: number;
   response: any;
-
-  ngOnInit(): void {
-    this.codeama.getcodeamas().subscribe(res => {
-      this.response = res
-      this.response = this.response.data
-
-      for (let i = 0; i < this.response.length; i++) {
-        if (this.response[i]._id == history.state.data) {
-          this.user = this.response[i]
-          console.log(this.user)
-        }
-      }
-    })
-  }
+  nu
   auth_token = localStorage.getItem('codeama_auth_token');
   userData: any = jwt_decode(this.auth_token)
   userId: number = this.userData._id
   data
   result
+  asked = []
+  following:boolean = false
+
+
+  ngOnInit(): void {
+    this.spinner.show()
+
+    let id = history.state.data;
+
+    this.codeama.getamabyId(id).subscribe((res) => {
+      this.user = res
+      this.user = this.user.data
+
+      let questionIdUser = this.user.codeama._id
+
+      let k ;
+      for (k=0; k<this.user.codeama.Following.length; k++){
+        console.log(this.user.codeama.Following[k]);
+        
+        if(this.user.codeama.Following[k] == this.userId){
+          this.following = true;
+        }
+      } 
+      
+
+      this.amaQuestion.getAmaQuestions(questionIdUser).subscribe((res) => {
+        this.nu = res
+        this.nu = this.nu.data.length
+
+        this.asked.push({ userId: questionIdUser, question: this.nu })
+        
+        this.spinner.hide()
+      })
+    })
+  }
+
 
   askama(f: NgForm) {
 
+    let asked_by = this.userId;
+    console.log(asked_by);
+    
     this.codeama.askama({
       userId: f.form.value.userId,
       questions: [{
-        asked_by: this.userId,
-        text_question: f.form.value.userId
+        asked_by: asked_by,
+        text_question: f.form.value.questions
       }]
     }).subscribe((res) => {
       this.result = res
-      console.log(this.result.message)
+      f.form.value.questions.text_question = ""
     })
-    console.log(f.form.value)
-
   }
 
   schedule() {
@@ -64,21 +88,25 @@ export class AskcodeamaComponent implements OnInit {
   }
 
   addFollower(id) {
+    let amaid = history.state.data;
     this.follower = id
     this.codeama.updateFollower(this.follower).subscribe((res) => {
-      this.codeama.getcodeamas().subscribe((res) => {
-        this.codeamaData = res
-        this.codeamaData = this.codeamaData.data
+      this.codeama.getamabyId(amaid).subscribe((res) => {
+        this.following = true;
+        this.user = res
+        this.user = this.user.data
       })
     })
   }
 
   removeFollower(id) {
+    let amaid = history.state.data;
     this.unfollower = id
     this.codeama.updateUnfollower(this.unfollower).subscribe((res) => {
-      this.codeama.getcodeamas().subscribe((res) => {
-        this.codeamaData = res
-        this.codeamaData = this.codeamaData.data
+      this.codeama.getamabyId(amaid).subscribe((res) => {
+        this.following = false;
+        this.user = res
+        this.user = this.user.data
       })
     })
   }

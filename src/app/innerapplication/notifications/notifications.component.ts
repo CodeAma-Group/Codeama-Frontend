@@ -19,16 +19,39 @@ export class NotificationsComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show()
     this.none=true
+
     this.notifications.getNotifications().subscribe((res) => {
       this.notificationData = res;
       this.none = false;
       this.notificationData = this.notificationData.data;
       this.spinner.hide()
+      console.log(res);
     })
+    
   }
 
   markAll() {
     this.notifications.markAllAsRead().subscribe((res) => {
+      this.notifications.getNotifications().subscribe((res) => {
+        this.notificationData = res;
+        this.notificationData = this.notificationData.data;
+      })
+    })
+  }
+
+  read(id){
+    this.notifications.markAsRead(id).subscribe((res) => {
+      this.notifications.getNotifications().subscribe((res) => {
+        this.notificationData = res;
+        this.notificationData = this.notificationData.data;
+      })     
+    })
+    
+  }
+
+
+  delet(id){
+    this.notifications.deleteNoti(id).subscribe((res) => {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;

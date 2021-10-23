@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CodeamaService } from '../services/codeama.service';
 import jwt_decode from 'jwt-decode';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AmaQuestionService } from '../services/ama-question.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-codeamas',
@@ -10,7 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class CodeamasComponent implements OnInit {
 
-  constructor(private codeama: CodeamaService, private spinner: NgxSpinnerService) { }
+  constructor(private codeama: CodeamaService, private amaQuestionService: AmaQuestionService, private router: ActivatedRoute, private spinner: NgxSpinnerService) { }
   url = "https://codeama-backend.herokuapp.com"
   badge;
   case;
@@ -20,15 +22,17 @@ export class CodeamasComponent implements OnInit {
   amaId
   found: boolean;
   data: any
+  nu
 
   unfollower;
   follower
-  followButton = `follow`;
-  unFollowButton = `unfollow`
+  followButton = `Follow`;
+  unFollowButton = `Unfollow`
   user: string = '';
   auth_token = localStorage.getItem('codeama_auth_token');
   userData: any = jwt_decode(this.auth_token)
   userId: number = this.userData._id
+  questions = [];
 
   ngOnInit(): void {
     this.spinner.show()
@@ -36,25 +40,35 @@ export class CodeamasComponent implements OnInit {
       this.codeamaData = res
       this.codeamaData = this.codeamaData.data
       this.found = false;
-      this.spinner.hide()
 
       for (var i = 0; i < this.codeamaData.length; i++) {
         if (this.codeamaData[i].codeama._id == this.userId) {
           this.found = true;
           this.amaId = this.codeamaData[i]._id;
         }
+
+        let id = this.codeamaData[i].codeama._id
+
+        this.amaQuestionService.getAmaQuestions(id).subscribe((res) => {
+          this.nu = res
+          this.nu = this.nu.data.length
+
+          this.questions.push({ userId: id, question: this.nu })
+
+          this.spinner.hide()
+        })
       }
     })
   }
 
   addFollower(id) {
-    this.follow=false
+    this.follow = false
     this.follower = id
     this.codeama.updateFollower(this.follower).subscribe((res) => {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
-        this.follow=true
+        this.follow = true
       })
     })
   }

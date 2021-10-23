@@ -38,7 +38,6 @@ import { AdminChallengeComponent } from './admin-challenge/admin-challenge.compo
 import { EditChallengeComponent } from './edit-challenge/edit-challenge.component';
 import { AllChallengesComponent } from './all-challenges/all-challenges.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -95,6 +94,7 @@ const routes: Routes = [
         component: AddResourceComponent,
         canActivate: [AuthGuard]
       },
+      
       {
         path: "answer-question",
         component:AnswerQuestionComponent,
