@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode'
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-article',
@@ -71,7 +71,7 @@ export class AddArticleComponent implements OnInit {
     ],
   };
 
-  constructor(private formBuilder: FormBuilder, private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService) {
+  constructor(private formBuilder: FormBuilder, private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService, private router: Router) {
     this.article = this.formBuilder.group({
       title: ["",[Validators.required]],
       desc: ["Description here...",[Validators.required]],
@@ -85,7 +85,7 @@ export class AddArticleComponent implements OnInit {
     this.spinner.show()
     setTimeout(() => {
        this.spinner.hide()
-    },3000);
+    },1000);
   }
   public imageChange(e: any){
     let fileReader = new FileReader();
@@ -111,6 +111,7 @@ export class AddArticleComponent implements OnInit {
       data => {
         this.spinner.hide();
         this.notifier.notify("success","Your article was posted successfully!")
+        setTimeout(() => this.router.navigate(['app/hood/articles']), 1000)
       },
       error => {
         this.spinner.hide();

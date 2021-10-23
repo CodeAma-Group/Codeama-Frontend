@@ -15,14 +15,15 @@ import { Router } from '@angular/router';
 })
 export class AddQuestionComponent implements OnInit {
   question
+  public htmlContent;
   constructor(private formBuilder: FormBuilder, private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService, private router: Router) {
     this.question = this.formBuilder.group({
       title: ["",[Validators.required]],
       desc: ["",[Validators.required]],
-      tagged_tech: ["",[Validators.required]]
+      tagged_tech: ["",[Validators.required]],
+      text_question:["",[]]
     })
    }
-   htmlContent;
    
   config: AngularEditorConfig = {
     editable: true,
@@ -76,28 +77,6 @@ export class AddQuestionComponent implements OnInit {
       },
     ],
   };
-
-  codeMirrorOptions: any = {
-    theme: 'cobalt',
-    mode: 'application/ld+json',
-    lineNumbers: true,
-    // readOnly:true,
-    autocorrect: true,
-    smartIndent: true,
-    lineWrapping: true,
-    readonly: true,
-    foldGutter: true,
-    gutters: [
-      'CodeMirror-linenumbers',
-      'CodeMirror-foldgutter',
-      'CodeMirror-lint-markers',
-    ],
-    autoCloseBrackets: true,
-    automatically: true,
-    matchBrackets: true,
-    lint: true,
-  };
-
    
    public options = [
      {label: "Java", value:"Java"},
@@ -141,7 +120,7 @@ export class AddQuestionComponent implements OnInit {
     let newQueForm = {
       question: JSON.stringify(newQue)
     }
-    console.log(newQueForm)
+
     this.backendService.addQuestion(newQueForm).subscribe(
       (data) => {
         console.log(data)

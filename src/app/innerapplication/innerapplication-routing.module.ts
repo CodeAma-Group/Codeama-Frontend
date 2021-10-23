@@ -37,7 +37,6 @@ import { ViewArticleComponent } from './view-article/view-article.component';
 import { AdminChallengeComponent } from './admin-challenge/admin-challenge.component';
 import { EditChallengeComponent } from './edit-challenge/edit-challenge.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -95,6 +94,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: "ama/questions",
+        component: AmaQuestionComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: "answer-question",
         component:AnswerQuestionComponent,
         canActivate: [AuthGuard]
@@ -135,10 +139,10 @@ const routes: Routes = [
         path: 'codeamas',
         component: CodeamasComponent,
       },
-      {
-        path: 'amas/:id/questions',
-        component: AmaQuestionComponent
-      },
+      // {
+      //   path: 'amas/:id/questions',
+      //   component: AmaQuestionComponent
+      // },
       {
         path: 'notifications',
         component: NotificationsComponent,
