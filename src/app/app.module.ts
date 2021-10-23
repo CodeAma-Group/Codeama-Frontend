@@ -13,7 +13,6 @@ import { MultiSelectAllModule, MultiSelectModule } from '@syncfusion/ej2-angular
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NotifierModule } from 'angular-notifier';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
-
 import { AuthService } from './authentication/_authServices/auth.service'
 import { AuthGuard } from './authentication/common/auth.guard'
 import { AuthinterceptorService } from './authentication/_authServices/authinterceptor.service'
@@ -35,7 +34,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     HttpClientModule,
     MultiSelectAllModule, MultiSelectModule,
     NgxSpinnerModule,
-    NotifierModule
+    NotifierModule,
   ],
   providers: [
     AuthService,
