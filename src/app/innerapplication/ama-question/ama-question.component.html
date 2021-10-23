@@ -2,9 +2,13 @@
   <div class="heading">
       <p>Question asked to me</p>
   </div>
-   <div class="all_questions">
-       <app-question *ngFor="let question of questions" [question]= "question"></app-question>
+   <div class="all_questions" *ngIf="!showEmpty">
+       <app-question  *ngFor="let question of questions" [question]= "question"></app-question>
    </div>
+   <div class="empty">
+       <img src="../../../assets/images/search.png" alt="search">
+       <h4 *ngIf="showEmpty">No questions asked to you yet</h4>
+   </div> 
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
     <p style="color: white ">Please Wait... </p>

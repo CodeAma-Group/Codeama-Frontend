@@ -39,6 +39,10 @@ p {
     margin-left: 1em;
 }
 
+/* .user_data>p {
+    font-size: .8em;
+} */
+
 .profile {
     display: flex;
     justify-content: center;
@@ -58,7 +62,7 @@ p {
 }
 
 .user_data:last-child {
-   font-size: 0.9em;
+   font-size: 0.75em;
 }
 
 .user_name {

@@ -10,8 +10,12 @@ export class ChallengeService {
 
   constructor(private http:HttpClient) { }
 
+  getChallenges() {
+    return this.http.get(`http://localhost:8000/challenges?limit=5&page=1`)
+  }
+
   getChallenge(challengeId:string) {
-    return this.http.get(`https://codeama-backend.herokuapp.com/challenges/${challengeId}`)
+    return this.http.get(`http://localhost:8000/challenges/${challengeId}`)
   }
 
   postChallenge(data) {

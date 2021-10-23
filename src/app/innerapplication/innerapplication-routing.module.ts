@@ -36,6 +36,7 @@ import { AddChallengeComponent } from './add-challenge/add-challenge.component';
 import { ViewArticleComponent } from './view-article/view-article.component';
 import { AdminChallengeComponent } from './admin-challenge/admin-challenge.component';
 import { EditChallengeComponent } from './edit-challenge/edit-challenge.component';
+import { AllChallengesComponent } from './all-challenges/all-challenges.component';
 
 
 const routes: Routes = [
@@ -122,10 +123,18 @@ const routes: Routes = [
         path: 'projectDetails/:id',
         component: ProjectDetailsComponent,
       },
+
       {
+        path: 'challenges',
+        component: AllChallengesComponent,
+       },
+
+       
+       {
         path: 'challenges/:challengeId',
         component: ChallengesComponent
        },
+
           
         {
             path:'challenges/613f227d482ca6364cc35760/viewchallengetakers',
