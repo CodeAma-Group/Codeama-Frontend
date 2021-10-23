@@ -5,17 +5,17 @@
                 <div [ngClass]="['user_details', userDetailClass()]">
                     <div class="img_details">
                         <div class="img">
-                            <img [src]="question.asked_by_userInfo.profilePicture" alt="profile" width="50" height="50">
+                            <img [src]="question.askedBy.profilePicture" alt="profile" width="50" height="50">
                         </div>
                         <div class="level">
-                            <div [ngClass]="[question.asked_by_userInfo.Badge, 'badge']">
-                                <p>{{question.asked_by_userInfo.Badge}}</p>
+                            <div [ngClass]="[question.askedBy.Badge, 'badge']">
+                                <p>{{question.askedBy.Badge}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="user_data">
-                        <h5 class="user_name">{{question.asked_by_userInfo.Username}}</h5>
-                        <p>{{question.asked_by_userInfo.Email}}</p>
+                        <h5 class="user_name">{{question.askedBy.Username}}</h5>
+                        <p>{{question.askedBy.Email}}</p>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,10 @@
   margin-top: 15px;
 }
 
+.description {
+  margin-top: 2em!important;
+}
+
 .pr {
   display: flex;
   width: 85%;
@@ -43,6 +47,9 @@
   color: #1e253d;
   /* opacity: .1; */
 }
+
+
+
 
 .apply {
   margin-top: 2em;
