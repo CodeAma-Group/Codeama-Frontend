@@ -94,9 +94,8 @@ export class ProjectRegistrationComponent implements OnInit {
       this.Show = true;
       for (let file of files) {
         let reader = new FileReader();
-        this.newProject.get('thumbnails').push(file);
         reader.onload = (e: any) => {
-          this.thumbnails.push(e.target.result);
+          this.urls.push(e.target.result);
         };
         reader.readAsDataURL(file);
       }
@@ -181,10 +180,10 @@ export class ProjectRegistrationComponent implements OnInit {
       ProjectData.append('technologies', `${this.techs}`);
     }
     if (
-      this.newProject.get('thumbnails') != undefined ||
-      this.newProject.get('thumbnails') != null
+      this.urls.length != null ||
+      this.urls.length != 0
     ) {
-      ProjectData.append('thumbnails', `${this.newProject.get('thumbnails')}`);
+      ProjectData.append('thumbnails', `${this.urls}`);
     }
     if (
       this.newProject.value.teamName != null ||
