@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HostListener, ElementRef,Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../authentication/_authServices/auth.service'
 import {filterWords, sampleData} from "./Search"
+
 
 @Component({
   selector: 'app-moduleoutlet',
@@ -10,7 +11,8 @@ import {filterWords, sampleData} from "./Search"
 })
 export class ModuleoutletComponent implements OnInit {
   cookieVal: string = "";
-  constructor(private authService: AuthService, private router: Router ) { }
+  constructor(private authService: AuthService, private router: Router, private elementRef:ElementRef ) { }
+
 
   loggedIn: boolean = false;
   searchWords;
@@ -112,6 +114,19 @@ export class ModuleoutletComponent implements OnInit {
       document.cookie = "isDark=true; path=/; max-age=" + 365*24*60*60;
     }
   }
+
+  @HostListener('click', ['$event.target']) onClick(target) {
+    console.log(this.elementRef)
+    const clicked = this.elementRef.nativeElement 
+    console.log(target)
+    console.log(clicked)
+  }
+//   @HostListener('document:click', ['$event.target']) onClick(target) {
+//     const clickedInside = this.elementRef.nativeElement.contains(target);
+//     if (!clickedInside) {
+//       console.log("clicking")
+//     }
+// }
 
   logout() {
     this.authService.logout();
