@@ -55,6 +55,8 @@ h5 {
 button.btn-primary.btn {
     padding: 5px;
     font-size: 14px;
+    width: 100px;
+    text-align: center;
 }
 
 a.text-white {

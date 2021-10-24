@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../authentication/_authServices/auth.service'
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { CodeamaService } from '../services/codeama.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,15 +11,29 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor( private authService: AuthService, private router: Router ) { }
+  constructor( private authService: AuthService, private router: Router, private codeama: CodeamaService ) { }
 
   cookieVal:string = "";
 
   userId: string = ''
   userData: any;
-  profileRoute: boolean = true
+  profileRoute: boolean = true;
+  amadata;
+  ama:boolean = false;
 
   ngOnInit(): void {
+
+    this.codeama.getcodeamas().subscribe((res) =>{
+      this.amadata = res
+      this.amadata = this.amadata.data
+      console.log(this.amadata);
+      for(let i=0; i<this.amadata.length; i++){
+        if(this.amadata[i].codeama._id == this.userId){
+          this.ama = true;
+        }
+      }
+      
+    })
     
     var token = this.authService.getToken()
 

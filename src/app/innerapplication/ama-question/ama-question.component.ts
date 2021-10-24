@@ -17,6 +17,9 @@ export class AmaQuestionComponent implements OnInit {
   userId: string = this.userData._id
   user_detail_class = 'beginner_details'
   questions:any = []
+
+
+  length:number;
   constructor(private amaQuestion: AmaQuestionService,private router: ActivatedRoute, private spinner: NgxSpinnerService) { }
   @Input() question;
 
@@ -28,10 +31,12 @@ export class AmaQuestionComponent implements OnInit {
     this.amaQuestion.questionsForAma(this.userId).subscribe((res)=> {
         this.questions = res
         this.questions = this.questions.data
+
+        this.length = this.questions.length
+        console.log(this.length);    
         console.log(this.questions); 
         this.spinner.hide()
-
-        
+   
     })
   }
 

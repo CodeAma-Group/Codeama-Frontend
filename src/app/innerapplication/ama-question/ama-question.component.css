@@ -177,3 +177,10 @@
     .col-4 {
         width: 30%;
     }
+    
+    .justify-content {
+        justify-content: space-between!important;
+        margin: auto;
+        text-align: center;
+        font-size: 12px;
+    }

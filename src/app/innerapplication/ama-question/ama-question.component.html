@@ -54,6 +54,13 @@
                 <div class="line "></div>
             </div>
         </div>
+
+        <div *ngIf="length == 0" class="justify-content row">
+            <div class="col-10">
+                <img class="w-25 noti " src="../../../assets/images/search.png">
+                <p> There isn't any question for to you!</p>
+            </div>
+        </div>
     </div>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
