@@ -33,6 +33,7 @@ export class CodeamasComponent implements OnInit {
   userData: any = jwt_decode(this.auth_token)
   userId: number = this.userData._id
   questions = [];
+   loading:boolean;
 
   ngOnInit(): void {
     this.spinner.show()
@@ -58,27 +59,32 @@ export class CodeamasComponent implements OnInit {
           this.spinner.hide()
         })
       }
+      
     })
   }
 
   addFollower(id) {
+    this.loading = true; 
     this.follow = false
-    this.follower = id
+    this.follower = id;
     this.codeama.updateFollower(this.follower).subscribe((res) => {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
         this.follow = true
+        this.loading = false
       })
     })
   }
 
   removeFollower(id) {
+    this.loading= true;
     this.unfollower = id
     this.codeama.updateUnfollower(this.unfollower).subscribe((res) => {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
+        this.loading = false;
       })
     })
   }
