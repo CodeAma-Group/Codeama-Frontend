@@ -34,6 +34,8 @@ export class AskcodeamaComponent implements OnInit {
   following: boolean = false
   loading: boolean = false;
   asking:boolean = false;
+  question:any;
+
 
   ngOnInit(): void {
     this.spinner.show()
@@ -91,23 +93,32 @@ export class AskcodeamaComponent implements OnInit {
 
     let amaid = history.state.data;
 
-    var question:FormData;
-    question.append("userId", f.form.value.userId);
-    question.append("title", f.form.value.title);
-    question.append("description", f.form.value.description);
-    question.append("askedBy", this.id);
-    console.log(question);
+    const formData = {
+      userId: f.form.value.userId,
+      title: f.form.value.title,
+      description: f.form.value.description,
+      askedBy: this.id
+    }
+  
+    this.question = Object.create(formData) 
+    this.question.userId = f.form.value.userId;
+    this.question.title = f.form.value.title;
+    this.question.description = f.form.value.description;
+    this.question.askedBy = this.id;
+    console.log(this.question);
+    
+    this.codeama.askama(this.question).subscribe((res) => {
+         this.result = res
+         console.log(this.result);
+         this.asking = false;
+         f.reset();
 
-    this.codeama.askama(question).subscribe((res) => {
-      this.result = res
-        this.asking = false;
-      f.form.value.questions.text_question = "";
-      this.codeama.getamabyId(amaid).subscribe((res) => {
-        this.following = true;
-        this.user = res
-        this.user = this.user.data
-        this.loading = false;
-      })
+        this.codeama.getamabyId(amaid).subscribe((res) => {
+          this.following = true;
+          this.user = res
+          this.user = this.user.data
+          this.loading = false;
+        })
     })
   }
 

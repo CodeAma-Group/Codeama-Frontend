@@ -150,6 +150,10 @@
         margin-bottom: 10px;
     }
     
+    .alert {
+        padding: 10px;
+    }
+    
     input {
         border-radius: 5px;
         background-color: #eaf1fa;

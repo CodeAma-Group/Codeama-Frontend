@@ -64,7 +64,7 @@
                 <form #f="ngForm" (ngSubmit)="askama(f)" class="row px-2 pt-1 cotainer-fluid" ngNativeValidate>
                     <div class="col-8 m-b">
                         <div *ngIf="result" class="alert alert-success w-50 text-center fs-6 h-5" role="alert">
-                            {{result.message}}</div>
+                            Question asked successfully</div>
                         <input ngModel name="userId" #userId="ngModel" type="text" [(ngModel)]="user.codeama._id" hidden required>
                         <input ngModel type="text" name="title" #title="ngModel" placeholder="title of your question" class="border-blue p-2 col " required>
                         <textarea ngModel name="description" #description="ngModel" id="ask" cols="120" rows="7" placeholder="Your question descriptions ..." class="border-blue p-2 col " required></textarea>

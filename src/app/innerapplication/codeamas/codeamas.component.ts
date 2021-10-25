@@ -50,7 +50,7 @@ export class CodeamasComponent implements OnInit {
 
         let id = this.codeamaData[i].codeama._id
 
-        this.amaQuestionService.questionsForAma(id).subscribe((res) => {
+        this.amaQuestionService.getAmaQuestions(id).subscribe((res) => {
           this.nu = res
           this.nu = this.nu.data.length
 
@@ -59,6 +59,7 @@ export class CodeamasComponent implements OnInit {
           this.spinner.hide()
         })
       }
+      
     })
   }
 
