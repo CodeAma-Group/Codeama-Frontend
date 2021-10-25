@@ -72,6 +72,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 20em;
 }
 
 .searchbox>img {
@@ -134,10 +137,12 @@
 .result{
     position: absolute;
     top: 3em;
-    height: 70%;
-    overflow: scroll;
+    height:auto;
+    overflow-y: scroll;
     background-color: var(--dimerBlue);
     width: inherit;
+    z-index: 1;
+    padding: 10px;
 }
 
 .result::-webkit-scrollbar-button{
@@ -168,3 +173,8 @@
     color: black;
     padding: 0px 20px;
 }   
+
+.search_description{
+    color: gray;
+    font-size: small;
+}

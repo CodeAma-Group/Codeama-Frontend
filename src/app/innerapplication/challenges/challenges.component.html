@@ -10,10 +10,10 @@
                         challenge</span></span>
             </div>
             <img [src]="challenge.picture.file" alt="challenge" class="w-100 mt-2" />
-            <p class="text-muted mt-2" style="font-size: 1em">
+            <p class="description text-muted mt-2" style="font-size: 1em">
                {{challenge.description}}
             </p>
-            <div>abi_seth85270.codeama.dev</div>
+            <div>{{challenge.postedBy.email}}</div>
         </div>
         <div class="right" style="width: 48%">
             <h4 class="mt-4">challenge tips</h4>

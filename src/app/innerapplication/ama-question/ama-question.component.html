@@ -2,65 +2,12 @@
     <div class="heading">
         <p>Question asked to me</p>
     </div>
-    <div class="all_questions">
-        <div *ngFor="let row of questions">
-            <div class="single">
-                <div class="questions row">
-                    <div class="col-4">
-                        <div class="row">
-                            <div class="profile col-2 m-auto">
-                                <img class="rounded-pill" [src]="row.question.asked_by_userInfo[0].profilePicture" alt=" profile">
-                            </div>
-                            <div class="col-5">
-                                <p class="username ">{{row.question.asked_by_userInfo[0].Username}}</p>
-                                <p *ngIf="row.question.asked_by_userInfo[0].Username" class="email ">{{row.question.asked_by_userInfo[0].Username}}.codeama.net </p>
-                                <p *ngIf="!row.question.asked_by_userInfo[0].Username" class="email ">{{row.question.asked_by_userInfo[0].Username}} </p>
-                            </div>
-                            <div class="col-4 m-auto ">
-                                <p class="col txt-white {{row.question.asked_by_userInfo[0].Badge}} rounded-pill "> {{row.question.asked_by_userInfo[0].Badge}} </p>
-                            </div>
-                        </div>
-                        <div class="m-auto ">
-                            <p class="date "> <span>Asked on</span> {{row.question.date | date: 'longDate'}} </p>
-                        </div>
-                    </div>
-
-                    <div class="col-4 pt ">
-                        <p class="title ">Title is not yet found</p>
-                        <span>{{row.question.text_question}}</span>
-                    </div>
-                    <div class="col-3 row m-auto ">
-                        <div class="view col-3 m-auto ">
-                            <p class="text-bold ">5</p>
-                            <p><span> viewers</span></p>
-                        </div>
-                        <div class="status Yes col-3 m-auto ">
-                            <p class="text-bold ">Yes</p>
-                            <p><span> Answered</span></p>
-                        </div>
-                        <div class="comment col-3 m-auto ">
-                            <p class="text-bold ">{{row.comments.length}}</p>
-                            <p><span> Comments</span> </p>
-                        </div>
-
-                    </div>
-                    <div class="col-1 options ">
-                        <div class="answer "><button>Answer</button></div>
-                        <div class="details ">
-                            <a href="# ">View in details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="line "></div>
-            </div>
-        </div>
-
-        <div *ngIf="length == 0" class="justify-content row">
-            <div class="col-10">
-                <img class="w-25 noti " src="../../../assets/images/search.png">
-                <p> There isn't any question for to you!</p>
-            </div>
-        </div>
+    <div class="all_questions" *ngIf="!showEmpty">
+        <app-question *ngFor="let question of questions" [question]="question"></app-question>
+    </div>
+    <div class="empty">
+        <img src="../../../assets/images/search.png" alt="search">
+        <h4 *ngIf="showEmpty">No questions asked to you yet</h4>
     </div>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">

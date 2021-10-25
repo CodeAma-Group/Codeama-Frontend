@@ -11,15 +11,15 @@
     <div class="entire_app_page_body">
         <div class="header-container">
             <img src="../../../assets/images/logo.png" alt="logo" class="logo">
-            <form class="searchbox-container">
+            <form class="searchbox-container" (clickOutside)="stopSearch()">
                 <div class="searchbox">
                     <img src="../../../assets/images/Group 2.png" alt="search icon">
-                    <input type="text" #search  (keyup)="filterSearch(search.value)" (blur)="stopSearch()" placeholder="search at codeama">
+                    <input type="text" #search  (keyup)="filterSearch(search.value)"  placeholder="search at codeama">
                 </div>
-                <div class="result" *ngIf="showSearch">
+                <div class="result" *ngIf="showSearch && searchWords.length != 0">
                     <a *ngFor = "let i of searchWords" class="showSearch" routerLink="{{i.route}}">
-                        <h4>{{i.name}}</h4>
-                        <p>{{i.description}}</p>
+                        <h6>{{i.name}}</h6>
+                        <p class="search_description">{{i.description}}</p>
                     </a>
                 </div>              
             </form>

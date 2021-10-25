@@ -22,12 +22,14 @@ export class ChallengesComponent implements OnInit {
   dan = '#F5E4ED'
   warn = ' #F5F6E7'
   ngOnInit(): void {
-    this.spinner.show()
     this.challengeService.getChallenge(this.router.snapshot.params.challengeId)
-      .subscribe((res:Data)=> {
-         this.challenge = res.data
-         this.spinner.hide()
+    .subscribe((res:Data)=> {
+      this.spinner.show()
+      this.challenge = res.data
       }) 
+      setTimeout(() => {
+        this.spinner.hide()
+      }, 1500);
   }
 
   showSpinner() {
