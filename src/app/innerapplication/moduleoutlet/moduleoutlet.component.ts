@@ -18,7 +18,7 @@ export class ModuleoutletComponent implements OnInit {
   searchWords;
   suggestedWords: sampleData[] = [];
   showSearch = false;
-
+  showCancel = "none";
   ngOnInit(): void {
     var status = this.authService.loggedIn()
     if (status) {
@@ -138,6 +138,7 @@ export class ModuleoutletComponent implements OnInit {
   }
 
   filterSearch(value){
+    this.showCancel = "block";
      let searchedModule = new RegExp(value, 'i')
      this.searchWords = filterWords.filter(el => 
       el.name.match(searchedModule) || 
@@ -148,5 +149,6 @@ export class ModuleoutletComponent implements OnInit {
   stopSearch(){
     console.log(`reached here`);
     this.showSearch = false;
+    this.showCancel = "none";
   }
 }

@@ -77,9 +77,15 @@
     width: 20em;
 }
 
-.searchbox>img {
+.searchbox>.searchIcon {
     width: 1.5em;
     height: 1.5em;
+}
+
+.searchbox > .cancelIcon{
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
 }
 
 .searchbox>input {
