@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="row" *ngFor="let info of info">
+        <div class="mt-2 rounded px-3">
+            <p class="tx-top">Top Ask Me Anything members</p>
+            <hr>
+            <div class="row">
+                <div class="col-10 row">
+                    <div class="col-1 profile">
+                        <img class="rounded-pill" [src]="info.askedBy.profilePicture" alt="profile">
+                    </div>
+                    <div class="col-4">
+                        <p class="username">{{info.askedBy.Username}}</p>
+                        <p class="email">{{info.askedBy.Username}}.codeama.net</p>
+                    </div>
+                    <div class="col-1">
+                        <p class="{{info.askedBy.Badge}} rounded-pill p-1 text-center">{{info.askedBy.Badge}}</p>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p class="date"><span>Asked on </span>{{info.createdAt |date: 'longDate'}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-10 pt-3">
+                    <div>
+                        <p class="title">{{info.title}}</p>
+                        <p class="description"><span>{{info.description}}</span></p>
+                    </div>
+                </div>
+
+                <div class="col ">
+                    <div class="detail_box box-1 ">
+                        <p>{{info.views}}</p>
+                        <p><span>viewers</span></p>
+                    </div>
+                    <div [className]="info.answered ? 'detail_box box-2 answered': 'detail_box box-2 not_answered' ">
+                        <p>{{checkAnswered()}}</p>
+                        <p><span>Answered</span></p>
+                    </div>
+                    <div class="detail_box box-3 ">
+                        <p>{{info.commentCount}}</p>
+                        <p><span>comments</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <form #form="ngForm" (ngSubmit)="answerQuestion(form)" class="row" ngNativeValidate>
+                    <div class="col-9 question-area">
+                        <p class="answer-para">Answer this question</p>
+
+                        <!-- <label for="answer">
+                                <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
+                                    <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
+                                    <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
+                                </svg>
+                            </label> -->
+                        <angular-editor [(ngModel)]="htmlContent" ngModel name="answer" #answer="ngModel" [config]="config" class="px-4"></angular-editor>
+                    </div>
+                    <div class="col-3 submit-answer">
+                        <p>Question actions</p>
+                        <button type="submit" class="btn-primary btn p-2 w-100" [disabled]="!answer.valid">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Answer question</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8) " size="default " type="ball-rotate ">
+    <p style="color: white ">Please Wait. </p>
+</ngx-spinner>
