@@ -25,7 +25,7 @@ export class AllChallengesComponent implements OnInit {
     this.challengeService.getChallenges()
     .subscribe((res:any)=> {
        this.challenges = res.data.docs
-       console.log('challenges',this.challenges[1].picture.file)
+       console.log('challenges',this.challenges)
        this.spinner.hide()
     })
     
