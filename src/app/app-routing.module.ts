@@ -15,6 +15,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./administration/administration.module')
+      .then(mode => mode.AdministrationModule)
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./authentication/authentication.module')
       .then(mode => mode.AuthenticationModule)
