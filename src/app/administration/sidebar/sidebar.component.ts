@@ -23,15 +23,20 @@ export class SidebarComponent implements OnInit {
     var token = this.authService.getToken()
     if(token == null){
       this.authService.logout();
-        this.router.navigate(['app'])
+      this.router.navigate(['app'])
     }
     else{
       this.tokenData = jwt_decode(token)
       this.userId = this.tokenData._id
       this._userService.getUserEntireProfileData(this.userId).subscribe((res) => {
         this.userProfileData = res["data"];
-        this.spinner.hide()
-  
+        var image:any = document.querySelector('#profile-pic');
+        var isLoaded = image.complete && image.naturalHeight !== 0;
+        if(isLoaded){
+          setTimeout(() => {
+            this.spinner.hide()
+          }, 1000);
+        }
       },
       err => {
         this.authService.logout();

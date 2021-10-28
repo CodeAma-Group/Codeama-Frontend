@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
   tokenData:any;
   userId:any;
   userProfileData:any;
-  @Input() headerText: string;
+  headerText: string="Header";
   show:boolean = true;
-  
+    
   constructor( private authService: AuthService, private _userService: UserService,private spinner:NgxSpinnerService, private router: Router) { }
   
   ngOnInit(): void {
@@ -25,15 +25,32 @@ export class HeaderComponent implements OnInit {
     var token = this.authService.getToken()
     if(token == null){
       this.authService.logout();
-        this.router.navigate(['app'])
+      this.router.navigate(['app'])
     }
     else{
       this.tokenData = jwt_decode(token)
       this.userId = this.tokenData._id
+      switch(this.router.url){
+        case 'admin/dashboard':
+          this.headerText = "Admin dashboard";
+        case 'admin/our-users':
+          this.headerText = "Codeama users";
+        case 'admin/codeamas':
+          this.headerText = "Codeama amas";
+        case 'admin/admin-group':
+          this.headerText = "Codeama admin users";
+        case 'admin/notifications':
+          this.headerText = "Notifications";
+      }
       this._userService.getUserEntireProfileData(this.userId).subscribe((res) => {
         this.userProfileData = res["data"];
-        this.spinner.hide()
-  
+        var image:any = document.querySelector('#profile-pic');
+        var isLoaded = image.complete && image.naturalHeight !== 0;
+        if(isLoaded){
+          setTimeout(() => {
+            this.spinner.hide()
+          }, 1000);
+        }
       },
       err => {
         this.authService.logout();
@@ -53,5 +70,10 @@ export class HeaderComponent implements OnInit {
        elem['msRequestFullscreen']; 
       if(methodToBeInvoked) methodToBeInvoked.call(elem);
     }
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['app'])
   }
 }
