@@ -9,11 +9,12 @@ ul.navbar-nav {
 
 li>a.nav-link {
     text-decoration: none;
-    font-family: var(--poppins), 'Roboto', 'Arial' !important;
+    font-family: var(--poppins)!important;
     margin-left: 5%;
     margin-top: 1.5%;
     font-size: 14px;
     white-space: nowrap;
+    color: var(--adminLinksColor) !important;
     transition: font-weight 0.1s ease-in;
 }
 
@@ -24,7 +25,7 @@ li>a.nav-link {
     background-color: var(--contBgLight);
     float: left;
     margin: 5px !important;
-    padding: 1.5% 2% 4.5% 1.5%;
+    padding: 1.5% 2% 4.5% 0.5%;
     width: 18%;
     position: fixed;
 }
@@ -65,7 +66,7 @@ svg {
 }
 
 .side-bar-container {
-    width:40% !important;
+    width:32% !important;
 }
 .nav-item{
     display: flex;
@@ -78,4 +79,33 @@ svg {
 .logo>img{
     width: 75%;
     height: 25%;
+}
+.sidebar-user-profile{
+   display: flex;
+   margin: 94% 2% 2% 8% !important;
+}
+.sidebar-user-profile>img{
+    width: 21%;
+    margin-right: 6% !important;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.profile-information{
+    display: flex;
+    flex-direction: column;
+}
+.profile-information>h2{
+    font-family: var(--poppins);
+    font-weight: bold;
+    color: #151829;
+    font-size: 15px;
+    margin-bottom: -1%;
+}
+.profile-information>p{
+    font-family: var(--poppins);
+    color: #151829;
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 62%;
 }

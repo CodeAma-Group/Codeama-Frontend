@@ -9,7 +9,7 @@ app-sidebar{
     height: 98.6vh;
     border-radius: 5px;
     font-family: "poppins",sans-serif;
-    width: 80%;
+    width: 83%;
     margin: 5px;
     background-color: var(--contBgLight);
 }
