@@ -2,6 +2,11 @@ ul.navbar-nav {
     list-style: none;
 }
 
+.nav-link-container{
+    padding: 2% 8% !important;
+    transition: background 0.9s ease-in;
+}
+
 li>a.nav-link {
     text-decoration: none;
     font-family: var(--poppins), 'Roboto', 'Arial' !important;
@@ -9,6 +14,7 @@ li>a.nav-link {
     margin-top: 1.5%;
     font-size: 14px;
     white-space: nowrap;
+    transition: font-weight 0.1s ease-in;
 }
 
 .sidebar {
@@ -24,13 +30,14 @@ li>a.nav-link {
 }
 
 .active {
-    background-color: var(--dimerBlue);
+    background: linear-gradient(to right, rgb(189, 226, 240) , rgb(245, 246, 247));;
     border-left: 3px solid rgb(56, 98, 236);
     fill: blue!important
 }
 
 .active>li>a {
-    color: #4286ED !important
+    color: #2e7bf0 !important;
+    font-weight: bold;
 }
 
 .active>li>svg>path:nth-child(2) {

@@ -9,10 +9,11 @@ import { CodeamasComponent } from './codeamas/codeamas.component';
 import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component';
 import { AdminGroupComponent } from './admin-group/admin-group.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, DashboardComponent, OurUsersComponent, CodeamasComponent, ModuleoutletComponent, AdminGroupComponent, NotificationsComponent],
+  declarations: [SidebarComponent, DashboardComponent, OurUsersComponent, CodeamasComponent, ModuleoutletComponent, AdminGroupComponent, NotificationsComponent, HeaderComponent],
   imports: [
     CommonModule,
     AdministrationRoutingModule
