@@ -33,7 +33,7 @@
                 <p>{{question.views}}</p>
                 <p class="dim">viewers</p>
             </div>
-            <div [className]="question.answered ? 'detail_box box-2 answered': 'detail_box box-2 not_answered'">
+            <div [className]="question.answer ? 'detail_box box-2 answered': 'detail_box box-2 not_answered'">
                 <p>{{checkAnswered()}}</p>
                 <p>Answered</p>
             </div>
