@@ -11,5 +11,6 @@ export class NotificationsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  componentText = "Notifications Works!"
+  heading = "Notifications"
 }

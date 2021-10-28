@@ -1,6 +1,9 @@
 <div class="app">
     <app-sidebar></app-sidebar>
     <div class="main">
-        <p>Admin Group works!</p>
+        <app-header
+           [headerText]="heading"
+        ></app-header>
+        <p>{{componentText}}</p>
     </div>
 </div>
