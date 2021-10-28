@@ -59,9 +59,9 @@
 
         </ul>
        <div class="sidebar-user-profile">
-            <img src="../../../assets/images/profile_pic.png" alt="profile">
+            <img [src]="userProfileData.profilePicture" alt="profile">
             <div class="profile-information">
-                <h2>Ineza Chance</h2>
+                <h2>{{userProfileData.Username}}</h2>
                 <p>Administrator</p>
             </div>
        </div>
