@@ -23,6 +23,7 @@ export class AskcodeamaComponent implements OnInit {
   questions: any = [];
   size: number;
   response: any;
+  answers:any;
   nu
   auth_token = localStorage.getItem('codeama_auth_token');
   userData: any = jwt_decode(this.auth_token)
@@ -60,9 +61,16 @@ export class AskcodeamaComponent implements OnInit {
 
       this.amaQuestion.getAmaQuestions(questionIdUser).subscribe((res) => {
         this.nu = res
+        this.answers = this.nu.data
         this.nu = this.nu.data.length
 
-        this.asked.push({ userId: questionIdUser, question: this.nu })
+        let totalAnswer = 0; 
+        for(let k=0; k<this.nu; k++){
+          if(this.answers[k].answer != null){
+            totalAnswer += 1;
+          }
+        }
+        this.asked.push({ userId: questionIdUser, question: this.nu, answers: totalAnswer})
 
         this.spinner.hide()
       })
