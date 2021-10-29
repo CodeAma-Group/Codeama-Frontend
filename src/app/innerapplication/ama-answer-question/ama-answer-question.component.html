@@ -8,13 +8,14 @@
                     <div class="col-1 profile">
                         <img class="rounded-pill" [src]="info.askedBy.profilePicture" alt="profile">
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <p class="username">{{info.askedBy.Username}}</p>
                         <p class="email">{{info.askedBy.Username}}.codeama.net</p>
                     </div>
-                    <div class="col-1">
+                    <div class="col-1 pt-2">
                         <p class="{{info.askedBy.Badge}} rounded-pill p-1 text-center">{{info.askedBy.Badge}}</p>
                     </div>
+                    <div class="col"></div>
                 </div>
                 <div class="col-2">
                     <p class="date"><span>Asked on </span>{{info.createdAt |date: 'longDate'}}</p>
@@ -55,7 +56,7 @@
                     </div>
                     <div class="col-3 submit-answer">
                         <p>Question actions</p>
-                        <button type="submit" class="btn-primary btn p-2 w-100" [disabled]="!answer.valid">
+                        <button type="submit" class="btn-primary btn p-2 w-100" [disabled]="!answer.valid || info.answer">
                             <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Answer question</button>
                     </div>
@@ -69,7 +70,7 @@
                 <div class="row">
                     <form [formGroup]="f" (ngSubmit)="postComment()" ngNativeValidate>
                         <input type="text" formControlName="comment" id="comment" class="col-8" placeholder="Write your comment here..." required>
-                        <button type="submit" class="btn col-2 btn-primary comment" [disabled]="f.invalid">
+                        <button type="submit" class="btn col-2 btn-primary comment" [disabled]="f.invalid ">
                             <svg *ngIf="!commenting" class="mx-auto" id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none" />
                             <path id="Path_44" data-name="Path 44"
@@ -83,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="comments container-fluid">
+            <div class="comments  p-3">
                 <div *ngFor="let comment of comments" class="p-1 pt-1 col">
                     <div class="cont">
                         <div class="col row">
