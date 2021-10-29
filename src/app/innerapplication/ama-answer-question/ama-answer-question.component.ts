@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { AmaAnswerService } from '../services/ama-answer.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { NgForm } from '@angular/forms';
+import jwt_decode from 'jwt-decode';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ama-answer-question',
@@ -16,6 +17,12 @@ export class AmaAnswerQuestionComponent implements OnInit {
   answer: any;
   loading:boolean;
   public htmlContent;
+  answered:boolean = false;
+  commenting:boolean = false; 
+  comments:any;
+  auth_token = localStorage.getItem('codeama_auth_token');
+  userData: any = jwt_decode(this.auth_token)
+  userId: number = this.userData._id
 
   config: AngularEditorConfig = {
     editable: true,
@@ -74,10 +81,15 @@ export class AmaAnswerQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.questionId = this.activateRoute.snapshot.params["id"];
-
     this.amaAnswer.questionById(this.questionId).subscribe((res) => {
       this.info = res;
       this.info = this.info.data;
+    })
+
+    this.amaAnswer.getComments(this.questionId).subscribe((res) => {
+      this.comments = res;
+      this.comments = this.comments.data;
+      console.log(this.comments);
     })
 
   }
@@ -88,29 +100,59 @@ export class AmaAnswerQuestionComponent implements OnInit {
         questionId: this.questionId,
         answer: f.form.value.answer
     }
-    
     var plainText = f.form.value.answer.replace(/<[^>]*>/g, '');
-    console.log(plainText);
-    
     this.answer = Object.create(data);
     this.answer.questionId = this.questionId;
-    this.answer.answer = plainText;
-    
-    console.log(this.answer);
-
+    this.answer.answer = plainText
     this.amaAnswer.answerQuestion(this.answer).subscribe((res) => {
       this.loading = false;
-      console.log(res);
+      this.answered = true;
       this.amaAnswer.questionById(this.questionId).subscribe((res) => {
         this.info = res;
         this.info = this.info.data;
       })
+      f.reset();
     })
     
   }
 
+  f = new FormGroup({
+    comment: new FormControl('', Validators.required)
+  });
+
+  postComment(){
+    this.commenting = true;
+    const obj = {
+      "createdBy": this.userId,
+      "postId": this.questionId,
+      "commentType": "question",
+      "content": this.f.value.comment
+    }
+ 
+    this.amaAnswer.makeComment(obj).subscribe((res) =>{
+      this.amaAnswer.questionById(this.questionId).subscribe((res) => {
+        this.info = res;
+        this.info = this.info.data;
+        this.commenting=false;
+        console.log(res);
+        this.amaAnswer.getComments(this.questionId).subscribe((res) => {
+          console.log(res);
+          this.comments = res;
+          this.comments = this.comments.data;
+        })
+      })
+      console.log(res);
+    })
+    this.f.reset()
+  }
+
+
+
+
+
+
   checkAnswered() {
-    if (this.info.answered) {
+    if (this.info[0].answer) {
       return 'Yes'
     } else {
       return 'No'

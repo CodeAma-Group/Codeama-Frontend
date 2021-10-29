@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,5 +11,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  componentText = "Dashboard works!";
+  heading = "Administration dashboard";
 
 }

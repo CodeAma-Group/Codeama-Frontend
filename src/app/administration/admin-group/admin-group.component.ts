@@ -11,5 +11,7 @@ export class AdminGroupComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  componentText = "Admin Group Works!";
+  heading = "Codeama admin users"
 
 }

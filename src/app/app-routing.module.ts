@@ -6,6 +6,7 @@ import { CodeamasComponent } from './innerapplication/codeamas/codeamas.componen
 import { ProfileComponent } from './innerapplication/profile/profile.component';
 import { ProjectDetailsComponent } from './innerapplication/project-details/project-details.component';
 import { AuthGuard } from './authentication/common/auth.guard';
+import { AdminGuard } from './administration/common/admin.guard';
 
 const routes: Routes = [
   
@@ -17,7 +18,8 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./administration/administration.module')
-      .then(mode => mode.AdministrationModule)
+      .then(mode => mode.AdministrationModule),
+      canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: 'auth',

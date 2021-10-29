@@ -11,5 +11,7 @@ export class CodeamasComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  componentText = "codeamas works!";
+  heading = "Codeama amas";
 
 }

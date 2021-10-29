@@ -24,4 +24,12 @@ export class AmaAnswerService {
   answerQuestion(data:FormData){
     return this.Http.post(`https://codeama-backend.herokuapp.com/codeama/question/answer`, data, {headers: this.headers});
   }
+
+  makeComment(data){
+    return this.Http.post(`https://codeama-backend.herokuapp.com/comment`, data);
+  }
+
+  getComments(commentId:String){
+    return this.Http.get(`https://codeama-backend.herokuapp.com/comment/${commentId}`);
+  }
 }

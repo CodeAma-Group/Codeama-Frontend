@@ -11,5 +11,6 @@ export class OurUsersComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
+  componentText="our users works!"
+  heading = "Codeama users"
 }
