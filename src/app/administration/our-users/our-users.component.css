@@ -19,3 +19,72 @@ app-sidebar{
     font-size: 30px;
     color: #4286ED;
 }
+.badges{
+    height: 80px;
+}
+.user-main-container{
+    padding: 30px;
+}
+.users-rect-col-title{
+    font-family: "poppins",sans-serif;
+    font-size: 15px;
+}
+.users-rect-col-num{
+    font-size: 14px;
+    font-weight: bold;
+}
+.user-rect{
+    background-color: white;
+    border-radius: 10px;
+    height: fit-content;
+    padding: 20px 10px;
+}
+#team-line{
+    background:#E3EBFB;
+    
+}
+#shield-star-line{
+    background:#E0DBFD;
+}
+#shield-flash-line{
+    background:#DFFBEF;
+  
+}
+#shield-check-line{
+    background:#E1FAE5;
+}
+#shield-check-line,#shield-keyhole-line,#shield-flash-line,#shield-star-line,#team-line{
+    border-radius: 6px;
+    padding: 6px;
+    width: 30px;
+    height: auto;
+}
+#shield-keyhole-line{
+    background:#FCE8F0;
+}
+.table-h1{
+    font-size: 14px;
+    font-weight: bold;
+}
+.user-table-head{
+    background-color: #E3EBFB;
+}
+.input-wrapper{
+    width: 5%;
+}
+.table-head-input{
+    width: 75%;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #B0B6C6;
+}
+.avatar img{
+    width: 50%;
+    
+}
+.avatar{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
