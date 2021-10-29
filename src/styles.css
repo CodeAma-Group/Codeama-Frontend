@@ -326,6 +326,7 @@ ul {
     .col-lap-12 {
         width: 100% !important;
     }
+}
     @media only screen and (max-width: 600px) {
         .col-mob-1 {
             width: 8.33% !important;
