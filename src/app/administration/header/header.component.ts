@@ -1,8 +1,9 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router, NavigationEnd} from '@angular/router';
 import { UserService } from '../../innerapplication/services/user.service'
 import jwt_decode from 'jwt-decode';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { filter } from 'rxjs/operators';
 import { AuthService } from '../../authentication/_authServices/auth.service'
 
 @Component({
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   tokenData:any;
   userId:any;
   userProfileData:any;
-  headerText: string="Header";
+  headerText: string;
   show:boolean = true;
     
   constructor( private authService: AuthService, private _userService: UserService,private spinner:NgxSpinnerService, private router: Router) { }
@@ -31,17 +32,44 @@ export class HeaderComponent implements OnInit {
       this.tokenData = jwt_decode(token)
       this.userId = this.tokenData._id
       switch(this.router.url){
-        case 'admin/dashboard':
+        case '/admin/dashboard':
           this.headerText = "Admin dashboard";
-        case 'admin/our-users':
+          break;
+        case '/admin/our-users':
           this.headerText = "Codeama users";
-        case 'admin/codeamas':
+          break;
+        case '/admin/codeamas':
           this.headerText = "Codeama amas";
-        case 'admin/admin-group':
+          break;
+        case '/admin/admin-group':
           this.headerText = "Codeama admin users";
-        case 'admin/notifications':
+          break;
+        case '/admin/notifications':
           this.headerText = "Notifications";
+          break;
       }
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)  
+      ).subscribe((event: NavigationEnd) => {
+        switch(event.url){
+          case '/admin/dashboard':
+            this.headerText = "Admin dashboard";
+            break;
+          case '/admin/our-users':
+            this.headerText = "Codeama users";
+            break;
+          case '/admin/codeamas':
+            this.headerText = "Codeama amas";
+            break;
+          case '/admin/admin-group':
+            this.headerText = "Codeama admin users";
+            break;
+          case '/admin/notifications':
+            this.headerText = "Notifications";
+            break
+        }
+      });
+      
       this._userService.getUserEntireProfileData(this.userId).subscribe((res) => {
         this.userProfileData = res["data"];
         var image:any = document.querySelector('#profile-pic');
@@ -73,7 +101,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    this.authService.logout();
     this.router.navigate(['app'])
+    this.authService.logout();
   }
 }
