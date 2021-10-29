@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+    /* You can add global styles to this file, and also import other style files */
+
 @import '~@syncfusion/ej2-base/styles/material.css';
 @import '~@syncfusion/ej2-buttons/styles/material.css';
 @import '~@syncfusion/ej2-dropdowns/styles/material.css';
@@ -19,7 +20,6 @@
 @import '~@syncfusion/ej2-popups/styles/material.css';
 @import '~@syncfusion/ej2-lists/styles/material.css';
 @import '~@syncfusion/ej2-angular-dropdowns/styles/material.css';
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import '~codemirror/lib/codemirror.css';
@@ -27,7 +27,6 @@
 @import '~codemirror/theme/cobalt.css';
 @import '~codemirror/addon/fold/foldgutter.css';
 @import '~codemirror/addon/lint/lint.css';
-
 
 /* Application global styling variables */
 
@@ -132,6 +131,7 @@ ul {
     visibility: hidden;
 }
 
+
 /* responsiveness */
 
 .col-lap-1 {
@@ -186,126 +186,263 @@ ul {
     .col-mob-1 {
         width: 8.33% !important;
     }
-    .col-mob-2 {
-        width: 16.66% !important;
+    @import '~@syncfusion/ej2-base/styles/material.css';
+    @import '~@syncfusion/ej2-buttons/styles/material.css';
+    @import '~@syncfusion/ej2-dropdowns/styles/material.css';
+    @import '~@syncfusion/ej2-inputs/styles/material.css';
+    @import '~@syncfusion/ej2-popups/styles/material.css';
+    @import '~@syncfusion/ej2-lists/styles/material.css';
+    @import '~@syncfusion/ej2-angular-dropdowns/styles/material.css';
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+    @import '~codemirror/lib/codemirror.css';
+    @import '~codemirror/theme/idea.css';
+    @import '~codemirror/theme/cobalt.css';
+    @import '~codemirror/addon/fold/foldgutter.css';
+    @import '~codemirror/addon/lint/lint.css';
+    /* Application global styling variables */
+    .angular-editor-toolbar {
+        background-color: #66a5f045 !important;
+        border-radius: 4px !important;
+        width: fit-content!important;
+        height: 7vh!important;
+        margin-left: auto!important;
     }
-    .col-mob-3 {
-        width: 25% !important;
+    .angular-editor-toolbar .angular-editor-toolbar-set .angular-editor-button {
+        background-color: #fff;
+        /* margin: 7px auto!important; */
+        border: 1px solid #ddd;
+        padding: .4rem;
+        min-width: 3rem;
+        min-height: 2.8em!important;
+        float: left;
     }
-    .col-mob-4 {
-        width: 33.33% !important;
+    .angular-editor-textarea {
+        min-height: 5rem;
+        padding: .5rem .8rem 1rem;
+        background-color: #ebf1fa !important;
+        outline: none !important;
+        border: .15em solid #66a5f045 !important;
+        overflow-x: hidden;
+        overflow-y: auto;
+        outline: none !important;
+        position: relative;
+        border-radius: 5px;
     }
-    .col-mob-5 {
-        width: 41.66% !important;
+    .modal.show .modal-dialog {
+        max-width: 65em !important;
+        transform: none;
     }
-    .col-mob-6 {
-        width: 50% !important;
+     :root {
+        --pureWhite: #ffffff;
+        --bgBlue: #F4F7FB;
+        --mainBlue: #185BF9;
+        --mainBlack: #17202A;
+        --mainWhite: #ffffff;
+        --dimBlue: #66A5F0;
+        --dimerBlue: #f2f6fa;
+        --mainRed: #F51854;
+        --minorBlue: #4290ED;
+        --inputWhite: #ffffff;
+        --modeDark: #0D0E1A;
+        --modeDimBlue: #1D2747;
+        --modeDimerBlue: #0F111E;
+        --intermediateBg: #00A79D;
+        --shareBg: #F7FAFC;
+        --minorProfileWhite: #FCFDFE;
+        /* fonts */
+        --poppins: 'Poppins', sans-serif;
+        --right: 'Righteous', cursive;
+        --contBgDark: #151829;
+        --contBgLight: #F4F7FB;
+        --questBg: #F7F9FC;
     }
-    .col-mob-7 {
-        width: 58.33% !important;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: 0;
     }
-    .col-mob-8 {
-        width: 66.66% !important;
+    body {
+        width: 100%;
+        height: 100vh;
+        background-color: var(--pureWhite);
+        font-family: var(--poppins), "Roboto", 'Arial' !important;
+        user-select: none;
+        margin: 0;
     }
-    .col-mob-9 {
-        width: 75% !important;
+    body::-webkit-scrollbar {
+        width: 0.6em;
+        background: transparent;
     }
-    .col-mob-10 {
-        width: 83.33% !important;
+    body::-webkit-scrollbar-thumb {
+        width: 0.6em;
+        background: var(--mainBlack);
+        border-radius: 0.15em;
+        scroll-behavior: smooth;
     }
-    .col-mob-11 {
-        width: 91.66% !important;
+    a {
+        text-decoration: none !important;
     }
-    .col-mob-12 {
-        width: 100% !important;
+    ul {
+        list-style: none;
     }
-    .col-mob-auto {
-        height: 200vh !important;
+    .hidden {
+        visibility: hidden;
     }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 768px) {
-    .col-tab-1 {
+    /* responsiveness */
+    .col-lap-1 {
         width: 8.33% !important;
     }
-    .col-tab-2 {
+    .col-lap-2 {
         width: 16.66% !important;
     }
-    .col-tab-3 {
+    .col-lap-3 {
         width: 25% !important;
     }
-    .col-tab-4 {
+    .col-lap-4 {
         width: 33.33% !important;
     }
-    .col-tab-5 {
+    .col-lap-5 {
         width: 41.66% !important;
     }
-    .col-tab-6 {
+    .col-lap-6 {
         width: 50% !important;
     }
-    .col-tab-7 {
+    .col-lap-7 {
         width: 58.33% !important;
     }
-    .col-tab-8 {
+    .col-lap-8 {
         width: 66.66% !important;
     }
-    .col-tab-9 {
+    .col-lap-9 {
         width: 75% !important;
     }
-    .col-tab-10 {
+    .col-lap-10 {
         width: 83.33% !important;
     }
-    .col-tab-11 {
+    .col-lap-11 {
         width: 91.66% !important;
     }
-    .col-tab-12 {
+    .col-lap-12 {
         width: 100% !important;
     }
-}
-
-.container-fluid {
-    color: var(--mainBlack);
-    border-radius: 7px;
-    background: var(--contBgLight);
-    padding: 0 20px !important;
-    min-height: 88vh !important;
-    /* font-family: var(--poppins), Roboto, "Helvetica Neue", sans-serif; */
-}
-
-textarea:hover,
-textarea:active,
-textarea:focus,
-input:hover,
-textarea:active,
-input:active,
-textarea:focus,
-input:focus,
-button:focus,
-button:active,
-button:hover,
-label:focus,
-.btn:active,
-.btn.active {
-    outline: 0px !important;
-    -webkit-appearance: none;
-    box-shadow: none !important;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-
-/* body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-} */
-
-.CodeMirror {
-    font-family: monospace;
-    height: auto !important;
-    color: #000;
-    direction: ltr;
-    border-radius: 5px!important;
-}
+    @media only screen and (max-width: 600px) {
+        .col-mob-1 {
+            width: 8.33% !important;
+        }
+        .col-mob-2 {
+            width: 16.66% !important;
+        }
+        .col-mob-3 {
+            width: 25% !important;
+        }
+        .col-mob-4 {
+            width: 33.33% !important;
+        }
+        .col-mob-5 {
+            width: 41.66% !important;
+        }
+        .col-mob-6 {
+            width: 50% !important;
+        }
+        .col-mob-7 {
+            width: 58.33% !important;
+        }
+        .col-mob-8 {
+            width: 66.66% !important;
+        }
+        .col-mob-9 {
+            width: 75% !important;
+        }
+        .col-mob-10 {
+            width: 83.33% !important;
+        }
+        .col-mob-11 {
+            width: 91.66% !important;
+        }
+        .col-mob-12 {
+            width: 100% !important;
+        }
+        .col-mob-auto {
+            height: 200vh !important;
+        }
+    }
+    @media only screen and (min-width: 600px) and (max-width: 768px) {
+        .col-tab-1 {
+            width: 8.33% !important;
+        }
+        .col-tab-2 {
+            width: 16.66% !important;
+        }
+        .col-tab-3 {
+            width: 25% !important;
+        }
+        .col-tab-4 {
+            width: 33.33% !important;
+        }
+        .col-tab-5 {
+            width: 41.66% !important;
+        }
+        .col-tab-6 {
+            width: 50% !important;
+        }
+        .col-tab-7 {
+            width: 58.33% !important;
+        }
+        .col-tab-8 {
+            width: 66.66% !important;
+        }
+        .col-tab-9 {
+            width: 75% !important;
+        }
+        .col-tab-10 {
+            width: 83.33% !important;
+        }
+        .col-tab-11 {
+            width: 91.66% !important;
+        }
+        .col-tab-12 {
+            width: 100% !important;
+        }
+    }
+    .container-fluid {
+        color: var(--mainBlack);
+        border-radius: 7px;
+        background: var(--contBgLight);
+        padding: 0 20px !important;
+        min-height: 88vh !important;
+        /* font-family: var(--poppins), Roboto, "Helvetica Neue", sans-serif; */
+    }
+    textarea:hover,
+    textarea:active,
+    textarea:focus,
+    input:hover,
+    textarea:active,
+    input:active,
+    textarea:focus,
+    input:focus,
+    button:focus,
+    button:active,
+    button:hover,
+    label:focus,
+    .btn:active,
+    .btn.active {
+        outline: 0px !important;
+        -webkit-appearance: none;
+        box-shadow: none !important;
+    }
+    html,
+    body {
+        height: 100%;
+    }
+    /* body {
+        margin: 0;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+    } */
+    .CodeMirror {
+        font-family: monospace;
+        height: auto !important;
+        color: #000;
+        direction: ltr;
+        border-radius: 5px!important;
+    }
