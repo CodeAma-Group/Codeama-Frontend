@@ -28,7 +28,10 @@
                     </div>
 
                     <div class="status col-4 row">
-                        <p class="col"><span>45</span><span class="cl-silver"> of </span>
+                        <p class="col">
+                            <span *ngFor="let ans of asked"><span *ngIf="ans.userId == user.codeama._id">{{ans.answers}}</span></span>
+
+                            <span class="cl-silver"> of </span>
                             <span *ngFor="let nbr of asked"><span *ngIf="nbr.userId == user.codeama._id">{{nbr.question}}</span></span>
                             <span class="cl-silver"> answered</span>
                         </p>
