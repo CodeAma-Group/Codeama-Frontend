@@ -41,7 +41,7 @@ export class QuestionComponent implements OnInit {
 }
 
   checkAnswered() {
-    if(this.question.answered) {
+    if(this.question.answer) {
       return 'Yes'
     }else {
       return 'No'
