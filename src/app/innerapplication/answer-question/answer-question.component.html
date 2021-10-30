@@ -63,7 +63,7 @@
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img [src]="'https://codeama-backend.herokuapp.com/'+getSolver(comment.solver).profilePicture" alt="">
+                        <img [src]="getSolver(comment.solver).profilePicture" alt="">
                     </div>
                 </figure>
                 <div>
@@ -80,7 +80,7 @@
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img [src]="'https://codeama-backend.herokuapp.com/'+comment.profilePicture" alt="">
+                        <img [src]="comment.profilePicture" alt="">
                     </div>
                     <figcaption class="{{checkBadge(comment.Badge)}} rounded-pill">{{comment.Badge}}</figcaption>
                 </figure>
@@ -98,7 +98,7 @@
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img [src]="'https://codeama-backend.herokuapp.com/'+comment.profilePicture" alt="">
+                        <img [src]="comment.profilePicture" alt="">
                     </div>
                 </figure>
                 <div>
