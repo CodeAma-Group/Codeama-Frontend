@@ -4,6 +4,15 @@
         <app-header
            [headerText]="heading"
         ></app-header>
-        <p>{{componentText}}</p>
+        <div class="content">
+           <div class="info_cards">
+              <app-card-box *ngFor="let card of cards" [card]="card"></app-card-box>
+           </div>
+             <app-graph></app-graph>
+             <app-other-info></app-other-info>
+           <div class="bottom_content">
+           <app-activities-box *ngFor="let activity of activities" [activity]="activity"></app-activities-box>
+        </div>
+        </div>
     </div>
 </div>
