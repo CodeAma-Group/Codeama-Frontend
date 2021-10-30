@@ -1,5 +1,5 @@
 <div id="articleDiv" class="articleDiv">
-    <h6>Comment article</h6>
+    <h6>Comment on article</h6>
     <hr>
 
     <div class="px-3">
@@ -24,16 +24,14 @@
     <main class="px-3">
         <div class="main">
             <h5 class="mb-3">
-                {{articleInfo.title}}
+                <strong>{{articleInfo.title}}</strong>
             </h5>
-            <p>
-                {{articleInfo.description}}
-            </p>
-
             <div class="image-">
-                <img [src]="articleInfo.thumbnailUrl" alt="">
+                <img [src]="articleInfo.thumbnailUrl" alt="" style="max-width: 55%; border-radius: 10px">
             </div>
-
+            <br>
+            <p [innerHTML]="articleInfo.description">
+            </p>
         </div>
         <div class="shortDet">
             <div>
@@ -92,3 +90,4 @@
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">  
     <p style="color: white">Please Wait... </p>  
 </ngx-spinner> 
+<notifier-container></notifier-container>
