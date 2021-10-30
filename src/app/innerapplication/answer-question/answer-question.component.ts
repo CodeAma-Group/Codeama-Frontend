@@ -74,6 +74,7 @@ export class AnswerQuestionComponent implements OnInit {
   isSubmitting: boolean = false
   public newAnsArray: any[] = []
   constructor(private backendService: InnerapplicationService,private spinner:NgxSpinnerService, private formBuilder: FormBuilder, private notifier: NotifierService) { 
+    this.spinner.show()
     this.answer = this.formBuilder.group({
       answer: ["",[Validators.required]]
     })
