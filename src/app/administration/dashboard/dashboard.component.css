@@ -1,4 +1,4 @@
-.app {
+/* .app {
   display: flex;
   width: 100%;
 }
@@ -14,7 +14,7 @@ app-sidebar {
   padding: .5% 2.3% .5% 1%;
   margin: 5px;
   background-color: var(--contBgLight);
-}
+} */
 
 .content {
   width: 100%;
@@ -44,7 +44,6 @@ app-sidebar {
   width: 63%;
   display: flex;
   margin-top: 1em;
-
 }
 
 app-graph {

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class OurUsersComponent implements OnInit {
 
   constructor() { }
-
+  
   ngOnInit(): void {
   }
   componentText="our users works!"

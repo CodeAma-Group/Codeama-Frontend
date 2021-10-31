@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemCountsService } from 'src/app/innerapplication/services/item-counts.service';
+import { BugService } from '../../innerapplication/services/bug.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,42 +8,51 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  articleCount = 0
+  amaCount = 0
+  bugsCount = 0
+  resourceCount =0 
+  questionsCount =0 
+  constructor( private bugService: BugService, private itemsCountService: ItemCountsService ) { }
 
   ngOnInit(): void {
+     this.itemsCountService.getArticles()
+       .subscribe((res:any)=> {
+         console.log('data',res.data)
+          this.articleCount = res.data.totalDocs
+          console.log(this.articleCount)
+       })
   }
   componentText = "Dashboard works!";
-  heading = "Administration dashboard";
 
   cards = [
     {
       title: "CodeAmas",
-      totalCount: "7,345",
+      totalCount: this.amaCount,
       icon: "../../assets/icons/Group 67.png"
     },
 
     {
       title: "Bugs Published",
-      totalCount: "7,345",
+      totalCount: this.bugsCount,
       icon: "../../assets/icons/Group 68.png"
     },
 
     {
       title: "Resources",
-      totalCount: "7,345",
+      totalCount: this.resourceCount,
       icon: "../../assets/icons/Group 69.png"
     },
 
     {
       title: "Articles",
-      totalCount: "7,345",
+      totalCount: this.articleCount,
       icon: "../../assets/icons/Group 70.png"
     },
 
     {
       title: "Other questions",
-      totalCount: "7,345",
+      totalCount: this.questionsCount,
       icon: "../../assets/icons/Group 71.png"
     }
   ]

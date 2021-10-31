@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdministrationRoutingModule } from './administration-routing.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OurUsersComponent } from './our-users/our-users.component';
@@ -15,11 +16,13 @@ import { ActivitiesBoxComponent } from './dashboard/activities-box/activities-bo
 import { OtherInfoComponent } from './dashboard/other-info/other-info.component';
 import { GraphComponent } from './dashboard/graph/graph.component';
 import { AmaItemComponent } from './dashboard/other-info/ama-item/ama-item.component';
+import { BarChartComponent } from './dashboard/other-info/bar-chart/bar-chart.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, DashboardComponent, OurUsersComponent, CodeamasComponent, ModuleoutletComponent, AdminGroupComponent, NotificationsComponent, HeaderComponent, CardBoxComponent, ActivitiesBoxComponent, OtherInfoComponent, GraphComponent, AmaItemComponent],
+  declarations: [SidebarComponent, DashboardComponent, OurUsersComponent, CodeamasComponent, ModuleoutletComponent, AdminGroupComponent, NotificationsComponent, HeaderComponent, CardBoxComponent, ActivitiesBoxComponent, OtherInfoComponent, GraphComponent, AmaItemComponent, BarChartComponent],
   imports: [
+    NgxSpinnerModule,
     CommonModule,
     AdministrationRoutingModule
   ]

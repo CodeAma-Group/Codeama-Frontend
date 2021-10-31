@@ -1,0 +1,16 @@
+app-sidebar {
+  width: 19%;
+}
+#entire_admin__outlet {
+  display: flex;
+}
+.main-div {
+  height: auto;
+  overflow: hiddden !important;
+  border-radius: 5px;
+  font-family: "poppins", sans-serif;
+  width: 82%;
+  padding: 0.5% 2%;
+  margin: 5px;
+  background-color: var(--contBgLight);
+}

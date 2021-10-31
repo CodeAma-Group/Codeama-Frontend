@@ -1,9 +1,4 @@
-<div class="app">
-    <app-sidebar></app-sidebar>
     <div class="main">
-        <app-header
-           [headerText]="heading"
-        ></app-header>
         <div class="content">
            <div class="info_cards">
               <app-card-box *ngFor="let card of cards" [card]="card"></app-card-box>
@@ -13,6 +8,4 @@
            <div class="bottom_content">
            <app-activities-box *ngFor="let activity of activities" [activity]="activity"></app-activities-box>
         </div>
-        </div>
     </div>
-</div>

@@ -33,7 +33,7 @@
                 <p>{{question.views}}</p>
                 <p class="dim">viewers</p>
             </div>
-            <div [className]="question.answered ? 'detail_box box-2 answered': 'detail_box box-2 not_answered'">
+            <div [className]="question.answer ? 'detail_box box-2 answered': 'detail_box box-2 not_answered'">
                 <p>{{checkAnswered()}}</p>
                 <p>Answered</p>
             </div>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="four">
-            <button class="btn btn-primary" [routerLink]="['/app/question',question._id]" [disabled]="question.answered">Answer</button>
+            <button class="btn btn-primary" [routerLink]="['/app/question',question._id]" [disabled]="question.answer">Answer</button>
             <a [routerLink]="['/app/question',question._id]" class="view">View in details</a>
         </div>
     </div>

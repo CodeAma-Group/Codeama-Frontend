@@ -1,3 +1,7 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 1)" size="default " type="ball-rotate ">
+    <p style="color: white ">Please Wait. </p>
+</ngx-spinner>
+
 <div class="admin-header">
     <h2>{{headerText}}</h2>
     <div class="header-icons-utils">
@@ -14,10 +18,10 @@
               </svg>
         </div>
         <div class="profile-info">
-            <img src="../../../assets/images/profile_pic.png" alt="profile">
+            <img [src]="userProfileData.profilePicture" alt="profile" id="profile-pic">
             <div class="dropdown">
                 <div class="profile-details" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton1" (click)="show=!show">
-                    <h2>Abiseth</h2>
+                    <h2>{{userProfileData.Username}}</h2>
                     <svg *ngIf="show;" id="arrow-down-s-line" xmlns="http://www.w3.org/2000/svg" width="29.832" height="29.832" viewBox="0 0 29.832 29.832">
                         <path id="Path_200" data-name="Path 200" d="M0,0H29.832V29.832H0Z" fill="none"/>
                         <path id="Path_201" data-name="Path 201" d="M13.546,14.375,19.7,8.222,21.457,9.98l-7.91,7.91L5.636,9.98,7.394,8.222Z" transform="translate(1.37 1.998)" fill="rgba(21,24,41,0.95)"/>
@@ -31,7 +35,7 @@
                 </div>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="/app/hood">Client Dashboard</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li class="dropdown-item list-item-dropdown" (click)="logout()">Logout</li>
                   </ul>
             </div>
         </div>

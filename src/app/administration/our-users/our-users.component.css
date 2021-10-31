@@ -1,22 +1,78 @@
-.app{
-    display: flex;
-    width: 100%;
+
+.badges{
+    height: 80px;
 }
-app-sidebar{
-    width: 19%;
-}
-.main{
-    height: 98.6vh;
-    border-radius: 5px;
+
+.users-rect-col-title{
     font-family: "poppins",sans-serif;
-    width: 83%;
-    padding: 0.5% 2%;
-    margin: 5px;
-    background-color: var(--contBgLight);
+    font-size: 15px;
 }
-.main>p{
-    margin: 20% 30%;
-    text-transform: uppercase;
-    font-size: 30px;
-    color: #4286ED;
+.users-rect-col-num{
+    font-size: 14px;
+    font-weight: bold;
+}
+.user-rect{
+    background-color: white;
+    border-radius: 8px;
+    height: fit-content;
+    padding: 20px 10px;
+}
+#team-line{
+    background:#E3EBFB;
+    
+}
+#shield-star-line{
+    background:#E0DBFD;
+}
+#shield-flash-line{
+    background:#DFFBEF;
+  
+}
+#shield-check-line{
+    background:#E1FAE5;
+}
+#shield-check-line,#shield-keyhole-line,#shield-flash-line,#shield-star-line,#team-line{
+    border-radius: 6px;
+    padding: 6px;
+    width: 30px;
+    height: auto;
+}
+#shield-keyhole-line{
+    background:#FCE8F0;
+}
+.table-h1{
+    font-size: 13px;
+    font-weight: bold;
+}
+.table-h2{
+    font-size: 12px;
+}
+.user-table-head{
+    background-color: #E3EBFB;
+}
+.input-wrapper{
+    width: 5%;
+}
+.table-head-input{
+    width: 75%;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #B0B6C6;
+}
+.avatar img{
+    width: 50%;
+    
+}
+.avatar{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.user-table-content{
+
+    background-color: white;
+}
+.user-table-head, .user-table-content{
+    margin: 0.25em 0;
 }
