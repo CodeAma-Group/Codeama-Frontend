@@ -11,14 +11,16 @@ import { ModuleoutletComponent } from './moduleoutlet/moduleoutlet.component';
 import { AdminGroupComponent } from './admin-group/admin-group.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { HeaderComponent } from './header/header.component';
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @NgModule({
   declarations: [SidebarComponent, DashboardComponent, OurUsersComponent, CodeamasComponent, ModuleoutletComponent, AdminGroupComponent, NotificationsComponent, HeaderComponent],
   imports: [
     NgxSpinnerModule,
     CommonModule,
-    AdministrationRoutingModule
+    AdministrationRoutingModule,
+    NgxPaginationModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class AdministrationModule { }
