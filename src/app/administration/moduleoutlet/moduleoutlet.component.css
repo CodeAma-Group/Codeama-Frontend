@@ -1,15 +1,16 @@
-app-sidebar{
-    width: 19%;
+app-sidebar {
+  width: 19%;
 }
-#entire_admin__outlet{
-    display:flex;
+#entire_admin__outlet {
+  display: flex;
 }
-.main-div{
-    height: 98.6vh;
-    border-radius: 5px;
-    font-family: "poppins",sans-serif;
-    width: 83%;
-    padding: 0.5% 2%;
-    margin: 5px;
-    background-color: var(--contBgLight);
+.main-div {
+  height: auto;
+  overflow: hiddden !important;
+  border-radius: 5px;
+  font-family: "poppins", sans-serif;
+  width: 82%;
+  padding: 0.5% 2%;
+  margin: 5px;
+  background-color: var(--contBgLight);
 }
