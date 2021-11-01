@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../services/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-notifications',
@@ -8,7 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./notifications.component.css', '../dashboard/dashboard.component.scss']
 })
 export class NotificationsComponent implements OnInit {
-  constructor(private notifications: NotificationService, private spinner: NgxSpinnerService) { }
+  constructor(private notifications: NotificationService, private spinner: NgxSpinnerService, private notifier: NotifierService) { }
   public article: string = ""
   public location: Location = window.location
   cookieVal: string = "";
@@ -24,6 +25,8 @@ export class NotificationsComponent implements OnInit {
       this.notificationData = res;
       this.none = false;
       this.notificationData = this.notificationData.data;
+      console.log(this.notificationData);
+      
       this.spinner.hide()
       console.log(res);
     })
@@ -35,6 +38,7 @@ export class NotificationsComponent implements OnInit {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
+        this.notifier.notify("success", "All notifications are mark as read! ")
       })
     })
   }
@@ -44,6 +48,7 @@ export class NotificationsComponent implements OnInit {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
+        this.notifier.notify("success", "Notification is mark as read!")
       })     
     })
     
@@ -55,6 +60,7 @@ export class NotificationsComponent implements OnInit {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
+        this.notifier.notify("success", "Notification was deleted!")
       })
     })
   }

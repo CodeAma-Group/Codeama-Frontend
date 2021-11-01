@@ -87,7 +87,14 @@
     
     .question-status>div a {
         font-size: 14px;
+    }
+    
+    .text-dark {
         color: rgb(80, 77, 77);
+    }
+    
+    .question-status>div {
+        height: 80px;
     }
     
     .question-status>div:nth-child(1):hover,
@@ -185,6 +192,24 @@
         width: 70px;
         height: 70px;
         border-radius: 50%;
+    }
+    
+    .not_answered {
+        background-color: #f6f0f6;
+        border: 2px solid #ea97b7;
+    }
+    
+    .not_answered a {
+        color: #ea97b7;
+    }
+    
+    .answered {
+        background-color: #f0fffa;
+        border: 2px solid #6ff7c5;
+    }
+    
+    .answered a {
+        color: #6ff7c5;
     }
     
     @media only screen and (max-width: 680px) {

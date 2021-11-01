@@ -36,9 +36,16 @@ export class AskcodeamaComponent implements OnInit {
   loading: boolean = false;
   asking:boolean = false;
   question:any;
-
+  questionData:any;
 
   ngOnInit(): void {
+    
+    if(!history.state.data){
+     this.spinner.show() 
+    }else{
+      this.spinner.hide()
+    }
+
     this.spinner.show()
 
     let id = history.state.data;
@@ -51,7 +58,6 @@ export class AskcodeamaComponent implements OnInit {
 
       let k;
       for (k = 0; k < this.user.codeama.Following.length; k++) {
-        console.log(this.user.codeama.Following[k]);
 
         if (this.user.codeama.Following[k] == this.userId) {
           this.following = true;
@@ -62,7 +68,9 @@ export class AskcodeamaComponent implements OnInit {
       this.amaQuestion.getAmaQuestions(questionIdUser).subscribe((res) => {
         this.nu = res
         this.answers = this.nu.data
+        
         this.nu = this.nu.data.length
+        this.questionData = this.answers[this.nu-1];
 
         let totalAnswer = 0; 
         for(let k=0; k<this.nu; k++){
@@ -99,6 +107,7 @@ export class AskcodeamaComponent implements OnInit {
   askama(f: NgForm) {
     this.asking = true;
 
+
     let amaid = history.state.data;
 
     const formData = {
@@ -113,7 +122,6 @@ export class AskcodeamaComponent implements OnInit {
     this.question.title = f.form.value.title;
     this.question.description = f.form.value.description;
     this.question.askedBy = this.id;
-    console.log(this.question);
     
     this.codeama.askama(this.question).subscribe((res) => {
          this.result = res
@@ -160,5 +168,13 @@ export class AskcodeamaComponent implements OnInit {
         this.loading = false;
       })
     })
+  }
+ 
+  checkAnswered() {
+    if (this.questionData.answer) {
+      return 'Yes'
+    } else {
+      return 'No'
+    }
   }
 }

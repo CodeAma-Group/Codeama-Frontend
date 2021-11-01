@@ -28,7 +28,7 @@ export class AmaQuestionComponent implements OnInit {
         .subscribe((res:QuestionData)=> {
            this.questions = res.data
            console.log(this.questions)
-          if(this.questions.length === 0) {
+          if(this.questions.length == 0) {
             this.showEmpty = true
           }
            this.spinner.hide()
