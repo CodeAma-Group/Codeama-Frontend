@@ -24,7 +24,7 @@ export class CodeamaService {
   }
   getcodeamas(){
     return this.http.get(this.url)
-  }
+  }   
 
   baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;
 
