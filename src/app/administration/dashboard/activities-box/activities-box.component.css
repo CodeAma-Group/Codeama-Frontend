@@ -1,0 +1,77 @@
+p,
+h6 {
+  padding-bottom: 0 !important;
+}
+.activity_box {
+  background-color: white;
+  /* width: 50%; */
+  height: 9em;
+  margin-right: 1em;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.content_wrapper {
+  width: 84%;
+  height: 64%;
+  margin-left: 1.5em;
+}
+
+.content div {
+  margin-left: 8px;
+  margin-bottom: 15px;
+  margin-top: 8px;
+}
+
+h6 {
+  font-size: 1em !important;
+  margin-bottom: 0px !important;
+}
+
+.Projects {
+  color: #16eefe !important;
+}
+
+.project {
+  padding-right: 9em !important;
+}
+
+.Challenges {
+  color: #165bfe !important;
+}
+
+.start_date {
+  color: #151829;
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.numbers {
+  display: flex;
+  padding-right: 1.6em;
+}
+
+.numbers p {
+  font-size: 14px !important;
+  font-weight: bolder !important;
+  margin-right: 18px;
+}
+
+.numbers span {
+  font-size: 10px !important;
+  font-weight: lighter !important;
+  margin-left: 3px;
+}
+
+.numbers .taken > span {
+  color: #151829;
+}
+
+.numbers .active {
+  color: #165bfe;
+}
+
+.numbers .complete {
+  color: #ff4019;
+}

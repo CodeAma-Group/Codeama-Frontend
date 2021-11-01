@@ -1,0 +1,16 @@
+<div class="activity_box">
+  <div class="content_wrapper">
+  <div class="content d-flex">
+    <img [src]="activity.icon" alt="activity_icon" width=60 height=60/>
+    <div>
+    <h6 class="title {{getActivityTitle()}}">{{getActivityTitle()}}</h6>
+    <p class="start_date">Since{{activity.startDate}}</p>
+  </div>
+  </div>
+  <div class="numbers {{getActivityWidth()}}">
+   <p class="taken">{{activity.stats[0]}}<span>taken</span></p>
+   <p class="active">{{activity.stats[1]}}<span >active</span></p>
+   <p class="complete" *ngIf="activity.stats[2]">{{activity.stats[2]}}<span>complete</span></p>
+  </div>
+</div>
+</div>
