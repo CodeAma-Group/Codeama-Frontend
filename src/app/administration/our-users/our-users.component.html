@@ -12,7 +12,7 @@
                   </div>
                     <div class="col-8 h-50">
                       <p class="users-rect-col-title mb-0">All users</p>
-                      <p class="users-rect-col-num mb-0">177,568</p>
+                      <p class="users-rect-col-num mb-0">{{allUsersNumber()}}</p>
                     </div>
               </div>
               <div class="col-2 user-rect d-flex align-items-center justify-content-around">
@@ -23,8 +23,8 @@
                     </svg>
                 </div>
                     <div class="col-8 h-50">
-                      <p class="users-rect-col-title mb-0">All users</p>
-                      <p class="users-rect-col-num mb-0">177,568</p>
+                      <p class="users-rect-col-title mb-0">Admin Badge</p>
+                      <p class="users-rect-col-num mb-0">{{badgeHolderNumber('admin')}}</p>
                     </div>
               </div>
               <div class="col-2 user-rect d-flex align-items-center justify-content-around">
@@ -35,8 +35,8 @@
                     </svg>
                     </div>
                     <div class="col-8 h-50">
-                      <p class="users-rect-col-title mb-0">All users</p>
-                      <p class="users-rect-col-num mb-0">177,568</p>
+                      <p class="users-rect-col-title mb-0">Pro Badge</p>
+                      <p class="users-rect-col-num mb-0">{{badgeHolderNumber('pro')}}</p>
                     </div>
               </div>
               <div class="col-2 user-rect d-flex align-items-center justify-content-around">
@@ -47,8 +47,8 @@
                     </svg>
                 </div>
                     <div class="col-8 h-50">
-                      <p class="users-rect-col-title mb-0">All users</p>
-                      <p class="users-rect-col-num mb-0">177,568</p>
+                      <p class="users-rect-col-title mb-0">Intermediate</p>
+                      <p class="users-rect-col-num mb-0">{{badgeHolderNumber('intermediate')}}</p>
                     </div>
               </div>
               <div class="col-2 user-rect d-flex align-items-center justify-content-around">
@@ -59,8 +59,8 @@
                 </svg>
                 </div>
                 <div class="col-8 h-50">
-                  <p class="users-rect-col-title mb-0">All users</p>
-                  <p class="users-rect-col-num mb-0">177,568</p>
+                  <p class="users-rect-col-title mb-0">Beginner</p>
+                  <p class="users-rect-col-num mb-0">{{badgeHolderNumber('beginner')}}</p>
                 </div>
               </div>
             </div>
@@ -68,7 +68,12 @@
         <div class="users-table mt-4">
           <div class="user-table-head col-12 row d-flex justify-content-around shadow-sm align-items-center pt-4">
             <div class="input-wrapper">
-              <p class="table-head-input"></p>
+              <input
+                mdbCheckbox
+                class="form-check-input table-head-input"
+                type="checkbox"
+                value=""
+              />
             </div>
             <p class="col-1 table-h1">Avatar</p>
             <p class="col-2 table-h1">Username</p>
@@ -81,9 +86,12 @@
           <ngx-skeleton-loader count="10" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
           <div class="user-table-content col-12 row d-flex flex-wrap justify-content-around shadow-sm align-items-center pt-4" *ngFor="let user of users | paginate:{itemsPerPage:5, currentPage: p}" >
             <div class="input-wrapper">
-              <label for="user-profile">
-              </label>
-                <input type="checkbox" name="user-profile" id="user-profile">
+                <input
+                mdbCheckbox
+                class="form-check-input"
+                type="checkbox"
+                value=""
+              />
             </div>
             <div class="col-1 table-h1 avatar">
               <img [src]="user.profilePicture" alt="profile" srcset="">

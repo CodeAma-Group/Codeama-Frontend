@@ -57,10 +57,8 @@
     width: 5%;
 }
 .table-head-input{
-    width: 75%;
-    height: 20px;
-    border-radius: 5px;
     border: 1px solid #B0B6C6;
+    background-color: #E3EBFB;
 }
 .avatar img{
     width: 50%;
@@ -109,3 +107,12 @@
     margin: 0 auto;
     width: 50%;
   }
+.input-wrapper{
+    margin: 0 auto;
+}
+
+input[type="checkbox"]{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

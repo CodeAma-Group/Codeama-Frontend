@@ -19,6 +19,7 @@ import { OtherInfoComponent } from './dashboard/other-info/other-info.component'
 import { GraphComponent } from './dashboard/graph/graph.component';
 import { AmaItemComponent } from './dashboard/other-info/ama-item/ama-item.component';
 import { BarChartComponent } from './dashboard/other-info/bar-chart/bar-chart.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [SidebarComponent, DashboardComponent, OurUsersComponent, CodeamasComponent, ModuleoutletComponent, AdminGroupComponent, NotificationsComponent, HeaderComponent, CardBoxComponent, ActivitiesBoxComponent, OtherInfoComponent, GraphComponent, AmaItemComponent, BarChartComponent],
   imports: [
@@ -26,7 +27,8 @@ import { BarChartComponent } from './dashboard/other-info/bar-chart/bar-chart.co
     CommonModule,
     AdministrationRoutingModule,
     NgxPaginationModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    FormsModule,
   ]
 })
 export class AdministrationModule { }
