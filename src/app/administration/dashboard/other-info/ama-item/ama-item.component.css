@@ -1,0 +1,40 @@
+p {
+    margin-bottom: 0px!important;
+}
+
+.ama_item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    height: 3.5em;
+    border-radius: 5px;
+}
+
+.ama_item-0 {
+    background-color: rgba(213, 234, 243, .3);
+}
+
+.ama_item-1 {
+    background-color: rgba(84, 255, 13, .1);
+}
+
+.ama_item-2 {
+    background-color: rgba(255, 16, 16, .1);
+}
+
+
+.ama_item img {
+    border-radius: 5px;
+    padding: 6px 10px 6px 8px;
+}
+
+
+.ama_details p:nth-of-type(1) {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ama_details p:nth-of-type(2) {
+    font-size: 11px;
+    opacity: .7;
+}

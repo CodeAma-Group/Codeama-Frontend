@@ -96,23 +96,28 @@
 
 
             <div class="row question-status mx-auto bg-brur-blue py-5">
-                <div class="col-1 p-2 ms-2 border text-center"><a class="text-dark" href="#"><span class="fw-bold"> 5</span>
-            <br> Views</a></div>
-                <div class="col-1 p-2 ms-2 border text-center"><a class="text-dark" href="#"><span
-              class="fw-bold">Yes</span><br> Answered </a></div>
-                <div class="col-1 p-2 ms-2 border text-center"><a class="text-dark" href="#"><span class="fw-bold">5</span> <br>
-            Comments</a></div>
-                <div class="col-6 px-4">
-                    <p>React app what is the best way to add large text books</p>
-                    <ul class="skills cl-silver">
-                        <li>React</li>
-                        <li>Vue router</li>
-                        <li>Node js</li>
-                        <li>Express</li>
-                        <li>Go lang</li>
-                    </ul>
+                <div class="col-1 p-2 ms-2 border text-center">
+                    <a class="text-dark" href="#"><span class="fw-bold"> {{questionData.views}}</span><br> Views</a>
                 </div>
-                <div class="col-2"><a routerLink="seeQuestion">See question</a></div>
+                <div [className]="questionData.answer ? 'answered col-1 p-2 ms-2 border text-center': 'not_answered col-1 p-2 ms-2 border text-center'">
+                    <a href="#"><span class="fw-bold">{{checkAnswered()}}</span><br> Answered </a>
+                </div>
+                <div class="col-1 p-2 ms-2 border text-center">
+                    <a class="text-dark" href="#"><span class="fw-bold">{{questionData.commentCount}}</span> <br> Comments</a>
+                </div>
+                <div class="col px-4 text-center row">
+                    <div class="col-10">
+                        <p>{{questionData.description}}</p>
+                        <ul class="skills cl-silver">
+                            <li>React</li>
+                            <li>Vue router</li>
+                            <li>Node js</li>
+                            <li>Express</li>
+                            <li>Go lang</li>
+                        </ul>
+                    </div>
+                    <div class="col-2"><a [routerLink]="['/app/question',questionData._id]">See question</a></div>
+                </div>
             </div>
         </div>
 

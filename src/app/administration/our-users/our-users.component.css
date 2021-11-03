@@ -31,7 +31,8 @@
 #shield-check-line{
     background:#E1FAE5;
 }
-#shield-check-line,#shield-keyhole-line,#shield-flash-line,#shield-star-line,#team-line{
+#shield-check-line,#shield-keyhole-line,#shield-flash-line,#shield-star-line,#team-line
+,#delete-bin-2-line{
     border-radius: 6px;
     padding: 6px;
     width: 30px;
@@ -41,11 +42,13 @@
     background:#FCE8F0;
 }
 .table-h1{
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
 }
 .table-h2{
-    font-size: 12px;
+    font-size: 14px;
+    word-wrap: break-word;
+    font-weight: 500;
 }
 .user-table-head{
     background-color: #E3EBFB;
@@ -54,13 +57,12 @@
     width: 5%;
 }
 .table-head-input{
-    width: 75%;
-    height: 20px;
-    border-radius: 5px;
     border: 1px solid #B0B6C6;
+    background-color: #E3EBFB;
 }
 .avatar img{
     width: 50%;
+    border-radius: 5px;
     
 }
 .avatar{
@@ -75,4 +77,42 @@
 }
 .user-table-head, .user-table-content{
     margin: 0.25em 0;
+}
+.admin{
+    color: #4969FA;
+}
+.pro{
+    color: #6BEEA6;
+}
+.beginner{
+    color: #F15B93;
+}
+
+.ngx-pagination {
+    padding-left: 0 px!important;
+ }
+
+ .ngx-pagination.btn-info {
+    background: #17a2b8 !important;
+    border: transparent !important;
+    border-radius: 20px !important;
+}
+
+.table-pagination /deep/ .ngx-pagination .current {
+    background: none;
+    color: #326CFA;
+  }
+  .table-pagination /deep/ .ngx-pagination{
+    font-size: 13px;
+    margin: 0 auto;
+    width: 50%;
+  }
+.input-wrapper{
+    margin: 0 auto;
+}
+
+input[type="checkbox"]{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
