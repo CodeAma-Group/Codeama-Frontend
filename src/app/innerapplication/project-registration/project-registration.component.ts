@@ -92,8 +92,12 @@ export class ProjectRegistrationComponent implements OnInit {
       alert('You not allowed to upload more than 5 images');
     }
     if (files && files.length < 6) {
+      // this.thumbnails=files  
       this.Show = true;
       for (let file of files) {
+        this.thumbnails.push(file)
+        console.warn(this.thumbnails);
+        
         let reader = new FileReader();
         reader.onload = (e: any) => {
           this.urls.push(e.target.result);
@@ -165,6 +169,7 @@ export class ProjectRegistrationComponent implements OnInit {
     this.team.splice(index, 1);
   }
   collectData() {
+    console.warn(this.urls);
     this.isLoading = true;
     const ProjectData: any = new FormData();
     if (
@@ -183,6 +188,11 @@ export class ProjectRegistrationComponent implements OnInit {
       ProjectData.append('technologies', `${this.techs}`);
     }
     if (
+
+      this.thumbnails != null ||
+      this.thumbnails.length != 0
+    ) {
+      ProjectData.append('thumbnails', this.thumbnails);
       Object.keys(this.newProject.value.thumbnails).length != 0
     ) {
       for(let thumbnailUrl of this.thumbnailsUrls){
@@ -236,8 +246,8 @@ export class ProjectRegistrationComponent implements OnInit {
       if (res.message == 'Project created successfully') {
         this.isLoading = false;
         this.notifier.notify('success', 'New Project posted successfully!');
-        delay(1000);
-        this.router.navigate(['/app/projects']);
+        // delay(1000);
+        // this.router.navigate(['/app/projects']);
       } else {
         this.isLoading = false;
         return this.notifier.notify(
