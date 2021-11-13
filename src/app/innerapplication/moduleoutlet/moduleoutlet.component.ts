@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HostListener, ElementRef,Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../authentication/_authServices/auth.service'
+import {filterWords, sampleData} from "./Search"
+
 
 @Component({
   selector: 'app-moduleoutlet',
@@ -9,10 +11,14 @@ import { AuthService } from '../../authentication/_authServices/auth.service'
 })
 export class ModuleoutletComponent implements OnInit {
   cookieVal: string = "";
-  constructor( private authService: AuthService, private router: Router ) { }
+  constructor(private authService: AuthService, private router: Router, private elementRef:ElementRef ) { }
+
 
   loggedIn: boolean = false;
-
+  searchWords;
+  suggestedWords: sampleData[] = [];
+  showSearch = false;
+  showCancel = "none";
   ngOnInit(): void {
     var status = this.authService.loggedIn()
     if (status) {
@@ -55,7 +61,6 @@ export class ModuleoutletComponent implements OnInit {
         root.style.setProperty('--bgBlue', '#151829')
         root.style.setProperty('--minorProfileWhite', '#0F111E')
       }
-
     }
 
   }
@@ -110,6 +115,19 @@ export class ModuleoutletComponent implements OnInit {
     }
   }
 
+  @HostListener('click', ['$event.target']) onClick(target) {
+    console.log(this.elementRef)
+    const clicked = this.elementRef.nativeElement 
+    console.log(target)
+    console.log(clicked)
+  }
+//   @HostListener('document:click', ['$event.target']) onClick(target) {
+//     const clickedInside = this.elementRef.nativeElement.contains(target);
+//     if (!clickedInside) {
+//       console.log("clicking")
+//     }
+// }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/auth']);
@@ -118,5 +136,19 @@ export class ModuleoutletComponent implements OnInit {
   login() {
     this.router.navigate(['/auth'])
   }
- 
+
+  filterSearch(value){
+    this.showCancel = "block";
+     let searchedModule = new RegExp(value, 'i')
+     this.searchWords = filterWords.filter(el => 
+      el.name.match(searchedModule) || 
+      el.description.match(searchedModule) 
+     ) 
+      this.showSearch = true;
+  }
+  stopSearch(){
+    console.log(`reached here`);
+    this.showSearch = false;
+    this.showCancel = "none";
+  }
 }

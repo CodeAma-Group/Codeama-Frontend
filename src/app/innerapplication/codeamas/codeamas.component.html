@@ -24,35 +24,43 @@
                             </a>
                         </div>
 
-                        <div class="about col-6">
+                        <div class="about col-7">
                             <h5>{{code.codeama.Username}}</h5>
                             <span>{{code.codeama.Username}}.codeama.net</span>
                             <div class="row pt-2">
-                                <div class="col">
+                                <div class="col-5">
                                     <p> <span class="cl-silver">Best challenger on </span><span class="fw">{{code.createdAt | date:
                       'longDate'}}</span>
                                     </p>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-4">
                                     <p><span>Vue Set 3</span><span class="cl-silver"> latest article</span></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="status col-4 row">
-                            <p class="col"><span>45</span><span class="cl-silver"> of </span><span>104</span><span class="cl-silver">
-                  answered</span></p>
+                        <div class="status col-3 row">
+                            <p class="col-7">
+                                <span *ngFor="let ans of questions"><span *ngIf="ans.userId == code.codeama._id">{{ans.answers}}</span></span>
+                                <span class="cl-silver"> of </span>
+                                <span *ngFor="let nbr of questions"><span *ngIf="nbr.userId == code.codeama._id">{{nbr.question}}</span></span><span class="cl-silver"> answered</span>
+                            </p>
                             <p class="col"><span>{{code.codeama.Following.length}} + </span><span class="cl-silver">followers</span>
                             </p>
                         </div>
                         <div class="follow col-1 justify-content-center p-2">
                             <p *ngIf="code.codeama._id == userId; else checkFollow"></p>
-                            <!-- <button class="btn-primary btn" type="button" disabled>+ follow</button> -->
                         </div>
                         <ng-template #checkFollow>
-                            <button *ngIf="code.codeama.Following.includes(userId); else Follow" class="btn-primary btn" type="button" (click)="removeFollower(code.codeama._id)"> Unfollow</button>
+                            <button *ngIf="code.codeama.Following.includes(userId); else Follow" class="btn-primary btn" type="button" (click)="removeFollower(code.codeama._id)">
+                                <span *ngIf="loading && unfollower == code.codeama._id" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span > Unfollow</span>
+                            </button>
                         </ng-template>
                         <ng-template #Follow>
-                            <button class="btn-primary btn" type="button" (click)="addFollower(code.codeama._id)"> Follow</button>
+                            <button class="btn-primary btn" type="button" (click)="addFollower(code.codeama._id)">
+                                <span *ngIf="loading && follower == code.codeama._id" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span > Follow</span>
+                            </button>
                         </ng-template>
                     </div>
                     <div class="row">

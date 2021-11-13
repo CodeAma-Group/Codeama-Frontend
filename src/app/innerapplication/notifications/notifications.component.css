@@ -19,7 +19,7 @@
     padding-bottom: 5px;
     margin: 0px 0px 2px 0px;
     box-shadow: 0 2px 5px 1px #0000001c;
-    background-color: #d3dde740;
+    background-color: #d3dde71f;
 }
 
 .options {
@@ -63,7 +63,12 @@ button.mark {
 }
 
 .noti.false {
-    background-color: #c9e0fa85;
+    background-color: #c9e0fa5c;
+    opacity: 1;
+}
+
+.noti.true {
+    opacity: 0.6;
 }
 
 .justify-content {
@@ -120,4 +125,9 @@ svg#add-circle-line {
 p {
     margin-top: 0;
     margin-bottom: 2px;
+}
+
+.markAsRead {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
 }

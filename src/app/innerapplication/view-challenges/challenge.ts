@@ -28,3 +28,21 @@ export interface Data {
     },
     message: String
 }
+
+export interface ChallengesRes {
+  data:{
+pictures:[],
+_id:string,
+applicationEndDate: string,
+endDate: string,
+announceWinnersDate:string,
+title:string,
+description: string,
+prizes:[],
+comments:[],
+participants:[],
+createdAt: string,
+updatedAt: string
+  },
+  message: String
+}

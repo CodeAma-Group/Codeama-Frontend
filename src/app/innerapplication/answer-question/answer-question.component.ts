@@ -114,17 +114,19 @@ export class AnswerQuestionComponent implements OnInit {
     this.isSubmitting = true;
     var decoded: any = jwt_decode(localStorage.codeama_auth_token)
     let newComment = {
-      comments: JSON.stringify({
+      comments: {
         questionId: this.question.questionDetails._id,
         userId: this.question.devDetails._id,
         solver: decoded._id,
         comment: [{
           text_comment: this.htmlContent
         }]
-      })
+      }
     }
+    this.spinner.show()
     this.backendService.answerQuestion(newComment).subscribe(
       data => {
+        this.spinner.hide()
         this.notifier.notify("success","Thanks for your answer!")
         this.newAnsArray.push({
           profilePicture:decoded.profilePicture,
@@ -134,6 +136,7 @@ export class AnswerQuestionComponent implements OnInit {
         this.isSubmitting = false
       },
       error => {
+        this.spinner.hide()
         console.log(error)
         this.notifier.notify("error","An unkown error occured!")
         this.isSubmitting = false

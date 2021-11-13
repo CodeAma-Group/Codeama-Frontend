@@ -1,0 +1,37 @@
+.card_box {
+  background-color: white;
+  width: 12em;
+  height: 5em;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  margin-right: 1.5em;
+}
+
+img,
+.card_info {
+  /* margin-top: 20px; */
+  margin-left: 2px;
+}
+
+img {
+  margin-left: 15px;
+}
+
+.card_info {
+  padding: 14px 0px 0px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  font-size: 14px;
+}
+
+.title {
+  margin-bottom: 0 !important;
+}
+
+.total_count {
+  font-weight: 700;
+}

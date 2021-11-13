@@ -1,0 +1,120 @@
+
+<div class="app">
+    <div class="main container user-main-container">
+        <div class="badges">
+            <div class="col-12 row d-flex justify-content-between">
+              <div class="col-2 user-rect d-flex align-items-center justify-content-around">
+                  <div class="icon-wrapper w-25">
+                    <svg id="team-line" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                        <path id="Path_19" data-name="Path 19" d="M0,0H28V28H0Z" fill="none"/>
+                        <path id="Path_20" data-name="Path 20" d="M14,12.8a6,6,0,0,1,6,6V26H17.6V18.8a3.6,3.6,0,0,0-3.389-3.594L14,15.2a3.6,3.6,0,0,0-3.594,3.389L10.4,18.8V26H8V18.8a6,6,0,0,1,6-6ZM6.2,16.4a4.25,4.25,0,0,1,.972.113,7.136,7.136,0,0,0-.361,1.89l-.011.4v.1a1.79,1.79,0,0,0-.427-.1L6.2,18.8a1.8,1.8,0,0,0-1.792,1.627L4.4,20.6V26H2V20.6a4.2,4.2,0,0,1,4.2-4.2Zm15.6,0A4.2,4.2,0,0,1,26,20.6V26H23.6V20.6a1.8,1.8,0,0,0-1.627-1.792L21.8,18.8a1.81,1.81,0,0,0-.6.1v-.1a7.157,7.157,0,0,0-.371-2.285A4.1,4.1,0,0,1,21.8,16.4ZM6.2,9.2a3,3,0,1,1-3,3,3,3,0,0,1,3-3Zm15.6,0a3,3,0,1,1-3,3,3,3,0,0,1,3-3ZM6.2,11.6a.6.6,0,1,0,.6.6A.6.6,0,0,0,6.2,11.6Zm15.6,0a.6.6,0,1,0,.6.6A.6.6,0,0,0,21.8,11.6ZM14,2A4.8,4.8,0,1,1,9.2,6.8,4.8,4.8,0,0,1,14,2Zm0,2.4a2.4,2.4,0,1,0,2.4,2.4A2.4,2.4,0,0,0,14,4.4Z" transform="translate(0 0)" fill="#165BFE"/>
+                      </svg>
+                  </div>
+                    <div class="col-8 h-50">
+                      <p class="users-rect-col-title mb-0">All users</p>
+                      <p class="users-rect-col-num mb-0">{{allUsersNumber()}}</p>
+                    </div>
+              </div>
+              <div class="col-2 user-rect d-flex align-items-center justify-content-around">
+                <div class="icon-wrapper w-25">
+                  <svg id="shield-star-line" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                      <path id="Path_228" data-name="Path 228" d="M0,0H28V28H0Z" fill="none"/>
+                      <path id="Path_229" data-name="Path 229" d="M5.444,5.259V16.114a4.688,4.688,0,0,0,2.177,3.933L14,24.16l6.379-4.113a4.688,4.688,0,0,0,2.177-3.932V5.259L14,3.423Zm-1.487-2.1L14,1,24.043,3.158A1.191,1.191,0,0,1,25,4.311v11.8a7.031,7.031,0,0,1-3.265,5.9L14,27,6.266,22.014A7.032,7.032,0,0,1,3,16.115V4.311a1.191,1.191,0,0,1,.957-1.153ZM14,15.773,10.408,17.6l.686-3.867L8.188,10.992l4.016-.565L14,6.909l1.8,3.518,4.015.565-2.905,2.739.684,3.867Z" transform="translate(0 0)" fill="#2900FF"/>
+                    </svg>
+                </div>
+                    <div class="col-8 h-50">
+                      <p class="users-rect-col-title mb-0">Admin Badge</p>
+                      <p class="users-rect-col-num mb-0">{{badgeHolderNumber('admin')}}</p>
+                    </div>
+              </div>
+              <div class="col-2 user-rect d-flex align-items-center justify-content-around">
+                <div class="icon-wrapper w-25">
+                  <svg id="shield-flash-line" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                      <path id="Path_224" data-name="Path 224" d="M0,0H28V28H0Z" fill="none"/>
+                      <path id="Path_225" data-name="Path 225" d="M3.957,3.158,14,1,24.043,3.158A1.191,1.191,0,0,1,25,4.311v11.8a7.031,7.031,0,0,1-3.265,5.9L14,27,6.266,22.014A7.032,7.032,0,0,1,3,16.115V4.311a1.191,1.191,0,0,1,.957-1.153Zm1.487,2.1V16.114a4.688,4.688,0,0,0,2.177,3.933L14,24.16l6.379-4.113a4.688,4.688,0,0,0,2.177-3.932V5.259L14,3.423Zm9.778,6.377h3.667l-6.111,8.273V14H9.111l6.111-8.273Z" transform="translate(0 0)" fill="#34FF93"/>
+                    </svg>
+                    </div>
+                    <div class="col-8 h-50">
+                      <p class="users-rect-col-title mb-0">Pro Badge</p>
+                      <p class="users-rect-col-num mb-0">{{badgeHolderNumber('pro')}}</p>
+                    </div>
+              </div>
+              <div class="col-2 user-rect d-flex align-items-center justify-content-around">
+                <div class="icon-wrapper w-25">
+                  <svg id="shield-check-line" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                      <path id="Path_222" data-name="Path 222" d="M0,0H28V28H0Z" fill="none"/>
+                      <path id="Path_223" data-name="Path 223" d="M14,1,24.043,3.158A1.192,1.192,0,0,1,25,4.311v11.8a7.031,7.031,0,0,1-3.266,5.9L14,27,6.266,22.014A7.029,7.029,0,0,1,3,16.115V4.311a1.192,1.192,0,0,1,.957-1.153Zm0,2.422L5.444,5.259V16.114a4.687,4.687,0,0,0,2.177,3.933L14,24.16l6.379-4.113a4.685,4.685,0,0,0,2.177-3.932V5.259L14,3.423Zm5.441,6.114,1.729,1.671-7.778,7.521L8.207,13.713l1.728-1.671,3.456,3.342,6.05-5.85Z" transform="translate(0 0)" fill="#37FF4B"/>
+                    </svg>
+                </div>
+                    <div class="col-8 h-50">
+                      <p class="users-rect-col-title mb-0">Intermediate</p>
+                      <p class="users-rect-col-num mb-0">{{badgeHolderNumber('intermediate')}}</p>
+                    </div>
+              </div>
+              <div class="col-2 user-rect d-flex align-items-center justify-content-around">
+                <div class="icon-wrapper w-25">
+                <svg id="shield-keyhole-line" class="label-icons" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                  <path id="Path_226" data-name="Path 226" d="M0,0H28V28H0Z" fill="none"/>
+                  <path id="Path_227" data-name="Path 227" d="M14,1,24.043,3.158A1.191,1.191,0,0,1,25,4.311v11.8a7.031,7.031,0,0,1-3.265,5.9L14,27,6.266,22.014A7.032,7.032,0,0,1,3,16.115V4.311a1.191,1.191,0,0,1,.957-1.153Zm0,2.422L5.444,5.259V16.114a4.688,4.688,0,0,0,2.177,3.933L14,24.16l6.379-4.113a4.688,4.688,0,0,0,2.177-3.932V5.259L14,3.423Zm0,4.669a2.432,2.432,0,0,1,2.362,1.751A2.332,2.332,0,0,1,15.223,12.5v5.044H12.778V12.5a2.332,2.332,0,0,1-1.139-2.659A2.432,2.432,0,0,1,14,8.091Z" transform="translate(0 0)" fill="#F52F77"/>
+                </svg>
+                </div>
+                <div class="col-8 h-50">
+                  <p class="users-rect-col-title mb-0">Beginner</p>
+                  <p class="users-rect-col-num mb-0">{{badgeHolderNumber('beginner')}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="users-table mt-4">
+          <div class="user-table-head col-12 row d-flex justify-content-around shadow-sm align-items-center pt-4">
+            <div class="input-wrapper">
+              <input
+                mdbCheckbox
+                class="form-check-input table-head-input"
+                type="checkbox"
+                value=""
+              />
+            </div>
+            <p class="col-1 table-h1">Avatar</p>
+            <p class="col-2 table-h1">Username</p>
+            <p class="col-2 table-h1">Email Address</p>
+            <p class="col-2 table-h1">Location</p>
+            <p class="col-1 table-h1">Badge</p>
+            <p class="col-2 table-h1">Joined on</p>
+            <p class="col-1 table-h1">Action</p>
+          </div>
+          <ngx-skeleton-loader count="10" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+          <div class="user-table-content col-12 row d-flex flex-wrap justify-content-around shadow-sm align-items-center pt-4" *ngFor="let user of users | paginate:{itemsPerPage:5, currentPage: p}" >
+            <div class="input-wrapper">
+                <input
+                mdbCheckbox
+                class="form-check-input"
+                type="checkbox"
+                value=""
+              />
+            </div>
+            <div class="col-1 table-h1 avatar">
+              <img [src]="user.profilePicture" alt="profile" srcset="">
+            </div>
+            <p class="col-2 table-h2">{{user.Username}}</p>
+            <p class="col-2 table-h2">{{user.Email}}</p>
+            <p class="col-2 table-h2">{{user.Location? user.Location: 'Not specified'}}</p>
+            <p class="col-1 table-h2 {{checkBadge(user.Badge)}}">{{user.Badge}}</p>
+            <p class="col-2 table-h2">{{user.CreatedAt | date}}</p>
+            <p class="col-1 table-h2">
+              <svg id="delete-bin-2-line" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" class="label-icons">
+                <path id="Path_230" data-name="Path 230" d="M0,0H28V28H0Z" fill="none"/>
+                <path id="Path_231" data-name="Path 231" d="M20,6.8h6V9.2H23.6V24.8A1.2,1.2,0,0,1,22.4,26H5.6a1.2,1.2,0,0,1-1.2-1.2V9.2H2V6.8H8V3.2A1.2,1.2,0,0,1,9.2,2h9.6A1.2,1.2,0,0,1,20,3.2Zm1.2,2.4H6.8V23.6H21.2Zm-5.5,7.2,2.122,2.122-1.7,1.7L14,18.1l-2.122,2.122-1.7-1.7L12.3,16.4l-2.122-2.122,1.7-1.7L14,14.7l2.122-2.122,1.7,1.7Zm-5.3-12V6.8h7.2V4.4Z" fill="#ff4019"/>
+              </svg>
+            </p>
+          </div>
+          <pagination-controls 
+                      (pageChange)="p  =$event"
+                      directionLinks="true"
+                      autoHide="true"
+                      previousLabel=""
+                      nextLabel=""
+                      class="p-3 table-pagination"
+                      ></pagination-controls>
+        </div>
+        

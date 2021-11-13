@@ -26,7 +26,7 @@
                 <br>             
                 <span>less than 200 words and more than 5 characters only required</span>
             </label>
-            <angular-editor [(ngModel)]="htmlContent" [config]="config" class="t_editor" style="background-color: red;"></angular-editor>
+            <angular-editor [(ngModel)]="htmlContent" formControlName="text_question" [config]="config"></angular-editor>
           </div>
         <button type="submit" [disabled]="!question.valid" class="btn btn-primary mt-3 w-25 pt-2 pb-2">Post your question now</button>
     </form>

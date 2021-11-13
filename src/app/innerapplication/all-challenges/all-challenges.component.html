@@ -1,0 +1,45 @@
+<div class="project-container">
+    <div class="heading">
+        <h6 class="my-auto col-lg-9" id="page-title">Boomp Up Challenges</h6>
+        <a routerLink="../projectRegistration" name="addPro" id="addPro" class="btn pt-1 btn-primary my-auto mx-auto" href="#" role="button">
+            <svg class="mx-auto" id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none" />
+        <path id="Path_44" data-name="Path 44"
+          d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z"
+          fill="#fff" />
+      </svg> Add Challenge</a>
+    </div>
+    <div class="cards-div d-flex flex-wrap ms-4">
+        <div class="card-group col-lg-3 mx-2 my-2" *ngFor="let challenge of challenges">
+            <div class="card">
+                <div class="demo-img">
+                    <img class="card-img-top" [src]="challenge.picture.file" alt=" Card image cap">
+                </div>
+                <div class="card-body pl-4">
+                    <h4 class="card-title">{{challenge.title}}</h4>
+                    <ul class="technologies float-left d-flex">
+                        <li *ngFor="let tech of challenge.technologies" class="tech">{{tech}}</li>
+                    </ul>
+                    <div class="Group-profile">
+                        <div class="profile d-flex">
+                            <img class="profile-avatar" [src]=challenge.postedBy.profilePicture alt="Card image cap">
+                            <h6 class="groupname mt-3 mx-2">By {{challenge.postedBy.Username}}</h6>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <p class="project-description-text">
+                            {{challenge.description}}
+
+                        </p>
+                    </div>
+                    <div class="link-to-pro text-center">
+                    <a name="viewMoreBtn" class="btn viewMoreBtn" routerLink="../challenges/{{challenge._id}}" role="button">
+                        Join Challenge</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>

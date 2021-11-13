@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import jwt_decode from 'jwt-decode';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +24,7 @@ export class CodeamaService {
   }
   getcodeamas(){
     return this.http.get(this.url)
-  }
+  }   
 
   baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;
 
@@ -37,8 +36,8 @@ export class CodeamaService {
     return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/unfollow/${unfollowerId}`, {headers: this.headers});
   }
 
-  askama(question){
-    return this.http.post(`https://codeama-backend.herokuapp.com/ask_question`, {question : question } , { headers: this.headers })
+  askama(question:FormData){
+    return this.http.post(`https://codeama-backend.herokuapp.com/codeama/questions`,  question  , { headers: this.headers })
   } 
 
   savecodeama(data:FormData) {

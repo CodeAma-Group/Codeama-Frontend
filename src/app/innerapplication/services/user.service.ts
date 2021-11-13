@@ -12,6 +12,7 @@ export class UserService {
 	token: string = localStorage.getItem('codeama_auth_token');
 	userData: any = jwt_decode(this.token)
 	userId: string = this.userData._id;
+	userProfileData:any;
 
 	getUserEntireProfileData(token: string) {
 		return this.http.get(`https://codeama-backend.herokuapp.com/users/${token}`)
