@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
 import jwt_decode from 'jwt-decode';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { NotifierService } from 'angular-notifier';
+import { UserService } from '../services/user.service';
+import { decode } from 'querystring';
 const url = require("url")
 
 @Component({
   selector: 'app-answer-question',
   templateUrl: './answer-question.component.html',
-  styleUrls: ['./answer-question.component.scss']
+  styleUrls: ['./answer-question.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AnswerQuestionComponent implements OnInit {
   htmlContent = '';
-
+  userData: any = {};
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -24,7 +27,7 @@ export class AnswerQuestionComponent implements OnInit {
     translate: 'no',
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Poppins',
-    defaultFontSize: '2',
+    defaultFontSize: '3',
     fonts: [
       { class: 'arial', name: 'Arial' },
       { class: 'Roboto', name: 'Roboto' },
@@ -39,10 +42,10 @@ export class AnswerQuestionComponent implements OnInit {
         'indent',
         'outdent',
         'heading',
-        'fontName',
       ],
       [
-        'fontSize',
+        "fontName",
+        "fontSize",
         'textColor',
         'backgroundColor',
         'customClasses',
@@ -67,18 +70,23 @@ export class AnswerQuestionComponent implements OnInit {
       },
     ],
   };
+
   public qtnId
   public questions: any[] = []
   public question
   answer
   isSubmitting: boolean = false
   public newAnsArray: any[] = []
-  constructor(private backendService: InnerapplicationService,private spinner:NgxSpinnerService, private formBuilder: FormBuilder, private notifier: NotifierService) { 
+  constructor(private backendService: InnerapplicationService,private spinner:NgxSpinnerService, private formBuilder: FormBuilder, private notifier: NotifierService, private _userService: UserService) { 
     this.spinner.show()
     this.answer = this.formBuilder.group({
       answer: ["",[Validators.required]]
     })
     this.qtnId = url.parse(location.href, true).query.qtnId
+    let decoded: any = jwt_decode(localStorage.codeama_auth_token)
+    this._userService.getUserEntireProfileData(decoded._id).subscribe((res: any) => {
+      this.userData = res.data
+    })
     this.backendService.getQuestions().subscribe(data => {
       this.questions = data;
       this.question = this.questions.filter(qtn => qtn.questionDetails._id == this.qtnId)[0]
@@ -113,7 +121,8 @@ export class AnswerQuestionComponent implements OnInit {
   answerQue(e: Event){
     e.preventDefault();
     this.isSubmitting = true;
-    var decoded: any = jwt_decode(localStorage.codeama_auth_token)
+    var decoded: any = jwt_decode(localStorage.codeama_auth_token);
+    decoded.profilePicture = this.userData.profilePicture
     let newComment = {
       comments: {
         questionId: this.question.questionDetails._id,
@@ -131,8 +140,9 @@ export class AnswerQuestionComponent implements OnInit {
         this.notifier.notify("success","Thanks for your answer!")
         this.newAnsArray.push({
           profilePicture:decoded.profilePicture,
-          Username: decoded.Username,
-          text_comment: this.answer.value.answer
+          Username: decoded.username,
+          text_comment: this.answer.value.answer,
+          Badge: decoded.Badge
         })
         this.isSubmitting = false
       },
