@@ -1,3 +1,53 @@
-<div class="main">
-        <p>{{componentText}}</p>
-</div>
+<div class="users-table mt-4">
+        <div class="user-table-head col-12 row d-flex justify-content-around shadow-sm align-items-center pt-4">
+          <div class="input-wrapper">
+            <input
+              mdbCheckbox
+              class="form-check-input table-head-input"
+              type="checkbox"
+              value=""
+            />
+          </div>
+          <p class="col-1 table-h1">Avatar</p>
+          <p class="col-2 table-h1">Username</p>
+          <p class="col-2 table-h1">Email Address</p>
+          <p class="col-2 table-h1">Location</p>
+          <p class="col-1 table-h1">Badge</p>
+          <p class="col-2 table-h1">Joined on</p>
+          <p class="col-1 table-h1">Action</p>
+        </div>
+        <ngx-skeleton-loader count="10" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+        <div class="user-table-content col-12 row d-flex flex-wrap justify-content-around shadow-sm align-items-center pt-4" *ngFor="let user of users | paginate:{itemsPerPage:5, currentPage: p}" >
+          <div class="input-wrapper">
+              <input
+              mdbCheckbox
+              class="form-check-input"
+              type="checkbox"
+              value=""
+            />
+          </div>
+          <div class="col-1 table-h1 avatar">
+            <img [src]="user.profilePicture" alt="profile" srcset="">
+          </div>
+          <p class="col-2 table-h2">{{user.Username}}</p>
+          <p class="col-2 table-h2">{{user.Email}}</p>
+          <p class="col-2 table-h2">{{user.Location? user.Location: 'Not specified'}}</p>
+          <p class="col-1 table-h2 {{checkBadge(user.Badge)}}">{{user.Badge}}</p>
+          <p class="col-2 table-h2">{{user.CreatedAt | date}}</p>
+          <p class="col-1 table-h2">
+            <svg id="delete-bin-2-line" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" class="label-icons">
+              <path id="Path_230" data-name="Path 230" d="M0,0H28V28H0Z" fill="none"/>
+              <path id="Path_231" data-name="Path 231" d="M20,6.8h6V9.2H23.6V24.8A1.2,1.2,0,0,1,22.4,26H5.6a1.2,1.2,0,0,1-1.2-1.2V9.2H2V6.8H8V3.2A1.2,1.2,0,0,1,9.2,2h9.6A1.2,1.2,0,0,1,20,3.2Zm1.2,2.4H6.8V23.6H21.2Zm-5.5,7.2,2.122,2.122-1.7,1.7L14,18.1l-2.122,2.122-1.7-1.7L12.3,16.4l-2.122-2.122,1.7-1.7L14,14.7l2.122-2.122,1.7,1.7Zm-5.3-12V6.8h7.2V4.4Z" fill="#ff4019"/>
+            </svg>
+          </p>
+        </div>
+        <pagination-controls 
+                    (pageChange)="p  =$event"
+                    directionLinks="true"
+                    autoHide="true"
+                    previousLabel=""
+                    nextLabel=""
+                    class="p-3 table-pagination"
+                    ></pagination-controls>
+      </div>
+    
