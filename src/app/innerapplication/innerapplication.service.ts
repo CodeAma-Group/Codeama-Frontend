@@ -72,7 +72,7 @@ export class InnerapplicationService {
               resourceKind: data[i].resourceType,
               resourceLink: "https://" + data[i].link || location.href,
               desc: data[i].description,
-              likes: data[i].likes,
+              Likes: data[i].Likes,
               date_updated: data[i].updatedAt,
               resource_img: data[i].thumbnailUrl,
               comments: data[i].comments,
@@ -115,7 +115,7 @@ export class InnerapplicationService {
               question: data[i].question.question_title,              
               desc: data[i].question.question_description,
               text_qtn: data[i].question.text_question,
-              likes: data[i].likes,
+              likes: data[i].Likes,
               date_updated: data[i].date,
               question_img: data[i].question.image_question,
               tagged_tech,
@@ -147,7 +147,7 @@ export class InnerapplicationService {
   }
 
 public answerQuestion(body){
-    return this.http.post<Observable<any>>(this.base + "answerPostedQuestion", {comments: body})
+    return this.http.post<Observable<any>>(this.base + "answerPostedQuestion", body)
   }
 
   public viewArticle(article){
@@ -160,6 +160,14 @@ public answerQuestion(body){
 
   public viewArticleComments(id){
     return this.http.get<Observable<any>>(this.base + "comment/"+id)
+  }
+
+  public likeUnlikeResource(id){
+    return this.http.patch(this.base+"resources/like/"+id, {}, {
+      headers: {
+        "Authorization": localStorage.codeama_auth_token
+      }
+    })
   }
 
 }
