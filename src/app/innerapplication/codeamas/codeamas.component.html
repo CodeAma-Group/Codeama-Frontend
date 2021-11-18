@@ -51,7 +51,7 @@
                             <p *ngIf="code.codeama._id == userId; else checkFollow"></p>
                         </div>
                         <ng-template #checkFollow>
-                            <button *ngIf="code.codeama.Following.includes(userId); else Follow" class="btn-primary btn" type="button" (click)="removeFollower(code.codeama._id)">
+                            <button *ngIf="code.codeama.Followers.includes(userId); else Follow" class="btn-primary btn" type="button" (click)="removeFollower(code.codeama._id)">
                                 <span *ngIf="loading && unfollower == code.codeama._id" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 <span > Unfollow</span>
                             </button>
