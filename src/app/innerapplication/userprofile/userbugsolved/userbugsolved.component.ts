@@ -68,8 +68,8 @@ export class UserbugsolvedComponent implements OnInit {
         this.noBugsStatus = true;
       }
       this.loadingData = false;
-
     });
+    console.log(this.bugs)
   }
   checkBadge(badge: string) {
     let className: string = '';
