@@ -26,9 +26,10 @@ export class UserresourcesComponent implements OnInit {
 		this._settings.settings();
 	
 		this.backendService.getResourcesOfLoggedInUser().subscribe((data: any[]) => {
+			console.log("Here")
+			console.log(data)
 			this.resources = data
 		})
-		console.log(this.resources)
 	}
 
 }
