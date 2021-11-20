@@ -170,4 +170,44 @@ public answerQuestion(body){
     })
   }
 
+  public getResourcesOfLoggedInUser(){
+    let resources = <Observable<any[]>>this.http.get(this.base+"user/resources", {
+      headers: {
+        "Authorization": localStorage.codeama_auth_token
+      },
+    })
+    .pipe(
+      pluck("data", "docs"),
+      map((data: any[]) => {
+        var resourcesArray: any[] = [];
+        for(let i=0; i<data.length; i++){
+          var singleArt: any = {
+            devDetails: {
+              pic: data[i].ownerId?.profilePicture,
+              username: data[i].ownerId?.Username,
+              names: data[i].ownerId?.Username,
+              badge: data[i].ownerId?.Badge,
+              _id: data[i].ownerId?._id
+            },
+            resourceDetails: {
+              resource: data[i].title,
+              resourceKind: data[i].resourceType,
+              resourceLink: "https://" + data[i].link || location.href,
+              desc: data[i].description,
+              Likes: data[i].Likes,
+              date_updated: data[i].updatedAt,
+              resource_img: data[i].thumbnailUrl,
+              comments: data[i].comments,
+              _id: data[i]._id
+            }
+          }
+          resourcesArray.push(singleArt)
+        }
+        resourcesArray = resourcesArray.reverse()
+        return resourcesArray
+      })
+    )
+    return resources
+  }
+
 }

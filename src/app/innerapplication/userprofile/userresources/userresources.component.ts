@@ -14,7 +14,7 @@ export class UserresourcesComponent implements OnInit {
 
   constructor(private backendService: InnerapplicationService, private activatedRoute: ActivatedRoute, private authService: AuthService, private _settings: AppsettingsService, private _userService: UserService, private router: Router) { }
 
-	articles: any;
+	resources: any;
 	_id: string;
   
 	ngOnInit(): void {
@@ -23,13 +23,10 @@ export class UserresourcesComponent implements OnInit {
 		let user:any = jwt_decode(token);
 
 		this._id = user._id;
-
-    // this._id = this.activatedRoute.snapshot.paramMap.get('user');
-    // console.error(this._id)
 		this._settings.settings();
 	
-		this.backendService.getQuestions().subscribe((data: any[]) => {
-			this.articles = data
+		this.backendService.getResourcesOfLoggedInUser().subscribe((data: any[]) => {
+			this.resources = data
 		})
 	}
 
