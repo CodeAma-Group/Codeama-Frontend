@@ -7,17 +7,17 @@
     <div class="question-info d-flex mt-2 px-5">
         <div class="question-details col-lg-7 mr-2 ">
             <div class="question-title ">
-                <a class="q-heading my-3 bug-title" routerLink="../../bug-details/{{bug.bug._id}}/{{bug.userInfo._id}}">{{bug.bug.bug_title}}</a>
+                <a class="q-heading my-3 bug-title" routerLink="../../bug-details/{{bug._id}}/{{bug.userInfo._id}}">{{bug.bug_title}}</a>
             </div>
             <div class="question-description">
-                <div [innerHTML]="bug.bug.bug_description.substring(0,200)" class="description d-inline"></div>
+                <div [innerHTML]="bug.bug_description.substring(0,200)" class="description d-inline"></div>
                 <span class="ms-1 d-inline">.......</span>
             </div>
         </div>
         <div class="tagged-technologies col-lg-4 my-2 mx-auto ">
             <div class="heading text-center my-3 ">Tagged Technology</div>
             <div class="technologies d-flex mx-auto col-lg-11 ">
-                <img [src]="checkTechImage(bug.bug.tagged_technologies)" class="technology my-auto mx-auto">
+                <img [src]="checkTechImage(bug.tagged_technologies)" class="technology my-auto mx-auto">
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
           transform="translate(0) " fill="#212f3d " />
       </svg>
             <p class="commentsNumber ">
-                {{bug.bug.comments.length}}
+                {{bug.comments.length}}
             </p>
         </div>
     </div>
