@@ -35,7 +35,11 @@ export class UserService {
 	}
 
 	getBugsSolvedBySingleUser() {
-		return this.http.get(`https://codeama-backend.herokuapp.com/solved_bugs/${this.userId}`)
+		return this.http.get(`https://codeama-backend.herokuapp.com/user/bugs`,{
+			headers: {
+			  "Authorization": localStorage.codeama_auth_token
+			}
+		  })
 	}
 
 	getAskedQuestionsBySingleUser() {

@@ -28,9 +28,6 @@ export class UseraskedComponent implements OnInit {
 		let user:any = jwt_decode(token);
 
 		this._id = user._id;
-
-    // this._id = this.activatedRoute.snapshot.paramMap.get('user');
-    // console.error(this._id)
 		
 		this._settings.settings();
 		this._settings.settings();
@@ -42,8 +39,6 @@ export class UseraskedComponent implements OnInit {
 	
 		this._userService.getAskedQuestionsBySingleUser().subscribe((res: any) => {
 			this.questions = res.data
-			console.log(this.questions)
-
 			this.loadingData = false;
 
 			if (this.questions.length == 0) {

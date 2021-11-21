@@ -27,7 +27,7 @@ export class ProjectRegistrationComponent implements OnInit {
       logo: ['', [Validators.required]],
       features: this.formBuilder.array([]),
       technologies: this.formBuilder.array([]),
-      thumbnails: [{}],
+      thumbnails: this.formBuilder.array([]),
     });
   }
   public options = [
@@ -83,7 +83,6 @@ export class ProjectRegistrationComponent implements OnInit {
 
   urls = new Array<string>();
   thumbnails = [];
-  thumbnailsUrls = [];
   Show: boolean = false;
   detectFiles(event) {
     this.urls = [];
@@ -104,8 +103,6 @@ export class ProjectRegistrationComponent implements OnInit {
         };
         reader.readAsDataURL(file);
       }
-      this.thumbnailsUrls = files;
-      this.newProject.get('thumbnails').setValue(files)
     }
   }
   uploadFile() {
@@ -188,16 +185,10 @@ export class ProjectRegistrationComponent implements OnInit {
       ProjectData.append('technologies', `${this.techs}`);
     }
     if (
-
       this.thumbnails != null ||
       this.thumbnails.length != 0
     ) {
       ProjectData.append('thumbnails', this.thumbnails);
-      Object.keys(this.newProject.value.thumbnails).length != 0
-    ) {
-      for(let thumbnailUrl of this.thumbnailsUrls){
-        ProjectData.append('thumbnails',thumbnailUrl);
-      }
     }
     if (
       this.newProject.value.teamName != null ||
@@ -289,6 +280,36 @@ export class ProjectRegistrationComponent implements OnInit {
         root.style.setProperty('--mainBlack', '#ffffff');
         root.style.setProperty('--inputWhite', '#141B30');
       }
+    }
+  }
+  async modeChange() {
+    var cookieName = 'isDark';
+    var matchCookie = await document.cookie.match(
+      new RegExp('(^| )' + cookieName + '=([^;]+)')
+    );
+    if (matchCookie) {
+      this.cookieVal = matchCookie[2];
+      console.log(matchCookie[2]);
+    } else {
+      // document.cookie = "isDark=false; path=/; max-age=" + 365*24*60*60;
+      // this.cookieVal = "false";
+      alert(
+        'Make sure your cookies are enabled because we use cookies to keep track of your settings on the devices!'
+      );
+    }
+
+    if (this.cookieVal == 'true') {
+      let root = document.documentElement;
+      root.style.setProperty('--pureWhite', '--pureWhite');
+      root.style.setProperty('--mainBlack', '--pureWhite');
+
+      document.cookie = 'isDark=false; path=/; max-age=' + 365 * 24 * 60 * 60;
+    } else {
+      let root = document.documentElement;
+      root.style.setProperty('--pureWhite', '#0D0E1A');
+      root.style.setProperty('--mainBlack', '#ffffff');
+
+      document.cookie = 'isDark=true; path=/; max-age=' + 365 * 24 * 60 * 60;
     }
   }
 }

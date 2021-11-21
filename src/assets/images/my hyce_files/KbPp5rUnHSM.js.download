@@ -1,3 +1,0 @@
-if (self.CavalryLogger) { CavalryLogger.start_js(["PwSp5Yo"]); }
-
-__d("createCometUFIReputationSystemComposerPluginForOutline",["react"],(function(a,b,c,d,e,f,g){"use strict";var h=d("react").useEffect;function i(a){var b=a.isInlineVoteEnabled;a=a.pluginProps;var c=a.depth,d=a.setComposerState;h(function(){d(function(){return{isInlineVoteEnabledForQnA:b&&c===0}})},[b,c,d]);return null}function a(a){return{above:null,action:null,below:i,id:"reputation_system",inside:null,props:a}}g["default"]=a}),98);
