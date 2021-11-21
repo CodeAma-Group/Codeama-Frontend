@@ -282,7 +282,6 @@ export class ProjectRegistrationComponent implements OnInit {
       }
     }
   }
-
   async modeChange() {
     var cookieName = 'isDark';
     var matchCookie = await document.cookie.match(
