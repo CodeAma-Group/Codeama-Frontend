@@ -24,8 +24,6 @@ export class AdminGroupComponent implements OnInit {
     this.administrationService.getAllUsers().subscribe(res => {
       for(let i =0; i<res.data.length; i++){
         if(res.data[i].Badge == "admin"){
-          console.log("Hellllo");
-          console.log("data of:",res.data[i])
           this.users.push(res.data[i]);
         }
       }
