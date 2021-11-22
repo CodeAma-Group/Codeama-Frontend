@@ -72,19 +72,25 @@
         
         .image-or-video-onstage>img {
             width: 100%;
-            height: 68vh;
             padding: 20px;
+            position: relative;
+            /* bottom: 2em; */
             border-radius: 5px!important;
-        }
-        
-        .image-or-video-onstage {
-            width: 100%;
-            height: 27em;
         }
         
         .comment-input-box {
             background-color: #EBF1FA;
             padding-left: 2em;
+        }
+        
+        .commenter-profile>img {
+            border-radius: 40px;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .commenter-profile {
+            display: flex;
         }
         
         .feedback-form {

@@ -42,10 +42,8 @@ export class AddArticleComponent implements OnInit {
         'indent',
         'outdent',
         'heading',
-        'fontName',
       ],
       [
-        'fontSize',
         'textColor',
         'backgroundColor',
         'customClasses',

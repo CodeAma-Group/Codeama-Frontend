@@ -106,8 +106,14 @@ $bg_color: var(--contBgLight);
             }
             p {
                 font-size: .8em;
-                opacity: .65;
                 width: 80%;
+
+                img {
+                    max-width: 30%;
+                    border-radius: 10px;
+                    display: block;
+                    margin: 5px;
+                }
             }
         }
         >div:nth-of-type(2) {

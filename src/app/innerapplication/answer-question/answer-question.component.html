@@ -46,10 +46,6 @@
         <form class="answer_section justify-content-between align-items-end" [formGroup]="answer" (ngSubmit)="answerQue($event)">
             <div class="answer">
                 <label for="qtn_ans" class="mb-2">Answer question</label>
-                <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
-                    <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
-                    <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
-                </svg>
                 <angular-editor [(ngModel)]="htmlContent" formControlName="answer" [config]="config "></angular-editor>
             </div>
             <div class="ms-auto" style="width: 23%;">
@@ -58,12 +54,12 @@
         </form>
     </main>
     <section class="comments_section mt-5 px-3">
-        <p>Answers section &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>{{question.questionDetails.comments.length}} answers</span></p>
+        <p>Answers &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>{{question.questionDetails.comments.length}} answers</span></p>
         <div *ngFor="let comment of question.questionDetails.comments">
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img [src]="'https://codeama-backend.herokuapp.com/'+getSolver(comment.solver).profilePicture" alt="">
+                        <img [src]="getSolver(comment.solver).profilePicture" alt="">
                     </div>
                 </figure>
                 <div>
@@ -73,16 +69,15 @@
                     <span>{{getSolver(comment.solver).Username}}.codeama.net</span>
                 </div>
             </div>
-            <div [innerHTML]="comment.comment[0].text_comment" class="description d-inline"></div>
+            <p [innerHTML]="comment.comment[0].text_comment" class="description d-inline"></p>
             <hr>
         </div>
         <div *ngFor="let comment of newAnsArray">
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img [src]="'https://codeama-backend.herokuapp.com/'+comment.profilePicture" alt="">
+                        <img [src]="comment.profilePicture" alt="">
                     </div>
-                    <figcaption class="{{checkBadge(comment.Badge)}} rounded-pill">{{comment.Badge}}</figcaption>
                 </figure>
                 <div>
                     <p>
@@ -92,23 +87,6 @@
                 </div>
             </div>
             <p [innerHTML]="comment.text_comment"></p>
-            <hr>
-        </div>
-        <div *ngFor="let comment of newAnsArray">
-            <div class="dev_details" class="d-flex">
-                <figure class="position-relative d-flex justify-content-center">
-                    <div>
-                        <img [src]="'https://codeama-backend.herokuapp.com/'+comment.profilePicture" alt="">
-                    </div>
-                </figure>
-                <div>
-                    <p>
-                        <strong>{{comment.Username}}</strong>
-                    </p>
-                    <span>{{comment.Username}}.codeama.net</span>
-                </div>
-            </div>
-            <p>{{comment.text_comment}}</p>
             <hr>
         </div>
     </section>

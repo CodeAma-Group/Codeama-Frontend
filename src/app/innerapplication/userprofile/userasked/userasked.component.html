@@ -7,25 +7,6 @@
 <div class="questionsDetails" *ngFor="let question of questions">
     <div>
         <div>
-            <!-- comments: Array(0)
-length: 0
-[[Prototype]]: Array(0)
-questions: Array(1)
-0:
-code_snippet: null
-date: "2021-10-16T19:20:31.330Z"
-image_question: null
-question_description: "The following command uses the Angular CLI to generate a basic Angular application with an application routing module, called AppRoutingModule"
-question_title: "Angular routing procedures"
-tagged_technologies: "Javascript,Typescript,Angular"
-text_question: null
-_id: "616b25ffa2e441002319ebf5"
-[[Prototype]]: Object
-length: 1
-[[Prototype]]: Array(0)
-userId: "61407b0ebd4cf70023c587f0"
-__v: 0
-_id: "616b25ffa2e441002319ebf4" -->
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
@@ -37,12 +18,12 @@ _id: "616b25ffa2e441002319ebf4" -->
                     <p>
                         <strong>{{Username}}</strong><span>@{{Username}}</span>
                     </p>
-                    {{question.questions[0].date | date:"longDate"}}
+                    {{question.date | date:"longDate"}}
                 </div>
             </div>
             <div class="question_details">
-                <h5><a [href]="answerQuestionLink + question.questions[0].question_title" class="text-decoration-none"><strong>{{question.questions[0].question_title}}</strong></a></h5>
-                <div [innerHTML]="question.questions[0].question_description" id="div_desc"></div>
+                <h5><a [href]="answerQuestionLink + question.question_title" class="text-decoration-none"><strong>{{question.question_title}}</strong></a></h5>
+                <div [innerHTML]="question.question_description" id="div_desc"></div>
             </div>
             <p id="dev_username">{{Username}}.codeama.dev</p>
             <div class="question_views">
@@ -54,7 +35,7 @@ _id: "616b25ffa2e441002319ebf4" -->
         <div style="width: 40%; font-size: .9em;">
             <h6 class=" text-center">Tagged technologies</h6>
             <div class=" d-flex justify-content-center flex-wrap">
-                <img *ngFor="let tagtech of question.questions[0].tagged_technologies" [src]="'assets/test_images/'+tagtech+'.png'" alt="" style="display: inline; width: auto; height: 40px; margin-right: 10px;" class="mt-2">
+                <img *ngFor="let tagtech of question.tagged_technologies" [src]="'assets/test_images/'+tagtech+'.png'" alt="" style="display: inline; width: auto; height: 40px; margin-right: 10px;" class="mt-2">
             </div>
         </div>
     </div>

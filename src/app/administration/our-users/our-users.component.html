@@ -67,32 +67,17 @@
         </div>
         <div class="users-table mt-4">
           <div class="user-table-head col-12 row d-flex justify-content-around shadow-sm align-items-center pt-4">
-            <div class="input-wrapper">
-              <input
-                mdbCheckbox
-                class="form-check-input table-head-input"
-                type="checkbox"
-                value=""
-              />
-            </div>
             <p class="col-1 table-h1">Avatar</p>
             <p class="col-2 table-h1">Username</p>
             <p class="col-2 table-h1">Email Address</p>
             <p class="col-2 table-h1">Location</p>
             <p class="col-1 table-h1">Badge</p>
+            <p class="col-1 table-h1">Validated</p>
             <p class="col-2 table-h1">Joined on</p>
             <p class="col-1 table-h1">Action</p>
           </div>
           <ngx-skeleton-loader count="10" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
           <div class="user-table-content col-12 row d-flex flex-wrap justify-content-around shadow-sm align-items-center pt-4" *ngFor="let user of users | paginate:{itemsPerPage:5, currentPage: p}" >
-            <div class="input-wrapper">
-                <input
-                mdbCheckbox
-                class="form-check-input"
-                type="checkbox"
-                value=""
-              />
-            </div>
             <div class="col-1 table-h1 avatar">
               <img [src]="user.profilePicture" alt="profile" srcset="">
             </div>
@@ -100,6 +85,7 @@
             <p class="col-2 table-h2">{{user.Email}}</p>
             <p class="col-2 table-h2">{{user.Location? user.Location: 'Not specified'}}</p>
             <p class="col-1 table-h2 {{checkBadge(user.Badge)}}">{{user.Badge}}</p>
+            <p class="col-1 table-h2">{{user.isValidated}}</p>
             <p class="col-2 table-h2">{{user.CreatedAt | date}}</p>
             <p class="col-1 table-h2">
               <svg id="delete-bin-2-line" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" class="label-icons">

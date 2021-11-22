@@ -52,7 +52,6 @@ export class AddQuestionComponent implements OnInit {
         'fontName',
       ],
       [
-        'fontSize',
         'textColor',
         'backgroundColor',
         'customClasses',
