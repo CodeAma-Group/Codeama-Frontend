@@ -22,8 +22,13 @@ export class AdminGroupComponent implements OnInit {
 
   getAllUsers() {
     this.administrationService.getAllUsers().subscribe(res => {
-      this.users = res.data;
-      console.log(res.data);
+      for(let i =0; i<res.data.length; i++){
+        if(res.data[i].Badge == "admin"){
+          console.log("Hellllo");
+          console.log("data of:",res.data[i])
+          this.users.push(res.data[i]);
+        }
+      }
       this.loader = false;
     })
   }
@@ -51,7 +56,6 @@ export class AdminGroupComponent implements OnInit {
           count++;
         }
     }
-    console.log(count);
     return count;
   }
   allUsersNumber(){
