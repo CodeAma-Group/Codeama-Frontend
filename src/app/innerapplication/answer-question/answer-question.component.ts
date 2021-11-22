@@ -134,7 +134,6 @@ export class AnswerQuestionComponent implements OnInit {
         this.isSubmitting = false
       },
       error => {
-        console.log(error)
         this.notifier.notify("error","An unkown error occured!")
         this.isSubmitting = false
       }
