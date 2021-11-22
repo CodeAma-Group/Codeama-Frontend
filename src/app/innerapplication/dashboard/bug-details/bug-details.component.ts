@@ -123,7 +123,6 @@ export class BugDetailsComponent implements OnInit {
         if(this.bugId){
           this.bug.commentBug(data).subscribe((res) => {
            this.hasSubmitted = false;
-            console.log(res);
             this.comments = "";
             this.viewBugComments(this.bugId);
             this.clickComment = false;
@@ -134,7 +133,6 @@ export class BugDetailsComponent implements OnInit {
 
   viewBugComments(id){
     this.bug.viewBugComments(id).subscribe((res:any)=>{
-      console.log(res.data)
       this.bugComments = res.data;
     })
   }
@@ -152,7 +150,6 @@ export class BugDetailsComponent implements OnInit {
         this.spinner.hide();
         this.bugId = this.bugs[0].bug._id;
         this.viewBugComments(this.bugs[0].bug._id);
-        console.log(this.bugs);
       });
   }
   checkBadge(badge: string) {
@@ -176,8 +173,6 @@ export class BugDetailsComponent implements OnInit {
   userId = this.token._id;
   comment;
   saveComment() {
-    console.warn('reaching in function');
-
     this.comment = {
       bugId: this.bugId,
       userId: this.userId,
