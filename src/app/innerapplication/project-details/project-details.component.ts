@@ -21,7 +21,8 @@ export class ProjectDetailsComponent implements OnInit {
   projectImages = [];
   ProjectImageOnStage: string = '';
   projectData: any;
-  projectComments: any ;
+  projectComments:Array<any>=[];
+  pendingComments:Array<any>;
   ngOnInit(): void {
     this.spinner.show();
     this.project.getProject(this.router.snapshot.params.id).subscribe((res) => {
@@ -33,11 +34,11 @@ export class ProjectDetailsComponent implements OnInit {
     });
     this.ProjectComments.getProjectComments(
       this.router.snapshot.params.id
-    ).subscribe((res) => {
+    ).subscribe((res:any) => {
       try {
-        this.projectComments = res;
-        this.projectComments = this.projectComments.data;
-        console.log(this.projectComments);
+        for (let i = res.data.length-1; i >=0; i--) {
+          this.projectComments.push(res.data[i]);
+        }
       } catch (error) {
         this.notifier.notify(
           'error',
@@ -55,8 +56,8 @@ export class ProjectDetailsComponent implements OnInit {
   hasSubmitted = false;
   addComment(comment: any) {
     if (comment.comments.trim().length > 10) {
+      // this.pendingComments.push(comment.comments)
       this.hasSubmitted = true;
-
       let decoded: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
       let data = {
         content: comment.comments,
@@ -66,9 +67,11 @@ export class ProjectDetailsComponent implements OnInit {
       };
       this.ProjectComments.commentOnProject(data).subscribe((res) => {
         try {
-          this.comment = '';
+          this.hasSubmitted=false;
+          comment.comments = '';
           this.notifier.notify('success', 'Comment posted successfully');
         } catch (error) {
+          this.hasSubmitted=false;
           this.notifier.notify(
             'error',
             'An error occured while posting the comment'
