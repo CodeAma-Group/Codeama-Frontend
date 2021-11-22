@@ -26,7 +26,6 @@ export class OurUsersComponent implements OnInit {
     })
   }
   checkBadge(badge: string) {
-    console.log("Here")
     console.log(badge);
     let className: string = ""
     switch (badge.toLowerCase()) {

@@ -12,4 +12,11 @@ export class AdministrationService {
   public getAllUsers(){
     return <Observable<any>>this.http.get(this.baseUrl + "users/list/all")
 }
+  public getAllCodeamas(){
+    return <Observable<any>>this.http.get(this.baseUrl + "codeama");
+}
+
+  // public getAllAdmins(){
+  //   return <Observable<any>>this.http.get(this.baseUrl + "admins");
+  // }
 }
