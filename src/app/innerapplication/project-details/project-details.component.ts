@@ -68,7 +68,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.ProjectComments.commentOnProject(data).subscribe((res) => {
         try {
           this.hasSubmitted=false;
-          comment.comments = '';
+          comment.comments = "";
           this.notifier.notify('success', 'Comment posted successfully');
         } catch (error) {
           this.hasSubmitted=false;
