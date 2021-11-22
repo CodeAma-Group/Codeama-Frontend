@@ -1,0 +1,25 @@
+p {
+  margin-bottom: 0!important;
+}
+
+.other_info_container {
+  width: 34%;
+  height: 31em;
+  background-color: #fff;
+  border-radius: 8px;
+  display: inline-block;
+  float: right!important;
+}
+
+
+.title {
+  font-weight: 400;
+  font-size: 15px;
+  padding: 13px 16px 7px 16px;
+}
+
+.amas_div {
+  width: 94%;
+  margin: 0 auto;
+  margin-bottom: 8px;
+}

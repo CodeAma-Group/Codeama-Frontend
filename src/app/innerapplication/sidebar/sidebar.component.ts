@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../authentication/_authServices/auth.service'
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,15 +11,29 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor( private authService: AuthService, private router: Router ) { }
+  constructor( private authService: AuthService, private router: Router, private notification: NotificationService ) { }
 
   cookieVal:string = "";
 
   userId: string = ''
   userData: any;
-  profileRoute: boolean = true
+  profileRoute: boolean = true;
+  amadata;
+  ama:boolean = false;
+  notRead:number = 0;
 
   ngOnInit(): void {
+
+    this.notification.getNotifications().subscribe((res) =>{
+      this.amadata = res
+      this.amadata = this.amadata.data
+      for(let k=0; k<this.amadata.length; k++){
+        if(this.amadata[k].isRead == false){
+          this.notRead += 1;
+        }
+      }
+      
+    })
     
     var token = this.authService.getToken()
 

@@ -56,7 +56,7 @@
                             <img *ngFor="let url of urls" [src]="url" class="rounded my-2">
                         </div>
                     </div>
-                    <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file" id="OtherImagesUplopad" (change)="detectFiles($event)" multiple #OtherImages>
+                    <input type="file" hidden accept=".png,.mp4,.ogg,.jpg,.jpeg,.webm" name="file[]" id="OtherImagesUplopad" (change)="detectFiles($event)" multiple #OtherImages>
                 </div>
             </div>
             <div class="user-inputs col-lg-6 mx-auto">

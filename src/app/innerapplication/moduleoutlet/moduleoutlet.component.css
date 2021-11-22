@@ -58,29 +58,45 @@
     margin-bottom: 1em;
 }
 
-.searchbox-container {
+.searchbox {
     display: flex;
     justify-content: space-evenly;
     background-color: #F8F9FA;
-    width: 40%;
+    width: 20em;
     border-radius: 8px;
     align-items: center;
+    padding: 10px;
 }
 
-.searchbox-container>img {
+.searchbox-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 20em;
+}
+
+.searchbox>.searchIcon {
     width: 1.5em;
     height: 1.5em;
 }
 
-.searchbox-container>input {
-    height: 50%;
-    width: 90%;
+.searchbox > .cancelIcon{
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+
+.searchbox>input {
+    height: 70%;
+    width: 100%;
     font-family: 'Poppins', sans-serif;
     border: none;
     background-color: inherit;
 }
 
-.searchbox-container>input:focus {
+.searchbox>input:focus {
     border: none;
     outline: none;
 }
@@ -106,4 +122,65 @@
 
 .login {
     background-color: var(--mainBlue) !important;
+}
+
+.suggestions{
+    position: fixed;
+    top: 50px;
+    background-color: #F8F9FA;
+    height: 20em;
+}
+
+.allWords{
+    margin-top: 1em;
+    background-color: #F8F9FA;
+    width: 10em;
+    color: black;
+    padding: 0px 5px;
+    cursor: pointer;
+}
+
+.result{
+    position: absolute;
+    top: 3em;
+    height:auto;
+    overflow-y: scroll;
+    background-color: var(--dimerBlue);
+    width: inherit;
+    z-index: 1;
+    padding: 10px;
+}
+
+.result::-webkit-scrollbar-button{
+    display: none;
+}
+
+.result::-webkit-scrollbar{
+    width: 0.5em;
+    border-radius: 5px;
+    height: 100%;
+    background-color: var(--dimerBlue);
+}
+
+.result::-webkit-scrollbar-thumb{
+    width: 80%;
+    background-color: var(--mainBlue);
+    height: 1em;
+    border-radius: 5px;
+}
+
+.result::-webkit-scrollbar-track{
+    height: 1em;
+}
+
+.showSearch{
+    background: var(--dimerBlue);
+    margin-top: 0.5em;
+    color: black;
+    padding: 0px 20px;
+}   
+
+.search_description{
+    color: gray;
+    font-size: small;
 }

@@ -36,13 +36,12 @@ export class QuestionComponent implements OnInit {
           this.user_detail_class = 'intermediate_details'
     }
 
-    console.log(this.question)
  
  return this.user_detail_class
 }
 
   checkAnswered() {
-    if(this.question.answered) {
+    if(this.question.answer) {
       return 'Yes'
     }else {
       return 'No'

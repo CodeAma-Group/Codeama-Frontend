@@ -23,3 +23,7 @@
   border: 1px solid #198754;
   background-color: #e1ebfb;
 }
+
+.text-start.text-light.text-muted {
+  font-size: .9em;
+}
