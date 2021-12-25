@@ -116,10 +116,7 @@ export class ModuleoutletComponent implements OnInit {
   }
 
   @HostListener('click', ['$event.target']) onClick(target) {
-    console.log(this.elementRef)
     const clicked = this.elementRef.nativeElement 
-    console.log(target)
-    console.log(clicked)
   }
 //   @HostListener('document:click', ['$event.target']) onClick(target) {
 //     const clickedInside = this.elementRef.nativeElement.contains(target);

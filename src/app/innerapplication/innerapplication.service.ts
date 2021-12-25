@@ -32,7 +32,7 @@ export class InnerapplicationService {
             articleDetails: {
               article: data[i].title,
               desc: data[i].description,
-              likes: data[i].likes,
+              Likes: data[i].Likes,
               date_updated: data[i].updatedAt,
               article_img: data[i].thumbnailUrl,
               comments: data[i].comments,
@@ -162,6 +162,9 @@ public answerQuestion(body){
     return this.http.get<Observable<any>>(this.base + "comment/"+id)
   }
 
+  public addLikeToArticle(id){
+    return this.http.patch<Observable<any>>(this.base + "articles/like/" + id, {})
+  }
   public likeUnlikeResource(id){
     return this.http.patch(this.base+"resources/like/"+id, {}, {
       headers: {
