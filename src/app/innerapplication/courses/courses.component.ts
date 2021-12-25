@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import jwtDecode from 'jwt-decode';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
 
@@ -10,6 +11,8 @@ import { InnerapplicationService } from '../innerapplication.service';
 })
 export class CoursesComponent implements OnInit {
   public articles: any[] = []
+  public userData: any;
+  public userId: any;
   constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -18,8 +21,12 @@ export class CoursesComponent implements OnInit {
       this.articles = data
       this.spinner.hide()
     })
+    
+    this.userData = jwtDecode(localStorage.getItem('codeama_auth_token'))
+    this.userId = this.userData._id
   }
 
+  
   checkBadge(badge: string){
     let className:string = ""
     switch(badge.toLowerCase()){
@@ -34,4 +41,26 @@ export class CoursesComponent implements OnInit {
     return className
   }
 
+  checkLike(articleLikeArray:Array<String>){
+    if (articleLikeArray.includes(this.userId)) {
+       return '#4290ed'
+    }
+    else{
+      return '#ffffff'
+    }
+  }
+  addLike(id){
+    this.articles.forEach(article => {
+      if (article.articleDetails._id == id) {
+        this.backendService.addLikeToArticle(id).subscribe(data => 
+          this.backendService.getArticles().subscribe((data: any[]) => {
+            this.articles = data
+          })
+        )
+        // article.articleDetails.likes.push(id)
+      }
+    });
+    // likeArray.push(id)
+    // console.log(likeArray)
+  }
 }
