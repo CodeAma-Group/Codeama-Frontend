@@ -1,3 +1,0 @@
-if (self.CavalryLogger) { CavalryLogger.start_js(["45Dkq1c"]); }
-
-__d("MessengerWellbeingRestrictTappedFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(a,b,c,d,e,f){"use strict";a=b("getFalcoLogPolicy_DO_NOT_USE")("481");c=b("FalcoLoggerInternal").create("messenger_wellbeing_restrict_tapped",a);e.exports=c}),null);

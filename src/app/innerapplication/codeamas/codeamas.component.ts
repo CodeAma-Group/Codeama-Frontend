@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AmaQuestionService } from '../services/ama-question.service';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-codeamas',
   templateUrl: './codeamas.component.html',
@@ -23,7 +24,7 @@ export class CodeamasComponent implements OnInit {
   found: boolean;
   data: any
   nu
-
+  answers:any;
   unfollower;
   follower
   followButton = `Follow`;
@@ -33,52 +34,61 @@ export class CodeamasComponent implements OnInit {
   userData: any = jwt_decode(this.auth_token)
   userId: number = this.userData._id
   questions = [];
+   loading:boolean;
 
   ngOnInit(): void {
     this.spinner.show()
+
     this.codeama.getcodeamas().subscribe((res) => {
       this.codeamaData = res
       this.codeamaData = this.codeamaData.data
       this.found = false;
-
       for (var i = 0; i < this.codeamaData.length; i++) {
         if (this.codeamaData[i].codeama._id == this.userId) {
           this.found = true;
           this.amaId = this.codeamaData[i]._id;
         }
-
         let id = this.codeamaData[i].codeama._id
-
         this.amaQuestionService.getAmaQuestions(id).subscribe((res) => {
           this.nu = res
+          this.answers = this.nu.data
           this.nu = this.nu.data.length
-
-          this.questions.push({ userId: id, question: this.nu })
-
+          let totalAnswers = 0;
+          for(var k=0; k<this.nu; ++k){
+            if(this.answers[k].answer != null){
+              totalAnswers += 1;
+            }
+          }
+          this.questions.push({ userId: id, question: this.nu, answers: totalAnswers})
           this.spinner.hide()
         })
       }
     })
+
   }
 
   addFollower(id) {
+    this.loading = true; 
     this.follow = false
-    this.follower = id
+    this.follower = id;
     this.codeama.updateFollower(this.follower).subscribe((res) => {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
         this.follow = true
+        this.loading = false
       })
     })
   }
 
   removeFollower(id) {
+    this.loading= true;
     this.unfollower = id
     this.codeama.updateUnfollower(this.unfollower).subscribe((res) => {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
+        this.loading = false;
       })
     })
   }
@@ -106,6 +116,7 @@ export class CodeamasComponent implements OnInit {
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
+        
       })
     })
   }

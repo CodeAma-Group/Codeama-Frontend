@@ -28,7 +28,10 @@
                     </div>
 
                     <div class="status col-4 row">
-                        <p class="col"><span>45</span><span class="cl-silver"> of </span>
+                        <p class="col">
+                            <span *ngFor="let ans of asked"><span *ngIf="ans.userId == user.codeama._id">{{ans.answers}}</span></span>
+
+                            <span class="cl-silver"> of </span>
                             <span *ngFor="let nbr of asked"><span *ngIf="nbr.userId == user.codeama._id">{{nbr.question}}</span></span>
                             <span class="cl-silver"> answered</span>
                         </p>
@@ -36,8 +39,14 @@
                     </div>
                     <div class="follow col-1 justify-content-center p-2">
                         <!-- <button *ngIf="user.codeama._id == userId; else checkFollow" class="btn-primary btn" type="button" disabled>+ follow</button>-->
-                        <button *ngIf="following" class="btn-primary btn" type="button" (click)="removeFollower(user.codeama._id)"> Unfollow</button>
-                        <button *ngIf="!following" class="btn-primary btn" type="button" (click)="addFollower(user.codeama._id)"> Follow</button>
+                        <button *ngIf="following" class="btn-primary btn" type="button" (click)="removeFollower(user.codeama._id)">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span *ngIf="!loading"> Unfollow</span>
+                        </button>
+                        <button *ngIf="!following" class="btn-primary btn" type="button" (click)="addFollower(user.codeama._id)">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span *ngIf="!loading"> Follow</span>
+                        </button>
                     </div>
                     <ng-template #Follow>
                     </ng-template>
@@ -55,19 +64,27 @@
             </div>
             <div class="askToAma">
                 <p>Asking a question to <span>{{user.codeama.Username}}</span></p>
-                <form #f="ngForm" (ngSubmit)="askama(f)" class="row px-2 pt-1 cotainer-fluid">
-                    <div class="col-8">
+                <form #f="ngForm" (ngSubmit)="askama(f)" class="row px-2 pt-1 cotainer-fluid" ngNativeValidate>
+                    <div class="col-8 m-b">
                         <div *ngIf="result" class="alert alert-success w-50 text-center fs-6 h-5" role="alert">
-                            {{result.message}}</div>
-
-                        <input ngModel name="userId" #userId="ngModel" type="text" [(ngModel)]="user.codeama._id" required>
-                        <textarea ngModel name="questions" #questions="ngModel" id="ask" cols="120" rows="7" placeholder="Ask question here..." class="border-blue p-3 col " required></textarea>
-
+                            Question asked successfully</div>
+                        <input ngModel name="userId" #userId="ngModel" type="text" [(ngModel)]="user.codeama._id" hidden required>
+                        <input ngModel type="text" name="title" #title="ngModel" placeholder="title of your question" class="border-blue p-2 col " required>
+                        <textarea ngModel name="description" #description="ngModel" id="ask" cols="120" rows="7" placeholder="Your question descriptions ..." class="border-blue p-2 col " required></textarea>
+                        <div class="col-11">
+                            <ngx-codemirror class="col-lg-10" #codemirror="ngModel" [options]="codeMirrorOptions" ngModel name="codemirror">
+                            </ngx-codemirror>
+                        </div>
                     </div>
                     <div class="col-3">
                         <p>Question actions</p>
                         <div class="action mx-auto">
-                            <p><button class="btn btn-primary" type="submit" [disabled]="!questions.valid">Ask question now</button></p>
+                            <p>
+                                <button class="btn btn-primary" type="submit">
+                                <span *ngIf="asking" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span *ngIf="!asking"> Ask question now</span>
+                                </button>
+                            </p>
                             <p><button class="btn btn-dark" type="button" (click)="schedule()">Schedule asking time</button></p>
                         </div>
 
@@ -79,23 +96,28 @@
 
 
             <div class="row question-status mx-auto bg-brur-blue py-5">
-                <div class="col-1 p-2 ms-2 border text-center"><a class="text-dark" href="#"><span class="fw-bold"> 5</span>
-            <br> Views</a></div>
-                <div class="col-1 p-2 ms-2 border text-center"><a class="text-dark" href="#"><span
-              class="fw-bold">Yes</span><br> Answered </a></div>
-                <div class="col-1 p-2 ms-2 border text-center"><a class="text-dark" href="#"><span class="fw-bold">5</span> <br>
-            Comments</a></div>
-                <div class="col-6 px-4">
-                    <p>React app what is the best way to add large text books</p>
-                    <ul class="skills cl-silver">
-                        <li>React</li>
-                        <li>Vue router</li>
-                        <li>Node js</li>
-                        <li>Express</li>
-                        <li>Go lang</li>
-                    </ul>
+                <div class="col-1 p-2 ms-2 border text-center">
+                    <a class="text-dark" href="#"><span class="fw-bold"> {{questionData.views}}</span><br> Views</a>
                 </div>
-                <div class="col-2"><a routerLink="seeQuestion">See question</a></div>
+                <div [className]="questionData.answer ? 'answered col-1 p-2 ms-2 border text-center': 'not_answered col-1 p-2 ms-2 border text-center'">
+                    <a href="#"><span class="fw-bold">{{checkAnswered()}}</span><br> Answered </a>
+                </div>
+                <div class="col-1 p-2 ms-2 border text-center">
+                    <a class="text-dark" href="#"><span class="fw-bold">{{questionData.commentCount}}</span> <br> Comments</a>
+                </div>
+                <div class="col px-4 text-center row">
+                    <div class="col-10">
+                        <p>{{questionData.description}}</p>
+                        <ul class="skills cl-silver">
+                            <li>React</li>
+                            <li>Vue router</li>
+                            <li>Node js</li>
+                            <li>Express</li>
+                            <li>Go lang</li>
+                        </ul>
+                    </div>
+                    <div class="col-2"><a [routerLink]="['/app/question',questionData._id]">See question</a></div>
+                </div>
             </div>
         </div>
 

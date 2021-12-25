@@ -126,3 +126,8 @@ p {
     margin-top: 0;
     margin-bottom: 2px;
 }
+
+.markAsRead {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+}

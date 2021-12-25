@@ -23,8 +23,8 @@
                     <a class="nav-link" routerLink="projects">Projects</a>
                 </li>
             </div>
-            <div class="nav-link-container px-1 mt-2" routerLinkActive="active" routerLink="challenges/6166b4f11fa9420023cd9fb3">
-                <li class="nav-item text-center my-2" routerLink="challenges/6166b4f11fa9420023cd9fb3">
+            <div class="nav-link-container px-1 mt-2" routerLinkActive="active" routerLink="challenges">
+                <li class="nav-item text-center my-2" routerLink="challenges">
                     <svg id="award-line" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
             <path id="Path_15" data-name="Path 15" d="M0,0H35V35H0Z" fill="none" />
             <path id="Path_16" data-name="Path 16"
@@ -32,7 +32,7 @@
               transform="translate(0 0)" fill="#212f3d" />
           </svg>
 
-                    <a class="nav-link" routerLink="challenges/6166b4f11fa9420023cd9fb3">Challenges</a>
+                    <a class="nav-link" routerLink="challenges">Challenges</a>
                 </li>
             </div>
             <div class="nav-link-container px-1 mt-2" routerLinkActive="active" routerLink="codeamas">
@@ -47,11 +47,11 @@
                     <a class="nav-link" routerLink="codeamas">Amas</a>
                 </li>
             </div>
-            <div class="nav-link-container px-1 mt-2" routerLinkActive="active" routerLink="ama/questions">
-                <li class="nav-item text-center my-2" routerLink="ama/questions">
+            <div class="nav-link-container px-1 mt-2" routerLinkActive="active" routerLink="amas/{{userId}}/questions">
+                <li class="nav-item text-center my-2" routerLink="amas/{{userId}}/questions">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path 
                         d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" fill="rgba(76,85,95,1)"/></svg>
-                    <a class="nav-link" routerLink="ama/questions">My Amas</a>
+                    <a class="nav-link" routerLink="amas/{{userId}}/questions">My Amas</a>
                 </li>
             </div>
             <div class="nav-link-container px-1 mt-2" routerLinkActive="active" routerLink="support">
@@ -73,8 +73,8 @@
             <path id="Path_28" data-name="Path 28"
               d="M27.382,14.093c0-5.009-4.424-9.07-9.882-9.07s-9.882,4.061-9.882,9.07V26.186H27.382Zm3.294,13.1.659.806a.7.7,0,0,1,.078.791.834.834,0,0,1-.737.418H4.324a.834.834,0,0,1-.737-.418A.7.7,0,0,1,3.665,28l.659-.806v-13.1C4.324,7.414,10.223,2,17.5,2S30.676,7.414,30.676,14.093ZM13.382,30.721h8.235A3.959,3.959,0,0,1,17.5,34.5a3.959,3.959,0,0,1-4.118-3.779Z"
               transform="translate(0 0)" fill="#212f3d" />
-          </svg>
-                    <a class="nav-link" routerLink="notifications">Notifications</a>
+          </svg><span *ngIf="notRead != 0" class="badge badge-primary badge-pill">{{notRead}}</span>
+                    <a class="nav-link" routerLink="notifications">Notifications </a>
                 </li>
             </div>
 

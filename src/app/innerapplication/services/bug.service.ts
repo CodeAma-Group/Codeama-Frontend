@@ -31,7 +31,7 @@ export class BugService {
   public commentBug(body){
     return this.http.post<Observable<any>>(this.base + "comment", body)
   }
-
+  
   public viewBugComments(id){
     return this.http.get<Observable<any>>(this.base + "comment/"+id)
   }

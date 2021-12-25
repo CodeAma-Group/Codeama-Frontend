@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { InnerapplicationService } from '../innerapplication.service';
 import jwt_decode from 'jwt-decode';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-view-article',
   templateUrl: './view-article.component.html',
-  styleUrls: ['./view-article.component.scss']
+  styleUrls: ['./view-article.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ViewArticleComponent implements OnInit {
 
@@ -34,6 +36,7 @@ export class ViewArticleComponent implements OnInit {
        
         this.backendService.commentArticle(data).subscribe((res) => {
          this.hasSubmitted = false;
+         this.notifier.notify("success","Comment added successfuly!")
           console.log(res);
         })
 
@@ -48,8 +51,6 @@ export class ViewArticleComponent implements OnInit {
   viewArticle(id:any){
     this.backendService.viewArticle(id).subscribe((res:any)=>{
       this.articleInfo = res.data;
-      
-      console.log(res.data)
     })
   }
 
@@ -73,16 +74,16 @@ export class ViewArticleComponent implements OnInit {
     return className
   }
 
-  constructor(private actRoute: ActivatedRoute,private backendService: InnerapplicationService,private spinner:NgxSpinnerService) { }
+  constructor(private actRoute: ActivatedRoute,private backendService: InnerapplicationService,private spinner:NgxSpinnerService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
-
+    this.spinner.show()
     this.actRoute.paramMap.subscribe(params => {
       this.articleId = params.get('articleId');
       this.viewArticle(params.get('articleId'));
       this.viewArticleComments(params.get('articleId'));
     });
-
+    this.spinner.hide()
   }
 
 }

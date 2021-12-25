@@ -23,17 +23,29 @@ export class AskcodeamaComponent implements OnInit {
   questions: any = [];
   size: number;
   response: any;
+  answers:any;
   nu
   auth_token = localStorage.getItem('codeama_auth_token');
   userData: any = jwt_decode(this.auth_token)
   userId: number = this.userData._id
+  id:string = this.userData._id
   data
   result
   asked = []
-  following:boolean = false
-
+  following: boolean = false
+  loading: boolean = false;
+  asking:boolean = false;
+  question:any;
+  questionData:any;
 
   ngOnInit(): void {
+    
+    if(!history.state.data){
+     this.spinner.show() 
+    }else{
+      this.spinner.hide()
+    }
+
     this.spinner.show()
 
     let id = history.state.data;
@@ -44,42 +56,85 @@ export class AskcodeamaComponent implements OnInit {
 
       let questionIdUser = this.user.codeama._id
 
-      let k ;
-      for (k=0; k<this.user.codeama.Following.length; k++){
-        console.log(this.user.codeama.Following[k]);
-        
-        if(this.user.codeama.Following[k] == this.userId){
+      let k;
+      for (k = 0; k < this.user.codeama.Following.length; k++) {
+
+        if (this.user.codeama.Following[k] == this.userId) {
           this.following = true;
         }
-      } 
-      
+      }
+
 
       this.amaQuestion.getAmaQuestions(questionIdUser).subscribe((res) => {
         this.nu = res
-        this.nu = this.nu.data.length
-
-        this.asked.push({ userId: questionIdUser, question: this.nu })
+        this.answers = this.nu.data
         
+        this.nu = this.nu.data.length
+        this.questionData = this.answers[this.nu-1];
+
+        let totalAnswer = 0; 
+        for(let k=0; k<this.nu; k++){
+          if(this.answers[k].answer != null){
+            totalAnswer += 1;
+          }
+        }
+        this.asked.push({ userId: questionIdUser, question: this.nu, answers: totalAnswer})
+
         this.spinner.hide()
       })
     })
   }
 
-
+  codeMirrorOptions: any = {
+    theme: 'cobalt',
+    mode: 'application/ld+json',
+    lineNumbers: true,
+    autocorrect: true,
+    smartIndent: true,
+    lineWrapping: true,
+    readonly: true,
+    foldGutter: true,
+    gutters: [
+      'CodeMirror-linenumbers',
+      'CodeMirror-foldgutter',
+      'CodeMirror-lint-markers',
+    ],
+    autoCloseBrackets: true,
+    automatically: true,
+    matchBrackets: true,
+    lint: true,
+  };
   askama(f: NgForm) {
+    this.asking = true;
 
-    let asked_by = this.userId;
-    console.log(asked_by);
-    
-    this.codeama.askama({
+
+    let amaid = history.state.data;
+
+    const formData = {
       userId: f.form.value.userId,
-      questions: [{
-        asked_by: asked_by,
-        text_question: f.form.value.questions
-      }]
-    }).subscribe((res) => {
-      this.result = res
-      f.form.value.questions.text_question = ""
+      title: f.form.value.title,
+      description: f.form.value.description,
+      askedBy: this.id
+    }
+  
+    this.question = Object.create(formData) 
+    this.question.userId = f.form.value.userId;
+    this.question.title = f.form.value.title;
+    this.question.description = f.form.value.description;
+    this.question.askedBy = this.id;
+    
+    this.codeama.askama(this.question).subscribe((res) => {
+         this.result = res
+         console.log(this.result);
+         this.asking = false;
+         f.reset();
+
+        this.codeama.getamabyId(amaid).subscribe((res) => {
+          this.following = true;
+          this.user = res
+          this.user = this.user.data
+          this.loading = false;
+        })
     })
   }
 
@@ -88,6 +143,7 @@ export class AskcodeamaComponent implements OnInit {
   }
 
   addFollower(id) {
+    this.loading = true;
     let amaid = history.state.data;
     this.follower = id
     this.codeama.updateFollower(this.follower).subscribe((res) => {
@@ -95,11 +151,13 @@ export class AskcodeamaComponent implements OnInit {
         this.following = true;
         this.user = res
         this.user = this.user.data
+        this.loading = false;
       })
     })
   }
 
   removeFollower(id) {
+    this.loading = true;
     let amaid = history.state.data;
     this.unfollower = id
     this.codeama.updateUnfollower(this.unfollower).subscribe((res) => {
@@ -107,7 +165,16 @@ export class AskcodeamaComponent implements OnInit {
         this.following = false;
         this.user = res
         this.user = this.user.data
+        this.loading = false;
       })
     })
+  }
+ 
+  checkAnswered() {
+    if (this.questionData.answer) {
+      return 'Yes'
+    } else {
+      return 'No'
+    }
   }
 }
