@@ -4,3 +4,39 @@
     font-size: 30px;
     color: #4286ED;
 }
+
+.check{
+    width: 23px !important;
+    height: 23px !important;
+}
+
+.profile{
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50%;
+}
+
+.profile>img{
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.notf-text{
+    word-break: break-all !important;
+}
+
+.notific{
+    width: 92%;
+}
+
+.at_{
+    color: gray;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.markAll{
+    font-size: 15px;
+    cursor: pointer;
+}

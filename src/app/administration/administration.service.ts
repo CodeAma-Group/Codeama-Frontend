@@ -16,6 +16,10 @@ export class AdministrationService {
     return <Observable<any>>this.http.get(this.baseUrl + "codeama");
 }
 
+public getAdminNotifications(){
+  return <Observable<any>>this.http.get(this.baseUrl + "admin/notifications");
+}
+
   // public getAllAdmins(){
   //   return <Observable<any>>this.http.get(this.baseUrl + "admins");
   // }

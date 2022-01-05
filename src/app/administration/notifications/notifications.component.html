@@ -1,3 +1,27 @@
     <div class="main">
-        <p>{{componentText}}</p>
+        <div class="notification-container w-100">
+            <div>
+                <p class="text-primary float-end fw-bold markAll">
+                    <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
+                        <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
+                        <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="blue"/>
+                    </svg>
+
+                    Mark all as read</p>
+            </div>
+            <div *ngFor="let notfica of notifications" class="notf bg-white p-3 rounded d-flex w-100 clearfix mb-3">
+            <input type="checkbox" name="" class="form-check-input check mt-5">
+
+            <div class="profile ms-4">
+                <img src="https://res.cloudinary.com/code-ama/image/upload/v1633271231/ykg5nkhzuyr4mpkhrc9n.jpg" alt="Image" class="h-100 w-100">
+            </div>
+
+            <div class="notific ms-3 pe-3">
+                <h6 class="fw-bold">Nossjasjkajsjdakjasdjkasjkdjasdjsakdksadj</h6>
+                <p class="notf-text" [innerHTML]="notfica.Description"></p>
+
+                <p class="at_ mt-4">@someone.codeam.dev</p>
+            </div>
+            </div>
+        </div>
     </div>
