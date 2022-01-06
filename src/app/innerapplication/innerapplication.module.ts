@@ -35,7 +35,7 @@ import { UseransweredComponent } from './userprofile/useranswered/useranswered.c
 import { UseraskedComponent } from './userprofile/userasked/userasked.component';
 import { UserbugsolvedComponent } from './userprofile/userbugsolved/userbugsolved.component';
 import { UserarticlesComponent } from './userprofile/userarticles/userarticles.component';
-import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+// import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BugDetailsComponent } from './dashboard/bug-details/bug-details.component';
 import { AmaQuestionComponent } from './ama-question/ama-question.component';
@@ -56,6 +56,8 @@ import { AmaAnswerQuestionComponent } from './ama-answer-question/ama-answer-que
 import { CardBoxComponent } from './admin/dashboard/card-box/card-box.component';
 import { ActivitiesBoxComponent } from './admin/dashboard/activities-box/activities-box.component';
 import { OtherInfoComponent } from './admin/dashboard/other-info/other-info.component';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -109,7 +111,7 @@ const customNotifierOptions: NotifierOptions = {
     MultiSelectAllModule,
     NgxSpinnerModule,
     NgbModule,
-    NotifierModule.withConfig(customNotifierOptions)
+    NotifierModule.withConfig(customNotifierOptions),
   ],
 })
 export class InnerapplicationModule { }

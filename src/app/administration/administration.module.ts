@@ -20,6 +20,7 @@ import { GraphComponent } from './dashboard/graph/graph.component';
 import { AmaItemComponent } from './dashboard/other-info/ama-item/ama-item.component';
 import { BarChartComponent } from './dashboard/other-info/bar-chart/bar-chart.component';
 import { FormsModule } from '@angular/forms';
+import { NgApexchartsModule } from "ng-apexcharts";
 @NgModule({
   declarations: [SidebarComponent, DashboardComponent, OurUsersComponent, CodeamasComponent, ModuleoutletComponent, AdminGroupComponent, NotificationsComponent, HeaderComponent, CardBoxComponent, ActivitiesBoxComponent, OtherInfoComponent, GraphComponent, AmaItemComponent, BarChartComponent],
   imports: [
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     NgxPaginationModule,
     NgxSkeletonLoaderModule,
     FormsModule,
+    NgApexchartsModule
   ]
 })
 export class AdministrationModule { }
