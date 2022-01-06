@@ -51,16 +51,14 @@ export class CoursesComponent implements OnInit {
   }
   addLike(id){
     this.articles.forEach(article => {
+      // add like to the article whose id was supplied
       if (article.articleDetails._id == id) {
         this.backendService.addLikeToArticle(id).subscribe(data => 
           this.backendService.getArticles().subscribe((data: any[]) => {
             this.articles = data
           })
         )
-        // article.articleDetails.likes.push(id)
       }
     });
-    // likeArray.push(id)
-    // console.log(likeArray)
   }
 }
