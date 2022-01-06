@@ -1,1 +1,12 @@
-<canvas id="myChart" width="400" height="400"></canvas>
+<div class="bar_chart_div">
+<apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions"
+    [responsive]="chartOptions.responsive"
+    [xaxis]="chartOptions.xaxis"
+    [legend]="chartOptions.legend"
+    [fill]="chartOptions.fill"
+  ></apx-chart>
+</div>

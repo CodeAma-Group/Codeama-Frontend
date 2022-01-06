@@ -1,4 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ChartComponent,
+  ApexDataLabels,
+  ApexPlotOptions,
+  ApexResponsive,
+  ApexXAxis,
+  ApexLegend,
+  ApexFill
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  responsive: ApexResponsive[];
+  xaxis: ApexXAxis;
+  legend: ApexLegend;
+  fill: ApexFill;
+};
 
 @Component({
   selector: 'app-bar-chart',
@@ -6,46 +28,74 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bar-chart.component.css']
 })
 export class BarChartComponent implements OnInit {
+  public chartOptions: Partial<ChartOptions>
+  constructor() {
+    this.chartOptions = {
+      series: [
+        {
+          name: "PRODUCT A",
+          data: [44, 55, 41, 67, 22, 43]
+        },
+        {
+          name: "PRODUCT B",
+          data: [13, 23, 20, 8, 13, 27]
+        },
+        {
+          name: "PRODUCT C",
+          data: [11, 17, 15, 15, 21, 14]
+        },
+        {
+          name: "PRODUCT D",
+          data: [21, 7, 25, 13, 22, 8]
+        }
+      ],
+      chart: {
+        type: "bar",
+        height: 220,
+        stacked: true,
+        toolbar: {
+          show: false
+        },
+        zoom: {
+          enabled: true
+        },
+        
+      },
+      
+      responsive: [
+        {
+          breakpoint: 480,
+        }
+      ],
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: "30%",
+          // endingShape: "rounded"
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
 
-  constructor() { }
+      xaxis: {
+        type: "category",
+        labels: {
+          show: false
+        }
+      },
+      
+      legend: {
+        show: false
+      },
+      fill: {
+        opacity: 1
+      }
+    }
+  }
 
   ngOnInit(): void {
   }
 
-// ctx = document.getElementById('myChart').getContext('2d');
-// myChart = new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//         datasets: [{
-//             label: '# of Votes',
-//             data: [12, 19, 3, 5, 2, 3],
-//             backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//                 'rgba(75, 192, 192, 0.2)',
-//                 'rgba(153, 102, 255, 0.2)',
-//                 'rgba(255, 159, 64, 0.2)'
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)'
-//             ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             y: {
-//                 beginAtZero: true
-//             }
-//         }
-//     }
-// });
 
 }

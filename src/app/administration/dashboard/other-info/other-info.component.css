@@ -23,3 +23,8 @@ p {
   margin: 0 auto;
   margin-bottom: 8px;
 }
+
+.bar_chart {
+  width: 94%;
+  height: 44%;
+}
