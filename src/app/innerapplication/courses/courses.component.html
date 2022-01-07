@@ -42,7 +42,7 @@
                 </div> 
     
                 <div>
-                    <svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="19" height="19">
+                    <svg id="comment" (click)="toogleCommentBox()" version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="19" height="19" >
                         <style>
                             tspan { white-space:pre }
                             .shp0 { fill: #4290ed } 
@@ -54,13 +54,10 @@
                         </g>
                     </svg>
                     <strong>{{article.articleDetails.comments.length}}</strong>
-                    <div>
-                        <ng-template *ngIf="article.articleDetails.comments.length > 0">
-                            <div *ngFor="let comment of article.articleDetails.comments.slice(0,4)">
-                                <img src="{{comment.commentor_pic}}" alt="">
-                            </div>
-                        </ng-template>
-                    </div>
+                </div>
+                
+                <div class="comment" *ngIf="CommentBox">
+                    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="comment here...."></textarea>
                 </div>
             </div>
         </div>
