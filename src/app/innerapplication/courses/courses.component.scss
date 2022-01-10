@@ -151,3 +151,29 @@ p#articleDescription{
 #like:hover{
     cursor: pointer;
 }
+
+#comment:hover{
+    cursor: pointer;
+}
+
+
+.comment {
+    display: flex;
+    background-color: #ebf1fa;
+    width: 60%;
+    justify-content: space-around;
+    border-radius: 8px;
+    height: 2.5em;
+  }
+  
+  textarea {
+    border: none;
+    background: inherit;
+    width: 40%;
+    height: 30%;
+    align-self: center;
+    border: 2px solid #0a58ca;
+    border-radius: 8px;
+    position: absolute;
+    padding: 5px 2px;
+  }

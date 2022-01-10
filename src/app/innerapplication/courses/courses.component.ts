@@ -13,6 +13,7 @@ export class CoursesComponent implements OnInit {
   public articles: any[] = []
   public userData: any;
   public userId: any;
+  public CommentBox: any = false;
   constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -47,6 +48,15 @@ export class CoursesComponent implements OnInit {
     }
     else{
       return '#ffffff'
+    }
+  }
+
+  toogleCommentBox(){
+    if (this.CommentBox == false) {
+      this.CommentBox = true 
+    }
+    else{
+      this.CommentBox = false
     }
   }
   addLike(id){
