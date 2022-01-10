@@ -7,9 +7,12 @@ import {
   ApexPlotOptions,
   ApexResponsive,
   ApexXAxis,
+  ApexYAxis,
   ApexLegend,
-  ApexFill
+  ApexFill,
+  ApexGrid
 } from "ng-apexcharts";
+import { type } from 'os';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -18,8 +21,10 @@ export type ChartOptions = {
   plotOptions: ApexPlotOptions;
   responsive: ApexResponsive[];
   xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
   legend: ApexLegend;
   fill: ApexFill;
+  grid: ApexGrid;
 };
 
 @Component({
@@ -49,10 +54,18 @@ export class BarChartComponent implements OnInit {
           data: [21, 7, 25, 13, 22, 8]
         }
       ],
+      grid: {
+        yaxis: {
+          lines: {
+             show: false
+          }
+        }        
+      },
       chart: {
         type: "bar",
         height: 220,
         stacked: true,
+        stackType: "100%",
         toolbar: {
           show: false
         },
@@ -73,6 +86,7 @@ export class BarChartComponent implements OnInit {
           columnWidth: "30%",
           // endingShape: "rounded"
         }
+        
       },
       dataLabels: {
         enabled: false
@@ -80,6 +94,13 @@ export class BarChartComponent implements OnInit {
 
       xaxis: {
         type: "category",
+        axisBorder: {
+          show: false
+        }
+      },
+
+      yaxis: {
+
         labels: {
           show: false
         }
