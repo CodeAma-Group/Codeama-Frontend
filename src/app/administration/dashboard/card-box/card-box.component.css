@@ -5,7 +5,7 @@
   border-radius: 8px;
   display: flex;
   align-items: center;
-  margin-right: 1.5em;
+  margin-right: 1.2em;
 }
 
 img,
@@ -34,4 +34,8 @@ p {
 
 .total_count {
   font-weight: 700;
+}
+
+.card_box-4 {
+  margin-right: 0!important;
 }

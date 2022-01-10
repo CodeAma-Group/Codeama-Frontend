@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -6,7 +7,10 @@ import {
   ApexXAxis,
   ApexDataLabels,
   ApexTooltip,
-  ApexStroke
+  ApexStroke,
+  ApexGrid,
+  ApexLegend,
+  ApexFill
 } from "ng-apexcharts";
 
 export type ChartOptions = {
@@ -16,6 +20,9 @@ export type ChartOptions = {
   stroke: ApexStroke;
   tooltip: ApexTooltip;
   dataLabels: ApexDataLabels;
+  grid: ApexGrid;
+  legend: ApexLegend;
+  fill: ApexFill;
 };
 
 @Component({
@@ -41,10 +48,23 @@ export class GraphComponent implements OnInit {
         }
       ],
       chart: {
-        height: 350,
+        height: 300,
         type: "area"
       },
 
+      fill: {
+        opacity: 0.1,
+        gradient: {
+          opacityFrom: 0,
+          opacityTo: 0
+        }
+      },
+
+      legend: {
+        show: true,
+        position: 'top'
+      },
+      
       dataLabels: {
         enabled: false
       },
@@ -52,19 +72,17 @@ export class GraphComponent implements OnInit {
         curve: "smooth"
       },
       xaxis: {
-        type: "datetime",
+        type: "category",
         categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z"
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat",
+          "Sun"
         ],
-        labels: {
-          show: false
-        }
+        
       },
       tooltip: {
         x: {

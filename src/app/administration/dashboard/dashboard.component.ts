@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ItemCountsService } from 'src/app/innerapplication/services/item-counts.service';
 import { BugService } from '../../innerapplication/services/bug.service';
 
@@ -8,22 +9,22 @@ import { BugService } from '../../innerapplication/services/bug.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  articleCount = 0
+  articles:any = []
   amaCount = 0
   bugsCount = 0
   resourceCount =0 
   questionsCount =0 
-  constructor( private bugService: BugService, private itemsCountService: ItemCountsService ) { }
+  constructor( private bugService: BugService, private itemsCountService: ItemCountsService,  ) { }
 
   ngOnInit(): void {
-     this.itemsCountService.getArticles()
-       .subscribe((res:any)=> {
-         console.log('data',res.data)
-          this.articleCount = res.data.totalDocs
-          console.log(this.articleCount)
-       })
+    this.itemsCountService.getArticlesCount()
+    .subscribe(async(res: any) => {
+      this.articles = res.data
+    })
+    
+    // console.log('article',this.itemsCountService.getArticlesCount())
   }
-  componentText = "Dashboard works!";
+  
 
   cards = [
     {
@@ -46,7 +47,7 @@ export class DashboardComponent implements OnInit {
 
     {
       title: "Articles",
-      totalCount: this.articleCount,
+      totalCount: this.articles.length,
       icon: "../../assets/icons/Group 70.png"
     },
 

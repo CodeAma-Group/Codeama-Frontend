@@ -6,10 +6,15 @@ h6 {
   background-color: white;
   /* width: 50%; */
   height: 9em;
+  width: 18.9em;
   margin-right: 1em;
   border-radius: 8px;
   display: flex;
   align-items: center;
+}
+
+.box-1 {
+  margin-right: 0!important;
 }
 
 .content_wrapper {
