@@ -2,13 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators'
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InnerapplicationService {
   private base: string = "https://codeama-backend.herokuapp.com/"
+  public userData: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
+  public userId: any = this.userData._id;
   constructor(private http: HttpClient) {}
+  
 
   public getArticles(){
     let articles = <Observable<any[]>>this.http.get(this.base+"articles", {
@@ -37,7 +41,8 @@ export class InnerapplicationService {
               article_img: data[i].thumbnailUrl,
               comments: data[i].comments,
               _id: data[i]._id
-            }
+            },
+            likeOfUserIncluded: data[i].Likes.includes(this.userId)
           }
           articlesArray.push(singleArt)
         }
