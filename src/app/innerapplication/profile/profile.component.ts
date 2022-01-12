@@ -209,14 +209,14 @@ export class ProfileComponent implements OnInit {
       }
   )}
 
-  // newusername: string = '';
+  newusername: string = '';
   newpassword: string = '';
   oldpassword: string = '';
   hasSubmitted: boolean = false;
 
-  // getUsernameToChangeTo(value: string) {
-  //   this.newusername = value;
-  // }
+  getUsernameToChangeTo(value: string) {
+    this.newusername = value;
+  }
 
   getCurrentPassword(value: string) {
     console.log(value)
@@ -228,10 +228,9 @@ export class ProfileComponent implements OnInit {
 
   updateProfileFields() {
     this.hasSubmitted = true;
+    let userImportantData:any = new FormData();
+
     // if (this.newusername != '') {
-      
-    //   var userData:any = new FormData();
-        
     //   userData.append("Username", this.newusername);
     //   this.error_msg = 'Username failed to update. Try again!'
     //   this.success_msg = 'Username updated successfully!' 
@@ -251,7 +250,7 @@ export class ProfileComponent implements OnInit {
     var connections: any = { 
       "github": `${data.github}`, 
       "twitter": `${data.twitter}`, 
-      "portfolio": `${data.facebook}` 
+      "portfolio": `${data.portfolio}` 
     }
       
     // userData.append("userId", `${this._id}`)
@@ -265,4 +264,5 @@ export class ProfileComponent implements OnInit {
  
     this.updateProfileToDb(userData);
   }
+
 }

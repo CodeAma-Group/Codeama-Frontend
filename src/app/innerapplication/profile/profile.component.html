@@ -50,27 +50,27 @@
                 </div>
                 <div class="form_group">
                     <label for="location">Location</label>
-                    <input type="text" name="Location" ngModel id="location" :value="{{Location}}" placeholder="Enter location">
+                    <input type="text" name="Location" [(ngModel)]="Location" id="location" placeholder="Enter location">
                 </div>
                 <div class="form_group">
                     <label for="description">Description</label>
-                    <input type="text" name="description" ngModel id="description" :value="{{description}}" placeholder="Enter description">
+                    <input type="text" name="description" [(ngModel)]="description" id="description" placeholder="Enter description">
                 </div>
                 <div class="form_group">
                     <label for="Bio">Bio settings</label>
-                    <input type="text" name="Bio" id="bio" ngModel :value="{{Bio}}" placeholder="Enter bio">
+                    <input type="text" name="Bio" id="bio" [(ngModel)]="Bio" placeholder="Enter bio">
                 </div>
                 <div class="form_group">
                     <label for="github">Github link</label>
-                    <input type="text" name="github" id="github" ngModel :value="{{connections.github}}" placeholder="Enter github link">
+                    <input type="text" name="github" id="github" [(ngModel)]="connections.github" placeholder="Enter github link">
                 </div>
                 <div class="form_group">
                     <label for="twitter">Linkedin link</label>
-                    <input type="text" name="twitter" id="twitter" ngModel :value="{{connections.twitter}}" placeholder="Enter linkedIn link">
+                    <input type="text" name="twitter" id="twitter" [(ngModel)]="connections.twitter" placeholder="Enter linkedIn link">
                 </div>
                 <div class="form_group">
                     <label for="facebook">Website link</label>
-                    <input type="text" name="facebook" id="facebook" ngModel :value="{{connections.facebook}}" placeholder="Enter portfolio link">
+                    <input type="text" name="portfolio" id="portfolio" [(ngModel)]="connections.portfolio" placeholder="Enter portfolio link">
                 </div>
     
                 <div class="form_group submit_buttons">
@@ -144,6 +144,7 @@
             <div class="social_medias">
                 <div class="connection_header">
                     <h4>My Codeama connections:</h4>
+                    <p class="edit_all_btn" (click)="accountMinorSettings()">Edit</p>
                 </div>
                 <div class="git">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">

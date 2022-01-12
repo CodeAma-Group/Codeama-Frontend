@@ -67,10 +67,12 @@
     
      :root {
         --pureWhite: #ffffff;
+        --pureBlack: #000000;
         --bgBlue: #F4F7FB;
         --mainBlue: #185BF9;
         --mainBlack: #17202A;
         --mainWhite: #ffffff;
+        --mainWhite2: #ffffff;
         --dimBlue: #66A5F0;
         --dimerBlue: #f2f6fa;
         --mainRed: #F51854;
