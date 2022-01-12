@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-welcome',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-	constructor() { }
+	constructor(private _router: Router) {
+		const token = localStorage.getItem('codeama_auth_token');
+		if (token != null) {
+			this._router.navigate(['/app']);
+		}
+	}
 
 	cookieVal:string = "";
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AuthService } from '../_authServices/auth.service'
+import { AuthService } from '../_authServices/auth.service';
 
 @Component({
   selector: 'app-loginform',
@@ -21,7 +21,6 @@ export class LoginformComponent implements OnInit {
 	invalidPassword: boolean = false;
 
 	constructor(
-
 		private _auth: AuthService,
 		private _router: Router,
 

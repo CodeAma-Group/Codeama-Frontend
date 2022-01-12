@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
 	selector: 'app-signup',
@@ -8,12 +9,16 @@ import { Router } from '@angular/router'
 })
 export class SignupComponent implements OnInit {
 
-	constructor( private _router: Router ) { }
+	constructor( private spinner:NgxSpinnerService, private _router: Router ) {
+		this.spinner.show();
+	}
 
 	ngOnInit(): void {
 		const token = localStorage.getItem('codeama_auth_token');
 		if (token != null) {
 			this._router.navigate(['/app']);
+		}else{
+			this.spinner.hide();
 		}
 	}
 
