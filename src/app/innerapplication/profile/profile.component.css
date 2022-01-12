@@ -24,7 +24,7 @@
     width: 40%;
     height: auto;
     min-height: 90%;
-    background-color: #ffffff;
+    background-color: var(--mainWhite2);
     border-radius: 0.5em;
     display: flex;
     flex-direction: column;
@@ -65,6 +65,8 @@
     border: 0.1em solid #66a4f091;
     border-radius: 0.3em;
     font-size: 0.88em;
+    background: var(--inputWhite);
+    color: var(--mainBlack);
 }
 
 .form_group>label {
@@ -344,6 +346,15 @@ a>svg {
     font-size: 0.95em;
     color: var(--mainBlack);
     opacity: 0.78;
+}
+
+.connection_header .edit_all_btn {
+    position: absolute;
+    bottom: 0;
+    right: 1em;
+    font-size: 0.9em;
+    color: var(--mainBlue);
+    cursor: pointer;
 }
 
 .git, .linkedin, .website {
