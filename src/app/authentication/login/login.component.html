@@ -1,4 +1,16 @@
 <div id="entire_app__login_form">
+    <div *ngIf="maintenancePhase" class="error_popup_container">
+        <div class="inner_popper_container">
+            <div class="image_container">
+                <img src="../../../assets/images/error.gif" alt="">
+            </div>
+            <div class="descript_container">
+                <h2>Maintenance Alert</h2>
+                <p>Oops! Sorry about this feature currently not available, it is under <strong>maintenance</strong> and will be up in a short time.</p>
+                <button (click)="maintenancePhaseChanger()">Ok I understood</button>
+            </div>
+        </div>
+    </div>
     <div (click)="modeChange()" class="dark_mode">
         <svg id="contrast-drop-line" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 45 45">
             <path id="Path_25" data-name="Path 25" d="M0,0H45V45H0Z" fill="none"/>
@@ -16,7 +28,7 @@
                 <div class="option_navigation">
                     <ul>
                         <div class="row_menu">
-                            <p class="p1">Form registration signup</p>
+                            <p class="p1">Form registration signin</p>
                             <li>
                                 <a routerLinkActive = "active" [routerLink]="['form']" class="img1">
                                     <img src="../../../assets/images/form.png" alt="">
@@ -25,9 +37,12 @@
                         </div>
                         
                         <div class="row_menu">
-                            <p class="p2">Face recognition signup</p>
-                            <li>
-                                <a routerLinkActive = "active" [routerLink]="['face']" class="img2">
+                            <p class="p2">Face recognition signin</p>
+                            <li (click)="maintenancePhaseChanger()">
+                                <!-- <a routerLinkActive = "active" [routerLink]="['face']" class="img2">
+                                    <img src="../../../assets/images/face.png" alt="">
+                                </a> -->
+                                <a [routerLink]="['form']" class="img2">
                                     <img src="../../../assets/images/face.png" alt="">
                                 </a>
                             </li>
