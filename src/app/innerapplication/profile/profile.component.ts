@@ -196,7 +196,8 @@ export class ProfileComponent implements OnInit {
         this.editingMinorAccountSettings = false;
         this.editingAccountSettings = false;
         this.notifier.notify("success", this.success_msg) 
-        this.hasSubmitted = false;       
+        this.hasSubmitted = false;   
+        this.hasSubmittedMinorChanges = false;   
         this.editingAccountSettings = false;
         // this.router.navigate(['/app/profile/', this._id])
 
