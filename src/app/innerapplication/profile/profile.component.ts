@@ -100,7 +100,7 @@ export class ProfileComponent implements OnInit {
       // let token: any = localStorage.getItem('codeama_auth_token')
       // userData.append("Authorization", `${token}`)
       // userData.append("Badge", `${this.Badge}`)
-      userData.append("Bio", `${this.Bio}`)
+      userData.append("bio", `${this.Bio}`)
       userData.append("Location", `${this.Location}`)
       userData.append("description", `${this.description}`)
       userData.append("Skills", `${this.Skills}`)
@@ -200,7 +200,7 @@ export class ProfileComponent implements OnInit {
         this.editingAccountSettings = false;
         // this.router.navigate(['/app/profile/', this._id])
 
-        location.reload();
+        // location.reload();
       },
 			err => {
         this.hasSubmitted = false; 
@@ -255,7 +255,7 @@ export class ProfileComponent implements OnInit {
       
     // userData.append("userId", `${this._id}`)
     userData.append("Location", `${data.Location}`)
-    userData.append("Bio", `${data.Bio}`)
+    userData.append("bio", `${data.Bio}`)
     userData.append("connections", JSON.stringify(connections))
     userData.append("description", `${data.description}`)
 
