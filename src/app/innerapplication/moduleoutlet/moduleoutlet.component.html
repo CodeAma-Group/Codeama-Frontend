@@ -11,18 +11,9 @@
     <div class="entire_app_page_body">
         <div class="header-container">
             <img src="../../../assets/images/logo.png" alt="logo" class="logo">
-            <form class="searchbox-container" (clickOutside)="stopSearch()">
-                <div class="searchbox">
-                    <img src="../../../assets/images/Group 2.png" alt="search icon" class="searchIcon">
-                    <input type="text" #search  (keyup)="filterSearch(search.value)"  placeholder="search at codeama">
-                    <img src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-cancel-mintab-for-ios-becris-lineal-becris.png" class="cancelIcon" (click)="stopSearch()" [style.display]= "showCancel"/>
-                </div>
-                <div class="result" *ngIf="showSearch && searchWords.length != 0">
-                    <a *ngFor = "let i of searchWords" class="showSearch" routerLink="{{i.route}}" (click)="stopSearch()">
-                        <h6>{{i.name}}</h6>
-                        <p class="search_description">{{i.description}}</p>
-                    </a>
-                </div>              
+            <form class="searchbox" (ngSubmit) = "submitting()">
+                <input type="text" #search  placeholder="Search......">
+                <button type="submit" class="searchIconButton"><img src="../../../assets/images/Group 2.png" alt="search icon"></button>            
             </form>
             <div *ngIf="loggedIn" (click) = "logout()" class="logout">
                 Logout

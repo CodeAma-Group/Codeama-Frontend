@@ -151,18 +151,7 @@ export class ModuleoutletComponent implements OnInit {
     this.router.navigate(['/auth'])
   }
 
-  filterSearch(value){
-    this.showCancel = "block";
-     let searchedModule = new RegExp(value, 'i')
-     this.searchWords = filterWords.filter(el => 
-      el.name.match(searchedModule) || 
-      el.description.match(searchedModule) 
-     ) 
-      this.showSearch = true;
-  }
-  stopSearch(){
-    console.log(`reached here`);
-    this.showSearch = false;
-    this.showCancel = "none";
+  submitting(){
+    console.log("submitted already")
   }
 }
