@@ -43,17 +43,19 @@
                 </div> 
     
                 <div>
-                    <svg id="comment" (click)="toogleCommentBox()" version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="19" height="19" >
-                        <style>
-                            tspan { white-space:pre }
-                            .shp0 { fill: #4290ed } 
-                        </style>
-                        <g id="Community page-light – 11">
-                            <g id="chat-1-line">
-                                <path id="-e-Path 49" fill-rule="evenodd" class="shp0" d="M13.26 0C17.9 0 21.66 3.77 21.66 8.41C21.66 15.24 14.31 18.4 9.06 20.5L9.06 16.82C4.42 16.82 0.66 13.05 0.66 8.41C0.66 3.77 4.42 0 9.06 0L13.26 0ZM11.16 17.32C16.98 14.68 19.56 12.2 19.56 8.41C19.56 4.93 16.74 2.1 13.26 2.1L9.06 2.1C5.58 2.1 2.76 4.93 2.76 8.41C2.76 11.89 5.58 14.72 9.06 14.72L11.16 14.72L11.16 17.32Z" />
+                    <a routerLink="../view-article/{{article.articleDetails._id}}">
+                        <svg id="comment" version="1.2"  baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="19" height="19" >
+                            <style>
+                                tspan { white-space:pre }
+                                .shp0 { fill: #4290ed } 
+                            </style>
+                            <g id="Community page-light – 11">
+                                <g id="chat-1-line">
+                                    <path id="-e-Path 49" fill-rule="evenodd" class="shp0" d="M13.26 0C17.9 0 21.66 3.77 21.66 8.41C21.66 15.24 14.31 18.4 9.06 20.5L9.06 16.82C4.42 16.82 0.66 13.05 0.66 8.41C0.66 3.77 4.42 0 9.06 0L13.26 0ZM11.16 17.32C16.98 14.68 19.56 12.2 19.56 8.41C19.56 4.93 16.74 2.1 13.26 2.1L9.06 2.1C5.58 2.1 2.76 4.93 2.76 8.41C2.76 11.89 5.58 14.72 9.06 14.72L11.16 14.72L11.16 17.32Z" />
+                                </g>
                             </g>
-                        </g>
-                    </svg>
+                        </svg>
+                    </a>
                     <strong>{{article.articleDetails.comments.length}}</strong>
                 </div>
                 

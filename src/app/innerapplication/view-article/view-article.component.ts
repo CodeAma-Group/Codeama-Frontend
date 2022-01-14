@@ -20,10 +20,8 @@ export class ViewArticleComponent implements OnInit {
   hasSubmitted:boolean = false;
 
   addComment(comment:any){
- 
     if(comment.comment.trim().length > 0){
-      
-      this.hasSubmitted = true;
+        this.hasSubmitted = true;
 
         let decoded: any = jwt_decode(localStorage.codeama_auth_token)
      
@@ -44,8 +42,6 @@ export class ViewArticleComponent implements OnInit {
         this.viewArticle(this.articleId);
         this.viewArticleComments(this.articleId);
      }
-
-
   }
 
   viewArticle(id:any){
