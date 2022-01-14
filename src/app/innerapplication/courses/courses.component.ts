@@ -21,6 +21,8 @@ export class CoursesComponent implements OnInit {
     this.spinner.show()
     this.backendService.getArticles().subscribe((data: any[]) => {
       this.articles = data
+      
+    console.log(data)
       this.spinner.hide()
     })
     
@@ -52,14 +54,6 @@ export class CoursesComponent implements OnInit {
     }
   }
 
-  toogleCommentBox(){
-    if (this.CommentBox == false) {
-      this.CommentBox = true 
-    }
-    else{
-      this.CommentBox = false
-    }
-  }
 
   likingInProgress: boolean = false;
   currentLikeId: string = "";
