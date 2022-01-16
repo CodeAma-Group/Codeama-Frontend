@@ -173,7 +173,7 @@
             </div>
             <div class="bio_location">
                 <div class="add_container">
-                    <input *ngIf = "editBio" (keyup.enter) = "showAddBtn()" type="text" name="bio" id="bio" placeholder="write your bio . . .">
+                    <input *ngIf="editBio" #new_bio (keyup.enter)="showAddBtn(new_bio.value)" type="text" id="bio" placeholder="write your bio . . .">
                     <p *ngIf = "editStack" (click) = "showInput()">
                         <svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28">
                             <path id="Path_43" data-name="Path 43" d="M0,0H28V28H0Z" fill="none"/>
@@ -225,7 +225,10 @@
                     </p>
                 </div>
                 <div class="skill_content">
-                    <div  *ngFor = "let skill of Skills; let i = index" class="skill">
+                    <div  *ngFor="let skill of Skills; let i = index" class="skill" (mouseover)="hoverSkill(skill)" (mouseleave)="leaveSkill()">
+                        <div *ngIf="hoveredSkill == skill" class="remove_container">
+                            <svg (click)="removeSkill(i, skill)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z"/></svg>
+                        </div>
                         {{skill}}
                     </div>
                 </div>
