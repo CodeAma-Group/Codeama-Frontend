@@ -75,9 +75,18 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  showAddBtn() {
+  showAddBtn(value: string) {
     this.editBio = false;
     this.editStack = true;
+
+    var userDataBio:any = new FormData();
+    userDataBio.append("Bio", `${value}`);
+    this.Bio = value;
+
+    this.error_msg = 'Bio failed to update. Try again!'
+    this.success_msg = 'Bio updated successfully!'
+ 
+    this.updateProfileToDb(userDataBio);
   }
 
   showInput() {
@@ -92,7 +101,6 @@ export class ProfileComponent implements OnInit {
     if (this.skillVal != '') {
       this.Skills.push(this.skillVal);
 
-      
       var userData:any = new FormData();
       // this.description = " ";
       // this.Bio = " ";
@@ -195,7 +203,7 @@ export class ProfileComponent implements OnInit {
 			res => {
         this.editingMinorAccountSettings = false;
         this.editingAccountSettings = false;
-        this.notifier.notify("success", this.success_msg) 
+        this.notifier.notify("success", this.success_msg);
         this.hasSubmitted = false;   
         this.hasSubmittedMinorChanges = false;   
         this.editingAccountSettings = false;
@@ -264,6 +272,31 @@ export class ProfileComponent implements OnInit {
     this.success_msg = 'Profile picture updated successfully!'
  
     this.updateProfileToDb(userData);
+  }
+
+  hoveredSkill: string = '';
+  hoverSkill(val: any) {
+    this.hoveredSkill = val;
+  }
+
+  leaveSkill() {
+    this.hoveredSkill = "";
+  }
+
+  removeSkill(index: any, skill: any) {
+    if (this.Skills.includes(skill)) {
+      const filtered_arr = this.Skills.filter(val => val !== skill);
+      this.Skills = filtered_arr;
+
+      var userData:any = new FormData();
+      userData.append("Skills", `${filtered_arr}`)
+
+      this.error_msg = 'Skills failed to update. Try again!'
+      this.success_msg = 'Skills updated successfully!'
+    
+      this.updateProfileToDb(userData);
+    }
+    this.hoveredSkill = '';
   }
 
 }
