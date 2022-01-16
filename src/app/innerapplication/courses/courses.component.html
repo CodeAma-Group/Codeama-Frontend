@@ -5,13 +5,13 @@
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div class=" bg-light">
-                        <img style="width: 100%;" [src]="article.devDetails.pic" alt="">
+                        <img (click)="seeUserProfile(article.devDetails._id)" style="width: 100%;" [src]="article.devDetails.pic" alt="">
                     </div>
                     <figcaption class="{{checkBadge(article.devDetails.badge)}} rounded-pill">{{article.devDetails.badge}}</figcaption>
                 </figure>
                 <div>
-                    <p>
-                        <strong>{{article.devDetails.names}}</strong><span>@{{article.devDetails.username}}</span>
+                    <p (click)="seeUserProfile(article.devDetails._id)">
+                        <strong>{{article.devDetails.names}} </strong><span>@{{article.devDetails.username}}</span>
                     </p>
                     {{article.articleDetails.date_updated | date:"MMMM d, Y"}}
                 </div>
@@ -20,7 +20,7 @@
                 <h5><a class="text-dark" routerLink="/app/view-article/{{ article.articleDetails._id }}"><strong>{{article.articleDetails.article}}</strong></a></h5>
                 <p [innerHTML]="article.articleDetails.desc" id="articleDescription"></p>
             </div>
-            <p id="dev_username">{{article.devDetails.username}}.codeama.dev</p>
+            <p id="dev_username" (click)="seeUserProfile(article.devDetails._id)">{{article.devDetails.username}}.codeama.dev</p>
             <div class="article_views">
                 <div>
                     <svg 

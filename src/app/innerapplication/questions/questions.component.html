@@ -5,13 +5,13 @@
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img style="width: 100%;" [src]="question.devDetails.pic" alt="">
+                        <img (click)="seeUserProfile(question.devDetails._id)" style="width: 100%;" [src]="question.devDetails.pic" alt="">
                     </div>
                     <figcaption class="{{checkBadge(question.devDetails.badge)}} rounded-pill">{{question.devDetails.badge}}</figcaption>
                 </figure>
                 <div>
-                    <p>
-                        <strong>{{question.devDetails.names}}</strong><span>@{{question.devDetails.username}}</span>
+                    <p (click)="seeUserProfile(question.devDetails._id)">
+                        <strong>{{question.devDetails.names}} </strong><span>@{{question.devDetails.username}}</span>
                     </p>
                     {{question.questionDetails.date_updated | date:"longDate"}}
                 </div>
@@ -21,7 +21,7 @@
                 <p id="div_desc" >{{question.questionDetails.desc}}</p>
                 <div [innerHTML]="question.questionDetails.text_qtn" id="div_desc" ></div>
             </div>
-            <p id="dev_username">{{question.devDetails.username}}.codeama.dev</p>
+            <p id="dev_username" (click)="seeUserProfile(question.devDetails._id)">{{question.devDetails.username}}.codeama.dev</p>
             <div class="question_views">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.84" viewBox="0 0 26 23.84">

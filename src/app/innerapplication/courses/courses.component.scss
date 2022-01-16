@@ -23,6 +23,7 @@
                             width: 40px;
                             height: 40px;
                             border-radius: 50%;
+                            cursor: pointer;
                         }
                     }
                     
@@ -59,7 +60,8 @@
                     width: 100%;
                     p {
                         margin: 0;
-                        width: 100%
+                        width: 100%;
+                        cursor: pointer;
                         strong {
                             margin-right: 10px;
                         }
@@ -86,6 +88,7 @@
                 font-size: .8em;
                 color: var(--mainBlack);
                 opacity: .5;
+                cursor: pointer;
             }
     
             >div:last-of-type {

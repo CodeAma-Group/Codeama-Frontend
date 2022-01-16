@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
@@ -12,7 +13,7 @@ import { UserService } from '../services/user.service';
 export class ResourcesComponent implements OnInit {
   public resources: any[] 
   public userData: any
-  constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private _userService: UserService) { 
+  constructor(private backendService: InnerapplicationService, private router: Router, private spinner: NgxSpinnerService, private _userService: UserService) { 
     this.spinner.show()
     let decoded: any = jwt_decode(localStorage.codeama_auth_token)
     this._userService.getUserEntireProfileData(decoded._id).subscribe((res: any) => {
@@ -57,4 +58,9 @@ export class ResourcesComponent implements OnInit {
       this.resources[index].resourceDetails.Likes.push(this.userData._id)
     }
   }
+
+  seeUserProfile(id: any) {
+    this.router.navigate(['/app/singleprofile', id]);
+  }
+
 }

@@ -184,7 +184,6 @@ button[type= submit] {
     height: auto;
 }
 
-
 .cover_photo {
     margin-top: 0.3em;
     width: 100%;
@@ -426,7 +425,8 @@ a>svg {
 }
 
 .location_details {
-    height: 10vh;
+    height: 12vh;
+    padding-top: 1em;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

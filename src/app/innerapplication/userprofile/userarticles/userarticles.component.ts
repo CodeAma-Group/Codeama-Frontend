@@ -29,9 +29,9 @@ export class UserarticlesComponent implements OnInit {
 		let user:any = jwt_decode(token);
 
 		this._id = user._id;
-
-    // this._id = this.activatedRoute.snapshot.paramMap.get('user');
-    // console.error(this._id)
+    
+    // this._id = this.activatedRoute.snapshot.params.username;   
+    // console.warn(this._id) 
    
     this._settings.settings();
     this._userService.getUserEntireProfileData(this._id).subscribe((res: any) => {
@@ -40,7 +40,6 @@ export class UserarticlesComponent implements OnInit {
 
     this._userService.getUserArticles().subscribe((res: any) => {
       this.articles = res.data
-      console.log(this.articles)
       this.loadingData = false;
       if (this.articles.length == 0) {
         this.noArticlesStatus = true;

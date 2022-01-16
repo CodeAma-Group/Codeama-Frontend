@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
 
@@ -9,7 +10,7 @@ import { InnerapplicationService } from '../innerapplication.service';
 })
 export class QuestionsComponent implements OnInit {
   public questions;
-  constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService) { }
+  constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private router: Router) { }
 
   ngOnInit(){
     this.spinner.show()
@@ -33,4 +34,9 @@ export class QuestionsComponent implements OnInit {
     }
     return className
   }
+
+  seeUserProfile(id: any) {
+    this.router.navigate(['/app/singleprofile', id]);
+  }
+
 }

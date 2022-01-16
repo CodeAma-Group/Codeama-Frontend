@@ -115,7 +115,7 @@ export class SidebarComponent implements OnInit {
   getProfile() {
     var status = this.authService.loggedIn()
     if (status) {
-      this.router.navigate(['app/profile', this.userId]);
+      this.router.navigate(['/app/profile', this.userId]);
     } else {
       this.router.navigate(['/auth']);
     }

@@ -3,7 +3,7 @@
     <div class="user-profile d-flex px-5">
         <figure class="position-relative d-flex justify-content-center">
             <div>
-                <img [src]="bug.userInfo.profilePicture">
+                <img (click)="seeUserProfile(bug.userInfo._id)" [src]="bug.userInfo.profilePicture">
             </div>
             <figcaption class="{{checkBadge(bug.userInfo.Badge)}} rounded-pill">{{bug.userInfo.Badge}}</figcaption>
         </figure>
@@ -11,7 +11,7 @@
             <div class="d-flex">
                 <a [href]="'https://codeama.netlify.app/app/profile/ '+bug.userInfo._id" class="my-auto username ">{{bug.userInfo.Username}}
                 </a>
-                <span class="ms-2 u-caption">@{{bug.userInfo.Username.trim()}}</span>
+                <span class="ms-2 u-caption" (click)="seeUserProfile(bug.userInfo._id)">@{{bug.userInfo.Username.trim()}}</span>
             </div>
             <p id="posting-date">{{bug.bug.date| date:"longDate"}}</p>
         </div>
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="caption px-5">
-        <p>{{bug.userInfo.Username}}.codeama.dev</p>
+        <p (click)="seeUserProfile(bug.userInfo._id)">{{bug.userInfo.Username}}.codeama.dev</p>
     </div>
     <div class="comments-and-likes pt-2 d-flex px-5">
         <div class="likes d-flex ">
