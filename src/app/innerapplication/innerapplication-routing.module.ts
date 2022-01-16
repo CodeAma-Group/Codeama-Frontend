@@ -9,6 +9,7 @@ import { CodeamasComponent } from './codeamas/codeamas.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SupportComponent } from './support/support.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SingleprofileComponent } from './singleprofile/singleprofile.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectRegistrationComponent } from './project-registration/project-registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -190,6 +191,40 @@ const routes: Routes = [
           },
           {
             path: 'resources',
+            component: UserresourcesComponent
+          }
+
+        ]
+      },
+      {
+        
+        path: 'singleprofile/:username',
+        component: SingleprofileComponent,
+        children: [
+          
+          {
+            path: '',
+            redirectTo: 'articles',
+            pathMatch: 'full',
+          },
+          {
+            path: 'articles/:username',
+            component: UserarticlesComponent
+          },
+          {
+            path: 'answered/:username',
+            component: UseransweredComponent
+          },
+          {
+            path: 'asked/:username',
+            component: UseraskedComponent
+          },
+          {
+            path: 'bugsolved/:username',
+            component: UserbugsolvedComponent
+          },
+          {
+            path: 'resources/:username',
             component: UserresourcesComponent
           }
 

@@ -5,13 +5,13 @@
             <div class="dev_details" class="d-flex">
                 <figure class="position-relative d-flex justify-content-center">
                     <div>
-                        <img [src]="resource.devDetails.pic" alt="">
+                        <img (click)="seeUserProfile(resource.devDetails._id)" [src]="resource.devDetails.pic" alt="">
                     </div>
                     <figcaption class="{{checkBadge(resource.devDetails.badge)}} rounded-pill">{{resource.devDetails.badge}}</figcaption>
                 </figure>
                 <div>
                     <p>
-                        <strong>{{resource.devDetails.names}}</strong><span>@{{resource.devDetails.username}}</span>
+                        <strong (click)="seeUserProfile(resource.devDetails._id)">{{resource.devDetails.names}}</strong><span> @{{resource.devDetails.username}}</span>
                     </p>
                     <span style="font-size:.9em">{{resource.resourceDetails.date_updated | date:"MMM d, Y"}}</span>
                 </div>

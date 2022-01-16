@@ -57,6 +57,7 @@ import { CardBoxComponent } from './admin/dashboard/card-box/card-box.component'
 import { ActivitiesBoxComponent } from './admin/dashboard/activities-box/activities-box.component';
 import { OtherInfoComponent } from './admin/dashboard/other-info/other-info.component';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { SingleprofileComponent } from './singleprofile/singleprofile.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -100,7 +101,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent, AmaQuestionComponent,BugDetailsComponent, QuestionComponent, InfoBoxComponent, ViewChallengeTakersComponent, ChallengeTakerComponent, TakeChallengeBoardComponent, AddChallengeComponent, AddBadgeComponent, ViewArticleComponent, AdminChallengeComponent, EditChallengeComponent, AppEditBadgeComponent, AllChallengesComponent, AmaAnswerQuestionComponent, CardBoxComponent, ActivitiesBoxComponent, OtherInfoComponent],
+  declarations: [SidebarComponent, ModuleoutletComponent, HoodComponent, ProjectsComponent, ChallengesComponent, NotificationsComponent, SupportComponent, CodeamasComponent, ProfileComponent, DashboardComponent, QuestionsComponent, CoursesComponent,ProjectRegistrationComponent,ProjectDetailsComponent, BadgeComponent, CreateChallengeComponent, AddQuestionComponent,AnswerQuestionComponent, AddArticleComponent, ResourcesComponent, AddResourceComponent, BugsComponent, AddBugComponent, AskcodeamaComponent, UserresourcesComponent, UseransweredComponent, UseraskedComponent, UserbugsolvedComponent, UserarticlesComponent, AmaQuestionComponent,BugDetailsComponent, QuestionComponent, InfoBoxComponent, ViewChallengeTakersComponent, ChallengeTakerComponent, TakeChallengeBoardComponent, AddChallengeComponent, AddBadgeComponent, ViewArticleComponent, AdminChallengeComponent, EditChallengeComponent, AppEditBadgeComponent, AllChallengesComponent, AmaAnswerQuestionComponent, CardBoxComponent, ActivitiesBoxComponent, OtherInfoComponent, SingleprofileComponent],
   imports: [
     CommonModule,
     InnerapplicationRoutingModule,

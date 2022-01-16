@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { BugService } from '../../services/bug.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-bugs',
   templateUrl: './bugs.component.html',
   styleUrls: ['./bugs.component.css'],
 })
 export class BugsComponent implements OnInit {
-  constructor(private bug: BugService, private spinner:NgxSpinnerService) {}
+  constructor(private bug: BugService, private spinner:NgxSpinnerService, private router: Router) {}
   technologies = [
     {
       name: 'vue',
@@ -77,4 +78,9 @@ export class BugsComponent implements OnInit {
     }
     return className;
   }
+
+  seeUserProfile(id: any) {
+    this.router.navigate(['/app/singleprofile', id]);
+  }
+
 }

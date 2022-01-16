@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InnerapplicationService } from '../innerapplication.service';
 import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -15,7 +16,7 @@ export class CoursesComponent implements OnInit {
   public userData: any;
   public userId: any;
   public CommentBox: any = false;
-  constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService) { }
+  constructor(private backendService: InnerapplicationService, private spinner: NgxSpinnerService, private notifier: NotifierService, private router: Router) { }
 
   ngOnInit(): void {
     this.spinner.show()
@@ -119,4 +120,9 @@ export class CoursesComponent implements OnInit {
       }
     })
   }
+
+  seeUserProfile(id: any) {
+    this.router.navigate(['/app/singleprofile', id]);
+  }
+
 }
