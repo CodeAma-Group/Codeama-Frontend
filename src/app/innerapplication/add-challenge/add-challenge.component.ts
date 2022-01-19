@@ -19,6 +19,7 @@ export class AddChallengeComponent implements OnInit {
   challengeData;
   challengeId
   marks: any = []
+  prizeStatuses: any = []
   prizeArray: any = [
     {
       marks: 0,
@@ -82,10 +83,17 @@ export class AddChallengeComponent implements OnInit {
     console.warn(this.marks)
   }
 
+  addStatus(e: String) {
+    this.prizeStatuses.push(e)
+    console.warn(this.prizeStatuses)
+  }
+
   makePrizeArray() {
     for(let i=0; i<this.marks.length; i++) {
-       this.prizeArray[i].marks = this.marks[i]
+      this.prizeArray[i].marks = this.marks[i]
+      this.prizeArray[i].prize = this.prizeStatuses[i]
     }
+    console.log('final', this.prizeArray)
     return this.prizeArray
   }
 

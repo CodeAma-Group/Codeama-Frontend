@@ -96,7 +96,8 @@ ul {
 }
 
 .card {
-    background-color: var(--questBg)!important;
+    background-color: white!important;
+    border: none!important;
 }
 
 #addPro {

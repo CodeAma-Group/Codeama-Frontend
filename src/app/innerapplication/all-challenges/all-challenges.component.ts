@@ -3,6 +3,8 @@ import { ProjectService } from '../services/project.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ChallengeService } from '../services/challenge.service';
 import { Data } from '../view-challenges/challenge';
+import { AuthService } from 'src/app/authentication/_authServices/auth.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-all-challenges',
@@ -11,14 +13,16 @@ import { Data } from '../view-challenges/challenge';
 })
 export class AllChallengesComponent implements OnInit {
 
-  constructor(private projects:ProjectService,private spinner:NgxSpinnerService, private challengeService: ChallengeService) { }
+  constructor(private projects:ProjectService,private spinner:NgxSpinnerService, private challengeService: ChallengeService, private authService: AuthService) { }
 
   id=10;
   url="https://codeama-backend.herokuapp.com"
   show:boolean=false
   image;
   challenges:any = []
-  technologies = ['React','NodeJs','Docker','Mysql']
+  technologies = ['React', 'NodeJs', 'Docker', 'Mysql']
+  userRole
+  showAddChallenge:boolean = false
 
   ngOnInit(): void {
     this.spinner.show()
@@ -29,6 +33,14 @@ export class AllChallengesComponent implements OnInit {
        this.spinner.hide()
     })
     
+    let token = this.authService.getToken()
+      let tokenData:any = jwt_decode(token)
+    this.userRole = tokenData.Badge;
+    
+    if (this.userRole === 'admin') {
+      this.showAddChallenge = true
+    }
+      
   }
 
 }
