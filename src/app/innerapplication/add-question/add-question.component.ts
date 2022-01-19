@@ -116,6 +116,10 @@ export class AddQuestionComponent implements OnInit {
         tagged_technologies: this.question.value.tagged_tech.join(",")
       }]
     }
+    if(newQue.questions[0].text_question == ""){
+      delete newQue.questions[0].text_question;
+    }
+
     let newQueForm = {
       question: JSON.stringify(newQue)
     }
