@@ -1,4 +1,5 @@
 <div class="prize prize-{{prizeIndex}} rounded">
+  <button class="cancel-button" (click)="removePrize()">x</button>
   <input type="number" id="marks" min="{{setDate() | date:'yyyy-MM-dd'}}" #marks (keyup.enter)="addMarks(marks.value)">
-  <p class="prize_status">{{status}} Badge</p>
+  <input type="text" id="status" #prizeStatus (keyup.enter)="addStatus(prizeStatus.value)">
 </div>

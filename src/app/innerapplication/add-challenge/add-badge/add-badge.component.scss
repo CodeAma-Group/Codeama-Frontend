@@ -2,17 +2,31 @@
     width: 8em;
     margin-bottom: 1em;
     margin-right: 20px;
+    position: relative;
 
 
     input {
       border: none;
       background: none;
       border-bottom: 3px dashed #151829;
+      display: block;
+      line-height: 0;
+    }
+
+    #marks {
       width: 25%;
       margin-left: 10px;
-      margin-top: 3px;
       margin-bottom: 6px;
     }
+
+    #status {
+      width: 77%;
+      margin-left: 10px;
+      margin-top: 3px;
+      margin-bottom: 16px;
+    }
+
+    #prize
 
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { 
@@ -28,6 +42,29 @@
       color: #afafb1;
       font-size: 0.7em;
       padding-bottom: 4px;
+    }
+
+    
+  }
+
+  .cancel-button {
+    position: absolute;
+    top: -0.5em;
+    left: 7.3em;
+    background-color: #f51854;
+    color: white;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+
+    p {
+      margin-bottom: 0!important;
+      padding: 0!important;
     }
   }
   
