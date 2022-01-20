@@ -13,6 +13,8 @@ export class AddBadgeComponent implements OnInit {
   @Input() prizes: any
   @Output() marks = new EventEmitter<Number>()
   @Output() prizeStatuses = new EventEmitter<String>()
+  @Output() prizesArr = new EventEmitter<any>() 
+
 
 
   addMarks(value: Number) {
@@ -33,9 +35,11 @@ export class AddBadgeComponent implements OnInit {
   }
 
   removePrize() {
-    if(this.prizes) {
-      this.prizes = this.prizes.filter((value, index, array) => { return value.status === 'admin' })
+    if (this.prizes) {
+      console.log(`${this.status} Badge`)
+      this.prizes = this.prizes.filter((value, index, array) => value.prize !== `${this.status} Badge`)
       console.log(this.prizes)
+      this.prizesArr.emit(this.prizes)
     }
   }
   constructor() { }
