@@ -88,6 +88,12 @@ export class AddChallengeComponent implements OnInit {
     console.warn(this.prizeStatuses)
   }
 
+  removePrizeItem(e: any) {
+    console.log(e)
+    this.prizeArray = [...e]
+    console.warn(this.prizeArray)
+  }
+
   makePrizeArray() {
     for(let i=0; i<this.marks.length; i++) {
       this.prizeArray[i].marks = this.marks[i]
