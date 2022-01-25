@@ -8,8 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class AddBadgeComponent implements OnInit {
 
   marksInput: any = document.getElementById('marks')
-  @Input() prizeIndex:any
-  @Input() status:string
+  @Input() prize:any
+  @Input() status:any
   @Input() prizes: any
   @Output() marks = new EventEmitter<Number>()
   @Output() prizeStatuses = new EventEmitter<String>()
@@ -35,11 +35,18 @@ export class AddBadgeComponent implements OnInit {
   }
 
   removePrize() {
+    console.warn(this.status)
     if (this.prizes) {
-      console.log(`${this.status} Badge`)
-      this.prizes = this.prizes.filter((value, index, array) => value.prize !== `${this.status} Badge`)
+      console.log('status Prize',this.status.prize)
+      console.log('status', this.status)
+      if (typeof this.status === 'string') {
+        this.prizes = this.prizes.filter((value, index, array) => value.prize !== `${this.status} Badge`)
+    
+      } else {
+        this.prizes = this.prizes.filter((value, index, array) => value.prize !== `${this.status.prize} Badge`)
+      }
       console.log(this.prizes)
-      this.prizesArr.emit(this.prizes)
+      return this.prizesArr.emit(this.prizes)
     }
   }
   constructor() { }

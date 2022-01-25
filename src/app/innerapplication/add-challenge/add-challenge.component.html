@@ -52,8 +52,8 @@
           </div>
   
           <div class="prizes" formArrayName="prizes">
-              <app-add-badge *ngFor="let prize of prizeArray;let status of statuses; let i=index" [prizeIndex]="i" [status]="status" [prizes]="prizeArray" (marks)="addMarks($event)" (prizeStatuses)="addStatus($event)" (prizesArr)="removePrizeItem($event)"></app-add-badge>
-              <small *ngIf="showPrizeError && showErrors" class="text-danger">please enter all 4 prizes(remember to press Enter after entering each grade)</small> 
+              <app-add-badge *ngFor="let prize of prizeArray;let value of statuses; let i=index" [prize]="prize" [status]="value" [prizes]="prizeArray" (marks)="addMarks($event)" (prizeStatuses)="addStatus($event)" (prizesArr)="removePrizeItem($event)"></app-add-badge>
+              <!-- <small *ngIf="showPrizeError && showErrors" class="text-danger">please enter all 4 prizes(remember to press Enter after entering each grade)</small>  -->
           </div>
         </div>
   

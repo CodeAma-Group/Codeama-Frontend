@@ -20,32 +20,36 @@ export class AddChallengeComponent implements OnInit {
   challengeId
   marks: any = []
   prizeStatuses: any = []
-  prizeArray: any = [
+  public prizeArray: any = [
     {
+      id: 1,
       marks: 0,
       prize: "Pro Badge"
     },
 
     {
+      id: 2,
       marks: 0,
       prize: "Intermediate Badge"
     },
 
     {
+      id: 3,
       marks: 0,
       prize: "Beginner Badge"
     },
 
-    {
-      marks: 0,
-      prize: "No Badge"
-    }
+    // {
+    //   id: 4,
+    //   marks: 0,
+    //   prize: "No Badge"
+    // }
   ]
   showErrors: boolean = false
   showPrizeError: boolean = false
   count: number = 0
   public imgUrl
-  statuses = ['Pro','Intermediate','Beginner', 'No']
+  statuses:Array<String> = ['Pro','Intermediate','Beginner']
   constructor(private formBuilder: FormBuilder, private challengeService: ChallengeService, private router:ActivatedRoute, private Router:Router) {
     this.challenge = this.formBuilder.group({
       title: ['', [Validators.required]],
@@ -91,7 +95,7 @@ export class AddChallengeComponent implements OnInit {
   removePrizeItem(e: any) {
     console.log(e)
     this.prizeArray = [...e]
-    console.warn(this.prizeArray)
+    console.warn('prizeArray',this.prizeArray)
   }
 
   makePrizeArray() {
@@ -113,9 +117,9 @@ export class AddChallengeComponent implements OnInit {
   //  console.log(this.count)
     
     this.showErrors = true
-    if(this.marks.length !== 4 && this.count !== 3) {
+    if(this.marks.length !== 2 && this.count !== 3) {
        this.showPrizeError = true
-       this.challenge.status = 'INVALID'
+      //  this.challenge.status = 'INVALID'
     }else {
       this.showPrizeError = false
     }
