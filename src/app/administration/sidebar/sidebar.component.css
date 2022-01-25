@@ -31,7 +31,7 @@ li>a.nav-link {
 }
 
 .active {
-    background: linear-gradient(to right, rgb(189, 226, 240) , rgb(245, 246, 247));;
+    background: linear-gradient(to right, rgb(189, 226, 240) , rgb(245, 246, 247));
     border-left: 3px solid rgb(56, 98, 236);
     fill: blue!important
 }
