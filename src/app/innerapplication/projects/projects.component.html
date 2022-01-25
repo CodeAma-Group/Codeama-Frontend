@@ -9,7 +9,6 @@
           fill="#fff" />
       </svg> Add project</a>
     </div>
-    <hr>
     <div class="cards-div d-flex flex-wrap ms-4" *ngIf="show">
         <div class="card-group col-lg-3 mx-2 my-2" *ngFor="let project of projectsData">
             <div class="card">
@@ -18,7 +17,6 @@
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">{{project.title}}</h4>
-                    <h6 class="technologies-title">Technologies used</h6>
                     <ul class="technologies float-left d-flex">
                         <li *ngFor="let tech of project.technologies" class="tech">{{tech}}</li>
                     </ul>

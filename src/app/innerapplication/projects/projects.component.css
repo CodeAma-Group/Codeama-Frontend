@@ -4,7 +4,7 @@ img {
 }
 
 .demo-img {
-    height: 270px!important;
+    height: 233px!important;
     overflow-y: hidden;
 }
 
@@ -20,13 +20,12 @@ img {
 }
 
 .tech {
-    margin: 5px 10px;
     font-size: 12px;
-    font-weight: 450;
-    color: grey;
+    color: gray;
     border-radius: 40px;
-    padding: 8px;
-    background-color: var(--contBgLight);
+    padding: 8px 8px 8px 0;
+    margin-right: 13px;
+    opacity: .6;
 }
 
 ol,
@@ -40,9 +39,17 @@ ul {
     border-radius: 50%;
 }
 
+.Group-profile,.project-description {
+    margin-bottom: 1em;
+}
+
 .groupname {
     font-size: 15px!important;
     color: #6D6F7A
+}
+
+.card-body {
+    padding-top: 0px!important;
 }
 
 .card-title {
@@ -63,6 +70,7 @@ ul {
 .viewMoreBtn {
     background-color: #4286ED!important;
     color: white;
+    margin: 0 auto;
 }
 
 .card-group {
@@ -78,6 +86,14 @@ ul {
     position: relative;
     left: 6.6em;
     font-size: 13px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 4em;
+    box-shadow: 1px 10px 15px -5px #00000008;
 }
 
 .container-fluid>.heading {
