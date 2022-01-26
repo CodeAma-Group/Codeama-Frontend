@@ -18,7 +18,7 @@ export class ProjectDetailsComponent implements OnInit {
     private ProjectComments: commentsService,
     private notifier: NotifierService
   ) {}
-  projectImages = [];
+  projectImages = ['../../../assets/images/19da12178aba6d652cd598775b72ec99.jpg', '../../../assets/images/4eb9404051703d84bc98215dfa37df1f.png', '../../../assets/images/6c11e25d579cabe544f112a58b89ce80.png','../../../assets/images/34eba2be702c0e49baf7fad35aa734a8.png'];
   ProjectImageOnStage: string = '';
   projectData: any;
   projectComments:Array<any>=[];
@@ -50,6 +50,14 @@ export class ProjectDetailsComponent implements OnInit {
   }
   imageOnStage(data: any) {
     this.ProjectImageOnStage = data.src;
+  }
+
+  checkActive(data:any) {
+    if (this.ProjectImageOnStage == data.src) {
+       return true
+    }
+    
+    return false
   }
   projectId = this.router.snapshot.params.id;
   comment = '';
