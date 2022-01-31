@@ -4,6 +4,10 @@
     padding-bottom: 20px;
     >div {
         align-items: center;
+        $bg_color: var(--contBgLight);
+        background-color: $bg_color;
+        border-radius: 7px;
+        margin-bottom: 10px;
         >div:first-of-type {
             padding: 0px 20px 0px 40px;
             width: 100%;
