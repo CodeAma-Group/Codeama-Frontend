@@ -1,10 +1,15 @@
+$bg_color: var(--contBgLight);
 .articlesDetails {
     color: var(--mainBlack) !important;
     >div {
         display: flex;
         align-items: center;
+        background-color: $bg_color;
+        border-radius: 7px;
+        margin-bottom: 10px;
+
         >div:first-of-type {
-            padding: 0px 20px 0px 40px;
+            padding: 20px 20px 20px 40px;
             width: 65%;
             >div:first-of-type {
                 width: 100%;
