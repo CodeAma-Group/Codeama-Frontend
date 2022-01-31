@@ -1,9 +1,10 @@
-$bg_color: var(--contBgLight);
+
 .articlesDetails {
     color: var(--mainBlack) !important;
     >div {
         display: flex;
         align-items: center;
+        $bg_color: var(--contBgLight);
         background-color: $bg_color;
         border-radius: 7px;
         margin-bottom: 10px;
