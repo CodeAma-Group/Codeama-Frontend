@@ -23,7 +23,7 @@ export class AddArticleComponent implements OnInit {
     spellcheck: true,
     height: '15rem',
     minHeight: '5rem',
-    placeholder: 'Enter text here...',
+    placeholder: 'Tell your story...',
     translate: 'no',
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Poppins',
