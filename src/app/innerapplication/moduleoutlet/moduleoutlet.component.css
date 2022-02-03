@@ -61,11 +61,13 @@
 .searchbox {
     display: flex;
     justify-content: space-evenly;
-    background-color: #F8F9FA;
-    width: 24em;
+    background-color: var(--dimerBlue);
+    width: 50%;
     border-radius: 8px;
     align-items: center;
     padding: 10px;
+    border-radius: 40px;
+    padding: 0 20px;
 }
 
 .searchbox-container {
@@ -118,7 +120,7 @@
 .logout {
     width: 10%;
     height: 3.2em;
-    background-color: var(--mainRed);
+    background-color: var(--mainBlue);
     color: var(--mainWhite);
     border-radius: 0.5em;
     margin-right: 0.8em;
@@ -127,6 +129,7 @@
     align-items: center;
     justify-content: center;
     font-size: 0.83em;
+    border-radius: 40px;
 }
 
 .login {
