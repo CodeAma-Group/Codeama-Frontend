@@ -1,3 +1,10 @@
+.bug_details {
+        padding: 20px;
+        background-color:var(--contBgLight);
+        border-radius: 7px;
+        margin-bottom: 10px;
+}
+
 .profile-avatar {
     width: 60px;
     height: 60px;
@@ -66,7 +73,7 @@ figure>figcaption {
     font-weight: 400;
     padding: 1px 5px;
     position: absolute;
-    bottom: -18px;
+    bottom: -13px;
     border: 1px solid;
     margin-bottom: 5px;
     color: white;
@@ -81,8 +88,8 @@ figure>div {
 }
 
 figure>div>img {
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
 }
 
