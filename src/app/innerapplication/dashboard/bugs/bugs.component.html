@@ -1,13 +1,12 @@
-<hr>
-<div *ngFor="let bug of bugs">
-    <div class="user-profile d-flex px-5">
+<div *ngFor="let bug of bugs" class="bug_details">
+    <div class="user-profile d-flex">
         <figure class="position-relative d-flex justify-content-center">
             <div>
                 <img (click)="seeUserProfile(bug.userInfo._id)" [src]="bug.userInfo.profilePicture">
             </div>
             <figcaption class="{{checkBadge(bug.userInfo.Badge)}} rounded-pill">{{bug.userInfo.Badge}}</figcaption>
         </figure>
-        <div class=" ms-3 mt-2 user-name-and-date">
+        <div class="mt-2 user-name-and-date">
             <div class="d-flex">
                 <a [href]="'https://codeama.netlify.app/app/profile/ '+bug.userInfo._id" class="my-auto username ">{{bug.userInfo.Username}}
                 </a>
@@ -16,7 +15,7 @@
             <p id="posting-date">{{bug.bug.date| date:"longDate"}}</p>
         </div>
     </div>
-    <div class="question-info d-flex mt-2 px-5">
+    <div class="question-info d-flex mt-2">
         <div class="question-details col-lg-7 mr-2 ">
             <div class="question-title ">
                 <a class="q-heading my-3 bug-title" routerLink="../../bug-details/{{bug.bug._id}}/{{bug.userInfo._id}}">{{bug.bug.bug_title}}</a>
@@ -33,10 +32,10 @@
             </div>
         </div>
     </div>
-    <div class="caption px-5">
+    <div class="caption">
         <p (click)="seeUserProfile(bug.userInfo._id)">{{bug.userInfo.Username}}.codeama.dev</p>
     </div>
-    <div class="comments-and-likes pt-2 d-flex px-5">
+    <div class="comments-and-likes pt-2 d-flex">
         <div class="likes d-flex ">
             <svg id="thumb-up-fill " xmlns="http://www.w3.org/2000/svg " width="25 " height="25 " viewBox="0 0 25 25 ">
         <path id="Path_46 " data-name="Path 46 " d="M0,0H25V25H0Z " fill="none " />
@@ -60,7 +59,6 @@
             </p>
         </div>
     </div>
-    <hr>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-rotate">
     <p style="color: white">Please Wait. </p>
