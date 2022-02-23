@@ -7,10 +7,12 @@
                 <div>
                     <p>More than 100 projects daily are found duplicate and being worked on by many programmers
                     </p>
-                    <a href="https://codeama.netlify.app/app/projectRegistration" class="link-primary">Submit my project now &rarr;</a>
+                    <a href="https://codeama.netlify.app/app/projectRegistration" class="link-primary">Submit my project
+                        now &rarr;</a>
                     <br>
                     <br>
-                    <a href="https://codeama.netlify.app/app/projects" class="btn text-primary occ_proj">Occupied projects</a>
+                    <a href="https://codeama.netlify.app/app/projects" class="btn text-primary occ_proj">Occupied
+                        projects</a>
                 </div>
             </div>
             <div class="bugs_and_qtns repeated_projects">
@@ -66,71 +68,81 @@
                 </div>
             </div>
         </div>
-        <div class="mainContent">
-            <div class="header row pt-0">
+
+        <div class="Content">
+            <div class="header bg-color rounded row title mb-1">
                 <div class="col-9">
                     <div class="repeated_projects notification">
                         <h6>Notifications</h6>
                     </div>
                 </div>
                 <div class="col notification ml">
-                    <button class="mark" (click)="markAll()">Mark all as read</button>
+                    <button class="mark" (click)="markAll()"><svg id="add-circle-line" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30">
+                        <path id="Path_43" data-name="Path 43" d="M0,0H24V24H0Z" fill="none"/>
+                        <path id="Path_44" data-name="Path 44" d="M11,11V7h2v4h4v2H13v4H11V13H7V11Zm1,11A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Z" fill="var(--mainBlack)"/>
+                    </svg> Mark all as read</button>
                 </div>
             </div>
-            <div class="overflow-hidden">
-                <div *ngIf="notificationData == 'notifications not found'">
-                    <div class="noti row justify-content ">
-                        <div class="line "></div>
-                        <div> <img class="w-25 noti " src="../../../assets/images/search.png ">
-                            <p> You don't have any notification yet!</p>
-                        </div>
+
+            <div *ngIf="notificationData == 'notifications not found'">
+                <div class="noti rounded row justify-content ">
+                    <div class="line "></div>
+                    <div> <img class="w-25 noti " src="../../../assets/images/search.png ">
+                        <p> You don't have any notification yet!</p>
                     </div>
                 </div>
+            </div>
 
-                <div *ngFor=" let noti of notificationData ">
-                    <div class="noti hovered row {{noti.isRead}} ">
-                        <div class="line "></div>
-                        <div class="col-1 profile " [ngSwitch]="noti.Type ">
-                            <img *ngSwitchCase=" 'join-ama' " src="../../../assets/images/join.png " alt="prof ">
-                            <img *ngSwitchCase=" 'update-profile' " src="../../../assets/images/update-profile.png " alt="prof ">
-                            <img *ngSwitchCase=" 'comment-article' " src="../../../assets/images/coment.png " alt="prof ">
+            <div *ngFor="let noti of notificationData" class="rounded row title mb-1">
+                <div class="noti bg-color hovered row {{noti.isRead}} rounded">
+                    <div class="line "></div>
+                    <div class="col-1 profile " [ngSwitch]="noti.Type ">
+                        <img *ngSwitchCase=" 'join-ama' " src="../../../assets/images/join.png " alt="prof ">
+                        <img *ngSwitchCase=" 'update-profile' " src="../../../assets/images/update-profile.png "
+                            alt="prof ">
+                        <img *ngSwitchCase=" 'comment-article' " src="../../../assets/images/coment.png " alt="prof ">
+                    </div>
+
+                    <div class="col-9 ">
+                        <div class="tx-title ">{{noti.Title}}</div>
+                        <div class="tx-12 ">{{noti.Description}}</div>
+                        <p *ngIf="noti.Link " class="tx-to ">
+                            <!-- <button (click)="read(noti._id)" class="markAsRead" type="button" (onClick)="location.href='{{noti.Link}}'"> -->
+                            <a href=" {{noti.Link}} " class="blue">Read more</a>
+                            <!-- </button> -->
+                        </p>
+                    </div>
+                    <div class="row col options ">
+                        <div class="col-4"></div>
+                        <div class="col-4" *ngIf="!noti.isRead">
+                            <button (click)="read(noti._id)" data-bs-toggle="tooltip " data-bs-placement="bottom "
+                                title="Mark as read ">
+                                <svg xmlns="http://www.w3.org/2000/svg " width="25 " height="15 " viewBox="0 0 45 35 ">
+                                    <path id="Icon_material-email " data-name="Icon material-email " d="M43.5,6H7.5a4.432,4.432,0,0,0-4.477,4.375L3,36.625A4.452,4.452,0,0,0,7.5,41h36A4.452,4.452,0,0,0,48,36.625V10.375A4.452,4.452,0,0,0,43.5,6Zm0,8.75-18,10.937L7.5,14.75V10.375l18,10.937,18-10.937Z
+                                            " transform="translate(-3 -6) " />
+                                </svg>
+                            </button>
                         </div>
 
-                        <div class="col-9 ">
-                            <div class="tx-title ">{{noti.Title}}</div>
-                            <div class="tx-12 ">{{noti.Description}}</div>
-                            <p *ngIf="noti.Link " class="tx-to ">
-                                <!-- <button (click)="read(noti._id)" class="markAsRead" type="button" (onClick)="location.href='{{noti.Link}}'"> -->
-                                <a href=" {{noti.Link}} " class="blue">Read more</a>
-                                <!-- </button> -->
-                            </p>
+                        <div class="col-4" *ngIf="noti.isRead">
+                            <button data-bs-toggle="tooltip" data-bs-placement="bottom " title="Mark as unread">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 31.5 27">
+                                    <path id="Icon_ionic-md-mail-open" data-name="Icon ionic-md-mail-open"
+                                        d="M33.75,14.18a2.925,2.925,0,0,0-1.425-2.55L18,4.5,3.675,11.63A3.1,3.1,0,0,0,2.25,14.18V28.5a3.009,3.009,0,0,0,3,3h25.5a3.009,3.009,0,0,0,3-3ZM18,21.375,5.951,13.5,18,7.5l12.049,6Z"
+                                        transform="translate(-2.25 -4.5)" />
+                                </svg>
+                            </button>
                         </div>
-                        <div class="row col options ">
-                            <div class="col-5" *ngIf="!noti.isRead">
-                                <button (click)="read(noti._id) " data-bs-toggle="tooltip " data-bs-placement="bottom " title="Mark as read ">
-                                    <svg xmlns="http://www.w3.org/2000/svg " width="25 " height="15 " viewBox="0 0 45 35 ">
-                                        <path id="Icon_material-email " data-name="Icon material-email " d="M43.5,6H7.5a4.432,4.432,0,0,0-4.477,4.375L3,36.625A4.452,4.452,0,0,0,7.5,41h36A4.452,4.452,0,0,0,48,36.625V10.375A4.452,4.452,0,0,0,43.5,6Zm0,8.75-18,10.937L7.5,14.75V10.375l18,10.937,18-10.937Z
-                                            " transform="translate(-3 -6) "/>
-                                    </svg>
-                                </button>
-                            </div>
 
-                            <div class="col-5 " *ngIf="noti.isRead">
-                                <button data-bs-toggle="tooltip " data-bs-placement="bottom " title="Mark as read ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 31.5 27">
-                                        <path id="Icon_ionic-md-mail-open" data-name="Icon ionic-md-mail-open" d="M33.75,14.18a2.925,2.925,0,0,0-1.425-2.55L18,4.5,3.675,11.63A3.1,3.1,0,0,0,2.25,14.18V28.5a3.009,3.009,0,0,0,3,3h25.5a3.009,3.009,0,0,0,3-3ZM18,21.375,5.951,13.5,18,7.5l12.049,6Z" transform="translate(-2.25 -4.5)"/>
-                                      </svg>
-                                </button>
-                            </div>
-
-
-                            <div class="col-5 ">
-                                <button (click)="delet(noti._id) " data-bs-toggle="tooltip " data-bs-placement="bottom " title="Delete ">
-                                    <svg xmlns="http://www.w3.org/2000/svg " width="15 " height="20 " viewBox="0 0 21 27 ">
-                                        <path id="Icon_material-delete " data-name="Icon material-delete " d="M9,28.5a3.009,3.009,0,0,0,3,3H24a3.009,3.009,0,0,0,3-3v-18H9ZM28.5,6H23.25l-1.5-1.5h-7.5L12.75,6H7.5V9h21Z " transform="translate(-7.5 -4.5) "/>
-                                    </svg>
-                                </button>
-                            </div>
+                        <div class="col-4">
+                            <button (click)="delet(noti._id) " data-bs-toggle="tooltip " data-bs-placement="bottom "
+                                title="Delete notification">
+                                <svg xmlns="http://www.w3.org/2000/svg " width="15 " height="20 " viewBox="0 0 21 27 ">
+                                    <path id="Icon_material-delete " data-name="Icon material-delete "
+                                        d="M9,28.5a3.009,3.009,0,0,0,3,3H24a3.009,3.009,0,0,0,3-3v-18H9ZM28.5,6H23.25l-1.5-1.5h-7.5L12.75,6H7.5V9h21Z "
+                                        transform="translate(-7.5 -4.5) " />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>

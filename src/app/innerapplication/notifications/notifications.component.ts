@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../services/notification.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notifications',
@@ -9,7 +10,7 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./notifications.component.css', '../dashboard/dashboard.component.scss']
 })
 export class NotificationsComponent implements OnInit {
-  constructor(private notifications: NotificationService, private spinner: NgxSpinnerService, private notifier: NotifierService) { }
+  constructor(private notifications: NotificationService, private spinner: NgxSpinnerService, private router: Router, private notifier: NotifierService) { }
   public article: string = ""
   public location: Location = window.location
   cookieVal: string = "";
@@ -25,10 +26,7 @@ export class NotificationsComponent implements OnInit {
       this.notificationData = res;
       this.none = false;
       this.notificationData = this.notificationData.data;
-      console.log(this.notificationData);
-      
       this.spinner.hide()
-      console.log(res);
     })
     
   }
@@ -38,7 +36,8 @@ export class NotificationsComponent implements OnInit {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
-        this.notifier.notify("success", "All notifications are mark as read! ")
+        this.notifier.notify("success", "All notifications are mark as read! ");
+        this.router.navigate(['../../app/notifications']);
       })
     })
   }
@@ -48,19 +47,19 @@ export class NotificationsComponent implements OnInit {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
-        this.notifier.notify("success", "Notification is mark as read!")
+        this.notifier.notify("success", "Notification is mark as read!");
+        this.router.navigate(['../../app/notifications']);
       })     
-    })
-    
+    }) 
   }
-
 
   delet(id){
     this.notifications.deleteNoti(id).subscribe((res) => {
       this.notifications.getNotifications().subscribe((res) => {
         this.notificationData = res;
         this.notificationData = this.notificationData.data;
-        this.notifier.notify("success", "Notification was deleted!")
+        this.notifier.notify("success", "Notification was deleted!");
+        this.router.navigate(['../../app/notifications']);
       })
     })
   }

@@ -1,9 +1,21 @@
 .cl-silver {
     color: silver;
 }
+.container{
+    width: 100%;
+    padding: 0;
+    margin: 0 20px;
+}
+.bg-color{
+    background-color: #f4f7fb;
+}
 
 .skills {
     display: inline-flex;
+}
+
+button {
+    border-radius: 15px;
 }
 
 .col.px-2.join button {
@@ -13,10 +25,6 @@
 .skills>li {
     padding-left: 10px;
     font-size: 13px;
-}
-
-.mb-2 {
-    margin-bottom: 10px;
 }
 
 .size-12 {
@@ -29,7 +37,7 @@
 
 .ama-askQuestion {
     text-align: end;
-    padding: 0 25px;
+    padding: 0 20px;
 }
 
 .join {
@@ -39,12 +47,23 @@
 
 .person {
     font-size: 14px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 109%;
 }
 
+.about h5 {
+    font-weight: 600;
+}
 .line {
-    height: 0.8px;
-    background-color: #c0c0c028;
-    margin-bottom: 10px;
+    height: 3px;
+    background-color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.title{
+    margin-bottom: 5px;
+    width: 109%;
 }
 
 .h5,
@@ -72,6 +91,7 @@ a {
 
 .tx-top {
     color: #151829;
+    font-weight: 600;
 }
 
 .ama-askQuestion>a {
