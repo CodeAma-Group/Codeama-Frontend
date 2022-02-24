@@ -3,8 +3,8 @@ import { CodeamaService } from '../services/codeama.service';
 import jwt_decode from 'jwt-decode';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AmaQuestionService } from '../services/ama-question.service';
-import { ActivatedRoute } from '@angular/router';
-
+import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-codeamas',
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CodeamasComponent implements OnInit {
 
-  constructor(private codeama: CodeamaService, private amaQuestionService: AmaQuestionService, private router: ActivatedRoute, private spinner: NgxSpinnerService) { }
+  constructor(private codeama: CodeamaService,private notifier: NotifierService, private amaQuestionService: AmaQuestionService, private router: Router, private spinner: NgxSpinnerService) { }
   url = "https://codeama-backend.herokuapp.com"
   badge;
   case;
@@ -76,7 +76,8 @@ export class CodeamasComponent implements OnInit {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
         this.follow = true
-        this.loading = false
+        this.loading = false;
+        this.notifier.notify("success", `Started to follow!`)
       })
     })
   }
@@ -89,6 +90,7 @@ export class CodeamasComponent implements OnInit {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
         this.loading = false;
+        this.notifier.notify("success", `You unfollowed!`)
       })
     })
   }
@@ -102,9 +104,10 @@ export class CodeamasComponent implements OnInit {
     this.data = Object.create(formData)
     this.data.codeama = this.user
     this.codeama.savecodeama(this.data).subscribe((res) => {
+      this.notifier.notify("success", `You've joined amas!`);
       this.codeama.getcodeamas().subscribe((res) => {
-        this.codeamaData = res
-        this.codeamaData = this.codeamaData.data
+        this.codeamaData = res;
+        this.codeamaData = this.codeamaData.data;
       })
     })
     this.found = true
@@ -113,11 +116,13 @@ export class CodeamasComponent implements OnInit {
 
   quitama() {
     this.codeama.removeama(this.amaId).subscribe((res) => {
+      this.notifier.notify("success", `You quited from amas!`);
+      this.router.navigate(['../../app/codeamas'])
       this.codeama.getcodeamas().subscribe((res) => {
         this.codeamaData = res
         this.codeamaData = this.codeamaData.data
-        
       })
+      this.found = false;
     })
   }
 

@@ -2,8 +2,18 @@
     color: var(--mainBlack);
 }
 
-.bg-color {
-    background-color: unset;
+.Content {
+    float: left;
+    margin-top: 10px;
+    display: block;
+    border-radius: 7px;
+    width: 68%;
+    padding-bottom: 20px;
+    margin-left: 20px;
+}
+
+.bg-color{
+    background-color: #f4f7fb;
 }
 
 .overflow-hidden {
@@ -11,6 +21,7 @@
 }
 
 .noti {
+    width: 100%;
     padding-bottom: 5px;
     margin: 0px 0px 2px 0px;
 }
@@ -39,9 +50,6 @@
     width: 11%;
 }
 
-.header {
-    padding: 10px 0;
-}
 
 .ml {
     margin-left: 5em;

@@ -45,7 +45,7 @@ export class CodeamaService {
   }
 
   removeama(amaId: string){
-    return this.http.patch(`https://codeama-backend.herokuapp.com/codeama/${amaId}`, {headers: this.headers});
+    return this.http.delete(`https://codeama-backend.herokuapp.com/codeama/${amaId}`, {headers: this.headers});
   }
 
 }

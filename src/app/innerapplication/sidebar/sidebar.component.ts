@@ -20,21 +20,22 @@ export class SidebarComponent implements OnInit {
   profileRoute: boolean = true;
   amadata;
   ama:boolean = false;
-  notRead:number = 0;
+  notRead:number;
 
   ngOnInit(): void {
-
+    this.notRead = 0;
     this.notification.getNotifications().subscribe((res) =>{
       this.amadata = res
       this.amadata = this.amadata.data
       for(let k=0; k<this.amadata.length; k++){
         if(this.amadata[k].isRead == false){
-          this.notRead += 1;
+          this.notRead ++;
+          console.log(this.notRead);
         }
       }
-      
     })
-    
+    console.log(this.notRead);
+
     var token = this.authService.getToken()
 
     if (token != null) {
