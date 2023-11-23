@@ -18,18 +18,18 @@ export class AmaAnswerService {
   });
 
   questionById(questionId:String){
-    return this.Http.get(`https://codeama-backend.herokuapp.com/codeama/questions/question/${questionId}`);
+    return this.Http.get(`https://codeama-backend.onrender.com/codeama/questions/question/${questionId}`);
   }
 
   answerQuestion(data:FormData){
-    return this.Http.post(`https://codeama-backend.herokuapp.com/codeama/question/answer`, data, {headers: this.headers});
+    return this.Http.post(`https://codeama-backend.onrender.com/codeama/question/answer`, data, {headers: this.headers});
   }
 
   makeComment(data){
-    return this.Http.post(`https://codeama-backend.herokuapp.com/comment`, data);
+    return this.Http.post(`https://codeama-backend.onrender.com/comment`, data);
   }
 
   getComments(commentId:String){
-    return this.Http.get(`https://codeama-backend.herokuapp.com/comment/${commentId}`);
+    return this.Http.get(`https://codeama-backend.onrender.com/comment/${commentId}`);
   }
 }

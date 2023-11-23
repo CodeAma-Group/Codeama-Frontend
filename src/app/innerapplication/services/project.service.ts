@@ -5,7 +5,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 })
 export class ProjectService {
   constructor(private http: HttpClient) {}
-  url="https://codeama-backend.herokuapp.com/project"
+  url="https://codeama-backend.onrender.com/project"
   auth_token = localStorage.getItem('codeama_auth_token');
   saveProject(data) {
     const headers = new HttpHeaders({

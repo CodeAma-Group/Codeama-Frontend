@@ -11,18 +11,18 @@ export class ChallengeService {
   constructor(private http:HttpClient) { }
 
   getChallenges() {
-    return this.http.get(`https://codeama-backend.herokuapp.com/challenges?limit=5&page=1`)
+    return this.http.get(`https://codeama-backend.onrender.com/challenges?limit=5&page=1`)
   }
 
   getChallenge(challengeId:string) {
-    return this.http.get(`https://codeama-backend.herokuapp.com/challenges/${challengeId}`)
+    return this.http.get(`https://codeama-backend.onrender.com/challenges/${challengeId}`)
   }
 
   postChallenge(data) {
-    return this.http.post("https://codeama-backend.herokuapp.com/challenges",data)
+    return this.http.post("https://codeama-backend.onrender.com/challenges",data)
   }
 
   updateChallenge(data, challengeId) {
-    return this.http.put(`https://codeama-backend.herokuapp.com/challenges/${challengeId}`, data)
+    return this.http.put(`https://codeama-backend.onrender.com/challenges/${challengeId}`, data)
   }
 }

@@ -15,27 +15,27 @@ export class UserService {
 	userProfileData:any;
 
 	getUserEntireProfileData(token: string) {
-		return this.http.get(`https://codeama-backend.herokuapp.com/users/${token}`)
+		return this.http.get(`https://codeama-backend.onrender.com/users/${token}`)
 	}
 
 	getUserDetails(){
-        return this.http.get(`https://codeama-backend.herokuapp.com/users/token/decode`)
+        return this.http.get(`https://codeama-backend.onrender.com/users/token/decode`)
     }
 
 	updateProfile(data) {
-		// return this.http.put(`https://codeama-backend.herokuapp.com/users/${this.userId}/update`, data)
-		return this.http.put(`https://codeama-backend.herokuapp.com/user/profile/update`, data)
+		// return this.http.put(`https://codeama-backend.onrender.com/users/${this.userId}/update`, data)
+		return this.http.put(`https://codeama-backend.onrender.com/user/profile/update`, data)
 	}
 	getUserById(id){
-		return this.http.get(`https://codeama-backend.herokuapp.com/users/${id}`)
+		return this.http.get(`https://codeama-backend.onrender.com/users/${id}`)
 	}
 
 	getUserArticles() {
-		return this.http.get(`https://codeama-backend.herokuapp.com/user/articles`)
+		return this.http.get(`https://codeama-backend.onrender.com/user/articles`)
 	}
 
 	getBugsSolvedBySingleUser() {
-		return this.http.get(`https://codeama-backend.herokuapp.com/user/bugs`,{
+		return this.http.get(`https://codeama-backend.onrender.com/user/bugs`,{
 			headers: {
 			  "Authorization": localStorage.codeama_auth_token
 			}
@@ -43,7 +43,7 @@ export class UserService {
 	}
 
 	getAskedQuestionsBySingleUser() {
-		return this.http.get(`https://codeama-backend.herokuapp.com/user/questions`)
+		return this.http.get(`https://codeama-backend.onrender.com/user/questions`)
 	}
 
 }

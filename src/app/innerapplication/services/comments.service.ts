@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class commentsService {
-  private base: string = "https://codeama-backend.herokuapp.com/"
+  private base: string = "https://codeama-backend.onrender.com/"
 
   constructor(private http: HttpClient) {}
   public commentOnProject(body){

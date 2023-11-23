@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BugService {
-  private base: string = "https://codeama-backend.herokuapp.com/"
-  getUrl = 'https://codeama-backend.herokuapp.com/all_bugs';
-  getByIdUrl = 'https://codeama-backend.herokuapp.com/viewBug';
-  postUrl = 'https://codeama-backend.herokuapp.com/post_bug';
-  postCommentUrl = 'https://codeama-backend.herokuapp.com/answerPostedBug';
+  private base: string = "https://codeama-backend.onrender.com/"
+  getUrl = 'https://codeama-backend.onrender.com/all_bugs';
+  getByIdUrl = 'https://codeama-backend.onrender.com/viewBug';
+  postUrl = 'https://codeama-backend.onrender.com/post_bug';
+  postCommentUrl = 'https://codeama-backend.onrender.com/answerPostedBug';
   constructor(private http: HttpClient) {}
   auth_token = localStorage.getItem('codeama_auth_token');
   getBugs() {

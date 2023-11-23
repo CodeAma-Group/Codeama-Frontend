@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode';
 export class CodeamaService {
 
   constructor(private http: HttpClient) {}
-  url="https://codeama-backend.herokuapp.com/codeama"
+  url="https://codeama-backend.onrender.com/codeama"
   data:any;
   auth_token = localStorage.getItem('codeama_auth_token');
   userData:any = jwt_decode(this.auth_token)
@@ -20,32 +20,32 @@ export class CodeamaService {
   });
 
   getamabyId(amaId){
-    return this.http.get(`https://codeama-backend.herokuapp.com/codeama/${amaId}`);
+    return this.http.get(`https://codeama-backend.onrender.com/codeama/${amaId}`);
   }
   getcodeamas(){
     return this.http.get(this.url)
   }   
 
-  baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;
+  baseUrl = `https://codeama-backend.onrender.com/users/${this.userId}/follow/`;
 
   updateFollower(followerId:string ){
-    return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/follow/${followerId}`, {headers: this.headers});
+    return this.http.patch(`https://codeama-backend.onrender.com/users/${this.userId}/follow/${followerId}`, {headers: this.headers});
   }
 
   updateUnfollower(unfollowerId: string){
-    return this.http.patch(`https://codeama-backend.herokuapp.com/users/${this.userId}/unfollow/${unfollowerId}`, {headers: this.headers});
+    return this.http.patch(`https://codeama-backend.onrender.com/users/${this.userId}/unfollow/${unfollowerId}`, {headers: this.headers});
   }
 
   askama(question:FormData){
-    return this.http.post(`https://codeama-backend.herokuapp.com/codeama/questions`,  question  , { headers: this.headers })
+    return this.http.post(`https://codeama-backend.onrender.com/codeama/questions`,  question  , { headers: this.headers })
   } 
 
   savecodeama(data:FormData) {
-    return this.http.post(`https://codeama-backend.herokuapp.com/codeama`,  data , { headers: this.headers });
+    return this.http.post(`https://codeama-backend.onrender.com/codeama`,  data , { headers: this.headers });
   }
 
   removeama(amaId: string){
-    return this.http.delete(`https://codeama-backend.herokuapp.com/codeama/${amaId}`, {headers: this.headers});
+    return this.http.delete(`https://codeama-backend.onrender.com/codeama/${amaId}`, {headers: this.headers});
   }
 
 }

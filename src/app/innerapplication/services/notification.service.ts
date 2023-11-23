@@ -18,19 +18,19 @@ export class NotificationService {
 		'Authorization': `Bearer ${this.auth_token}`,
 	});
 	getNotifications() {
-		return this.http.get(`https://codeama-backend.herokuapp.com/user/notifications/`, { headers: this.headers })
+		return this.http.get(`https://codeama-backend.onrender.com/user/notifications/`, { headers: this.headers })
 	}
 
 	markAllAsRead(){
-		return this.http.put(`https://codeama-backend.herokuapp.com/notifications/readAll`, {headers: this.headers})
+		return this.http.put(`https://codeama-backend.onrender.com/notifications/readAll`, {headers: this.headers})
 	}
 
 
 	markAsRead(notiId){
-		return this.http.put(`https://codeama-backend.herokuapp.com/notifications/${notiId}/read`, {headers: this.headers})
+		return this.http.put(`https://codeama-backend.onrender.com/notifications/${notiId}/read`, {headers: this.headers})
 	}
 
 	deleteNoti(notiId){
-		return this.http.delete(`https://codeama-backend.herokuapp.com/notifications/${notiId}/delete`, {headers: this.headers})
+		return this.http.delete(`https://codeama-backend.onrender.com/notifications/${notiId}/delete`, {headers: this.headers})
 	}
 }

@@ -10,22 +10,22 @@ export class ItemCountsService {
   constructor(private http: HttpClient) { }
 
   public getArticlesCount() {
-    return this.http.get("https://codeama-backend.herokuapp.com/articles?limit=5&page=1")
+    return this.http.get("https://codeama-backend.onrender.com/articles?limit=5&page=1")
   }
 
   public getAmas() {
-    return this.http.get("https://codeama-backend.herokuapp.com/codeama")
+    return this.http.get("https://codeama-backend.onrender.com/codeama")
   }
 
   public getBugs() {
-    return this.http.get("https://codeama-backend.herokuapp.com/all_bugs")
+    return this.http.get("https://codeama-backend.onrender.com/all_bugs")
   }
 
   public getResources() {
-    return this.http.get("https://codeama-backend.herokuapp.com/resources?limit=5&page=1")
+    return this.http.get("https://codeama-backend.onrender.com/resources?limit=5&page=1")
   }
 
   public getQuestions() {
-    return this.http.get("https://codeama-backend.herokuapp.com/view_questions/all")
+    return this.http.get("https://codeama-backend.onrender.com/view_questions/all")
   }
 }

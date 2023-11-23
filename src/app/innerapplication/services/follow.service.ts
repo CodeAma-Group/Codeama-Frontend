@@ -15,7 +15,7 @@ export class FollowService {
 	userData: any = jwt_decode(this.token)
 	userId: string = this.userData._id;
 
-  baseUrl = `https://codeama-backend.herokuapp.com/users/${this.userId}/follow/`;
+  baseUrl = `https://codeama-backend.onrender.com/users/${this.userId}/follow/`;
   patchUser(userId: number, operations: Operation){
     const url = this.baseUrl + userId;
     return this.http.patch(url, operations);

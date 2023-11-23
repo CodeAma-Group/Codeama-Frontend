@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
   providedIn: 'root'
 })
 export class InnerapplicationService {
-  private base: string = "https://codeama-backend.herokuapp.com/"
+  private base: string = "https://codeama-backend.onrender.com/"
   public userData: any = jwtDecode(localStorage.getItem('codeama_auth_token'));
   public userId: any = this.userData._id;
   constructor(private http: HttpClient) {}

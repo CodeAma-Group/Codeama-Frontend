@@ -7,8 +7,8 @@ import { Router } from '@angular/router'
 })
 export class AuthService {
 
-    private _registerUrl = 'https://codeama-backend.herokuapp.com/register';
-    private _loginUrl = 'https://codeama-backend.herokuapp.com/login';
+    private _registerUrl = 'https://codeama-backend.onrender.com/register';
+    private _loginUrl = 'https://codeama-backend.onrender.com/login';
 
     constructor(
 

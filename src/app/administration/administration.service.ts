@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdministrationService {
-  private baseUrl = "https://codeama-backend.herokuapp.com/"
+  private baseUrl = "https://codeama-backend.onrender.com/"
 
   constructor(private http: HttpClient) { }
 

@@ -252,7 +252,7 @@ export class LoginfacerecoComponent implements OnInit {
 
 		let face = this.faceRecoImages[this.imageIterationCount];
 
-		const file = getFileFromUrl(`https://codeama-backend.herokuapp.com/${face.faceRecognitionPicture}`, 'face.jpeg');
+		const file = getFileFromUrl(`https://codeama-backend.onrender.com/${face.faceRecognitionPicture}`, 'face.jpeg');
 		this.databaseUserBlobSamples = file;
 
 		this.start(this.databaseUserBlobSamples);

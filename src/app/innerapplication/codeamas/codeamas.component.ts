@@ -14,7 +14,7 @@ import { NotifierService } from 'angular-notifier';
 export class CodeamasComponent implements OnInit {
 
   constructor(private codeama: CodeamaService,private notifier: NotifierService, private amaQuestionService: AmaQuestionService, private router: Router, private spinner: NgxSpinnerService) { }
-  url = "https://codeama-backend.herokuapp.com"
+  url = "https://codeama-backend.onrender.com/"
   badge;
   case;
   codeamaData: any

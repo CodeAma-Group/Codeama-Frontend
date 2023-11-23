@@ -19,7 +19,7 @@ export class FaceauthService {
 	}
 
 	getFaceImages() {
-		return this.http.get('https://codeama-backend.herokuapp.com/faceRecognitionPictures');
+		return this.http.get('https://codeama-backend.onrender.com/faceRecognitionPictures');
 	}
 
 }

@@ -9,6 +9,6 @@ export class ChallengeTakersService {
   constructor(private http:HttpClient) { }
 
   getChallenge(challengeId:string) {
-    return this.http.get(`https://codeama-backend.herokuapp.com/challenges/${challengeId}`)
+    return this.http.get(`https://codeama-backend.onrender.com/challenges/${challengeId}`)
   }
 }
