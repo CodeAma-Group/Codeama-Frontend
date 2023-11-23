@@ -10,7 +10,7 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private projects:ProjectService,private spinner:NgxSpinnerService) { }
   id=10;
-  url="https://codeama-backend.onrender.com/"
+  url="https://codeama-backend.onrender.com"
   show:boolean=false
   image;
   projectsData:any
